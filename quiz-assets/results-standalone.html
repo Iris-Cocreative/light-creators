@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Founder Resonance — Results</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="quiz.css">
+<style>
+/* ── Standalone page base ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    background: var(--lc-midnight);
+    font-family: var(--lc-sans);
+    color: var(--lc-sand);
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+}
+
+/* ── Results layout ── */
+.results-page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 32px 120px;
+}
+
+/* ── Hero ── */
+.results-hero {
+    margin-bottom: 80px;
+}
+.results-hero-eyebrow {
+    font-family: var(--lc-sans);
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--lc-soft-gold);
+    opacity: 0.7;
+    margin-bottom: 20px;
+}
+.results-hero-name {
+    font-family: var(--lc-serif);
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--lc-sand);
+    margin-bottom: 14px;
+}
+.results-hero-tagline {
+    font-family: var(--lc-sans);
+    font-size: 1.05rem;
+    font-weight: 350;
+    color: var(--lc-sand-60);
+    line-height: 1.6;
+}
+
+/* ── Radar section ── */
+.results-radar-section {
+    position: relative;
+    margin-bottom: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.results-radar-wrap {
+    position: relative;
+    width: min(600px, 90vw);
+    height: min(600px, 90vw);
+}
+.results-iris-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+.results-iris-bg canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.results-radar-canvas {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+.results-radar-canvas canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* ── Factors card ── */
+.results-factors-card {
+    border: 1px solid var(--lc-sand-06);
+    border-radius: 12px;
+    padding: 36px 40px;
+    margin-bottom: 60px;
+}
+.lc-factor-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--lc-sand-04);
+}
+.lc-factor-item:last-child { border-bottom: none; }
+
+.lc-factor-icon {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    opacity: 0.5;
+}
+.lc-factor-icon svg {
+    width: 100%;
+    height: 100%;
+}
+.lc-factor-name {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--lc-sand-60);
+    width: 130px;
+    flex-shrink: 0;
+}
+.lc-factor-bar-wrap {
+    flex: 1;
+    height: 6px;
+    background: var(--lc-sand-04);
+    border-radius: 3px;
+    overflow: hidden;
+}
+.lc-factor-bar {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 1.2s cubic-bezier(0.22,1,0.36,1);
+    width: 0;
+}
+.lc-factor-bar.high { background: linear-gradient(90deg, var(--lc-aurora), var(--lc-soft-gold)); }
+.lc-factor-bar.mid { background: linear-gradient(90deg, var(--lc-horizon), var(--lc-aurora)); }
+.lc-factor-bar.low { background: linear-gradient(90deg, var(--lc-gold-30), var(--lc-soft-gold)); }
+
+.lc-factor-score {
+    font-family: var(--lc-serif);
+    font-size: 0.95rem;
+    color: var(--lc-sand);
+    width: 50px;
+    text-align: right;
+    flex-shrink: 0;
+}
+
+/* ── Profile section ── */
+.results-profile { margin-bottom: 60px; }
+.results-profile .eyebrow {
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--lc-aurora);
+    opacity: 0.5;
+    margin-bottom: 20px;
+}
+.results-profile p {
+    font-size: 0.98rem;
+    font-weight: 350;
+    color: var(--lc-sand-70);
+    line-height: 1.85;
+    margin-bottom: 20px;
+}
+
+/* ── Lever ── */
+.results-lever { margin-bottom: 60px; }
+.results-lever .eyebrow {
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--lc-aurora);
+    opacity: 0.5;
+    margin-bottom: 16px;
+}
+.results-lever h3 {
+    font-family: var(--lc-serif);
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--lc-sand);
+    margin-bottom: 8px;
+}
+.results-lever .lever-score {
+    font-size: 0.85rem;
+    color: var(--lc-soft-gold);
+    margin-bottom: 12px;
+}
+.results-lever .lever-next {
+    font-size: 0.95rem;
+    color: var(--lc-sand-60);
+    line-height: 1.7;
+    font-style: italic;
+    font-family: var(--lc-serif);
+}
+
+@media (max-width: 640px) {
+    .results-page { padding: 48px 20px 80px; }
+    .results-factors-card { padding: 24px 20px; }
+    .lc-factor-name { width: 100px; font-size: 0.65rem; }
+    .lc-factor-icon { width: 28px; height: 28px; }
+}
+</style>
+</head>
+<body>
+
+<div class="results-page">
+
+    <!-- ── Hero ── -->
+    <section class="results-hero">
+        <p class="results-hero-eyebrow">For Founders at the Threshold</p>
+        <h1 class="results-hero-name" id="typeName">The Almost-There Founder</h1>
+        <p class="results-hero-tagline" id="typeTagline">Everything is there. Now it needs coherence.</p>
+    </section>
+
+    <!-- ── Radar + Iris Animation ── -->
+    <section class="results-radar-section">
+        <div class="results-radar-wrap" id="radarWrap">
+            <div class="results-iris-bg" id="irisBg"><canvas></canvas></div>
+            <div class="results-radar-canvas" id="radarCanvas"><canvas></canvas></div>
+        </div>
+    </section>
+
+    <!-- ── Factor Scores ── -->
+    <section class="results-factors-card" id="factorsCard">
+        <!-- Injected by script -->
+    </section>
+
+    <!-- ── Profile ── -->
+    <section class="results-profile">
+        <p class="eyebrow">Your Profile</p>
+        <div id="profileText"></div>
+    </section>
+
+    <!-- ── Development Lever ── -->
+    <section class="results-lever">
+        <p class="eyebrow">Your Development Lever</p>
+        <h3 id="leverName"></h3>
+        <p class="lever-score" id="leverScore"></p>
+        <p class="lever-next" id="leverNext"></p>
+    </section>
+
+</div>
+
+<script>
+(function() {
+    'use strict';
+
+    // ── Demo data (Almost-There Founder) ──
+    const TYPE = {
+        name: 'The Almost-There Founder',
+        tagline: 'Everything is there. Now it needs coherence.',
+        desc: "You've already hinted at many elements: vision, energy, logic, fit — everything is there, but not yet fully developed. It feels like you're on the verge of a breakthrough where the different parts of your foundership come into alignment.\n\nYour development lies in integration: what is your deeper obsession? How do you tell your personal story so it lands? What's the root cause pain, and why is the timing exactly right now?\n\nWhen these building blocks connect, a clear, resonant presence emerges — one that makes investors intuitively trust.\n\nYou're close. Now it's about coherence.",
+        lever: 'Focus & Narrative Coherence',
+        leverScore: '5–6/10 (all factors)',
+        leverGoal: '8/10',
+        nextStep: 'Bring your different strengths into one coherent, tangible picture.'
+    };
+    const SCORES = { obsession: 6, presence: 5, vision: 6, fit: 5, logic: 6 };
+
+    // ── Factor icons (real SVGs from Quiz Icons folder) ──
+    const FACTOR_ICONS = {
+        obsession: '<svg viewBox="0 0 68 67" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M61.001 14.3829L6.99995 14.3835L34 61.1489L61.001 14.3829Z" stroke="currentColor" stroke-width="0.613332" stroke-miterlimit="10"/><path d="M36.3847 28.5946L20.5 37.7656" stroke="currentColor" stroke-width="0.613332" stroke-miterlimit="10"/><path d="M37.2624 29.6064L24.5415 44.7656" stroke="currentColor" stroke-width="0.613332" stroke-miterlimit="10"/><path d="M38.4314 30.2574L29.8218 53.9111" stroke="currentColor" stroke-width="0.613332" stroke-miterlimit="10"/><path d="M39.7537 30.468L39.7534 51.1846" stroke="currentColor" stroke-width="0.613332" stroke-miterlimit="10"/><path d="M41.0685 30.2152L45.2417 41.6797" stroke="currentColor" stroke-width="0.613332" stroke-miterlimit="10"/><path d="M42.2159 29.5269L48.1648 36.6164" stroke="currentColor" stroke-width="0.613332" stroke-miterlimit="10"/><path d="M43.0601 28.4894L50.4074 32.7317" stroke="currentColor" stroke-width="0.613332" stroke-miterlimit="10"/><path d="M43.498 27.223L52.6556 28.8371" stroke="currentColor" stroke-width="0.613332" stroke-miterlimit="10"/><path d="M43.4762 25.8858L55.5934 23.7499" stroke="currentColor" stroke-width="0.613332" stroke-miterlimit="10"/><path d="M60.7573 14.3825L42.999 24.6353" stroke="currentColor" stroke-width="0.613332" stroke-miterlimit="10"/><path d="M49.8761 14.3836L42.1221 23.6235" stroke="currentColor" stroke-width="0.613332" stroke-miterlimit="10"/><path d="M44.079 14.3827L40.9526 22.9732" stroke="currentColor" stroke-width="0.613332" stroke-miterlimit="10"/><path d="M39.6309 14.382L39.6304 22.7603" stroke="currentColor" stroke-width="0.613332" stroke-miterlimit="10"/><path d="M35.1742 14.3826L38.3164 23.0147" stroke="currentColor" stroke-width="0.613332" stroke-miterlimit="10"/><path d="M29.3492 14.3828L37.1685 23.701" stroke="currentColor" stroke-width="0.613332" stroke-miterlimit="10"/><path d="M18.383 14.3831L36.3231 24.7418" stroke="currentColor" stroke-width="0.613332" stroke-miterlimit="10"/><path d="M11.1974 21.6527L35.8862 26.0056" stroke="currentColor" stroke-width="0.613332" stroke-miterlimit="10"/><path d="M16.463 30.7735L35.9073 27.3448" stroke="currentColor" stroke-width="0.613332" stroke-miterlimit="10"/></svg>',
+        presence: '<svg viewBox="0 0 68 67" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M34 8.00001C20.1929 8.00001 9.00001 19.1929 9.00001 33C9 46.8071 20.1929 58 34 58C47.8071 58 59 46.8071 59 33C59 19.1929 47.8071 8.00001 34 8.00001Z" stroke="currentColor" stroke-width="0.6" stroke-miterlimit="10"/><path d="M34 15C22.402 15 13 23.0589 13 33C13 42.9411 22.402 51 34 51C45.598 51 55 42.9411 55 33C55 23.0589 45.598 15 34 15Z" stroke="currentColor" stroke-width="0.6" stroke-miterlimit="10"/><path d="M34 22C25.1634 22 18 26.9249 18 33C18 39.0751 25.1634 44 34 44C42.8366 44 50 39.0751 50 33C50 26.9249 42.8366 22 34 22Z" stroke="currentColor" stroke-width="0.6" stroke-miterlimit="10"/><path d="M34.0002 29.5662C28.3111 29.5662 23.6992 31.1036 23.6992 32.9999C23.6992 34.8963 28.3111 36.4336 34.0002 36.4336C39.6893 36.4336 44.3013 34.8963 44.3013 32.9999C44.3013 31.1036 39.6893 29.5662 34.0002 29.5662Z" stroke="currentColor" stroke-width="0.6" stroke-miterlimit="10"/></svg>',
+        vision: '<svg viewBox="0 0 69 67" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M36.7548 46.8044C42.9231 46.8044 47.9236 41.804 47.9236 35.6356C47.9236 29.4673 42.9231 24.4668 36.7548 24.4668C30.5864 24.4668 25.586 29.4673 25.586 35.6356C25.586 41.804 30.5864 46.8044 36.7548 46.8044Z" stroke="currentColor" stroke-width="0.583517" stroke-miterlimit="10"/><path d="M7.7129 35.7199C13.4797 25.5701 24.39 18.7231 36.8985 18.7231C49.4071 18.7231 60.3174 25.5701 66.0842 35.7199" stroke="currentColor" stroke-width="0.583517" stroke-miterlimit="10"/><path d="M7.70704 35.7202C13.4748 45.87 24.3841 52.716 36.8927 52.716C49.4012 52.716 60.3105 45.87 66.0783 35.7202" stroke="currentColor" stroke-width="0.583517" stroke-miterlimit="10"/><path d="M36.0924 1.12109C36.0148 7.85799 36.0148 14.8486 36.0924 21.5985" stroke="currentColor" stroke-width="0.324176" stroke-miterlimit="10"/><path d="M29.8062 0.0283203C31.0955 7.33742 32.1312 14.587 33.6614 21.8857" stroke="currentColor" stroke-width="0.324176" stroke-miterlimit="10"/><path d="M25.5625 6.97217C27.3878 12.2126 29.3918 17.3882 31.3155 22.5924" stroke="currentColor" stroke-width="0.324176" stroke-miterlimit="10"/><path d="M22.3726 11.9971C24.6251 15.8808 26.9553 19.7644 29.1276 23.6973" stroke="currentColor" stroke-width="0.324176" stroke-miterlimit="10"/><path d="M20.3916 17.0933C22.8099 19.7652 24.8812 22.6133 27.1648 25.1661" stroke="currentColor" stroke-width="0.324176" stroke-miterlimit="10"/><path d="M17.0025 19.8296C19.6434 22.0459 22.2817 24.2596 24.9226 26.4759L25.4896 26.9523" stroke="currentColor" stroke-width="0.324176" stroke-miterlimit="10"/><path d="M13.2227 22.6934C16.8578 24.9433 20.7415 26.7557 24.1462 29.0005" stroke="currentColor" stroke-width="0.324176" stroke-miterlimit="10"/><path d="M6.9673 25.353C11.9384 27.2767 16.8578 28.8302 21.7771 30.9015C22.2949 31.1604 22.5538 31.1604 23.183 31.2562" stroke="currentColor" stroke-width="0.324176" stroke-miterlimit="10"/><path d="M2.39747 30.0728C9.09036 31.1576 15.8221 32.4522 22.6211 33.638" stroke="currentColor" stroke-width="0.324176" stroke-miterlimit="10"/><path d="M1.34583e-05 36.084C7.53695 36.0762 15.0454 36.0762 22.484 36.084" stroke="currentColor" stroke-width="0.324176" stroke-miterlimit="10"/><path d="M1.42921 42.2802C7.01654 41.2549 12.4537 40.2193 18.1498 39.4425C19.7033 39.1836 21.2567 38.9247 22.7714 38.5156" stroke="currentColor" stroke-width="0.324176" stroke-miterlimit="10"/><path d="M2.76222 48.4033C9.60528 45.6562 16.8548 43.326 23.4804 40.8638" stroke="currentColor" stroke-width="0.324176" stroke-miterlimit="10"/><path d="M9.6421 51.6792C12.1976 50.3199 14.5278 49.0254 17.1169 47.213C19.706 45.6595 22.0362 44.3649 24.5865 43.0522" stroke="currentColor" stroke-width="0.324176" stroke-miterlimit="10"/><path d="M16.5288 53.0043C19.9646 50.3168 22.8126 47.4688 26.0542 45.0117" stroke="currentColor" stroke-width="0.324176" stroke-miterlimit="10"/><path d="M19.9053 56.1449C22.3675 53.2089 24.8324 50.2728 27.2946 47.3393L27.841 46.6895" stroke="currentColor" stroke-width="0.324176" stroke-miterlimit="10"/><path d="M23.1343 59.731C25.2263 56.1088 27.3183 52.4866 29.4077 48.8645L29.8893 48.0308" stroke="currentColor" stroke-width="0.324176" stroke-miterlimit="10"/><path d="M25.6953 66.7035C27.2126 61.9705 29.2839 57.569 30.5784 52.9086C31.0962 51.614 31.873 50.3195 32.1397 48.999" stroke="currentColor" stroke-width="0.324176" stroke-miterlimit="10"/><path d="M31.7993 65.0101C32.6486 59.8966 33.6842 54.7184 34.5231 49.5557" stroke="currentColor" stroke-width="0.324176" stroke-miterlimit="10"/><path d="M36.9697 63.2058C37.05 58.8639 37.05 54.2035 36.9697 49.6958" stroke="currentColor" stroke-width="0.324176" stroke-miterlimit="10"/><path d="M41.1567 59.3373C40.4188 56.0129 40.1598 52.647 39.4038 49.4028" stroke="currentColor" stroke-width="0.324176" stroke-miterlimit="10"/><path d="M45.6 59.278C44.3003 55.7568 43.2647 52.1321 41.75 48.6963" stroke="currentColor" stroke-width="0.324176" stroke-miterlimit="10"/><path d="M51.2678 60.2882C49.0049 56.3683 46.742 52.4509 44.4791 48.531C44.2979 48.2177 44.1192 47.9044 43.938 47.5938" stroke="currentColor" stroke-width="0.324176" stroke-miterlimit="10"/><path d="M59.0611 61.8105C54.3981 56.5313 50.2555 51.3531 45.898 46.123" stroke="currentColor" stroke-width="0.324176" stroke-miterlimit="10"/><path d="M62.4886 56.8526C57.5071 52.6479 52.5878 48.5053 47.5752 44.3394" stroke="currentColor" stroke-width="0.324176" stroke-miterlimit="10"/><path d="M65.2982 51.7466C60.0967 48.5051 54.4006 45.657 48.9194 42.2886" stroke="currentColor" stroke-width="0.324176" stroke-miterlimit="10"/><path d="M63.9049 45.1412C59.3196 43.3289 54.6591 42.0343 49.8848 40.0381" stroke="currentColor" stroke-width="0.324176" stroke-miterlimit="10"/><path d="M62.9545 39.8593C58.799 38.9272 54.6564 38.4093 50.4439 37.6533" stroke="currentColor" stroke-width="0.324176" stroke-miterlimit="10"/><path d="M62.2922 35.2065C58.2816 35.2998 54.3979 35.2998 50.5816 35.2065" stroke="currentColor" stroke-width="0.324176" stroke-miterlimit="10"/><path d="M65.9122 30.0186C60.6148 30.6399 55.4366 31.9345 50.292 32.7734" stroke="currentColor" stroke-width="0.324176" stroke-miterlimit="10"/><path d="M68.0011 23.7241C61.9063 25.9792 55.6924 28.3095 49.582 30.4274" stroke="currentColor" stroke-width="0.324176" stroke-miterlimit="10"/><path d="M67.8463 17.0601C64.7549 18.73 61.9069 20.5424 58.7999 22.0959C55.1751 24.4261 51.8093 25.9796 48.4771 28.2399" stroke="currentColor" stroke-width="0.324176" stroke-miterlimit="10"/><path d="M61.225 14.354C58.8793 16.3217 56.5361 18.2895 54.1904 20.2572C52.1942 21.9324 50.198 23.6075 48.2018 25.2827L47.0108 26.2821" stroke="currentColor" stroke-width="0.324176" stroke-miterlimit="10"/><path d="M58.3508 8.96143C54.9177 13.0341 51.8107 17.1767 48.1859 21.3193C47.1503 22.355 46.1146 23.3906 45.2266 24.6023" stroke="currentColor" stroke-width="0.324176" stroke-miterlimit="10"/><path d="M51.9617 8.04443C48.9609 13.0363 46.3718 18.2145 43.1768 23.2607" stroke="currentColor" stroke-width="0.324176" stroke-miterlimit="10"/><path d="M46.6897 6.45752C44.9161 11.3303 43.1426 16.203 41.369 21.0757L40.9263 22.2952" stroke="currentColor" stroke-width="0.324176" stroke-miterlimit="10"/><path d="M40.8071 8.87061C40.1055 12.8553 39.4013 16.8399 38.6996 20.8272L38.5391 21.736" stroke="currentColor" stroke-width="0.324176" stroke-miterlimit="10"/></svg>',
+        fit: '<svg viewBox="0 0 68 67" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M34.0001 58.7355C47.8073 58.7355 59.0003 47.378 59.0003 33.3678C59.0003 19.3575 47.8073 8 34.0001 8C20.1929 8 9.00001 19.3575 9.00001 33.3678C9.00001 47.378 20.1929 58.7355 34.0001 58.7355Z" stroke="currentColor" stroke-width="0.541179" stroke-miterlimit="10"/><path d="M34.0001 52.8536C44.5585 52.8536 53.1178 44.1297 53.1178 33.3682C53.1178 22.6067 44.5585 13.8828 34.0001 13.8828C23.4416 13.8828 14.8823 22.6067 14.8823 33.3682C14.8823 44.1297 23.4416 52.8536 34.0001 52.8536Z" stroke="currentColor" stroke-width="0.541179" stroke-miterlimit="10"/></svg>',
+        logic: '<svg viewBox="0 0 68 67" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22.6865 12.7471V26.2421L34.3739 32.9892L46.0603 26.2421V12.7471L34.3739 6L22.6865 12.7471Z" stroke="currentColor" stroke-width="0.6" stroke-miterlimit="10"/><path d="M22.709 39.7578V53.2529L34.3954 59.9999L46.0828 53.2529V39.7578L34.3954 33.0107L22.709 39.7578Z" stroke="currentColor" stroke-width="0.6" stroke-miterlimit="10"/><path d="M34.374 32.9892V46.4843L46.0604 53.2313L57.7478 46.4843V32.9892L46.0604 26.2412L34.374 32.9892Z" stroke="currentColor" stroke-width="0.6" stroke-miterlimit="10"/><path d="M11 32.9892V46.4843L22.6864 53.2313L34.3738 46.4843V32.9892L22.6864 26.2412L11 32.9892Z" stroke="currentColor" stroke-width="0.6" stroke-miterlimit="10"/><path d="M11 19.4946V32.9897L22.6864 39.7367L34.3738 32.9897V19.4946L22.6864 12.7476L11 19.4946Z" stroke="currentColor" stroke-width="0.6" stroke-miterlimit="10"/><path d="M34.374 19.4946V32.9897L46.0604 39.7367L57.7478 32.9897V19.4946L46.0604 12.7476L34.374 19.4946Z" stroke="currentColor" stroke-width="0.6" stroke-miterlimit="10"/><path d="M16.8438 16.1138V22.8618L22.687 26.2353L28.5311 22.8618V16.1138L22.687 12.7402L16.8438 16.1138Z" stroke="currentColor" stroke-width="0.6" stroke-miterlimit="10"/><path d="M16.8535 29.6201V36.3681L22.6977 39.7416L28.5409 36.3681V29.6201L22.6977 26.2466L16.8535 29.6201Z" stroke="currentColor" stroke-width="0.6" stroke-miterlimit="10"/><path d="M22.6865 26.2353V32.9824L28.5307 36.3559L34.3739 32.9824V26.2353L28.5307 22.8608L22.6865 26.2353Z" stroke="currentColor" stroke-width="0.6" stroke-miterlimit="10"/><path d="M11 26.2353V32.9824L16.8432 36.3559L22.6864 32.9824V26.2353L16.8432 22.8608L11 26.2353Z" stroke="currentColor" stroke-width="0.6" stroke-miterlimit="10"/><path d="M11 19.4873V26.2353L16.8432 29.6088L22.6864 26.2353V19.4873L16.8432 16.1138L11 19.4873Z" stroke="currentColor" stroke-width="0.6" stroke-miterlimit="10"/><path d="M22.6865 19.4873V26.2353L28.5307 29.6088L34.3739 26.2353V19.4873L28.5307 16.1138L22.6865 19.4873Z" stroke="currentColor" stroke-width="0.6" stroke-miterlimit="10"/></svg>'
+    };
+
+    const FACTORS = ['obsession', 'presence', 'vision', 'fit', 'logic'];
+    const FACTOR_LABELS = {
+        obsession: 'Obsession', presence: 'Presence', vision: 'Vision',
+        fit: 'Founder Fit', logic: 'Scalable Logic'
+    };
+
+    // ── Populate page ──
+    document.getElementById('typeName').textContent = TYPE.name;
+    document.getElementById('typeTagline').textContent = TYPE.tagline;
+    document.getElementById('profileText').innerHTML = TYPE.desc.split('\n\n').map(function(p) { return '<p>' + p + '</p>'; }).join('');
+    document.getElementById('leverName').textContent = TYPE.lever;
+    document.getElementById('leverScore').textContent = TYPE.leverScore + ' \u2192 Goal: ' + TYPE.leverGoal;
+    document.getElementById('leverNext').textContent = TYPE.nextStep;
+
+    // ── Factor bars ──
+    var factorsCard = document.getElementById('factorsCard');
+    factorsCard.innerHTML = FACTORS.map(function(f) {
+        var v = SCORES[f];
+        var cls = v >= 7 ? 'high' : v >= 5 ? 'mid' : 'low';
+        return '<div class="lc-factor-item">' +
+            '<div class="lc-factor-icon">' + FACTOR_ICONS[f] + '</div>' +
+            '<div class="lc-factor-name">' + FACTOR_LABELS[f] + '</div>' +
+            '<div class="lc-factor-bar-wrap"><div class="lc-factor-bar ' + cls + '" data-width="' + (v * 10) + '"></div></div>' +
+            '<div class="lc-factor-score">' + v + '/10</div>' +
+        '</div>';
+    }).join('');
+
+    // Animate bars
+    requestAnimationFrame(function() {
+        setTimeout(function() {
+            factorsCard.querySelectorAll('.lc-factor-bar').forEach(function(bar) {
+                bar.style.width = bar.dataset.width + '%';
+            });
+        }, 300);
+    });
+
+    // ══════════════════════════════════════════════
+    //  RADAR CHART (drawn on canvas)
+    // ══════════════════════════════════════════════
+    var radarContainer = document.getElementById('radarCanvas');
+    var radarCvs = radarContainer.querySelector('canvas');
+    var radarCtx = radarCvs.getContext('2d');
+
+    function drawRadar() {
+        var rect = radarContainer.getBoundingClientRect();
+        var size = Math.min(rect.width, rect.height);
+        var dpr = window.devicePixelRatio || 1;
+        radarCvs.width = size * dpr;
+        radarCvs.height = size * dpr;
+        radarCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        var cx = size / 2, cy = size / 2;
+        var r = size * 0.3;
+
+        radarCtx.clearRect(0, 0, size, size);
+
+        // Grid rings
+        for (var ring = 2; ring <= 10; ring += 2) {
+            radarCtx.beginPath();
+            for (var i = 0; i <= 5; i++) {
+                var angle = (Math.PI * 2 * i / 5) - Math.PI / 2;
+                var x = cx + (r * ring / 10) * Math.cos(angle);
+                var y = cy + (r * ring / 10) * Math.sin(angle);
+                if (i === 0) radarCtx.moveTo(x, y); else radarCtx.lineTo(x, y);
+            }
+            radarCtx.closePath();
+            radarCtx.strokeStyle = 'rgba(255,248,230,0.06)';
+            radarCtx.lineWidth = 0.5;
+            radarCtx.stroke();
+        }
+
+        // Axes
+        for (var j = 0; j < 5; j++) {
+            var axAngle = (Math.PI * 2 * j / 5) - Math.PI / 2;
+            radarCtx.beginPath();
+            radarCtx.moveTo(cx, cy);
+            radarCtx.lineTo(cx + r * Math.cos(axAngle), cy + r * Math.sin(axAngle));
+            radarCtx.strokeStyle = 'rgba(255,248,230,0.06)';
+            radarCtx.lineWidth = 0.5;
+            radarCtx.stroke();
+        }
+
+        // Data shape — filled
+        radarCtx.beginPath();
+        FACTORS.forEach(function(f, i) {
+            var val = SCORES[f] / 10;
+            var angle = (Math.PI * 2 * i / 5) - Math.PI / 2;
+            var x = cx + r * val * Math.cos(angle);
+            var y = cy + r * val * Math.sin(angle);
+            if (i === 0) radarCtx.moveTo(x, y); else radarCtx.lineTo(x, y);
+        });
+        radarCtx.closePath();
+        var fillGrad = radarCtx.createRadialGradient(cx, cy, 0, cx, cy, r);
+        fillGrad.addColorStop(0, 'rgba(5,64,76,0.5)');
+        fillGrad.addColorStop(1, 'rgba(5,64,76,0.15)');
+        radarCtx.fillStyle = fillGrad;
+        radarCtx.fill();
+
+        // Data shape — stroke
+        radarCtx.beginPath();
+        FACTORS.forEach(function(f, i) {
+            var val = SCORES[f] / 10;
+            var angle = (Math.PI * 2 * i / 5) - Math.PI / 2;
+            var x = cx + r * val * Math.cos(angle);
+            var y = cy + r * val * Math.sin(angle);
+            if (i === 0) radarCtx.moveTo(x, y); else radarCtx.lineTo(x, y);
+        });
+        radarCtx.closePath();
+        radarCtx.strokeStyle = '#E0B76F';
+        radarCtx.lineWidth = 1.5;
+        radarCtx.stroke();
+
+        // Points + Labels
+        FACTORS.forEach(function(f, i) {
+            var val = SCORES[f] / 10;
+            var angle = (Math.PI * 2 * i / 5) - Math.PI / 2;
+            var x = cx + r * val * Math.cos(angle);
+            var y = cy + r * val * Math.sin(angle);
+
+            // Point
+            radarCtx.beginPath();
+            radarCtx.arc(x, y, 4, 0, Math.PI * 2);
+            radarCtx.fillStyle = '#E0B76F';
+            radarCtx.fill();
+
+            // Label
+            var lx = cx + (r + size * 0.08) * Math.cos(angle);
+            var ly = cy + (r + size * 0.08) * Math.sin(angle);
+            radarCtx.font = '600 ' + Math.max(9, size * 0.018) + 'px Hanken Grotesk';
+            radarCtx.fillStyle = 'rgba(255,248,230,0.45)';
+            radarCtx.textAlign = 'center';
+            radarCtx.textBaseline = 'middle';
+            radarCtx.letterSpacing = '0.12em';
+            radarCtx.fillText(FACTOR_LABELS[f].toUpperCase(), lx, ly - size * 0.015);
+
+            // Score below label
+            radarCtx.font = '600 ' + Math.max(11, size * 0.022) + 'px Hanken Grotesk';
+            radarCtx.fillStyle = '#E0B76F';
+            radarCtx.fillText(SCORES[f].toFixed(1), lx, ly + size * 0.02);
+        });
+    }
+
+    drawRadar();
+    window.addEventListener('resize', drawRadar);
+
+    // ══════════════════════════════════════════════
+    //  IRIS ANIMATION — score-influenced rays
+    // ══════════════════════════════════════════════
+    var CX = 383.23, CY = 383.23, SVG_SIZE = 766.5;
+    var lineData = [
+        {ix:227.18,iy:369.6,ox:46.3,oy:354.79,angle:-3.0545},
+        {ix:229.05,iy:356.1,ox:47.17,oy:324.1,angle:-2.9674},
+        {ix:231.96,iy:342.77,ox:89.73,oy:305.44,angle:-2.8802},
+        {ix:236.06,iy:329.75,ox:92.41,oy:277.58,angle:-2.793},
+        {ix:241.31,iy:317.12,ox:125.07,oy:262.96,angle:-2.7057},
+        {ix:247.67,iy:304.95,ox:159.92,oy:254.34,angle:-2.6179},
+        {ix:254.9,iy:293.61,ox:189.83,oy:248.03,angle:-2.532},
+        {ix:263.23,iy:282.68,ox:212.25,oy:239.93,angle:-2.4442},
+        {ix:272.52,iy:272.67,ox:214.5,oy:215.33,angle:-2.3569},
+        {ix:282.56,iy:263.51,ox:241.13,oy:214.14,angle:-2.27},
+        {ix:293.45,iy:255.1,ox:247.51,oy:189.62,angle:-2.182},
+        {ix:304.89,iy:247.73,ox:244.04,oy:142.25,angle:-2.095},
+        {ix:317.08,iy:241.45,ox:246.85,oy:90.96,angle:-2.0073},
+        {ix:329.75,iy:236.23,ox:276.83,oy:91.23,angle:-1.9197},
+        {ix:342.66,iy:232.17,ox:291.02,oy:39.44,angle:-1.8332},
+        {ix:355.99,iy:229.19,ox:320.76,oy:9.58,angle:-1.7458},
+        {ix:369.61,iy:227.51,ox:353.6,oy:44.45,angle:-1.658},
+        {ix:383.29,iy:226.78,ox:378.18,oy:27.27,angle:-1.5704},
+        {ix:396.86,iy:227.39,ox:401.95,oy:85.48,angle:-1.4836},
+        {ix:410.32,iy:229.28,ox:422.43,oy:110.39,angle:-1.3966},
+        {ix:423.65,iy:232.17,ox:444.21,oy:128.59,angle:-1.3093},
+        {ix:436.7,iy:236.2,ox:480.08,oy:88.48,angle:-1.222},
+        {ix:449.32,iy:241.51,ox:493.01,oy:138.57,angle:-1.1344},
+        {ix:461.43,iy:247.68,ox:545.26,oy:102.71,angle:-1.0475},
+        {ix:473.03,iy:255.03,ox:562.82,oy:127.95,angle:-0.9598},
+        {ix:483.84,iy:263.38,ox:608.48,oy:115.71,angle:-0.8724},
+        {ix:493.83,iy:272.6,ox:618.32,oy:152.43,angle:-0.7855},
+        {ix:503.13,iy:282.66,ox:628.9,oy:174.11,angle:-0.6979},
+        {ix:511.32,iy:293.47,ox:665.8,oy:180.23,angle:-0.6112},
+        {ix:518.74,iy:305.01,ox:701.54,oy:199.55,angle:-0.5235},
+        {ix:525.03,iy:317.05,ox:671.8,oy:250.47,angle:-0.4367},
+        {ix:530.19,iy:329.67,ox:703.25,oy:266.75,angle:-0.3495},
+        {ix:534.28,iy:342.75,ox:690.36,oy:300.93,angle:-0.2618},
+        {ix:537.26,iy:356.07,ox:666.76,oy:333.21,angle:-0.1745},
+        {ix:539.11,iy:369.56,ox:645.47,oy:360.22,angle:-0.0875},
+        {ix:539.67,iy:383.14,ox:635.2,oy:383.17,angle:-0.0006},
+        {ix:539.04,iy:396.91,ox:637.18,oy:405.45,angle:0.0876},
+        {ix:537.33,iy:410.31,ox:655.03,oy:431.07,angle:0.174},
+        {ix:534.31,iy:423.67,ox:637.16,oy:452.39,angle:0.2615},
+        {ix:530.28,iy:436.71,ox:662.13,oy:483.68,angle:0.3488},
+        {ix:525.08,iy:449.29,ox:667.67,oy:515.34,angle:0.4358},
+        {ix:518.72,iy:461.45,ox:676.69,oy:549.01,angle:0.5236},
+        {ix:511.31,iy:472.85,ox:638.27,oy:561.06,angle:0.6105},
+        {ix:503.05,iy:483.82,ox:665.87,oy:620.22,angle:0.6984},
+        {ix:493.76,iy:493.83,ox:616.8,oy:617.29,angle:0.7857},
+        {ix:483.66,iy:503,ox:601.89,oy:643.7,angle:0.873},
+        {ix:472.99,iy:511.31,ox:557.78,oy:633.12,angle:0.9595},
+        {ix:461.5,iy:518.68,ox:527.39,oy:632.75,angle:1.0468},
+        {ix:449.29,iy:524.9,ox:494.41,oy:621.71,angle:1.1345},
+        {ix:436.64,iy:530.18,ox:467.85,oy:615.88,angle:1.2222},
+        {ix:423.6,iy:534.26,ox:445.45,oy:615.8,angle:1.3096},
+        {ix:410.4,iy:537.21,ox:425.2,oy:621.5,angle:1.3961},
+        {ix:396.8,iy:538.96,ox:409.69,oy:672.78,angle:1.4839},
+        {ix:383.12,iy:539.68,ox:383.1,oy:652.65,angle:1.5715},
+        {ix:369.53,iy:539.01,ox:357.68,oy:674.49,angle:1.6585},
+        {ix:355.86,iy:537.23,ox:332.48,oy:669.59,angle:1.7467},
+        {ix:342.63,iy:534.32,ox:299.99,oy:693.35,angle:1.8333},
+        {ix:329.57,iy:530.3,ox:259.92,oy:733.77,angle:1.9206},
+        {ix:316.89,iy:524.94,ox:239.5,oy:690.02,angle:2.0086},
+        {ix:304.95,iy:518.72,ox:248.74,oy:619.03,angle:2.0947},
+        {ix:293.36,iy:511.37,ox:219.64,oy:615.91,angle:2.1824},
+        {ix:282.57,iy:503.09,ox:219.12,oy:578.59,angle:2.2693},
+        {ix:272.44,iy:493.84,ox:185.84,oy:582.8,angle:2.357},
+        {ix:263.26,iy:483.75,ox:187.08,oy:547.63,angle:2.4442},
+        {ix:254.89,iy:473.05,ox:162.87,oy:537.38,angle:2.531},
+        {ix:247.65,iy:461.39,ox:107.58,oy:540.76,angle:2.6186},
+        {ix:241.35,iy:449.35,ox:100.67,oy:514.96,angle:2.7055},
+        {ix:236.02,iy:436.79,ox:54.95,oy:500.86,angle:2.7926},
+        {ix:231.94,iy:423.76,ox:66.46,oy:468.1,angle:2.8798},
+        {ix:228.94,iy:408.24,ox:39.75,oy:447.07,angle:2.9809},
+        {ix:227.56,iy:397.02,ox:18.17,oy:418.34,angle:3.0532},
+        {ix:227.1,iy:385.77,ox:34.65,oy:385.75,angle:3.1253}
+    ];
+
+    // The 5 factor angles on the radar chart (top=obsession, clockwise)
+    // Radar uses: angle = (2PI * i / 5) - PI/2
+    var factorAngles = FACTORS.map(function(f, i) {
+        return (Math.PI * 2 * i / 5) - Math.PI / 2;
+    });
+
+    // For each iris ray, compute a score-influence factor based on
+    // proximity to each of the 5 factor axes
+    function getScoreInfluence(rayAngle) {
+        var totalWeight = 0;
+        var weightedScore = 0;
+        for (var i = 0; i < 5; i++) {
+            var diff = rayAngle - factorAngles[i];
+            // Normalize to [-PI, PI]
+            while (diff > Math.PI) diff -= Math.PI * 2;
+            while (diff < -Math.PI) diff += Math.PI * 2;
+            // Gaussian weight — rays closest to a factor axis get most influence
+            var w = Math.exp(-diff * diff * 2.5);
+            totalWeight += w;
+            weightedScore += w * (SCORES[FACTORS[i]] / 10);
+        }
+        return totalWeight > 0 ? weightedScore / totalWeight : 0.5;
+    }
+
+    // ── Iris animation with score modulation ──
+    var irisContainer = document.getElementById('irisBg');
+    var irisCvs = irisContainer.querySelector('canvas');
+    var irisCtx = irisCvs.getContext('2d');
+    var irisSize = 0, irisScale = 1;
+    var startTime = null;
+
+    function resizeIris() {
+        var rect = irisContainer.getBoundingClientRect();
+        irisSize = Math.min(rect.width, rect.height);
+        var dpr = window.devicePixelRatio || 1;
+        irisCvs.width = irisSize * dpr;
+        irisCvs.height = irisSize * dpr;
+        irisCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        irisScale = irisSize / SVG_SIZE;
+    }
+
+    var ro = new ResizeObserver(resizeIris);
+    ro.observe(irisContainer);
+    resizeIris();
+
+    function irisToScreen(x, y) { return [x * irisScale, y * irisScale]; }
+
+    function animateIris(timestamp) {
+        if (!startTime) startTime = timestamp;
+        var time = (timestamp - startTime) / 1000;
+
+        irisCtx.clearRect(0, 0, irisSize, irisSize);
+
+        var rotPhase = time * Math.PI * 2 / 14; // Slower rotation for results
+
+        lineData.forEach(function(line) {
+            var dx = line.ox - line.ix;
+            var dy = line.oy - line.iy;
+
+            // Score influence: rays near high-scoring factors extend more
+            var scoreInf = getScoreInfluence(line.angle);
+
+            // Gentle wave
+            var waveVal = Math.sin(line.angle * 4 - rotPhase);
+            var waveModulation = 0.12 * (1 - waveVal) / 2;
+
+            // Base scale: 0.3 (min) to 1.0 (max), driven by score
+            var baseSf = 0.25 + scoreInf * 0.75;
+            var sf = baseSf - waveModulation;
+            sf = Math.max(0.15, Math.min(sf, 1.1));
+
+            var nx = line.ix + dx * sf;
+            var ny = line.iy + dy * sf;
+
+            var s1 = irisToScreen(line.ix, line.iy);
+            var s2 = irisToScreen(nx, ny);
+
+            var grad = irisCtx.createLinearGradient(s1[0], s1[1], s2[0], s2[1]);
+            grad.addColorStop(0, 'rgba(255,219,157,' + (0.5 + scoreInf * 0.5) + ')');
+            grad.addColorStop(1, 'rgba(168,125,52,' + (0.3 + scoreInf * 0.4) + ')');
+
+            irisCtx.beginPath();
+            irisCtx.moveTo(s1[0], s1[1]);
+            irisCtx.lineTo(s2[0], s2[1]);
+            irisCtx.strokeStyle = grad;
+            irisCtx.lineWidth = Math.max(2 * irisScale, 0.5);
+            irisCtx.lineCap = 'round';
+            irisCtx.stroke();
+        });
+
+        requestAnimationFrame(animateIris);
+    }
+
+    requestAnimationFrame(animateIris);
+
+})();
+</script>
+</body>
+</html>

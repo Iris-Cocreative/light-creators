@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnostic Call — Light Creators</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-navy: #0F1A20;
+            --espresso: #4A3F3A;
+            --gold: #CE9B44;
+            --light-cream: #F5E6C4;
+            --sage: #8FA195;
+            --teal: #2E5567;
+            --off-white: #FFFDF8;
+            --divider: #E5DDD0;
+            --font-serif: 'Cormorant Garamond', Georgia, serif;
+            --font-sans: 'DM Sans', -apple-system, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { font-size: 16px; scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--off-white);
+            color: var(--dark-navy);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Language Toggle */
+        .lang-toggle {
+            position: fixed;
+            top: 20px;
+            right: 24px;
+            z-index: 100;
+            display: flex;
+            background: rgba(15,26,32,0.92);
+            border-radius: 2px;
+            overflow: hidden;
+            backdrop-filter: blur(8px);
+        }
+
+        .lang-btn {
+            padding: 6px 14px;
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--sage);
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            background: transparent;
+        }
+
+        .lang-btn.active {
+            background: var(--teal);
+            color: var(--off-white);
+        }
+
+        /* ═══════ HERO ═══════ */
+        .hero {
+            padding: 140px 24px 100px;
+            background: var(--dark-navy);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            border: 1px solid rgba(206,155,68,0.06);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -300px;
+            left: -100px;
+            width: 800px;
+            height: 800px;
+            border-radius: 50%;
+            border: 1px solid rgba(143,161,149,0.04);
+            pointer-events: none;
+        }
+
+        .hero-inner {
+            max-width: 720px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-eyebrow {
+            font-family: var(--font-sans);
+            font-size: 0.68rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--sage);
+            opacity: 0.7;
+            margin-bottom: 28px;
+        }
+
+        .hero h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 400;
+            line-height: 1.2;
+            color: var(--off-white);
+            margin-bottom: 20px;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .hero-sub {
+            font-family: var(--font-sans);
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: var(--light-cream);
+            opacity: 0.8;
+            letter-spacing: 0.02em;
+        }
+
+        /* ═══════ WHAT YOU GET ═══════ */
+        .value-section {
+            padding: 100px 24px;
+            background: var(--off-white);
+        }
+
+        .value-inner {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .section-heading {
+            font-family: var(--font-serif);
+            font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+            font-weight: 400;
+            color: var(--dark-navy);
+            margin-bottom: 48px;
+        }
+
+        .value-item {
+            display: grid;
+            grid-template-columns: 48px 1fr;
+            gap: 20px;
+            margin-bottom: 40px;
+            align-items: start;
+        }
+
+        .value-number {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: var(--gold);
+            opacity: 0.7;
+            line-height: 1;
+            padding-top: 4px;
+        }
+
+        .value-item-title {
+            font-family: var(--font-sans);
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--teal);
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .value-item-desc {
+            font-family: var(--font-serif);
+            font-size: 1.15rem;
+            line-height: 1.65;
+            color: var(--espresso);
+        }
+
+        .value-item-desc em {
+            font-style: italic;
+            color: var(--dark-navy);
+        }
+
+        /* Anti-sales banner */
+        .anti-sales {
+            margin-top: 56px;
+            padding: 36px 40px;
+            background: var(--dark-navy);
+            border-left: 3px solid var(--gold);
+        }
+
+        .anti-sales-label {
+            font-size: 0.68rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 500;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .anti-sales p {
+            font-family: var(--font-serif);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--light-cream);
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        .anti-sales .arrow-item {
+            font-family: var(--font-sans);
+            font-size: 0.88rem;
+            color: var(--light-cream);
+            opacity: 0.8;
+            padding: 4px 0 4px 20px;
+            position: relative;
+        }
+
+        .anti-sales .arrow-item::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+        }
+
+        .anti-sales-sig {
+            margin-top: 20px;
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            font-style: italic;
+            color: var(--sage);
+            opacity: 0.7;
+        }
+
+        /* ═══════ HOW IT WORKS ═══════ */
+        .process-section {
+            background: var(--light-cream);
+            padding: 100px 24px;
+        }
+
+        .process-inner {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .step {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 28px;
+            margin-bottom: 44px;
+            align-items: start;
+        }
+
+        .step-label {
+            font-family: var(--font-sans);
+            font-size: 0.65rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--teal);
+            font-weight: 500;
+            padding-top: 4px;
+        }
+
+        .step-label span {
+            display: block;
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            font-weight: 300;
+            color: var(--dark-navy);
+            opacity: 0.2;
+            margin-bottom: 4px;
+        }
+
+        .step-content h3 {
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--dark-navy);
+            margin-bottom: 10px;
+        }
+
+        .step-detail {
+            font-family: var(--font-sans);
+            font-size: 0.88rem;
+            line-height: 1.8;
+            color: var(--espresso);
+        }
+
+        .step-detail .time-mark {
+            display: inline-block;
+            font-family: var(--font-sans);
+            font-size: 0.72rem;
+            font-weight: 500;
+            color: var(--teal);
+            margin-right: 6px;
+        }
+
+        .step-divider {
+            height: 1px;
+            background: var(--divider);
+            margin: 8px 0 44px 128px;
+        }
+
+        /* ═══════ WHO IS THIS FOR ═══════ */
+        .qualify-section {
+            background: var(--off-white);
+            padding: 100px 24px;
+        }
+
+        .qualify-inner {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .qualify-intro {
+            font-family: var(--font-serif);
+            font-size: 1.05rem;
+            color: var(--espresso);
+            margin-bottom: 32px;
+            line-height: 1.7;
+        }
+
+        .criteria-list {
+            list-style: none;
+            margin-bottom: 48px;
+        }
+
+        .criteria-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 14px 0;
+            border-bottom: 1px solid #EDE8DF;
+        }
+
+        .criteria-item:last-child { border-bottom: none; }
+
+        .criteria-check {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--teal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .criteria-check svg {
+            width: 12px;
+            height: 12px;
+            stroke: var(--off-white);
+            stroke-width: 2.5;
+            fill: none;
+        }
+
+        .criteria-text {
+            font-family: var(--font-sans);
+            font-size: 0.92rem;
+            color: var(--dark-navy);
+            line-height: 1.5;
+        }
+
+        .alt-path {
+            padding: 28px 32px;
+            background: #F0EDE6;
+            border-radius: 3px;
+        }
+
+        .alt-path p {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            color: var(--espresso);
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .alt-link {
+            font-family: var(--font-sans);
+            font-size: 0.82rem;
+            color: var(--teal);
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            transition: color 0.2s;
+        }
+
+        .alt-link:hover { color: var(--gold); }
+
+        /* ═══════ CTA / CALENDLY ═══════ */
+        .cta-section {
+            background: var(--teal);
+            padding: 80px 24px;
+            text-align: center;
+        }
+
+        .cta-inner {
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        .cta-heading {
+            font-family: var(--font-serif);
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            font-weight: 400;
+            color: var(--off-white);
+            margin-bottom: 28px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            font-family: var(--font-sans);
+            font-size: 0.88rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            color: var(--dark-navy);
+            background: var(--gold);
+            padding: 16px 40px;
+            text-decoration: none;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: var(--light-cream);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+
+        .cta-details {
+            margin-top: 20px;
+            font-family: var(--font-sans);
+            font-size: 0.78rem;
+            color: var(--light-cream);
+            opacity: 0.6;
+            line-height: 1.8;
+        }
+
+        .calendly-placeholder {
+            margin-top: 40px;
+            background: rgba(255,255,255,0.06);
+            border: 1px dashed rgba(255,255,255,0.15);
+            border-radius: 4px;
+            padding: 60px 24px;
+            color: var(--light-cream);
+            opacity: 0.4;
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+        }
+
+        /* ═══════ TESTIMONIALS ═══════ */
+        .testimonials-section {
+            background: var(--dark-navy);
+            padding: 100px 24px;
+        }
+
+        .testimonials-inner {
+            max-width: 820px;
+            margin: 0 auto;
+        }
+
+        .testimonials-heading {
+            font-family: var(--font-serif);
+            font-size: clamp(1.4rem, 3vw, 1.8rem);
+            font-weight: 400;
+            color: var(--off-white);
+            margin-bottom: 56px;
+            text-align: center;
+        }
+
+        .testimonial-card {
+            padding: 36px 40px;
+            background: rgba(255,253,248,0.03);
+            border-left: 2px solid var(--gold);
+            margin-bottom: 32px;
+        }
+
+        .testimonial-quote {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            line-height: 1.75;
+            color: var(--light-cream);
+            font-style: italic;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .testimonial-quote strong {
+            font-style: normal;
+            font-weight: 500;
+            color: var(--off-white);
+        }
+
+        .testimonial-attr {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            color: var(--sage);
+            opacity: 0.7;
+            letter-spacing: 0.03em;
+        }
+
+        /* ═══════ FAQ ═══════ */
+        .faq-section {
+            background: var(--off-white);
+            padding: 100px 24px;
+        }
+
+        .faq-inner {
+            max-width: 660px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--divider);
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 22px 0;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .faq-question h3 {
+            font-family: var(--font-sans);
+            font-size: 0.92rem;
+            font-weight: 500;
+            color: var(--dark-navy);
+            flex: 1;
+            padding-right: 16px;
+        }
+
+        .faq-toggle {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 1px solid var(--divider);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.3s;
+        }
+
+        .faq-toggle svg {
+            width: 10px;
+            height: 10px;
+            stroke: var(--espresso);
+            stroke-width: 2;
+            fill: none;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.open .faq-toggle {
+            background: var(--teal);
+            border-color: var(--teal);
+        }
+
+        .faq-item.open .faq-toggle svg {
+            stroke: var(--off-white);
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 300px;
+        }
+
+        .faq-answer p {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--espresso);
+            padding-bottom: 22px;
+        }
+
+        /* ═══════ FINAL CTA ═══════ */
+        .final-cta {
+            background: var(--light-cream);
+            padding: 80px 24px;
+            text-align: center;
+        }
+
+        .final-cta-inner {
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        .final-cta h2 {
+            font-family: var(--font-serif);
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            font-weight: 400;
+            color: var(--dark-navy);
+            margin-bottom: 28px;
+        }
+
+        .final-alt {
+            margin-top: 36px;
+            font-family: var(--font-sans);
+            font-size: 0.82rem;
+            color: var(--espresso);
+            opacity: 0.7;
+        }
+
+        .final-alt a {
+            color: var(--teal);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .final-alt a:hover { color: var(--gold); }
+
+        /* Footer */
+        .site-footer {
+            background: var(--dark-navy);
+            padding: 40px 24px;
+            text-align: center;
+        }
+
+        .footer-tagline {
+            font-family: var(--font-serif);
+            font-size: 0.85rem;
+            font-style: italic;
+            color: var(--sage);
+            opacity: 0.5;
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in { opacity: 0; animation: fadeUp 0.8s ease forwards; }
+        .fade-in.d1 { animation-delay: 0.1s; }
+        .fade-in.d2 { animation-delay: 0.25s; }
+        .fade-in.d3 { animation-delay: 0.4s; }
+
+        /* Bilingual toggle */
+        [data-lang-de] { display: none; }
+        [data-lang-en] { display: inline; }
+        body.lang-de [data-lang-de] { display: inline; }
+        body.lang-de [data-lang-en] { display: none; }
+        body.lang-de div[data-lang-de],
+        body.lang-de p[data-lang-de],
+        body.lang-de span[data-lang-de],
+        body.lang-de li[data-lang-de],
+        body.lang-de h1[data-lang-de],
+        body.lang-de h2[data-lang-de],
+        body.lang-de h3[data-lang-de] { display: block; }
+        body.lang-de div[data-lang-en],
+        body.lang-de p[data-lang-en],
+        body.lang-de span[data-lang-en],
+        body.lang-de li[data-lang-en],
+        body.lang-de h1[data-lang-en],
+        body.lang-de h2[data-lang-en],
+        body.lang-de h3[data-lang-en] { display: none; }
+        div[data-lang-en], p[data-lang-en], span[data-lang-en], li[data-lang-en],
+        h1[data-lang-en], h2[data-lang-en], h3[data-lang-en] { display: block; }
+        div[data-lang-de], p[data-lang-de], span[data-lang-de], li[data-lang-de],
+        h1[data-lang-de], h2[data-lang-de], h3[data-lang-de] { display: none; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero { padding: 120px 20px 72px; }
+            .value-section, .process-section, .qualify-section, .testimonials-section, .faq-section { padding: 72px 20px; }
+            .value-item { grid-template-columns: 1fr; gap: 8px; }
+            .step { grid-template-columns: 1fr; gap: 8px; }
+            .step-divider { margin-left: 0; }
+            .anti-sales { padding: 28px 24px; }
+            .testimonial-card { padding: 28px 24px; }
+            .cta-section, .final-cta { padding: 60px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Language Toggle -->
+<div class="lang-toggle">
+    <button class="lang-btn" onclick="switchLang('de')">DE</button>
+    <button class="lang-btn active" onclick="switchLang('en')">EN</button>
+</div>
+
+<!-- ═══════ S1: HERO ═══════ -->
+<section class="hero">
+    <div class="hero-inner">
+        <div class="hero-eyebrow fade-in d1">
+            <span data-lang-en>Diagnostic Call</span>
+            <span data-lang-de>Diagnostik-Gespräch</span>
+        </div>
+        <h1 class="fade-in d2" data-lang-en>
+            60-Minute Diagnostic Call:<br>
+            Where Does Your <em>Founder Resonance</em> Really Stand?
+        </h1>
+        <h1 class="fade-in d2" data-lang-de>
+            60-Minuten Diagnostik-Gespräch:<br>
+            Wo steht deine <em>Founder Resonance</em> wirklich?
+        </h1>
+        <p class="hero-sub fade-in d3" data-lang-en>
+            <strong>Free.</strong> No Sales Pitch. Just Clarity.
+        </p>
+        <p class="hero-sub fade-in d3" data-lang-de>
+            <strong>Kostenlos.</strong> Kein Sales Pitch. Nur Klarheit.
+        </p>
+    </div>
+</section>
+
+<!-- ═══════ S2: WHAT YOU GET ═══════ -->
+<section class="value-section">
+    <div class="value-inner">
+        <h2 class="section-heading" data-lang-en>What You Get in the Call</h2>
+        <h2 class="section-heading" data-lang-de>Was du im Gespräch bekommst</h2>
+        <p style="font-family: var(--font-serif); font-size: 1.05rem; color: var(--espresso); margin-bottom: 40px; margin-top: -24px;" data-lang-en>In 60 minutes:</p>
+        <p style="font-family: var(--font-serif); font-size: 1.05rem; color: var(--espresso); margin-bottom: 40px; margin-top: -24px;" data-lang-de>In 60 Minuten:</p>
+
+        <div class="value-item">
+            <div class="value-number">1</div>
+            <div>
+                <div class="value-item-title" data-lang-en>Real-Time Pattern Recognition</div>
+                <div class="value-item-title" data-lang-de>Echtzeit-Mustererkennung</div>
+                <p class="value-item-desc" data-lang-en>
+                    I listen to you for 15 minutes and identify your primary gap.<br>
+                    <em>Not theoretical — live, as you speak.</em>
+                </p>
+                <p class="value-item-desc" data-lang-de>
+                    Ich höre dir 15 Minuten zu und identifiziere deine primäre Lücke.<br>
+                    <em>Nicht theoretisch — live, während du sprichst.</em>
+                </p>
+            </div>
+        </div>
+
+        <div class="value-item">
+            <div class="value-number">2</div>
+            <div>
+                <div class="value-item-title" data-lang-en>Concrete Next Steps</div>
+                <div class="value-item-title" data-lang-de>Konkrete nächste Schritte</div>
+                <p class="value-item-desc" data-lang-en>
+                    1–3 Micro-Shifts you can implement immediately.<br>
+                    <em>Even if we don't work together.</em>
+                </p>
+                <p class="value-item-desc" data-lang-de>
+                    1–3 Micro-Shifts, die du sofort umsetzen kannst.<br>
+                    <em>Auch wenn wir nicht zusammenarbeiten.</em>
+                </p>
+            </div>
+        </div>
+
+        <div class="value-item">
+            <div class="value-number">3</div>
+            <div>
+                <div class="value-item-title" data-lang-en>Honest Recommendation</div>
+                <div class="value-item-title" data-lang-de>Ehrliche Empfehlung</div>
+                <p class="value-item-desc" data-lang-en>
+                    SOLO Journey / THRESHOLD Retreat / Notion OS / "Not ready yet"<br>
+                    <em>I tell you what I see — not what I want to sell.</em>
+                </p>
+                <p class="value-item-desc" data-lang-de>
+                    SOLO Journey / THRESHOLD Retreat / Notion OS / „Noch nicht bereit"<br>
+                    <em>Ich sage dir, was ich sehe — nicht, was ich verkaufen will.</em>
+                </p>
+            </div>
+        </div>
+
+        <!-- Anti-sales banner -->
+        <div class="anti-sales">
+            <span class="anti-sales-label" data-lang-en>This Is Not a Sales Call</span>
+            <span class="anti-sales-label" data-lang-de>Das ist kein Verkaufsgespräch</span>
+            <p data-lang-en>By the end of the call, you'll know:</p>
+            <p data-lang-de>Am Ende des Gesprächs weißt du:</p>
+            <div class="arrow-item" data-lang-en>Where your primary Resonance Gap lies</div>
+            <div class="arrow-item" data-lang-de>Wo deine primäre Resonance-Lücke liegt</div>
+            <div class="arrow-item" data-lang-en>What steps make sense for you next</div>
+            <div class="arrow-item" data-lang-de>Welche nächsten Schritte für dich Sinn machen</div>
+            <div class="arrow-item" data-lang-en>Whether working together is a fit — or not</div>
+            <div class="arrow-item" data-lang-de>Ob eine Zusammenarbeit passt — oder nicht</div>
+            <p class="anti-sales-sig" data-lang-en>I don't sell. I diagnose.</p>
+            <p class="anti-sales-sig" data-lang-de>Ich verkaufe nicht. Ich diagnostiziere.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════ S3: HOW IT WORKS ═══════ -->
+<section class="process-section">
+    <div class="process-inner">
+        <h2 class="section-heading" data-lang-en>How the Call Works</h2>
+        <h2 class="section-heading" data-lang-de>Wie das Gespräch abläuft</h2>
+
+        <div class="step">
+            <div class="step-label">
+                <span>01</span>
+                <span data-lang-en>Preparation</span>
+                <span data-lang-de>Vorbereitung</span>
+            </div>
+            <div class="step-content">
+                <h3 data-lang-en>Optional Pre-Call Questions</h3>
+                <h3 data-lang-de>Optionale Vorab-Fragen</h3>
+                <p class="step-detail" data-lang-en>
+                    3 questions via email — you answer if you want.<br>
+                    Saves time in the call, but not required.
+                </p>
+                <p class="step-detail" data-lang-de>
+                    3 Fragen per E-Mail — du antwortest, wenn du möchtest.<br>
+                    Spart Zeit im Gespräch, ist aber nicht erforderlich.
+                </p>
+            </div>
+        </div>
+
+        <div class="step-divider"></div>
+
+        <div class="step">
+            <div class="step-label">
+                <span>02</span>
+                <span data-lang-en>The Call</span>
+                <span data-lang-de>Das Gespräch</span>
+            </div>
+            <div class="step-content">
+                <h3 data-lang-en>60 Minutes on Zoom</h3>
+                <h3 data-lang-de>60 Minuten auf Zoom</h3>
+                <p class="step-detail" data-lang-en>
+                    <span class="time-mark">Min 1–15:</span> You talk. I listen.<br>
+                    <span class="time-mark">Min 16–45:</span> I recognize patterns. Real-Time Diagnostics.<br>
+                    <span class="time-mark">Min 46–60:</span> Next steps + Recommendation.
+                </p>
+                <p class="step-detail" data-lang-de>
+                    <span class="time-mark">Min 1–15:</span> Du sprichst. Ich höre zu.<br>
+                    <span class="time-mark">Min 16–45:</span> Ich erkenne Muster. Echtzeit-Diagnostik.<br>
+                    <span class="time-mark">Min 46–60:</span> Nächste Schritte + Empfehlung.
+                </p>
+            </div>
+        </div>
+
+        <div class="step-divider"></div>
+
+        <div class="step">
+            <div class="step-label">
+                <span>03</span>
+                <span data-lang-en>Follow-Up</span>
+                <span data-lang-de>Nachbereitung</span>
+            </div>
+            <div class="step-content">
+                <h3 data-lang-en>Email Within 24 Hours</h3>
+                <h3 data-lang-de>E-Mail innerhalb von 24 Stunden</h3>
+                <p class="step-detail" data-lang-en>
+                    Brief summary: Your gap, Micro-Shifts, Recommendation.<br>
+                    Next steps if we work together.<br>
+                    <em style="color: var(--teal); font-size: 0.84rem;">No obligation. No follow-up pressure.</em>
+                </p>
+                <p class="step-detail" data-lang-de>
+                    Kurze Zusammenfassung: Deine Lücke, Micro-Shifts, Empfehlung.<br>
+                    Nächste Schritte, falls wir zusammenarbeiten.<br>
+                    <em style="color: var(--teal); font-size: 0.84rem;">Keine Verpflichtung. Kein Follow-up-Druck.</em>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════ S4: WHO IS THIS FOR ═══════ -->
+<section class="qualify-section">
+    <div class="qualify-inner">
+        <h2 class="section-heading" data-lang-en>Is This Call Right for You?</h2>
+        <h2 class="section-heading" data-lang-de>Ist dieses Gespräch das Richtige für dich?</h2>
+        <p class="qualify-intro" data-lang-en>This call makes sense if at least 3 of these apply:</p>
+        <p class="qualify-intro" data-lang-de>Dieses Gespräch macht Sinn, wenn mindestens 3 davon zutreffen:</p>
+
+        <ul class="criteria-list">
+            <li class="criteria-item">
+                <div class="criteria-check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div>
+                <span class="criteria-text" data-lang-en>You're actively fundraising (or within the next 3 months)</span>
+                <span class="criteria-text" data-lang-de>Du bist aktiv im Fundraising (oder innerhalb der nächsten 3 Monate)</span>
+            </li>
+            <li class="criteria-item">
+                <div class="criteria-check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div>
+                <span class="criteria-text" data-lang-en>You have traction (MVP+, first customers, validated model)</span>
+                <span class="criteria-text" data-lang-de>Du hast Traktion (MVP+, erste Kunden, validiertes Modell)</span>
+            </li>
+            <li class="criteria-item">
+                <div class="criteria-check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div>
+                <span class="criteria-text" data-lang-en>You've had investor conversations (but no commitments)</span>
+                <span class="criteria-text" data-lang-de>Du hattest Investoren-Gespräche (aber keine Commitments)</span>
+            </li>
+            <li class="criteria-item">
+                <div class="criteria-check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div>
+                <span class="criteria-text" data-lang-en>You're ready to work on inner patterns (not just pitch tactics)</span>
+                <span class="criteria-text" data-lang-de>Du bist bereit, an inneren Mustern zu arbeiten (nicht nur Pitch-Taktik)</span>
+            </li>
+        </ul>
+
+        <div class="alt-path">
+            <p data-lang-en>If fewer than 3 points fit, the diagnostic call isn't the right starting point yet.</p>
+            <p data-lang-de>Wenn weniger als 3 Punkte passen, ist das Diagnostik-Gespräch noch nicht der richtige Einstieg.</p>
+            <a href="#" class="alt-link" data-lang-en>Start with Notion OS (Self-Serve, €197) →</a>
+            <a href="#" class="alt-link" data-lang-de>Starte mit Notion OS (Self-Serve, €197) →</a>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════ S5: CTA #1 ═══════ -->
+<section class="cta-section">
+    <div class="cta-inner">
+        <h2 class="cta-heading" data-lang-en>Ready for Your Call?</h2>
+        <h2 class="cta-heading" data-lang-de>Bereit für dein Gespräch?</h2>
+        <a href="#" class="cta-button" data-lang-en>Book Your Call Now</a>
+        <a href="#" class="cta-button" data-lang-de>Jetzt Gespräch buchen</a>
+        <div class="cta-details" data-lang-en>
+            Next available slots: Usually 3–7 days<br>
+            Format: Zoom (link sent via email)
+        </div>
+        <div class="cta-details" data-lang-de>
+            Nächste verfügbare Termine: In der Regel 3–7 Tage<br>
+            Format: Zoom (Link per E-Mail)
+        </div>
+        <div class="calendly-placeholder">
+            [ Calendly Embed — Inline Widget ]
+        </div>
+    </div>
+</section>
+
+<!-- ═══════ S6: TESTIMONIALS ═══════ -->
+<section class="testimonials-section">
+    <div class="testimonials-inner">
+        <h2 class="testimonials-heading" data-lang-en>What Other Founders Say After the Call</h2>
+        <h2 class="testimonials-heading" data-lang-de>Was andere Gründer nach dem Gespräch sagen</h2>
+
+        <div class="testimonial-card">
+            <p class="testimonial-quote" data-lang-en>
+                After 10 pitches with no commitments, I had no idea what was wrong. David listened for 15 minutes and said: <strong>'Your problem isn't your vision. It's that you don't embody it.'</strong> Within 2 weeks: first soft commitment.
+            </p>
+            <p class="testimonial-quote" data-lang-de>
+                Nach 10 Pitches ohne Commitment hatte ich keine Ahnung, was falsch war. David hörte 15 Minuten zu und sagte: <strong>„Dein Problem ist nicht deine Vision. Es ist, dass du sie nicht verkörperst."</strong> Innerhalb von 2 Wochen: erstes Soft Commitment.
+            </p>
+            <span class="testimonial-attr">— Founder, B2B SaaS, Seed Stage</span>
+        </div>
+
+        <div class="testimonial-card">
+            <p class="testimonial-quote" data-lang-en>
+                I thought I needed better slides. David showed me: my gap was Toxic Obsession. I was burning out while pitching. <strong>Investors felt it.</strong> After the call: completely different approach.
+            </p>
+            <p class="testimonial-quote" data-lang-de>
+                Ich dachte, ich bräuchte bessere Slides. David zeigte mir: Meine Lücke war Toxic Obsession. Ich war am Ausbrennen beim Pitchen. <strong>Investoren spürten das.</strong> Nach dem Gespräch: komplett anderer Ansatz.
+            </p>
+            <span class="testimonial-attr">— Founder, Climate Tech, Pre-Seed</span>
+        </div>
+
+        <div class="testimonial-card">
+            <p class="testimonial-quote" data-lang-en>
+                The call was the opposite of a sales conversation. David told me honestly: <strong>'You're not ready for SOLO yet. Do Notion OS first.'</strong> That was exactly what I needed — clarity, not persuasion.
+            </p>
+            <p class="testimonial-quote" data-lang-de>
+                Das Gespräch war das Gegenteil eines Verkaufsgesprächs. David sagte mir ehrlich: <strong>„Du bist noch nicht bereit für SOLO. Mach zuerst Notion OS."</strong> Das war genau, was ich brauchte — Klarheit, keine Überredung.
+            </p>
+            <span class="testimonial-attr">— Founder, Fintech, Seed Stage</span>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════ S7: FAQ ═══════ -->
+<section class="faq-section">
+    <div class="faq-inner">
+        <h2 class="section-heading" data-lang-en>Frequently Asked Questions</h2>
+        <h2 class="section-heading" data-lang-de>Häufig gestellte Fragen</h2>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <h3 data-lang-en>Is this really free?</h3>
+                <h3 data-lang-de>Ist das wirklich kostenlos?</h3>
+                <div class="faq-toggle"><svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"></line><line x1="1" y1="5" x2="9" y2="5"></line></svg></div>
+            </div>
+            <div class="faq-answer">
+                <p data-lang-en>Yes. 60 minutes, no catch. You get clarity on your gap and concrete steps — regardless of whether we work together afterward.</p>
+                <p data-lang-de>Ja. 60 Minuten, kein Haken. Du bekommst Klarheit über deine Lücke und konkrete Schritte — unabhängig davon, ob wir danach zusammenarbeiten.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <h3 data-lang-en>Is this a sales call?</h3>
+                <h3 data-lang-de>Ist das ein Verkaufsgespräch?</h3>
+                <div class="faq-toggle"><svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"></line><line x1="1" y1="5" x2="9" y2="5"></line></svg></div>
+            </div>
+            <div class="faq-answer">
+                <p data-lang-en>No. I diagnose, I don't sell. At the end, I'll tell you honestly what I recommend — even if the recommendation is "not ready yet."</p>
+                <p data-lang-de>Nein. Ich diagnostiziere, ich verkaufe nicht. Am Ende sage ich dir ehrlich, was ich empfehle — auch wenn die Empfehlung „noch nicht bereit" lautet.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <h3 data-lang-en>What happens after the call?</h3>
+                <h3 data-lang-de>Was passiert nach dem Gespräch?</h3>
+                <div class="faq-toggle"><svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"></line><line x1="1" y1="5" x2="9" y2="5"></line></svg></div>
+            </div>
+            <div class="faq-answer">
+                <p data-lang-en>You'll receive an email with a summary of your gap, 1–3 immediately actionable Micro-Shifts, and my recommendation (SOLO, THRESHOLD, Notion OS, or wait). You decide if and how to proceed.</p>
+                <p data-lang-de>Du erhältst eine E-Mail mit einer Zusammenfassung deiner Lücke, 1–3 sofort umsetzbaren Micro-Shifts und meiner Empfehlung (SOLO, THRESHOLD, Notion OS oder warten). Du entscheidest, ob und wie es weitergeht.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <h3 data-lang-en>Do I need to prepare?</h3>
+                <h3 data-lang-de>Muss ich mich vorbereiten?</h3>
+                <div class="faq-toggle"><svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"></line><line x1="1" y1="5" x2="9" y2="5"></line></svg></div>
+            </div>
+            <div class="faq-answer">
+                <p data-lang-en>Optional. I'll send you 3 questions via email. If you answer them, we save time in the call. If not, that's okay — we'll start live.</p>
+                <p data-lang-de>Optional. Ich schicke dir 3 Fragen per E-Mail. Wenn du sie beantwortest, sparen wir Zeit im Gespräch. Wenn nicht, ist das okay — wir starten live.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <h3 data-lang-en>How long until the call?</h3>
+                <h3 data-lang-de>Wie lange bis zum Gespräch?</h3>
+                <div class="faq-toggle"><svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"></line><line x1="1" y1="5" x2="9" y2="5"></line></svg></div>
+            </div>
+            <div class="faq-answer">
+                <p data-lang-en>Depending on availability. Usually 3–7 days after booking.</p>
+                <p data-lang-de>Je nach Verfügbarkeit. In der Regel 3–7 Tage nach Buchung.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <h3 data-lang-en>What if I need to cancel?</h3>
+                <h3 data-lang-de>Was, wenn ich absagen muss?</h3>
+                <div class="faq-toggle"><svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"></line><line x1="1" y1="5" x2="9" y2="5"></line></svg></div>
+            </div>
+            <div class="faq-answer">
+                <p data-lang-en>No problem. You can cancel or reschedule free of charge up to 24 hours before the call — the link is in your confirmation email.</p>
+                <p data-lang-de>Kein Problem. Du kannst bis zu 24 Stunden vor dem Gespräch kostenlos absagen oder umbuchen — der Link ist in deiner Bestätigungs-E-Mail.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════ S8: FINAL CTA ═══════ -->
+<section class="final-cta">
+    <div class="final-cta-inner">
+        <h2 data-lang-en>Ready for Clarity?</h2>
+        <h2 data-lang-de>Bereit für Klarheit?</h2>
+        <a href="#" class="cta-button" data-lang-en>Book Your Call Now</a>
+        <a href="#" class="cta-button" data-lang-de>Jetzt Gespräch buchen</a>
+        <p class="final-alt" data-lang-en>
+            Not ready for a call yet?<br>
+            <a href="#">Start with Notion OS (Self-Serve, €197) →</a>
+        </p>
+        <p class="final-alt" data-lang-de>
+            Noch nicht bereit für ein Gespräch?<br>
+            <a href="#">Starte mit Notion OS (Self-Serve, €197) →</a>
+        </p>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer">
+    <p class="footer-tagline" data-lang-en>Light Creators — In service of conscious leadership.</p>
+    <p class="footer-tagline" data-lang-de>Light Creators — Im Dienst bewusster Führung.</p>
+</footer>
+
+<script>
+    function toggleFaq(el) {
+        const item = el.parentElement;
+        item.classList.toggle('open');
+    }
+
+    function switchLang(lang) {
+        document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+        event.target.classList.add('active');
+        if (lang === 'de') {
+            document.body.classList.add('lang-de');
+        } else {
+            document.body.classList.remove('lang-de');
+        }
+    }
+</script>
+
+</body>
+</html>

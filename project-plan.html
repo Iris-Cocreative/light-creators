@@ -1,0 +1,2144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Light Creators — Project Plan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-navy: #0F1A20;
+            --espresso: #4A3F3A;
+            --gold: #CE9B44;
+            --gold-dim: #CE9B4433;
+            --light-cream: #F5E6C4;
+            --sage: #8FA195;
+            --sage-dim: #8FA19533;
+            --teal: #2E5567;
+            --teal-dim: #2E556733;
+            --off-white: #FFFDF8;
+            --red-soft: #C45B5B;
+            --red-dim: #C45B5B22;
+            --green-soft: #6B9E7A;
+            --green-dim: #6B9E7A33;
+            --blue-soft: #5B8BC4;
+            --blue-dim: #5B8BC433;
+
+            --font-serif: 'Cormorant Garamond', Georgia, serif;
+            --font-sans: 'DM Sans', -apple-system, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--off-white);
+            color: var(--dark-navy);
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.5;
+        }
+
+        /* ─── HEADER ─── */
+        .page-header {
+            background: var(--dark-navy);
+            padding: 40px 48px 32px;
+            border-bottom: 3px solid var(--gold);
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 24px;
+        }
+
+        .header-brand {
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--sage);
+            opacity: 0.7;
+        }
+
+        .header-date {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            color: var(--light-cream);
+            opacity: 0.6;
+        }
+
+        .header-title {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            font-weight: 400;
+            color: var(--off-white);
+            margin-bottom: 8px;
+        }
+
+        .header-subtitle {
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            color: var(--sage);
+            font-weight: 300;
+        }
+
+        .header-meta {
+            display: flex;
+            gap: 32px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .meta-label {
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--sage);
+            opacity: 0.6;
+        }
+
+        .meta-value {
+            font-size: 0.85rem;
+            color: var(--light-cream);
+            font-weight: 500;
+        }
+
+        .meta-value.urgent {
+            color: var(--gold);
+        }
+
+        /* ─── NAVIGATION TABS ─── */
+        .nav-tabs {
+            display: flex;
+            background: #F0EDE6;
+            padding: 0 48px;
+            gap: 0;
+            border-bottom: 1px solid #D5D0C6;
+        }
+
+        .nav-tab {
+            padding: 14px 24px;
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            color: var(--espresso);
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+            user-select: none;
+        }
+
+        .nav-tab:hover {
+            color: var(--dark-navy);
+            background: rgba(255,255,255,0.5);
+        }
+
+        .nav-tab.active {
+            color: var(--teal);
+            border-bottom-color: var(--teal);
+            background: rgba(255,255,255,0.6);
+        }
+
+        /* ─── CONTENT AREA ─── */
+        .content-area {
+            padding: 32px 48px 60px;
+        }
+
+        .view-panel {
+            display: none;
+        }
+
+        .view-panel.active {
+            display: block;
+        }
+
+        /* ─── OVERVIEW PANEL ─── */
+        .overview-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .overview-card {
+            background: white;
+            border: 1px solid #E5E0D6;
+            border-radius: 4px;
+            padding: 28px;
+        }
+
+        .overview-card.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .card-title {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--dark-navy);
+        }
+
+        .card-badge {
+            font-size: 0.65rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 2px;
+            font-weight: 600;
+        }
+
+        .badge-phase1 { background: var(--gold-dim); color: var(--gold); }
+        .badge-phase2 { background: var(--teal-dim); color: var(--teal); }
+        .badge-phase3 { background: var(--sage-dim); color: var(--espresso); }
+        .badge-urgent { background: var(--red-dim); color: var(--red-soft); }
+        .badge-active { background: var(--green-dim); color: var(--green-soft); }
+
+        .milestone-list {
+            list-style: none;
+        }
+
+        .milestone-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid #F0EDE6;
+        }
+
+        .milestone-item:last-child {
+            border-bottom: none;
+        }
+
+        .milestone-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-top: 6px;
+            flex-shrink: 0;
+        }
+
+        .dot-gold { background: var(--gold); }
+        .dot-teal { background: var(--teal); }
+        .dot-sage { background: var(--sage); }
+        .dot-red { background: var(--red-soft); }
+
+        .milestone-content {
+            flex: 1;
+        }
+
+        .milestone-title {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--dark-navy);
+        }
+
+        .milestone-date {
+            font-size: 0.75rem;
+            color: var(--espresso);
+            opacity: 0.7;
+        }
+
+        .milestone-status {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .status-done { color: var(--green-soft); }
+        .status-active { color: var(--gold); }
+        .status-pending { color: var(--espresso); opacity: 0.5; }
+
+        /* ─── GANTT PANEL ─── */
+        .gantt-legend {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.75rem;
+            color: var(--espresso);
+        }
+
+        .legend-swatch {
+            width: 14px;
+            height: 14px;
+            border-radius: 2px;
+        }
+
+        .gantt-container {
+            background: white;
+            border: 1px solid #E5E0D6;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+
+        .gantt-table {
+            width: 100%;
+            min-width: 900px;
+            border-collapse: collapse;
+        }
+
+        .gantt-table thead th {
+            font-size: 0.65rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--espresso);
+            opacity: 0.7;
+            padding: 12px 8px;
+            border-bottom: 2px solid #E5E0D6;
+            text-align: center;
+            font-weight: 500;
+            position: sticky;
+            top: 0;
+            background: white;
+        }
+
+        .gantt-table thead th:first-child {
+            text-align: left;
+            padding-left: 16px;
+            min-width: 220px;
+        }
+
+        .gantt-table thead th.today-col {
+            background: var(--gold-dim);
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .gantt-table tbody tr {
+            border-bottom: 1px solid #F0EDE6;
+        }
+
+        .gantt-table tbody tr:hover {
+            background: #FDFCF8;
+        }
+
+        .gantt-table tbody tr.section-row {
+            background: #F7F4EE;
+        }
+
+        .gantt-table tbody td {
+            padding: 6px 4px;
+            text-align: center;
+            vertical-align: middle;
+            position: relative;
+        }
+
+        .gantt-table tbody td:first-child {
+            text-align: left;
+            padding: 10px 16px;
+        }
+
+        .task-name {
+            font-size: 0.82rem;
+            font-weight: 400;
+            color: var(--dark-navy);
+        }
+
+        .task-name.section-title {
+            font-family: var(--font-serif);
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--teal);
+            letter-spacing: 0.02em;
+        }
+
+        .task-name .task-owner {
+            display: block;
+            font-size: 0.7rem;
+            color: var(--espresso);
+            opacity: 0.6;
+            margin-top: 1px;
+        }
+
+        .gantt-bar {
+            height: 20px;
+            border-radius: 3px;
+            margin: 0 2px;
+        }
+
+        .bar-content { background: var(--gold); opacity: 0.85; }
+        .bar-design { background: var(--teal); opacity: 0.85; }
+        .bar-dev { background: var(--sage); opacity: 0.85; }
+        .bar-review { background: var(--espresso); opacity: 0.45; }
+        .bar-milestone { 
+            background: var(--red-soft); 
+            height: 20px; 
+            width: 20px; 
+            transform: rotate(45deg); 
+            margin: 0 auto;
+        }
+
+        .bar-done {
+            opacity: 0.4;
+            position: relative;
+        }
+
+        .bar-done::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 0.65rem;
+            color: white;
+            font-weight: 700;
+        }
+
+        .gantt-bar-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 28px;
+        }
+
+        /* today marker */
+        .today-marker {
+            position: relative;
+        }
+
+        .today-marker::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 2px;
+            background: var(--gold);
+            opacity: 0.3;
+            transform: translateX(-50%);
+        }
+
+        /* ─── KANBAN PANEL ─── */
+        .kanban-board {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .kanban-column {
+            background: #F7F4EE;
+            border-radius: 4px;
+            padding: 16px;
+            min-height: 400px;
+        }
+
+        .column-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #E5E0D6;
+        }
+
+        .column-title {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--dark-navy);
+        }
+
+        .column-count {
+            font-size: 0.7rem;
+            font-weight: 600;
+            background: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            color: var(--espresso);
+        }
+
+        .kanban-card {
+            background: white;
+            border: 1px solid #E5E0D6;
+            border-radius: 4px;
+            padding: 14px;
+            margin-bottom: 10px;
+            cursor: default;
+            transition: box-shadow 0.2s;
+        }
+
+        .kanban-card:hover {
+            box-shadow: 0 2px 8px rgba(15, 26, 32, 0.08);
+        }
+
+        .kanban-card-title {
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--dark-navy);
+            margin-bottom: 6px;
+        }
+
+        .kanban-card-desc {
+            font-size: 0.72rem;
+            color: var(--espresso);
+            opacity: 0.7;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .kanban-card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-tag {
+            font-size: 0.6rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 3px 8px;
+            border-radius: 2px;
+            font-weight: 600;
+        }
+
+        .tag-content { background: var(--gold-dim); color: #9A7530; }
+        .tag-design { background: var(--teal-dim); color: var(--teal); }
+        .tag-dev { background: var(--sage-dim); color: #5A7A63; }
+        .tag-review { background: #F0EDE6; color: var(--espresso); }
+        .tag-automation { background: var(--blue-dim); color: var(--blue-soft); }
+
+        .card-due {
+            font-size: 0.68rem;
+            color: var(--espresso);
+            opacity: 0.6;
+        }
+
+        .card-due.overdue {
+            color: var(--red-soft);
+            opacity: 1;
+            font-weight: 600;
+        }
+
+        .card-assignee {
+            font-size: 0.68rem;
+            color: var(--teal);
+            font-weight: 500;
+        }
+
+        .kanban-card.priority-high {
+            border-left: 3px solid var(--gold);
+        }
+
+        .kanban-card.priority-urgent {
+            border-left: 3px solid var(--red-soft);
+        }
+
+        /* ─── DELIVERABLES PANEL ─── */
+        .deliverables-section {
+            margin-bottom: 36px;
+        }
+
+        .section-heading {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--dark-navy);
+            margin-bottom: 4px;
+        }
+
+        .section-desc {
+            font-size: 0.85rem;
+            color: var(--espresso);
+            opacity: 0.7;
+            margin-bottom: 20px;
+        }
+
+        .deliverable-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border: 1px solid #E5E0D6;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .deliverable-table thead th {
+            font-size: 0.68rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--espresso);
+            opacity: 0.7;
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 500;
+            border-bottom: 2px solid #E5E0D6;
+            background: #FDFCF8;
+        }
+
+        .deliverable-table tbody td {
+            padding: 12px 16px;
+            font-size: 0.82rem;
+            border-bottom: 1px solid #F0EDE6;
+            color: var(--dark-navy);
+        }
+
+        .deliverable-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .deliverable-table tbody tr:hover {
+            background: #FDFCF8;
+        }
+
+        .status-pill {
+            display: inline-block;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            border-radius: 10px;
+        }
+
+        .pill-done { background: var(--green-dim); color: var(--green-soft); }
+        .pill-active { background: var(--gold-dim); color: #9A7530; }
+        .pill-pending { background: #F0EDE6; color: var(--espresso); opacity: 0.6; }
+        .pill-blocked { background: var(--red-dim); color: var(--red-soft); }
+
+        /* ─── CONTENT AUDIT ─── */
+        .audit-page-block {
+            background: #fff;
+            border: 1px solid #E5E0D6;
+            border-radius: 4px;
+            margin-bottom: 28px;
+            overflow: hidden;
+        }
+
+        .audit-page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            background: var(--dark-navy);
+            cursor: pointer;
+        }
+
+        .audit-page-name {
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--off-white);
+        }
+
+        .audit-page-name span {
+            font-weight: 300;
+            opacity: 0.6;
+            margin-left: 8px;
+        }
+
+        .audit-readiness {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .readiness-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .dot-green { background: var(--green-soft); }
+        .dot-yellow { background: var(--gold); }
+        .dot-orange { background: #D4843E; }
+        .dot-red { background: var(--red-soft); }
+
+        .readiness-label {
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--light-cream);
+            opacity: 0.8;
+        }
+
+        .audit-body {
+            padding: 20px;
+        }
+
+        .audit-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 16px;
+        }
+
+        .audit-table thead th {
+            font-size: 0.65rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--espresso);
+            opacity: 0.7;
+            padding: 8px 12px;
+            text-align: left;
+            font-weight: 500;
+            border-bottom: 2px solid #E5E0D6;
+        }
+
+        .audit-table tbody td {
+            padding: 8px 12px;
+            font-size: 0.8rem;
+            border-bottom: 1px solid #F0EDE6;
+            vertical-align: top;
+        }
+
+        .audit-table tbody td:first-child {
+            font-weight: 500;
+            color: var(--dark-navy);
+        }
+
+        .copy-done { color: var(--green-soft); font-weight: 600; font-size: 0.75rem; }
+        .copy-draft { color: #D4843E; font-weight: 600; font-size: 0.75rem; }
+        .copy-missing { color: var(--red-soft); font-weight: 600; font-size: 0.75rem; }
+        .copy-needs-translate { color: var(--teal); font-weight: 600; font-size: 0.75rem; }
+
+        .audit-blockers {
+            background: #FEF6F0;
+            border-left: 3px solid #D4843E;
+            padding: 12px 16px;
+            margin-top: 8px;
+            border-radius: 0 3px 3px 0;
+        }
+
+        .audit-blockers-title {
+            font-size: 0.7rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: #D4843E;
+            margin-bottom: 6px;
+        }
+
+        .audit-blockers p {
+            font-size: 0.8rem;
+            color: var(--espresso);
+            line-height: 1.6;
+            margin-bottom: 2px;
+        }
+
+        .audit-effort {
+            display: flex;
+            gap: 20px;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #F0EDE6;
+        }
+
+        .effort-item {
+            font-size: 0.75rem;
+            color: var(--espresso);
+        }
+
+        .effort-item strong {
+            color: var(--teal);
+        }
+
+        .audit-summary-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .audit-stat {
+            background: #fff;
+            border: 1px solid #E5E0D6;
+            border-radius: 4px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .audit-stat-number {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            font-weight: 400;
+            color: var(--teal);
+        }
+
+        .audit-stat-label {
+            font-size: 0.68rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--espresso);
+            opacity: 0.6;
+            margin-top: 4px;
+        }
+
+        .audit-phase-label {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--dark-navy);
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #E5E0D6;
+        }
+
+        .audit-phase-label em {
+            font-style: italic;
+            color: var(--teal);
+        }
+
+        .audit-note {
+            background: var(--dark-navy);
+            border-radius: 4px;
+            padding: 20px 24px;
+            margin-top: 32px;
+        }
+
+        .audit-note-title {
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+
+        .audit-note p {
+            font-size: 0.82rem;
+            color: var(--light-cream);
+            opacity: 0.85;
+            line-height: 1.6;
+            margin-bottom: 4px;
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 1024px) {
+            .kanban-board {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .overview-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-header, .nav-tabs, .content-area {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+            .kanban-board {
+                grid-template-columns: 1fr;
+            }
+            .header-meta {
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ════════ HEADER ════════ -->
+<div class="page-header">
+    <div class="header-top">
+        <span class="header-brand">Iris Cocreative × Light Creators</span>
+        <span class="header-date">Updated Feb 16, 2026</span>
+    </div>
+    <h1 class="header-title">Light Creators — Project Plan</h1>
+    <p class="header-subtitle">Landing Pages, Personal Brand Site & Social Media Automation</p>
+    <div class="header-meta">
+        <div class="meta-item">
+            <span class="meta-label">Launch Target</span>
+            <span class="meta-value urgent">March 1, 2026</span>
+        </div>
+        <div class="meta-item">
+            <span class="meta-label">Days Remaining</span>
+            <span class="meta-value urgent">13 days</span>
+        </div>
+        <div class="meta-item">
+            <span class="meta-label">Phase 1 Focus</span>
+            <span class="meta-value">LP1–LP3 (lightcreators.com)</span>
+        </div>
+        <div class="meta-item">
+            <span class="meta-label">Client</span>
+            <span class="meta-value">David Liebnau</span>
+        </div>
+    </div>
+</div>
+
+<!-- ════════ NAV TABS ════════ -->
+<div class="nav-tabs">
+    <div class="nav-tab active" data-panel="overview">Overview</div>
+    <div class="nav-tab" data-panel="gantt">Timeline</div>
+    <div class="nav-tab" data-panel="kanban">Kanban</div>
+    <div class="nav-tab" data-panel="deliverables">Deliverables</div>
+    <div class="nav-tab" data-panel="content-audit">Content Audit</div>
+</div>
+
+<!-- ════════ CONTENT ════════ -->
+<div class="content-area">
+
+    <!-- ──── OVERVIEW ──── -->
+    <div class="view-panel active" id="overview">
+        <div class="overview-grid">
+            <!-- Phase breakdown -->
+            <div class="overview-card">
+                <div class="card-header">
+                    <span class="card-title">Phase 1: Funnel Core</span>
+                    <span class="card-badge badge-urgent">Deadline Mar 1</span>
+                </div>
+                <ul class="milestone-list">
+                    <li class="milestone-item">
+                        <span class="milestone-dot dot-gold"></span>
+                        <div class="milestone-content">
+                            <span class="milestone-title">LP1 — Quiz Entry Page</span>
+                            <span class="milestone-date">Design: Feb 17–19 · Dev: Feb 20–21</span>
+                        </div>
+                        <span class="milestone-status status-active">In Progress</span>
+                    </li>
+                    <li class="milestone-item">
+                        <span class="milestone-dot dot-gold"></span>
+                        <div class="milestone-content">
+                            <span class="milestone-title">LP2 — Quiz Results (×7 variants)</span>
+                            <span class="milestone-date">Design: Feb 19–22 · Dev: Feb 22–25</span>
+                        </div>
+                        <span class="milestone-status status-active">Copy Ready</span>
+                    </li>
+                    <li class="milestone-item">
+                        <span class="milestone-dot dot-gold"></span>
+                        <div class="milestone-content">
+                            <span class="milestone-title">LP3 — Diagnostic Call Page</span>
+                            <span class="milestone-date">Design: Feb 22–24 · Dev: Feb 25–27</span>
+                        </div>
+                        <span class="milestone-status status-pending">Awaiting Copy</span>
+                    </li>
+                    <li class="milestone-item">
+                        <span class="milestone-dot dot-red"></span>
+                        <div class="milestone-content">
+                            <span class="milestone-title">Full Funnel QA & Launch</span>
+                            <span class="milestone-date">Feb 27–Mar 1</span>
+                        </div>
+                        <span class="milestone-status status-pending">Pending</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Phase 2 -->
+            <div class="overview-card">
+                <div class="card-header">
+                    <span class="card-title">Phase 2: Personal Brand</span>
+                    <span class="card-badge badge-phase2">Mar 2–14</span>
+                </div>
+                <ul class="milestone-list">
+                    <li class="milestone-item">
+                        <span class="milestone-dot dot-teal"></span>
+                        <div class="milestone-content">
+                            <span class="milestone-title">OP1 — davidliebnau.com Homepage</span>
+                            <span class="milestone-date">Design: Mar 2–5 · Dev: Mar 6–9</span>
+                        </div>
+                        <span class="milestone-status status-pending">Pending</span>
+                    </li>
+                    <li class="milestone-item">
+                        <span class="milestone-dot dot-teal"></span>
+                        <div class="milestone-content">
+                            <span class="milestone-title">OP2 — Podcast Page</span>
+                            <span class="milestone-date">Design: Mar 5–7 · Dev: Mar 8–10</span>
+                        </div>
+                        <span class="milestone-status status-pending">Pending</span>
+                    </li>
+                    <li class="milestone-item">
+                        <span class="milestone-dot dot-teal"></span>
+                        <div class="milestone-content">
+                            <span class="milestone-title">OP3 — Approach / How We Work</span>
+                            <span class="milestone-date">Design: Mar 7–9 · Dev: Mar 10–12</span>
+                        </div>
+                        <span class="milestone-status status-pending">Pending</span>
+                    </li>
+                    <li class="milestone-item">
+                        <span class="milestone-dot dot-red"></span>
+                        <div class="milestone-content">
+                            <span class="milestone-title">QA & Cross-domain Launch</span>
+                            <span class="milestone-date">Mar 12–14</span>
+                        </div>
+                        <span class="milestone-status status-pending">Pending</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Phase 3 -->
+            <div class="overview-card">
+                <div class="card-header">
+                    <span class="card-title">Phase 3: Product Pages</span>
+                    <span class="card-badge badge-phase3">Mar 15–31</span>
+                </div>
+                <ul class="milestone-list">
+                    <li class="milestone-item">
+                        <span class="milestone-dot dot-sage"></span>
+                        <div class="milestone-content">
+                            <span class="milestone-title">LP4 — Notion OS (€197)</span>
+                            <span class="milestone-date">Design + Dev: Mar 15–20</span>
+                        </div>
+                        <span class="milestone-status status-pending">Pending</span>
+                    </li>
+                    <li class="milestone-item">
+                        <span class="milestone-dot dot-sage"></span>
+                        <div class="milestone-content">
+                            <span class="milestone-title">LP5 — SOLO Program</span>
+                            <span class="milestone-date">Design + Dev: Mar 20–25</span>
+                        </div>
+                        <span class="milestone-status status-pending">Pending</span>
+                    </li>
+                    <li class="milestone-item">
+                        <span class="milestone-dot dot-sage"></span>
+                        <div class="milestone-content">
+                            <span class="milestone-title">LP6 — THRESHOLD Retreat</span>
+                            <span class="milestone-date">Design + Dev: Mar 25–31</span>
+                        </div>
+                        <span class="milestone-status status-pending">Pending</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Parallel workstreams -->
+            <div class="overview-card">
+                <div class="card-header">
+                    <span class="card-title">Parallel Workstreams</span>
+                    <span class="card-badge badge-active">Ongoing</span>
+                </div>
+                <ul class="milestone-list">
+                    <li class="milestone-item">
+                        <span class="milestone-dot dot-gold"></span>
+                        <div class="milestone-content">
+                            <span class="milestone-title">Social Media Templates (Figma)</span>
+                            <span class="milestone-date">Loom tutorial for Hannah</span>
+                        </div>
+                        <span class="milestone-status status-active">Completing</span>
+                    </li>
+                    <li class="milestone-item">
+                        <span class="milestone-dot dot-teal"></span>
+                        <div class="milestone-content">
+                            <span class="milestone-title">Airtable + n8n Automation</span>
+                            <span class="milestone-date">Content management system</span>
+                        </div>
+                        <span class="milestone-status status-pending">After LP1–3</span>
+                    </li>
+                    <li class="milestone-item">
+                        <span class="milestone-dot dot-sage"></span>
+                        <div class="milestone-content">
+                            <span class="milestone-title">Quiz Integration</span>
+                            <span class="milestone-date">Webhook + n8n + data viz</span>
+                        </div>
+                        <span class="milestone-status status-active">Planning</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Key dependencies -->
+            <div class="overview-card full-width">
+                <div class="card-header">
+                    <span class="card-title">Key Dependencies & Risks</span>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <p style="font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--espresso); opacity: 0.6; margin-bottom: 10px;">Blocking Items</p>
+                        <ul class="milestone-list">
+                            <li class="milestone-item">
+                                <span class="milestone-dot dot-red"></span>
+                                <div class="milestone-content">
+                                    <span class="milestone-title">LP3 German copy — due Friday Feb 20</span>
+                                    <span class="milestone-date">David → Marquis → Claude translation</span>
+                                </div>
+                            </li>
+                            <li class="milestone-item">
+                                <span class="milestone-dot dot-red"></span>
+                                <div class="milestone-content">
+                                    <span class="milestone-title">English translations for LP1–3</span>
+                                    <span class="milestone-date">David to provide ASAP</span>
+                                </div>
+                            </li>
+                            <li class="milestone-item">
+                                <span class="milestone-dot dot-gold"></span>
+                                <div class="milestone-content">
+                                    <span class="milestone-title">Calendly setup & embed code</span>
+                                    <span class="milestone-date">David to configure event type</span>
+                                </div>
+                            </li>
+                            <li class="milestone-item">
+                                <span class="milestone-dot dot-gold"></span>
+                                <div class="milestone-content">
+                                    <span class="milestone-title">Application form decisions (LP3)</span>
+                                    <span class="milestone-date">Manual vs. auto-approve, Typeform setup</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p style="font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--espresso); opacity: 0.6; margin-bottom: 10px;">Risk Mitigations</p>
+                        <ul class="milestone-list">
+                            <li class="milestone-item">
+                                <span class="milestone-dot dot-sage"></span>
+                                <div class="milestone-content">
+                                    <span class="milestone-title">Design system from LP1 accelerates LP2–3</span>
+                                    <span class="milestone-date">Reusable components, typography, color</span>
+                                </div>
+                            </li>
+                            <li class="milestone-item">
+                                <span class="milestone-dot dot-sage"></span>
+                                <div class="milestone-content">
+                                    <span class="milestone-title">LP2 variants share structure</span>
+                                    <span class="milestone-date">One template, seven content swaps</span>
+                                </div>
+                            </li>
+                            <li class="milestone-item">
+                                <span class="milestone-dot dot-sage"></span>
+                                <div class="milestone-content">
+                                    <span class="milestone-title">David can use PowerPoint interim decks</span>
+                                    <span class="milestone-date">For LP4–6 offers if funnel fills fast</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ──── GANTT ──── -->
+    <div class="view-panel" id="gantt">
+        <div class="gantt-legend">
+            <div class="legend-item"><div class="legend-swatch" style="background: var(--gold);"></div> Content / Copy</div>
+            <div class="legend-item"><div class="legend-swatch" style="background: var(--teal);"></div> Design</div>
+            <div class="legend-item"><div class="legend-swatch" style="background: var(--sage);"></div> Development</div>
+            <div class="legend-item"><div class="legend-swatch" style="background: var(--espresso); opacity:0.45;"></div> Review / QA</div>
+            <div class="legend-item"><div class="legend-swatch" style="background: var(--red-soft); width:12px; height:12px; transform: rotate(45deg);"></div> Milestone</div>
+        </div>
+        <div class="gantt-container">
+            <table class="gantt-table">
+                <thead>
+                    <tr>
+                        <th>Task</th>
+                        <th class="today-col">Feb 16</th>
+                        <th>17</th>
+                        <th>18</th>
+                        <th>19</th>
+                        <th>20</th>
+                        <th>21</th>
+                        <th>22</th>
+                        <th>23</th>
+                        <th>24</th>
+                        <th>25</th>
+                        <th>26</th>
+                        <th>27</th>
+                        <th>28</th>
+                        <th>Mar 1</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Section: LP1 -->
+                    <tr class="section-row">
+                        <td><span class="task-name section-title">LP1 — Quiz Entry</span></td>
+                        <td colspan="14"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="task-name">Copy finalization (DE+EN)<span class="task-owner">David + Marquis</span></span>
+                        </td>
+                        <td class="today-marker"><div class="gantt-bar-wrapper"><div class="gantt-bar bar-content bar-done" style="width:100%; height:18px;"></div></div></td>
+                        <td><div class="gantt-bar-wrapper"><div class="gantt-bar bar-content" style="width:100%; height:18px;"></div></div></td>
+                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="task-name">Design (Webflow layout)<span class="task-owner">James</span></span>
+                        </td>
+                        <td></td>
+                        <td><div class="gantt-bar-wrapper"><div class="gantt-bar bar-design" style="width:100%; height:18px;"></div></div></td>
+                        <td><div class="gantt-bar-wrapper"><div class="gantt-bar bar-design" style="width:100%; height:18px;"></div></div></td>
+                        <td><div class="gantt-bar-wrapper"><div class="gantt-bar bar-design" style="width:100%; height:18px;"></div></div></td>
+                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="task-name">Development + Locale<span class="task-owner">James / Dev</span></span>
+                        </td>
+                        <td></td><td></td><td></td>
+                        <td><div class="gantt-bar-wrapper"><div class="gantt-bar bar-dev" style="width:100%; height:18px;"></div></div></td>
+                        <td><div class="gantt-bar-wrapper"><div class="gantt-bar bar-dev" style="width:100%; height:18px;"></div></div></td>
+                        <td><div class="gantt-bar-wrapper"><div class="gantt-bar bar-dev" style="width:100%; height:18px;"></div></div></td>
+                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+
+                    <!-- Section: LP2 -->
+                    <tr class="section-row">
+                        <td><span class="task-name section-title">LP2 — Quiz Results (×7)</span></td>
+                        <td colspan="14"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="task-name">Copy: 7 variant translations<span class="task-owner">David + Claude</span></span>
+                        </td>
+                        <td></td>
+                        <td><div class="gantt-bar-wrapper"><div class="gantt-bar bar-content" style="width:100%; height:18px;"></div></div></td>
+                        <td><div class="gantt-bar-wrapper"><div class="gantt-bar bar-content" style="width:100%; height:18px;"></div></div></td>
+                        <td><div class="gantt-bar-wrapper"><div class="gantt-bar bar-content" style="width:100%; height:18px;"></div></div></td>
+                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="task-name">Design (template + variations)<span class="task-owner">James</span></span>
+                        </td>
+                        <td></td><td></td>
+                        <td></td>
+                        <td><div class="gantt-bar-wrapper"><div class="gantt-bar bar-design" style="width:100%; height:18px;"></div></div></td>
+                        <td><div class="gantt-bar-wrapper"><div class="gantt-bar bar-design" style="width:100%; height:18px;"></div></div></td>
+                        <td><div class="gantt-bar-wrapper"><div class="gantt-bar bar-design" style="width:100%; height:18px;"></div></div></td>
+                        <td><div class="gantt-bar-wrapper"><div class="gantt-bar bar-design" style="width:100%; height:18px;"></div></div></td>
+                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="task-name">Development + CMS setup<span class="task-owner">James / Dev</span></span>
+                        </td>
+                        <td></td><td></td><td></td><td></td><td></td>
+                        <td><div class="gantt-bar-wrapper"><div class="gantt-bar bar-dev" style="width:100%; height:18px;"></div></div></td>
+                        <td><div class="gantt-bar-wrapper"><div class="gantt-bar bar-dev" style="width:100%; height:18px;"></div></div></td>
+                        <td><div class="gantt-bar-wrapper"><div class="gantt-bar bar-dev" style="width:100%; height:18px;"></div></div></td>
+                        <td><div class="gantt-bar-wrapper"><div class="gantt-bar bar-dev" style="width:100%; height:18px;"></div></div></td>
+                        <td><div class="gantt-bar-wrapper"><div class="gantt-bar bar-dev" style="width:100%; height:18px;"></div></div></td>
+                        <td></td><td></td><td></td><td></td>
+                    </tr>
+
+                    <!-- Section: LP3 -->
+                    <tr class="section-row">
+                        <td><span class="task-name section-title">LP3 — Diagnostic Call</span></td>
+                        <td colspan="14"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="task-name">Copy delivery (DE+EN)<span class="task-owner">David + Marquis</span></span>
+                        </td>
+                        <td></td><td></td><td></td><td></td>
+                        <td><div class="gantt-bar-wrapper"><div class="gantt-bar bar-content" style="width:100%; height:18px;"></div></div></td>
+                        <td><div class="gantt-bar-wrapper"><div class="gantt-bar bar-content" style="width:100%; height:18px;"></div></div></td>
+                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="task-name">Design (Calendly integration)<span class="task-owner">James</span></span>
+                        </td>
+                        <td></td><td></td><td></td><td></td><td></td><td></td>
+                        <td><div class="gantt-bar-wrapper"><div class="gantt-bar bar-design" style="width:100%; height:18px;"></div></div></td>
+                        <td><div class="gantt-bar-wrapper"><div class="gantt-bar bar-design" style="width:100%; height:18px;"></div></div></td>
+                        <td><div class="gantt-bar-wrapper"><div class="gantt-bar bar-design" style="width:100%; height:18px;"></div></div></td>
+                        <td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="task-name">Development + Calendly<span class="task-owner">James / Dev</span></span>
+                        </td>
+                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                        <td><div class="gantt-bar-wrapper"><div class="gantt-bar bar-dev" style="width:100%; height:18px;"></div></div></td>
+                        <td><div class="gantt-bar-wrapper"><div class="gantt-bar bar-dev" style="width:100%; height:18px;"></div></div></td>
+                        <td><div class="gantt-bar-wrapper"><div class="gantt-bar bar-dev" style="width:100%; height:18px;"></div></div></td>
+                        <td></td><td></td><td></td>
+                    </tr>
+
+                    <!-- Section: QA -->
+                    <tr class="section-row">
+                        <td><span class="task-name section-title">QA & Launch</span></td>
+                        <td colspan="14"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="task-name">Full funnel testing (DE+EN)<span class="task-owner">James + David</span></span>
+                        </td>
+                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                        <td><div class="gantt-bar-wrapper"><div class="gantt-bar bar-review" style="width:100%; height:18px;"></div></div></td>
+                        <td><div class="gantt-bar-wrapper"><div class="gantt-bar bar-review" style="width:100%; height:18px;"></div></div></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="task-name">🚀 Launch LP1–LP3<span class="task-owner">James</span></span>
+                        </td>
+                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                        <td><div class="gantt-bar-wrapper"><div class="bar-milestone"></div></div></td>
+                    </tr>
+
+                    <!-- Section: Parallel -->
+                    <tr class="section-row">
+                        <td><span class="task-name section-title">Parallel Tasks</span></td>
+                        <td colspan="14"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="task-name">Figma templates + Loom<span class="task-owner">James</span></span>
+                        </td>
+                        <td class="today-marker"><div class="gantt-bar-wrapper"><div class="gantt-bar bar-design" style="width:100%; height:18px;"></div></div></td>
+                        <td><div class="gantt-bar-wrapper"><div class="gantt-bar bar-design" style="width:100%; height:18px;"></div></div></td>
+                        <td><div class="gantt-bar-wrapper"><div class="gantt-bar bar-design" style="width:100%; height:18px;"></div></div></td>
+                        <td><div class="gantt-bar-wrapper"><div class="gantt-bar bar-design" style="width:100%; height:18px;"></div></div></td>
+                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="task-name">Airtable architecture plan<span class="task-owner">James</span></span>
+                        </td>
+                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                        <td><div class="gantt-bar-wrapper"><div class="gantt-bar bar-dev" style="width:100%; height:18px;"></div></div></td>
+                        <td><div class="gantt-bar-wrapper"><div class="gantt-bar bar-dev" style="width:100%; height:18px;"></div></div></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ──── KANBAN ──── -->
+    <div class="view-panel" id="kanban">
+        <div class="kanban-board">
+
+            <!-- TODO -->
+            <div class="kanban-column">
+                <div class="column-header">
+                    <span class="column-title">To Do</span>
+                    <span class="column-count">6</span>
+                </div>
+
+                <div class="kanban-card priority-high">
+                    <div class="kanban-card-title">LP3 Design Mockup</div>
+                    <div class="kanban-card-desc">Design diagnostic call page using LP1 design system. Calendly embed, FAQ accordion, testimonials.</div>
+                    <div class="kanban-card-footer">
+                        <span class="card-tag tag-design">Design</span>
+                        <span class="card-due">Feb 22–24</span>
+                    </div>
+                    <div style="margin-top:6px;"><span class="card-assignee">James</span></div>
+                </div>
+
+                <div class="kanban-card priority-high">
+                    <div class="kanban-card-title">LP2 Template Design</div>
+                    <div class="kanban-card-desc">Master template for quiz results with data visualization, founder type explanation, and CTA paths.</div>
+                    <div class="kanban-card-footer">
+                        <span class="card-tag tag-design">Design</span>
+                        <span class="card-due">Feb 19–22</span>
+                    </div>
+                    <div style="margin-top:6px;"><span class="card-assignee">James</span></div>
+                </div>
+
+                <div class="kanban-card">
+                    <div class="kanban-card-title">LP3 Development</div>
+                    <div class="kanban-card-desc">Webflow build with Calendly integration, bilingual locale, analytics events.</div>
+                    <div class="kanban-card-footer">
+                        <span class="card-tag tag-dev">Dev</span>
+                        <span class="card-due">Feb 24–26</span>
+                    </div>
+                    <div style="margin-top:6px;"><span class="card-assignee">James / Dev</span></div>
+                </div>
+
+                <div class="kanban-card">
+                    <div class="kanban-card-title">LP2 Development (×7 variants)</div>
+                    <div class="kanban-card-desc">CMS-driven quiz results with conditional content. Seven founder types.</div>
+                    <div class="kanban-card-footer">
+                        <span class="card-tag tag-dev">Dev</span>
+                        <span class="card-due">Feb 21–25</span>
+                    </div>
+                    <div style="margin-top:6px;"><span class="card-assignee">James / Dev</span></div>
+                </div>
+
+                <div class="kanban-card">
+                    <div class="kanban-card-title">Airtable Content Hub Setup</div>
+                    <div class="kanban-card-desc">Social media content management base. Posts, scheduling, performance tracking.</div>
+                    <div class="kanban-card-footer">
+                        <span class="card-tag tag-automation">Automation</span>
+                        <span class="card-due">Feb 28+</span>
+                    </div>
+                    <div style="margin-top:6px;"><span class="card-assignee">James + Merlin</span></div>
+                </div>
+
+                <div class="kanban-card">
+                    <div class="kanban-card-title">Full Funnel QA</div>
+                    <div class="kanban-card-desc">End-to-end testing: LP1→Quiz→LP2→Email/App→LP3→Calendly. Both languages, mobile + desktop.</div>
+                    <div class="kanban-card-footer">
+                        <span class="card-tag tag-review">QA</span>
+                        <span class="card-due">Feb 27–28</span>
+                    </div>
+                    <div style="margin-top:6px;"><span class="card-assignee">James + David</span></div>
+                </div>
+            </div>
+
+            <!-- IN PROGRESS -->
+            <div class="kanban-column">
+                <div class="column-header">
+                    <span class="column-title">In Progress</span>
+                    <span class="column-count">4</span>
+                </div>
+
+                <div class="kanban-card priority-urgent">
+                    <div class="kanban-card-title">LP1 Design Refinement</div>
+                    <div class="kanban-card-desc">Finalize LP1 based on initial mockup. Integrate actual Mallorca photos, refine mobile layout.</div>
+                    <div class="kanban-card-footer">
+                        <span class="card-tag tag-design">Design</span>
+                        <span class="card-due">Feb 17–19</span>
+                    </div>
+                    <div style="margin-top:6px;"><span class="card-assignee">James</span></div>
+                </div>
+
+                <div class="kanban-card priority-urgent">
+                    <div class="kanban-card-title">Gantt Chart + Kanban Setup</div>
+                    <div class="kanban-card-desc">Project plan with milestones targeting March 1 launch. Shared workspace for tracking.</div>
+                    <div class="kanban-card-footer">
+                        <span class="card-tag tag-review">Planning</span>
+                        <span class="card-due overdue">Feb 16 (today)</span>
+                    </div>
+                    <div style="margin-top:6px;"><span class="card-assignee">James</span></div>
+                </div>
+
+                <div class="kanban-card priority-high">
+                    <div class="kanban-card-title">Figma Template Comments</div>
+                    <div class="kanban-card-desc">Review David + Julie's feedback on social media templates. Implement changes, prepare Loom.</div>
+                    <div class="kanban-card-footer">
+                        <span class="card-tag tag-design">Design</span>
+                        <span class="card-due">Feb 16–19</span>
+                    </div>
+                    <div style="margin-top:6px;"><span class="card-assignee">James</span></div>
+                </div>
+
+                <div class="kanban-card priority-high">
+                    <div class="kanban-card-title">LP1–3 English Translation</div>
+                    <div class="kanban-card-desc">Translate German copy for all three funnel pages. German LP1+2 done, LP3 due Friday.</div>
+                    <div class="kanban-card-footer">
+                        <span class="card-tag tag-content">Content</span>
+                        <span class="card-due">Feb 17–21</span>
+                    </div>
+                    <div style="margin-top:6px;"><span class="card-assignee">David + Claude</span></div>
+                </div>
+            </div>
+
+            <!-- WAITING ON -->
+            <div class="kanban-column">
+                <div class="column-header">
+                    <span class="column-title">Waiting On</span>
+                    <span class="column-count">4</span>
+                </div>
+
+                <div class="kanban-card priority-urgent">
+                    <div class="kanban-card-title">LP3 German Copy (Friday)</div>
+                    <div class="kanban-card-desc">David delivering LP3 German copy by Friday Feb 20. Blocking LP3 design start.</div>
+                    <div class="kanban-card-footer">
+                        <span class="card-tag tag-content">Content</span>
+                        <span class="card-due overdue">Due: Feb 20</span>
+                    </div>
+                    <div style="margin-top:6px;"><span class="card-assignee">David + Marquis</span></div>
+                </div>
+
+                <div class="kanban-card priority-high">
+                    <div class="kanban-card-title">Calendly Configuration</div>
+                    <div class="kanban-card-desc">60-min Diagnostic Call event type with buffer times, cancellation policy, Zoom auto-link.</div>
+                    <div class="kanban-card-footer">
+                        <span class="card-tag tag-dev">Setup</span>
+                        <span class="card-due">ASAP</span>
+                    </div>
+                    <div style="margin-top:6px;"><span class="card-assignee">David</span></div>
+                </div>
+
+                <div class="kanban-card">
+                    <div class="kanban-card-title">Application Process Decisions</div>
+                    <div class="kanban-card-desc">Manual vs auto-approve? Approval rate? Rejection email? Typeform vs Google Forms?</div>
+                    <div class="kanban-card-footer">
+                        <span class="card-tag tag-review">Decision</span>
+                        <span class="card-due">Before LP3 Dev</span>
+                    </div>
+                    <div style="margin-top:6px;"><span class="card-assignee">David + Marquis</span></div>
+                </div>
+
+                <div class="kanban-card">
+                    <div class="kanban-card-title">Mallorca Photo Suite</div>
+                    <div class="kanban-card-desc">Share recent Mallorca photos for landing page hero imagery and about sections.</div>
+                    <div class="kanban-card-footer">
+                        <span class="card-tag tag-content">Assets</span>
+                        <span class="card-due">ASAP</span>
+                    </div>
+                    <div style="margin-top:6px;"><span class="card-assignee">David</span></div>
+                </div>
+            </div>
+
+            <!-- DONE -->
+            <div class="kanban-column">
+                <div class="column-header">
+                    <span class="column-title">Done</span>
+                    <span class="column-count">4</span>
+                </div>
+
+                <div class="kanban-card" style="opacity:0.7;">
+                    <div class="kanban-card-title">LP1 German Copy</div>
+                    <div class="kanban-card-desc">Complete German copy for quiz entry page.</div>
+                    <div class="kanban-card-footer">
+                        <span class="card-tag tag-content">Content</span>
+                        <span class="card-due" style="color: var(--green-soft);">✓ Complete</span>
+                    </div>
+                </div>
+
+                <div class="kanban-card" style="opacity:0.7;">
+                    <div class="kanban-card-title">LP2 German Copy (×7)</div>
+                    <div class="kanban-card-desc">Seven variant results pages in German.</div>
+                    <div class="kanban-card-footer">
+                        <span class="card-tag tag-content">Content</span>
+                        <span class="card-due" style="color: var(--green-soft);">✓ Complete</span>
+                    </div>
+                </div>
+
+                <div class="kanban-card" style="opacity:0.7;">
+                    <div class="kanban-card-title">Brand & Visual Identity</div>
+                    <div class="kanban-card-desc">Logo, color palette, typography, geometric system established.</div>
+                    <div class="kanban-card-footer">
+                        <span class="card-tag tag-design">Design</span>
+                        <span class="card-due" style="color: var(--green-soft);">✓ Complete</span>
+                    </div>
+                </div>
+
+                <div class="kanban-card" style="opacity:0.7;">
+                    <div class="kanban-card-title">LP1 Initial Mockup (HTML)</div>
+                    <div class="kanban-card-desc">First draft mockup using established design system.</div>
+                    <div class="kanban-card-footer">
+                        <span class="card-tag tag-design">Design</span>
+                        <span class="card-due" style="color: var(--green-soft);">✓ Complete</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ──── DELIVERABLES ──── -->
+    <div class="view-panel" id="deliverables">
+
+        <div class="deliverables-section">
+            <h2 class="section-heading">Phase 1: lightcreators.com Funnel</h2>
+            <p class="section-desc">Core conversion funnel — must be live by March 1, 2026</p>
+            <table class="deliverable-table">
+                <thead>
+                    <tr>
+                        <th>Page</th>
+                        <th>Copy (DE)</th>
+                        <th>Copy (EN)</th>
+                        <th>Design</th>
+                        <th>Development</th>
+                        <th>Target</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>LP1</strong> — Quiz Entry</td>
+                        <td><span class="status-pill pill-done">Done</span></td>
+                        <td><span class="status-pill pill-active">Translating</span></td>
+                        <td><span class="status-pill pill-active">In Progress</span></td>
+                        <td><span class="status-pill pill-pending">Pending</span></td>
+                        <td>Feb 21</td>
+                    </tr>
+                    <tr>
+                        <td><strong>LP2</strong> — Quiz Results (×7)</td>
+                        <td><span class="status-pill pill-done">Done</span></td>
+                        <td><span class="status-pill pill-active">Translating</span></td>
+                        <td><span class="status-pill pill-pending">Pending</span></td>
+                        <td><span class="status-pill pill-pending">Pending</span></td>
+                        <td>Feb 25</td>
+                    </tr>
+                    <tr>
+                        <td><strong>LP3</strong> — Diagnostic Call</td>
+                        <td><span class="status-pill pill-blocked">Due Fri</span></td>
+                        <td><span class="status-pill pill-pending">After DE</span></td>
+                        <td><span class="status-pill pill-pending">Pending</span></td>
+                        <td><span class="status-pill pill-pending">Pending</span></td>
+                        <td>Feb 27</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Quiz</strong> — Assessment Flow</td>
+                        <td colspan="2" style="text-align:center"><span class="status-pill pill-done">Logic Done</span></td>
+                        <td><span class="status-pill pill-active">Planning</span></td>
+                        <td><span class="status-pill pill-pending">Pending</span></td>
+                        <td>Feb 24</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="deliverables-section">
+            <h2 class="section-heading">Phase 2: davidliebnau.com</h2>
+            <p class="section-desc">Personal brand & trust layer — target March 14</p>
+            <table class="deliverable-table">
+                <thead>
+                    <tr>
+                        <th>Page</th>
+                        <th>Copy (DE)</th>
+                        <th>Copy (EN)</th>
+                        <th>Design</th>
+                        <th>Development</th>
+                        <th>Target</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>OP1</strong> — Homepage / Orientation</td>
+                        <td><span class="status-pill pill-active">In Progress</span></td>
+                        <td><span class="status-pill pill-pending">Pending</span></td>
+                        <td><span class="status-pill pill-pending">Pending</span></td>
+                        <td><span class="status-pill pill-pending">Pending</span></td>
+                        <td>Mar 9</td>
+                    </tr>
+                    <tr>
+                        <td><strong>OP2</strong> — Podcast Page</td>
+                        <td><span class="status-pill pill-pending">Pending</span></td>
+                        <td><span class="status-pill pill-pending">Pending</span></td>
+                        <td><span class="status-pill pill-pending">Pending</span></td>
+                        <td><span class="status-pill pill-pending">Pending</span></td>
+                        <td>Mar 10</td>
+                    </tr>
+                    <tr>
+                        <td><strong>OP3</strong> — Approach / How We Work</td>
+                        <td><span class="status-pill pill-pending">Pending</span></td>
+                        <td><span class="status-pill pill-pending">Pending</span></td>
+                        <td><span class="status-pill pill-pending">Pending</span></td>
+                        <td><span class="status-pill pill-pending">Pending</span></td>
+                        <td>Mar 12</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="deliverables-section">
+            <h2 class="section-heading">Phase 3: Product / Offer Pages</h2>
+            <p class="section-desc">Post-call conversion pages — target end of March</p>
+            <table class="deliverable-table">
+                <thead>
+                    <tr>
+                        <th>Page</th>
+                        <th>Copy</th>
+                        <th>Design</th>
+                        <th>Development</th>
+                        <th>Target</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>LP4</strong> — Notion OS (€197)</td>
+                        <td><span class="status-pill pill-pending">Pending</span></td>
+                        <td><span class="status-pill pill-pending">Pending</span></td>
+                        <td><span class="status-pill pill-pending">Pending</span></td>
+                        <td>Mar 20</td>
+                    </tr>
+                    <tr>
+                        <td><strong>LP5</strong> — SOLO Program (1:1)</td>
+                        <td><span class="status-pill pill-pending">Pending</span></td>
+                        <td><span class="status-pill pill-pending">Pending</span></td>
+                        <td><span class="status-pill pill-pending">Pending</span></td>
+                        <td>Mar 25</td>
+                    </tr>
+                    <tr>
+                        <td><strong>LP6</strong> — THRESHOLD Retreat</td>
+                        <td><span class="status-pill pill-pending">Pending</span></td>
+                        <td><span class="status-pill pill-pending">Pending</span></td>
+                        <td><span class="status-pill pill-pending">Pending</span></td>
+                        <td>Mar 31</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <!-- ──── CONTENT AUDIT ──── -->
+    <div class="view-panel" id="content-audit">
+
+        <!-- Summary Stats -->
+        <div class="audit-summary-row">
+            <div class="audit-stat">
+                <div class="audit-stat-number" style="color: var(--green-soft);">85%</div>
+                <div class="audit-stat-label">Copy Complete (DE)</div>
+            </div>
+            <div class="audit-stat">
+                <div class="audit-stat-number" style="color: var(--teal);">60%</div>
+                <div class="audit-stat-label">Copy Complete (EN)</div>
+            </div>
+            <div class="audit-stat">
+                <div class="audit-stat-number" style="color: var(--gold);">2 of 3</div>
+                <div class="audit-stat-label">Mockups Created</div>
+            </div>
+            <div class="audit-stat">
+                <div class="audit-stat-number" style="color: var(--red-soft);">0 of 3</div>
+                <div class="audit-stat-label">In Webflow</div>
+            </div>
+        </div>
+
+        <!-- Phase 1: March 1 Scope -->
+        <div class="audit-phase-label">Phase 1: <em>March 1 Launch</em></div>
+
+        <!-- LP1 -->
+        <div class="audit-page-block">
+            <div class="audit-page-header">
+                <span class="audit-page-name">LP1 — Quiz Entry Page <span>/quiz</span></span>
+                <div class="audit-readiness">
+                    <div class="readiness-dot dot-yellow"></div>
+                    <span class="readiness-label">Ready to Build</span>
+                </div>
+            </div>
+            <div class="audit-body">
+                <table class="audit-table">
+                    <thead>
+                        <tr>
+                            <th>Content Element</th>
+                            <th>German</th>
+                            <th>English</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Hero headline + subheadline</td>
+                            <td><span class="copy-done">DONE</span></td>
+                            <td><span class="copy-needs-translate">NEEDS TRANSLATION</span></td>
+                            <td>Marquis copy finalized</td>
+                        </tr>
+                        <tr>
+                            <td>Founder context section (A2)</td>
+                            <td><span class="copy-done">DONE</span></td>
+                            <td><span class="copy-needs-translate">NEEDS TRANSLATION</span></td>
+                            <td>Needs David's Mallorca photo</td>
+                        </tr>
+                        <tr>
+                            <td>Problem reframing (A3)</td>
+                            <td><span class="copy-done">DONE</span></td>
+                            <td><span class="copy-needs-translate">NEEDS TRANSLATION</span></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Leverage logic / Quiz invite (A4-A5)</td>
+                            <td><span class="copy-done">DONE</span></td>
+                            <td><span class="copy-needs-translate">NEEDS TRANSLATION</span></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Footer / legal</td>
+                            <td><span class="copy-done">DONE</span></td>
+                            <td><span class="copy-done">DONE</span></td>
+                            <td>Minimal — shared component</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="audit-blockers">
+                    <div class="audit-blockers-title">Blocking Items</div>
+                    <p>→ English translations (David to provide or approve Claude translation)</p>
+                    <p>→ Mallorca photo suite (David to share)</p>
+                </div>
+                <div class="audit-effort">
+                    <span class="effort-item"><strong>Design:</strong> ~3h (photo integration, polish)</span>
+                    <span class="effort-item"><strong>Dev:</strong> ~4h (Webflow + locale)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz -->
+        <div class="audit-page-block">
+            <div class="audit-page-header">
+                <span class="audit-page-name">Quiz — 15-Question Assessment <span>Typeform or Native</span></span>
+                <div class="audit-readiness">
+                    <div class="readiness-dot dot-green"></div>
+                    <span class="readiness-label">Copy Complete</span>
+                </div>
+            </div>
+            <div class="audit-body">
+                <table class="audit-table">
+                    <thead>
+                        <tr>
+                            <th>Content Element</th>
+                            <th>German</th>
+                            <th>English</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Section 1: Situation Activation (Q1-Q2)</td>
+                            <td><span class="copy-done">DONE</span></td>
+                            <td><span class="copy-done">DONE</span></td>
+                            <td>Multiple choice, no scoring</td>
+                        </tr>
+                        <tr>
+                            <td>Section 2: Behavioral Diagnosis (Q3-Q12)</td>
+                            <td><span class="copy-done">DONE</span></td>
+                            <td><span class="copy-done">DONE</span></td>
+                            <td>4 options each, full scoring mapped</td>
+                        </tr>
+                        <tr>
+                            <td>Section 3: Qualification (Q13-Q15)</td>
+                            <td><span class="copy-done">DONE</span></td>
+                            <td><span class="copy-done">DONE</span></td>
+                            <td>Attribution + lead qualification</td>
+                        </tr>
+                        <tr>
+                            <td>Transition micro-copy</td>
+                            <td><span class="copy-done">DONE</span></td>
+                            <td><span class="copy-done">DONE</span></td>
+                            <td>After Q2, after Q12</td>
+                        </tr>
+                        <tr>
+                            <td>Welcome + loading + email screens</td>
+                            <td><span class="copy-done">DONE</span></td>
+                            <td><span class="copy-done">DONE</span></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Scoring logic (5 factors → 7 types)</td>
+                            <td><span class="copy-done">DONE</span></td>
+                            <td><span class="copy-done">DONE</span></td>
+                            <td>Complete type-mapping rules defined</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="audit-blockers">
+                    <div class="audit-blockers-title">Decision Needed</div>
+                    <p>→ Typeform (faster, ~3h setup) vs. native Webflow + JS (~8h, more control)</p>
+                    <p>→ n8n webhook integration for scoring + routing to LP2 (~2h)</p>
+                </div>
+                <div class="audit-effort">
+                    <span class="effort-item"><strong>Typeform path:</strong> ~5h total</span>
+                    <span class="effort-item"><strong>Native path:</strong> ~10h total</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- LP2 -->
+        <div class="audit-page-block">
+            <div class="audit-page-header">
+                <span class="audit-page-name">LP2 — Quiz Results × 7 Variants <span>/results</span></span>
+                <div class="audit-readiness">
+                    <div class="readiness-dot dot-yellow"></div>
+                    <span class="readiness-label">Copy Ready, CTA Needs Update</span>
+                </div>
+            </div>
+            <div class="audit-body">
+                <table class="audit-table">
+                    <thead>
+                        <tr>
+                            <th>Content Element</th>
+                            <th>German</th>
+                            <th>English</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Type 1: The Logical Visionary</td>
+                            <td><span class="copy-done">DONE</span></td>
+                            <td><span class="copy-done">DONE</span></td>
+                            <td>~100 word profile + lever + next step</td>
+                        </tr>
+                        <tr>
+                            <td>Type 2: The Quiet Powerhouse</td>
+                            <td><span class="copy-done">DONE</span></td>
+                            <td><span class="copy-done">DONE</span></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Type 3: The Story-Driven Founder</td>
+                            <td><span class="copy-done">DONE</span></td>
+                            <td><span class="copy-done">DONE</span></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Type 4: The Integrated Builder</td>
+                            <td><span class="copy-done">DONE</span></td>
+                            <td><span class="copy-done">DONE</span></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Type 5: The Almost-There Founder</td>
+                            <td><span class="copy-done">DONE</span></td>
+                            <td><span class="copy-done">DONE</span></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Type 6: The Overloaded Operator</td>
+                            <td><span class="copy-done">DONE</span></td>
+                            <td><span class="copy-done">DONE</span></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Type 7: The Disconnected Genius</td>
+                            <td><span class="copy-done">DONE</span></td>
+                            <td><span class="copy-done">DONE</span></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>5-Factor radar chart data</td>
+                            <td><span class="copy-done">DONE</span></td>
+                            <td><span class="copy-done">DONE</span></td>
+                            <td>Score patterns per type defined</td>
+                        </tr>
+                        <tr>
+                            <td>CTA copy (email course / apply)</td>
+                            <td><span class="copy-draft">NEEDS UPDATE</span></td>
+                            <td><span class="copy-draft">NEEDS UPDATE</span></td>
+                            <td>Original says "Field Guide" — now email course</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="audit-blockers">
+                    <div class="audit-blockers-title">Blocking Items</div>
+                    <p>→ CTA copy update: "Download Field Guide" → email course / apply for call</p>
+                    <p>→ Radar chart tech decision (Chart.js, SVG, or static image)</p>
+                    <p>→ David to confirm LP2 copy matches Marquis's final version</p>
+                </div>
+                <div class="audit-effort">
+                    <span class="effort-item"><strong>Design:</strong> ~4h (1 template, responsive, radar)</span>
+                    <span class="effort-item"><strong>Dev:</strong> ~8h (CMS ×7, radar chart, locale)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- LP3 -->
+        <div class="audit-page-block">
+            <div class="audit-page-header">
+                <span class="audit-page-name">LP3 — Diagnostic Call <span>/call</span></span>
+                <div class="audit-readiness">
+                    <div class="readiness-dot dot-orange"></div>
+                    <span class="readiness-label">Draft Exists — Awaiting Confirmation</span>
+                </div>
+            </div>
+            <div class="audit-body">
+                <table class="audit-table">
+                    <thead>
+                        <tr>
+                            <th>Content Element</th>
+                            <th>German</th>
+                            <th>English</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>S1: Hero (headline + subheadline)</td>
+                            <td><span class="copy-draft">DRAFT IN BRIEFING</span></td>
+                            <td><span class="copy-draft">DRAFT IN BRIEFING</span></td>
+                            <td>Is Marquis revising by Friday?</td>
+                        </tr>
+                        <tr>
+                            <td>S2: What You Get (3 deliverables)</td>
+                            <td><span class="copy-draft">DRAFT IN BRIEFING</span></td>
+                            <td><span class="copy-draft">DRAFT IN BRIEFING</span></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>S2: Anti-sales-call banner</td>
+                            <td><span class="copy-draft">DRAFT IN BRIEFING</span></td>
+                            <td><span class="copy-draft">DRAFT IN BRIEFING</span></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>S3: How It Works (3 steps)</td>
+                            <td><span class="copy-draft">DRAFT IN BRIEFING</span></td>
+                            <td><span class="copy-draft">DRAFT IN BRIEFING</span></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>S4: Who Is This For (4 criteria)</td>
+                            <td><span class="copy-draft">DRAFT IN BRIEFING</span></td>
+                            <td><span class="copy-draft">DRAFT IN BRIEFING</span></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>S5: CTA + Calendly embed</td>
+                            <td><span class="copy-draft">DRAFT</span></td>
+                            <td><span class="copy-draft">DRAFT</span></td>
+                            <td>David to configure Calendly</td>
+                        </tr>
+                        <tr>
+                            <td>S6: Testimonials (3 quotes)</td>
+                            <td><span class="copy-draft">DRAFT IN BRIEFING</span></td>
+                            <td><span class="copy-draft">DRAFT IN BRIEFING</span></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>S7: FAQ (6 questions)</td>
+                            <td><span class="copy-draft">DRAFT IN BRIEFING</span></td>
+                            <td><span class="copy-draft">DRAFT IN BRIEFING</span></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>S8: Final CTA + alt path</td>
+                            <td><span class="copy-draft">DRAFT IN BRIEFING</span></td>
+                            <td><span class="copy-draft">DRAFT IN BRIEFING</span></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="audit-blockers">
+                    <div class="audit-blockers-title">Blocking Items</div>
+                    <p>→ Is the briefing copy final, or is Marquis revising German by Friday?</p>
+                    <p>→ David to configure Calendly (60-min, 24h buffer, Zoom auto-link)</p>
+                    <p>→ Application process: 6 open decisions (manual vs auto, approval rate, rejection email, etc.)</p>
+                </div>
+                <div class="audit-effort">
+                    <span class="effort-item"><strong>Design:</strong> ~2h (mockup created)</span>
+                    <span class="effort-item"><strong>Dev:</strong> ~6h (Webflow + Calendly + locale + form)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Supporting Systems -->
+        <div class="audit-page-block">
+            <div class="audit-page-header" style="background: var(--teal);">
+                <span class="audit-page-name">Supporting Systems <span>Email Course + Application + Redirect</span></span>
+                <div class="audit-readiness">
+                    <div class="readiness-dot dot-orange"></div>
+                    <span class="readiness-label">Partially External</span>
+                </div>
+            </div>
+            <div class="audit-body">
+                <table class="audit-table">
+                    <thead>
+                        <tr>
+                            <th>Element</th>
+                            <th>Status</th>
+                            <th>Owner</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>7-Day Email Course</td>
+                            <td><span class="copy-missing">NOT PROVIDED</span></td>
+                            <td>David / Marquis</td>
+                            <td>No email copy shared — David's responsibility</td>
+                        </tr>
+                        <tr>
+                            <td>Email platform setup</td>
+                            <td><span class="copy-missing">UNKNOWN</span></td>
+                            <td>David</td>
+                            <td>ActiveCampaign? ConvertKit? Needs confirmation</td>
+                        </tr>
+                        <tr>
+                            <td>Application form (5 questions)</td>
+                            <td><span class="copy-draft">DRAFT IN BRIEFING</span></td>
+                            <td>James / David</td>
+                            <td>Can launch manual (Google Form) initially</td>
+                        </tr>
+                        <tr>
+                            <td>Approval / rejection emails</td>
+                            <td><span class="copy-draft">DRAFT IN BRIEFING</span></td>
+                            <td>David</td>
+                            <td>Manual send okay for launch</td>
+                        </tr>
+                        <tr>
+                            <td>lightcreators.com → /quiz redirect</td>
+                            <td><span class="copy-done">TRIVIAL</span></td>
+                            <td>James</td>
+                            <td>302 temporary redirect, ~5 minutes</td>
+                        </tr>
+                        <tr>
+                            <td>Webflow locale (DE/EN)</td>
+                            <td><span class="copy-done">STANDARD</span></td>
+                            <td>James</td>
+                            <td>Part of Webflow site setup</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Phase 2 + 3 Summary -->
+        <div class="audit-phase-label" style="margin-top: 40px;">Later Phases: <em>Content Assets Available</em></div>
+
+        <div class="audit-page-block">
+            <div class="audit-page-header" style="background: var(--espresso);">
+                <span class="audit-page-name">Phase 2: davidliebnau.com <span>OP1–OP3 | Target Mar 14</span></span>
+                <div class="audit-readiness">
+                    <div class="readiness-dot dot-orange"></div>
+                    <span class="readiness-label">Copy In Progress</span>
+                </div>
+            </div>
+            <div class="audit-body">
+                <table class="audit-table">
+                    <thead><tr><th>Page</th><th>Copy Status</th><th>Notes</th></tr></thead>
+                    <tbody>
+                        <tr><td>OP1 — Homepage / Orientation</td><td><span class="copy-draft">David writing</span></td><td>Personal brand site, not funnel</td></tr>
+                        <tr><td>OP2 — Podcast Page</td><td><span class="copy-missing">Not started</span></td><td>"Leise Kraft" podcast integration</td></tr>
+                        <tr><td>OP3 — Approach / How We Work</td><td><span class="copy-missing">Not started</span></td><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="audit-page-block">
+            <div class="audit-page-header" style="background: var(--espresso);">
+                <span class="audit-page-name">Phase 3: Product Pages <span>LP4–LP6 | Target Mar 31</span></span>
+                <div class="audit-readiness">
+                    <div class="readiness-dot dot-yellow"></div>
+                    <span class="readiness-label">Source Content Exists</span>
+                </div>
+            </div>
+            <div class="audit-body">
+                <table class="audit-table">
+                    <thead><tr><th>Page</th><th>Source Material</th><th>Web Copy Status</th><th>Notes</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <td>LP4 — Notion OS (€197)</td>
+                            <td><span class="copy-done">FULL DOC</span></td>
+                            <td><span class="copy-missing">NOT ADAPTED</span></td>
+                            <td>11-question assessment + dashboard specs + Notion formulas provided</td>
+                        </tr>
+                        <tr>
+                            <td>LP5 — SOLO Program (1:1)</td>
+                            <td><span class="copy-missing">NOT PROVIDED</span></td>
+                            <td><span class="copy-missing">NOT STARTED</span></td>
+                            <td>David + Marquis to create</td>
+                        </tr>
+                        <tr>
+                            <td>LP6 — THRESHOLD (€9,700)</td>
+                            <td><span class="copy-done">FULL 20-PAGE BROCHURE</span></td>
+                            <td><span class="copy-missing">NOT ADAPTED</span></td>
+                            <td>Complete: pricing, testimonials, journey, value calc, about David</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Key Insight -->
+        <div class="audit-note">
+            <div class="audit-note-title">Key Insight</div>
+            <p>The quiz content is the strongest asset — fully written in both languages with complete scoring logic. LP2 results copy is also done for all 7 types in DE + EN. The main gaps are English translations for LP1, CTA copy updates for LP2, and confirming LP3 copy finality.</p>
+            <p style="margin-top: 8px;">For March 1, the email course (David's responsibility) is the biggest external dependency — no copy has been shared and the platform is unknown.</p>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    // Tab navigation
+    document.querySelectorAll('.nav-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
+            tab.classList.add('active');
+            document.getElementById(tab.dataset.panel).classList.add('active');
+        });
+    });
+</script>
+
+</body>
+</html>

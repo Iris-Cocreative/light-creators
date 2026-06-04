@@ -1,0 +1,547 @@
+/* ═══════════════════════════════════════════
+   Light Creators — Quiz Overlay Styles
+   Loaded externally onto Webflow page
+
+   Depends on brand variables from iris-brand.css
+   or defines LC-specific tokens below.
+
+   SUGGESTED WEBFLOW VARIABLES (add to site-wide settings):
+   --lc-sand-60: rgba(255,248,230,0.6)
+   --lc-sand-50: rgba(255,248,230,0.5)
+   --lc-sand-35: rgba(255,248,230,0.35)
+   --lc-sand-15: rgba(255,248,230,0.15)
+   --lc-sand-06: rgba(255,248,230,0.06)
+   --lc-sand-04: rgba(255,248,230,0.04)
+   --lc-sand-025: rgba(255,248,230,0.025)
+   --lc-horizon-25: rgba(5,64,76,0.25)
+   --lc-gold-glow: rgba(224,183,111,0.12)
+   ═══════════════════════════════════════════ */
+
+/* ── CSS Variables (LC sub-brand + transparency tokens) ── */
+:root {
+    --lc-midnight: #04171F;
+    --lc-umber: #393231;
+    --lc-gold-bright: #FFDB9D;
+    --lc-gold-dark: #A87D34;
+    --lc-soft-gold: #E0B76F;
+    --lc-aurora: #83A18E;
+    --lc-horizon: #05404C;
+    --lc-sand: #FFF8E6;
+    --lc-serif: 'Playfair Display', Georgia, serif;
+    --lc-sans: 'Hanken Grotesk', sans-serif;
+
+    /* Sand transparency scale — for consistent use across pages */
+    --lc-sand-70: rgba(255,248,230,0.7);
+    --lc-sand-60: rgba(255,248,230,0.6);
+    --lc-sand-55: rgba(255,248,230,0.55);
+    --lc-sand-50: rgba(255,248,230,0.5);
+    --lc-sand-45: rgba(255,248,230,0.45);
+    --lc-sand-35: rgba(255,248,230,0.35);
+    --lc-sand-15: rgba(255,248,230,0.15);
+    --lc-sand-06: rgba(255,248,230,0.06);
+    --lc-sand-04: rgba(255,248,230,0.04);
+    --lc-sand-025: rgba(255,248,230,0.025);
+
+    /* Semantic transparency tokens */
+    --lc-horizon-25: rgba(5,64,76,0.25);
+    --lc-gold-glow-sm: rgba(224,183,111,0.12);
+    --lc-gold-glow-md: rgba(224,183,111,0.15);
+    --lc-gold-glow-lg: rgba(224,183,111,0.22);
+    --lc-gold-30: rgba(224,183,111,0.3);
+}
+
+/* ═══════════════════════════════════════════
+   QUIZ OVERLAY — covers full viewport
+   ═══════════════════════════════════════════ */
+#lc-quiz-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: var(--lc-midnight);
+    font-family: var(--lc-sans);
+    color: var(--lc-sand);
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+#lc-quiz-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* ── Rotating Background ── */
+.lc-bg-rotate {
+    position: fixed;
+    top: 50%; left: 50%;
+    width: 160vmax; height: 160vmax;
+    transform: translate(-50%, -50%) rotate(0deg);
+    animation: lcBgSpin 180s linear infinite;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.25;
+}
+
+.lc-bg-rotate img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+}
+
+@keyframes lcBgSpin {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* ── Iris Logomark Animation (welcome background) ── */
+.lc-iris-container {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(100vw, 100vh);
+    height: min(100vw, 100vh);
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.2;
+}
+
+.lc-iris-container canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* ── Logo ── */
+.lc-logo-header {
+    position: fixed;
+    top: 22px; left: 24px;
+    z-index: 10001;
+    opacity: 0;
+    transition: opacity var(--transition-slow, 0.4s ease);
+}
+
+.lc-logo-header.visible { opacity: 0.85; }
+.lc-logo-header img { height: 89px; width: auto; }
+
+/* ── Progress Bar ── */
+.lc-progress-bar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 10000;
+    display: none;
+}
+
+.lc-progress-bar.visible { display: block; }
+
+.lc-progress-track { height: 2px; background: var(--lc-sand-04); }
+
+.lc-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--lc-horizon), var(--lc-soft-gold));
+    transition: width 0.6s cubic-bezier(0.22,1,0.36,1);
+    width: 0%;
+}
+
+.lc-progress-text {
+    text-align: center;
+    padding: 10px 0 0;
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--lc-aurora);
+    opacity: 0.35;
+}
+
+/* ── Screens ── */
+.lc-screen {
+    display: none;
+    height: 100vh;
+    padding: 80px 24px 60px;
+    position: relative;
+    z-index: 2;
+    overflow-y: auto;
+}
+
+.lc-screen.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: lcScreenIn 0.55s ease forwards;
+}
+
+@keyframes lcScreenIn {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.lc-screen-inner { max-width: 620px; width: 100%; }
+
+/* ── Welcome Screen ── */
+.lc-welcome-screen { text-align: center; position: relative; }
+
+.lc-welcome-logo { margin-bottom: 48px; }
+.lc-welcome-logo img { height: 160px; width: auto; opacity: 0.9; }
+
+.lc-welcome-eyebrow {
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--lc-aurora);
+    opacity: 0.5;
+    margin-bottom: 24px;
+}
+
+.lc-welcome-title {
+    font-family: var(--lc-serif);
+    font-size: clamp(2rem, 5vw, 3.1rem);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--lc-sand);
+    margin-bottom: 24px;
+}
+
+.lc-welcome-title em { font-style: italic; color: var(--lc-soft-gold); }
+
+.lc-welcome-sub {
+    font-size: 1rem;
+    font-weight: 350;
+    color: var(--lc-sand-60);
+    line-height: 1.75;
+    margin-bottom: 12px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.lc-welcome-note {
+    font-family: var(--lc-serif);
+    font-size: 0.95rem;
+    font-style: italic;
+    color: var(--lc-aurora);
+    opacity: 0.5;
+    margin-bottom: 48px;
+}
+
+/* ── Gold Button ── */
+.lc-btn-gold {
+    display: inline-block;
+    font-family: var(--lc-sans);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--lc-midnight);
+    background: linear-gradient(135deg, var(--lc-gold-bright), var(--lc-soft-gold));
+    padding: 16px 52px;
+    border: none;
+    border-radius: var(--border-radius-sm, 6px);
+    cursor: pointer;
+    transition: all 0.35s ease;
+    box-shadow: 0 4px 24px var(--lc-gold-glow-sm);
+}
+
+.lc-btn-gold:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 32px var(--lc-gold-glow-lg);
+    background: linear-gradient(135deg, var(--lc-sand), var(--lc-gold-bright));
+}
+
+/* ── Question Screens ── */
+.lc-q-section {
+    font-size: 0.58rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--lc-soft-gold);
+    opacity: 0.45;
+    margin-bottom: 6px;
+}
+
+.lc-q-factor {
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--lc-aurora);
+    margin-bottom: 28px;
+    opacity: 0.6;
+}
+
+.lc-q-text {
+    font-family: var(--lc-serif);
+    font-size: clamp(1.3rem, 3.5vw, 1.9rem);
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--lc-sand);
+    margin-bottom: 40px;
+}
+
+.lc-options { display: flex; flex-direction: column; gap: 10px; }
+
+.lc-option {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 17px 22px;
+    background: var(--lc-sand-025);
+    border: 1px solid var(--lc-sand-06);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all var(--transition-base, 0.25s ease);
+    position: relative;
+}
+
+.lc-option:hover {
+    background: rgba(255,248,230,0.05);
+    border-color: var(--lc-gold-glow-md);
+}
+
+.lc-option.selected {
+    background: var(--lc-horizon-25);
+    border-color: var(--lc-horizon);
+}
+
+.lc-option-marker {
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    border: 1.5px solid var(--lc-sand-15);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-base, 0.25s ease);
+    margin-top: 1px;
+}
+
+.lc-option.selected .lc-option-marker {
+    border-color: var(--lc-aurora);
+    background: var(--lc-aurora);
+}
+
+.lc-option.selected .lc-option-marker::after {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--lc-midnight);
+}
+
+.lc-option-text {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--lc-sand-70);
+    font-weight: 350;
+}
+
+.lc-option.selected .lc-option-text { color: var(--lc-sand); }
+
+.lc-q-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 36px;
+}
+
+.lc-btn-back {
+    font-family: var(--lc-sans);
+    font-size: 0.75rem;
+    color: var(--lc-aurora);
+    opacity: 0.4;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: opacity var(--transition-fast, 0.15s ease);
+    padding: 8px 0;
+    letter-spacing: 0.03em;
+}
+
+.lc-btn-back:hover { opacity: 0.75; }
+
+.lc-btn-next {
+    font-family: var(--lc-sans);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--lc-midnight);
+    background: linear-gradient(135deg, var(--lc-gold-bright), var(--lc-soft-gold));
+    padding: 12px 32px;
+    border: none;
+    border-radius: var(--border-radius-sm, 6px);
+    cursor: pointer;
+    transition: all 0.3s;
+    opacity: 0.2;
+    pointer-events: none;
+    letter-spacing: 0.06em;
+}
+
+.lc-btn-next.enabled { opacity: 1; pointer-events: auto; }
+.lc-btn-next.enabled:hover { transform: translateY(-1px); }
+
+/* ── Transition Screens ── */
+.lc-transition-screen { text-align: center; }
+
+.lc-transition-text {
+    font-family: var(--lc-serif);
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--lc-sand-55);
+    line-height: 1.85;
+    max-width: 440px;
+    margin: 0 auto 40px;
+}
+
+/* ── Loading Screen ── */
+.lc-loading-screen { text-align: center; }
+
+.lc-loading-text {
+    font-family: var(--lc-serif);
+    font-size: 1.3rem;
+    color: var(--lc-sand);
+    margin-bottom: 24px;
+}
+
+.lc-loading-dots { display: flex; justify-content: center; gap: 8px; }
+
+.lc-loading-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--lc-soft-gold);
+    animation: lcDot 1.4s ease-in-out infinite;
+}
+
+.lc-loading-dot:nth-child(2) { animation-delay: 0.2s; }
+.lc-loading-dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes lcDot {
+    0%, 80%, 100% { opacity: 0.15; transform: scale(0.8); }
+    40% { opacity: 1; transform: scale(1); }
+}
+
+/* ═══════════════════════════════════════════
+   RESULTS — populated into Webflow sections
+   These styles apply to elements ON the Webflow page
+   ═══════════════════════════════════════════ */
+
+/* Radar chart canvas — sized by radial-chart.js resize() */
+[data-quiz="radar"] canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    transform: scale(1.5);
+}
+
+/* Factor score bars (injected by script) */
+.lc-factor-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--lc-sand-04);
+}
+
+.lc-factor-item:last-child { border-bottom: none; }
+
+.lc-factor-name {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--lc-sand-50);
+    width: 120px;
+    flex-shrink: 0;
+}
+
+.lc-factor-bar-wrap {
+    flex: 1;
+    height: 6px;
+    background: var(--lc-sand-04);
+    border-radius: 3px;
+    position: relative;
+    overflow: hidden;
+}
+
+.lc-factor-bar {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 1.2s cubic-bezier(0.22,1,0.36,1);
+    width: 0;
+}
+
+.lc-factor-bar.high { background: linear-gradient(90deg, var(--lc-aurora), var(--lc-soft-gold)); }
+.lc-factor-bar.mid { background: linear-gradient(90deg, var(--lc-horizon), var(--lc-aurora)); }
+.lc-factor-bar.low { background: linear-gradient(90deg, var(--lc-gold-30), var(--lc-soft-gold)); }
+
+.lc-factor-score {
+    font-family: var(--lc-serif);
+    font-size: 0.95rem;
+    color: var(--lc-sand);
+    width: 44px;
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.lc-factor-warn {
+    color: var(--lc-soft-gold);
+    font-size: 0.7rem;
+    margin-left: 4px;
+}
+
+/* Results page — hidden until quiz completes */
+[data-quiz-results] {
+    display: none;
+}
+
+[data-quiz-results].lc-results-visible {
+    display: block;
+    animation: lcScreenIn 0.6s ease forwards;
+}
+
+/* Course items list (injected into Webflow container) */
+.lc-course-item {
+    font-size: 0.85rem;
+    font-weight: 350;
+    color: var(--lc-sand-60);
+    padding: 6px 0 6px 20px;
+    position: relative;
+    line-height: 1.6;
+    list-style: none;
+}
+
+.lc-course-item::before {
+    content: '\2192';
+    position: absolute;
+    left: 0;
+    color: var(--lc-soft-gold);
+    opacity: 0.4;
+    font-size: 0.8rem;
+}
+
+/* Outcome items list */
+.lc-outcome-item {
+    font-size: 0.82rem;
+    font-weight: 350;
+    color: var(--lc-sand-55);
+    padding: 4px 0 4px 16px;
+    position: relative;
+    list-style: none;
+}
+
+.lc-outcome-item::before {
+    content: '\2713';
+    position: absolute;
+    left: 0;
+    color: var(--lc-aurora);
+    font-size: 0.72rem;
+}
+
+/* Profile text paragraphs */
+[data-quiz="profile-text"] p {
+    font-family: var(--lc-sans);
+    font-size: 0.98rem;
+    font-weight: 350;
+    color: var(--lc-sand-70);
+    line-height: 1.85;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 640px) {
+    .lc-screen { padding: 60px 20px 40px; }
+    .lc-welcome-logo img { height: 120px; }
+    .lc-factor-name { width: 90px; font-size: 0.65rem; }
+    .lc-logo-header { display: none; }
+}

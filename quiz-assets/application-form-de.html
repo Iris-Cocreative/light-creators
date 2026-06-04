@@ -1,0 +1,629 @@
+<!--
+  ╔══════════════════════════════════════════════════════════════════════╗
+  ║  DISCOVERY CALL BEWERBUNGSFORMULAR — Light Creators                 ║
+  ║  Built by Iris Cocreative for David Liebnau                          ║
+  ╠═══════════════════════════════════════════════════════════════════════╣
+  ║  Deutsche Version                                                    ║
+  ║  Webhook, CSS, JS-Logik unverändert — nur Texte übersetzt.          ║
+  ╚═════════════════════════════════════════════════════════════════════╝
+-->
+
+<style>
+  .dc-form {
+    width: 100%;
+  }
+
+  .dc-form__section {
+    margin-bottom: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .dc-form__section:last-of-type {
+    border-bottom: none;
+    margin-bottom: 24px;
+    padding-bottom: 0;
+  }
+
+  .dc-form__section-heading {
+    margin-bottom: 32px;
+  }
+
+  .dc-form__field {
+    margin-bottom: 28px;
+  }
+  .dc-form__field:last-child {
+    margin-bottom: 0;
+  }
+
+  .dc-form__question {
+    margin-bottom: 14px;
+  }
+
+  .dc-form__helper {
+    opacity: 0.45;
+    margin-top: -6px;
+    margin-bottom: 14px;
+  }
+
+  .input-group.input-group--textarea {
+    height: 180px;
+    overflow: auto;
+  }
+  .input-group.input-group--textarea-lg {
+    height: 240px;
+    overflow: auto;
+  }
+
+  select.input.w-input {
+    -webkit-appearance: none;
+    appearance: none;
+    padding-right: 44px;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' fill='none' stroke='%23F5E6C4' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 12px 8px;
+  }
+
+  select.input.w-input option {
+    background: #FFFFFF;
+    color: #0F1A20;
+  }
+
+  .dc-form__radio-group,
+  .dc-form__checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .dc-form__choice-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    cursor: pointer;
+    padding: 14px 18px;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: var(--_components---button--border-radius, 8px);
+    transition: border-color 0.2s, background-color 0.2s;
+  }
+  .dc-form__choice-item:hover {
+    border-color: rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.03);
+  }
+  .dc-form__choice-item input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .dc-form__radio-mark {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.25);
+    flex-shrink: 0;
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s;
+  }
+  .dc-form__radio-mark::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #CE9B44;
+    transform: scale(0);
+    transition: transform 0.15s ease;
+  }
+  .dc-form__choice-item input:checked ~ .dc-form__radio-mark {
+    border-color: #CE9B44;
+  }
+  .dc-form__choice-item input:checked ~ .dc-form__radio-mark::after {
+    transform: scale(1);
+  }
+
+  .dc-form__checkbox-mark {
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    border: 1.5px solid rgba(255,255,255,0.25);
+    flex-shrink: 0;
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s, background-color 0.2s;
+  }
+  .dc-form__checkbox-mark svg {
+    width: 12px;
+    height: 12px;
+    stroke: #0F1A20;
+    stroke-width: 2.5;
+    fill: none;
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+  .dc-form__choice-item input:checked ~ .dc-form__checkbox-mark {
+    background: #CE9B44;
+    border-color: #CE9B44;
+  }
+  .dc-form__choice-item input:checked ~ .dc-form__checkbox-mark svg {
+    opacity: 1;
+  }
+
+  .dc-form__choice-item:has(input:checked) {
+    border-color: rgba(206, 155, 68, 0.4);
+    background: rgba(206, 155, 68, 0.04);
+  }
+
+  .dc-form__conditional {
+    display: none;
+    margin-top: 20px;
+    padding-left: 20px;
+    border-left: 2px solid #CE9B44;
+  }
+  .dc-form__conditional.visible {
+    display: block;
+  }
+
+  .dc-form__callout {
+    margin-top: 16px;
+    padding: 18px 22px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: var(--_components---button--border-radius, 8px);
+    line-height: 1.65;
+  }
+
+  .dc-form__submit {
+    display: inline-block;
+    font-size: var(--_typography---paragraph-body--font-size, 0.88rem);
+    font-weight: 500;
+    font-family: inherit;
+    letter-spacing: 0.05em;
+    color: #0F1A20;
+    background: #CE9B44;
+    padding: 16px 48px;
+    border: none;
+    border-radius: var(--_components---button--border-radius, 8px);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 16px;
+  }
+  .dc-form__submit:hover {
+    background: #F5E6C4;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  }
+  .dc-form__submit:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+
+  .dc-form__field.has-error .input {
+    border-color: #B85450 !important;
+  }
+  .dc-form__field.has-error .dc-form__choice-item {
+    border-color: rgba(184, 84, 80, 0.4);
+  }
+  .dc-form__error-msg {
+    display: none;
+    color: #E8655A;
+    margin-top: 8px;
+  }
+  .dc-form__field.has-error .dc-form__error-msg {
+    display: block;
+  }
+
+  .dc-form__success {
+    display: none;
+    text-align: center;
+    padding: 60px 24px;
+  }
+  .dc-form__success.visible {
+    display: block;
+  }
+  .dc-form__success-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.15);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 28px;
+  }
+  .dc-form__success-icon svg {
+    width: 24px;
+    height: 24px;
+    stroke: #CE9B44;
+    stroke-width: 2;
+    fill: none;
+  }
+</style>
+
+<div class="dc-form" id="dcForm">
+
+  <!-- ━━━ ERFOLGS-ZUSTAND ━━━ -->
+  <div class="dc-form__success" id="dcSuccess">
+    <div class="dc-form__success-icon">
+      <svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 6"></polyline></svg>
+    </div>
+    <p class="h4" style="margin-bottom: 12px;">Bewerbung eingegangen.</p>
+    <p class="paragraph" style="max-width: 420px; margin: 0 auto; opacity: 0.7;">
+      Ich schaue mir deine Antworten an und melde mich innerhalb von 48 Stunden. Prüfe deinen Posteingang.
+    </p>
+  </div>
+
+  <!-- ━━━ DAS FORMULAR ━━━ -->
+  <form id="dcFormEl" novalidate>
+
+    <!-- ══════════════════════════════════════════════════
+         ABSCHNITT 1: BASIS-INFO
+         ══════════════════════════════════════════════════ -->
+    <div class="dc-form__section">
+      <p class="eyebrow dc-form__section-heading">Basis-Info</p>
+
+      <div class="dc-form__field">
+        <div class="field-wrap">
+          <div class="input-group">
+            <label for="dc-firstName" class="input-label">Vorname*</label>
+            <input class="input w-input" maxlength="256" name="firstName" placeholder="dein Vorname" type="text" id="dc-firstName" required autocomplete="given-name">
+          </div>
+          <div class="input-group">
+            <label for="dc-email" class="input-label">Email*</label>
+            <input class="input w-input" maxlength="256" name="email" placeholder="deine Email-Adresse" type="email" id="dc-email" required autocomplete="email">
+          </div>
+        </div>
+        <p class="dc-form__error-msg paragraph-sm">Bitte gib deinen Namen und eine gültige Email-Adresse ein.</p>
+      </div>
+
+      <div class="dc-form__field">
+        <div class="input-group">
+          <label for="dc-linkedin" class="input-label">LinkedIn-Profil</label>
+          <input class="input w-input" maxlength="256" name="linkedin" placeholder="https://linkedin.com/in/..." type="url" id="dc-linkedin" autocomplete="url">
+        </div>
+        <p class="dc-form__helper paragraph-sm">Optional — hilft mir, dich besser kennenzulernen</p>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════
+         ABSCHNITT 2: DEINE SITUATION
+         ══════════════════════════════════════════════════ -->
+    <div class="dc-form__section">
+      <p class="eyebrow dc-form__section-heading">Deine Situation</p>
+
+      <!-- RADIO: Quiz gemacht? -->
+      <div class="dc-form__field">
+        <p class="dc-form__question h6">Hast du das Founder Resonance Quiz gemacht?*</p>
+        <div class="dc-form__radio-group" id="dc-quizTaken">
+          <label class="dc-form__choice-item">
+            <input type="radio" name="quizTaken" value="yes" required>
+            <span class="dc-form__radio-mark"></span>
+            <span class="paragraph">Ja, hier ist mein Ergebnis</span>
+          </label>
+          <label class="dc-form__choice-item">
+            <input type="radio" name="quizTaken" value="no">
+            <span class="dc-form__radio-mark"></span>
+            <span class="paragraph">Nein, ich komme direkt von Instagram / LinkedIn / Empfehlung</span>
+          </label>
+        </div>
+        <p class="dc-form__error-msg paragraph-sm">Bitte wähle eine Option.</p>
+      </div>
+
+      <!-- KONDITIONAL: Founder-Typ Dropdown -->
+      <div class="dc-form__conditional" id="dc-founderTypeWrap">
+        <div class="dc-form__field">
+          <div class="input-group">
+            <label for="dc-founderType" class="input-label">Dein Founder-Typ:*</label>
+            <select class="input w-input" id="dc-founderType" name="founderType">
+              <option value="" disabled selected>Typ auswählen...</option>
+              <option value="The Logical Visionary">The Logical Visionary</option>
+              <option value="The Grounded Strategist">The Grounded Strategist</option>
+              <option value="The Charismatic Operator">The Charismatic Operator</option>
+              <option value="The Integrated Leader">The Integrated Leader</option>
+              <option value="The Almost-There Founder">The Almost-There Founder</option>
+              <option value="The Overloaded Operator">The Overloaded Operator</option>
+              <option value="The Disconnected Genius">The Disconnected Genius</option>
+              <option value="Don't remember">Weiß ich nicht mehr / Ergebnis nicht gespeichert</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- SELECT: Unternehmensphase -->
+      <div class="dc-form__field">
+        <p class="dc-form__question h6">Wo stehst du mit deinem Unternehmen?*</p>
+        <div class="input-group">
+          <label for="dc-companyStage" class="input-label">Unternehmensphase*</label>
+          <select class="input w-input" id="dc-companyStage" name="companyStage" required>
+            <option value="" disabled selected>Phase auswählen...</option>
+            <option value="Pre-seed">Pre-Seed (MVP-Phase, noch kein aktives Fundraising)</option>
+            <option value="Seed">Seed (aktiv im VC-Pitch-Prozess)</option>
+            <option value="Series A prep">Series A Vorbereitung (Scaling, institutionelle Investoren)</option>
+            <option value="Between rounds">Zwischen Runden (Bridge, Runway Extension, Pivot)</option>
+            <option value="Exit evaluation">Exit-Evaluierung (PE/Strategic Buyer Gespräche)</option>
+            <option value="Bootstrapped">Bootstrap (kein Fundraising geplant)</option>
+            <option value="Other">Sonstiges (CEO, Corporate, Leadership-Team)</option>
+          </select>
+        </div>
+        <p class="dc-form__error-msg paragraph-sm">Bitte wähle deine Unternehmensphase.</p>
+      </div>
+
+      <!-- KONDITIONAL: Sonstiges Textfeld -->
+      <div class="dc-form__conditional" id="dc-otherSituationWrap">
+        <div class="dc-form__field">
+          <div class="input-group input-group--textarea">
+            <label for="dc-otherSituation" class="input-label">Beschreib kurz deine Situation:*</label>
+            <textarea class="input w-input" id="dc-otherSituation" name="otherSituation" rows="3" placeholder="z.B. CEO eines Mittelständlers, 150 Mitarbeiter, Thema: Stakeholder-Kommunikation"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- TEXTAREA: Branche/Kontext -->
+      <div class="dc-form__field">
+        <div class="input-group input-group--textarea">
+          <label for="dc-industryContext" class="input-label">Branche, Team-Größe, aktueller Status:*</label>
+          <textarea class="input w-input" id="dc-industryContext" name="industryContext" rows="2" required placeholder="z.B. Climate Tech, 8 Personen, pitche gerade 3 VCs"></textarea>
+        </div>
+        <p class="dc-form__error-msg paragraph-sm">Bitte beschreibe deine Branche und dein Team.</p>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════
+         ABSCHNITT 3: DEINE HERAUSFORDERUNG
+         ══════════════════════════════════════════════════ -->
+    <div class="dc-form__section">
+      <p class="eyebrow dc-form__section-heading">Deine Herausforderung</p>
+
+      <div class="dc-form__field">
+        <div class="input-group input-group--textarea-lg">
+          <label for="dc-challenge" class="input-label">Was ist aktuell deine größte Herausforderung beim Aufbauen von vertrauensvollen Beziehungen mit Investoren?*</label>
+          <textarea class="input w-input" id="dc-challenge" name="challenge" rows="4" required placeholder="Sei so konkret wie möglich..."></textarea>
+        </div>
+        <p class="dc-form__error-msg paragraph-sm">Bitte beschreibe deine aktuelle Herausforderung.</p>
+      </div>
+
+      <div class="dc-form__field">
+        <div class="input-group input-group--textarea-lg">
+          <label for="dc-futureState" class="input-label">Stell dir vor, die nächsten 6 Monate verlaufen maximal erfolgreich. Wie sieht dein Leben dann aus?*</label>
+          <textarea class="input w-input" id="dc-futureState" name="futureState" rows="4" required placeholder="Beschreibe kurz: Funding, Team, persönliches Gefühl..."></textarea>
+        </div>
+        <p class="dc-form__error-msg paragraph-sm">Bitte beschreibe deinen gewünschten Zustand.</p>
+      </div>
+
+      <div class="dc-form__field">
+        <div class="input-group input-group--textarea">
+          <label for="dc-triedSolutions" class="input-label">Was hast du bereits versucht, um diese Herausforderung zu lösen?*</label>
+          <textarea class="input w-input" id="dc-triedSolutions" name="triedSolutions" rows="3" required placeholder="z.B. Pitch-Coaching, Präsentationstraining, mehr Meetings..."></textarea>
+        </div>
+        <p class="dc-form__error-msg paragraph-sm">Bitte teile mit, was du bereits versucht hast.</p>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════
+         ABSCHNITT 4: INVESTITION & TIMELINE
+         ══════════════════════════════════════════════════ -->
+    <div class="dc-form__section">
+      <p class="eyebrow dc-form__section-heading">Investition &amp; Timeline</p>
+
+      <div class="dc-form__field">
+        <p class="dc-form__question h6">Falls wir nach dem Call feststellen, dass tiefere Arbeit Sinn macht – wie würdest du investieren wollen?*</p>
+        <div class="input-group">
+          <label for="dc-investmentReadiness" class="input-label">Investitionsbereitschaft*</label>
+          <select class="input w-input" id="dc-investmentReadiness" name="investmentReadiness" required>
+            <option value="" disabled selected>auswählen...</option>
+            <option value="Budget upfront">Ja, ich habe Budget für Coaching (€3.000–10.000 upfront)</option>
+            <option value="Payment plan">Ja, über einen Payment Plan (z.B. 3–6 Raten)</option>
+            <option value="Success fee">Ja, über Success Fee (reduzierter Upfront + % bei Funding-Erfolg)</option>
+            <option value="Depends">Kommt drauf an (zeig mir erst den Wert)</option>
+            <option value="Free only">Nein, ich suche nur kostenloses Feedback</option>
+          </select>
+        </div>
+        <p class="dc-form__error-msg paragraph-sm">Bitte wähle eine Option.</p>
+        <div class="dc-form__callout paragraph-sm">
+          <strong>💡 Was bedeutet Success Fee?</strong><br>
+          Reduzierter Upfront-Betrag (z.B. €2.000 statt €4.500) + vereinbarter % vom Funding (z.B. 2%), wenn du in 6 Monaten erfolgreich abschließt. Nur wenn du gewinnst, gewinne ich.
+        </div>
+      </div>
+
+      <div class="dc-form__field">
+        <p class="dc-form__question h6">Wann willst du deine nächste Funding-Runde abschließen?*</p>
+        <div class="input-group">
+          <label for="dc-fundingTimeline" class="input-label">Funding-Timeline*</label>
+          <select class="input w-input" id="dc-fundingTimeline" name="fundingTimeline" required>
+            <option value="" disabled selected>auswählen...</option>
+            <option value="1-3 months">In 1–3 Monaten (aktiv im Prozess)</option>
+            <option value="3-6 months">In 3–6 Monaten (Vorbereitung läuft)</option>
+            <option value="6-12 months">In 6–12 Monaten (noch früh)</option>
+            <option value="Unclear">Noch unklar / kein Funding geplant</option>
+          </select>
+        </div>
+        <p class="dc-form__error-msg paragraph-sm">Bitte wähle eine Timeline.</p>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════
+         ABSCHNITT 5: ERWARTUNGS-CHECK
+         ══════════════════════════════════════════════════ -->
+    <div class="dc-form__section">
+      <p class="eyebrow dc-form__section-heading">Erwartungs-Check</p>
+
+      <div class="dc-form__field">
+        <p class="dc-form__question h6">Was erwartest du <em>nicht</em> von diesem Call?*</p>
+        <p class="dc-form__helper paragraph-sm">Wähle mindestens eine Option.</p>
+        <div class="dc-form__checkbox-group" id="dc-expectations">
+          <label class="dc-form__choice-item">
+            <input type="checkbox" name="expectations" value="Pitch deck review">
+            <span class="dc-form__checkbox-mark"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></span>
+            <span class="paragraph">Pitch-Deck-Review</span>
+          </label>
+          <label class="dc-form__choice-item">
+            <input type="checkbox" name="expectations" value="Investor introductions">
+            <span class="dc-form__checkbox-mark"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></span>
+            <span class="paragraph">Investor-Intros</span>
+          </label>
+          <label class="dc-form__choice-item">
+            <input type="checkbox" name="expectations" value="Free coaching for weeks">
+            <span class="dc-form__checkbox-mark"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></span>
+            <span class="paragraph">Kostenloses Coaching über Wochen</span>
+          </label>
+          <label class="dc-form__choice-item">
+            <input type="checkbox" name="expectations" value="Quick fixes without personal work">
+            <span class="dc-form__checkbox-mark"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></span>
+            <span class="paragraph">Schnelle Fixes ohne eigene Arbeit</span>
+          </label>
+          <label class="dc-form__choice-item">
+            <input type="checkbox" name="expectations" value="Guarantee of funding success">
+            <span class="dc-form__checkbox-mark"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></span>
+            <span class="paragraph">Garantie auf Funding-Erfolg</span>
+          </label>
+        </div>
+        <p class="dc-form__error-msg paragraph-sm">Bitte wähle mindestens eine Option.</p>
+      </div>
+    </div>
+
+    <!-- ══ ABSENDEN ══ -->
+    <button type="submit" class="dc-form__submit" id="dcSubmitBtn">Bewerbung abschicken</button>
+
+  </form>
+</div>
+
+<script>
+(function() {
+  var WEBHOOK = 'https://cocreative.app.n8n.cloud/webhook/2f90ce51-d413-4c17-865a-95f4bbdd72b7';
+  var form = document.getElementById('dcFormEl');
+  var successEl = document.getElementById('dcSuccess');
+  var submitBtn = document.getElementById('dcSubmitBtn');
+
+  var quizRadios = document.querySelectorAll('input[name="quizTaken"]');
+  var ftWrap = document.getElementById('dc-founderTypeWrap');
+  var ftSelect = document.getElementById('dc-founderType');
+
+  quizRadios.forEach(function(r) {
+    r.addEventListener('change', function() {
+      if (this.value === 'yes') {
+        ftWrap.classList.add('visible');
+        ftSelect.setAttribute('required', '');
+      } else {
+        ftWrap.classList.remove('visible');
+        ftSelect.removeAttribute('required');
+        ftSelect.value = '';
+      }
+    });
+  });
+
+  var stageSelect = document.getElementById('dc-companyStage');
+  var otherWrap = document.getElementById('dc-otherSituationWrap');
+  var otherField = document.getElementById('dc-otherSituation');
+
+  stageSelect.addEventListener('change', function() {
+    if (this.value === 'Other') {
+      otherWrap.classList.add('visible');
+      otherField.setAttribute('required', '');
+    } else {
+      otherWrap.classList.remove('visible');
+      otherField.removeAttribute('required');
+      otherField.value = '';
+    }
+  });
+
+  function validate() {
+    var ok = true;
+    form.querySelectorAll('.dc-form__field.has-error').forEach(function(f) {
+      f.classList.remove('has-error');
+    });
+
+    form.querySelectorAll('input[required], textarea[required], select[required]').forEach(function(el) {
+      if (el.type === 'radio') return;
+      var field = el.closest('.dc-form__field');
+      if (!el.value || !el.value.trim()) {
+        if (field) field.classList.add('has-error');
+        ok = false;
+      }
+      if (el.type === 'email' && el.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim())) {
+        if (field) field.classList.add('has-error');
+        ok = false;
+      }
+    });
+
+    if (!form.querySelector('input[name="quizTaken"]:checked')) {
+      var qf = document.getElementById('dc-quizTaken').closest('.dc-form__field');
+      if (qf) qf.classList.add('has-error');
+      ok = false;
+    }
+
+    if (form.querySelectorAll('input[name="expectations"]:checked').length === 0) {
+      var ef = document.getElementById('dc-expectations').closest('.dc-form__field');
+      if (ef) ef.classList.add('has-error');
+      ok = false;
+    }
+
+    return ok;
+  }
+
+  function collect() {
+    var quiz = form.querySelector('input[name="quizTaken"]:checked');
+    var exps = [];
+    form.querySelectorAll('input[name="expectations"]:checked').forEach(function(cb) {
+      exps.push(cb.value);
+    });
+
+    return {
+      form: 'discovery-call',
+      language: document.documentElement.lang || 'de',
+      firstName: form.querySelector('#dc-firstName').value.trim(),
+      email: form.querySelector('#dc-email').value.trim(),
+      linkedin: form.querySelector('#dc-linkedin').value.trim() || null,
+      quizTaken: quiz ? quiz.value : null,
+      founderType: ftSelect.value || null,
+      companyStage: stageSelect.value,
+      otherSituation: otherField.value.trim() || null,
+      industryContext: form.querySelector('#dc-industryContext').value.trim(),
+      challenge: form.querySelector('#dc-challenge').value.trim(),
+      futureState: form.querySelector('#dc-futureState').value.trim(),
+      triedSolutions: form.querySelector('#dc-triedSolutions').value.trim(),
+      investmentReadiness: form.querySelector('#dc-investmentReadiness').value,
+      fundingTimeline: form.querySelector('#dc-fundingTimeline').value,
+      expectations: exps,
+      submittedAt: new Date().toISOString()
+    };
+  }
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    if (!validate()) {
+      var first = form.querySelector('.dc-form__field.has-error');
+      if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Wird gesendet...';
+
+    fetch(WEBHOOK, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(collect())
+    })
+    .then(function(res) {
+      if (!res.ok) throw new Error('Submission failed');
+      form.style.display = 'none';
+      successEl.classList.add('visible');
+      successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    })
+    .catch(function(err) {
+      console.error('Form error:', err);
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Bewerbung abschicken';
+      alert('Etwas ist schiefgelaufen. Bitte versuche es erneut oder kontaktiere uns direkt.');
+    });
+  });
+})();
+</script>

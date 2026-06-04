@@ -1,0 +1,269 @@
+/* ==========================================
+   Light Creators — Quiz Webflow Styles
+   Script-only styles — layout & typography handled by Webflow
+   ========================================== */
+
+/* ==========================================
+   CSS VARIABLES (Light Creators brand)
+   ========================================== */
+:root {
+    --lc-midnight: #0B1D26;
+    --lc-sand: #FFF8E6;
+    --lc-soft-gold: #E0B76F;
+    --lc-aurora: #3ea691;
+    --lc-horizon: #335d75;
+    --lc-serif: 'Playfair Display', serif;
+    --lc-sans: 'Hanken Grotesk', sans-serif;
+    --lc-sand-06: rgba(255, 248, 230, 0.06);
+    --lc-sand-04: rgba(255, 248, 230, 0.04);
+    --lc-sand-60: rgba(255, 248, 230, 0.6);
+    --lc-sand-70: rgba(255, 248, 230, 0.7);
+    --lc-gold-glow-md: rgba(224, 183, 111, 0.25);
+    --lc-horizon-25: rgba(51, 93, 117, 0.25);
+}
+
+/* ==========================================
+   IRIS CANVAS CONTAINER
+   ========================================== */
+.quiz-iris-wrap {
+    width: min(360px, 70vw);
+    height: min(360px, 70vw);
+    margin: 0 auto 40px;
+    opacity: 0.35;
+}
+
+.quiz-iris-wrap canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* ==========================================
+   STATEMENT / INTERSTITIAL SLIDE
+   ========================================== */
+.statement-text {
+    font-family: var(--lc-serif);
+    font-size: clamp(1.2rem, 3vw, 1.6rem);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.7;
+    color: var(--lc-sand-70);
+    max-width: 560px;
+    margin: 80px auto 48px;
+    text-align: center;
+}
+
+/* ==========================================
+   QUIZ OPTION — Webflow card-based options
+   Applies to .lc-option-card (Webflow) and .quiz-option (legacy)
+   ========================================== */
+.quiz-option,
+.lc-option-card {
+    cursor: pointer;
+    transition: all 0.25s ease;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.quiz-option:hover,
+.lc-option-card:hover {
+    border-color: var(--lc-gold-glow-md);
+}
+
+.quiz-option.selected,
+.lc-option-card.selected {
+    background: var(--lc-horizon-25);
+    border-color: var(--lc-horizon);
+}
+
+.quiz-option-marker,
+.lc-option-marker {
+    transition: all 0.2s ease;
+}
+
+.quiz-option.selected .quiz-option-marker,
+.lc-option-card.selected .lc-option-marker {
+    border-color: var(--lc-aurora);
+    background: var(--lc-aurora);
+}
+
+.quiz-option.selected .quiz-option-text,
+.lc-option-card.selected .lc-option-text {
+    color: var(--lc-sand);
+}
+
+/* ==========================================
+   FACTOR LABEL (on question slide)
+   ========================================== */
+.cc-factor-label {
+    opacity: 0.4;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+/* ==========================================
+   DISABLED BUTTON STATE
+   ========================================== */
+.cc-disabled {
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+/* ==========================================
+   PROGRESS BAR
+   ========================================== */
+.quiz-progress-bar {
+    width: 100%;
+    height: 3px;
+    background: var(--lc-sand-06);
+    border-radius: 2px;
+    margin-top: 40px;
+    overflow: hidden;
+}
+
+.quiz-progress-fill {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, var(--lc-soft-gold), var(--lc-aurora));
+    border-radius: 2px;
+    transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ==========================================
+   LOADING DOTS
+   ========================================== */
+.quiz-loading-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 32px;
+}
+
+.quiz-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--lc-soft-gold);
+    animation: lcDot 1.4s infinite both;
+}
+
+.quiz-dot:nth-child(2) { animation-delay: 0.2s; }
+.quiz-dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes lcDot {
+    0%, 80%, 100% { transform: scale(0.4); opacity: 0.3; }
+    40% { transform: scale(1); opacity: 1; }
+}
+
+/* ==========================================
+   FACTOR BARS (results)
+   ========================================== */
+.lc-factor-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--lc-sand-04);
+}
+
+.lc-factor-item:last-child {
+    border-bottom: none;
+}
+
+.lc-factor-name {
+    font-family: var(--lc-sans);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--lc-sand-60);
+    width: 130px;
+    flex-shrink: 0;
+}
+
+.lc-factor-bar-wrap {
+    flex: 1;
+    height: 6px;
+    background: var(--lc-sand-04);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.lc-factor-bar {
+    height: 100%;
+    border-radius: 3px;
+    width: 0;
+    transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.lc-factor-bar.high {
+    background: linear-gradient(90deg, var(--lc-aurora), var(--lc-soft-gold));
+}
+
+.lc-factor-bar.mid {
+    background: linear-gradient(90deg, var(--lc-horizon), var(--lc-aurora));
+}
+
+.lc-factor-bar.low {
+    background: linear-gradient(90deg, rgba(224, 183, 111, 0.3), var(--lc-soft-gold));
+}
+
+.lc-factor-score {
+    font-family: var(--lc-serif);
+    font-size: 0.95rem;
+    color: var(--lc-sand);
+    width: 60px;
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.lc-factor-warn {
+    margin-left: 4px;
+    font-size: 0.75rem;
+}
+
+/* ==========================================
+   RESULTS RADAR CHART
+   ========================================== */
+.results-radar-chart,
+.results-radar {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.results-radar-chart canvas,
+.results-radar canvas {
+    display: block;
+    margin: 0 auto;
+    transform: scale(1.5);
+}
+
+/* ==========================================
+   WEBFLOW PROGRESS BAR (fixed at page bottom)
+   ========================================== */
+.lc-progress-fill {
+    transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ==========================================
+   FACTOR BAR INNER (Webflow version)
+   ========================================== */
+.factor-bar-inner {
+    height: 100%;
+    border-radius: inherit;
+}
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+@media (max-width: 640px) {
+    .lc-factor-name {
+        width: 90px;
+        font-size: 0.65rem;
+    }
+
+    .statement-text {
+        margin: 48px auto 32px;
+    }
+}

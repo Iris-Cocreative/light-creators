@@ -1,0 +1,1570 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SOLO — Resonance OS + Flexibler Coach-Zugang | Light Creators</title>
+<meta name="description" content="SOLO ist dein persönliches Resonance-Betriebssystem — selbstgesteuert, datenbasiert, mit direktem Coach-Zugang." />
+
+<!-- Open Graph / social share -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="SOLO — Resonance OS + 2h Coach Access | Light Creators" />
+<meta property="og:description" content="Dein persönliches Resonance-Betriebssystem — selbstgesteuert, datenbasiert, mit direktem Coach-Zugang." />
+<meta property="og:image" content="solo-assets/Images/01-og-share-image.png" />
+<meta property="og:image:width" content="1792" />
+<meta property="og:image:height" content="944" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="solo-assets/Images/01-og-share-image.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+
+<style>
+  /* =====================================================
+     LIGHT CREATORS — SOLO LANDING (warm traffic)
+     ===================================================== */
+  :root {
+    --bg:            #F5F2EC;   /* aged paper */
+    --text:          #0D0D0D;
+    --gold:          #B8973A;
+    --muted:         #6B6560;
+    --border:        #D6D0C4;
+    --callout:       #FAF7F0;
+
+    --font-heading:  "Cormorant Garamond", Georgia, serif;
+    --font-body:     "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+
+    --container:     1200px;
+    --content:       760px;
+    --pad-x-desk:    40px;
+    --pad-x-mob:     24px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--text);
+    background-color: var(--bg);
+    background-image: url("solo-assets/Images/05-paper-texture-seamless.png");
+    background-repeat: repeat;
+    background-size: 512px 512px;
+    background-blend-mode: multiply;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    font-weight: 400;
+    color: var(--text);
+    letter-spacing: -0.005em;
+    line-height: 1.1;
+  }
+
+  p { margin: 0; }
+  em { font-family: var(--font-heading); font-style: italic; }
+  a { color: inherit; text-decoration: none; }
+
+  /* Layout */
+  .container {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 var(--pad-x-desk);
+  }
+  .content {
+    max-width: var(--content);
+    margin: 0 auto;
+  }
+  section { padding: 110px 0; }
+  section + section {
+    border-top: 1px solid var(--border);
+  }
+
+  .label {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: inline-block;
+    margin-bottom: 28px;
+  }
+
+  /* =====================================================
+     NAV
+     ===================================================== */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(245, 242, 236, 0.92);
+    backdrop-filter: saturate(140%) blur(8px);
+    -webkit-backdrop-filter: saturate(140%) blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 18px var(--pad-x-desk);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .logo img {
+    height: 36px;
+    width: auto;
+    display: block;
+  }
+  .logo-wordmark {
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: var(--text);
+    line-height: 1;
+  }
+  .logo-wordmark em { color: var(--gold); font-style: italic; font-weight: 400; }
+  .nav-cta {
+    display: inline-block;
+    padding: 11px 22px;
+    background: var(--gold);
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: background 0.25s, transform 0.25s;
+  }
+  .nav-cta:hover { background: #9c801f; transform: translateY(-1px); }
+
+  /* =====================================================
+     BUTTONS
+     ===================================================== */
+  .btn {
+    display: inline-block;
+    padding: 18px 38px;
+    background: var(--gold);
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    transition: background 0.25s, transform 0.25s;
+    cursor: pointer;
+    border: none;
+  }
+  .btn:hover { background: #9c801f; transform: translateY(-2px); }
+  .btn-block { display: block; text-align: center; width: 100%; max-width: 420px; margin: 0 auto; }
+
+  /* =====================================================
+     HERO
+     ===================================================== */
+  .hero {
+    padding: 140px 0 130px;
+    text-align: center;
+  }
+  .hero h1 {
+    font-size: clamp(42px, 6.4vw, 76px);
+    font-weight: 400;
+    line-height: 1.05;
+    max-width: 18ch;
+    margin: 0 auto 28px;
+  }
+  .hero h1 em { color: var(--gold); font-weight: 500; }
+  .hero-sub {
+    font-size: 20px;
+    color: var(--muted);
+    max-width: 36em;
+    margin: 0 auto 44px;
+    font-weight: 300;
+    line-height: 1.55;
+  }
+  .hero-cta-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+  }
+  .hero-note {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 16px;
+    color: var(--muted);
+    line-height: 1.5;
+    max-width: 38ch;
+  }
+
+  /* =====================================================
+     GENERIC SECTION HEADERS
+     ===================================================== */
+  .section-head {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+  .section-head h2 {
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 400;
+    margin-bottom: 18px;
+  }
+  .section-head .lede {
+    font-size: 18px;
+    color: var(--muted);
+    max-width: 38em;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* =====================================================
+     WHAT DOESN'T WORK
+     ===================================================== */
+  .doesnt-work-list {
+    list-style: none;
+    margin: 0 0 40px;
+    padding: 0;
+  }
+  .doesnt-work-list li {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    column-gap: 18px;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .doesnt-work-list li:first-child { border-top: 1px solid var(--border); }
+  .doesnt-work-list .x {
+    font-family: var(--font-heading);
+    color: var(--gold);
+    font-size: 22px;
+    line-height: 1.4;
+  }
+  .doesnt-work-list .item-title {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+  .doesnt-work-list .item-desc {
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .doesnt-work-close {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 19px;
+    color: var(--text);
+    line-height: 1.5;
+    text-align: center;
+    margin-top: 40px;
+    max-width: 36em;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* =====================================================
+     FIVE FACTORS — RESONANCE HAND
+     ===================================================== */
+  .resonance-hand {
+    display: block;
+    max-width: 420px;
+    width: 100%;
+    height: auto;
+    margin: 24px auto 56px;
+    mix-blend-mode: multiply;
+  }
+  .hand-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 18px;
+    margin: 56px 0 48px;
+  }
+  .hand-card {
+    background: var(--callout);
+    border-top: 2px solid var(--gold);
+    padding: 28px 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .hand-card .icon {
+    color: var(--gold);
+    width: 88px;
+    height: 88px;
+    margin-bottom: 22px;
+    display: block;
+  }
+  .hand-card .icon svg { width: 100%; height: 100%; display: block; }
+  .hand-card h3 {
+    font-size: 26px;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  .hand-card p {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+  .pullquote {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: clamp(22px, 2.4vw, 26px);
+    line-height: 1.45;
+    color: var(--text);
+    text-align: center;
+    max-width: 32em;
+    margin: 56px auto 0;
+  }
+  .pullquote-attr {
+    font-family: var(--font-body);
+    font-style: normal;
+    font-size: 14px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    display: block;
+    margin-top: 14px;
+    text-transform: none;
+  }
+  .handshake-line {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--text);
+    text-align: center;
+    max-width: 40em;
+    margin: 0 auto 0;
+  }
+
+  /* =====================================================
+     FOUR-STEP PROCESS SVG
+     ===================================================== */
+  .process-wrap {
+    margin-top: 40px;
+  }
+  .process-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .process-mobile {
+    display: none;
+  }
+
+  /* =====================================================
+     SOLO PRODUCT DETAIL
+     ===================================================== */
+  .product-intro {
+    font-size: 18px;
+    color: var(--muted);
+    text-align: center;
+    max-width: 38em;
+    margin: 0 auto 56px;
+    line-height: 1.6;
+  }
+  .product-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .product-col {
+    background: var(--callout);
+    border-top: 2px solid var(--gold);
+    padding: 0 0 36px;
+    overflow: hidden;
+  }
+  .product-col .card-image {
+    display: block;
+    width: 100%;
+    height: 220px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+  }
+  .product-col .card-image.async  { background-image: url("solo-assets/Images/07-async-card-header.png"); }
+  .product-col .card-image.synchron { background-image: url("solo-assets/Images/08-synchron-card-header.png"); }
+  .product-col .card-inner { padding: 0 32px; }
+  .product-col h3 {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+  .product-col .icon-title {
+    font-family: var(--font-heading);
+    font-size: 26px;
+    font-weight: 500;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .product-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .product-col li {
+    position: relative;
+    padding: 11px 0 11px 22px;
+    font-size: 15.5px;
+    line-height: 1.55;
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+  }
+  .product-col li:last-child { border-bottom: none; }
+  .product-col li::before {
+    content: "–";
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  /* =====================================================
+     WHY THIS MIX WORKS
+     ===================================================== */
+  .methodology p {
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--text);
+    margin-bottom: 22px;
+  }
+  .callout {
+    background: var(--callout);
+    border-left: 2px solid var(--gold);
+    padding: 26px 32px;
+    margin: 40px 0;
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 19px;
+    line-height: 1.5;
+    color: var(--text);
+  }
+
+  /* =====================================================
+     HOW YOU USE IT
+     ===================================================== */
+  .usage-intro {
+    font-size: 17px;
+    color: var(--text);
+    margin-bottom: 32px;
+    line-height: 1.7;
+  }
+  .usage-bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 36px;
+  }
+  .usage-bullets li {
+    padding: 14px 0 14px 26px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .usage-bullets li::before {
+    content: "–";
+    color: var(--gold);
+    position: absolute;
+    left: 0;
+    font-weight: 500;
+  }
+  .usage-bullets li strong {
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  .sequence {
+    margin-top: 56px;
+  }
+  .sequence h3 {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+  .sequence ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: seq;
+  }
+  .sequence li {
+    counter-increment: seq;
+    padding: 18px 0 18px 56px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    font-size: 16px;
+    line-height: 1.55;
+  }
+  .sequence li::before {
+    content: counter(seq, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 18px;
+    font-family: var(--font-heading);
+    font-size: 22px;
+    color: var(--gold);
+    font-weight: 400;
+  }
+
+  /* =====================================================
+     WHO THIS IS FOR
+     ===================================================== */
+  .who-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px;
+  }
+  .who-list li {
+    padding: 14px 0 14px 32px;
+    position: relative;
+    font-size: 16.5px;
+    line-height: 1.6;
+    border-bottom: 1px solid var(--border);
+  }
+  .who-list li:first-child { border-top: 1px solid var(--border); }
+  .who-list li::before {
+    content: "✓";
+    color: var(--gold);
+    position: absolute;
+    left: 0;
+    top: 14px;
+    font-size: 18px;
+  }
+  .who-exclude {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 16px;
+    color: var(--muted);
+    margin-top: 24px;
+    line-height: 1.55;
+  }
+
+  /* =====================================================
+     TESTIMONIALS
+     ===================================================== */
+  .testimonials {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .testimonial {
+    background: var(--callout);
+    border: 1px solid var(--gold);
+    padding: 32px 36px;
+  }
+  .testimonial blockquote {
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-style: italic;
+    line-height: 1.55;
+    color: var(--text);
+    margin-bottom: 18px;
+  }
+  .testimonial cite {
+    font-family: var(--font-body);
+    font-style: normal;
+    font-size: 14px;
+    color: var(--muted);
+    letter-spacing: 0.02em;
+  }
+  .testimonial cite strong {
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  /* =====================================================
+     ABOUT DAVID
+     ===================================================== */
+  .about {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .about-photo {
+    width: 340px;
+    height: 440px;
+    background-image: url("solo-assets/dl-portrait.png");
+    background-size: cover;
+    background-position: center 25%;
+    position: relative;
+    filter: saturate(0.92);
+  }
+  .about-photo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
+    pointer-events: none;
+  }
+  .about-body h2 {
+    font-size: 38px;
+    font-weight: 400;
+    margin-bottom: 22px;
+  }
+  .about-body p {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+  .about-body p:last-child {
+    color: var(--muted);
+  }
+
+  /* =====================================================
+     INVESTMENT
+     ===================================================== */
+  .price-wrap {
+    text-align: center;
+    padding: 40px 0 20px;
+  }
+  .price-line-1 {
+    font-family: var(--font-body);
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 18px;
+  }
+  .price {
+    font-family: var(--font-heading);
+    font-size: clamp(56px, 8vw, 88px);
+    font-weight: 500;
+    line-height: 1;
+    margin-bottom: 14px;
+  }
+  .price-pay {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 19px;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .price-range {
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.03em;
+    margin-bottom: 36px;
+  }
+  .launch-block {
+    background: var(--callout);
+    border-top: 2px solid var(--gold);
+    padding: 28px 32px;
+    margin: 36px auto 28px;
+    max-width: 640px;
+    text-align: left;
+  }
+  .launch-block .label { margin-bottom: 14px; }
+  .launch-block p {
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+  .launch-block p:last-child { margin-bottom: 0; }
+  .finish-line-note {
+    font-size: 14px;
+    color: var(--muted);
+    text-align: center;
+    font-style: italic;
+    font-family: var(--font-heading);
+    margin-top: 18px;
+  }
+
+  /* =====================================================
+     FAQ
+     ===================================================== */
+  .faq-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid var(--border);
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+  }
+  .faq-item summary {
+    cursor: pointer;
+    padding: 26px 40px 26px 4px;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 17px;
+    color: var(--text);
+    list-style: none;
+    position: relative;
+    transition: color 0.2s;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: "+";
+    position: absolute;
+    right: 4px;
+    top: 22px;
+    font-family: var(--font-heading);
+    font-size: 26px;
+    color: var(--gold);
+    font-weight: 400;
+    transition: transform 0.25s;
+  }
+  .faq-item[open] summary::after { content: "–"; }
+  .faq-item summary:hover { color: var(--gold); }
+  .faq-item .faq-answer {
+    padding: 0 4px 28px;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  /* =====================================================
+     FINAL CTA
+     ===================================================== */
+  .final {
+    text-align: center;
+    padding: 130px 0;
+  }
+  .final h2 {
+    font-size: clamp(34px, 4.4vw, 52px);
+    font-weight: 400;
+    margin-bottom: 20px;
+    max-width: 22ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .final-lede {
+    font-size: 18px;
+    color: var(--muted);
+    max-width: 38em;
+    margin: 0 auto 40px;
+    line-height: 1.6;
+  }
+  .final-note {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 16px;
+    color: var(--muted);
+    margin: 28px auto 0;
+    max-width: 38em;
+    line-height: 1.55;
+  }
+  .after-solo {
+    margin-top: 56px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    font-family: var(--font-heading);
+    font-style: italic;
+    color: var(--muted);
+    font-size: 16px;
+    max-width: 40em;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .contact-line {
+    margin-top: 36px;
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+
+  /* =====================================================
+     ATMOSPHERIC BANDS (mood photo, window light)
+     ===================================================== */
+  .mood-band {
+    height: clamp(280px, 38vw, 480px);
+    background-image: url("solo-assets/Images/03-mood-photograph.png");
+    background-size: cover;
+    background-position: center 60%;
+    background-repeat: no-repeat;
+    position: relative;
+    margin: 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .mood-band::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(245,242,236,0.18) 0%, rgba(245,242,236,0) 25%, rgba(245,242,236,0) 75%, rgba(245,242,236,0.22) 100%);
+    pointer-events: none;
+  }
+
+  /* Slim atmospheric breath panels (09, 10) */
+  .breath-band {
+    height: clamp(140px, 18vw, 220px);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .breath-band--morning   { background-image: url("solo-assets/Images/09-atmospheric-panel-morning.png"); background-position: center 65%; }
+  .breath-band--afternoon { background-image: url("solo-assets/Images/10-atmospheric-panel-afternoon.png"); background-position: center 60%; }
+  .breath-band::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(245,242,236,0.35) 0%, rgba(245,242,236,0) 45%, rgba(245,242,236,0) 55%, rgba(245,242,236,0.35) 100%);
+    pointer-events: none;
+  }
+
+  .final {
+    position: relative;
+    overflow: hidden;
+  }
+  .final::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("solo-assets/Images/06-window-light-panel.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.55;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .final::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(245,242,236,0.4) 0%, rgba(245,242,236,0.1) 50%, rgba(245,242,236,0.4) 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .final > .container { position: relative; z-index: 1; }
+
+  /* =====================================================
+     FOOTER
+     ===================================================== */
+  footer {
+    padding: 56px 0 56px;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 13px;
+    letter-spacing: 0.04em;
+  }
+  footer img.footer-lockup {
+    height: 64px;
+    width: auto;
+    display: block;
+    margin: 0 auto 18px;
+    opacity: 0.92;
+  }
+
+  /* =====================================================
+     RESPONSIVE
+     ===================================================== */
+  @media (max-width: 880px) {
+    section { padding: 70px 0; }
+    .container { padding: 0 var(--pad-x-mob); }
+    .hero { padding: 90px 0 80px; }
+    .hand-grid {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .product-grid {
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+    .about {
+      grid-template-columns: 1fr;
+      gap: 28px;
+      text-align: center;
+    }
+    .about-photo { margin: 0 auto; width: 260px; height: 340px; }
+    .process-svg { display: none; }
+    .process-mobile { display: block; }
+    .btn { width: 100%; max-width: none; padding: 18px 28px; }
+    .hero-cta-row .btn { max-width: 100%; }
+    .testimonial { padding: 26px 24px; }
+    .launch-block { padding: 24px 22px; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- =============================================
+     NAV
+     ============================================= -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#" class="logo" aria-label="Light Creators Tribe">
+      <img src="solo-assets/lc-logo-mark.png" alt="" />
+      <span class="logo-wordmark">Light <em>Creators</em></span>
+    </a>
+    <a href="#pricing" class="nav-cta">Jetzt starten</a>
+  </div>
+</header>
+
+<!-- =============================================
+     HERO
+     ============================================= -->
+<section class="hero">
+  <div class="container">
+    <div class="content">
+      <span class="label">SOLO · Resonance OS</span>
+      <h1>Du kennst deinen <em>Resonance Gap</em>. Hier ist das System, ihn zu schließen.</h1>
+      <p class="hero-sub">SOLO ist dein persönliches Resonance-Betriebssystem — selbstgesteuert, datenbasiert, mit direktem Coach-Zugang genau dann, wenn du ihn brauchst.</p>
+      <div class="hero-cta-row">
+        <a href="#pricing" class="btn">SOLO starten — € 97 Setup-Fee</a>
+        <p class="hero-note">Nach Abschluss zahlst du, was es dir wert war. Launch-Preis — nur für die ersten 27 Founder.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     BREATH BAND 09 — after Hero, before "What Doesn't Work"
+     ============================================= -->
+<div class="breath-band breath-band--morning" aria-hidden="true"></div>
+
+<!-- =============================================
+     WHAT DOESN'T WORK
+     ============================================= -->
+<section>
+  <div class="container">
+    <div class="content">
+      <div class="section-head">
+        <span class="label">Was nicht funktioniert</span>
+        <h2>Die meisten Founder haben viel versucht. Es hat nicht gereicht.</h2>
+      </div>
+
+      <ul class="doesnt-work-list">
+        <li>
+          <span class="x">✗</span>
+          <div>
+            <div class="item-title">Pitch-Deck-Optimierung</div>
+            <div class="item-desc">Bessere Struktur, klarere Slides, überzeugendere Zahlen. Adressiert die Oberfläche, nicht die Quelle.</div>
+          </div>
+        </li>
+        <li>
+          <span class="x">✗</span>
+          <div>
+            <div class="item-title">Rhetorik- und Präsentationstraining</div>
+            <div class="item-desc">Du lernst, die Rolle zu spielen. Was das Gegenteil von Resonanz ist.</div>
+          </div>
+        </li>
+        <li>
+          <span class="x">✗</span>
+          <div>
+            <div class="item-title">Fundraising-Strategie</div>
+            <div class="item-desc">Warm Intros, VC-Netzwerk, Pitch-Taktik. Du kommst in den richtigen Raum. Und überzeugst trotzdem nicht wirklich.</div>
+          </div>
+        </li>
+        <li>
+          <span class="x">✗</span>
+          <div>
+            <div class="item-title">Acceleratoren und Programme</div>
+            <div class="item-desc">Sie optimieren dein externes Business. Das innere Betriebssystem, das Vertrauen erzeugt, bleibt unberührt.</div>
+          </div>
+        </li>
+        <li>
+          <span class="x">✗</span>
+          <div>
+            <div class="item-title">Executive Coaching</div>
+            <div class="item-desc">Zu generisch. Kein Investor-Kontext. Hilft dir als Leader — aber nicht im entscheidenden Moment des Pitch-Raums.</div>
+          </div>
+        </li>
+      </ul>
+
+      <p class="doesnt-work-close">Alle diese Lösungen arbeiten von außen nach innen. Sie optimieren das, was sichtbar ist. <em>SOLO arbeitet in die andere Richtung.</em></p>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     THE SYSTEM — RESONANCE HAND
+     ============================================= -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <span class="label">Das System · Die Resonance Hand</span>
+      <h2>Fünf Faktoren. Eine Richtung: von innen nach außen.</h2>
+      <p class="lede">Fünf Faktoren entscheiden darüber, ob Investoren — und alle anderen entscheidenden Stakeholder — dir wirklich glauben. Nicht ob sie dich respektieren. Ob sie dir folgen wollen.</p>
+    </div>
+
+    <img src="solo-assets/Images/04-resonance-hand-organic.png" alt="Die Resonance Hand — fünf Faktoren der Resonanz, an jedem Finger benannt" class="resonance-hand" />
+
+    <div class="hand-grid">
+      <div class="hand-card">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 68 67" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M61.001 14.3829L6.99995 14.3835L34 61.1489L61.001 14.3829Z" stroke="currentColor" stroke-width="0.613332" stroke-miterlimit="10"/>
+            <path d="M36.3847 28.5946L20.5 37.7656" stroke="currentColor" stroke-width="0.613332"/>
+            <path d="M37.2624 29.6064L24.5415 44.7656" stroke="currentColor" stroke-width="0.613332"/>
+            <path d="M38.4314 30.2574L29.8218 53.9111" stroke="currentColor" stroke-width="0.613332"/>
+            <path d="M39.7537 30.468L39.7534 51.1846" stroke="currentColor" stroke-width="0.613332"/>
+            <path d="M41.0685 30.2152L45.2417 41.6797" stroke="currentColor" stroke-width="0.613332"/>
+            <path d="M42.2159 29.5269L48.1648 36.6164" stroke="currentColor" stroke-width="0.613332"/>
+            <path d="M43.0601 28.4894L50.4074 32.7317" stroke="currentColor" stroke-width="0.613332"/>
+            <path d="M43.498 27.223L52.6556 28.8371" stroke="currentColor" stroke-width="0.613332"/>
+            <path d="M43.4762 25.8858L55.5934 23.7499" stroke="currentColor" stroke-width="0.613332"/>
+            <path d="M60.7573 14.3825L42.999 24.6353" stroke="currentColor" stroke-width="0.613332"/>
+            <path d="M49.8761 14.3836L42.1221 23.6235" stroke="currentColor" stroke-width="0.613332"/>
+            <path d="M44.079 14.3827L40.9526 22.9732" stroke="currentColor" stroke-width="0.613332"/>
+            <path d="M39.6309 14.382L39.6304 22.7603" stroke="currentColor" stroke-width="0.613332"/>
+            <path d="M35.1742 14.3826L38.3164 23.0147" stroke="currentColor" stroke-width="0.613332"/>
+            <path d="M29.3492 14.3828L37.1685 23.701" stroke="currentColor" stroke-width="0.613332"/>
+            <path d="M18.383 14.3831L36.3231 24.7418" stroke="currentColor" stroke-width="0.613332"/>
+            <path d="M11.1974 21.6527L35.8862 26.0056" stroke="currentColor" stroke-width="0.613332"/>
+            <path d="M16.463 30.7735L35.9073 27.3448" stroke="currentColor" stroke-width="0.613332"/>
+          </svg>
+        </span>
+        <h3>Obsession</h3>
+        <p>Die unverhandelbare Überzeugung hinter deinem Warum. Nicht Motivation — Essenz.</p>
+      </div>
+      <div class="hand-card">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 68 67" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M34 8.00001C20.1929 8.00001 9.00001 19.1929 9.00001 33C9 46.8071 20.1929 58 34 58C47.8071 58 59 46.8071 59 33C59 19.1929 47.8071 8.00001 34 8.00001Z" stroke="currentColor" stroke-width="0.6"/>
+            <path d="M34 15C22.402 15 13 23.0589 13 33C13 42.9411 22.402 51 34 51C45.598 51 55 42.9411 55 33C55 23.0589 45.598 15 34 15Z" stroke="currentColor" stroke-width="0.6"/>
+            <path d="M34 22C25.1634 22 18 26.9249 18 33C18 39.0751 25.1634 44 34 44C42.8366 44 50 39.0751 50 33C50 26.9249 42.8366 22 34 22Z" stroke="currentColor" stroke-width="0.6"/>
+            <path d="M34.0002 29.5662C28.3111 29.5662 23.6992 31.1036 23.6992 32.9999C23.6992 34.8963 28.3111 36.4336 34.0002 36.4336C39.6893 36.4336 44.3013 34.8963 44.3013 32.9999C44.3013 31.1036 39.6893 29.5662 34.0002 29.5662Z" stroke="currentColor" stroke-width="0.6"/>
+          </svg>
+        </span>
+        <h3>Presence</h3>
+        <p>Die Fähigkeit, vollständig im Raum zu sein. Körper, Emotion, Verstand — synchron.</p>
+      </div>
+      <div class="hand-card">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 69 67" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M36.7548 46.8044C42.9231 46.8044 47.9236 41.804 47.9236 35.6356C47.9236 29.4673 42.9231 24.4668 36.7548 24.4668C30.5864 24.4668 25.586 29.4673 25.586 35.6356C25.586 41.804 30.5864 46.8044 36.7548 46.8044Z" stroke="currentColor" stroke-width="0.583517"/>
+            <path d="M7.7129 35.7199C13.4797 25.5701 24.39 18.7231 36.8985 18.7231C49.4071 18.7231 60.3174 25.5701 66.0842 35.7199" stroke="currentColor" stroke-width="0.583517"/>
+            <path d="M7.70704 35.7202C13.4748 45.87 24.3841 52.716 36.8927 52.716C49.4012 52.716 60.3105 45.87 66.0783 35.7202" stroke="currentColor" stroke-width="0.583517"/>
+            <path d="M36.0924 1.12109C36.0148 7.85799 36.0148 14.8486 36.0924 21.5985" stroke="currentColor" stroke-width="0.324176"/>
+            <path d="M29.8062 0.0283203C31.0955 7.33742 32.1312 14.587 33.6614 21.8857" stroke="currentColor" stroke-width="0.324176"/>
+            <path d="M25.5625 6.97217C27.3878 12.2126 29.3918 17.3882 31.3155 22.5924" stroke="currentColor" stroke-width="0.324176"/>
+            <path d="M22.3726 11.9971C24.6251 15.8808 26.9553 19.7644 29.1276 23.6973" stroke="currentColor" stroke-width="0.324176"/>
+            <path d="M20.3916 17.0933C22.8099 19.7652 24.8812 22.6133 27.1648 25.1661" stroke="currentColor" stroke-width="0.324176"/>
+            <path d="M17.0025 19.8296C19.6434 22.0459 22.2817 24.2596 24.9226 26.4759L25.4896 26.9523" stroke="currentColor" stroke-width="0.324176"/>
+            <path d="M13.2227 22.6934C16.8578 24.9433 20.7415 26.7557 24.1462 29.0005" stroke="currentColor" stroke-width="0.324176"/>
+            <path d="M6.9673 25.353C11.9384 27.2767 16.8578 28.8302 21.7771 30.9015C22.2949 31.1604 22.5538 31.1604 23.183 31.2562" stroke="currentColor" stroke-width="0.324176"/>
+            <path d="M2.39747 30.0728C9.09036 31.1576 15.8221 32.4522 22.6211 33.638" stroke="currentColor" stroke-width="0.324176"/>
+            <path d="M1.34583e-05 36.084C7.53695 36.0762 15.0454 36.0762 22.484 36.084" stroke="currentColor" stroke-width="0.324176"/>
+            <path d="M1.42921 42.2802C7.01654 41.2549 12.4537 40.2193 18.1498 39.4425C19.7033 39.1836 21.2567 38.9247 22.7714 38.5156" stroke="currentColor" stroke-width="0.324176"/>
+            <path d="M2.76222 48.4033C9.60528 45.6562 16.8548 43.326 23.4804 40.8638" stroke="currentColor" stroke-width="0.324176"/>
+            <path d="M9.6421 51.6792C12.1976 50.3199 14.5278 49.0254 17.1169 47.213C19.706 45.6595 22.0362 44.3649 24.5865 43.0522" stroke="currentColor" stroke-width="0.324176"/>
+            <path d="M16.5288 53.0043C19.9646 50.3168 22.8126 47.4688 26.0542 45.0117" stroke="currentColor" stroke-width="0.324176"/>
+            <path d="M19.9053 56.1449C22.3675 53.2089 24.8324 50.2728 27.2946 47.3393L27.841 46.6895" stroke="currentColor" stroke-width="0.324176"/>
+            <path d="M23.1343 59.731C25.2263 56.1088 27.3183 52.4866 29.4077 48.8645L29.8893 48.0308" stroke="currentColor" stroke-width="0.324176"/>
+            <path d="M25.6953 66.7035C27.2126 61.9705 29.2839 57.569 30.5784 52.9086C31.0962 51.614 31.873 50.3195 32.1397 48.999" stroke="currentColor" stroke-width="0.324176"/>
+            <path d="M31.7993 65.0101C32.6486 59.8966 33.6842 54.7184 34.5231 49.5557" stroke="currentColor" stroke-width="0.324176"/>
+            <path d="M36.9697 63.2058C37.05 58.8639 37.05 54.2035 36.9697 49.6958" stroke="currentColor" stroke-width="0.324176"/>
+            <path d="M41.1567 59.3373C40.4188 56.0129 40.1598 52.647 39.4038 49.4028" stroke="currentColor" stroke-width="0.324176"/>
+            <path d="M45.6 59.278C44.3003 55.7568 43.2647 52.1321 41.75 48.6963" stroke="currentColor" stroke-width="0.324176"/>
+            <path d="M51.2678 60.2882C49.0049 56.3683 46.742 52.4509 44.4791 48.531C44.2979 48.2177 44.1192 47.9044 43.938 47.5938" stroke="currentColor" stroke-width="0.324176"/>
+            <path d="M59.0611 61.8105C54.3981 56.5313 50.2555 51.3531 45.898 46.123" stroke="currentColor" stroke-width="0.324176"/>
+            <path d="M62.4886 56.8526C57.5071 52.6479 52.5878 48.5053 47.5752 44.3394" stroke="currentColor" stroke-width="0.324176"/>
+            <path d="M65.2982 51.7466C60.0967 48.5051 54.4006 45.657 48.9194 42.2886" stroke="currentColor" stroke-width="0.324176"/>
+            <path d="M63.9049 45.1412C59.3196 43.3289 54.6591 42.0343 49.8848 40.0381" stroke="currentColor" stroke-width="0.324176"/>
+            <path d="M62.9545 39.8593C58.799 38.9272 54.6564 38.4093 50.4439 37.6533" stroke="currentColor" stroke-width="0.324176"/>
+            <path d="M62.2922 35.2065C58.2816 35.2998 54.3979 35.2998 50.5816 35.2065" stroke="currentColor" stroke-width="0.324176"/>
+            <path d="M65.9122 30.0186C60.6148 30.6399 55.4366 31.9345 50.292 32.7734" stroke="currentColor" stroke-width="0.324176"/>
+            <path d="M68.0011 23.7241C61.9063 25.9792 55.6924 28.3095 49.582 30.4274" stroke="currentColor" stroke-width="0.324176"/>
+            <path d="M67.8463 17.0601C64.7549 18.73 61.9069 20.5424 58.7999 22.0959C55.1751 24.4261 51.8093 25.9796 48.4771 28.2399" stroke="currentColor" stroke-width="0.324176"/>
+            <path d="M61.225 14.354C58.8793 16.3217 56.5361 18.2895 54.1904 20.2572C52.1942 21.9324 50.198 23.6075 48.2018 25.2827L47.0108 26.2821" stroke="currentColor" stroke-width="0.324176"/>
+            <path d="M58.3508 8.96143C54.9177 13.0341 51.8107 17.1767 48.1859 21.3193C47.1503 22.355 46.1146 23.3906 45.2266 24.6023" stroke="currentColor" stroke-width="0.324176"/>
+            <path d="M51.9617 8.04443C48.9609 13.0363 46.3718 18.2145 43.1768 23.2607" stroke="currentColor" stroke-width="0.324176"/>
+            <path d="M46.6897 6.45752C44.9161 11.3303 43.1426 16.203 41.369 21.0757L40.9263 22.2952" stroke="currentColor" stroke-width="0.324176"/>
+            <path d="M40.8071 8.87061C40.1055 12.8553 39.4013 16.8399 38.6996 20.8272L38.5391 21.736" stroke="currentColor" stroke-width="0.324176"/>
+          </svg>
+        </span>
+        <h3>Vision Resonance</h3>
+        <p>Eine Zukunft, die Investoren nicht nur verstehen, sondern fühlen wollen.</p>
+      </div>
+      <div class="hand-card">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 68 67" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M34.0001 58.7355C47.8073 58.7355 59.0003 47.378 59.0003 33.3678C59.0003 19.3575 47.8073 8 34.0001 8C20.1929 8 9.00001 19.3575 9.00001 33.3678C9.00001 47.378 20.1929 58.7355 34.0001 58.7355Z" stroke="currentColor" stroke-width="0.541179"/>
+            <path d="M34.0001 52.8536C44.5585 52.8536 53.1178 44.1297 53.1178 33.3682C53.1178 22.6067 44.5585 13.8828 34.0001 13.8828C23.4416 13.8828 14.8823 22.6067 14.8823 33.3682C14.8823 44.1297 23.4416 52.8536 34.0001 52.8536Z" stroke="currentColor" stroke-width="0.541179"/>
+          </svg>
+        </span>
+        <h3>Founder Fit</h3>
+        <p>Die Geschichte, die beweist, dass kein anderer dieses Problem lösen kann außer dir.</p>
+      </div>
+      <div class="hand-card">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 68 67" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22.6865 12.7471V26.2421L34.3739 32.9892L46.0603 26.2421V12.7471L34.3739 6L22.6865 12.7471Z" stroke="currentColor" stroke-width="0.6"/>
+            <path d="M22.709 39.7578V53.2529L34.3954 59.9999L46.0828 53.2529V39.7578L34.3954 33.0107L22.709 39.7578Z" stroke="currentColor" stroke-width="0.6"/>
+            <path d="M34.374 32.9892V46.4843L46.0604 53.2313L57.7478 46.4843V32.9892L46.0604 26.2412L34.374 32.9892Z" stroke="currentColor" stroke-width="0.6"/>
+            <path d="M11 32.9892V46.4843L22.6864 53.2313L34.3738 46.4843V32.9892L22.6864 26.2412L11 32.9892Z" stroke="currentColor" stroke-width="0.6"/>
+            <path d="M11 19.4946V32.9897L22.6864 39.7367L34.3738 32.9897V19.4946L22.6864 12.7476L11 19.4946Z" stroke="currentColor" stroke-width="0.6"/>
+            <path d="M34.374 19.4946V32.9897L46.0604 39.7367L57.7478 32.9897V19.4946L46.0604 12.7476L34.374 19.4946Z" stroke="currentColor" stroke-width="0.6"/>
+            <path d="M16.8438 16.1138V22.8618L22.687 26.2353L28.5311 22.8618V16.1138L22.687 12.7402L16.8438 16.1138Z" stroke="currentColor" stroke-width="0.6"/>
+            <path d="M16.8535 29.6201V36.3681L22.6977 39.7416L28.5409 36.3681V29.6201L22.6977 26.2466L16.8535 29.6201Z" stroke="currentColor" stroke-width="0.6"/>
+            <path d="M22.6865 26.2353V32.9824L28.5307 36.3559L34.3739 32.9824V26.2353L28.5307 22.8608L22.6865 26.2353Z" stroke="currentColor" stroke-width="0.6"/>
+            <path d="M11 26.2353V32.9824L16.8432 36.3559L22.6864 32.9824V26.2353L16.8432 22.8608L11 26.2353Z" stroke="currentColor" stroke-width="0.6"/>
+            <path d="M11 19.4873V26.2353L16.8432 29.6088L22.6864 26.2353V19.4873L16.8432 16.1138L11 19.4873Z" stroke="currentColor" stroke-width="0.6"/>
+            <path d="M22.6865 19.4873V26.2353L28.5307 29.6088L34.3739 26.2353V19.4873L28.5307 16.1138L22.6865 19.4873Z" stroke="currentColor" stroke-width="0.6"/>
+          </svg>
+        </span>
+        <h3>Scalable Logic</h3>
+        <p>Das Geschäftsmodell, das Sinn ergibt — präzise, klar, ohne Lücken.</p>
+      </div>
+    </div>
+
+    <p class="handshake-line">Alle fünf zusammen erzeugen einen festen Handschlag — die Art, bei der ein Investor sagt: <em>„Da ist jemand, dem ich mein Geld gebe."</em> Fehlt einer, bricht der Grip.</p>
+
+    <blockquote class="pullquote">„Positionierung sagt, wofür du stehst. Resonanz entscheidet, ob man es dir glaubt."
+      <span class="pullquote-attr">— David Liebnau</span>
+    </blockquote>
+  </div>
+</section>
+
+<!-- =============================================
+     BREATH BAND 10 — between The System and The Process
+     ============================================= -->
+<div class="breath-band breath-band--afternoon" aria-hidden="true"></div>
+
+<!-- =============================================
+     PROCESS — 4-STEP SVG
+     ============================================= -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <span class="label">Der Prozess</span>
+      <h2>Vier Schritte. Messbar. Wiederholbar.</h2>
+      <p class="lede">Resonanz entsteht nicht von selbst. Sie wird entwickelt — in einem klaren, strukturierten Prozess.</p>
+    </div>
+
+    <div class="process-wrap">
+      <!-- Desktop SVG -->
+      <svg class="process-svg" viewBox="0 0 1100 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Vier-Schritte-Prozess">
+        <defs>
+          <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L8,5 L0,10 z" fill="#B8973A"/>
+          </marker>
+        </defs>
+
+        <!-- Connector arrows between boxes -->
+        <line x1="245" y1="140" x2="285" y2="140" stroke="#B8973A" stroke-width="1.4" marker-end="url(#arrow)"/>
+        <line x1="510" y1="140" x2="550" y2="140" stroke="#B8973A" stroke-width="1.4" marker-end="url(#arrow)"/>
+        <line x1="775" y1="140" x2="815" y2="140" stroke="#B8973A" stroke-width="1.4" marker-end="url(#arrow)"/>
+
+        <!-- Box 1 -->
+        <g>
+          <rect x="20" y="40" width="225" height="200" fill="#FAF7F0" />
+          <rect x="20" y="40" width="225" height="2" fill="#B8973A" />
+          <text x="40" y="92" font-family="Playfair Display, serif" font-size="40" font-weight="400" fill="#B8973A" opacity="0.85">01</text>
+          <text x="40" y="138" font-family="DM Sans, sans-serif" font-size="18" font-weight="500" fill="#0D0D0D">Diagnose</text>
+          <foreignObject x="40" y="150" width="185" height="80">
+            <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:300;line-height:1.5;color:#6B6560;margin:0;">Den Resonance Gap lokalisieren — fünf Faktoren ehrlich gemessen, als Spiegel dessen, was ist.</p>
+          </foreignObject>
+        </g>
+
+        <!-- Box 2 -->
+        <g>
+          <rect x="285" y="40" width="225" height="200" fill="#FAF7F0" />
+          <rect x="285" y="40" width="225" height="2" fill="#B8973A" />
+          <text x="305" y="92" font-family="Playfair Display, serif" font-size="40" font-weight="400" fill="#B8973A" opacity="0.85">02</text>
+          <text x="305" y="138" font-family="DM Sans, sans-serif" font-size="18" font-weight="500" fill="#0D0D0D">Ausrichtung</text>
+          <foreignObject x="305" y="150" width="185" height="80">
+            <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:300;line-height:1.5;color:#6B6560;margin:0;">Aus Erkenntnis wird Entscheidung — welches Identitätsmuster begrenzt dich, was installierst du stattdessen?</p>
+          </foreignObject>
+        </g>
+
+        <!-- Box 3 -->
+        <g>
+          <rect x="550" y="40" width="225" height="200" fill="#FAF7F0" />
+          <rect x="550" y="40" width="225" height="2" fill="#B8973A" />
+          <text x="570" y="92" font-family="Playfair Display, serif" font-size="40" font-weight="400" fill="#B8973A" opacity="0.85">03</text>
+          <text x="570" y="138" font-family="DM Sans, sans-serif" font-size="18" font-weight="500" fill="#0D0D0D">Installation</text>
+          <foreignObject x="570" y="150" width="185" height="80">
+            <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:300;line-height:1.5;color:#6B6560;margin:0;">Micro-Shifts auf deinen stärksten Hebel — täglich verankert. Nicht als Übung. Als täglicher Beweis.</p>
+          </foreignObject>
+        </g>
+
+        <!-- Box 4 -->
+        <g>
+          <rect x="815" y="40" width="225" height="200" fill="#FAF7F0" />
+          <rect x="815" y="40" width="225" height="2" fill="#B8973A" />
+          <text x="835" y="92" font-family="Playfair Display, serif" font-size="40" font-weight="400" fill="#B8973A" opacity="0.85">04</text>
+          <text x="835" y="138" font-family="DM Sans, sans-serif" font-size="18" font-weight="500" fill="#0D0D0D">Evaluation</text>
+          <foreignObject x="835" y="150" width="185" height="80">
+            <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:300;line-height:1.5;color:#6B6560;margin:0;">Die fünf Faktoren werden neu gemessen, mit der Nullpunktmessung verglichen — wo ist Fortschritt sichtbar?</p>
+          </foreignObject>
+        </g>
+      </svg>
+
+      <!-- Mobile vertical stack -->
+      <div class="process-mobile">
+        <style>
+          .process-mobile .step {
+            background: var(--callout);
+            border-top: 2px solid var(--gold);
+            padding: 24px 22px;
+            margin-bottom: 22px;
+            position: relative;
+          }
+          .process-mobile .step-num {
+            font-family: var(--font-heading);
+            font-size: 36px;
+            color: var(--gold);
+            line-height: 1;
+            margin-bottom: 10px;
+          }
+          .process-mobile .step-title {
+            font-family: var(--font-body);
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 8px;
+          }
+          .process-mobile .step-desc {
+            font-size: 14px;
+            color: var(--muted);
+            line-height: 1.55;
+          }
+          .process-mobile .down-arrow {
+            display: block;
+            width: 1px;
+            height: 28px;
+            background: var(--gold);
+            margin: -10px auto 12px;
+          }
+        </style>
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-title">Diagnose</div>
+          <div class="step-desc">Den Resonance Gap lokalisieren — fünf Faktoren ehrlich gemessen, als Spiegel dessen, was ist.</div>
+        </div>
+        <div class="down-arrow"></div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-title">Ausrichtung</div>
+          <div class="step-desc">Aus Erkenntnis wird Entscheidung — welches Identitätsmuster begrenzt dich, was installierst du stattdessen?</div>
+        </div>
+        <div class="down-arrow"></div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-title">Installation</div>
+          <div class="step-desc">Micro-Shifts auf deinen stärksten Hebel — täglich verankert. Nicht als Übung. Als täglicher Beweis.</div>
+        </div>
+        <div class="down-arrow"></div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div class="step-title">Evaluation</div>
+          <div class="step-desc">Die fünf Faktoren werden neu gemessen, mit der Nullpunktmessung verglichen — wo ist Fortschritt sichtbar?</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     WHAT SOLO IS
+     ============================================= -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <span class="label">Was SOLO ist</span>
+      <h2>SOLO — dein persönliches Betriebssystem</h2>
+    </div>
+    <p class="product-intro">SOLO ist kein fixes Programm. Es ist dein persönliches Entwicklungs-System — selbstgesteuert, datenbasiert, mit Coach-Zugang genau dann, wenn du ihn brauchst.</p>
+
+    <div class="product-grid">
+      <div class="product-col">
+        <div class="card-image async" role="img" aria-label="Aufgeschlagenes Notizbuch mit handgeschriebenem Resonance-Tracker auf warmem Holztisch"></div>
+        <div class="card-inner">
+          <h3>Async</h3>
+          <div class="icon-title"><span>Resonance OS (Notion)</span></div>
+          <ul>
+            <li>Das Resonance OS im Notion — dein asynchrones Entwicklungs-Werkzeug</li>
+            <li>Alle 5 Resonanz-Faktoren, alle Micro-Shifts, Selbstmessung</li>
+            <li>Progress Tracker — Score vorher/nachher, Key Insight, Next Action</li>
+            <li>Vivid Visioning Framework</li>
+            <li>Obsession Clarity Protocol</li>
+            <li>Founder Fit Origin Story Workbook</li>
+            <li>Scalable Logic GTM-Analyse</li>
+            <li>Sofortzugang nach Zahlung</li>
+          </ul>
+        </div>
+      </div>
+      <div class="product-col">
+        <div class="card-image synchron" role="img" aria-label="Zwei Tassen Tee auf kleinem Holztisch, leichter Dampf — Atmosphäre eines Einzelgesprächs"></div>
+        <div class="card-inner">
+          <h3>Synchron</h3>
+          <div class="icon-title"><span>2h flexibler Coach-Zugang</span></div>
+          <ul>
+            <li>2 Stunden Coach-Zugang — frei aufteilbar</li>
+            <li>Zum Beispiel: 3× 40 Min., 4× 30 Min., oder wie du es brauchst</li>
+            <li>Buchung per Calendly — selbstgesteuert, wann es passt</li>
+            <li>Am besten genutzt: kurz vor einem entscheidenden Investor-Call</li>
+            <li>Oder nach einem Gespräch, das nicht lief</li>
+            <li>Oder wenn ein Micro-Shift live Integration braucht</li>
+            <li>Finish Line nach max. 3 Monaten</li>
+            <li>Du ziehst Bilanz und zahlst, was es dir wert war</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     WHY THIS MIX WORKS
+     ============================================= -->
+<section>
+  <div class="container">
+    <div class="content">
+      <div class="section-head">
+        <span class="label">Warum dieser Mix funktioniert</span>
+        <h2>Asynchrone Tiefe + synchrone Präzision</h2>
+      </div>
+
+      <div class="methodology">
+        <p>Die meisten Coaching-Produkte erzwingen einen Rhythmus: wöchentliche Calls, feste Themen, fremde Struktur. SOLO nicht. Du arbeitest asynchron im Resonance OS — wann du willst, so tief du willst. Die Einzelcoaching-Sessions nutzt du präzise: als Verstärker, genau dann, wenn du sie brauchst.</p>
+
+        <p>Das Resonance OS ist die Schnittstelle zwischen Selbstreflexion und Intervention. Wenn du in eine Session kommst, weiß der Coach bereits, wo du stehst. Du startest nicht bei null — du startest an deiner Entwicklungskante. Genau dort, an der Grenze zwischen Kompetenz und Nichtkompetenz, findet das Wachstum statt.</p>
+
+        <p>Zwei Formate. Ein System: das Resonance OS für Selbstreflexion, Messung und Fortschritt — und das Einzelcoaching für die Entwicklungskante, an der du alleine nicht weiterkommst.</p>
+
+        <div class="callout">Asynchrone Tiefe + synchrone Präzision = minimaler Aufwand, maximale Wirkung.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     HOW YOU USE IT
+     ============================================= -->
+<section>
+  <div class="container">
+    <div class="content">
+      <div class="section-head">
+        <span class="label">Wie du es nutzt</span>
+        <h2>Was drin steckt — und wie du es nutzt</h2>
+      </div>
+
+      <p class="usage-intro">Zwischen den Sessions arbeitest du nicht auf Zuruf — sondern mit System.</p>
+
+      <ul class="usage-bullets">
+        <li><strong>Wöchentlicher Check-in:</strong> Resonance OS öffnen, letztes Assessment prüfen, sofort sehen welcher Faktor diese Woche die meiste Aufmerksamkeit braucht.</li>
+        <li><strong>Ein Micro-Shift pro Woche</strong> — nicht fünf. 10–15 Minuten. Das ist alles.</li>
+        <li><strong>Progress Tracker:</strong> Score vorher, Score nachher, ein Key Insight, eine Next Action. Unter drei Minuten.</li>
+        <li><strong>Call Prep Page:</strong> Vor jeder Session eine einzige Frage beantworten — was hat sich verändert, und was will ich besprechen?</li>
+      </ul>
+
+      <div class="callout">Du kommst nicht mehr als passiver Empfänger in die Session. Du kommst als jemand, der bereits gearbeitet hat, weiß wo er steht, und genau weiß, was er braucht. Die Transformation passiert nicht in der Session — die Session vertieft, was im Alltag bereits begonnen hat.</div>
+
+      <div class="sequence">
+        <h3>Der Ablauf</h3>
+        <ol>
+          <li>Zahlung bestätigt — Resonance OS-Zugang wird sofort freigeschaltet.</li>
+          <li>Assessment starten — 11 Items, ca. 5 Minuten. Dein Gap wird sichtbar.</li>
+          <li>Wöchentlicher Micro-Shift — ein Item, 10–15 Minuten, Eintrag in den Progress Tracker.</li>
+          <li>Einzelcoaching-Sessions buchen wenn du sie brauchst — online per Calendly, im Rahmen deines 2h-Budgets.</li>
+          <li>Finish Line — nach max. 3 Monaten ziehst du Bilanz und zahlst, was es dir wert war.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     MOOD BAND — visual breath before "Who This Is For"
+     ============================================= -->
+<div class="mood-band" role="img" aria-label="Stiller Moment auf einem Schreibtisch — Notizbuch, Füller, Tasse, Bücher"></div>
+
+<!-- =============================================
+     WHO THIS IS FOR
+     ============================================= -->
+<section>
+  <div class="container">
+    <div class="content">
+      <div class="section-head">
+        <span class="label">Für wen</span>
+        <h2>SOLO ist genau richtig für dich, wenn…</h2>
+      </div>
+
+      <ul class="who-list">
+        <li>Deine KPIs solid sind — aber Investoren-Gespräche nicht konvertieren.</li>
+        <li>Du externe Lösungen versucht hast, die an der Oberfläche wirkten — aber nicht an der Quelle.</li>
+        <li>Du analytisch denkst und einen strukturierten, messbaren Ansatz brauchst.</li>
+        <li>Du selbst entscheiden willst — wann du arbeitest, in welcher Intensität, welchen Faktor du als nächstes angehst.</li>
+        <li>Du Coach-Zugang zu deinen Bedingungen willst — nicht nach einem fixen Wochenplan.</li>
+        <li>Du bereit bist, am inneren Signal zu arbeiten, nicht nur an der äußeren Präsentation.</li>
+      </ul>
+
+      <p class="who-exclude"><em>Nicht geeignet, wenn du noch in der Ideenfindung bist oder noch kein Produkt und erste Traction hast.</em></p>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     TESTIMONIALS
+     ============================================= -->
+<section>
+  <div class="container">
+    <div class="content">
+      <div class="section-head">
+        <span class="label">Was Founder sagen</span>
+        <h2>In ihren eigenen Worten</h2>
+      </div>
+
+      <div class="testimonials">
+        <div class="testimonial">
+          <blockquote>„Ich bin kein Fan von Selbstoptimierungs-Werkzeugen. Ich brauche Dinge, die funktionieren — klar strukturiert, mit nachvollziehbarem Zusammenhang zwischen Input und Ergebnis. Das Resonance OS hat diesen Anspruch erfüllt. Sechsstelliges Funding-Ziel erreicht. Das ist das Ergebnis, das zählt."</blockquote>
+          <cite><strong>Felix Harz</strong> · CFO, Harz Holding GmbH</cite>
+        </div>
+        <div class="testimonial">
+          <blockquote>„Wir hatten solide KPIs und ein klares Angebot — und kein Term Sheet. David hat mir gezeigt, woran das lag. Nicht am Pitch. An mir. Ich führe Gespräche heute anders. Ruhiger. Mit mehr Wirkung. Wir haben unser sechsstelliges Funding-Ziel erreicht."</blockquote>
+          <cite><strong>Jacob Harz</strong> · CEO & Co-Founder @Viivi</cite>
+        </div>
+        <div class="testimonial">
+          <blockquote>„Das Coaching mit David Liebnau war äußerst wertvoll, da er präzise auf meine individuellen Ziele eingegangen ist und mir sofort anwendbare, alltagstaugliche Impulse mitgegeben hat."</blockquote>
+          <cite><strong>Anonym</strong> · Coaching-Klient (ProvenExpert, März 2026)</cite>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     ABOUT DAVID
+     ============================================= -->
+<section>
+  <div class="container">
+    <div class="content">
+      <div class="about">
+        <div class="about-photo" role="img" aria-label="David Liebnau — Founder, Light Creators"></div>
+        <div class="about-body">
+          <span class="label">Über David</span>
+          <h2>Wer ist David Liebnau?</h2>
+          <p>25 Jahre Arbeit mit Führungsteams und Unternehmern. Über 20.000 Menschen in 25+ Ländern. HR Excellence Award. Gründer von Light Creators.</p>
+          <p>Er hat das Resonance Operating System entwickelt, weil er immer wieder dasselbe gesehen hat: Founder mit soliden Zahlen, die nicht funded wurden. Nicht wegen des Produkts. Wegen der Person dahinter.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     INVESTMENT
+     ============================================= -->
+<section id="pricing">
+  <div class="container">
+    <div class="content">
+      <div class="section-head">
+        <span class="label">Investment</span>
+        <h2>Dein Investment</h2>
+        <p class="lede">SOLO — Resonance OS + 2h flexibler Coach-Zugang. Kein Risiko. Du entscheidest nach dem Ergebnis — nicht vorher.</p>
+      </div>
+
+      <div class="price-wrap">
+        <div class="price-line-1">Launch-Preis · Erste 27 Founder</div>
+        <div class="price">€ 97</div>
+        <div class="price-pay"><em>Setup-Fee. Nach Abschluss zahlst du, was es dir wert war.</em></div>
+        <div class="price-range">Typischer Betrag an der Finish Line: € 300–500</div>
+
+        <a href="#" class="btn btn-block">SOLO starten — € 97 Setup-Fee</a>
+        <p class="finish-line-note">Finish Line nach max. 3 Monaten.</p>
+      </div>
+
+      <div class="launch-block">
+        <span class="label">⚡ Launch-Preis — nur für die ersten 27 Founder</span>
+        <p>SOLO befindet sich im aktiven Launch. Für die ersten 27 Founder gilt die Setup-Fee von € 97 — danach steigt der Einstiegspreis. Warum 27? Weil David alle Einzelcoaching-Sessions persönlich führt. Das limitiert, wie viele gleichzeitig laufen können. Und weil die erste Kohorte das System direkt mitgestaltet.</p>
+        <p>Sobald die 27 Slots besetzt sind, schließt dieser Preis.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     FAQ
+     ============================================= -->
+<section>
+  <div class="container">
+    <div class="content">
+      <div class="section-head">
+        <span class="label">FAQ</span>
+        <h2>Häufige Fragen</h2>
+      </div>
+
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Wie unterscheidet sich das vom Pitch-Coaching?</summary>
+          <div class="faq-answer">Pitch-Coaching arbeitet an deiner Präsentation. SOLO arbeitet an dem, was vor der Präsentation passiert: innere Klarheit, Energie, Kongruenz. Es adressiert, warum Investoren ablehnen, obwohl der Pitch „gut" war.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Wie viel Zeit brauche ich wirklich?</summary>
+          <div class="faq-answer">10–15 Minuten pro Micro-Shift. Einzelcoaching-Sessions buchst du online wann du sie brauchst, im Rahmen deines 2h-Budgets. Kein fixer Wochenrhythmus, der dir aufgezwungen wird.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Funktioniert das auch ohne bevorstehenden Pitch?</summary>
+          <div class="faq-answer">Ja. Viele Founder starten 4–8 Wochen vor ihrer nächsten Runde. Der Prozess braucht Zeit, um sich zu setzen.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Was, wenn es mir nichts gebracht hat?</summary>
+          <div class="faq-answer">Dann zahlst du an der Finish Line einfach nichts extra. Das Modell funktioniert nur, wenn du wirklich einen Wert erlebt hast. Genau das ist die Absicht.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Gibt es eine Garantie?</summary>
+          <div class="faq-answer">Das Pay-what-it-was-worth-Modell ist die Garantie. Du bekommst vollen Zugang für € 97. Nach max. 3 Monaten entscheidest du, was das Ergebnis dir wert war.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Was kommt nach SOLO?</summary>
+          <div class="faq-answer">Founder, die tiefer gehen wollen, wechseln in SHIFT — intensives 1:1-Coaching über einen selbst gewählten Zeitraum. Das Gespräch dazu findet im Discovery Call statt, oder wir klären es während deiner Coaching-Sessions.</div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     FINAL CTA
+     ============================================= -->
+<section class="final">
+  <div class="container">
+    <div class="content">
+      <span class="label">Nächster Schritt</span>
+      <h2>Das System ist bereit. Die Frage ist, ob du es bist.</h2>
+      <p class="final-lede">SOLO gibt dir die Struktur, das Werkzeug und den direkten Coach-Zugang, um von respektiert zu trusted zu werden — in dem Raum, der am meisten zählt.</p>
+
+      <a href="#" class="btn btn-block">SOLO starten — € 97 Setup-Fee</a>
+
+      <p class="final-note">Launch-Preis — nur für die ersten 27 Founder. Finish Line nach max. 3 Monaten. Dann zahlst du, was es dir wert war. <em>(Typisch: € 300–500)</em></p>
+
+      <p class="after-solo">Nach SOLO: Wer tiefer gehen will, wechselt in <strong>SHIFT</strong> — intensives 1:1-Coaching über einen selbst gewählten Zeitraum.</p>
+
+      <p class="contact-line">Fragen? <a href="mailto:dl@light-creators.com" style="color:var(--gold);">dl@light-creators.com</a> &nbsp;·&nbsp; +49 170 43 26 737</p>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     FOOTER
+     ============================================= -->
+<footer>
+  <img src="solo-assets/lc-logo-charcoal.png" alt="Light Creators Tribe" class="footer-lockup" />
+  © 2026 Light Creators Tribe · Resonance Operating System
+</footer>
+
+</body>
+</html>

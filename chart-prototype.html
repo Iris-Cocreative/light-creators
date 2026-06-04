@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radial Burst Assessment</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&display=swap');
+
+  :root {
+    --bg-deep: #0a1a1f;
+    --bg-mid: #0f2329;
+    --line-gold: #c9a96e;
+    --line-gold-dim: rgba(201, 169, 110, 0.35);
+    --pentagon-stroke: rgba(180, 200, 210, 0.25);
+    --spider-stroke: rgba(100, 200, 180, 0.6);
+    --dot-gold: #d4b070;
+    --text-light: rgba(200, 210, 215, 0.9);
+    --text-dim: rgba(200, 210, 215, 0.5);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg-deep);
+    color: var(--text-light);
+    font-family: 'DM Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 900px;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .canvas-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    max-width: 700px;
+  }
+
+  canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .controls {
+    width: 100%;
+    max-width: 560px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+
+  .slider-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .slider-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    width: 130px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .slider-track {
+    flex: 1;
+    position: relative;
+    height: 28px;
+    display: flex;
+    align-items: center;
+  }
+
+  input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--line-gold-dim), var(--line-gold));
+    border-radius: 1px;
+    outline: none;
+    cursor: pointer;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--dot-gold);
+    border: 2px solid var(--bg-deep);
+    box-shadow: 0 0 6px rgba(201, 169, 110, 0.4);
+    cursor: pointer;
+    transition: transform 0.15s ease;
+  }
+
+  input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.3);
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--dot-gold);
+    border: 2px solid var(--bg-deep);
+    box-shadow: 0 0 6px rgba(201, 169, 110, 0.4);
+    cursor: pointer;
+  }
+
+  .slider-value {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 0.8rem;
+    color: var(--line-gold);
+    width: 36px;
+    text-align: left;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 600px) {
+    .slider-label {
+      width: 90px;
+      font-size: 0.7rem;
+    }
+    .container { padding: 1rem 0.5rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="canvas-wrap">
+    <canvas id="chart"></canvas>
+  </div>
+  <div class="controls" id="controls"></div>
+</div>
+
+<script>
+(() => {
+  // ── Exact geometry from Grasshopper SVG export ──
+  // SVG viewBox: 0 0 690.52 671.54
+  // Center point: (345.9, 372.34) from the circle center
+  const SVG_W = 690.52;
+  const SVG_H = 671.54;
+  const SVG_CX = 345.9;
+  const SVG_CY = 372.34;
+
+  // Pentagon vertices from SVG
+  const PENTAGON = [
+    [345.9, 227.12],   // top (Obsession)
+    [484.01, 327.46],  // upper-right (Presence)
+    [431.26, 489.82],  // lower-right (Vision)
+    [260.55, 489.82],  // lower-left (Founder Fit)
+    [207.8, 327.46],   // upper-left (Scalable Logic)
+  ];
+
+  // Circle radius from SVG path data
+  const CIRCLE_R_SVG = 145.21; // from the path data: center at 345.9,372.34
+
+  // ── Raw lines per domain (from SVG, as [x1,y1,x2,y2]) ──
+  // These are the FULL-LENGTH lines (all sliders at 1.0)
+
+  const RAW = {
+    obsession: [
+      [345.9,227.12,345.9,2.45],
+      [358.05,227.63,372.69,53.35],
+      [370.12,229.16,399.03,58.25],
+      [382.02,231.68,408.89,127.03],
+      [393.66,235.2,423.7,148.94],
+      [404.97,239.68,433.88,174.74],
+      [415.86,245.08,461.52,162.04],
+      [426.26,251.38,458.28,203.2],
+      [436.1,258.53,480.87,202.05],
+      [445.31,266.48,488.37,220.63],
+      [453.82,275.17,498.53,234.91],
+      [461.57,284.54,501.13,254.51],
+      [468.51,294.53,497.05,276.42],
+      [474.59,305.06,495.57,294.09],
+      [479.77,316.06,491.5,311.13],
+      [333.75,227.63,317.78,37.43],
+      [321.69,229.16,299.2,96.19],
+      [309.79,231.68,277.67,106.58],
+      [298.15,235.2,266.71,144.91],
+      [286.84,239.68,261.13,181.92],
+      [275.95,245.08,256.67,210.02],
+      [265.54,251.38,236.39,207.51],
+      [255.7,258.53,236.02,233.69],
+      [246.5,266.48,225.83,244.48],
+      [237.99,275.17,213.98,253.56],
+      [230.23,284.54,204.39,264.92],
+      [223.29,294.53,201.26,280.54],
+      [217.21,305.06,195.22,293.56],
+      [212.03,316.06,200,311.01],
+    ],
+    presence: [
+      [484.01,327.46,688.07,261.16],
+      [487.28,339.18,663.07,297.94],
+      [489.56,351.12,634.82,329.67],
+      [490.83,363.22,613.3,355.51],
+      [491.09,375.38,580.22,377.25],
+      [490.32,387.52,557.48,394.57],
+      [488.55,399.55,546.34,410.57],
+      [485.77,411.39,537.74,425.9],
+      [482.01,422.95,538.19,443.85],
+      [477.3,434.17,517.67,453.16],
+      [471.66,444.94,513.22,468.94],
+      [465.15,455.21,499.61,479.16],
+      [457.79,464.9,487.22,489.25],
+      [449.65,473.94,464,487.99],
+      [440.79,482.26,448.15,490.79],
+      [479.77,316.06,643.93,247.06],
+      [474.59,305.06,610.96,233.77],
+      [468.51,294.53,582.67,222.08],
+      [461.57,284.54,570.37,201.96],
+      [453.82,275.17,543.25,194.65],
+      [445.31,266.48,509.9,197.7],
+      [436.1,258.53,487.27,193.98],
+      [426.26,251.38,454.27,209.23],
+      [415.86,245.08,446.3,189.72],
+      [404.97,239.68,419.42,207.21],
+      [393.66,235.2,404.58,203.83],
+      [382.02,231.68,388.73,205.52],
+      [370.12,229.16,374.57,202.86],
+      [358.05,227.63,359.1,215.18],
+    ],
+    vision: [
+      [431.26,489.82,548.08,650.6],
+      [440.79,482.26,543.84,601.64],
+      [449.65,473.94,542.9,565.25],
+      [457.79,464.9,575.51,562.28],
+      [270.68,496.55,264.97,505.98],
+      [281.34,502.41,270.85,523.53],
+      [292.45,507.35,281.81,534.22],
+      [303.93,511.35,293.45,546.07],
+      [315.71,514.38,307.04,555.18],
+      [327.7,516.41,321.85,562.71],
+      [339.82,517.42,336.89,587.35],
+      [351.98,517.42,353.9,563.17],
+      [364.1,516.41,370.82,569.61],
+      [376.09,514.38,389.81,578.88],
+      [387.87,511.35,412.42,592.65],
+      [399.36,507.35,440.49,611.24],
+      [410.47,502.41,479.28,641.03],
+      [421.13,496.55,508.25,640.4],
+      [487.28,339.18,499.84,336.23],
+      [489.56,351.12,511.91,347.82],
+      [490.83,363.22,521.45,361.29],
+      [491.09,375.38,523.5,376.06],
+      [490.32,387.52,523.9,391.05],
+      [488.55,399.55,527.07,406.9],
+      [485.77,411.39,531.25,424.09],
+      [482.01,422.95,546.22,446.83],
+      [477.3,434.17,537.85,462.66],
+      [471.66,444.94,554.77,492.93],
+      [465.15,455.21,559.91,521.08],
+    ],
+    founderFit: [
+      [260.55,489.82,130.3,669.09],
+      [251.02,482.26,135.82,615.72],
+      [242.15,473.94,159.75,554.63],
+      [234.01,464.9,169.24,518.48],
+      [226.66,455.21,149.37,508.93],
+      [220.14,444.94,156.74,481.55],
+      [214.51,434.17,150.8,464.14],
+      [209.8,422.95,127.43,453.59],
+      [206.04,411.39,131.27,432.26],
+      [203.26,399.55,134.25,412.71],
+      [201.48,387.52,138.93,394.09],
+      [200.72,375.38,149.15,376.46],
+      [200.97,363.22,161.98,360.77],
+      [202.25,351.12,176.12,347.27],
+      [204.52,339.18,191.04,336.01],
+      [270.68,496.55,190.74,628.54],
+      [281.34,502.41,213.18,639.7],
+      [292.45,507.35,249.9,614.82],
+      [303.93,511.35,275.11,606.82],
+      [315.71,514.38,298.36,595.99],
+      [327.7,516.41,318.93,585.86],
+      [339.82,517.42,336.47,597.34],
+      [351.98,517.42,353.66,557.45],
+      [364.1,516.41,368.58,551.87],
+      [376.09,514.38,382.95,546.63],
+      [387.87,511.35,396.8,540.91],
+      [399.36,507.35,409.64,533.33],
+      [410.47,502.41,421.06,523.73],
+      [421.13,496.55,427.35,506.82],
+    ],
+    scalableLogic: [
+      [207.8,327.46,2.45,260.74],
+      [204.52,339.18,15.68,294.88],
+      [202.25,351.12,32.42,326.05],
+      [200.97,363.22,44.99,353.4],
+      [200.72,375.38,58.91,378.35],
+      [201.48,387.52,76.38,400.66],
+      [203.26,399.55,99.75,419.29],
+      [206.04,411.39,120.59,435.25],
+      [209.8,422.95,137.72,449.76],
+      [214.51,434.17,172.04,454.15],
+      [220.14,444.94,188.44,463.25],
+      [226.66,455.21,198.55,474.75],
+      [234.01,464.9,217.82,478.3],
+      [242.15,473.94,229.47,486.35],
+      [251.02,482.26,242.79,491.8],
+      [212.03,316.06,43.61,245.26],
+      [217.21,305.06,74.26,230.33],
+      [223.29,294.53,135.16,238.6],
+      [230.23,284.54,159.15,230.58],
+      [237.99,275.17,189.98,231.95],
+      [246.5,266.48,215.5,233.47],
+      [255.7,258.53,233.2,230.15],
+      [265.54,251.38,240.04,212.99],
+      [275.95,245.08,263.09,221.71],
+      [286.84,239.68,273.98,210.8],
+      [298.15,235.2,286.71,202.37],
+      [309.79,231.68,301.76,200.41],
+      [321.69,229.16,318.23,208.7],
+      [333.75,227.63,332.61,214.05],
+    ],
+  };
+
+  // ── Precompute: decompose each line into start point + vector ──
+  // For each line: start = (x1,y1), vector = (x2-x1, y2-y1)
+  // When scaling, the end point = start + vector * sliderValue
+
+  const DIMENSIONS = [
+    { name: 'Obsession',      key: 'obsession' },
+    { name: 'Presence',       key: 'presence' },
+    { name: 'Vision',         key: 'vision' },
+    { name: 'Founder Fit',    key: 'founderFit' },
+    { name: 'Scalable Logic', key: 'scalableLogic' },
+  ];
+
+  // Build processed line data: for each domain, store [{sx, sy, vx, vy}, ...]
+  const LINES = {};
+  for (const dim of DIMENSIONS) {
+    LINES[dim.key] = RAW[dim.key].map(([x1, y1, x2, y2]) => ({
+      sx: x1, sy: y1,
+      vx: x2 - x1, vy: y2 - y1,
+    }));
+  }
+
+  // ── Now do vector addition for shared start points ──
+  // Group all lines across all domains by start point (with tolerance)
+  // Then sum vectors per group, tracking which domains contribute
+
+  const TOL = 0.5;
+
+  function ptKey(x, y) {
+    // Round to tolerance grid for grouping
+    return `${Math.round(x * 2) / 2},${Math.round(y * 2) / 2}`;
+  }
+
+  // Build a merged structure: for each unique start point,
+  // collect all (domain, vector) pairs
+  function buildMergedLines(values) {
+    const groups = {};
+
+    for (const dim of DIMENSIONS) {
+      const scale = values[dim.key];
+      for (const line of LINES[dim.key]) {
+        const key = ptKey(line.sx, line.sy);
+        if (!groups[key]) {
+          groups[key] = { sx: line.sx, sy: line.sy, vx: 0, vy: 0 };
+        }
+        groups[key].vx += line.vx * scale;
+        groups[key].vy += line.vy * scale;
+      }
+    }
+
+    return Object.values(groups);
+  }
+
+  // ── Slider state ──
+  const values = {};
+  DIMENSIONS.forEach(d => values[d.key] = 1.0);
+
+  // ── Animation state ──
+  let animProgress = 0;       // 0 → 1 over the intro
+  let animStartTime = null;
+  const ANIM_DURATION = 1400; // ms
+  let animating = true;
+
+  function easeOutCubic(t) {
+    return 1 - Math.pow(1 - t, 3);
+  }
+
+  function animationLoop(timestamp) {
+    if (!animStartTime) animStartTime = timestamp;
+    const elapsed = timestamp - animStartTime;
+    animProgress = Math.min(elapsed / ANIM_DURATION, 1);
+    draw();
+    if (animProgress < 1) {
+      requestAnimationFrame(animationLoop);
+    } else {
+      animating = false;
+    }
+  }
+
+  // ── Canvas ──
+  const canvas = document.getElementById('chart');
+  const ctx = canvas.getContext('2d');
+  let canvasSize, dpr, drawScale, offsetX, offsetY;
+
+  function resize() {
+    const rect = canvas.parentElement.getBoundingClientRect();
+    dpr = window.devicePixelRatio || 1;
+    canvasSize = Math.min(rect.width, rect.height);
+    canvas.width = canvasSize * dpr;
+    canvas.height = canvasSize * dpr;
+    canvas.style.width = canvasSize + 'px';
+    canvas.style.height = canvasSize + 'px';
+
+    // Map SVG coordinates to canvas
+    // Add padding so the full burst fits
+    const padding = 0.05;
+    drawScale = (canvasSize * dpr * (1 - padding * 2)) / Math.max(SVG_W, SVG_H);
+    offsetX = (canvasSize * dpr - SVG_W * drawScale) / 2;
+    offsetY = (canvasSize * dpr - SVG_H * drawScale) / 2;
+
+    draw();
+  }
+
+  function tx(x) { return x * drawScale + offsetX; }
+  function ty(y) { return y * drawScale + offsetY; }
+
+  // ── Label positions (placed outside the burst, along pentagon vertex directions) ──
+  function getLabelPos(vertexIdx) {
+    const vx = PENTAGON[vertexIdx][0];
+    const vy = PENTAGON[vertexIdx][1];
+    const dx = vx - SVG_CX;
+    const dy = vy - SVG_CY;
+    const dist = Math.sqrt(dx * dx + dy * dy);
+    const labelDist = dist + 125; // push labels well outside
+    return {
+      x: SVG_CX + (dx / dist) * labelDist,
+      y: SVG_CY + (dy / dist) * labelDist,
+    };
+  }
+
+  // ── Draw ──
+  function draw() {
+    const W = canvas.width;
+    const H = canvas.height;
+    ctx.clearRect(0, 0, W, H);
+
+    // Background gradient
+    const bgGrad = ctx.createRadialGradient(
+      tx(SVG_CX), ty(SVG_CY), 0,
+      tx(SVG_CX), ty(SVG_CY), W * 0.6
+    );
+    bgGrad.addColorStop(0, '#102a30');
+    bgGrad.addColorStop(0.6, '#0d2228');
+    bgGrad.addColorStop(1, '#0a1a1f');
+    ctx.fillStyle = bgGrad;
+    ctx.fillRect(0, 0, W, H);
+
+    const lw = Math.max(1, 1.8 * drawScale);
+
+    // ── Merged radiating lines ──
+    const merged = buildMergedLines(values);
+    const ease = easeOutCubic(animProgress);
+
+    for (const line of merged) {
+      const len = Math.sqrt(line.vx * line.vx + line.vy * line.vy);
+      if (len < 0.5) continue;
+
+      const ex = line.sx + line.vx * ease;
+      const ey = line.sy + line.vy * ease;
+
+      // Opacity scales with line length relative to max possible
+      const maxLen = 400; // approximate max line length in SVG units
+      const alpha = 0.25 + 0.6 * Math.min(len / maxLen, 1);
+
+      ctx.beginPath();
+      ctx.moveTo(tx(line.sx), ty(line.sy));
+      ctx.lineTo(tx(ex), ty(ey));
+      ctx.strokeStyle = `rgba(201, 169, 110, ${alpha})`;
+      ctx.lineWidth = lw;
+      ctx.lineCap = 'round';
+      ctx.stroke();
+    }
+
+    // ── Circle ──
+    ctx.beginPath();
+    ctx.arc(tx(SVG_CX), ty(SVG_CY), CIRCLE_R_SVG * drawScale, 0, Math.PI * 2);
+    ctx.strokeStyle = 'rgba(180, 200, 210, 0.12)';
+    ctx.lineWidth = Math.max(0.5, 1 * drawScale);
+    ctx.stroke();
+
+    // ── Outer Pentagon ──
+    ctx.beginPath();
+    for (let i = 0; i < 5; i++) {
+      const px = tx(PENTAGON[i][0]);
+      const py = ty(PENTAGON[i][1]);
+      if (i === 0) ctx.moveTo(px, py);
+      else ctx.lineTo(px, py);
+    }
+    ctx.closePath();
+    ctx.strokeStyle = 'rgba(180, 200, 210, 0.18)';
+    ctx.lineWidth = Math.max(1, 1.2 * drawScale);
+    ctx.stroke();
+
+    // ── Inner spider rings ──
+    const rings = [0.33, 0.66];
+    for (const frac of rings) {
+      ctx.beginPath();
+      for (let i = 0; i < 5; i++) {
+        const px = SVG_CX + (PENTAGON[i][0] - SVG_CX) * frac;
+        const py = SVG_CY + (PENTAGON[i][1] - SVG_CY) * frac;
+        if (i === 0) ctx.moveTo(tx(px), ty(py));
+        else ctx.lineTo(tx(px), ty(py));
+      }
+      ctx.closePath();
+      ctx.strokeStyle = 'rgba(180, 200, 210, 0.08)';
+      ctx.lineWidth = Math.max(0.5, 0.8 * drawScale);
+      ctx.stroke();
+    }
+
+    // ── Spokes ──
+    for (let i = 0; i < 5; i++) {
+      ctx.beginPath();
+      ctx.moveTo(tx(SVG_CX), ty(SVG_CY));
+      ctx.lineTo(tx(PENTAGON[i][0]), ty(PENTAGON[i][1]));
+      ctx.strokeStyle = 'rgba(180, 200, 210, 0.08)';
+      ctx.lineWidth = Math.max(0.5, 0.8 * drawScale);
+      ctx.stroke();
+    }
+
+    // ── Spider chart score shape ──
+    ctx.beginPath();
+    for (let i = 0; i < 5; i++) {
+      const val = values[DIMENSIONS[i].key];
+      const px = SVG_CX + (PENTAGON[i][0] - SVG_CX) * val;
+      const py = SVG_CY + (PENTAGON[i][1] - SVG_CY) * val;
+      if (i === 0) ctx.moveTo(tx(px), ty(py));
+      else ctx.lineTo(tx(px), ty(py));
+    }
+    ctx.closePath();
+
+    const spiderGrad = ctx.createRadialGradient(
+      tx(SVG_CX), ty(SVG_CY), 0,
+      tx(SVG_CX), ty(SVG_CY), CIRCLE_R_SVG * drawScale
+    );
+    spiderGrad.addColorStop(0, 'rgba(30, 140, 120, 0.06)');
+    spiderGrad.addColorStop(1, 'rgba(30, 140, 120, 0.2)');
+    ctx.fillStyle = spiderGrad;
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(100, 210, 180, 0.55)';
+    ctx.lineWidth = Math.max(1, 1.6 * drawScale);
+    ctx.stroke();
+
+    // ── Score dots on pentagon vertices ──
+    for (let i = 0; i < 5; i++) {
+      const val = values[DIMENSIONS[i].key];
+      const px = SVG_CX + (PENTAGON[i][0] - SVG_CX) * val;
+      const py = SVG_CY + (PENTAGON[i][1] - SVG_CY) * val;
+      const dotR = Math.max(3, 4.5 * drawScale);
+
+      ctx.beginPath();
+      ctx.arc(tx(px), ty(py), dotR, 0, Math.PI * 2);
+      ctx.fillStyle = '#d4b070';
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(10, 26, 31, 0.6)';
+      ctx.lineWidth = Math.max(1, 1.5 * drawScale);
+      ctx.stroke();
+    }
+
+    // ── Labels ──
+    const baseFontSize = 13 * drawScale;
+    const fontSize = Math.max(10, baseFontSize);
+    const scoreFontSize = Math.max(9, 11 * drawScale);
+
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+
+    for (let i = 0; i < 5; i++) {
+      const val = values[DIMENSIONS[i].key];
+      const lp = getLabelPos(i);
+
+      ctx.font = `400 ${fontSize}px 'Cormorant Garamond', serif`;
+      ctx.fillStyle = 'rgba(200, 210, 215, 0.75)';
+      ctx.fillText(DIMENSIONS[i].name.toUpperCase(), tx(lp.x), ty(lp.y) - scoreFontSize * 0.8);
+
+      ctx.font = `300 ${scoreFontSize}px 'DM Sans', sans-serif`;
+      ctx.fillStyle = 'rgba(201, 169, 110, 0.8)';
+      ctx.fillText((val * 10).toFixed(1), tx(lp.x), ty(lp.y) + fontSize * 0.7);
+    }
+  }
+
+  // ── Build Controls ──
+  const controlsEl = document.getElementById('controls');
+
+  DIMENSIONS.forEach(dim => {
+    const row = document.createElement('div');
+    row.className = 'slider-row';
+
+    const label = document.createElement('div');
+    label.className = 'slider-label';
+    label.textContent = dim.name;
+
+    const track = document.createElement('div');
+    track.className = 'slider-track';
+
+    const input = document.createElement('input');
+    input.type = 'range';
+    input.min = '0.01';
+    input.max = '1';
+    input.step = '0.01';
+    input.value = values[dim.key];
+
+    const valDisplay = document.createElement('div');
+    valDisplay.className = 'slider-value';
+    valDisplay.textContent = (values[dim.key] * 10).toFixed(1);
+
+    input.addEventListener('input', () => {
+      const v = parseFloat(input.value);
+      values[dim.key] = v;
+      valDisplay.textContent = (v * 10).toFixed(1);
+      draw();
+    });
+
+    track.appendChild(input);
+    row.appendChild(label);
+    row.appendChild(track);
+    row.appendChild(valDisplay);
+    controlsEl.appendChild(row);
+  });
+
+  // ── Init ──
+  window.addEventListener('resize', () => {
+    resize();
+    if (!animating) draw();
+  });
+  resize();                          // sets up canvas dimensions
+  requestAnimationFrame(animationLoop); // kick off intro animation
+})();
+</script>
+</body>
+</html>

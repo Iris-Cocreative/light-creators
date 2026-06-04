@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Founder Resonance Assessment — Light Creators</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-navy: #0F1A20; --espresso: #4A3F3A; --gold: #CE9B44;
+            --light-cream: #F5E6C4; --sage: #8FA195; --teal: #2E5567;
+            --off-white: #FFFDF8; --font-serif: 'Cormorant Garamond', Georgia, serif;
+            --font-sans: 'DM Sans', -apple-system, sans-serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: var(--font-sans); background: var(--dark-navy);
+            color: var(--off-white); min-height: 100vh; -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Lang toggle */
+        .lang-toggle { position: fixed; top: 20px; right: 24px; z-index: 100; display: flex; background: rgba(255,253,248,0.08); border-radius: 2px; backdrop-filter: blur(8px); }
+        .lang-btn { padding: 6px 14px; font-family: var(--font-sans); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sage); cursor: pointer; border: none; background: transparent; transition: all 0.2s; }
+        .lang-btn.active { background: var(--teal); color: var(--off-white); }
+
+        /* Progress */
+        .progress-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 90; }
+        .progress-track { height: 3px; background: rgba(255,255,255,0.06); }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--teal), var(--gold)); transition: width 0.6s cubic-bezier(0.22,1,0.36,1); width: 0%; }
+        .progress-text { text-align: center; padding: 12px 0 0; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--sage); opacity: 0.4; }
+
+        /* Screens */
+        .screen { display: none; min-height: 100vh; padding: 80px 24px 60px; }
+        .screen.active { display: flex; justify-content: center; align-items: center; animation: fadeIn 0.5s ease forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+        .screen-inner { max-width: 600px; width: 100%; }
+
+        /* Welcome */
+        .welcome-eyebrow { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sage); opacity: 0.6; margin-bottom: 24px; }
+        .welcome-title { font-family: var(--font-serif); font-size: clamp(2rem, 5vw, 3rem); font-weight: 400; line-height: 1.2; color: var(--off-white); margin-bottom: 24px; }
+        .welcome-title em { font-style: italic; color: var(--gold); }
+        .welcome-sub { font-size: 1rem; font-weight: 300; color: var(--light-cream); opacity: 0.75; line-height: 1.7; margin-bottom: 12px; }
+        .welcome-note { font-family: var(--font-serif); font-size: 0.95rem; font-style: italic; color: var(--sage); opacity: 0.6; margin-bottom: 48px; }
+        .btn-gold { display: inline-block; font-family: var(--font-sans); font-size: 0.88rem; font-weight: 500; letter-spacing: 0.05em; color: var(--dark-navy); background: var(--gold); padding: 16px 48px; border: none; border-radius: 2px; cursor: pointer; transition: all 0.3s ease; }
+        .btn-gold:hover { background: var(--light-cream); transform: translateY(-1px); box-shadow: 0 4px 20px rgba(206,155,68,0.3); }
+
+        /* Question layout */
+        .q-section { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); opacity: 0.6; margin-bottom: 8px; }
+        .q-factor { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sage); margin-bottom: 24px; }
+        .q-text { font-family: var(--font-serif); font-size: clamp(1.4rem, 3.5vw, 2rem); font-weight: 400; line-height: 1.35; color: var(--off-white); margin-bottom: 40px; }
+
+        /* Answer options */
+        .options { display: flex; flex-direction: column; gap: 12px; }
+        .option {
+            display: flex; align-items: flex-start; gap: 16px;
+            padding: 18px 22px; background: rgba(255,253,248,0.03);
+            border: 1px solid rgba(255,253,248,0.08); border-radius: 3px;
+            cursor: pointer; transition: all 0.25s ease; position: relative;
+        }
+        .option:hover { background: rgba(255,253,248,0.06); border-color: rgba(206,155,68,0.25); }
+        .option.selected { background: rgba(46,85,103,0.2); border-color: var(--teal); }
+        .option-marker {
+            width: 20px; height: 20px; border-radius: 50%;
+            border: 1.5px solid rgba(255,253,248,0.2); flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.25s; margin-top: 2px;
+        }
+        .option.selected .option-marker { border-color: var(--teal); background: var(--teal); }
+        .option.selected .option-marker::after { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--off-white); }
+        .option-text { font-size: 0.92rem; line-height: 1.5; color: var(--light-cream); opacity: 0.85; }
+        .option.selected .option-text { color: var(--off-white); opacity: 1; }
+
+        /* Navigation */
+        .q-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 36px; }
+        .btn-back { font-family: var(--font-sans); font-size: 0.78rem; color: var(--sage); opacity: 0.5; background: none; border: none; cursor: pointer; transition: opacity 0.2s; letter-spacing: 0.03em; padding: 8px 0; }
+        .btn-back:hover { opacity: 0.8; }
+        .btn-next { font-family: var(--font-sans); font-size: 0.82rem; font-weight: 500; color: var(--dark-navy); background: var(--gold); padding: 12px 32px; border: none; border-radius: 2px; cursor: pointer; transition: all 0.3s; opacity: 0.3; pointer-events: none; }
+        .btn-next.enabled { opacity: 1; pointer-events: auto; }
+        .btn-next.enabled:hover { background: var(--light-cream); transform: translateY(-1px); }
+
+        /* Transition micro-copy */
+        .transition-screen { text-align: center; }
+        .transition-text { font-family: var(--font-serif); font-size: 1.15rem; font-style: italic; color: var(--light-cream); opacity: 0.7; line-height: 1.8; max-width: 440px; margin: 0 auto 40px; }
+
+        /* Email capture */
+        .email-screen { text-align: center; }
+        .email-title { font-family: var(--font-serif); font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 400; color: var(--off-white); margin-bottom: 16px; }
+        .email-sub { font-size: 0.95rem; color: var(--light-cream); opacity: 0.7; margin-bottom: 40px; }
+        .email-form { display: flex; flex-direction: column; gap: 14px; max-width: 380px; margin: 0 auto; }
+        .email-input { font-family: var(--font-sans); font-size: 0.88rem; padding: 14px 18px; background: rgba(255,253,248,0.05); border: 1px solid rgba(255,253,248,0.12); border-radius: 2px; color: var(--off-white); outline: none; transition: border-color 0.2s; }
+        .email-input::placeholder { color: var(--sage); opacity: 0.4; }
+        .email-input:focus { border-color: var(--gold); }
+
+        /* Loading screen */
+        .loading-screen { text-align: center; }
+        .loading-text { font-family: var(--font-serif); font-size: 1.4rem; color: var(--off-white); margin-bottom: 24px; }
+        .loading-dots { display: flex; justify-content: center; gap: 8px; }
+        .loading-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); animation: pulse 1.4s ease-in-out infinite; }
+        .loading-dot:nth-child(2) { animation-delay: 0.2s; }
+        .loading-dot:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes pulse { 0%, 80%, 100% { opacity: 0.2; transform: scale(0.8); } 40% { opacity: 1; transform: scale(1); } }
+
+        /* Results preview */
+        .results-screen { text-align: center; }
+        .results-type-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+        .results-type-name { font-family: var(--font-serif); font-size: clamp(2rem, 5vw, 2.8rem); font-weight: 400; color: var(--off-white); margin-bottom: 32px; }
+        .radar-container { width: 280px; height: 280px; margin: 0 auto 40px; position: relative; }
+        .radar-container canvas { width: 100%; height: 100%; }
+        .results-desc { font-family: var(--font-serif); font-size: 1.05rem; line-height: 1.75; color: var(--light-cream); opacity: 0.85; max-width: 520px; margin: 0 auto 16px; text-align: left; }
+        .results-lever { font-family: var(--font-sans); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal); margin-bottom: 8px; }
+        .results-lever-value { font-family: var(--font-serif); font-size: 1.1rem; color: var(--gold); font-style: italic; margin-bottom: 32px; }
+        .results-cta-note { font-size: 0.8rem; color: var(--sage); opacity: 0.5; margin-top: 16px; }
+
+        /* Geometric decorations */
+        .geo-circle { position: fixed; border-radius: 50%; border: 1px solid rgba(206,155,68,0.04); pointer-events: none; }
+        .geo-1 { width: 600px; height: 600px; top: -200px; right: -200px; }
+        .geo-2 { width: 800px; height: 800px; bottom: -300px; left: -300px; border-color: rgba(143,161,149,0.03); }
+
+        @media (max-width: 640px) {
+            .screen { padding: 60px 20px 40px; }
+            .option { padding: 14px 16px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="geo-circle geo-1"></div>
+<div class="geo-circle geo-2"></div>
+
+<div class="lang-toggle">
+    <button class="lang-btn" onclick="setLang('de')">DE</button>
+    <button class="lang-btn active" onclick="setLang('en')">EN</button>
+</div>
+
+<div class="progress-bar" id="progressBar" style="display:none;">
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="progress-text" id="progressText"></div>
+</div>
+
+<!-- All screens rendered by JS -->
+<div id="app"></div>
+
+<script>
+const LANG = { current: 'en' };
+
+const QUESTIONS = [
+    // Section 1: Situation Activation
+    { id: 1, section: { en: 'Section 1 of 3', de: 'Abschnitt 1 von 3' }, factor: { en: 'Situation', de: 'Situation' },
+      text: { en: 'Where are you currently in your funding journey?', de: 'Wo stehst du aktuell in deiner Funding-Journey?' },
+      options: [
+        { en: 'Pre-seed (building MVP, talking to first angels)', de: 'Pre-Seed (MVP im Aufbau, erste Angel-Gespräche)', scores: {} },
+        { en: 'Seed stage (actively pitching VCs, refining business model)', de: 'Seed-Phase (aktiv im Pitch mit VCs, Business Model verfeinern)', scores: {} },
+        { en: 'Series A prep (scaling, institutional investors)', de: 'Series A Vorbereitung (Skalierung, institutionelle Investoren)', scores: {} },
+        { en: 'Between rounds (pivoting or extending runway)', de: 'Zwischen Runden (Pivot, Runway verlängern, neue Strategie)', scores: {} }
+      ]
+    },
+    { id: 2, section: { en: 'Section 1 of 3', de: 'Abschnitt 1 von 3' }, factor: { en: 'Challenge', de: 'Herausforderung' },
+      text: { en: "What's your biggest challenge in investor conversations right now?", de: 'Was ist aktuell deine größte Herausforderung in Investor-Gesprächen?' },
+      options: [
+        { en: 'Getting meetings, but no follow-up interest', de: 'Ich bekomme Meetings, aber keine Follow-ups oder echtes Interesse', scores: {} },
+        { en: "Investors like the idea, but don't commit", de: 'Investoren mögen die Idee, aber committen nicht', scores: {} },
+        { en: "Feedback feels vague or contradictory — I don't know what's missing", de: 'Das Feedback ist vage oder widersprüchlich — ich weiß nicht, woran es liegt', scores: {} },
+        { en: "I'm not sure what I'm missing", de: 'Ich bin unsicher, was mir fehlt', scores: {} }
+      ]
+    },
+    // Section 2: Behavioral Diagnosis — Obsession
+    { id: 3, section: { en: 'Section 2 of 3', de: 'Abschnitt 2 von 3' }, factor: { en: 'Obsession', de: 'Obsession' },
+      text: { en: 'When you explain your company to investors, what drives your energy most?', de: 'Wenn du dein Unternehmen Investoren erklärst — was treibt deine Energie am stärksten?' },
+      options: [
+        { en: 'The market opportunity and financial potential', de: 'Die Marktchance und das finanzielle Potenzial', scores: { obsession: 3 } },
+        { en: 'The elegance of the solution or technology', de: 'Die Eleganz der Lösung oder Technologie', scores: { obsession: 5 } },
+        { en: 'The problem this solves in the world', de: 'Das Problem, das wir in der Welt lösen', scores: { obsession: 7 } },
+        { en: 'My personal connection to this mission', de: 'Meine persönliche Verbindung zu dieser Mission', scores: { obsession: 10 } }
+      ]
+    },
+    { id: 4, section: { en: 'Section 2 of 3', de: 'Abschnitt 2 von 3' }, factor: { en: 'Obsession', de: 'Obsession' },
+      text: { en: 'If funding took 2x longer than expected, how would you feel?', de: 'Wenn Funding 2x länger dauern würde als erwartet — wie würdest du dich fühlen?' },
+      options: [
+        { en: 'Frustrated — I need momentum to stay motivated', de: 'Frustriert — ich brauche Momentum, um motiviert zu bleiben', scores: { obsession: 2 } },
+        { en: "Concerned — but I'd find a way to continue", de: 'Besorgt — aber ich würde einen Weg finden weiterzumachen', scores: { obsession: 6 } },
+        { en: 'Unaffected — this work matters regardless of timeline', de: 'Unbeirrt — diese Arbeit ist wichtig, unabhängig vom Zeitplan', scores: { obsession: 10 } },
+        { en: 'Relieved — more time to refine before scaling', de: 'Erleichtert — mehr Zeit zum Verfeinern vor der Skalierung', scores: { obsession: 4 } }
+      ]
+    },
+    // Presence
+    { id: 5, section: { en: 'Section 2 of 3', de: 'Abschnitt 2 von 3' }, factor: { en: 'Presence & Energy', de: 'Präsenz & Energie' },
+      text: { en: 'When an investor asks an unexpected or critical question, I typically:', de: 'Wenn ein Investor eine unerwartete oder kritische Frage stellt, passiert bei mir typischerweise:' },
+      options: [
+        { en: 'Feel my body tense and my mind race for the "right" answer', de: 'Mein Körper spannt sich an und mein Kopf sucht hektisch nach der „richtigen" Antwort', scores: { presence: 2 } },
+        { en: 'Notice slight unease, but stay mostly grounded', de: 'Ich spüre leichte Unruhe, bleibe aber größtenteils geerdet', scores: { presence: 6 } },
+        { en: 'Feel calm and genuinely curious about their concern', de: 'Ich bleibe ruhig und bin wirklich neugierig auf ihre Sorge', scores: { presence: 10 } },
+        { en: 'Shift into "defense mode" without realizing it', de: 'Ich gehe in einen „Verteidigungsmodus", ohne es zu merken', scores: { presence: 1 } }
+      ]
+    },
+    { id: 6, section: { en: 'Section 2 of 3', de: 'Abschnitt 2 von 3' }, factor: { en: 'Presence & Energy', de: 'Präsenz & Energie' },
+      text: { en: 'After investor meetings, I most often feel:', de: 'Nach Investor-Meetings fühle ich mich meistens:' },
+      options: [
+        { en: 'Uncertain whether I showed up as my authentic self', de: 'Unsicher, ob ich als mein authentisches Selbst aufgetreten bin', scores: { presence: 4 } },
+        { en: 'Aware I was performing rather than connecting', de: 'Bewusst, dass ich eher performt als connected habe', scores: { presence: 5 } },
+        { en: 'Energized — like they saw the real me', de: 'Energetisiert — als hätten sie das echte Ich gesehen', scores: { presence: 10 } },
+        { en: 'Exhausted from managing my energy', de: 'Erschöpft vom Management meiner Energie', scores: { presence: 2 } }
+      ]
+    },
+    // Vision
+    { id: 7, section: { en: 'Section 2 of 3', de: 'Abschnitt 2 von 3' }, factor: { en: 'Vision Resonance', de: 'Vision Resonance' },
+      text: { en: 'When you describe your vision, how do investors typically respond?', de: 'Wenn du deine Vision beschreibst, wie reagieren Investoren typischerweise?' },
+      options: [
+        { en: 'They ask for more data or proof points', de: 'Sie fragen nach mehr Daten oder Beweispunkten', scores: { vision: 3 } },
+        { en: 'They intellectually agree but seem unmoved', de: 'Sie stimmen intellektuell zu, wirken aber unbewegt', scores: { vision: 5 } },
+        { en: 'They lean in and ask "what would that world look like?"', de: 'Sie lehnen sich vor und fragen: „Wie würde diese Welt aussehen?"', scores: { vision: 10 } },
+        { en: 'They say "I get it" but I\'m not sure they feel it', de: 'Sie sagen „Ich verstehe es" — aber ich bin nicht sicher, ob sie es wirklich fühlen', scores: { vision: 4 } }
+      ]
+    },
+    { id: 8, section: { en: 'Section 2 of 3', de: 'Abschnitt 2 von 3' }, factor: { en: 'Vision Resonance', de: 'Vision Resonance' },
+      text: { en: 'Can you describe your vision in a way that creates a visceral image?', de: 'Kannst du deine Vision so beschreiben, dass sie ein viszerales Bild erzeugt?' },
+      options: [
+        { en: 'I explain the business model and market size', de: 'Ich erkläre das Business Model und die Marktgröße', scores: { vision: 2 } },
+        { en: 'I can articulate the future state logically', de: 'Ich kann den zukünftigen Zustand logisch artikulieren', scores: { vision: 5 } },
+        { en: 'I paint a picture people can see and feel', de: 'Ich male ein Bild, das Menschen sehen und fühlen können', scores: { vision: 10 } },
+        { en: "I'm not sure — I focus more on the problem we solve", de: 'Ich bin unsicher — ich fokussiere mich mehr auf das Problem, das wir lösen', scores: { vision: 3 } }
+      ]
+    },
+    // Founder Fit
+    { id: 9, section: { en: 'Section 2 of 3', de: 'Abschnitt 2 von 3' }, factor: { en: 'Founder Fit', de: 'Founder Fit' },
+      text: { en: 'When investors ask "Why you?", your answer feels like:', de: 'Wenn Investoren „Warum du?" fragen, fühlt sich deine Antwort an wie:' },
+      options: [
+        { en: 'A resume recitation of credentials', de: 'Eine Aufzählung meines Lebenslaufs und meiner Credentials', scores: { fit: 3 } },
+        { en: 'Logical, but disconnected from the mission', de: 'Logisch, aber von der Mission losgelöst', scores: { fit: 5 } },
+        { en: 'An inevitable personal story that led here', de: 'Eine unvermeidliche persönliche Geschichte, die hierher führte', scores: { fit: 10 } },
+        { en: 'Defensive or compensatory', de: 'Defensiv oder kompensatorisch', scores: { fit: 2 } }
+      ]
+    },
+    { id: 10, section: { en: 'Section 2 of 3', de: 'Abschnitt 2 von 3' }, factor: { en: 'Founder Fit', de: 'Founder Fit' },
+      text: { en: "Your personal history and this company's mission feel like:", de: 'Deine persönliche Geschichte und die Mission dieses Unternehmens fühlen sich an wie:' },
+      options: [
+        { en: 'Professionally aligned, but not deeply connected', de: 'Professionell aligned, aber nicht tief verbunden', scores: { fit: 5 } },
+        { en: 'Separate parts of my identity', de: 'Getrennte Teile meiner Identität', scores: { fit: 2 } },
+        { en: 'A single, coherent thread', de: 'Ein einziger, kohärenter roter Faden', scores: { fit: 10 } },
+        { en: 'Strong intellectually, weaker emotionally', de: 'Stark intellektuell, schwächer emotional', scores: { fit: 4 } }
+      ]
+    },
+    // Scalable Logic
+    { id: 11, section: { en: 'Section 2 of 3', de: 'Abschnitt 2 von 3' }, factor: { en: 'Scalable Logic', de: 'Scalable Logic' },
+      text: { en: 'When explaining why NOW is the right time, I:', de: 'Wenn du erklärst, warum JETZT der richtige Zeitpunkt ist, dann:' },
+      options: [
+        { en: 'Reference general trends ("market is growing")', de: 'Ich referenziere allgemeine Trends („der Markt wächst")', scores: { logic: 3 } },
+        { en: 'Cite specific shifts that created new possibility', de: 'Ich benenne spezifische Shifts, die neue Möglichkeiten geschaffen haben', scores: { logic: 10 } },
+        { en: 'Focus more on our readiness than market timing', de: 'Ich fokussiere mich mehr auf unsere Bereitschaft als auf Market Timing', scores: { logic: 4 } },
+        { en: 'Struggle to articulate timing beyond "good opportunity"', de: 'Ich tue mich schwer, Timing über „gute Opportunity" hinaus zu artikulieren', scores: { logic: 2 } }
+      ]
+    },
+    { id: 12, section: { en: 'Section 2 of 3', de: 'Abschnitt 2 von 3' }, factor: { en: 'Scalable Logic', de: 'Scalable Logic' },
+      text: { en: 'When describing the problem you solve, you focus on:', de: 'Wenn du das Problem beschreibst, das du löst, fokussierst du dich auf:' },
+      options: [
+        { en: 'The symptoms customers experience', de: 'Die Symptome, die Kunden erleben', scores: { logic: 4 } },
+        { en: 'The root cause that creates those symptoms', de: 'Die Ursache, die diese Symptome erzeugt', scores: { logic: 8 } },
+        { en: 'Both, with clear connection between them', de: 'Beides, mit klarer Verbindung zwischen ihnen', scores: { logic: 10 } },
+        { en: 'Our solution more than the problem itself', de: 'Unsere Lösung mehr als das Problem selbst', scores: { logic: 2 } }
+      ]
+    },
+    // Section 3: Qualification
+    { id: 13, section: { en: 'Section 3 of 3', de: 'Abschnitt 3 von 3' }, factor: { en: 'About You', de: 'Über dich' },
+      text: { en: 'How did you hear about this quiz?', de: 'Wie hast du von diesem Quiz erfahren?' },
+      options: [
+        { en: 'LinkedIn / Social media', de: 'LinkedIn / Social Media', scores: {} },
+        { en: 'Referral from another founder', de: 'Empfehlung von einem anderen Founder', scores: {} },
+        { en: 'Web search', de: 'Web-Suche', scores: {} },
+        { en: 'Event / Podcast', de: 'Event / Podcast', scores: {} }
+      ]
+    },
+    { id: 14, section: { en: 'Section 3 of 3', de: 'Abschnitt 3 von 3' }, factor: { en: 'Your Goals', de: 'Deine Ziele' },
+      text: { en: 'What would make this quiz most valuable for you?', de: 'Was würde dieses Quiz für dich am wertvollsten machen?' },
+      options: [
+        { en: 'Clarity on my specific blind spot', de: 'Klarheit über meinen spezifischen blinden Fleck', scores: {} },
+        { en: 'Concrete next steps to improve', de: 'Konkrete nächste Schritte zur Verbesserung', scores: {} },
+        { en: "Validation that I'm on the right track", de: 'Bestätigung, dass ich auf dem richtigen Weg bin', scores: {} },
+        { en: 'Understanding what investors actually evaluate', de: 'Verstehen, was Investoren wirklich bewerten', scores: {} }
+      ]
+    },
+    { id: 15, section: { en: 'Section 3 of 3', de: 'Abschnitt 3 von 3' }, factor: { en: 'Readiness', de: 'Bereitschaft' },
+      text: { en: "If this quiz reveals a gap, I'm:", de: 'Wenn dieses Quiz eine Lücke aufzeigt, bin ich:' },
+      options: [
+        { en: 'Ready to work on it immediately', de: 'Bereit, sofort daran zu arbeiten', scores: {} },
+        { en: 'Open to learning more before committing', de: 'Offen, mehr zu lernen, bevor ich mich committe', scores: {} },
+        { en: 'Curious but already overloaded', de: 'Neugierig, aber bereits überlastet', scores: {} },
+        { en: 'Just exploring, not ready for change yet', de: 'Nur am Erkunden, noch nicht bereit für Veränderung', scores: {} }
+      ]
+    }
+];
+
+const TYPES = {
+    'logical-visionary': {
+        name: { en: 'The Logical Visionary', de: 'Der Logische Visionär' },
+        desc: { en: 'You lead with clarity, structure, and a well-thought-out model. People sense that you can penetrate complex connections and build a solid rational story. What often gets lost, however, is emotional resonance: how much people can feel your energy, not just your arguments.', de: 'Du führst mit Klarheit, Struktur und einem stark durchdachten Modell. Man spürt, dass du in der Lage bist, komplexe Zusammenhänge zu durchdringen und eine solide rationale Story zu bauen. Was jedoch oft untergeht, ist die emotionale Resonanz.' },
+        lever: { en: 'Presence & Congruent Energy', de: 'Präsenz & Kongruente Energie' }
+    },
+    'quiet-powerhouse': {
+        name: { en: 'The Quiet Powerhouse', de: 'Das Stille Kraftwerk' },
+        desc: { en: 'You possess a deep, quiet strength that often only becomes visible when people get to know you better. You are present, grounded, and appear stable — a quality that investors rarely find and highly value. At the same time, your vision sometimes remains too quiet.', de: 'In dir steckt eine tiefe, ruhige Kraft, die oft erst sichtbar wird, wenn man dich besser kennt. Du bist präsent, geerdet und wirkst stabil — eine Qualität, die Investoren selten finden und sehr schätzen.' },
+        lever: { en: 'Vision Resonance', de: 'Vision Resonance' }
+    },
+    'story-driven': {
+        name: { en: 'The Story-Driven Founder', de: 'Der Story-Driven Founder' },
+        desc: { en: 'You have natural resonance: people enjoy listening to you, you build connection, and possess a narrative energy that immediately creates closeness. This is tremendous capital. At the same time, your story can lose structure.', de: 'Du hast natürliche Resonanz: Menschen hören dir gerne zu, du baust Verbindung auf und besitzt eine narrative Energie, die sofort Nähe schafft. Das ist ein enormes Kapital.' },
+        lever: { en: 'Scalable Logic', de: 'Scalable Logic' }
+    },
+    'integrated-builder': {
+        name: { en: 'The Integrated Builder', de: 'Der Integrierte Builder' },
+        desc: { en: 'You already bring many things into natural coherence: presence, clarity, vision, and personal story are visibly connected to each other. This is rare — and a strong foundation. Your next development stage lies in fine-tuning.', de: 'Du bringst vieles bereits in eine natürliche Stimmigkeit: Präsenz, Klarheit, Vision und persönliche Geschichte sind erkennbar miteinander verbunden. Das ist selten — und ein starkes Fundament.' },
+        lever: { en: 'Optimization & Precision', de: 'Optimierung & Präzision' }
+    },
+    'almost-there': {
+        name: { en: 'The Almost-There Founder', de: 'Der Fast-Da Founder' },
+        desc: { en: "You've already hinted at many elements: vision, energy, logic, fit — everything is there, but not yet fully developed. It seems as if you're on the verge of a breakthrough where the different parts of your foundership come into alignment.", de: 'Du hast viele Elemente bereits angedeutet: Vision, Energie, Logik, Fit — alles ist da, aber noch nicht vollständig ausgereift.' },
+        lever: { en: 'Focus & Narrative Coherence', de: 'Fokus & Narrative Kohärenz' }
+    },
+    'overloaded-operator': {
+        name: { en: 'The Overloaded Operator', de: 'Der Überladene Operator' },
+        desc: { en: 'You carry a lot — perhaps too much. You are competent, responsible, and detail-oriented, but precisely these strengths can overload you. Your energy sometimes appears scattered or exhausted, and investors sense that.', de: 'Du trägst viel — vielleicht zu viel. Du bist kompetent, verantwortungsbewusst und detailstark, aber genau diese Stärken können dich überfrachten.' },
+        lever: { en: 'Relief & Internal Prioritization', de: 'Entlastung & Innere Priorisierung' }
+    },
+    'disconnected-genius': {
+        name: { en: 'The Disconnected Genius', de: 'Das Entkoppelte Genie' },
+        desc: { en: 'You see things before others do. Your thoughts are fast, deep, and often directional. But sometimes you outpace your own nervous system — and your listeners along with it. Your brilliance is perceptible but not tangible.', de: 'Du siehst Dinge, bevor andere sie sehen. Deine Gedanken sind schnell, tief und oft richtungsweisend. Aber du überholst manchmal dein eigenes Nervensystem — und deine Zuhörer gleich mit.' },
+        lever: { en: 'Grounding & Translatability', de: 'Erdung & Übersetzbarkeit' }
+    }
+};
+
+let answers = {};
+let currentScreen = 'welcome';
+
+function L(obj) { return obj[LANG.current] || obj.en; }
+
+function setLang(lang) {
+    LANG.current = lang;
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+    renderCurrentScreen();
+}
+
+function getScores() {
+    let s = { obsession: [], presence: [], vision: [], fit: [], logic: [] };
+    Object.values(answers).forEach(a => {
+        if (a.scores) Object.entries(a.scores).forEach(([k, v]) => { if (s[k]) s[k].push(v); });
+    });
+    let avg = {};
+    Object.entries(s).forEach(([k, v]) => { avg[k] = v.length ? Math.round((v.reduce((a, b) => a + b, 0) / v.length) * 10) / 10 : 5; });
+    return avg;
+}
+
+function determineType(scores) {
+    const { obsession, presence, vision, fit, logic } = scores;
+    if (logic >= 7 && presence <= 5) return 'logical-visionary';
+    if (presence >= 7 && fit >= 7 && vision <= 5) return 'quiet-powerhouse';
+    if (presence >= 7 && obsession >= 7 && logic <= 5) return 'story-driven';
+    if (obsession >= 6 && presence >= 6 && vision >= 6 && fit >= 6 && logic >= 6) return 'integrated-builder';
+    if (logic >= 7 && presence <= 4 && vision <= 5) return 'overloaded-operator';
+    if (vision >= 9 && obsession >= 8 && presence <= 4) return 'disconnected-genius';
+    return 'almost-there';
+}
+
+function renderCurrentScreen() {
+    const app = document.getElementById('app');
+    if (currentScreen === 'welcome') {
+        document.getElementById('progressBar').style.display = 'none';
+        app.innerHTML = `<div class="screen active"><div class="screen-inner">
+            <div class="welcome-eyebrow">Light Creators</div>
+            <h1 class="welcome-title">${L({ en: 'Your Founder <em>Resonance</em> Assessment', de: 'Dein Founder <em>Resonance</em> Assessment' })}</h1>
+            <p class="welcome-sub">${L({ en: 'In 3–5 minutes, discover which of the 5 factors stands between you and your funding round.', de: 'In 3–5 Minuten erfährst du, welcher der 5 Faktoren zwischen dir und deiner Funding-Runde steht.' })}</p>
+            <p class="welcome-note">${L({ en: 'There are no wrong answers — only clarity.', de: 'Es gibt keine falschen Antworten — nur Klarheit.' })}</p>
+            <button class="btn-gold" onclick="goToQuestion(1)">START</button>
+        </div></div>`;
+    } else if (currentScreen === 'transition1') {
+        app.innerHTML = `<div class="screen active"><div class="screen-inner transition-screen">
+            <p class="transition-text">${L({ en: 'The next questions reveal the 5 factors investors evaluate unconsciously.<br><br>Answer intuitively — there are no wrong responses.', de: 'Die nächsten Fragen zeigen dir, welche der 5 Faktoren Investoren unbewusst bewerten.<br><br>Antworte intuitiv — es gibt keine falschen Antworten.' })}</p>
+            <button class="btn-gold" onclick="goToQuestion(3)">Continue</button>
+        </div></div>`;
+    } else if (currentScreen === 'transition2') {
+        app.innerHTML = `<div class="screen active"><div class="screen-inner transition-screen">
+            <p class="transition-text">${L({ en: 'Almost there. These final questions help us personalize your results.', de: 'Fast geschafft! Diese letzten Fragen helfen uns, deine Ergebnisse zu personalisieren.' })}</p>
+            <button class="btn-gold" onclick="goToQuestion(13)">Continue</button>
+        </div></div>`;
+    } else if (currentScreen === 'email') {
+        app.innerHTML = `<div class="screen active"><div class="screen-inner email-screen">
+            <h2 class="email-title">${L({ en: 'Your results are ready!', de: 'Dein Ergebnis ist fertig!' })}</h2>
+            <p class="email-sub">${L({ en: 'Where should we send your complete Founder Resonance Profile?', de: 'Wohin sollen wir dein vollständiges Founder Resonance Profil senden?' })}</p>
+            <div class="email-form">
+                <input type="email" class="email-input" placeholder="${L({ en: 'Your email address', de: 'Deine E-Mail-Adresse' })}" id="emailField">
+                <input type="text" class="email-input" placeholder="${L({ en: 'First name', de: 'Vorname' })}" id="nameField">
+                <button class="btn-gold" onclick="showResults()" style="width:100%; margin-top:8px;">${L({ en: 'SHOW RESULTS', de: 'ERGEBNISSE ANZEIGEN' })}</button>
+            </div>
+        </div></div>`;
+    } else if (currentScreen === 'loading') {
+        app.innerHTML = `<div class="screen active"><div class="screen-inner loading-screen">
+            <p class="loading-text">${L({ en: 'Creating your profile...', de: 'Dein Profil wird erstellt...' })}</p>
+            <div class="loading-dots"><div class="loading-dot"></div><div class="loading-dot"></div><div class="loading-dot"></div></div>
+        </div></div>`;
+        setTimeout(() => { currentScreen = 'results'; renderCurrentScreen(); }, 2400);
+    } else if (currentScreen === 'results') {
+        const scores = getScores();
+        const typeKey = determineType(scores);
+        const type = TYPES[typeKey];
+        document.getElementById('progressBar').style.display = 'none';
+        app.innerHTML = `<div class="screen active"><div class="screen-inner results-screen">
+            <div class="results-type-label">${L({ en: 'Your Founder Resonance Type', de: 'Dein Founder Resonance Typ' })}</div>
+            <h2 class="results-type-name">${L(type.name)}</h2>
+            <canvas id="radarCanvas" width="280" height="280" style="margin: 0 auto 40px; display:block;"></canvas>
+            <p class="results-desc">${L(type.desc)}</p>
+            <div class="results-lever">${L({ en: 'Your Development Lever', de: 'Dein Entwicklungs-Hebel' })}</div>
+            <div class="results-lever-value">${L(type.lever)}</div>
+            <button class="btn-gold">${L({ en: 'Start Email Course', de: 'E-Mail-Kurs starten' })}</button>
+            <p class="results-cta-note">${L({ en: 'Free 7-day course to strengthen your resonance', de: 'Kostenloser 7-Tage-Kurs zur Stärkung deiner Resonanz' })}</p>
+        </div></div>`;
+        drawRadar(scores);
+    } else if (typeof currentScreen === 'number') {
+        renderQuestion(currentScreen);
+    }
+}
+
+function renderQuestion(qNum) {
+    const q = QUESTIONS[qNum - 1];
+    const pct = Math.round((qNum / 15) * 100);
+    document.getElementById('progressBar').style.display = 'block';
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressText').textContent = L({ en: 'Discovery', de: 'Entdeckung' }) + ' ━━━ ' + pct + '%';
+
+    const selectedIdx = answers[qNum] ? answers[qNum].idx : -1;
+    const hasAnswer = selectedIdx >= 0;
+    const app = document.getElementById('app');
+    app.innerHTML = `<div class="screen active"><div class="screen-inner">
+        <div class="q-section">${L(q.section)}</div>
+        <div class="q-factor">${L(q.factor)}</div>
+        <h2 class="q-text">${L(q.text)}</h2>
+        <div class="options">
+            ${q.options.map((opt, i) => `
+                <div class="option ${selectedIdx === i ? 'selected' : ''}" onclick="selectOption(${qNum}, ${i})">
+                    <div class="option-marker"></div>
+                    <div class="option-text">${L(opt)}</div>
+                </div>
+            `).join('')}
+        </div>
+        <div class="q-nav">
+            <button class="btn-back" onclick="goBack(${qNum})">${qNum > 1 ? '← ' + L({ en: 'Back', de: 'Zurück' }) : ''}</button>
+            <button class="btn-next ${hasAnswer ? 'enabled' : ''}" onclick="goNext(${qNum})">${L({ en: 'Continue', de: 'Weiter' })}</button>
+        </div>
+    </div></div>`;
+}
+
+function selectOption(qNum, optIdx) {
+    const q = QUESTIONS[qNum - 1];
+    answers[qNum] = { idx: optIdx, scores: q.options[optIdx].scores };
+    
+    // Update UI without full re-render
+    document.querySelectorAll('.option').forEach((el, i) => {
+        el.classList.toggle('selected', i === optIdx);
+    });
+    
+    // Enable the continue button
+    const nextBtn = document.querySelector('.btn-next');
+    if (nextBtn) { nextBtn.classList.add('enabled'); }
+}
+
+function goNext(qNum) {
+    if (!answers[qNum]) return;
+    if (qNum === 2) { currentScreen = 'transition1'; }
+    else if (qNum === 12) { currentScreen = 'transition2'; }
+    else if (qNum === 15) { currentScreen = 'email'; }
+    else { currentScreen = qNum + 1; }
+    renderCurrentScreen();
+}
+
+function goBack(qNum) {
+    if (qNum === 1) return;
+    if (qNum === 3) { currentScreen = 'transition1'; renderCurrentScreen(); return; }
+    if (qNum === 13) { currentScreen = 'transition2'; renderCurrentScreen(); return; }
+    currentScreen = qNum - 1;
+    renderCurrentScreen();
+}
+
+function goToQuestion(num) {
+    currentScreen = num;
+    renderCurrentScreen();
+}
+
+function showResults() {
+    currentScreen = 'loading';
+    renderCurrentScreen();
+}
+
+function getScores() {
+    let s = { obsession: [], presence: [], vision: [], fit: [], logic: [] };
+    Object.values(answers).forEach(a => {
+        if (a && a.scores) Object.entries(a.scores).forEach(([k, v]) => { if (s[k]) s[k].push(v); });
+    });
+    let avg = {};
+    Object.entries(s).forEach(([k, v]) => {
+        avg[k] = v.length ? Math.round((v.reduce((a, b) => a + b, 0) / v.length) * 10) / 10 : 5;
+    });
+    return avg;
+}
+
+function drawRadar(scores) {
+    const canvas = document.getElementById('radarCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const cx = 140, cy = 140, r = 110;
+    const factors = ['obsession', 'presence', 'vision', 'fit', 'logic'];
+    const labels = LANG.current === 'de'
+        ? ['Obsession', 'Präsenz', 'Vision', 'Founder Fit', 'Scalable Logic']
+        : ['Obsession', 'Presence', 'Vision', 'Founder Fit', 'Scalable Logic'];
+
+    ctx.clearRect(0, 0, 280, 280);
+
+    // Grid rings
+    for (let ring = 2; ring <= 10; ring += 2) {
+        ctx.beginPath();
+        for (let i = 0; i <= 5; i++) {
+            const angle = (Math.PI * 2 * i / 5) - Math.PI / 2;
+            const x = cx + (r * ring / 10) * Math.cos(angle);
+            const y = cy + (r * ring / 10) * Math.sin(angle);
+            if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+        }
+        ctx.closePath();
+        ctx.strokeStyle = 'rgba(255,255,255,0.06)';
+        ctx.stroke();
+    }
+
+    // Axis lines
+    for (let i = 0; i < 5; i++) {
+        const angle = (Math.PI * 2 * i / 5) - Math.PI / 2;
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.lineTo(cx + r * Math.cos(angle), cy + r * Math.sin(angle));
+        ctx.strokeStyle = 'rgba(255,255,255,0.08)';
+        ctx.stroke();
+    }
+
+    // Data polygon
+    ctx.beginPath();
+    factors.forEach((f, i) => {
+        const val = scores[f] / 10;
+        const angle = (Math.PI * 2 * i / 5) - Math.PI / 2;
+        const x = cx + r * val * Math.cos(angle);
+        const y = cy + r * val * Math.sin(angle);
+        if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    });
+    ctx.closePath();
+    ctx.fillStyle = 'rgba(46,85,103,0.3)';
+    ctx.fill();
+    ctx.strokeStyle = '#CE9B44';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    // Data points + labels
+    factors.forEach((f, i) => {
+        const val = scores[f] / 10;
+        const angle = (Math.PI * 2 * i / 5) - Math.PI / 2;
+        const x = cx + r * val * Math.cos(angle);
+        const y = cy + r * val * Math.sin(angle);
+        ctx.beginPath();
+        ctx.arc(x, y, 4, 0, Math.PI * 2);
+        ctx.fillStyle = '#CE9B44';
+        ctx.fill();
+
+        // Labels
+        const lx = cx + (r + 20) * Math.cos(angle);
+        const ly = cy + (r + 20) * Math.sin(angle);
+        ctx.font = '10px DM Sans';
+        ctx.fillStyle = 'rgba(255,253,248,0.5)';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(labels[i], lx, ly);
+
+        // Score value
+        ctx.font = 'bold 11px DM Sans';
+        ctx.fillStyle = '#CE9B44';
+        ctx.fillText(scores[f].toFixed(1), lx, ly + 14);
+    });
+}
+
+// Init
+renderCurrentScreen();
+</script>
+</body>
+</html>

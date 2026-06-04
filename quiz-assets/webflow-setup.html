@@ -1,0 +1,181 @@
+<!--
+═══════════════════════════════════════════════════════════
+  Light Creators — Webflow Page Structure Reference
+
+  This file shows the HTML structure to build in Webflow.
+  The quiz script will:
+  1. Show a fullscreen overlay for the quiz questions
+  2. On completion, hide the overlay and populate these
+     sections with the user's personalized results
+
+  INSTRUCTIONS:
+  - Build this structure in Webflow using divs, text blocks, etc.
+  - Add the data-quiz attributes as custom attributes in Webflow
+  - Add data-quiz-results to the outermost results wrapper
+  - Style everything in Webflow — the script only fills content
+  - The [data-quiz-results] wrapper is hidden until quiz completes
+
+  WEBFLOW CUSTOM CODE (Page Settings → Head):
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://lab.iriscocreative.com/light-creators/quiz-assets/quiz.css">
+
+  WEBFLOW CUSTOM CODE (Page Settings → Before </body>):
+  <script src="https://lab.iriscocreative.com/light-creators/quiz-assets/quiz.js"></script>
+═══════════════════════════════════════════════════════════
+-->
+
+<!-- ═══════════════════════════════════════════
+     RESULTS PAGE — Everything below is Webflow-built
+     Hidden until quiz completes (script adds .lc-results-visible)
+     ═══════════════════════════════════════════ -->
+<div data-quiz-results>
+
+    <!-- ── HERO SECTION ──
+         Script populates: type-label, type-name, tagline
+         type-label = "You are a [Type]" (e.g. "You are a Logical Visionary")
+         type-name = "The [Type]" (e.g. "The Logical Visionary")
+         Client can style this section freely in Webflow -->
+    <section class="results-hero">
+        <p data-quiz="type-label"><!-- Filled by script: e.g. "You are a Logical Visionary" --></p>
+        <h1 data-quiz="type-name"><!-- Filled by script: e.g. "The Logical Visionary" --></h1>
+        <p data-quiz="tagline"><!-- Filled by script: e.g. "Clarity is your strength..." --></p>
+    </section>
+
+
+    <!-- ── RADAR CHART ──
+         Script creates a <canvas> inside this div -->
+    <section class="results-radar">
+        <div data-quiz="radar">
+            <!-- Canvas injected here by script -->
+        </div>
+    </section>
+
+
+    <!-- ── FACTOR SCORES ──
+         Script fills this with score bars for each of the 5 factors -->
+    <section class="results-factors">
+        <div data-quiz="factors">
+            <!-- Factor bars injected here by script -->
+        </div>
+    </section>
+
+
+    <!-- ── PROFILE SECTION ──
+         Script fills profile-text with paragraphs specific to the founder type
+         The eyebrow/heading is Webflow-editable -->
+    <section class="results-profile">
+        <p class="eyebrow">Your Profile</p>
+        <div data-quiz="profile-text">
+            <!-- Profile paragraphs injected here by script -->
+        </div>
+    </section>
+
+
+    <!-- ── DEVELOPMENT LEVER ──
+         Script populates lever-name, lever-score, lever-next -->
+    <section class="results-lever">
+        <p class="eyebrow">Your Development Lever</p>
+        <h3 data-quiz="lever-name"><!-- e.g. "Presence & Congruent Energy" or "Grounding & Translatability" --></h3>
+        <p data-quiz="lever-score"><!-- e.g. "3/10 → Goal: 7/10" or "Presence: 3/10, Fit: 3/10, Logic: 3/10 → Goal: 7/10+" --></p>
+        <p data-quiz="lever-next"><!-- e.g. "Deepen your resonance..." --></p>
+    </section>
+
+
+    <!-- ── EMAIL CTA SECTION ──
+         Dedicated section — Webflow-editable design
+         Script hooks into the form via data-quiz="email-form"
+         This sits between profile results and "What's Next" -->
+    <section class="results-email-cta">
+        <h2>Want your results sent to your inbox?</h2>
+        <p>Get your complete Founder Resonance Profile delivered to your email — including personalized development tips.</p>
+
+        <form data-quiz="email-form">
+            <div data-quiz="email-fields">
+                <input type="email" placeholder="Your email address" required>
+                <input type="text" placeholder="First name (optional)">
+                <button type="submit">Send My Results</button>
+            </div>
+            <div data-quiz="email-success" style="display:none;">
+                <p>Done! Check your inbox for your personalized profile.</p>
+            </div>
+        </form>
+
+        <p class="no-pressure-note">No spam, no pressure. Just your results.</p>
+    </section>
+
+
+    <!-- ── WHAT'S NEXT SECTION ──
+         This is Webflow-editable — client can update copy, links, CTAs
+         Script fills course-items and outcome-items with type-specific content -->
+    <section class="results-whats-next">
+        <h2>What's Next?</h2>
+
+        <!-- Path 1: Email Course (Recommended) -->
+        <div class="path-card recommended">
+            <span class="badge">Recommended</span>
+            <h3>7-Day Founder Resonance Course</h3>
+            <p data-quiz="course-subtitle"><!-- e.g. "Personalized for your type: The Logical Visionary" --></p>
+
+            <h4>What You Get:</h4>
+            <ul data-quiz="course-items">
+                <!-- Course items injected by script -->
+            </ul>
+
+            <h4>By the End:</h4>
+            <ul data-quiz="outcome-items">
+                <!-- Outcome items injected by script -->
+            </ul>
+
+            <!-- CTA — Webflow-editable link/button -->
+            <a href="#" class="cta-primary">Start Email Course (free, 7 days)</a>
+        </div>
+
+        <!-- Path 2: Direct Application -->
+        <div class="path-card">
+            <h3>Direct to Diagnostic Call</h3>
+            <p>If you're already ready to close your resonance gap:</p>
+
+            <!-- This content is the same for all types — fully Webflow-editable -->
+            <ol>
+                <li>Fill out application (4 questions, 3 minutes)</li>
+                <li>Manual review (48h)</li>
+                <li>If approved: Calendly link for 60-min call</li>
+                <li>On the call: Individual recommendation (SOLO / THRESHOLD / Notion OS)</li>
+            </ol>
+
+            <h4>This is for you if:</h4>
+            <ul>
+                <li>You're ready to invest now (time + money)</li>
+                <li>You want direct 1:1 feedback</li>
+                <li>You want to close your next funding round in 3–6 months</li>
+            </ul>
+
+            <!-- CTA — Webflow-editable link/button -->
+            <a href="#" class="cta-secondary">Fill Out Application (3 minutes)</a>
+        </div>
+    </section>
+
+
+    <!-- ── MICRO-COPY ──
+         Script fills with type-specific encouragement text -->
+    <section class="results-micro">
+        <p data-quiz="micro-copy"><!-- e.g. "Most Logical Visionaries start with the email course..." --></p>
+    </section>
+
+
+    <!-- ── RETAKE BUTTON ──
+         Optional — lets user retake the quiz -->
+    <section class="results-retake">
+        <a href="#" data-quiz="retake">Retake the Assessment</a>
+    </section>
+
+
+    <!-- ── FOOTER ──
+         Fully Webflow-editable -->
+    <footer class="results-footer">
+        <p>Light Creators — In service of conscious leadership.</p>
+    </footer>
+
+</div>

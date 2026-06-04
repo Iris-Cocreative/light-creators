@@ -1,0 +1,851 @@
+<!--
+  ╔══════════════════════════════════════════════════════════════════════╗
+  ║  DISCOVERY CALL APPLICATION FORM — Light Creators                   ║
+  ║  Built by Iris Cocreative for David Liebnau                          ║
+  ╠═══════════════════════════════════════════════════════════════════════╣
+  ║                                                                        ║
+  ║  QUIZ PAGE VERSION — Quiz question removed                            ║
+  ║                                                                        ║
+  ║  HOW THIS FORM WORKS                                                  ║
+  ║  ─────────────────                                                   ║
+  ║  This is a standalone HTML form embedded in Webflow via an          ║
+  ║  HTML Embed element. On submit, it POSTs JSON to an n8n webhook.   ║
+  ║  No Tally, no Webflow Forms — just native HTML + fetch().           ║
+  ║                                                                      ║
+  ║  WEBFLOW SITE CLASSES USED (defined in Webflow Designer, NOT here)    ║
+  ║  ───────────────────────────────────────────────────────────────────   ║
+  ║                                                                       ║
+  ║  FIELD STRUCTURE (for text inputs, selects, textareas):              ║
+  ║    .field-wrap   → horizontal flex container for side-by-side       ║
+  ║                    fields (e.g., Name + Email on one row)            ║
+  ║    .input-group  → wrapper around label + input. Provides the       ║
+  ║                    dark rounded box with subtle border you see       ║
+  ║                    in the design. IMPORTANT: .input uses            ║
+  ║                    position:absolute inside this, so the             ║
+  ║                    .input-group must have a defined height.         ║
+  ║                    Standard inputs/selects work at default height.   ║
+  ║                    Textareas need a taller .input-group — see       ║
+  ║                    .input-group--textarea below.                     ║
+  ║    .input-label  → the label text inside .input-group. Renders      ║
+  ║                    as a small serif-style label at top-left of       ║
+  ║                    the input box.                                   ║
+  ║    .input        → the actual input/select/textarea element.         ║
+  ║                    Uses position:absolute to fill .input-group.     ║
+  ║    .w-input      → Webflow's native input class. Always pair         ║
+  ║                    with .input: class="input w-input"               ║
+  ║                                                                      ║
+  ║  TYPOGRAPHY (all defined in Webflow, just use the class):           ║
+  ║    .eyebrow      → small uppercase tracking, used for section        ║
+  ║                    headings (e.g., "YOUR SITUATION")                ║
+  ║    .h4           → not currently used in form, available             ║
+  ║    .h5           → not currently used in form, available            ║
+  ║    .h6           → question labels above radio/select groups        ║
+  ║    .paragraph    → body text, used for radio/checkbox option text   ║
+  ║    .paragraph-sm → smaller body, used for helper text + errors      ║
+  ║    .paragraph-lg → larger body, available for emphasis              ║
+  ║                                                                     ║
+  ║  WEBFLOW CSS VARIABLES USED:                                        ║
+  ║    var(--_components---button--border-radius)                       ║
+  ║        → used for choice-item cards, callout box, submit button     ║
+  ║    var(--_typography---paragraph-body--font-size)                   ║
+  ║        → used for submit button font-size                           ║
+  ║                                                                     ║
+  ║  COLORS (hardcoded only where Webflow classes don't reach):         ║
+  ║    #CE9B44 → gold (radio dots, checkbox fills, submit bg)           ║
+  ║    #0F1A20 → dark navy (submit text, checkbox check stroke)         ║
+  ║    #F5E6C4 → light cream (select caret SVG)                         ║
+  ║    #E8655A → error text                                             ║
+  ║    #B85450 → error border                                           ║
+  ║                                                                     ║
+  ║  WEBHOOK                                                            ║
+  ║    POST → https://cocreative.app.n8n.cloud/webhook/                 ║
+  ║           2f90ce51-d413-4c17-865a-95f4bbdd72b7                      ║
+  ║    Sends all fields as a flat JSON object.                          ║
+  ║    Hidden field: "form": "discovery-call"                           ║
+  ║    Hidden field: "language": from <html lang="...">                 ║
+  ║                                                                     ║
+  ╠═════════════════════════════════════════════════════════════════════╣
+  ║  HOW TO MODIFY THIS FORM                                            ║
+  ║  ─────────────────────────                                          ║
+  ║                                                                     ║
+  ║  ADD A NEW TEXT INPUT:                                              ║
+  ║    <div class="dc-form__field">                                     ║
+  ║      <div class="input-group">                                      ║
+  ║        <label for="dc-yourId" class="input-label">Label*</label>    ║
+  ║        <input class="input w-input" id="dc-yourId"                  ║
+  ║               name="yourField" placeholder="..." type="text"        ║
+  ║               required>                                             ║
+  ║      </div>                                                         ║
+  ║    </div>                                                           ║
+  ║                                                                     ║
+  ║  ADD A NEW TEXTAREA:                                                ║
+  ║    <div class="dc-form__field">                                     ║
+  ║      <div class="input-group input-group--textarea">                ║
+  ║        <label for="dc-yourId" class="input-label">Label*</label>    ║
+  ║        <textarea class="input w-input" id="dc-yourId"               ║
+  ║                  name="yourField" rows="3" required                 ║
+  ║                  placeholder="..."></textarea>                      ║
+  ║      </div>                                                         ║
+  ║    </div>                                                           ║
+  ║    Use input-group--textarea (180px) or                             ║
+  ║        input-group--textarea-lg (240px) for longer answers.         ║
+  ║    These fixed heights are needed because .input uses               ║
+  ║    position:absolute — without an explicit height on                ║
+  ║    .input-group, textareas collapse to 0.                           ║
+  ║                                                                     ║
+  ║  ADD A NEW SELECT DROPDOWN:                                         ║
+  ║    <div class="dc-form__field">                                     ║
+  ║      <p class="dc-form__question h6">Question text?*</p>            ║
+  ║      <div class="input-group">                                      ║
+  ║        <label for="dc-yourId" class="input-label">Label*</label>    ║
+  ║        <select class="input w-input" id="dc-yourId"                 ║
+  ║                name="yourField" required>                           ║
+  ║          <option value="" disabled selected>select...</option>      ║
+  ║          <option value="val1">Option 1</option>                     ║
+  ║        </select>                                                    ║
+  ║      </div>                                                         ║
+  ║    </div>                                                           ║
+  ║    The select sits directly in .input-group (no wrapper div).       ║
+  ║    Don't nest it in a dc-form__select-wrap — that breaks the        ║
+  ║    label alignment.                                                 ║
+  ║                                                                     ║
+  ║  ADD A NEW RADIO QUESTION:                                          ║
+  ║    <div class="dc-form__field">                                     ║
+  ║      <p class="dc-form__question h6">Question?*</p>                 ║
+  ║      <div class="dc-form__radio-group">                             ║
+  ║        <label class="dc-form__choice-item">                         ║
+  ║          <input type="radio" name="yourName" value="val" required>  ║
+  ║          <span class="dc-form__radio-mark"></span>                  ║
+  ║          <span class="paragraph">Option text</span>                 ║
+  ║        </label>                                                     ║
+  ║      </div>                                                         ║
+  ║    </div>                                                           ║
+  ║                                                                     ║
+  ║  ADD A NEW CHECKBOX QUESTION:                                       ║
+  ║    Same as radio, but use:                                          ║
+  ║      dc-form__checkbox-group (container)                            ║
+  ║      type="checkbox" (input)                                        ║
+  ║      dc-form__checkbox-mark with SVG checkmark (indicator)          ║
+  ║                                                                     ║
+  ║  AFTER ADDING FIELDS: Also update the collect() function in the     ║
+  ║  <script> to include the new field in the JSON payload.             ║
+  ║                                                                     ║
+  ╚═════════════════════════════════════════════════════════════════════╝
+-->
+
+<style>
+  /* ────────────────────────────────────────────────────────────────────
+     FORM LAYOUT
+     The .dc-form container is 100% width — it fills whatever
+     Webflow parent you place the embed in.
+     ──────────────────────────────────────────────────────────────────── */
+  .dc-form {
+    width: 100%;
+  }
+
+  /* ── Sections: separated by subtle borders ── */
+  .dc-form__section {
+    margin-bottom: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .dc-form__section:last-of-type {
+    border-bottom: none;
+    margin-bottom: 24px;
+    padding-bottom: 0;
+  }
+
+  /* ── Section heading spacing (the .eyebrow class handles typography) ── */
+  .dc-form__section-heading {
+    margin-bottom: 32px;
+  }
+
+  /* ── Field wrapper: vertical spacing between fields ── */
+  .dc-form__field {
+    margin-bottom: 28px;
+  }
+  .dc-form__field:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ── Question text above radio/checkbox/select groups (styled by .h6) ── */
+  .dc-form__question {
+    margin-bottom: 14px;
+  }
+
+  /* ── Helper/description text below labels ── */
+  .dc-form__helper {
+    opacity: 0.45;
+    margin-top: -6px;
+    margin-bottom: 14px;
+  }
+
+  /* ────────────────────────────────────────────────────────────────────
+     TEXTAREA HEIGHT FIX
+
+     The Webflow .input class uses position:absolute to fill its
+     .input-group parent. This works fine for single-line inputs
+     (the input-group has a natural height from its padding/border).
+
+     But textareas need more vertical space. Since they're absolutely
+     positioned, they can't push the input-group taller — so we give
+     the input-group a fixed height and overflow:auto.
+
+     Two sizes:
+       --textarea    = 180px (short answers: industry context, etc.)
+       --textarea-lg = 240px (long answers: challenges, future state)
+
+     Adjust these values if you need more or less room.
+     ──────────────────────────────────────────────────────────────────── */
+  .input-group.input-group--textarea {
+    height: 180px;
+    overflow: auto;
+  }
+  .input-group.input-group--textarea-lg {
+    height: 240px;
+    overflow: auto;
+  }
+
+  /* ────────────────────────────────────────────────────────────────────
+     SELECT DROPDOWN STYLING
+
+     The <select> sits directly inside .input-group as a sibling of
+     .input-label — same structure as text inputs. Do NOT wrap the
+     select in an extra div; that breaks the label positioning.
+
+     We hide the native browser arrow and use an inline SVG chevron
+     (cream-colored to match the dark input background).
+
+     The <option> elements get explicit white bg + dark text because
+     native dropdowns inherit the site's light-on-dark colors,
+     making them unreadable on the browser's white dropdown panel.
+     ──────────────────────────────────────────────────────────────────── */
+  select.input.w-input {
+    -webkit-appearance: none;
+    appearance: none;
+    padding-right: 44px;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' fill='none' stroke='%23F5E6C4' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 12px 8px;
+  }
+
+  select.input.w-input option {
+    background: #FFFFFF;
+    color: #0F1A20;
+  }
+
+  /* ────────────────────────────────────────────────────────────────────
+     RADIO & CHECKBOX GROUPS
+
+     These are custom-built since Webflow's site doesn't have
+     radio/checkbox field classes. Each option is a clickable card
+     (.dc-form__choice-item) with a hidden native input and a
+     visual indicator (radio-mark or checkbox-mark).
+
+     Border-radius uses the site's button variable for consistency.
+
+     Structure for a radio option:
+       <label class="dc-form__choice-item">
+         <input type="radio" ...>           ← hidden, handles state
+         <span class="dc-form__radio-mark"> ← visual circle
+         <span class="paragraph">Text</span>← option label
+       </label>
+
+     The input:checked ~ selector styles the mark when selected.
+     The :has(input:checked) selector highlights the whole card.
+     ──────────────────────────────────────────────────────────────────── */
+  .dc-form__radio-group,
+  .dc-form__checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .dc-form__choice-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    cursor: pointer;
+    padding: 14px 18px;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: var(--_components---button--border-radius, 8px);
+    transition: border-color 0.2s, background-color 0.2s;
+  }
+  .dc-form__choice-item:hover {
+    border-color: rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.03);
+  }
+  .dc-form__choice-item input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  /* Radio indicator: circle with gold dot on select */
+  .dc-form__radio-mark {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.25);
+    flex-shrink: 0;
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s;
+  }
+  .dc-form__radio-mark::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #CE9B44;
+    transform: scale(0);
+    transition: transform 0.15s ease;
+  }
+  .dc-form__choice-item input:checked ~ .dc-form__radio-mark {
+    border-color: #CE9B44;
+  }
+  .dc-form__choice-item input:checked ~ .dc-form__radio-mark::after {
+    transform: scale(1);
+  }
+
+  /* Checkbox indicator: square that fills gold with checkmark SVG */
+  .dc-form__checkbox-mark {
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    border: 1.5px solid rgba(255,255,255,0.25);
+    flex-shrink: 0;
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s, background-color 0.2s;
+  }
+  .dc-form__checkbox-mark svg {
+    width: 12px;
+    height: 12px;
+    stroke: #0F1A20;
+    stroke-width: 2.5;
+    fill: none;
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+  .dc-form__choice-item input:checked ~ .dc-form__checkbox-mark {
+    background: #CE9B44;
+    border-color: #CE9B44;
+  }
+  .dc-form__choice-item input:checked ~ .dc-form__checkbox-mark svg {
+    opacity: 1;
+  }
+
+  /* Selected card highlight: subtle gold border + tint */
+  .dc-form__choice-item:has(input:checked) {
+    border-color: rgba(206, 155, 68, 0.4);
+    background: rgba(206, 155, 68, 0.04);
+  }
+
+  /* ────────────────────────────────────────────────────────────────────
+     CONDITIONAL BLOCKS
+
+     Hidden by default (display:none). JavaScript adds .visible
+     class when a trigger value is selected. Gold left border
+     with indent to show the dependency relationship.
+     ──────────────────────────────────────────────────────────────────── */
+  .dc-form__conditional {
+    display: none;
+    margin-top: 20px;
+    padding-left: 20px;
+    border-left: 2px solid #CE9B44;
+  }
+  .dc-form__conditional.visible {
+    display: block;
+  }
+
+  /* ── Info callout (used for Success Fee explanation) ── */
+  .dc-form__callout {
+    margin-top: 16px;
+    padding: 18px 22px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: var(--_components---button--border-radius, 8px);
+    line-height: 1.65;
+  }
+
+  /* ── Submit button ── */
+  .dc-form__submit {
+    display: inline-block;
+    font-size: var(--_typography---paragraph-body--font-size, 0.88rem);
+    font-weight: 500;
+    font-family: inherit;
+    letter-spacing: 0.05em;
+    color: #0F1A20;
+    background: #CE9B44;
+    padding: 16px 48px;
+    border: none;
+    border-radius: var(--_components---button--border-radius, 8px);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 16px;
+  }
+  .dc-form__submit:hover {
+    background: #F5E6C4;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  }
+  .dc-form__submit:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+
+  /* ────────────────────────────────────────────────────────────────────
+     VALIDATION
+
+     JavaScript adds .has-error to .dc-form__field on submit if
+     required fields are empty. This shows the error message and
+     tints the input/choice borders red.
+     ──────────────────────────────────────────────────────────────────── */
+  .dc-form__field.has-error .input {
+    border-color: #B85450 !important;
+  }
+  .dc-form__field.has-error .dc-form__choice-item {
+    border-color: rgba(184, 84, 80, 0.4);
+  }
+  .dc-form__error-msg {
+    display: none;
+    color: #E8655A;
+    margin-top: 8px;
+  }
+  .dc-form__field.has-error .dc-form__error-msg {
+    display: block;
+  }
+
+  /* ── Success state: shown after successful submission ── */
+  .dc-form__success {
+    display: none;
+    text-align: center;
+    padding: 60px 24px;
+  }
+  .dc-form__success.visible {
+    display: block;
+  }
+  .dc-form__success-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.15);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 28px;
+  }
+  .dc-form__success-icon svg {
+    width: 24px;
+    height: 24px;
+    stroke: #CE9B44;
+    stroke-width: 2;
+    fill: none;
+  }
+</style>
+
+<div class="dc-form" id="dcForm">
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       SUCCESS STATE
+       Shown after form submits successfully.
+       The form is hidden (display:none) and this becomes visible.
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <div class="dc-form__success" id="dcSuccess">
+    <div class="dc-form__success-icon">
+      <svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 6"></polyline></svg>
+    </div>
+    <p class="h4" style="margin-bottom: 12px;">Application received.</p>
+    <p class="paragraph" style="max-width: 420px; margin: 0 auto; opacity: 0.7;">
+      I'll review your answers and get back to you within 48 hours. Check your inbox.
+    </p>
+  </div>
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       THE FORM
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <form id="dcFormEl" novalidate>
+
+    <!-- ══════════════════════════════════════════════════
+         SECTION 1: BASIC INFO
+
+         Uses .field-wrap to put Name + Email side by side.
+         Each field uses .input-group > .input-label + .input.w-input
+         ══════════════════════════════════════════════════ -->
+    <div class="dc-form__section">
+      <p class="eyebrow dc-form__section-heading">Basic Info</p>
+
+      <!-- Name + Email: side by side via .field-wrap -->
+      <div class="dc-form__field">
+        <div class="field-wrap">
+          <div class="input-group">
+            <label for="dc-firstName" class="input-label">First Name*</label>
+            <input class="input w-input" maxlength="256" name="firstName" placeholder="your first name" type="text" id="dc-firstName" required autocomplete="given-name">
+          </div>
+          <div class="input-group">
+            <label for="dc-email" class="input-label">Email*</label>
+            <input class="input w-input" maxlength="256" name="email" placeholder="your email address" type="email" id="dc-email" required autocomplete="email">
+          </div>
+        </div>
+        <p class="dc-form__error-msg paragraph-sm">Please enter your name and a valid email.</p>
+      </div>
+
+      <!-- LinkedIn: single input, full width (no .field-wrap needed) -->
+      <div class="dc-form__field">
+        <div class="input-group">
+          <label for="dc-linkedin" class="input-label">LinkedIn Profile</label>
+          <input class="input w-input" maxlength="256" name="linkedin" placeholder="https://linkedin.com/in/..." type="url" id="dc-linkedin" autocomplete="url">
+        </div>
+        <p class="dc-form__helper paragraph-sm">Optional — helps me understand your background</p>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════
+         SECTION 2: YOUR SITUATION
+
+         Select dropdown and textareas.
+         Quiz question removed — founder type read from page.
+         ══════════════════════════════════════════════════ -->
+    <div class="dc-form__section">
+      <p class="eyebrow dc-form__section-heading">Your Situation</p>
+
+      <!-- SELECT: Company stage
+           Question text (.h6) sits above the .input-group.
+           Select is a direct child of .input-group. -->
+      <div class="dc-form__field">
+        <p class="dc-form__question h6">Where do you stand with your company?*</p>
+        <div class="input-group">
+          <label for="dc-companyStage" class="input-label">Company stage*</label>
+          <select class="input w-input" id="dc-companyStage" name="companyStage" required>
+            <option value="" disabled selected>select your stage...</option>
+            <option value="Pre-seed">Pre-seed (MVP phase, no active fundraising yet)</option>
+            <option value="Seed">Seed (actively pitching VCs)</option>
+            <option value="Series A prep">Series A prep (scaling, institutional investors)</option>
+            <option value="Between rounds">Between rounds (bridge, runway extension, pivot)</option>
+            <option value="Exit evaluation">Exit evaluation (PE/strategic buyer conversations)</option>
+            <option value="Bootstrapped">Bootstrapped (no fundraising planned)</option>
+            <option value="Other">Other (CEO, Corporate, Leadership Team)</option>
+          </select>
+        </div>
+        <p class="dc-form__error-msg paragraph-sm">Please select your company stage.</p>
+      </div>
+
+      <!-- CONDITIONAL: Other situation textarea
+           Only visible when company stage = "Other".
+           Uses input-group--textarea for the taller height. -->
+      <div class="dc-form__conditional" id="dc-otherSituationWrap">
+        <div class="dc-form__field">
+          <div class="input-group input-group--textarea">
+            <label for="dc-otherSituation" class="input-label">Briefly describe your situation:*</label>
+            <textarea class="input w-input" id="dc-otherSituation" name="otherSituation" rows="3" placeholder="e.g., CEO of mid-sized company, 150 employees, topic: stakeholder communication"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- TEXTAREA: Industry context
+           Uses input-group--textarea (180px height). -->
+      <div class="dc-form__field">
+        <div class="input-group input-group--textarea">
+          <label for="dc-industryContext" class="input-label">Industry, team size, current status:*</label>
+          <textarea class="input w-input" id="dc-industryContext" name="industryContext" rows="2" required placeholder="e.g., Climate Tech, 8 people, currently pitching 3 VCs"></textarea>
+        </div>
+        <p class="dc-form__error-msg paragraph-sm">Please describe your industry and team context.</p>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════
+         SECTION 3: YOUR CHALLENGE
+
+         Three long-form textareas. The first two use
+         input-group--textarea-lg (240px) for more room.
+         The third uses input-group--textarea (180px).
+         ══════════════════════════════════════════════════ -->
+    <div class="dc-form__section">
+      <p class="eyebrow dc-form__section-heading">Your Challenge</p>
+
+      <div class="dc-form__field">
+        <div class="input-group input-group--textarea-lg">
+          <label for="dc-challenge" class="input-label">What's your biggest challenge right now in building trusting relationships with investors?*</label>
+          <textarea class="input w-input" id="dc-challenge" name="challenge" rows="4" required placeholder="be as specific as possible..."></textarea>
+        </div>
+        <p class="dc-form__error-msg paragraph-sm">Please describe your current challenge.</p>
+      </div>
+
+      <div class="dc-form__field">
+        <div class="input-group input-group--textarea-lg">
+          <label for="dc-futureState" class="input-label">Imagine the next 6 months go maximally well. What does your life look like then?*</label>
+          <textarea class="input w-input" id="dc-futureState" name="futureState" rows="4" required placeholder="describe briefly: funding, team, personal feeling..."></textarea>
+        </div>
+        <p class="dc-form__error-msg paragraph-sm">Please describe your ideal outcome.</p>
+      </div>
+
+      <div class="dc-form__field">
+        <div class="input-group input-group--textarea">
+          <label for="dc-triedSolutions" class="input-label">What have you already tried to solve this challenge?*</label>
+          <textarea class="input w-input" id="dc-triedSolutions" name="triedSolutions" rows="3" required placeholder="e.g., pitch coaching, presentation training, more meetings..."></textarea>
+        </div>
+        <p class="dc-form__error-msg paragraph-sm">Please share what you've already tried.</p>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════
+         SECTION 4: INVESTMENT & TIMELINE
+
+         Two select dropdowns with .h6 questions above them.
+         The first includes a .dc-form__callout info box
+         explaining the success fee model.
+         ══════════════════════════════════════════════════ -->
+    <div class="dc-form__section">
+      <p class="eyebrow dc-form__section-heading">Investment &amp; Timeline</p>
+
+      <div class="dc-form__field">
+        <p class="dc-form__question h6">If we determine after the call that deeper work makes sense — how would you want to invest?*</p>
+        <div class="input-group">
+          <label for="dc-investmentReadiness" class="input-label">Investment preference*</label>
+          <select class="input w-input" id="dc-investmentReadiness" name="investmentReadiness" required>
+            <option value="" disabled selected>select...</option>
+            <option value="Budget upfront">Yes, I have budget for coaching (€3,000–10,000 upfront)</option>
+            <option value="Payment plan">Yes, via payment plan (e.g., 3–6 installments)</option>
+            <option value="Success fee">Yes, via success fee (reduced upfront + % upon funding success)</option>
+            <option value="Depends">Depends (show me the value first)</option>
+            <option value="Free only">No, I'm only looking for free feedback</option>
+          </select>
+        </div>
+        <p class="dc-form__error-msg paragraph-sm">Please select an option.</p>
+        <!-- Callout: sits OUTSIDE .input-group so it doesn't overlap the select -->
+        <div class="dc-form__callout paragraph-sm">
+          <strong>💡 What does Success Fee mean?</strong><br>
+          Reduced upfront amount (e.g., €2,000 instead of €4,500) + agreed % of funding (e.g., 2%) if you successfully close within 6 months. Only if you win, I win.
+        </div>
+      </div>
+
+      <div class="dc-form__field">
+        <p class="dc-form__question h6">When do you want to close your next funding round?*</p>
+        <div class="input-group">
+          <label for="dc-fundingTimeline" class="input-label">Funding timeline*</label>
+          <select class="input w-input" id="dc-fundingTimeline" name="fundingTimeline" required>
+            <option value="" disabled selected>select...</option>
+            <option value="1-3 months">Within 1–3 months (actively in process)</option>
+            <option value="3-6 months">Within 3–6 months (preparation underway)</option>
+            <option value="6-12 months">Within 6–12 months (still early)</option>
+            <option value="Unclear">Unclear / no funding planned</option>
+          </select>
+        </div>
+        <p class="dc-form__error-msg paragraph-sm">Please select a timeline.</p>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════
+         SECTION 5: EXPECTATION CHECK
+
+         Checkbox group (multiple selections allowed).
+         Uses .paragraph for option text.
+         Validation requires at least 1 selection.
+         ══════════════════════════════════════════════════ -->
+    <div class="dc-form__section">
+      <p class="eyebrow dc-form__section-heading">Expectation Check</p>
+
+      <div class="dc-form__field">
+        <p class="dc-form__question h6">What do you <em>not</em> expect from this call?*</p>
+        <p class="dc-form__helper paragraph-sm">Select at least one.</p>
+        <div class="dc-form__checkbox-group" id="dc-expectations">
+          <label class="dc-form__choice-item">
+            <input type="checkbox" name="expectations" value="Pitch deck review">
+            <span class="dc-form__checkbox-mark"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></span>
+            <span class="paragraph">Pitch deck review</span>
+          </label>
+          <label class="dc-form__choice-item">
+            <input type="checkbox" name="expectations" value="Investor introductions">
+            <span class="dc-form__checkbox-mark"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></span>
+            <span class="paragraph">Investor introductions</span>
+          </label>
+          <label class="dc-form__choice-item">
+            <input type="checkbox" name="expectations" value="Free coaching for weeks">
+            <span class="dc-form__checkbox-mark"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></span>
+            <span class="paragraph">Free coaching for weeks</span>
+          </label>
+          <label class="dc-form__choice-item">
+            <input type="checkbox" name="expectations" value="Quick fixes without personal work">
+            <span class="dc-form__checkbox-mark"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></span>
+            <span class="paragraph">Quick fixes without personal work</span>
+          </label>
+          <label class="dc-form__choice-item">
+            <input type="checkbox" name="expectations" value="Guarantee of funding success">
+            <span class="dc-form__checkbox-mark"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></span>
+            <span class="paragraph">Guarantee of funding success</span>
+          </label>
+        </div>
+        <p class="dc-form__error-msg paragraph-sm">Please select at least one option.</p>
+      </div>
+    </div>
+
+    <!-- ══ SUBMIT BUTTON ══ -->
+    <button type="submit" class="dc-form__submit" id="dcSubmitBtn">Submit Application</button>
+
+  </form>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     JAVASCRIPT
+
+     Handles:
+     1. Conditional field visibility (company stage → other situation)
+     2. Client-side validation
+     3. JSON payload assembly
+     4. Webhook POST via fetch()
+     5. Success/error state display
+
+     WEBHOOK URL:
+       https://cocreative.app.n8n.cloud/webhook/
+       2f90ce51-d413-4c17-865a-95f4bbdd72b7
+
+     TO ADD A NEW FIELD TO THE SUBMISSION:
+       1. Add the HTML field above (see patterns in header comment)
+       2. In collect(), add:  yourField: form.querySelector('#dc-yourId').value.trim()
+       3. If required, the validate() function auto-checks any
+          element with the "required" attribute
+       4. For new radio groups, add a check similar to existing ones
+       5. For new checkbox groups, add a check like the expectations one
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<script>
+(function() {
+  var WEBHOOK = 'https://cocreative.app.n8n.cloud/webhook/2f90ce51-d413-4c17-865a-95f4bbdd72b7';
+  var form = document.getElementById('dcFormEl');
+  var successEl = document.getElementById('dcSuccess');
+  var submitBtn = document.getElementById('dcSubmitBtn');
+
+  /* ── CONDITIONAL: Company stage "Other" → show describe field ──
+     Toggle .visible and required attribute. */
+  var stageSelect = document.getElementById('dc-companyStage');
+  var otherWrap = document.getElementById('dc-otherSituationWrap');
+  var otherField = document.getElementById('dc-otherSituation');
+
+  stageSelect.addEventListener('change', function() {
+    if (this.value === 'Other') {
+      otherWrap.classList.add('visible');
+      otherField.setAttribute('required', '');
+    } else {
+      otherWrap.classList.remove('visible');
+      otherField.removeAttribute('required');
+      otherField.value = '';
+    }
+  });
+
+  /* ── VALIDATION ──
+     Checks all [required] inputs/textareas/selects, plus
+     the checkbox group (expectations).
+     Adds .has-error to the parent .dc-form__field, which
+     triggers red borders and shows .dc-form__error-msg. */
+  function validate() {
+    var ok = true;
+    form.querySelectorAll('.dc-form__field.has-error').forEach(function(f) {
+      f.classList.remove('has-error');
+    });
+
+    form.querySelectorAll('input[required], textarea[required], select[required]').forEach(function(el) {
+      if (el.type === 'radio') return; /* radios checked separately below */
+      var field = el.closest('.dc-form__field');
+      if (!el.value || !el.value.trim()) {
+        if (field) field.classList.add('has-error');
+        ok = false;
+      }
+      if (el.type === 'email' && el.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim())) {
+        if (field) field.classList.add('has-error');
+        ok = false;
+      }
+    });
+
+    /* Checkboxes: at least one expectation must be checked */
+    if (form.querySelectorAll('input[name="expectations"]:checked').length === 0) {
+      var ef = document.getElementById('dc-expectations').closest('.dc-form__field');
+      if (ef) ef.classList.add('has-error');
+      ok = false;
+    }
+
+    return ok;
+  }
+
+  /* ── COLLECT DATA ──
+     Assembles all form values into a flat JSON object.
+     Hidden fields "form" and "language" are added here.
+     quizTaken is always "yes" on this page (user came via quiz).
+     founderType is read from the quiz result element on the page. */
+  function collect() {
+    var exps = [];
+    form.querySelectorAll('input[name="expectations"]:checked').forEach(function(cb) {
+      exps.push(cb.value);
+    });
+
+    return {
+      form: 'discovery-call',                                          /* hidden field: identifies this form in n8n */
+      language: 'EN',
+      pageUrl: window.location.href,
+      firstName: form.querySelector('#dc-firstName').value.trim(),
+      email: form.querySelector('#dc-email').value.trim(),
+      linkedin: form.querySelector('#dc-linkedin').value.trim() || null,
+      quizTaken: 'yes',
+      founderType: (function() {
+          var el = document.querySelector('[data-quiz="type-name"]');
+          return el ? el.textContent.trim() : null;
+      })(),
+      companyStage: stageSelect.value,
+      otherSituation: otherField.value.trim() || null,                 /* null if stage != "Other" */
+      industryContext: form.querySelector('#dc-industryContext').value.trim(),
+      challenge: form.querySelector('#dc-challenge').value.trim(),
+      futureState: form.querySelector('#dc-futureState').value.trim(),
+      triedSolutions: form.querySelector('#dc-triedSolutions').value.trim(),
+      investmentReadiness: form.querySelector('#dc-investmentReadiness').value,
+      fundingTimeline: form.querySelector('#dc-fundingTimeline').value,
+      expectations: exps,                                              /* array of selected strings */
+      submittedAt: new Date().toISOString(),                           /* UTC timestamp */
+      /* ── Quiz data (from window.lcQuizData set by quiz script) ── */
+      scores: window.lcQuizData ? window.lcQuizData.scores : null,
+      answers: window.lcQuizData ? window.lcQuizData.answers : null,
+      heard_about: window.lcQuizData && window.lcQuizData.answers && window.lcQuizData.answers['13'] ? window.lcQuizData.answers['13'].answer : null,
+      value_sought: window.lcQuizData && window.lcQuizData.answers && window.lcQuizData.answers['14'] ? window.lcQuizData.answers['14'].answer : null
+    };
+  }
+
+  /* ── SUBMIT HANDLER ──
+     Validates → disables button → POSTs JSON → shows success or error. */
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    if (!validate()) {
+      var first = form.querySelector('.dc-form__field.has-error');
+      if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
+
+    fetch(WEBHOOK, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(collect())
+    })
+    .then(function(res) {
+      if (!res.ok) throw new Error('Submission failed');
+      form.style.display = 'none';
+      successEl.classList.add('visible');
+      successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    })
+    .catch(function(err) {
+      console.error('Form error:', err);
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit Application';
+      alert('Something went wrong. Please try again or contact us directly.');
+    });
+  });
+})();
+</script>
