@@ -11,6 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Hanken+Grotesk:ital,wght@0,200;0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="assets/styles.css" />
+<script src="assets/podcast-cover.js"></script>
 </head>
 <body>
 
@@ -356,18 +357,7 @@
       </div>
 
       <div>
-        <div class="cover">
-          <div class="cover-glow"></div>
-          <div class="cover-shine"></div>
-          <div class="cover-inner">
-            <span class="cover-tag">David Liebnau · Podcast</span>
-            <h3 class="cover-title">Leise<em>Kraft</em></h3>
-            <div class="cover-host">
-              Hosted by
-              <strong>David Liebnau</strong>
-            </div>
-          </div>
-        </div>
+        <podcast-cover></podcast-cover>
       </div>
     </div>
   </div>
@@ -519,6 +509,16 @@
     el.classList.add('fade-in');
     observer.observe(el);
   });
+
+  // Transparent nav at top, frosted on scroll
+  (function () {
+    var nav = document.querySelector('nav.top');
+    function updateNav() {
+      nav.classList.toggle('nav-scrolled', window.scrollY > 60);
+    }
+    window.addEventListener('scroll', updateNav, { passive: true });
+    updateNav();
+  })();
 </script>
 
 </body>

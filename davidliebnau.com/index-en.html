@@ -488,6 +488,16 @@
     el.classList.add('fade-in');
     observer.observe(el);
   });
+
+  // Transparent nav at top, frosted on scroll
+  (function () {
+    var nav = document.querySelector('nav.top');
+    function updateNav() {
+      nav.classList.toggle('nav-scrolled', window.scrollY > 60);
+    }
+    window.addEventListener('scroll', updateNav, { passive: true });
+    updateNav();
+  })();
 </script>
 
 </body>

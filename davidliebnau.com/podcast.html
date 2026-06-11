@@ -11,6 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Hanken+Grotesk:ital,wght@0,200;0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="assets/styles.css" />
+<script src="assets/podcast-cover.js"></script>
 </head>
 <body>
 
@@ -74,18 +75,7 @@
       </div>
 
       <div>
-        <div class="cover">
-          <div class="cover-glow"></div>
-          <div class="cover-shine"></div>
-          <div class="cover-inner">
-            <span class="cover-tag">David Liebnau · Podcast</span>
-            <h2 class="cover-title">Leise<em>Kraft</em></h2>
-            <div class="cover-host">
-              Hosted by
-              <strong>David Liebnau</strong>
-            </div>
-          </div>
-        </div>
+        <podcast-cover></podcast-cover>
       </div>
     </div>
   </div>
@@ -140,7 +130,7 @@
 </section>
 
 <!-- ============================================ EPISODE ARCHIVE ============================================ -->
-<section class="archive-section">
+<section class="archive-section" id="archiv">
   <div class="container">
     <div class="section-intro">
       <span class="eyebrow">Alle Episoden</span>
@@ -148,90 +138,11 @@
       <p>Jeden Dienstag eine neue Folge. Filter nach Thema oder direkt zur neuesten Episode.</p>
     </div>
 
-    <div class="archive-list">
-
-      <article class="episode">
-        <div class="episode-thumb"><span>EP 06</span></div>
-        <div class="episode-body">
-          <span class="eyebrow">Episode 06 · Neueste</span>
-          <h3>Warum bewusstes Unternehmertum kein Wellness-Trend ist</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Was Founder von Sportlern lernen können — und wo die Analogie aufhört.</p>
-        </div>
-        <div class="episode-meta-right">
-          <span>42 Min.</span>
-          <span>05. Mai 2026</span>
-        </div>
-      </article>
-
-      <article class="episode">
-        <div class="episode-thumb"><span>EP 05</span></div>
-        <div class="episode-body">
-          <span class="eyebrow">Episode 05</span>
-          <h3>Scalable Logic: Wie Top-Investoren denken — und wie du so kommunizierst</h3>
-          <p>Lorem ipsum dolor sit amet. Drei mentale Modelle, die deine nächste Investorenrunde verändern.</p>
-        </div>
-        <div class="episode-meta-right">
-          <span>38 Min.</span>
-          <span>28. April 2026</span>
-        </div>
-      </article>
-
-      <article class="episode">
-        <div class="episode-thumb"><span>EP 04</span></div>
-        <div class="episode-body">
-          <span class="eyebrow">Episode 04</span>
-          <h3>Founder Fit: Warum deine Geschichte dein stärkstes strategisches Asset ist</h3>
-          <p>Lorem ipsum dolor sit amet. Wie du persönliche Erfahrung in eine Investment-These übersetzt.</p>
-        </div>
-        <div class="episode-meta-right">
-          <span>45 Min.</span>
-          <span>21. April 2026</span>
-        </div>
-      </article>
-
-      <article class="episode">
-        <div class="episode-thumb"><span>EP 03</span></div>
-        <div class="episode-body">
-          <span class="eyebrow">Episode 03</span>
-          <h3>Presence unter Druck: Was analytische Founders über Autorität wissen müssen</h3>
-          <p>Lorem ipsum dolor sit amet. Drei Mikro-Praktiken für ruhige Pitches und klare Boardroom-Momente.</p>
-        </div>
-        <div class="episode-meta-right">
-          <span>40 Min.</span>
-          <span>14. April 2026</span>
-        </div>
-      </article>
-
-      <article class="episode">
-        <div class="episode-thumb"><span>EP 02</span></div>
-        <div class="episode-body">
-          <span class="eyebrow">Episode 02</span>
-          <h3>Der Unterschied zwischen Obsession und Burnout (und wie Investoren ihn spüren)</h3>
-          <p>Lorem ipsum dolor sit amet. Zwei Founder, beide hochintensiv. Warum nur einer fundiert wurde.</p>
-        </div>
-        <div class="episode-meta-right">
-          <span>36 Min.</span>
-          <span>07. April 2026</span>
-        </div>
-      </article>
-
-      <article class="episode">
-        <div class="episode-thumb"><span>EP 01</span></div>
-        <div class="episode-body">
-          <span class="eyebrow">Episode 01 · Erste Folge</span>
-          <h3>Warum Investoren ghosten — obwohl dein Deck überzeugt</h3>
-          <p>Lorem ipsum dolor sit amet. Der Resonance Gap, einfach erklärt — und wo du heute bereits ansetzen kannst.</p>
-        </div>
-        <div class="episode-meta-right">
-          <span>34 Min.</span>
-          <span>31. März 2026</span>
-        </div>
-      </article>
-
-    </div>
+    <div id="archive-loading" class="archive-loading-state">Episoden werden geladen …</div>
+    <div id="archive-list" class="archive-list"></div>
 
     <div class="archive-load-more">
-      <a href="#" class="btn btn--ghost">Weitere Episoden laden <span class="arrow">↓</span></a>
+      <button id="archive-more" class="btn btn--ghost" hidden>Weitere Episoden laden <span class="arrow">↓</span></button>
     </div>
   </div>
 </section>
@@ -420,57 +331,61 @@
   </div>
 </section>
 
-<!-- ============================================ BLOG / INSIGHTS ============================================ -->
+<!-- ============================================ EPISODE HIGHLIGHTS ============================================ -->
 <section class="blog-section">
   <div class="container">
     <div class="section-intro">
-      <span class="eyebrow">Blog · Insights</span>
-      <h2>Insights für Founder, die <em>integraler denken wollen.</em></h2>
-      <p>Neue Perspektiven und Frameworks — essentielle Micro-Shifts für Macro-Impact.</p>
+      <span class="eyebrow">Episoden · Vertiefung</span>
+      <h2>Ausgewählte Episoden zum <em>Weiterlesen.</em></h2>
+      <p>Die Folgen mit den tiefsten Insights — als ausführliche Show Notes zum Nachlesen.</p>
     </div>
 
     <div class="blog-grid">
       <article class="blog-card">
-        <div class="blog-thumb"></div>
+        <a class="episode-card-link" href="episodes/ep-30-wo-machst-du-gerade-zu-viel.html" tabindex="-1" aria-hidden="true"></a>
+        <div class="blog-thumb"><podcast-cover></podcast-cover></div>
         <div class="blog-body">
           <div class="blog-tags">
+            <span class="blog-tag">Action Bias</span>
+            <span class="blog-tag">Founder Resonance</span>
+          </div>
+          <h3>Wo machst du gerade zu viel?</h3>
+          <p class="blog-excerpt">Warum mehr arbeiten dein Funding kostet und dein Team lähmt — und die eine Frage, die das Muster aufbricht.</p>
+          <div class="blog-meta">Episode 30 · Mai 2026</div>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <a class="episode-card-link" href="episodes/ep-29-scalable-logic-die-drei-fragen-die-investoren-wirklich-.html" tabindex="-1" aria-hidden="true"></a>
+        <div class="blog-thumb"><podcast-cover></podcast-cover></div>
+        <div class="blog-body">
+          <div class="blog-tags">
+            <span class="blog-tag">Scalable Logic</span>
             <span class="blog-tag">Investor Relations</span>
-            <span class="blog-tag">Funding Psychology</span>
           </div>
-          <h3>Was Investoren wirklich hören, wenn du sprichst</h3>
-          <p class="blog-excerpt">Drei Frequenzen unter dem Pitch — und wie du sie bewusst sendest, statt sie zu verraten.</p>
-          <div class="blog-meta">5 Min. Lesezeit · 02. Mai 2026</div>
+          <h3>Scalable Logic: Die drei Fragen, die Investoren wirklich stellen</h3>
+          <p class="blog-excerpt">Burggraben, Unit Economics, Cash-Logik — und warum Antworten verkörpert sein müssen, nicht nur gewusst.</p>
+          <div class="blog-meta">Episode 29 · Mai 2026</div>
         </div>
       </article>
 
       <article class="blog-card">
-        <div class="blog-thumb" style="background: linear-gradient(135deg, var(--color-teal), var(--color-graphite));"></div>
-        <div class="blog-body">
-          <div class="blog-tags">
-            <span class="blog-tag">Founder Presence</span>
-          </div>
-          <h3>Warum Ruhe der schnellste Hebel ist, den Founder unterschätzen</h3>
-          <p class="blog-excerpt">Eine Mikro-Studie: Wie sich der Boardroom verändert, wenn du nicht mehr versuchst zu überzeugen.</p>
-          <div class="blog-meta">7 Min. Lesezeit · 25. April 2026</div>
-        </div>
-      </article>
-
-      <article class="blog-card">
-        <div class="blog-thumb" style="background: linear-gradient(135deg, var(--color-deep-blue), var(--color-teal));"></div>
+        <a class="episode-card-link" href="episodes/ep-28-deine-analytische-staerke-ist-dein-groesster-hebel-und-.html" tabindex="-1" aria-hidden="true"></a>
+        <div class="blog-thumb"><podcast-cover></podcast-cover></div>
         <div class="blog-body">
           <div class="blog-tags">
             <span class="blog-tag">Vision Resonance</span>
-            <span class="blog-tag">Scalable Logic</span>
+            <span class="blog-tag">Analytische Stärke</span>
           </div>
-          <h3>Vision die ankommt — und Vision die nur klingt</h3>
-          <p class="blog-excerpt">Der feine Unterschied zwischen Storytelling und Wirkung. Mit drei diagnostischen Fragen.</p>
-          <div class="blog-meta">6 Min. Lesezeit · 18. April 2026</div>
+          <h3>Deine analytische Stärke ist dein größter Hebel. Und manchmal dein blinder Fleck.</h3>
+          <p class="blog-excerpt">Warum Erklären in entscheidenden Momenten Distanz schafft — und wie Vision Resonance entsteht, wenn Strategie allein aufhört zu wirken.</p>
+          <div class="blog-meta">Episode 28 · Mai 2026</div>
         </div>
       </article>
     </div>
 
     <div class="blog-cta">
-      <a href="#" class="btn btn--ghost">Alle Artikel lesen <span class="arrow">→</span></a>
+      <a href="#archiv" class="btn btn--ghost">Alle Episoden ansehen <span class="arrow">↑</span></a>
     </div>
   </div>
 </section>
@@ -582,6 +497,122 @@
     el.classList.add('fade-in');
     observer.observe(el);
   });
+
+  // Transparent nav at top, frosted on scroll
+  (function () {
+    var nav = document.querySelector('nav.top');
+    function updateNav() {
+      nav.classList.toggle('nav-scrolled', window.scrollY > 60);
+    }
+    window.addEventListener('scroll', updateNav, { passive: true });
+    updateNav();
+  })();
+</script>
+
+<script>
+(function () {
+  var ITUNES_URL = 'https://itunes.apple.com/lookup?id=1841403507&entity=podcastEpisode&limit=200';
+  var META_URL = 'episodes-meta.json';
+  var SPOTIFY_SHOW = 'https://open.spotify.com/show/2VJVvcbnTtvoDrmSSdTGZ2';
+  var PAGE_SIZE = 10;
+  var CACHE_KEY = 'leise-kraft-eps-v1';
+
+  var episodes = [];
+  var meta = {};
+  var shown = 0;
+
+  function stripHtml(html) {
+    var d = document.createElement('div');
+    d.innerHTML = html;
+    return d.textContent || d.innerText || '';
+  }
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  function renderEpisode(ep, num, m) {
+    var mins = ep.trackTimeMillis ? Math.round(ep.trackTimeMillis / 60000) : '–';
+    var date = new Date(ep.releaseDate).toLocaleDateString('de-DE', {
+      day: '2-digit', month: 'long', year: 'numeric'
+    });
+    var raw = ep.shortDescription || stripHtml(ep.description || '');
+    var excerpt = raw.length > 220 ? raw.slice(0, 220).trimEnd() + ' …' : raw;
+    var label = num === episodes.length ? ' · Neueste' : num === 1 ? ' · Erste Folge' : '';
+    var eyebrow = 'Episode ' + pad(num) + label;
+    var spotifyUrl = (m && m.spotifyUrl) ? m.spotifyUrl : SPOTIFY_SHOW;
+    var cardLink = (m && m.subpage)
+      ? '<a class="episode-card-link" href="' + m.subpage + '" tabindex="-1" aria-hidden="true"></a>'
+      : '';
+    var subBtn = (m && m.subpage)
+      ? '<a href="' + m.subpage + '" class="btn btn--sm btn--ghost">Mehr lesen <span class="arrow">→</span></a>'
+      : '';
+
+    return '<article class="episode">'
+      + cardLink
+      + '<div class="episode-thumb"><span>EP ' + pad(num) + '</span></div>'
+      + '<div class="episode-body">'
+        + '<span class="eyebrow">' + eyebrow + '</span>'
+        + '<h3>' + ep.trackName + '</h3>'
+        + '<p>' + excerpt + '</p>'
+        + '<div class="episode-actions">'
+          + '<a href="' + spotifyUrl + '" class="btn btn--sm btn--gold" target="_blank" rel="noopener">Jetzt reinhören <span class="arrow">→</span></a>'
+          + subBtn
+        + '</div>'
+      + '</div>'
+      + '<div class="episode-meta-right">'
+        + '<span>' + mins + ' Min.</span>'
+        + '<span>' + date + '</span>'
+      + '</div>'
+      + '</article>';
+  }
+
+  function showMore() {
+    var list = document.getElementById('archive-list');
+    var slice = episodes.slice(shown, shown + PAGE_SIZE);
+    var html = '';
+    for (var i = 0; i < slice.length; i++) {
+      var epNum = episodes.length - (shown + i);
+      html += renderEpisode(slice[i], epNum, meta[String(epNum)]);
+    }
+    list.insertAdjacentHTML('beforeend', html);
+    shown += slice.length;
+    document.getElementById('archive-more').hidden = shown >= episodes.length;
+  }
+
+  function fetchCached() {
+    try {
+      var cached = sessionStorage.getItem(CACHE_KEY);
+      if (cached) return Promise.resolve(JSON.parse(cached));
+    } catch (e) {}
+    return fetch(ITUNES_URL)
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        try { sessionStorage.setItem(CACHE_KEY, JSON.stringify(d)); } catch (e) {}
+        return d;
+      });
+  }
+
+  function init() {
+    Promise.all([
+      fetchCached(),
+      fetch(META_URL).then(function (r) { return r.json(); }).catch(function () { return {}; })
+    ]).then(function (results) {
+      var data = results[0];
+      meta = results[1];
+      episodes = (data.results || [])
+        .filter(function (r) { return r.wrapperType === 'podcastEpisode'; })
+        .sort(function (a, b) { return new Date(b.releaseDate) - new Date(a.releaseDate); });
+      var loader = document.getElementById('archive-loading');
+      if (loader) loader.remove();
+      showMore();
+    }).catch(function () {
+      var loader = document.getElementById('archive-loading');
+      if (loader) loader.textContent = 'Episoden konnten nicht geladen werden.';
+    });
+  }
+
+  document.getElementById('archive-more').addEventListener('click', showMore);
+  init();
+})();
 </script>
 
 </body>
