@@ -3,8 +3,8 @@ const fs = require('fs');
 const path = require('path');
 
 const CONTENT_FILE = 'C:/Users/info/Downloads/episode-content.md';
-const OUTPUT_DIR = path.join(__dirname, 'davidliebnau.com', 'episodes');
-const META_FILE = path.join(__dirname, 'davidliebnau.com', 'episodes-meta.json');
+const OUTPUT_DIR = path.join(__dirname, 'episodes');
+const META_FILE = path.join(__dirname, 'episodes-meta.json');
 const SPOTIFY_SHOW = 'https://open.spotify.com/show/2VJVvcbnTtvoDrmSSdTGZ2';
 // Trailer = EP 1 in archive, so content#N → archive EP N+2
 const EP_OFFSET = 2;
