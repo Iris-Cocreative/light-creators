@@ -540,10 +540,14 @@
 
   function pad(n) { return String(n).padStart(2, '0'); }
 
-  // Extract episode number from track title: "#0: Title", "#29: Title"
+  // Newer episodes: number is in shortDescription ("Leise Kraft: #29,")
+  // Older episodes: number is at start of trackName ("#0: Wer bin ich...")
   function getContentNum(ep) {
-    var m = (ep.trackName || '').match(/^#\s*(\d+)/);
-    return m ? parseInt(m[1], 10) : null;
+    var dm = (ep.shortDescription || '').match(/:\s*#(\d+)/);
+    if (dm) return parseInt(dm[1], 10);
+    var tm = (ep.trackName || '').match(/^#\s*(\d+)/);
+    if (tm) return parseInt(tm[1], 10);
+    return null;
   }
 
   function renderEpisode(ep) {
