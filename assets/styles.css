@@ -196,6 +196,7 @@ nav.top.nav-scrolled {
     color: var(--text-on-dark-muted);
   }
   nav.top.nav--open .nav-meta a { color: var(--text-on-dark); }
+  nav.top.nav--open .nav-toggle { color: var(--color-cream); }
   nav.top.nav--open .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   nav.top.nav--open .nav-toggle span:nth-child(2) { opacity: 0; }
   nav.top.nav--open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
