@@ -208,7 +208,7 @@ nav.top.nav-scrolled {
 /* HERO — DARK */
 .hero {
   background:
-    var(--bg-deep) url("hero-ripple.png") no-repeat;
+    var(--bg-deep) url("hero-ripple.webp") no-repeat;
   background-size: cover;
   background-position: center right;
   color: var(--text-on-dark);
@@ -349,7 +349,7 @@ nav.top.nav-scrolled {
 
 /* HERO — PHOTO BACKGROUND VARIANT (David integrated into urban scene, text on right) */
 .hero--photo-bg {
-  background: var(--color-deep-blue) url("hero-david.png") no-repeat top center / cover;
+  background: var(--color-deep-blue) url("hero-david.webp") no-repeat top center / cover;
   color: var(--text);
   min-height: 100vh;
 }
@@ -1199,7 +1199,7 @@ podcast-cover { display: contents; }
 .quote-section {
   background:
     linear-gradient(rgba(4, 23, 31, 0.78), rgba(4, 23, 31, 0.78)),
-    url("texture-light-beam.png") center/cover no-repeat,
+    url("texture-light-beam.webp") center/cover no-repeat,
     var(--bg-deep);
   color: var(--text-on-dark);
   text-align: center;
@@ -1250,7 +1250,7 @@ podcast-cover { display: contents; }
 .english-block {
   background:
     linear-gradient(rgba(4, 23, 31, 0.82), rgba(4, 23, 31, 0.82)),
-    url("texture-slate.png") center/cover no-repeat,
+    url("texture-slate.webp") center/cover no-repeat,
     var(--bg-deep);
   color: var(--text-on-dark);
   position: relative;
@@ -1625,7 +1625,7 @@ footer {
 .ep-hero {
   background:
     linear-gradient(to right, rgba(4,23,31,0.85) 45%, rgba(4,23,31,0.35) 100%),
-    var(--color-deep-blue) url("hero-ripple.png") no-repeat center right / cover;
+    var(--color-deep-blue) url("hero-ripple.webp") no-repeat center right / cover;
   padding: clamp(5rem, 10vw, 8rem) 0 clamp(2.5rem, 5vw, 4rem);
 }
 .ep-hero-grid {
