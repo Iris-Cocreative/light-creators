@@ -188,8 +188,8 @@ function generatePage(num, { title, bodyLines, seoTitle, seoDesc }) {
 ${content}
 
     <div class="ep-cta-block">
-      <a href="https://light-creators.com/quiz" class="btn btn--ghost">Resonance Assessment <span class="arrow">→</span></a>
-      <a href="https://light-creators.com/call" class="btn btn--gold">Discovery Call <span class="arrow">→</span></a>
+      <a href="https://light-creators.com/quiz" class="btn btn--ghost" target="_blank" rel="noopener">Resonance Assessment <span class="arrow">→</span></a>
+      <a href="https://light-creators.com/call" class="btn btn--gold" target="_blank" rel="noopener">Discovery Call <span class="arrow">→</span></a>
     </div>
   </div>
 </article>
@@ -207,20 +207,20 @@ ${content}
         <h5>Podcast</h5>
         <ul>
           <li><a href="../podcast.html">Alle Episoden</a></li>
-          <li><a href="https://open.spotify.com/show/2VJVvcbnTtvoDrmSSdTGZ2">Spotify</a></li>
-          <li><a href="https://podcasts.apple.com/us/podcast/leise-kraft-der-podcast-f%C3%BCr-unternehmer-und-unternehmerinnen/id1841403507">Apple Podcasts</a></li>
-          <li><a href="https://www.youtube.com/@DavidLiebnau">YouTube</a></li>
-          <li><a href="https://music.amazon.de/podcasts/5b2ea7a6-73a4-4ef7-abbd-642c353295bb/">Amazon Music</a></li>
+          <li><a href="https://open.spotify.com/show/2VJVvcbnTtvoDrmSSdTGZ2" target="_blank" rel="noopener">Spotify</a></li>
+          <li><a href="https://podcasts.apple.com/us/podcast/leise-kraft-der-podcast-f%C3%BCr-unternehmer-und-unternehmerinnen/id1841403507" target="_blank" rel="noopener">Apple Podcasts</a></li>
+          <li><a href="https://www.youtube.com/@DavidLiebnau" target="_blank" rel="noopener">YouTube</a></li>
+          <li><a href="https://music.amazon.de/podcasts/5b2ea7a6-73a4-4ef7-abbd-642c353295bb/" target="_blank" rel="noopener">Amazon Music</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
         <h5>Arbeite mit David</h5>
         <ul>
-          <li><a href="https://light-creators.com/quiz">Assessment</a></li>
-          <li><a href="https://light-creators.com/call">Discovery Call</a></li>
+          <li><a href="https://light-creators.com/quiz" target="_blank" rel="noopener">Assessment</a></li>
+          <li><a href="https://light-creators.com/call" target="_blank" rel="noopener">Discovery Call</a></li>
           <li><a href="mailto:info@light-creators.com">E-Mail</a></li>
-          <li><a href="https://light-creators.com">Light Creators</a></li>
+          <li><a href="https://light-creators.com" target="_blank" rel="noopener">Light Creators</a></li>
         </ul>
       </div>
 
@@ -228,7 +228,7 @@ ${content}
         <h5>English</h5>
         <ul>
           <li><a href="../index-en.html">For English-speaking founders</a></li>
-          <li><a href="https://light-creators.com/en">light-creators.com/en</a></li>
+          <li><a href="https://light-creators.com/en" target="_blank" rel="noopener">light-creators.com/en</a></li>
         </ul>
       </div>
     </div>
