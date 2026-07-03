@@ -105,6 +105,12 @@ nav.top.nav-scrolled {
 nav.top.nav-scrolled .logo { color: var(--color-cream); }
 nav.top.nav-scrolled .logo em { color: var(--accent); }
 nav.top.nav-scrolled .nav-toggle { color: var(--color-cream); }
+/* When menu is open, remove backdrop-filter so it doesn't trap the fixed overlay */
+nav.top.nav--open {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  background: transparent;
+}
 .logo {
   font-family: var(--font-heading);
   font-size: 1.3rem;
