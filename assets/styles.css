@@ -474,19 +474,21 @@ nav.top.nav-scrolled {
 @media (max-width: 880px) {
   .hero--photo-bg {
     min-height: auto;
-    padding-top: 9rem;
+    padding-top: 7rem;
     padding-bottom: 4rem;
     background-position: 30% center;
   }
   .hero--photo-bg .hero-text { max-width: 100%; }
   .hero--photo-bg::before {
-    background:
-      linear-gradient(180deg,
-        rgba(4, 23, 31, 0.65) 0%,
-        rgba(4, 23, 31, 0.08) 88px,
-        rgba(245, 242, 236, 0.91) 17%,
-        rgba(245, 242, 236, 0.98) 100%);
+    background: rgba(245, 242, 236, 0.97);
   }
+  .hero--photo-bg .logo { color: var(--text); }
+  .hero--photo-bg .logo em { color: var(--accent); }
+  .hero--photo-bg .nav-toggle { color: var(--text); }
+  .hero--photo-bg .nav-meta { color: var(--text-muted); }
+  .hero--photo-bg .nav-meta a:hover { color: var(--text); }
+  .hero--photo-bg .nav-meta .nav-cta { border-color: var(--line-light); color: var(--text); }
+  .hero--photo-bg .nav-meta .nav-cta:hover { background: var(--text); color: var(--bg); border-color: var(--text); }
 }
 @media (max-width: 640px) {
   .hero--photo-bg {
@@ -494,12 +496,7 @@ nav.top.nav-scrolled {
     padding-top: 7rem;
   }
   .hero--photo-bg::before {
-    background:
-      linear-gradient(180deg,
-        rgba(4, 23, 31, 0.6) 0%,
-        rgba(4, 23, 31, 0.06) 80px,
-        rgba(245, 242, 236, 0.94) 16%,
-        rgba(245, 242, 236, 0.99) 100%);
+    background: rgba(245, 242, 236, 0.97);
   }
   .hero-cta-row { flex-direction: column; align-items: stretch; }
   .hero-cta-row .btn { text-align: center; justify-content: center; }
@@ -1711,6 +1708,9 @@ footer {
     linear-gradient(to right, rgba(4,23,31,0.85) 45%, rgba(4,23,31,0.35) 100%),
     var(--color-deep-blue) url("hero-ripple.webp") no-repeat center right / cover;
   padding: clamp(5rem, 10vw, 8rem) 0 clamp(2.5rem, 5vw, 4rem);
+}
+@media (max-width: 880px) {
+  .ep-hero { padding-top: 7rem; }
 }
 .ep-hero-grid {
   display: grid;
