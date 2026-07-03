@@ -536,22 +536,20 @@
     return d.textContent || d.innerText || '';
   }
 
-  var EP_OFFSET = 2;
   var maxContentNum = 0;
 
   function pad(n) { return String(n).padStart(2, '0'); }
 
-  // Extract the real episode number from the description text ("Leise Kraft: #29")
+  // Extract episode number from track title: "#0: Title", "#29: Title"
   function getContentNum(ep) {
-    var raw = ep.shortDescription || stripHtml(ep.description || '');
-    var m = raw.match(/#\s*(\d+)/);
+    var m = (ep.trackName || '').match(/^#\s*(\d+)/);
     return m ? parseInt(m[1], 10) : null;
   }
 
   function renderEpisode(ep) {
     var contentNum = getContentNum(ep);
     var isTrailer = contentNum === null;
-    var archiveKey = isTrailer ? null : String(contentNum + EP_OFFSET);
+    var archiveKey = isTrailer ? null : String(contentNum);
     var m = archiveKey ? (meta[archiveKey] || null) : null;
 
     var mins = ep.trackTimeMillis ? Math.round(ep.trackTimeMillis / 60000) : '–';

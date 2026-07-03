@@ -133,8 +133,7 @@ function bodyToHtml(bodyLines) {
 
 // ── HTML template ────────────────────────────────────────────────────────────
 function generatePage(num, { title, bodyLines, seoTitle, seoDesc }) {
-  const archiveNum  = num + EP_OFFSET;
-  const epPadded    = pad2(archiveNum);
+  const epPadded    = pad2(num);
   const metaTitle   = seoTitle || `${title} | Leise Kraft`;
   const metaDesc    = seoDesc  || '';
   const content     = bodyToHtml(bodyLines);
@@ -278,15 +277,14 @@ const metaEntries = {};
 const sorted = [...map.entries()].sort((a, b) => a[0] - b[0]);
 
 for (const [num, data] of sorted) {
-  const archiveNum = num + EP_OFFSET;
   const slug  = slugify(data.title);
-  const fname = `ep-${pad2(archiveNum)}-${slug}.html`;
+  const fname = `ep-${pad2(num)}-${slug}.html`;
   const fpath = path.join(OUTPUT_DIR, fname);
 
   fs.writeFileSync(fpath, generatePage(num, data), 'utf8');
-  console.log(`EP ${pad2(archiveNum)} (content #${String(num).padStart(2,' ')}): ${fname}  [${data.bodyLines.length} body lines | seo: ${!!data.seoTitle}]`);
+  console.log(`EP ${pad2(num)}: ${fname}  [${data.bodyLines.length} body lines | seo: ${!!data.seoTitle}]`);
 
-  metaEntries[String(archiveNum)] = { subpage: `episodes/${fname}` };
+  metaEntries[String(num)] = { subpage: `episodes/${fname}` };
 }
 
 fs.writeFileSync(META_FILE, JSON.stringify(metaEntries, null, 2) + '\n', 'utf8');
