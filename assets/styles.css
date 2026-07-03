@@ -102,6 +102,9 @@ nav.top.nav-scrolled {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
+nav.top.nav-scrolled .logo { color: var(--color-cream); }
+nav.top.nav-scrolled .logo em { color: var(--accent); }
+nav.top.nav-scrolled .nav-toggle { color: var(--color-cream); }
 .logo {
   font-family: var(--font-heading);
   font-size: 1.3rem;
