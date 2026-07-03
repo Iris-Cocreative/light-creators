@@ -499,6 +499,7 @@ nav.top.nav--open {
   .hero--photo-bg .nav-meta a:hover { color: var(--text); }
   .hero--photo-bg .nav-meta .nav-cta { border-color: var(--line-light); color: var(--text); }
   .hero--photo-bg .nav-meta .nav-cta:hover { background: var(--text); color: var(--bg); border-color: var(--text); }
+  .hero--photo-bg .hero-eyebrow .dot { background: var(--accent); }
 }
 @media (max-width: 640px) {
   .hero--photo-bg {
@@ -974,11 +975,16 @@ podcast-cover { display: contents; }
   display: grid;
   grid-template-columns: 1fr 1.2fr;
   gap: clamp(3rem, 7vw, 6rem);
-  align-items: center;
+  align-items: start;
+}
+#about .portrait {
+  position: sticky;
+  top: 7rem;
 }
 .about-grid--reverse { grid-template-columns: 1.2fr 1fr; }
 @media (max-width: 880px) {
   .about-grid, .about-grid--reverse { grid-template-columns: 1fr; }
+  #about .portrait { position: static; }
 }
 
 .portrait {
