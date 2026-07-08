@@ -502,8 +502,8 @@ nav.top.nav--open {
   .hero--photo-bg {
     display: block; /* kill flex layout from .hero */
     min-height: auto;
-    padding-top: 4.5rem; /* nav clearance — image starts below the bar */
-    padding-bottom: 4rem;
+    padding-top: 4.5rem; /* nav clearance */
+    padding-bottom: 0;
     background-image: none;
     background-color: var(--color-cream);
   }
