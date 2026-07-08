@@ -105,6 +105,8 @@ nav.top.nav-scrolled {
 nav.top.nav-scrolled .logo { color: var(--color-cream); }
 nav.top.nav-scrolled .logo em { color: var(--accent); }
 nav.top.nav-scrolled .nav-toggle { color: var(--color-cream); }
+nav.top.nav-scrolled .nav-meta .nav-cta { border-color: rgba(255, 248, 230, 0.55); color: var(--color-cream); }
+nav.top.nav-scrolled .nav-meta .nav-cta:hover { background: var(--color-cream); color: var(--color-deep-blue); border-color: var(--color-cream); }
 /* When menu is open, instantly remove backdrop-filter (0.4s transition would delay full-screen overlay) */
 nav.top.nav--open {
   backdrop-filter: none;
@@ -210,10 +212,7 @@ nav.top.nav--open {
   nav.top.nav--open .nav-meta a { color: var(--text-on-dark); }
   nav.top.nav--open .nav-meta .sep { display: none; }
   nav.top.nav--open .nav-meta .nav-cta {
-    display: inline-flex;
-    margin-top: 0.5rem;
-    border-color: var(--line-dark);
-    color: var(--text-on-dark);
+    display: none;
   }
   nav.top.nav--open .nav-meta .nav-cta:hover {
     background: var(--color-cream);
@@ -521,17 +520,16 @@ nav.top.nav--open {
 @media (max-width: 640px) {
   .hero--photo-bg {
     background-position: 63% 0%;
-    padding-top: 58vw;
+    padding-top: clamp(220px, 75vw, 350px);
   }
   .hero--photo-bg::before {
     background: linear-gradient(180deg,
-      rgba(4, 23, 31, 0.55) 0%,
-      rgba(4, 23, 31, 0.0) 60px,
-      transparent 82px,
-      transparent calc(58vw - 55px),
-      rgba(245, 242, 236, 0.75) calc(58vw - 18px),
-      rgba(245, 242, 236, 0.97) calc(58vw + 8px),
-      rgba(245, 242, 236, 1) calc(58vw + 32px),
+      rgba(4, 23, 31, 0.4) 0%,
+      transparent 55px,
+      transparent calc(clamp(220px, 75vw, 350px) - 70px),
+      rgba(245, 242, 236, 0.7) calc(clamp(220px, 75vw, 350px) - 25px),
+      rgba(245, 242, 236, 0.97) calc(clamp(220px, 75vw, 350px)),
+      rgba(245, 242, 236, 1) calc(clamp(220px, 75vw, 350px) + 20px),
       rgba(245, 242, 236, 1) 100%
     );
   }
