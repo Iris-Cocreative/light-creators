@@ -499,30 +499,41 @@ nav.top.nav--open {
 @media (max-width: 880px) {
   .hero--photo-bg {
     min-height: auto;
-    padding-top: 7rem;
+    padding-top: 320px;
     padding-bottom: 4rem;
-    background-position: 30% center;
+    background-position: 50% 0%;
   }
   .hero--photo-bg .hero-text { max-width: 100%; }
   .hero--photo-bg::before {
-    background: rgba(245, 242, 236, 0.97);
+    background: linear-gradient(180deg,
+      rgba(4, 23, 31, 0.55) 0%,
+      rgba(4, 23, 31, 0.0) 60px,
+      transparent 82px,
+      transparent 240px,
+      rgba(245, 242, 236, 0.75) 278px,
+      rgba(245, 242, 236, 0.97) 312px,
+      rgba(245, 242, 236, 1) 340px,
+      rgba(245, 242, 236, 1) 100%
+    );
   }
-  .hero--photo-bg .logo { color: var(--text); }
-  .hero--photo-bg .logo em { color: var(--accent); }
-  .hero--photo-bg .nav-toggle { color: var(--text); }
-  .hero--photo-bg .nav-meta { color: var(--text-muted); }
-  .hero--photo-bg .nav-meta a:hover { color: var(--text); }
-  .hero--photo-bg .nav-meta .nav-cta { border-color: var(--line-light); color: var(--text); }
-  .hero--photo-bg .nav-meta .nav-cta:hover { background: var(--text); color: var(--bg); border-color: var(--text); }
   .hero--photo-bg .hero-eyebrow .dot { background: var(--accent); }
 }
 @media (max-width: 640px) {
   .hero--photo-bg {
-    background-position: 65% top;
-    padding-top: 7rem;
+    background-position: 63% 0%;
+    padding-top: 58vw;
   }
   .hero--photo-bg::before {
-    background: rgba(245, 242, 236, 0.97);
+    background: linear-gradient(180deg,
+      rgba(4, 23, 31, 0.55) 0%,
+      rgba(4, 23, 31, 0.0) 60px,
+      transparent 82px,
+      transparent calc(58vw - 55px),
+      rgba(245, 242, 236, 0.75) calc(58vw - 18px),
+      rgba(245, 242, 236, 0.97) calc(58vw + 8px),
+      rgba(245, 242, 236, 1) calc(58vw + 32px),
+      rgba(245, 242, 236, 1) 100%
+    );
   }
   .hero-cta-row { flex-direction: column; align-items: stretch; }
   .hero-cta-row .btn { text-align: center; justify-content: center; }
