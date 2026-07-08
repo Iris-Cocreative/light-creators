@@ -495,44 +495,42 @@ nav.top.nav--open {
       linear-gradient(270deg, rgba(245, 242, 236, 0.96) 0%, rgba(245, 242, 236, 0.75) 50%, rgba(245, 242, 236, 0.3) 75%, transparent 100%);
   }
 }
+/* Mobile/tablet hero photo element — hidden on desktop */
+.hero-photo-mobile { display: none; }
+
 @media (max-width: 880px) {
   .hero--photo-bg {
     min-height: auto;
-    padding-top: 320px;
+    padding-top: 5rem;
     padding-bottom: 4rem;
-    background-position: 50% 22%;
+    background-image: none;
+    background-color: var(--color-cream);
+  }
+  .hero--photo-bg::before { display: none; }
+  .hero-photo-mobile {
+    display: block;
+    width: 100%;
+    height: 55vw;
+    max-height: 320px;
+    overflow: hidden;
+  }
+  .hero-photo-mobile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 25%;
   }
   .hero--photo-bg .hero-text { max-width: 100%; }
-  .hero--photo-bg::before {
-    background: linear-gradient(180deg,
-      rgba(4, 23, 31, 0.55) 0%,
-      rgba(4, 23, 31, 0.0) 60px,
-      transparent 82px,
-      transparent 240px,
-      rgba(245, 242, 236, 0.75) 278px,
-      rgba(245, 242, 236, 0.97) 312px,
-      rgba(245, 242, 236, 1) 340px,
-      rgba(245, 242, 236, 1) 100%
-    );
-  }
+  .hero--photo-bg .logo { color: var(--text); }
+  .hero--photo-bg .logo em { color: var(--accent); }
+  .hero--photo-bg .nav-toggle { color: var(--text); }
+  .hero--photo-bg .nav-meta { color: var(--text-muted); }
+  .hero--photo-bg .nav-meta a:hover { color: var(--text); }
+  .hero--photo-bg .nav-meta .nav-cta { border-color: var(--line-light); color: var(--text); }
+  .hero--photo-bg .nav-meta .nav-cta:hover { background: var(--text); color: var(--bg); border-color: var(--text); }
   .hero--photo-bg .hero-eyebrow .dot { background: var(--accent); }
 }
 @media (max-width: 640px) {
-  .hero--photo-bg {
-    background-position: 63% 22%;
-    padding-top: clamp(220px, 75vw, 350px);
-  }
-  .hero--photo-bg::before {
-    background: linear-gradient(180deg,
-      rgba(4, 23, 31, 0.4) 0%,
-      transparent 55px,
-      transparent calc(clamp(220px, 75vw, 350px) - 70px),
-      rgba(245, 242, 236, 0.7) calc(clamp(220px, 75vw, 350px) - 25px),
-      rgba(245, 242, 236, 0.97) calc(clamp(220px, 75vw, 350px)),
-      rgba(245, 242, 236, 1) calc(clamp(220px, 75vw, 350px) + 20px),
-      rgba(245, 242, 236, 1) 100%
-    );
-  }
   .hero-cta-row { flex-direction: column; align-items: stretch; }
   .hero-cta-row .btn { text-align: center; justify-content: center; }
 }
