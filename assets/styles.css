@@ -507,7 +507,7 @@ nav.top.nav--open {
     background-color: var(--color-cream);
   }
   .hero--photo-bg::before { display: none; }
-  .hero--photo-bg .hero-text { max-width: 100%; margin-left: 0; padding-top: 2.5rem; }
+  .hero--photo-bg .hero-text { max-width: 100%; margin-left: 0; }
   .hero-photo-mobile {
     display: block;
     position: relative;
