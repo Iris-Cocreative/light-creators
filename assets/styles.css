@@ -500,7 +500,7 @@ nav.top.nav--open {
     min-height: auto;
     padding-top: 320px;
     padding-bottom: 4rem;
-    background-position: 50% 0%;
+    background-position: 50% 22%;
   }
   .hero--photo-bg .hero-text { max-width: 100%; }
   .hero--photo-bg::before {
@@ -519,7 +519,7 @@ nav.top.nav--open {
 }
 @media (max-width: 640px) {
   .hero--photo-bg {
-    background-position: 63% 0%;
+    background-position: 63% 22%;
     padding-top: clamp(220px, 75vw, 350px);
   }
   .hero--photo-bg::before {
