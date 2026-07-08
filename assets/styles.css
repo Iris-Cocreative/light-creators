@@ -502,7 +502,7 @@ nav.top.nav--open {
   .hero--photo-bg {
     display: block; /* kill flex layout from .hero */
     min-height: auto;
-    padding-top: 0;
+    padding-top: 4.5rem; /* nav clearance — image starts below the bar */
     padding-bottom: 4rem;
     background-image: none;
     background-color: var(--color-cream);
@@ -510,9 +510,12 @@ nav.top.nav--open {
   .hero--photo-bg::before { display: none; }
   .hero--photo-bg > .container { padding-top: 2.5rem; }
   .hero--photo-bg .hero-text { max-width: 100%; margin-left: 0; }
+  .hero--photo-bg .logo { color: var(--text); }
+  .hero--photo-bg .logo em { color: var(--accent); }
+  .hero--photo-bg .nav-toggle { color: var(--text); }
+  .hero--photo-bg .nav-meta .nav-cta { border-color: var(--line-light); color: var(--text); }
   .hero-photo-mobile {
     display: block;
-    position: relative;
     width: 100%;
     height: 65vw;
     max-height: 360px;
@@ -522,16 +525,7 @@ nav.top.nav--open {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 50% 20%;
-  }
-  /* Subtle dark veil so cream nav text stays readable over the photo */
-  .hero-photo-mobile::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 5rem;
-    background: linear-gradient(180deg, rgba(4, 23, 31, 0.45) 0%, transparent 100%);
-    pointer-events: none;
+    object-position: 50% 25%;
   }
   .hero--photo-bg .hero-eyebrow .dot { background: var(--accent); }
 }
