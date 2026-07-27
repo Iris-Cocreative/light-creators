@@ -14,8 +14,13 @@ DOM (auto height, no inner scrollbar, indexable).
 
 | Audience | File | Live URL (after deploy) |
 |----------|------|--------------------------|
-| Für Eltern (parents) | `flourishing-life-eltern.html` | `https://lab.iriscocreative.com/light-creators/landing-pages/flourishing-life-eltern.html` |
-| Für dich (you) | `flourishing-life-dich.html` | `https://lab.iriscocreative.com/light-creators/landing-pages/flourishing-life-dich.html` |
+| Für Eltern **v2** (current) | `flourishing-life-eltern-v2.html` | `https://davidliebnau.com/landing-pages/flourishing-life-eltern-v2.html` |
+| Für Eltern v1 | `flourishing-life-eltern.html` | `https://davidliebnau.com/landing-pages/flourishing-life-eltern.html` |
+| Für dich (you) | `flourishing-life-dich.html` | `https://davidliebnau.com/landing-pages/flourishing-life-dich.html` |
+
+The v2 page references its images via relative paths in `assets/flourishing/`
+(no base64) — the loader absolutizes those URLs against the source page, so
+they load from this repo's domain wherever the page is embedded.
 
 ## How to embed in Webflow
 
@@ -23,20 +28,20 @@ Add an **HTML Embed** element where the page should appear (a full-width
 container/section for a full-bleed look) and paste **only** this:
 
 ```html
-<!-- Für Eltern -->
-<div data-iris-embed="https://lab.iriscocreative.com/light-creators/landing-pages/flourishing-life-eltern.html"></div>
-<script src="https://lab.iriscocreative.com/light-creators/landing-pages/embed-loader.js"></script>
+<!-- Für Eltern v2 -->
+<div data-iris-embed="https://davidliebnau.com/landing-pages/flourishing-life-eltern-v2.html"></div>
+<script src="https://davidliebnau.com/landing-pages/embed-loader.js"></script>
 ```
 
-For the other page, swap the `data-iris-embed` URL to
-`.../flourishing-life-dich.html`. The `<script>` line is the same and can be
-loaded once per page even if you embed multiple pages.
+For another page, swap the `data-iris-embed` URL. The `<script>` line is the
+same and can be loaded once per page even if you embed multiple pages.
 
 ## Notes & gotchas
 
 - **CORS:** the cross-origin `fetch()` needs `Access-Control-Allow-Origin` on
-  the host. This repo sends `*` via `netlify.toml` / `_headers`, so it works
-  when served by Netlify. (Plain GitHub Pages does not send CORS headers.)
+  the host. GitHub Pages sends `Access-Control-Allow-Origin: *` on every
+  response (verified on both `davidliebnau.com` and `lab.iriscocreative.com`),
+  so the embed works from any domain.
 - **Fonts:** the pages reference `HK Grotesk` and `Cormorant Garamond` but don't
   bundle them — make sure the Webflow site loads those brand fonts. Document-
   level `@font-face` rules apply inside the shadow tree.
@@ -48,6 +53,6 @@ loaded once per page even if you embed multiple pages.
 
 ## Deploy
 
-The loader's URLs only resolve once these files are on the **deploy branch**
-(e.g. `main`) and published to `lab.iriscocreative.com`. Until then the embed
-will log a load error in the console.
+The loader's URLs only resolve once these files are on `main` and GitHub Pages
+has published them to `davidliebnau.com`. Until then the embed will log a load
+error in the console.
