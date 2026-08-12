@@ -1,4 +1,3 @@
-<meta name="robots" content="noindex, nofollow" /><!-- data-seo-noindex -->
 <!--
   ╔══════════════════════════════════════════════════════════════════════╗
   ║  DISCOVERY CALL BEWERBUNGSFORMULAR — Light Creators                 ║
@@ -257,7 +256,7 @@
     </div>
     <p class="h4" style="margin-bottom: 12px;">Bewerbung eingegangen.</p>
     <p class="paragraph" style="max-width: 420px; margin: 0 auto; opacity: 0.7;">
-      Ich schaue mir deine Antworten an und melde mich innerhalb von 48 Stunden. Prüfe deinen Posteingang.
+      Weiterleitung zum nächsten Schritt … <a href="/bewerbung-eingegangen" style="color:#CE9B44;text-decoration:underline;">hier klicken, falls es nicht automatisch passiert</a>.
     </p>
   </div>
 
@@ -498,6 +497,7 @@
 <script>
 (function() {
   var WEBHOOK = 'https://cocreative.app.n8n.cloud/webhook/2f90ce51-d413-4c17-865a-95f4bbdd72b7';
+  var SUCCESS_URL = '/bewerbung-eingegangen';   /* Danke-Seite mit Video */
   var form = document.getElementById('dcFormEl');
   var successEl = document.getElementById('dcSuccess');
   var submitBtn = document.getElementById('dcSubmitBtn');
@@ -615,9 +615,11 @@
     })
     .then(function(res) {
       if (!res.ok) throw new Error('Submission failed');
+      /* Inline-Erfolgszustand als Fallback, falls die Weiterleitung blockiert wird */
       form.style.display = 'none';
       successEl.classList.add('visible');
-      successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      /* Weiterleitung auf die Danke-Seite mit dem Video */
+      window.location.href = SUCCESS_URL;
     })
     .catch(function(err) {
       console.error('Form error:', err);

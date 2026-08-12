@@ -1096,6 +1096,29 @@ podcast-cover { display: contents; }
   margin-top: 1rem;
 }
 
+/* ProvenExpert rating seal — third-party widget injects a fixed-width circle,
+   so cap and centre it rather than letting it dictate the column. */
+.provenexpert-seal {
+  margin-top: 2.5rem;
+  max-width: 300px;
+}
+.provenexpert-seal img,
+.provenexpert-seal svg,
+.provenexpert-seal iframe { max-width: 100%; height: auto; }
+@media (max-width: 720px) {
+  .provenexpert-seal { margin-left: auto; margin-right: auto; }
+}
+
+/* Official HR Excellence Award mark — cream plate so the logo keeps its own
+   colours on the dark section. Replaces the old .award-badge text pill. */
+.award-logo {
+  display: block;
+  width: clamp(112px, 11vw, 150px);
+  height: auto;
+  margin-top: 1.5rem;
+  border: 1px solid var(--line-dark);
+}
+
 /* ============================================
    TESTIMONIALS
    ============================================ */
@@ -1138,11 +1161,38 @@ podcast-cover { display: contents; }
   position: relative;
   z-index: 1;
 }
+.testimonial-body p + p { margin-top: 1rem; }
+
+/* Long-form lead testimonial spans the full grid width */
+.testimonial--feature { grid-column: 1 / -1; }
+@media (min-width: 721px) {
+  .testimonial--feature .testimonial-body {
+    column-count: 2;
+    column-gap: clamp(2rem, 4vw, 3.5rem);
+  }
+  .testimonial--feature .testimonial-body p { break-inside: avoid; }
+  .testimonial--feature .testimonial-body p:first-child { margin-top: 0; }
+}
+
 .testimonial-attr {
   border-top: 1px solid var(--line-light-soft);
   padding-top: 1.25rem;
   margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
+.testimonial-photo {
+  flex: 0 0 auto;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  /* portraits are cut out to transparent circles — this keeps them from
+     disappearing into the card on very light backgrounds */
+  background: var(--bg-soft);
+}
+.testimonial-ident { display: block; min-width: 0; }
 .testimonial-name {
   font-family: var(--font-heading);
   font-style: italic;
@@ -1156,6 +1206,7 @@ podcast-cover { display: contents; }
   margin-top: 0.2rem;
   letter-spacing: 0.02em;
 }
+.testimonial-role .sep { margin: 0 0.35rem; color: var(--accent); }
 
 .testimonials-link {
   text-align: center;
@@ -1518,13 +1569,31 @@ podcast-cover { display: contents; }
 @media (max-width: 720px) {
   .episode-thumb { width: 80px; height: 80px; font-size: 1.1rem; }
 }
-.episode-thumb::after {
-  content: "";
+/* Real Spotify cover art fills the thumb. No number overlay — the cover already
+   carries its own typography, and the eyebrow beside it states the episode. */
+.episode-thumb img {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 30% 30%, rgba(224, 183, 111, 0.25), transparent 60%);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-.episode-thumb span { position: relative; z-index: 1; }
+
+.blog-thumb .blog-cover {
+  position: absolute;
+  height: 82%;
+  width: auto;
+  aspect-ratio: 1 / 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-1.5deg);
+  object-fit: cover;
+  box-shadow: 0 14px 34px rgba(4, 23, 31, 0.35);
+  transition: transform 0.4s ease;
+}
+.blog-card:hover .blog-cover {
+  transform: translate(-50%, -50%) rotate(0deg) scale(1.02);
+}
 .episode-body .eyebrow { color: var(--accent); display: block; margin-bottom: 0.4rem; font-size: 0.72rem; }
 .episode-body h3 {
   font-size: clamp(1.15rem, 1.8vw, 1.4rem);
