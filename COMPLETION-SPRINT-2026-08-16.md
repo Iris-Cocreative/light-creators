@@ -150,26 +150,33 @@ ASCII comment headers inside embeds (HTML comments, never rendered).
 
 ---
 
-## Needs a decision
+## Decisions — all resolved, 17 Aug
 
-1. **David Kling / ZF Group** is not in the briefing's list for
-   davidliebnau.com but is a real authorized testimonial that's live today and
-   was never asked to be removed. **Kept** — removing is the destructive
-   option. One-line delete if you'd rather.
-2. **Spelling.** The briefing mixes transliterations with proper umlauts in the
-   same paragraph ("Naehe", "hoeheres", "hinterlaesst" beside "genießen").
-   Normalised to standard German — Nähe, höheres, hinterlässt, außen, äußerst,
-   Maßnahmen. Quick revert if David wants it verbatim.
-3. **The second Spotify cover.** David sent two. One is the current square
-   "Leise Kraft · Wer klar ist, dem folgt die Welt" artwork — that's the one in
-   use. The other is an older teal/purple "DER PODCAST FÜR UNTERNEHMER:INNEN"
-   design, not square, apparently a screenshot. Was it meant for a specific
-   placement?
-4. **English ProvenExpert seal.** David's snippet is locale-locked `de-de`, so
-   index-en.html shows a German seal. An EN widget from his account would swap
-   straight in.
-5. **`/call` now shows two testimonials instead of three.** Worth flagging to
-   David.
+1. **David Kling / ZF Group** — **kept.** Not in the briefing's list for
+   davidliebnau.com, but a real authorized testimonial that was already live and
+   never asked to be removed.
+2. **Spelling** — **normalisation approved.** The briefing mixes
+   transliterations with proper umlauts in the same paragraph ("Naehe",
+   "hoeheres", "hinterlaesst" beside "genießen"); standardised to Nähe, höheres,
+   hinterlässt, außen, äußerst, Maßnahmen.
+3. **The second Spotify cover** — **dropped.** The older teal/purple "DER
+   PODCAST FÜR UNTERNEHMER:INNEN" screenshot isn't needed; the square "Leise
+   Kraft" artwork is the one in use.
+4. **English ProvenExpert seal** — **fine as is.** index-en.html keeps David's
+   locale-locked `de-de` seal for now. An EN widget from his account swaps
+   straight in whenever he sends one.
+5. **`/call` shows two testimonials instead of three** — **accepted.** Flag it
+   to David at go-live.
+
+## Sprint status in Collab OS
+
+The nine actions above are marked **done**, meaning built and verified — not
+live. A `Publish` action now holds the two deploy steps plus the live test
+submissions, so "done" on a build action can't be read as "David can see it."
+That distinction is what reopened the thank-you-video task in the first place.
+
+Still open and assigned to James: the quiz-funnel proposal, the client
+enablement call/Loom, and the David follow-up (missing items 4–5, GSC check).
 
 ## Still open
 
