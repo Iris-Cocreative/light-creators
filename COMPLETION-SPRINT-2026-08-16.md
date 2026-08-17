@@ -11,7 +11,7 @@ one-liners, both deliberately left for James.
 | **davidliebnau.com** (`Iris-Cocreative/light-creators`) | commit `d6b9b6c`, **local only** | `git push` — GitHub Pages deploys on push to `main` |
 | **light-creators.com** (Webflow) | edits saved, **published to staging only** | Publish to the `light-creators.com` + `www` domains |
 | Staging preview | https://light-creators-tribe.webflow.io | — |
-| `iris-field` docs | commit `eb9e3a8`, **local only** | `git push` |
+| `iris-field` docs | commit `eb9e3a8` — **pushed** (a concurrent session carried it up); follow-up `9f52570` local | `git push` |
 
 The Webflow edits are in the project and on the staging subdomain. The live
 site still serves the 30 July build, so nothing David sees has changed yet.
