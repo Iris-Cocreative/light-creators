@@ -1294,6 +1294,54 @@ podcast-cover { display: contents; }
 }
 
 /* ============================================
+   THRESHOLD TEASER (Homepage)
+   ============================================ */
+.threshold-teaser {
+  background: var(--bg-teal);
+  color: var(--text-on-dark);
+  position: relative;
+  overflow: hidden;
+}
+.threshold-teaser::before {
+  content: ""; position: absolute;
+  top: -25%; left: -20%;
+  width: 55vw; height: 55vw;
+  background: radial-gradient(circle at center, rgba(224, 183, 111, 0.16) 0%, transparent 65%);
+  pointer-events: none;
+}
+.threshold-teaser h2, .threshold-teaser h3 { color: var(--text-on-dark); }
+.threshold-teaser .eyebrow { color: var(--accent); }
+.threshold-teaser-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(3rem, 6vw, 5rem);
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+@media (max-width: 880px) { .threshold-teaser-grid { grid-template-columns: 1fr; } }
+.threshold-teaser-text > p {
+  color: var(--text-on-dark-muted);
+  max-width: 48ch;
+  margin: 1.5rem 0;
+}
+.threshold-teaser-meta {
+  color: var(--accent);
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 1.15rem;
+}
+.threshold-teaser-cta-row {
+  display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem;
+}
+.threshold-teaser-media img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border: 1px solid var(--line-dark);
+}
+
+/* ============================================
    NEXT STEPS
    ============================================ */
 .next-section { background: var(--bg); padding-bottom: clamp(5rem, 10vw, 8rem); }
