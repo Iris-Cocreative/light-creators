@@ -392,6 +392,16 @@ nav.top.nav--open {
   color: var(--text-on-dark-muted);
   max-width: 50ch;
 }
+.hero-founder-link {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--text-on-dark-muted);
+}
+.hero-founder-link a {
+  color: var(--text-on-dark);
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: 2px;
+}
 .hero-meta {
   display: flex;
   gap: 2rem;
