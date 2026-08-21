@@ -2,7 +2,33 @@
 const fs = require('fs');
 const path = require('path');
 
-const CONTENT_FILE = 'C:/Users/info/Downloads/episode-content.md';
+// ============================================================================
+// ACHTUNG: Die Vorlage enthaelt den SEO-Block der 29 erzeugten Dateien NICHT.
+// Ein Lauf ueberschreibt canonical, robots, og, twitter und beide JSON-LD-
+// Bloecke. Vor dem Lauf Vorlage aktualisieren. Stand: 2026-08-22.
+//
+// Ausserdem fehlt die Quelldatei: CONTENT_FILE zeigt auf ein Dokument, das
+// nicht im Repository liegt. Es muss vor einem Lauf erst beschafft und unter
+// dem unten stehenden Pfad abgelegt werden.
+//
+// Der Lauf ist deshalb gesperrt. Zum Uebergehen:  node generate-episodes.js --force
+// ============================================================================
+if (!process.argv.includes('--force')) {
+  console.error([
+    'Abbruch: generate-episodes.js ist gesperrt.',
+    '',
+    'Die Vorlage in dieser Datei enthaelt den SEO-Block nicht, den alle 29',
+    'Dateien in episodes/ tragen. Ein Lauf wuerde canonical, robots, og,',
+    'twitter und beide JSON-LD-Bloecke in allen 29 Dateien loeschen.',
+    '',
+    'Vorlage zuerst um den SEO-Block ergaenzen, dann diese Sperre entfernen.',
+    'Bewusstes Uebergehen:  node generate-episodes.js --force',
+  ].join('\n'));
+  process.exit(1);
+}
+
+// Quelldatei fehlt im Repository, siehe Kommentar oben.
+const CONTENT_FILE = path.join(__dirname, 'episode-content.md');
 const OUTPUT_DIR = path.join(__dirname, 'episodes');
 const META_FILE = path.join(__dirname, 'episodes-meta.json');
 const SPOTIFY_SHOW = 'https://open.spotify.com/show/2VJVvcbnTtvoDrmSSdTGZ2';
@@ -159,12 +185,19 @@ function generatePage(num, { title, bodyLines, seoTitle, seoDesc }) {
   <nav class="top">
     <a href="../index.html" class="logo">David Liebnau<em>.</em></a>
     <div class="nav-meta">
+      <a href="../fuehren/">Führen</a>
+      <span class="sep">·</span>
+      <a href="../threshold/">Threshold</a>
+      <span class="sep">·</span>
       <a href="../podcast.html">Podcast</a>
       <span class="sep">·</span>
       <a href="../index.html#about">Über mich</a>
       <span class="sep">·</span>
       <a href="../index.html#contact">Kontakt</a>
-      <a href="https://light-creators.com/quiz" class="nav-cta">Assessment</a>
+      <span class="sep">·</span>
+      <a href="../index.html" style="color: var(--accent);">DE</a>
+      <span class="sep">/</span>
+      <a href="../index-en.html">EN</a>
     </div>
   </nav>
   <div class="container">
@@ -187,8 +220,8 @@ function generatePage(num, { title, bodyLines, seoTitle, seoDesc }) {
 ${content}
 
     <div class="ep-cta-block">
-      <a href="https://light-creators.com/quiz" class="btn btn--ghost" target="_blank" rel="noopener">Resonance Assessment <span class="arrow">→</span></a>
-      <a href="https://light-creators.com/call" class="btn btn--gold" target="_blank" rel="noopener">Diagnostic Call <span class="arrow">→</span></a>
+      <a href="https://light-creators.com" class="btn btn--ghost" target="_blank" rel="noopener">Für Founder Resonance: light-creators.com <span class="arrow">→</span></a>
+      <a href="../threshold/" class="btn btn--gold">The Threshold Program: sechs Tage für junge Erwachsene <span class="arrow">→</span></a>
     </div>
   </div>
 </article>
@@ -198,7 +231,7 @@ ${content}
     <div class="footer-grid">
       <div class="footer-brand">
         <span class="logo">David Liebnau<em>.</em></span>
-        <p>Bewusstes Unternehmertum an kritischen Wendepunkten.</p>
+        <p>Bewusstes Leadership an kritischen Wendepunkten.</p>
         <span class="footer-tagline"><em>Wer klar ist — dem folgt die Welt.</em></span>
       </div>
 
@@ -216,17 +249,16 @@ ${content}
       <div class="footer-col">
         <h5>Arbeite mit David</h5>
         <ul>
-          <li><a href="https://light-creators.com/quiz" target="_blank" rel="noopener">Assessment</a></li>
-          <li><a href="https://light-creators.com/call" target="_blank" rel="noopener">Diagnostic Call</a></li>
+          <li><a href="../threshold/">The Threshold Program</a></li>
           <li><a href="mailto:info@light-creators.com">E-Mail</a></li>
-          <li><a href="https://light-creators.com" target="_blank" rel="noopener">Light Creators</a></li>
+          <li><a href="https://light-creators.com" target="_blank" rel="noopener">Für Founder Resonance: light-creators.com</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
         <h5>English</h5>
         <ul>
-          <li><a href="../index-en.html">For English-speaking founders</a></li>
+          <li><a href="../index-en.html">For international clients</a></li>
           <li><a href="https://light-creators.com/en" target="_blank" rel="noopener">light-creators.com/en</a></li>
         </ul>
       </div>
@@ -235,11 +267,9 @@ ${content}
     <div class="footer-bottom">
       <span>© 2026 David Liebnau</span>
       <div class="footer-legal">
-        <a href="#">Impressum</a>
+        <a href="../impressum/">Impressum</a>
         <span class="sep">·</span>
-        <a href="#">Datenschutz</a>
-        <span class="sep">·</span>
-        <a href="#">AGB</a>
+        <a href="../datenschutz/">Datenschutz</a>
       </div>
     </div>
   </div>
