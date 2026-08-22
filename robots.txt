@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /_archiv/
 
 Sitemap: https://davidliebnau.com/sitemap.xml
