@@ -909,6 +909,22 @@ podcast-cover { display: contents; }
   line-height: 1.6;
   max-width: 32ch;
 }
+/* vier optisch gleichwertige Absaetze, Abschnitt "Der Moment" */
+.moment-list {
+  margin: clamp(2.5rem, 5vw, 4rem) 0 clamp(2rem, 4vw, 3rem);
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2.25rem);
+}
+.moment-list p {
+  margin: 0;
+  padding-left: 1.75rem;
+  border-left: 1px solid var(--line-light);
+  font-family: var(--font-heading);
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  line-height: 1.55;
+  color: var(--text);
+  max-width: 62ch;
+}
 .roles-coda {
   max-width: 60ch;
   margin: clamp(3rem, 5vw, 4rem) auto 0;
