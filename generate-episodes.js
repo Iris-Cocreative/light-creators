@@ -12,6 +12,8 @@ const path = require('path');
 // dem unten stehenden Pfad abgelegt werden.
 //
 // Der Lauf ist deshalb gesperrt. Zum Uebergehen:  node generate-episodes.js --force
+//
+// Sperre nie ausgefuehrt, Node war beim Einbau nicht installiert.
 // ============================================================================
 if (!process.argv.includes('--force')) {
   console.error([

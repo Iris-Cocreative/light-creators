@@ -1317,6 +1317,24 @@ podcast-cover { display: contents; }
   font-style: normal;
 }
 .who-list li:last-child { border-bottom: none; }
+/* Platzhalter-Label im .who-exclusion-Kasten klar vom Kursivtext abheben */
+.who-exclusion strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-family: var(--font-body);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.lang-note {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
 .who-exclusion {
   margin-top: 2rem;
   padding: 1.5rem 1.75rem;
