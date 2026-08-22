@@ -1442,6 +1442,8 @@ podcast-cover { display: contents; }
   gap: clamp(1.5rem, 3vw, 2rem);
 }
 @media (max-width: 880px) { .next-grid { grid-template-columns: 1fr; } }
+.next-grid--three { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 1080px) { .next-grid--three { grid-template-columns: 1fr; } }
 .next-card {
   padding: clamp(2.5rem, 4vw, 3.5rem);
   border: 1px solid var(--line-light);
