@@ -548,6 +548,53 @@ nav.top.nav--open {
   .hero-cta-row .btn { text-align: center; justify-content: center; }
 }
 
+/* ============================================
+   HERO — FUEHREN-SEITE
+   Eigenes Bild, flacher als die Startseite, Text links auf dunklem
+   Verlauf. Ueberschreibt Bild, Hoehe, Verlauf, Textspalte und die
+   Textfarben, weil .hero--photo-bg von hellem Text-Untergrund rechts
+   ausgeht und hier das Gegenteil gilt.
+   ============================================ */
+.hero--photo-fuehren {
+  background-image: url("hero-fuehren-wide.webp");
+  background-position: center right;
+  min-height: 70vh;
+}
+.hero--photo-fuehren::before {
+  background: linear-gradient(90deg,
+    rgba(4, 23, 31, 0.94) 0%,
+    rgba(4, 23, 31, 0.82) 28%,
+    rgba(4, 23, 31, 0.35) 55%,
+    rgba(4, 23, 31, 0.05) 78%);
+}
+.hero--photo-fuehren .hero-text {
+  margin-left: 0;
+  margin-right: auto;
+  max-width: 46%;
+  text-align: left;
+}
+.hero--photo-fuehren .hero-sub { max-width: 34ch; }
+.hero--photo-fuehren > .container { padding-left: clamp(2rem, 5vw, 4.5rem); }
+.hero--photo-fuehren h1,
+.hero--photo-fuehren h2,
+.hero--photo-fuehren h3 { color: var(--color-cream); }
+.hero--photo-fuehren h1 em { color: var(--accent); }
+.hero--photo-fuehren .hero-sub { color: var(--text-on-dark-muted); }
+.hero--photo-fuehren .eyebrow { color: var(--accent); }
+@media (max-width: 700px) {
+  .hero--photo-fuehren {
+    background-image: url("hero-fuehren-portrait.webp");
+    background-position: center top;
+  }
+  .hero--photo-fuehren::before {
+    background: linear-gradient(0deg,
+      rgba(4, 23, 31, 0.95) 0%,
+      rgba(4, 23, 31, 0.75) 40%,
+      rgba(4, 23, 31, 0.15) 75%);
+  }
+  .hero--photo-fuehren .hero-text { max-width: 100%; }
+}
+
 /* HERO PHOTO — full-height right-aligned variant */
 .hero--photo-right .hero-grid {
   grid-template-columns: 1fr;
