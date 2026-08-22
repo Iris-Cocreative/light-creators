@@ -894,6 +894,33 @@ podcast-cover { display: contents; }
   display: block;
   filter: saturate(0.95);
 }
+.wege-section { background: var(--bg-soft); }
+/* Drei-Wege- und Formate-Raster: dieselben Karten, nur ohne Bildcontainer */
+.role-card--textonly {
+  padding-top: 2rem;
+  border-top: 1px solid var(--line-light);
+}
+.role-card--textonly h3 { font-size: clamp(1.25rem, 2.1vw, 1.55rem); line-height: 1.3; }
+.role-card--textonly p { max-width: none; margin-bottom: 1.5rem; }
+.role-card-links {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-items: flex-start;
+}
+/* mehrzeilige Links: Unterstreichung folgt dem Textfluss, statt einen
+   Rahmen ueber die volle Kastenbreite zu ziehen */
+.role-card-links .text-link {
+  display: inline;
+  font-size: 0.95rem;
+  border-bottom: none;
+  text-decoration: underline;
+  text-decoration-color: var(--line-light);
+  text-underline-offset: 0.28em;
+}
+.role-card-links .text-link:hover { text-decoration-color: var(--accent); }
+.role-card-links .text-link .arrow { margin-left: 0.35rem; }
 .role-card h3 {
   font-family: var(--font-heading);
   font-size: clamp(1.5rem, 2.6vw, 1.9rem);
