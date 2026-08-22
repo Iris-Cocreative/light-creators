@@ -983,6 +983,25 @@ podcast-cover { display: contents; }
   font-size: 1.02rem;
   line-height: 1.6;
 }
+/* Methoden-Einheiten: breitere Symbolspalte, .methode-symbol ist 96px */
+.factors-list--methode .factor {
+  grid-template-columns: 120px 1fr;
+  align-items: start;
+}
+@media (max-width: 600px) {
+  .factors-list--methode .factor { grid-template-columns: 1fr; }
+}
+.methode-ziffer {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+}
+.factors-list--methode .factor-content p { margin-bottom: 0.85rem; }
+.factors-list--methode .factor-content p:last-child { margin-bottom: 0; }
 .factors-coda {
   max-width: var(--container-narrow);
   margin: clamp(4rem, 7vw, 5rem) auto 0;
