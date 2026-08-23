@@ -13,8 +13,16 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://davidliebnau.com/fuehren/</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://davidliebnau.com/threshold/</loc>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://davidliebnau.com/threshold/partner/</loc>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://davidliebnau.com/threshold/en/</loc>
