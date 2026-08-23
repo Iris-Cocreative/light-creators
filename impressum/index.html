@@ -22,6 +22,26 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Hanken+Grotesk:ital,wght@0,200;0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="/assets/styles.css" />
+<style>
+  /* Seiten-eigene Auszeichnung fuer Rechtstexte.
+     assets/styles.css bleibt unberuehrt. */
+  .rs h2 { font-size: clamp(1.35rem, 2.3vw, 1.8rem); margin-top: 3rem; margin-bottom: 1rem; }
+  .rs h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); margin-top: 1.5rem; }
+  .rs .rs-zurueck { margin-top: 3rem; }
+  .rs p { margin-bottom: 1.1rem; }
+  .rs .rs-adr { line-height: 1.7; }
+  .rs .rs-lead { margin-top: 2.5rem; margin-bottom: 0.4rem; font-family: var(--font-heading); font-size: clamp(1.15rem, 2vw, 1.4rem); color: var(--text); }
+  .rs .rs-form { margin-bottom: 1.6rem; line-height: 1.7; }
+  .rs .rs-stand { margin-top: 3rem; color: var(--text-muted); font-size: 0.9rem; }
+  .rs a { color: var(--text); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 0.2em; }
+  .rs a.text-link { text-decoration: none; }
+  .rs-tabelle { overflow-x: auto; margin: 1.5rem 0; }
+  .rs-tabelle table { border-collapse: collapse; width: 100%; max-width: 46ch; font-size: 0.95rem; }
+  .rs-tabelle th { text-align: left; font-weight: 500; padding: 0.7rem 1rem 0.7rem 0; border-bottom: 1px solid var(--line-light); }
+  .rs-tabelle th:last-child, .rs-tabelle td:last-child { padding-right: 0; }
+  .rs-tabelle td { padding: 0.7rem 1rem 0.7rem 0; border-bottom: 1px solid var(--line-light-soft); }
+  .rs-tabelle tr:last-child td { border-bottom: none; }
+</style>
 </head>
 <body>
 
@@ -47,39 +67,39 @@
 </header>
 
 <section class="qa-section">
-  <div class="container container--narrow">
+  <div class="container container--narrow rs">
     <span class="eyebrow">Rechtliches</span>
-    <h1 style="margin-top:1.5rem; font-size: clamp(2.2rem, 5vw, 3.6rem);">Impressum</h1>
+    <h1>Impressum</h1>
 
     <p class="lang-note">This page is available in German only.</p>
 
-    <h2 style="font-size: clamp(1.35rem, 2.3vw, 1.8rem); margin-top: 3rem; margin-bottom: 1rem;">Angaben gem&auml;&szlig; &sect; 5 DDG</h2>
-    <p style="margin-bottom: 1.1rem; line-height: 1.7;">David Liebnau<br />
+    <h2>Angaben gem&auml;&szlig; &sect; 5 DDG</h2>
+    <p class="rs-adr">David Liebnau<br />
     Gardesch&uuml;tzenweg 103<br />
     12203 Berlin</p>
 
-    <h2 style="font-size: clamp(1.35rem, 2.3vw, 1.8rem); margin-top: 3rem; margin-bottom: 1rem;">Kontakt</h2>
-    <p style="margin-bottom: 1.1rem; line-height: 1.7;">Telefon: <a href="tel:+491704326737" style="color: var(--text); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 0.2em;">+49 170 4326737</a><br />
-    E-Mail: <a href="mailto:dl@light-creators.com" style="color: var(--text); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 0.2em;">dl@light-creators.com</a></p>
+    <h2>Kontakt</h2>
+    <p class="rs-adr">Telefon: <a href="tel:+491704326737">+49 170 4326737</a><br />
+    E-Mail: <a href="mailto:dl@light-creators.com">dl@light-creators.com</a></p>
 
-    <h2 style="font-size: clamp(1.35rem, 2.3vw, 1.8rem); margin-top: 3rem; margin-bottom: 1rem;">Umsatzsteuer-Identifikationsnummer</h2>
-    <p style="margin-bottom: 1.1rem;">Umsatzsteuer-Identifikationsnummer gem&auml;&szlig; &sect; 27a UStG: DE363826204</p>
+    <h2>Umsatzsteuer-Identifikationsnummer</h2>
+    <p>Umsatzsteuer-Identifikationsnummer gem&auml;&szlig; &sect; 27a UStG: DE363826204</p>
 
-    <h2 style="font-size: clamp(1.35rem, 2.3vw, 1.8rem); margin-top: 3rem; margin-bottom: 1rem;">Berufshaftpflichtversicherung</h2>
-    <p style="margin-bottom: 1.1rem;">Baloise Sachversicherung AG Deutschland, Basler Stra&szlig;e 4,
+    <h2>Berufshaftpflichtversicherung</h2>
+    <p>Baloise Sachversicherung AG Deutschland, Basler Stra&szlig;e 4,
     61352 Bad Homburg v.d.H.</p>
-    <p style="margin-bottom: 1.1rem;">Geltungsraum: Deutschland sowie weltweit bei vor&uuml;bergehenden
+    <p>Geltungsraum: Deutschland sowie weltweit bei vor&uuml;bergehenden
     Auslandsaufenthalten bis zu einem Jahr.</p>
 
-    <h2 style="font-size: clamp(1.35rem, 2.3vw, 1.8rem); margin-top: 3rem; margin-bottom: 1rem;">Verantwortlich f&uuml;r den Inhalt nach &sect; 18 Abs. 2 MStV</h2>
-    <p style="margin-bottom: 1.1rem;">David Liebnau, Anschrift wie oben</p>
+    <h2>Verantwortlich f&uuml;r den Inhalt nach &sect; 18 Abs. 2 MStV</h2>
+    <p>David Liebnau, Anschrift wie oben</p>
 
-    <h2 style="font-size: clamp(1.35rem, 2.3vw, 1.8rem); margin-top: 3rem; margin-bottom: 1rem;">Verbraucherstreitbeilegung</h2>
-    <p style="margin-bottom: 1.1rem;">Ich bin nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor
+    <h2>Verbraucherstreitbeilegung</h2>
+    <p>Ich bin nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor
     einer Verbraucherschlichtungsstelle teilzunehmen.</p>
 
-    <h2 style="font-size: clamp(1.35rem, 2.3vw, 1.8rem); margin-top: 3rem; margin-bottom: 1rem;">Haftung f&uuml;r Inhalte</h2>
-    <p style="margin-bottom: 1.1rem;">Als Diensteanbieter bin ich gem&auml;&szlig; &sect; 7 Abs. 1 DDG f&uuml;r eigene Inhalte auf
+    <h2>Haftung f&uuml;r Inhalte</h2>
+    <p>Als Diensteanbieter bin ich gem&auml;&szlig; &sect; 7 Abs. 1 DDG f&uuml;r eigene Inhalte auf
     diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach den &sect;&sect; 8 bis
     10 DDG bin ich als Diensteanbieter jedoch nicht verpflichtet, &uuml;bermittelte
     oder gespeicherte fremde Informationen zu &uuml;berwachen oder nach Umst&auml;nden zu
@@ -90,8 +110,8 @@
     Bekanntwerden entsprechender Rechtsverletzungen entferne ich diese Inhalte
     umgehend.</p>
 
-    <h2 style="font-size: clamp(1.35rem, 2.3vw, 1.8rem); margin-top: 3rem; margin-bottom: 1rem;">Haftung f&uuml;r Links</h2>
-    <p style="margin-bottom: 1.1rem;">Diese Website enth&auml;lt Links zu externen Websites Dritter, auf deren Inhalte
+    <h2>Haftung f&uuml;r Links</h2>
+    <p>Diese Website enth&auml;lt Links zu externen Websites Dritter, auf deren Inhalte
     ich keinen Einfluss habe. F&uuml;r diese fremden Inhalte kann ich keine Gew&auml;hr
     &uuml;bernehmen. F&uuml;r die Inhalte der verlinkten Seiten ist stets der jeweilige
     Anbieter verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der
@@ -100,8 +120,8 @@
     Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von
     Rechtsverletzungen entferne ich derartige Links umgehend.</p>
 
-    <h2 style="font-size: clamp(1.35rem, 2.3vw, 1.8rem); margin-top: 3rem; margin-bottom: 1rem;">Urheberrecht</h2>
-    <p style="margin-bottom: 1.1rem;">Die durch mich erstellten Inhalte und Werke auf diesen Seiten unterliegen dem
+    <h2>Urheberrecht</h2>
+    <p>Die durch mich erstellten Inhalte und Werke auf diesen Seiten unterliegen dem
     deutschen Urheberrecht. Vervielf&auml;ltigung, Bearbeitung, Verbreitung und jede
     Art der Verwertung au&szlig;erhalb der Grenzen des Urheberrechts bed&uuml;rfen meiner
     schriftlichen Zustimmung. Downloads und Kopien dieser Seite sind nur f&uuml;r den
@@ -109,9 +129,9 @@
     dieser Seite nicht von mir erstellt wurden, werden die Urheberrechte Dritter
     beachtet und als solche gekennzeichnet.</p>
 
-    <p style="margin-top: 3rem; color: var(--text-muted); font-size: 0.9rem;">Stand: August 2026</p>
+    <p class="rs-stand">Stand: August 2026</p>
 
-    <p style="margin-top:3rem;"><a href="/" class="text-link">Zur&uuml;ck zur Startseite <span class="arrow">&#8594;</span></a></p>
+    <p class="rs-zurueck"><a href="/" class="text-link">Zur&uuml;ck zur Startseite <span class="arrow">&#8594;</span></a></p>
   </div>
 </section>
 

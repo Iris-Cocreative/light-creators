@@ -22,6 +22,26 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Hanken+Grotesk:ital,wght@0,200;0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="/assets/styles.css" />
+<style>
+  /* Seiten-eigene Auszeichnung fuer Rechtstexte.
+     assets/styles.css bleibt unberuehrt. */
+  .rs h2 { font-size: clamp(1.35rem, 2.3vw, 1.8rem); margin-top: 3rem; margin-bottom: 1rem; }
+  .rs h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); margin-top: 1.5rem; }
+  .rs .rs-zurueck { margin-top: 3rem; }
+  .rs p { margin-bottom: 1.1rem; }
+  .rs .rs-adr { line-height: 1.7; }
+  .rs .rs-lead { margin-top: 2.5rem; margin-bottom: 0.4rem; font-family: var(--font-heading); font-size: clamp(1.15rem, 2vw, 1.4rem); color: var(--text); }
+  .rs .rs-form { margin-bottom: 1.6rem; line-height: 1.7; }
+  .rs .rs-stand { margin-top: 3rem; color: var(--text-muted); font-size: 0.9rem; }
+  .rs a { color: var(--text); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 0.2em; }
+  .rs a.text-link { text-decoration: none; }
+  .rs-tabelle { overflow-x: auto; margin: 1.5rem 0; }
+  .rs-tabelle table { border-collapse: collapse; width: 100%; max-width: 46ch; font-size: 0.95rem; }
+  .rs-tabelle th { text-align: left; font-weight: 500; padding: 0.7rem 1rem 0.7rem 0; border-bottom: 1px solid var(--line-light); }
+  .rs-tabelle th:last-child, .rs-tabelle td:last-child { padding-right: 0; }
+  .rs-tabelle td { padding: 0.7rem 1rem 0.7rem 0; border-bottom: 1px solid var(--line-light-soft); }
+  .rs-tabelle tr:last-child td { border-bottom: none; }
+</style>
 </head>
 <body>
 
@@ -47,168 +67,168 @@
 </header>
 
 <section class="qa-section">
-  <div class="container container--narrow">
+  <div class="container container--narrow rs">
     <span class="eyebrow">Rechtliches</span>
-    <h1 style="margin-top:1.5rem; font-size: clamp(2.2rem, 5vw, 3.6rem);">Allgemeine Gesch&auml;ftsbedingungen</h1>
+    <h1>Allgemeine Gesch&auml;ftsbedingungen</h1>
 
     <p class="lang-note">This page is available in German only.</p>
 
-    <h2 style="font-size: clamp(1.35rem, 2.3vw, 1.8rem); margin-top: 3rem; margin-bottom: 1rem;">&sect; 1 Geltungsbereich und Anbieter</h2>
-    <p style="margin-bottom: 1.1rem;">Diese Bedingungen gelten f&uuml;r Vertr&auml;ge &uuml;ber die Teilnahme an Programmen, die
+    <h2>&sect; 1 Geltungsbereich und Anbieter</h2>
+    <p>Diese Bedingungen gelten f&uuml;r Vertr&auml;ge &uuml;ber die Teilnahme an Programmen, die
     David Liebnau, Gardesch&uuml;tzenweg 103, 12203 Berlin, mit Verbrauchern
     schlie&szlig;t, insbesondere f&uuml;r The Threshold Program.</p>
-    <p style="margin-bottom: 1.1rem;">F&uuml;r Auftr&auml;ge von Unternehmen und Organisationen gelten diese Bedingungen
+    <p>F&uuml;r Auftr&auml;ge von Unternehmen und Organisationen gelten diese Bedingungen
     nicht. Dort gilt das jeweilige individuelle Angebot.</p>
 
-    <h2 style="font-size: clamp(1.35rem, 2.3vw, 1.8rem); margin-top: 3rem; margin-bottom: 1rem;">&sect; 2 Zustandekommen des Vertrags</h2>
-    <p style="margin-bottom: 1.1rem;">Die Darstellung der Programme auf dieser Website ist kein bindendes Angebot,
+    <h2>&sect; 2 Zustandekommen des Vertrags</h2>
+    <p>Die Darstellung der Programme auf dieser Website ist kein bindendes Angebot,
     sondern eine Einladung zur Anfrage.</p>
-    <p style="margin-bottom: 1.1rem;">Der Ablauf: Du bewirbst dich formlos. Es folgt ein Gespr&auml;ch. Wenn wir beide
+    <p>Der Ablauf: Du bewirbst dich formlos. Es folgt ein Gespr&auml;ch. Wenn wir beide
     zusagen, erh&auml;ltst du von mir eine Anmeldebest&auml;tigung in Textform mit allen
     Angaben zu Termin, Ort, Leistungen und Preis. Mit dieser Best&auml;tigung kommt
     der Vertrag zustande.</p>
 
-    <h2 style="font-size: clamp(1.35rem, 2.3vw, 1.8rem); margin-top: 3rem; margin-bottom: 1rem;">&sect; 3 Leistungen</h2>
-    <p style="margin-bottom: 1.1rem;">Der Leistungsumfang ergibt sich aus der Programmbeschreibung und der
+    <h2>&sect; 3 Leistungen</h2>
+    <p>Der Leistungsumfang ergibt sich aus der Programmbeschreibung und der
     Anmeldebest&auml;tigung.</p>
-    <p style="margin-bottom: 1.1rem;">Bei The Threshold Program sind enthalten: die Begleitung w&auml;hrend der sechs
+    <p>Bei The Threshold Program sind enthalten: die Begleitung w&auml;hrend der sechs
     Tage, Unterkunft und Verpflegung vor Ort, alle Programmmaterialien sowie die
     Begleitung &uuml;ber sechs Wochen nach dem Programm.</p>
-    <p style="margin-bottom: 1.1rem;">Nicht enthalten sind An- und Abreise, Reise- und Krankenversicherungen sowie
+    <p>Nicht enthalten sind An- und Abreise, Reise- und Krankenversicherungen sowie
     pers&ouml;nliche Ausr&uuml;stung und Kleidung.</p>
-    <p style="margin-bottom: 1.1rem;">Ich schulde eine sorgf&auml;ltige, fachlich fundierte Durchf&uuml;hrung, keinen
+    <p>Ich schulde eine sorgf&auml;ltige, fachlich fundierte Durchf&uuml;hrung, keinen
     bestimmten Erfolg. Das Programm ersetzt weder eine Psychotherapie noch eine
     medizinische Behandlung.</p>
 
-    <h2 style="font-size: clamp(1.35rem, 2.3vw, 1.8rem); margin-top: 3rem; margin-bottom: 1rem;">&sect; 4 Preise und Zahlung</h2>
-    <p style="margin-bottom: 1.1rem;">Es gilt der in der Anmeldebest&auml;tigung genannte Preis. Alle Preise verstehen
+    <h2>&sect; 4 Preise und Zahlung</h2>
+    <p>Es gilt der in der Anmeldebest&auml;tigung genannte Preis. Alle Preise verstehen
     sich inklusive der gesetzlichen Umsatzsteuer.</p>
-    <p style="margin-bottom: 1.1rem;">Mit der Anmeldebest&auml;tigung wird eine Anzahlung in H&ouml;he von 20 Prozent des
+    <p>Mit der Anmeldebest&auml;tigung wird eine Anzahlung in H&ouml;he von 20 Prozent des
     Programmpreises f&auml;llig, zahlbar innerhalb von 14 Tagen nach Rechnungserhalt.
     Mit Eingang der Anzahlung ist dein Platz verbindlich reserviert.</p>
-    <p style="margin-bottom: 1.1rem;">Der Restbetrag ist sp&auml;testens 30 Tage vor Programmbeginn f&auml;llig. Bei
+    <p>Der Restbetrag ist sp&auml;testens 30 Tage vor Programmbeginn f&auml;llig. Bei
     Anmeldungen, die weniger als 30 Tage vor Programmbeginn erfolgen, ist der
     Gesamtbetrag sofort f&auml;llig.</p>
-    <p style="margin-bottom: 1.1rem;">Auf Anfrage ist Ratenzahlung m&ouml;glich. Sprich mich an, bevor du buchst.</p>
+    <p>Auf Anfrage ist Ratenzahlung m&ouml;glich. Sprich mich an, bevor du buchst.</p>
 
-    <h2 style="font-size: clamp(1.35rem, 2.3vw, 1.8rem); margin-top: 3rem; margin-bottom: 1rem;">&sect; 5 Widerrufsrecht</h2>
-    <p style="margin-bottom: 1.1rem;">Verbrauchern steht ein gesetzliches Widerrufsrecht von vierzehn Tagen zu.
+    <h2>&sect; 5 Widerrufsrecht</h2>
+    <p>Verbrauchern steht ein gesetzliches Widerrufsrecht von vierzehn Tagen zu.
     Einzelheiten in der Widerrufsbelehrung, die du zusammen mit der
-    Anmeldebest&auml;tigung erh&auml;ltst und die auch unter <a href="/widerruf/" style="color: var(--text); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 0.2em;">davidliebnau.com/widerruf/</a>
+    Anmeldebest&auml;tigung erh&auml;ltst und die auch unter <a href="/widerruf/">davidliebnau.com/widerruf/</a>
     abrufbar ist.</p>
-    <p style="margin-bottom: 1.1rem;">Solange die Widerrufsfrist l&auml;uft, geht das Widerrufsrecht den
+    <p>Solange die Widerrufsfrist l&auml;uft, geht das Widerrufsrecht den
     Stornobedingungen nach &sect; 6 vor. Bei fristgerechtem Widerruf erstatte ich alle
     bereits gezahlten Betr&auml;ge einschlie&szlig;lich der Anzahlung vollst&auml;ndig.</p>
 
-    <h2 style="font-size: clamp(1.35rem, 2.3vw, 1.8rem); margin-top: 3rem; margin-bottom: 1rem;">&sect; 6 R&uuml;cktritt durch Teilnehmende</h2>
-    <p style="margin-bottom: 1.1rem;">Nach Ablauf der Widerrufsfrist kannst du bis zum Programmbeginn
+    <h2>&sect; 6 R&uuml;cktritt durch Teilnehmende</h2>
+    <p>Nach Ablauf der Widerrufsfrist kannst du bis zum Programmbeginn
     zur&uuml;cktreten. Es gelten folgende Stornokosten, jeweils bezogen auf den
     Programmpreis:</p>
-    <div style="overflow-x:auto; margin: 1.5rem 0 1.5rem;">
-      <table style="border-collapse: collapse; width: 100%; max-width: 46ch; font-size: 0.95rem;">
+    <div class="rs-tabelle">
+      <table>
         <thead>
           <tr>
-            <th style="text-align:left; padding: 0.7rem 1rem 0.7rem 0; border-bottom: 1px solid var(--line-light); font-weight: 500;">Zeitpunkt des R&uuml;cktritts</th>
-            <th style="text-align:left; padding: 0.7rem 0; border-bottom: 1px solid var(--line-light); font-weight: 500;">Stornokosten</th>
+            <th>Zeitpunkt des R&uuml;cktritts</th>
+            <th>Stornokosten</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td style="padding: 0.7rem 1rem 0.7rem 0; border-bottom: 1px solid var(--line-light-soft);">bis 60 Tage vor Beginn</td>
-            <td style="padding: 0.7rem 0; border-bottom: 1px solid var(--line-light-soft);">20 Prozent, also die Anzahlung</td>
+            <td>bis 60 Tage vor Beginn</td>
+            <td>20 Prozent, also die Anzahlung</td>
           </tr>
           <tr>
-            <td style="padding: 0.7rem 1rem 0.7rem 0; border-bottom: 1px solid var(--line-light-soft);">59 bis 30 Tage vor Beginn</td>
-            <td style="padding: 0.7rem 0; border-bottom: 1px solid var(--line-light-soft);">50 Prozent</td>
+            <td>59 bis 30 Tage vor Beginn</td>
+            <td>50 Prozent</td>
           </tr>
           <tr>
-            <td style="padding: 0.7rem 1rem 0.7rem 0;">ab 29 Tage vor Beginn</td>
-            <td style="padding: 0.7rem 0;">90 Prozent</td>
+            <td>ab 29 Tage vor Beginn</td>
+            <td>90 Prozent</td>
           </tr>
         </tbody>
       </table>
     </div>
-    <p style="margin-bottom: 1.1rem;">Du kannst stattdessen jederzeit eine Ersatzperson benennen, sofern diese die
+    <p>Du kannst stattdessen jederzeit eine Ersatzperson benennen, sofern diese die
     Teilnahmevoraussetzungen erf&uuml;llt und ein Bewerbungsgespr&auml;ch gef&uuml;hrt hat. In
     diesem Fall f&auml;llt lediglich eine Bearbeitungspauschale von 50 Euro an.</p>
-    <p style="margin-bottom: 1.1rem;">Es steht dir frei nachzuweisen, dass mir kein oder ein wesentlich geringerer
+    <p>Es steht dir frei nachzuweisen, dass mir kein oder ein wesentlich geringerer
     Schaden entstanden ist. In diesem Fall reduzieren sich die Stornokosten
     entsprechend.</p>
-    <p style="margin-bottom: 1.1rem;">Der R&uuml;cktritt bedarf der Textform.</p>
+    <p>Der R&uuml;cktritt bedarf der Textform.</p>
 
-    <h2 style="font-size: clamp(1.35rem, 2.3vw, 1.8rem); margin-top: 3rem; margin-bottom: 1rem;">&sect; 7 Absage und &Auml;nderungen durch den Anbieter</h2>
-    <p style="margin-bottom: 1.1rem;">Programme finden ab einer Mindestteilnehmerzahl von vier Personen statt. Wird
+    <h2>&sect; 7 Absage und &Auml;nderungen durch den Anbieter</h2>
+    <p>Programme finden ab einer Mindestteilnehmerzahl von vier Personen statt. Wird
     sie nicht erreicht, kann ich das Programm bis 30 Tage vor Beginn absagen.
     Bereits gezahlte Betr&auml;ge erstatte ich vollst&auml;ndig. Weitergehende Anspr&uuml;che,
     insbesondere auf Ersatz von Reise- oder Stornokosten Dritter, bestehen nicht.</p>
-    <p style="margin-bottom: 1.1rem;">Bei Krankheit, h&ouml;herer Gewalt oder anderen Gr&uuml;nden, die ich nicht zu
+    <p>Bei Krankheit, h&ouml;herer Gewalt oder anderen Gr&uuml;nden, die ich nicht zu
     vertreten habe, kann ich das Programm verschieben oder absagen. Auch hier
     erstatte ich gezahlte Betr&auml;ge vollst&auml;ndig.</p>
-    <p style="margin-bottom: 1.1rem;">Geringf&uuml;gige &Auml;nderungen des Ablaufs bleiben vorbehalten, soweit der Charakter
+    <p>Geringf&uuml;gige &Auml;nderungen des Ablaufs bleiben vorbehalten, soweit der Charakter
     des Programms gewahrt bleibt.</p>
 
-    <h2 style="font-size: clamp(1.35rem, 2.3vw, 1.8rem); margin-top: 3rem; margin-bottom: 1rem;">&sect; 8 Mitwirkung und Eigenverantwortung</h2>
-    <p style="margin-bottom: 1.1rem;">Die Teilnahme setzt k&ouml;rperliche und psychische Belastbarkeit voraus. Teile
+    <h2>&sect; 8 Mitwirkung und Eigenverantwortung</h2>
+    <p>Die Teilnahme setzt k&ouml;rperliche und psychische Belastbarkeit voraus. Teile
     des Programms finden im Freien statt, unter anderem eine begleitete Zeit
     allein in der Natur.</p>
-    <p style="margin-bottom: 1.1rem;">Du nimmst eigenverantwortlich teil und triffst deine Entscheidungen w&auml;hrend
+    <p>Du nimmst eigenverantwortlich teil und triffst deine Entscheidungen w&auml;hrend
     des Programms selbst. Bestehende Erkrankungen, Medikamenteneinnahme oder
     Einschr&auml;nkungen, die f&uuml;r die Teilnahme erheblich sein k&ouml;nnen, teilst du mir
     vor Programmbeginn mit.</p>
-    <p style="margin-bottom: 1.1rem;">Bei laufender &auml;rztlicher oder psychotherapeutischer Behandlung wegen einer
+    <p>Bei laufender &auml;rztlicher oder psychotherapeutischer Behandlung wegen einer
     k&ouml;rperlichen oder psychischen Erkrankung bitte ich um eine Bescheinigung der
     behandelnden Person &uuml;ber die Teilnahmef&auml;higkeit.</p>
-    <p style="margin-bottom: 1.1rem;">Das Programm ist Selbsterfahrung und Entwicklungsarbeit in unterschiedlicher
+    <p>Das Programm ist Selbsterfahrung und Entwicklungsarbeit in unterschiedlicher
     Tiefe. Es ist keine Therapie und ersetzt keine.</p>
-    <p style="margin-bottom: 1.1rem;">Der Abschluss einer Reiser&uuml;cktritts- und einer Auslandskrankenversicherung
+    <p>Der Abschluss einer Reiser&uuml;cktritts- und einer Auslandskrankenversicherung
     wird dringend empfohlen.</p>
 
-    <h2 style="font-size: clamp(1.35rem, 2.3vw, 1.8rem); margin-top: 3rem; margin-bottom: 1rem;">&sect; 9 Haftung</h2>
-    <p style="margin-bottom: 1.1rem;">Ich hafte unbeschr&auml;nkt bei Vorsatz und grober Fahrl&auml;ssigkeit sowie bei
+    <h2>&sect; 9 Haftung</h2>
+    <p>Ich hafte unbeschr&auml;nkt bei Vorsatz und grober Fahrl&auml;ssigkeit sowie bei
     Verletzung von Leben, K&ouml;rper oder Gesundheit.</p>
-    <p style="margin-bottom: 1.1rem;">Bei einfacher Fahrl&auml;ssigkeit hafte ich nur f&uuml;r die Verletzung wesentlicher
+    <p>Bei einfacher Fahrl&auml;ssigkeit hafte ich nur f&uuml;r die Verletzung wesentlicher
     Vertragspflichten, also solcher Pflichten, deren Erf&uuml;llung die ordnungsgem&auml;&szlig;e
     Durchf&uuml;hrung des Vertrags &uuml;berhaupt erst erm&ouml;glicht und auf deren Einhaltung
     du regelm&auml;&szlig;ig vertrauen darfst. In diesem Fall ist die Haftung auf den
     vertragstypischen, vorhersehbaren Schaden begrenzt.</p>
-    <p style="margin-bottom: 1.1rem;">Die Haftung nach dem Produkthaftungsgesetz bleibt unber&uuml;hrt.</p>
+    <p>Die Haftung nach dem Produkthaftungsgesetz bleibt unber&uuml;hrt.</p>
 
-    <h2 style="font-size: clamp(1.35rem, 2.3vw, 1.8rem); margin-top: 3rem; margin-bottom: 1rem;">&sect; 10 Vertraulichkeit</h2>
-    <p style="margin-bottom: 1.1rem;">Was in der Gruppe geteilt wird, bleibt in der Gruppe. Diese Verpflichtung
+    <h2>&sect; 10 Vertraulichkeit</h2>
+    <p>Was in der Gruppe geteilt wird, bleibt in der Gruppe. Diese Verpflichtung
     gilt f&uuml;r alle Beteiligten, f&uuml;r mich ebenso wie f&uuml;r alle Teilnehmenden, und
     sie gilt &uuml;ber das Programmende hinaus.</p>
 
-    <h2 style="font-size: clamp(1.35rem, 2.3vw, 1.8rem); margin-top: 3rem; margin-bottom: 1rem;">&sect; 11 Unterlagen und Urheberrecht</h2>
-    <p style="margin-bottom: 1.1rem;">Alle Arbeitsunterlagen, Materialien und Aufzeichnungen, die im Rahmen des
+    <h2>&sect; 11 Unterlagen und Urheberrecht</h2>
+    <p>Alle Arbeitsunterlagen, Materialien und Aufzeichnungen, die im Rahmen des
     Programms &uuml;berlassen werden, sind urheberrechtlich gesch&uuml;tzt. Sie stehen
     ausschlie&szlig;lich den Teilnehmenden zur eigenen Verwendung zur Verf&uuml;gung und
     d&uuml;rfen ohne meine Einwilligung weder vervielf&auml;ltigt noch weitergegeben noch
     f&uuml;r eigene Angebote verwertet werden.</p>
 
-    <h2 style="font-size: clamp(1.35rem, 2.3vw, 1.8rem); margin-top: 3rem; margin-bottom: 1rem;">&sect; 12 Weltanschauliche Unabh&auml;ngigkeit</h2>
-    <p style="margin-bottom: 1.1rem;">Meine Arbeit beruht auf F&uuml;hrungsforschung, Pers&ouml;nlichkeitsentwicklung und
+    <h2>&sect; 12 Weltanschauliche Unabh&auml;ngigkeit</h2>
+    <p>Meine Arbeit beruht auf F&uuml;hrungsforschung, Pers&ouml;nlichkeitsentwicklung und
     kontemplativer Praxis. Sie ist keiner Ideologie, keiner Religionsgemeinschaft
     und keiner weltanschaulichen Organisation verpflichtet.</p>
-    <p style="margin-bottom: 1.1rem;">Ich distanziere mich ausdr&uuml;cklich von Scientology und vergleichbaren
+    <p>Ich distanziere mich ausdr&uuml;cklich von Scientology und vergleichbaren
     Organisationen und lehne jede Zusammenarbeit mit ihnen oder ihnen
     nahestehenden Unternehmen ab. In meinen Programmen wird nicht nach Methoden
     von L. Ron Hubbard oder damit zusammenh&auml;ngenden Verfahren gearbeitet.</p>
-    <p style="margin-bottom: 1.1rem;">Teilnehmende entscheiden im Programm eigenst&auml;ndig. Es besteht keine
+    <p>Teilnehmende entscheiden im Programm eigenst&auml;ndig. Es besteht keine
     Verpflichtung zu Anschlussangeboten und keine Erwartung fortgesetzter
     Bindung.</p>
 
-    <h2 style="font-size: clamp(1.35rem, 2.3vw, 1.8rem); margin-top: 3rem; margin-bottom: 1rem;">&sect; 13 Schlussbestimmungen</h2>
-    <p style="margin-bottom: 1.1rem;">Es gilt deutsches Recht. Gegen&uuml;ber Verbrauchern gilt dies nur, soweit dadurch
+    <h2>&sect; 13 Schlussbestimmungen</h2>
+    <p>Es gilt deutsches Recht. Gegen&uuml;ber Verbrauchern gilt dies nur, soweit dadurch
     nicht zwingende Schutzvorschriften des Staates entzogen werden, in dem der
     Verbraucher seinen gew&ouml;hnlichen Aufenthalt hat.</p>
-    <p style="margin-bottom: 1.1rem;">Ich bin nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor
+    <p>Ich bin nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor
     einer Verbraucherschlichtungsstelle teilzunehmen.</p>
-    <p style="margin-bottom: 1.1rem;">Sollte eine Bestimmung unwirksam sein, bleibt die Wirksamkeit der &uuml;brigen
+    <p>Sollte eine Bestimmung unwirksam sein, bleibt die Wirksamkeit der &uuml;brigen
     Bestimmungen unber&uuml;hrt.</p>
 
-    <p style="margin-top: 3rem; color: var(--text-muted); font-size: 0.9rem;">Stand: August 2026</p>
+    <p class="rs-stand">Stand: August 2026</p>
 
-    <p style="margin-top:3rem;"><a href="/" class="text-link">Zur&uuml;ck zur Startseite <span class="arrow">&#8594;</span></a></p>
+    <p class="rs-zurueck"><a href="/" class="text-link">Zur&uuml;ck zur Startseite <span class="arrow">&#8594;</span></a></p>
   </div>
 </section>
 
