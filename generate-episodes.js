@@ -272,6 +272,12 @@ ${content}
         <a href="../impressum/">Impressum</a>
         <span class="sep">·</span>
         <a href="../datenschutz/">Datenschutz</a>
+        <span class="sep">·</span>
+        <a href="../agb/">AGB</a>
+        <span class="sep">·</span>
+        <a href="../widerruf/">Widerruf</a>
+        <span class="sep">·</span>
+        <a href="../ki-einsatz/">KI-Einsatz</a>
       </div>
     </div>
   </div>
