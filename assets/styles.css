@@ -626,10 +626,15 @@ nav.top.nav--open {
     padding-top: 50vh;
   }
   .hero--photo-fuehren::before {
-    background: linear-gradient(0deg,
-      rgba(4, 23, 31, 0.95) 0%,
-      rgba(4, 23, 31, 0.75) 40%,
-      rgba(4, 23, 31, 0.15) 75%);
+    background:
+      /* Nav-Schleier, siehe Kommentar oben. background ist eine
+         Kurzschreibweise und ersetzt alle Ebenen, deshalb muss er in
+         jeder Media Query erneut mitgeschrieben werden. */
+      linear-gradient(180deg, rgba(4, 23, 31, 0.55) 0%, rgba(4, 23, 31, 0.15) 140px, transparent 220px),
+      linear-gradient(0deg,
+        rgba(4, 23, 31, 0.95) 0%,
+        rgba(4, 23, 31, 0.75) 40%,
+        rgba(4, 23, 31, 0.15) 75%);
   }
   .hero--photo-fuehren .hero-text { max-width: 100%; }
 }
