@@ -623,7 +623,7 @@ nav.top.nav--open {
        Gesicht. Deshalb hier nach unten ausrichten, mit Luft nach oben,
        damit das Portrait sichtbar bleibt. */
     align-items: flex-end;
-    padding-top: 50vh;
+    padding-top: 47vh;
   }
   .hero--photo-fuehren::before {
     background:
@@ -631,9 +631,12 @@ nav.top.nav--open {
          Kurzschreibweise und ersetzt alle Ebenen, deshalb muss er in
          jeder Media Query erneut mitgeschrieben werden. */
       linear-gradient(180deg, rgba(4, 23, 31, 0.55) 0%, rgba(4, 23, 31, 0.15) 140px, transparent 220px),
+      /* Mittelstopp von 0.75 bei 40 auf 0.82 bei 52 Prozent gezogen. Der
+         Eyebrow lag sonst bei 0.50 Deckung auf dem beleuchteten Bart und
+         stand unruhig. Jetzt 0.74. Augen, Brille und Stirn bleiben frei. */
       linear-gradient(0deg,
         rgba(4, 23, 31, 0.95) 0%,
-        rgba(4, 23, 31, 0.75) 40%,
+        rgba(4, 23, 31, 0.82) 52%,
         rgba(4, 23, 31, 0.15) 75%);
   }
   .hero--photo-fuehren .hero-text { max-width: 100%; }
