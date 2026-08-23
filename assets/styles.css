@@ -557,20 +557,30 @@ nav.top.nav--open {
    ============================================ */
 .hero--photo-fuehren {
   background-image: url("hero-fuehren-wide.webp");
-  background-position: center right;
+  background-position: center;
+  background-size: cover;
   min-height: 70vh;
 }
+.hero--photo-fuehren h1 { font-size: clamp(2rem, 3.4vw, 3.1rem); }
+.hero--photo-fuehren h1 em { display: inline; }
 .hero--photo-fuehren::before {
-  background: linear-gradient(90deg,
-    rgba(4, 23, 31, 0.94) 0%,
-    rgba(4, 23, 31, 0.82) 28%,
-    rgba(4, 23, 31, 0.35) 55%,
-    rgba(4, 23, 31, 0.05) 78%);
+  background:
+    /* oberer Schleier fuer die Lesbarkeit der Navigation, aus
+       .hero--photo-bg uebernommen. Ohne ihn verschwinden die
+       Navigationspunkte bei 1920px hinter einem Lichtpunkt im Bild. */
+    linear-gradient(180deg, rgba(4, 23, 31, 0.55) 0%, rgba(4, 23, 31, 0.15) 140px, transparent 220px),
+    linear-gradient(90deg,
+      rgba(4, 23, 31, 0.94) 0%,
+      rgba(4, 23, 31, 0.82) 28%,
+      rgba(4, 23, 31, 0.35) 55%,
+      rgba(4, 23, 31, 0.05) 78%);
 }
 .hero--photo-fuehren .hero-text {
   margin-left: 0;
   margin-right: auto;
-  max-width: 46%;
+  /* 43 statt der urspruenglich gesetzten 46 Prozent. Bei 46 Prozent ragte
+     die Textspalte gemessen 2 bis 18 Pixel in die Gesichtsflaeche. */
+  max-width: 43%;
   text-align: left;
 }
 .hero--photo-fuehren .hero-sub { max-width: 34ch; }
@@ -581,10 +591,39 @@ nav.top.nav--open {
 .hero--photo-fuehren h1 em { color: var(--accent); }
 .hero--photo-fuehren .hero-sub { color: var(--text-on-dark-muted); }
 .hero--photo-fuehren .eyebrow { color: var(--accent); }
+@media (max-width: 880px) {
+  .hero--photo-fuehren {
+    display: flex;
+    background-color: var(--bg-deep);
+    padding-bottom: 5rem;
+  }
+  /* .hero--photo-bg blendet den Verlauf hier aus, hier wird er gebraucht.
+     In diesem Band laeuft die Textspalte ueber die volle Breite, ein
+     Verlauf, der nur links abdunkelt, laesst den Text auf dem Gesicht
+     stehen. Deshalb hier ein Schleier, der nach rechts nur bis 0.72
+     aufhellt statt bis 0.05. */
+  .hero--photo-fuehren::before {
+    display: block;
+    background: linear-gradient(90deg,
+      rgba(4, 23, 31, 0.94) 0%,
+      rgba(4, 23, 31, 0.86) 40%,
+      rgba(4, 23, 31, 0.72) 100%);
+  }
+  .hero--photo-fuehren .hero-text { max-width: 100%; }
+  .hero--photo-fuehren .logo { color: var(--color-cream); }
+  .hero--photo-fuehren .nav-toggle { color: var(--color-cream); }
+  .hero--photo-fuehren .hero-eyebrow .dot { background: var(--accent); }
+}
 @media (max-width: 700px) {
   .hero--photo-fuehren {
     background-image: url("hero-fuehren-portrait.webp");
     background-position: center top;
+    /* Der Verlauf von unten setzt voraus, dass der Text unter dem Gesicht
+       steht. .hero zentriert ihn aber vertikal, dadurch stand er im
+       Gesicht. Deshalb hier nach unten ausrichten, mit Luft nach oben,
+       damit das Portrait sichtbar bleibt. */
+    align-items: flex-end;
+    padding-top: 50vh;
   }
   .hero--photo-fuehren::before {
     background: linear-gradient(0deg,
