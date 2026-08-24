@@ -549,97 +549,81 @@ nav.top.nav--open {
 }
 
 /* ============================================
-   HERO — FUEHREN-SEITE
-   Eigenes Bild, flacher als die Startseite, Text links auf dunklem
-   Verlauf. Ueberschreibt Bild, Hoehe, Verlauf, Textspalte und die
-   Textfarben, weil .hero--photo-bg von hellem Text-Untergrund rechts
-   ausgeht und hier das Gegenteil gilt.
+   HERO — FUEHREN-SEITE, zweispaltig
+   Links Text auf Luminous Sand, rechts das Portraet in einer eigenen
+   Spalte. Kein Hintergrundbild, kein Verlauf, keine Abdunklung, damit
+   das Hochformat nicht auf Kopfhoehe beschnitten wird.
    ============================================ */
-.hero--photo-fuehren {
-  background-image: url("hero-fuehren-wide.webp");
-  background-position: center;
-  background-size: cover;
+.hero--split {
+  background: var(--color-cream);
+  color: var(--text);
   min-height: 70vh;
+  display: grid;
+  grid-template-columns: 55fr 45fr;
+  align-items: center;
+  padding: 6.25rem 0 0;
+  position: relative;
+  overflow: hidden;
 }
-.hero--photo-fuehren h1 { font-size: clamp(2rem, 3.4vw, 3.1rem); }
-.hero--photo-fuehren h1 em { display: inline; }
-.hero--photo-fuehren::before {
-  background:
-    /* oberer Schleier fuer die Lesbarkeit der Navigation, aus
-       .hero--photo-bg uebernommen. Ohne ihn verschwinden die
-       Navigationspunkte bei 1920px hinter einem Lichtpunkt im Bild. */
-    linear-gradient(180deg, rgba(4, 23, 31, 0.55) 0%, rgba(4, 23, 31, 0.15) 140px, transparent 220px),
-    linear-gradient(90deg,
-      rgba(4, 23, 31, 0.94) 0%,
-      rgba(4, 23, 31, 0.82) 28%,
-      rgba(4, 23, 31, 0.35) 55%,
-      rgba(4, 23, 31, 0.05) 78%);
+.hero--split::before,
+.hero--split::after { display: none; }
+.hero--split .hero-split-text {
+  padding: clamp(2rem, 4vh, 3rem) clamp(2rem, 4vw, 3.5rem) clamp(2rem, 4vh, 3rem) clamp(2rem, 5vw, 4.5rem);
 }
-.hero--photo-fuehren .hero-text {
-  margin-left: 0;
-  margin-right: auto;
-  /* 43 statt der urspruenglich gesetzten 46 Prozent. Bei 46 Prozent ragte
-     die Textspalte gemessen 2 bis 18 Pixel in die Gesichtsflaeche. */
-  max-width: 43%;
+.hero--split .hero-text {
+  margin: 0;
+  /* Deckel statt Spaltenbreite: bei 1920 waere die 55-Prozent-Spalte
+     rund 900 Pixel breit, das liest sich nicht mehr ruhig. */
+  max-width: 36rem;
   text-align: left;
 }
-.hero--photo-fuehren .hero-sub { max-width: 34ch; }
-.hero--photo-fuehren > .container { padding-left: clamp(2rem, 5vw, 4.5rem); }
-.hero--photo-fuehren h1,
-.hero--photo-fuehren h2,
-.hero--photo-fuehren h3 { color: var(--color-cream); }
-.hero--photo-fuehren h1 em { color: var(--accent); }
-.hero--photo-fuehren .hero-sub { color: var(--text-on-dark-muted); }
-.hero--photo-fuehren .eyebrow { color: var(--accent); }
-@media (max-width: 880px) {
-  .hero--photo-fuehren {
-    display: flex;
-    background-color: var(--bg-deep);
-    padding-bottom: 5rem;
-  }
-  /* .hero--photo-bg blendet den Verlauf hier aus, hier wird er gebraucht.
-     In diesem Band laeuft die Textspalte ueber die volle Breite, ein
-     Verlauf, der nur links abdunkelt, laesst den Text auf dem Gesicht
-     stehen. Deshalb hier ein Schleier, der nach rechts nur bis 0.72
-     aufhellt statt bis 0.05. */
-  .hero--photo-fuehren::before {
-    display: block;
-    background: linear-gradient(90deg,
-      rgba(4, 23, 31, 0.94) 0%,
-      rgba(4, 23, 31, 0.86) 40%,
-      rgba(4, 23, 31, 0.72) 100%);
-  }
-  .hero--photo-fuehren .hero-text { max-width: 100%; }
-  .hero--photo-fuehren .logo { color: var(--color-cream); }
-  .hero--photo-fuehren .nav-toggle { color: var(--color-cream); }
-  .hero--photo-fuehren .hero-eyebrow .dot { background: var(--accent); }
+.hero--split .hero-sub { max-width: 30rem; color: var(--text-muted); }
+.hero--split h1 { font-size: clamp(2rem, 3.4vw, 3.1rem); color: var(--text); }
+.hero--split h1 em { display: inline; color: var(--accent); }
+.hero--split .eyebrow { color: var(--accent); }
+.hero--split .hero-eyebrow .dot { background: var(--accent); }
+.hero--split .logo { color: var(--text); white-space: nowrap; }
+.hero--split .logo em { color: var(--accent); }
+.hero--split .nav-meta { color: var(--text-muted); }
+.hero--split .nav-meta a:hover { color: var(--text); }
+.hero--split .nav-toggle { color: var(--text); }
+/* nav.top ist fixiert und volle Breite. Statt die Navigation seitlich zu
+   deckeln, was sie schon ab 1400 Pixeln auf zwei Zeilen brach, beginnt der
+   Hero unterhalb der Navigationsleiste. Sie steht damit ueber die ganze
+   Breite auf Luminous Sand und bleibt in dunkler Schrift lesbar. */
+.hero-split-media {
+  position: relative;
+  align-self: stretch;
+  min-height: calc(70vh - 6.25rem);
 }
-@media (max-width: 700px) {
-  .hero--photo-fuehren {
-    background-image: url("hero-fuehren-portrait.webp");
-    background-position: center top;
-    /* Der Verlauf von unten setzt voraus, dass der Text unter dem Gesicht
-       steht. .hero zentriert ihn aber vertikal, dadurch stand er im
-       Gesicht. Deshalb hier nach unten ausrichten, mit Luft nach oben,
-       damit das Portrait sichtbar bleibt. */
-    align-items: flex-end;
-    padding-top: 47vh;
+.hero-split-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+}
+@media (max-width: 1100px) {
+  .hero--split { grid-template-columns: 58fr 42fr; }
+}
+@media (max-width: 880px) {
+  .hero--split {
+    display: flex;
+    flex-direction: column;
+    min-height: auto;
+    padding-top: 5rem;
   }
-  .hero--photo-fuehren::before {
-    background:
-      /* Nav-Schleier, siehe Kommentar oben. background ist eine
-         Kurzschreibweise und ersetzt alle Ebenen, deshalb muss er in
-         jeder Media Query erneut mitgeschrieben werden. */
-      linear-gradient(180deg, rgba(4, 23, 31, 0.55) 0%, rgba(4, 23, 31, 0.15) 140px, transparent 220px),
-      /* Mittelstopp von 0.75 bei 40 auf 0.82 bei 52 Prozent gezogen. Der
-         Eyebrow lag sonst bei 0.50 Deckung auf dem beleuchteten Bart und
-         stand unruhig. Jetzt 0.74. Augen, Brille und Stirn bleiben frei. */
-      linear-gradient(0deg,
-        rgba(4, 23, 31, 0.95) 0%,
-        rgba(4, 23, 31, 0.82) 52%,
-        rgba(4, 23, 31, 0.15) 75%);
+  /* Bild oben, Text darunter. nav.top ist fixiert und damit ausserhalb
+     des Flusses, die Reihenfolge betrifft nur die beiden Inhaltsspalten. */
+  .hero-split-media { order: -1; min-height: 45vh; height: 45vh; }
+  .hero--split .hero-split-text {
+    padding: clamp(2.5rem, 6vw, 3.5rem) clamp(2rem, 5vw, 3rem) clamp(3rem, 8vw, 4rem);
   }
-  .hero--photo-fuehren .hero-text { max-width: 100%; }
+  .hero--split .hero-text,
+  .hero--split .hero-sub { max-width: 100%; }
+  .hero-split-media img { object-position: center top; }
 }
 
 /* HERO PHOTO — full-height right-aligned variant */
