@@ -2115,3 +2115,67 @@ footer {
 @media (prefers-reduced-motion: reduce) {
   .methode-symbol { animation: none; transition: none; }
 }
+
+
+/* ============================================
+   FARBRHYTHMUS — dunkle Abschnitte
+   Zwei helle Abschnitte, dann ein dunkler. Der dunkle markiert jeweils
+   einen Wendepunkt im Lesefluss. Nie zwei dunkle direkt hintereinander.
+   Nur Hintergrund und die daraus folgenden Textfarben, keine Abstaende,
+   keine Groessen, keine neuen Komponenten.
+   Der Block steht bewusst am Ende des Stylesheets. .qa-section,
+   .who-section und .next-section setzen ihren eigenen Hintergrund und
+   stehen weiter unten. Bei gleicher Spezifitaet entscheidet die
+   Reihenfolge, davor haben sie gewonnen.
+   ============================================ */
+.section--teal,
+.section--umber,
+.section--midnight { color: var(--text-on-dark); }
+.section--teal     { background: var(--color-teal); }
+.section--umber    { background: var(--color-graphite); }
+.section--midnight { background: var(--color-deep-blue); }
+
+.section--teal h1, .section--teal h2, .section--teal h3, .section--teal h4,
+.section--umber h1, .section--umber h2, .section--umber h3, .section--umber h4,
+.section--midnight h1, .section--midnight h2, .section--midnight h3, .section--midnight h4 {
+  color: var(--text-on-dark);
+}
+.section--teal h2 em,
+.section--umber h2 em,
+.section--midnight h2 em { color: var(--accent); }
+
+.section--teal p,
+.section--umber p,
+.section--midnight p { color: var(--text-on-dark-muted); }
+
+.section--teal .eyebrow,
+.section--umber .eyebrow,
+.section--midnight .eyebrow { color: var(--accent); }
+
+.section--teal .section-intro p,
+.section--umber .section-intro p,
+.section--midnight .section-intro p { color: var(--text-on-dark-muted); }
+
+/* Die vier Absaetze der Methode tragen links eine Linie */
+.section--teal .moment-list p {
+  color: var(--text-on-dark);
+  border-left-color: var(--line-dark);
+}
+
+/* .text-link setzt Farbe und Linie auf die hellen Werte */
+.section--teal .text-link,
+.section--umber .text-link,
+.section--midnight .text-link {
+  color: var(--text-on-dark);
+  border-bottom-color: var(--line-dark);
+}
+.section--teal .text-link:hover,
+.section--umber .text-link:hover,
+.section--midnight .text-link:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* Abgrenzungskasten */
+.section--umber .who-exclusion {
+  color: var(--text-on-dark-muted);
+  background: rgba(224, 183, 111, 0.08);
+  border-left-color: var(--accent);
+}
