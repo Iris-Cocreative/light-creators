@@ -106,6 +106,14 @@ nav.top.nav-scrolled {
 nav.top.nav-scrolled .logo { color: var(--color-cream); }
 nav.top.nav-scrolled .logo em { color: var(--accent); }
 nav.top.nav-scrolled .nav-toggle { color: var(--color-cream); }
+/* Im gescrollten Zustand liegt ein dunkler Verlauf unter der Leiste. Logo und
+   Hamburger wurden hier immer schon aufgehellt, die Navigationspunkte nicht.
+   Auf Seiten mit hellem Hero stand dadurch dunkle Schrift auf dunklem Grund,
+   gemessen bis hinunter auf Kontrast 1.00. */
+nav.top.nav-scrolled .nav-meta,
+nav.top.nav-scrolled .nav-meta a { color: rgba(255, 248, 230, 0.85); }
+nav.top.nav-scrolled .nav-meta a:hover { color: var(--color-cream); }
+nav.top.nav-scrolled .nav-meta .sep { color: rgba(255, 248, 230, 0.45); }
 nav.top.nav-scrolled .nav-meta .nav-cta { border-color: rgba(255, 248, 230, 0.55); color: var(--color-cream); }
 nav.top.nav-scrolled .nav-meta .nav-cta:hover { background: var(--color-cream); color: var(--color-deep-blue); border-color: var(--color-cream); }
 /* When menu is open, instantly remove backdrop-filter (0.4s transition would delay full-screen overlay) */
