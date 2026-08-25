@@ -21,6 +21,10 @@
   --text-on-dark-muted: rgba(255, 248, 230, 0.65);
   --accent:            var(--color-gold);
   --gold:              var(--color-gold);
+  /* Typografie auf hellem Grund. Soft Gold erreicht auf Luminous Sand nur
+     Kontrast 1.77 und faellt damit unter jede Schwelle. Open Horizon liegt
+     bei 10.75. Kein neuer Farbwert, dieselbe Variable wie --color-teal. */
+  --color-eyebrow:     var(--color-teal);
   --line-light:        rgba(4, 23, 31, 0.14);
   --line-light-soft:   rgba(4, 23, 31, 0.08);
   --line-dark:         rgba(255, 248, 230, 0.16);
@@ -72,7 +76,7 @@ p { font-weight: 300; }
   font-weight: 400;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--color-eyebrow);
 }
 .eyebrow--muted { color: var(--text-muted); }
 .eyebrow--on-dark { color: var(--accent); }
@@ -587,8 +591,8 @@ nav.top.nav--open {
 }
 .hero--split .hero-sub { max-width: 30rem; color: var(--text-muted); }
 .hero--split h1 { font-size: clamp(2rem, 3.4vw, 3.1rem); color: var(--text); }
-.hero--split h1 em { display: inline; color: var(--accent); }
-.hero--split .eyebrow { color: var(--accent); }
+.hero--split h1 em { display: inline; color: var(--color-eyebrow); }
+.hero--split .eyebrow { color: var(--color-eyebrow); }
 .hero--split .hero-eyebrow .dot { background: var(--accent); }
 .hero--split .logo { color: var(--text); white-space: nowrap; }
 .hero--split .logo em { color: var(--accent); }
@@ -838,7 +842,7 @@ podcast-cover { display: contents; }
 @media (max-width: 880px) { .qa-aside { position: static; } }
 .qa-aside .eyebrow { margin-bottom: 1.5rem; display: block; }
 .qa-aside h2 { font-style: italic; font-weight: 300; }
-.qa-aside h2 em { color: var(--accent); }
+.qa-aside h2 em { color: var(--color-eyebrow); }
 .qa-body p { margin-bottom: 1.5rem; max-width: 56ch; }
 .qa-body p:last-child { margin-bottom: 0; }
 .qa-body strong, .qa-body b { font-weight: 500; color: var(--text); }
@@ -854,7 +858,7 @@ podcast-cover { display: contents; }
   border-left: 1px solid var(--accent);
   max-width: 36ch;
 }
-.pull-quote em { color: var(--accent); }
+.pull-quote em { color: var(--color-eyebrow); }
 
 /* ARROW LIST */
 .arrow-list {
@@ -878,7 +882,7 @@ podcast-cover { display: contents; }
   color: var(--accent);
   font-style: normal;
 }
-.arrow-list--checks li::before { content: "✓"; color: var(--accent); }
+.arrow-list--checks li::before { content: "✓"; color: var(--color-eyebrow); }
 .arrow-list--on-dark li { color: var(--text-on-dark); }
 
 /* ============================================
@@ -895,7 +899,7 @@ podcast-cover { display: contents; }
 }
 .section-intro .eyebrow { display: block; margin-bottom: 1.5rem; }
 .section-intro h2 { max-width: 24ch; margin: 0 auto; }
-.section-intro h2 em { color: var(--accent); }
+.section-intro h2 em { color: var(--color-eyebrow); }
 .section-intro p { max-width: 50ch; margin: 1.5rem auto 0; color: var(--text-muted); }
 
 .section-coda {
@@ -910,7 +914,7 @@ podcast-cover { display: contents; }
   margin-left: auto;
   margin-right: auto;
 }
-.section-coda em { color: var(--accent); }
+.section-coda em { color: var(--color-eyebrow); }
 
 /* ============================================
    FACTORS SECTION (5 list — dark teal)
@@ -1015,7 +1019,7 @@ podcast-cover { display: contents; }
   margin-bottom: 0.5rem;
   letter-spacing: -0.01em;
 }
-.role-card h3 em { color: var(--accent); font-style: italic; }
+.role-card h3 em { color: var(--color-eyebrow); font-style: italic; }
 .role-card p {
   color: var(--text-muted);
   font-size: 1rem;
@@ -1190,7 +1194,7 @@ podcast-cover { display: contents; }
 
 .about-content .eyebrow { display: block; margin-bottom: 1.5rem; }
 .about-content h2 { margin-bottom: 1.5rem; }
-.about-content h2 em { color: var(--accent); }
+.about-content h2 em { color: var(--color-eyebrow); }
 .about-content > p { margin-bottom: 1.5rem; max-width: 56ch; }
 .about-content h3 {
   margin-top: 2.5rem;
@@ -1365,7 +1369,7 @@ podcast-cover { display: contents; }
   margin-top: 0.2rem;
   letter-spacing: 0.02em;
 }
-.testimonial-role .sep { margin: 0 0.35rem; color: var(--accent); }
+.testimonial-role .sep { margin: 0 0.35rem; color: var(--color-eyebrow); }
 
 .testimonials-link {
   text-align: center;
@@ -1556,7 +1560,7 @@ podcast-cover { display: contents; }
   font-size: 1rem;
 }
 .next-card h3 { font-style: italic; margin-bottom: 1rem; position: relative; z-index: 1; }
-.next-card h3 em { color: var(--accent); }
+.next-card h3 em { color: var(--color-eyebrow); }
 .next-card p { color: var(--text-muted); margin-bottom: 2rem; flex-grow: 1; position: relative; z-index: 1; }
 .next-card .duration {
   font-size: 0.78rem;
