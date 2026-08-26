@@ -132,6 +132,21 @@ noch nicht entschieden.
 
 ---
 
+## Für V2 vorgemerkt
+
+### Methodenblock auf Mobil aufklappbar
+
+Die vier Zweckzeilen haben den Abschnitt `#methode` auf Desktop um
+175 Pixel verlängert, auf 390 Breite aber um **279 Pixel**, weil dort
+jede der vier Zeilen zweizeilig umbricht. Der Block ist damit auf dem
+Handy sehr lang.
+
+Zu prüfen: ob die vier Bewegungen auf Mobil aufklappbar werden, sodass
+Titel und Zweckzeile sichtbar bleiben und die beiden Beispielzeilen
+erst auf Tippen erscheinen. Bewusst nicht im Relaunch geändert.
+
+---
+
 ## Kleinkram
 
 - `solo.html` nennt die Telefonnummer `+49 170 43 26 737`. Einzige

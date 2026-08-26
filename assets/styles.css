@@ -1145,6 +1145,16 @@ podcast-cover { display: contents; }
 }
 .factors-list--methode .factor-content p { margin-bottom: 0.85rem; }
 .factors-list--methode .factor-content p:last-child { margin-bottom: 0; }
+/* Zweckzeile je Bewegung, zwischen Titel und den beiden Beispielzeilen.
+   Sagt, wozu der Schritt da ist, bevor die Beispiele sagen, wie er
+   aussieht. Bewusst derselbe gedaempfte Ton wie die Beispielzeilen, sie
+   setzt sich allein durch Kursivsatz und Position ab. Eine hellere
+   Farbe haette die abstrakte Zeile optisch ueber die konkreten
+   gestellt. Kontrast 5,48 zu 1 auf dem Sektionsgrund. */
+.factors-list--methode .factor-content .methode-zweck {
+  font-style: italic;
+  margin-bottom: 1.1rem;
+}
 .factors-coda {
   max-width: var(--container-narrow);
   margin: clamp(4rem, 7vw, 5rem) auto 0;
