@@ -852,6 +852,27 @@ podcast-cover { display: contents; }
 .qa-body p:last-child { margin-bottom: 0; }
 .qa-body strong, .qa-body b { font-weight: 500; color: var(--text); }
 
+/* Modifier fuer die Kategorie-Aussage. Nur eine Instanz, Startseite,
+   Abschnitt "Die Luecke". Die zweispaltige Grundform traegt eine kursive
+   Zwischenfrage in einer rund 425 Pixel schmalen Spalte. Die zentrale
+   Aussage der Seite passt dort nicht hinein, sie liefe fuenfzeilig um.
+   Deshalb hier einspaltig, Ueberschrift ueber dem Text, volle Breite.
+   Kein anderer .qa-section-Abschnitt wird beruehrt. */
+.qa-section--kategorie { padding: clamp(6rem, 12vw, 9rem) 0; }
+.qa-section--kategorie .qa-grid {
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 4vw, 3rem);
+}
+.qa-section--kategorie .qa-aside { position: static; top: auto; }
+.qa-section--kategorie .qa-aside h2 {
+  font-size: clamp(2.8rem, 7vw, 5.6rem);
+  font-weight: 300;
+  font-style: normal;
+  max-width: none;
+}
+.qa-section--kategorie .qa-body { max-width: 34rem; }
+.qa-section--kategorie .qa-body p { max-width: none; }
+
 .pull-quote {
   font-family: var(--font-heading);
   font-style: italic;
