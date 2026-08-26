@@ -858,7 +858,7 @@ podcast-cover { display: contents; }
    Aussage der Seite passt dort nicht hinein, sie liefe fuenfzeilig um.
    Deshalb hier einspaltig, Ueberschrift ueber dem Text, volle Breite.
    Kein anderer .qa-section-Abschnitt wird beruehrt. */
-.qa-section--kategorie { padding: clamp(6rem, 12vw, 9rem) 0; }
+.qa-section--kategorie { padding: clamp(5rem, 10vw, 7rem) 0; }
 .qa-section--kategorie .qa-grid {
   grid-template-columns: 1fr;
   gap: clamp(2rem, 4vw, 3rem);
@@ -870,7 +870,7 @@ podcast-cover { display: contents; }
   font-style: normal;
   max-width: none;
 }
-.qa-section--kategorie .qa-body { max-width: 34rem; }
+.qa-section--kategorie .qa-body { max-width: 38rem; }
 .qa-section--kategorie .qa-body p { max-width: none; }
 
 .pull-quote {
