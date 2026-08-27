@@ -178,6 +178,19 @@ Zu prüfen: ob die vier Bewegungen auf Mobil aufklappbar werden, sodass
 Titel und Zweckzeile sichtbar bleiben und die beiden Beispielzeilen
 erst auf Tippen erscheinen. Bewusst nicht im Relaunch geändert.
 
+### Threshold-Teaser auf Mobil kürzen
+
+Der Abschnitt `.threshold-teaser` auf der Startseite ist bei 390 Pixeln
+Breite **1745 Pixel** hoch, also 2,07 Bildschirmhöhen bei 844 Pixeln
+Viewport. In der englischen Fassung 1678 Pixel.
+
+Er war schon vor dem Zusammenhangs-Satz zwei Bildschirmhöhen lang, der
+Satz kostet 56 Pixel und ist nicht die Ursache. Die Länge kommt aus
+Überschrift, Fließtext, zwei Buttons und Bild untereinander.
+
+Zu prüfen für V2: ob auf Mobil das Bild entfällt oder der Fließtext
+gekürzt wird. Bewusst nicht im Relaunch geändert.
+
 ---
 
 ## Kleinkram
