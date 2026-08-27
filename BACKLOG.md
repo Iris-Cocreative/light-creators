@@ -64,23 +64,12 @@ im Belege-Abschnitt.
 
 ### Sieben Verweise umstellen, sobald /fuehren/en/ und /threshold/partner/en/ stehen
 
-- [ ] `index-en.html` verweist an sieben Stellen noch auf die deutschen
-  Seiten, weil es die englischen Fassungen noch nicht gibt. Sobald
-  `/fuehren/en/` und `/threshold/partner/en/` stehen, umstellen:
-
-  | Stelle in `index-en.html` | heute | Ziel |
-  |---|---|---|
-  | Navigation, „Leading" | `/fuehren/` | `/fuehren/en/` |
-  | Drei Wege, „To the Leading page" | `/fuehren/` | `/fuehren/en/` |
-  | Organisationen, „How an engagement works" | `/fuehren/` | `/fuehren/en/` |
-  | Footer, „Leading" | `/fuehren/` | `/fuehren/en/` |
-  | Drei Wege, „fund a place" | `/threshold/partner/` | `/threshold/partner/en/` |
-  | Threshold-Teaser, „Fund a place" | `/threshold/partner/` | `/threshold/partner/en/` |
-  | Footer, „Fund a place" | `/threshold/partner/` | `/threshold/partner/en/` |
-
-  Threshold selbst zeigt bereits korrekt auf `/threshold/en/`.
-  `podcast.html` bleibt deutsch, der Podcast ist deutsch, der Text sagt
-  das mit „In German".
+- [x] Erledigt. `/fuehren/en/` und `/threshold/partner/en/` stehen, alle
+  sieben Verweise in `index-en.html` zeigen auf die englischen Fassungen:
+  vier auf `/fuehren/en/` (Navigation, Drei Wege, Organisationen, Footer)
+  und drei auf `/threshold/partner/en/` (Drei Wege, Threshold-Teaser,
+  Footer). Threshold selbst zeigte schon auf `/threshold/en/`.
+  `podcast.html` bleibt deutsch, der Text sagt das mit „In German".
 
 ### ProvenExpert-Siegel auf Englisch
 
