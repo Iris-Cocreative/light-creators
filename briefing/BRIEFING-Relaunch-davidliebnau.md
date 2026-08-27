@@ -38,7 +38,7 @@ Diese Regeln gelten für jede Datei und jeden Text, den du anfasst.
 
 **R1 Signaturzeile.** Überall, wo bisher „Bewusstes Unternehmertum an kritischen Wendepunkten" steht, kommt „Bewusstes Leadership an kritischen Wendepunkten". Auch in `<title>`, Meta-Description, Open-Graph-Tags und Footer.
 
-**R2 Award-Regel, wichtig.** Der HR Excellence Award darf auf der gesamten Website **nur** in einem Satz erscheinen, der im selben Satz die Rolle „Client Director und Mitglied der Geschäftsführung der SYNK GROUP" nennt. Nicht im Hero, nicht im Zahlenbalken, nicht in Meta-Tags, nicht in Alt-Texten, nicht auf der Führen-Seite in Kurzform. Wenn du eine Erwähnung findest, die diese Bedingung nicht erfüllt, entferne sie und melde die Stelle.
+**R2 Award-Regel, wichtig.** Der HR Excellence Award darf auf der gesamten Website **nur** in einem Satz erscheinen, der im selben Satz die Rolle „Client Director und Mitglied der Geschäftsführung der SYNK GROUP" nennt. Nicht im Hero, nicht im Zahlenbalken, nicht in Meta-Tags, nicht in Alt-Texten, nicht auf der Führen-Seite in Kurzform. Wenn du eine Erwähnung findest, die diese Bedingung nicht erfüllt, entferne sie und melde die Stelle. Die Regel gilt nicht nur für sichtbaren Fließtext, sondern ebenso für Alt-Texte, Titel-Attribute und Meta-Angaben.
 
 **R3 Preis-Regel.** Der Preis des Threshold-Programms erscheint auf der gesamten Website nur an einer einzigen Stelle: im Investitionsblock der Threshold-Seite. Überall sonst heißt es „für die Gründungsgruppe gilt ein Einführungspreis" oder der Preis wird gar nicht genannt. Grund: Der Preis steigt nach dem Piloten.
 
