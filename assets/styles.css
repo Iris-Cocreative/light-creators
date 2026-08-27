@@ -1308,16 +1308,6 @@ podcast-cover { display: contents; }
   .provenexpert-seal { margin-left: auto; margin-right: auto; }
 }
 
-/* Official HR Excellence Award mark — cream plate so the logo keeps its own
-   colours on the dark section. Replaces the old .award-badge text pill. */
-.award-logo {
-  display: block;
-  width: clamp(112px, 11vw, 150px);
-  height: auto;
-  margin-top: 1.5rem;
-  border: 1px solid var(--line-dark);
-}
-
 /* ============================================
    TESTIMONIALS
    ============================================ */

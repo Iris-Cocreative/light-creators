@@ -60,6 +60,37 @@ im Belege-Abschnitt.
 
 ---
 
+## Englische Fassungen
+
+### Sieben Verweise umstellen, sobald /fuehren/en/ und /threshold/partner/en/ stehen
+
+- [ ] `index-en.html` verweist an sieben Stellen noch auf die deutschen
+  Seiten, weil es die englischen Fassungen noch nicht gibt. Sobald
+  `/fuehren/en/` und `/threshold/partner/en/` stehen, umstellen:
+
+  | Stelle in `index-en.html` | heute | Ziel |
+  |---|---|---|
+  | Navigation, „Leading" | `/fuehren/` | `/fuehren/en/` |
+  | Drei Wege, „To the Leading page" | `/fuehren/` | `/fuehren/en/` |
+  | Organisationen, „How an engagement works" | `/fuehren/` | `/fuehren/en/` |
+  | Footer, „Leading" | `/fuehren/` | `/fuehren/en/` |
+  | Drei Wege, „fund a place" | `/threshold/partner/` | `/threshold/partner/en/` |
+  | Threshold-Teaser, „Fund a place" | `/threshold/partner/` | `/threshold/partner/en/` |
+  | Footer, „Fund a place" | `/threshold/partner/` | `/threshold/partner/en/` |
+
+  Threshold selbst zeigt bereits korrekt auf `/threshold/en/`.
+  `podcast.html` bleibt deutsch, der Podcast ist deutsch, der Text sagt
+  das mit „In German".
+
+### ProvenExpert-Siegel auf Englisch
+
+- [ ] Das Bewertungssiegel lädt in `index-en.html` mit `l=de-de`, wie in
+  der deutschen Fassung. Prüfen, ob ProvenExpert einen englischen Locale
+  unterstützt. Bewusst nicht auf Verdacht geändert, ein falscher Wert
+  könnte das Widget brechen.
+
+---
+
 ## Assets
 
 ### og:image für Threshold und die Partnerseite
@@ -72,12 +103,25 @@ im Belege-Abschnitt.
 Threshold und die Partnerseite liefert David nach. **Kein automatisches
 Beschneiden.**
 
+### HR Excellence Award Logo: Nutzungsrechte klären
+
+- [ ] HR Excellence Award Logo: Nutzungsrechte klären.
+  Ausgezeichnet wurde ein Programm der SYNK GROUP. Ohne schriftliche
+  Freigabe der SYNK GROUP wird das Logo nicht auf der Website geführt.
+  Beide Bilddateien liegen ungenutzt im Assets-Ordner. Der textliche
+  Bezug auf den Award bleibt bestehen, er ist davon nicht betroffen.
+
+Die beiden Dateien sind `assets/HREA_Logo_Gewinner_2017_web.png`
+(600 × 1183, transparent, sRGB) und die ältere
+`assets/hr-excellence-award-2017.png`. Kommt die Freigabe, ist die erste
+sofort verwendbar.
+
 ### Ungenutzte Bilder
 
-`assets/role-entrepreneur.webp`, `assets/role-manager.webp`,
-`assets/role-expert.webp` und `assets/hr-excellence-award-2017.png` werden
-seit dem Relaunch nicht mehr eingebunden. Sie bleiben liegen, mögliche
-Wiederverwendung auf light-creators.com.
+`assets/role-entrepreneur.webp`, `assets/role-manager.webp` und
+`assets/role-expert.webp` werden seit dem Relaunch nicht mehr
+eingebunden. Sie bleiben liegen, mögliche Wiederverwendung auf
+light-creators.com.
 
 ---
 
