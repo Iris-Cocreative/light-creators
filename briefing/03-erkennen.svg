@@ -1,0 +1,13 @@
+<svg viewBox="0 0 240 240" width="240" height="240" fill="none" stroke="currentColor" stroke-width="1.25" style="color:#E3C486" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Erkennen">
+  <g opacity="0.9">
+    <ellipse cx="64" cy="120" rx="56" ry="92"/>
+    <ellipse cx="72" cy="120" rx="48" ry="86"/>
+    <ellipse cx="80" cy="120" rx="40" ry="80"/>
+    <ellipse cx="88" cy="120" rx="32" ry="74"/>
+    <ellipse cx="176" cy="120" rx="56" ry="92"/>
+    <ellipse cx="168" cy="120" rx="48" ry="86"/>
+    <ellipse cx="160" cy="120" rx="40" ry="80"/>
+    <ellipse cx="152" cy="120" rx="32" ry="74"/>
+  </g>
+  <circle cx="120" cy="120" r="6.5" fill="currentColor" stroke="none"/>
+</svg>

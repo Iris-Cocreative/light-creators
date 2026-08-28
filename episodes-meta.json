@@ -1,89 +1,391 @@
 {
   "0": {
-    "subpage": "episodes/ep-00-wer-bin-ich-und-warum-dieser-podcast-dir-helfen-kann-de.html"
+    "subpage": "episodes/ep-00-wer-bin-ich-und-warum-dieser-podcast-dir-helfen-kann-de.html",
+    "title": "Wer bin ich – und warum dieser Podcast dir helfen kann, dein Leben neu auszurichten.",
+    "seoTitle": "Leise Kraft Podcast: Wer ist David Liebnau?",
+    "description": "David Liebnau erzählt, warum er den Leise Kraft Podcast gestartet hat – und was Founder von seiner 30-jährigen Suche nach stimmiger Führung lernen können.",
+    "spotifyUrl": null,
+    "tags": [
+      "Selbstfuehrung",
+      "Orientierung"
+    ],
+    "featured": false,
+    "trackIdOverride": null
   },
   "1": {
-    "subpage": "episodes/ep-01-wenn-der-kalender-voll-ist-aber-das-herz-keinen-ton-meh.html"
+    "subpage": "episodes/ep-01-wenn-der-kalender-voll-ist-aber-das-herz-keinen-ton-meh.html",
+    "title": "Wenn der Kalender voll ist, aber das Herz keinen Ton mehr macht.",
+    "seoTitle": "Erfolg ohne Erfüllung: Wie du wieder du selbst wirst",
+    "description": "Warum voller Kalender und leeres Herz kein Zufall ist – und was Founder konkret tun können, um vom Getriebenen zum Gestalter zu werden.",
+    "spotifyUrl": null,
+    "tags": [
+      "Selbstfuehrung",
+      "Sinn"
+    ],
+    "featured": false,
+    "trackIdOverride": null
   },
   "2": {
-    "subpage": "episodes/ep-02-priorisierung-ist-nicht-dein-problem-ausrichtung-schon.html"
+    "subpage": "episodes/ep-02-priorisierung-ist-nicht-dein-problem-ausrichtung-schon.html",
+    "title": "Priorisierung ist nicht dein Problem. Ausrichtung schon.",
+    "seoTitle": "Purpose-Portfolio: Energie sinnvoller einsetzen",
+    "description": "Warum Zeitmanagement allein nicht reicht – und wie das Purpose-Portfolio Foundern hilft, Matchbälle von Zeitfressern zu unterscheiden.",
+    "spotifyUrl": null,
+    "tags": [
+      "Selbstfuehrung",
+      "Fokus"
+    ],
+    "featured": false,
+    "trackIdOverride": null
   },
   "3": {
-    "subpage": "episodes/ep-03-den-richtigen-fuehrungsstil-gibt-es-nicht-den-wirksamen.html"
+    "subpage": "episodes/ep-03-den-richtigen-fuehrungsstil-gibt-es-nicht-den-wirksamen.html",
+    "title": "Den richtigen Führungsstil gibt es nicht. Den wirksamen Mix schon.",
+    "seoTitle": "Full Range of Leadership: Wirksam führen mit dem richtigen Mix",
+    "description": "Warum es keinen perfekten Führungsstil gibt – und wie Founder mit dem Full-Range-Modell ihr Repertoire situativ und wirksam erweitern.",
+    "spotifyUrl": null,
+    "tags": [
+      "Fuehrung"
+    ],
+    "featured": false,
+    "trackIdOverride": null
   },
   "4": {
-    "subpage": "episodes/ep-04-stille-ist-keine-schwaeche-sie-ist-deine-wichtigste-fue.html"
+    "subpage": "episodes/ep-04-stille-ist-keine-schwaeche-sie-ist-deine-wichtigste-fue.html",
+    "title": "Stille ist keine Schwäche. Sie ist deine wichtigste Führungsressource.",
+    "seoTitle": "Stille als Führungsressource: Warum Innehalten wirkt",
+    "description": "Warum der Dauer-on-Modus Founder in die falsche Richtung treibt – und wie die Zehn-für-zehn-Regel echte Klarheit im Alltag schafft.",
+    "spotifyUrl": null,
+    "tags": [
+      "Fuehrung",
+      "Selbstfuehrung"
+    ],
+    "featured": true,
+    "trackIdOverride": null
   },
   "5": {
-    "subpage": "episodes/ep-05-feedback-ist-kein-konflikt-kein-feedback-schon.html"
+    "subpage": "episodes/ep-05-feedback-ist-kein-konflikt-kein-feedback-schon.html",
+    "title": "Feedback ist kein Konflikt. Kein Feedback schon.",
+    "seoTitle": "Feedback als Führungstool: Die 3W-Formel für Founder",
+    "description": "Warum ausbleibendes Feedback Konflikte erzeugt – und wie die 3W-Formel hilft, klar und wirkungsvoll zu kommunizieren ohne zu verletzen.",
+    "spotifyUrl": null,
+    "tags": [
+      "Fuehrung",
+      "Kommunikation"
+    ],
+    "featured": false,
+    "trackIdOverride": null
   },
   "6": {
-    "subpage": "episodes/ep-06-wie-du-als-ceo-eine-starke-beziehung-zum-board-aufbaust.html"
+    "subpage": "episodes/ep-06-wie-du-als-ceo-eine-starke-beziehung-zum-board-aufbaust.html",
+    "title": "Wie du als CEO eine starke Beziehung zum Board aufbaust – ohne dich selbst zu verlieren.",
+    "seoTitle": "CEO und Board: Vertrauen aufbauen ohne Kontrollverlust",
+    "description": "Warum mehr Vorbereitung Boards nicht überzeugt – und wie CEOs mit One-Pager, Teambühne und Protokollhoheit echtes Vertrauen aufbauen.",
+    "spotifyUrl": null,
+    "tags": [
+      "Fuehrung",
+      "Stakeholder"
+    ],
+    "featured": false,
+    "trackIdOverride": null
   },
   "7": {
-    "subpage": "episodes/ep-07-dein-reset-in-2-minuten.html"
+    "subpage": "episodes/ep-07-dein-reset-in-2-minuten.html",
+    "title": "Dein Reset in 2 Minuten.",
+    "seoTitle": "2-Minuten-Reset: Achtsamkeit für Führungskräfte",
+    "description": "Eine 4-Schritte-Methode für Founder, die mitten im Alltag einen mentalen Reset brauchen – ohne Sitzkissen, ohne Vorkenntnisse, in zwei Minuten.",
+    "spotifyUrl": null,
+    "tags": [
+      "Selbstfuehrung",
+      "Praxis"
+    ],
+    "featured": false,
+    "trackIdOverride": null
   },
   "8": {
-    "subpage": "episodes/ep-08-zeitmanagement-ist-ueberbewertet.html"
+    "subpage": "episodes/ep-08-zeitmanagement-ist-ueberbewertet.html",
+    "title": "Zeitmanagement ist überbewertet.",
+    "seoTitle": "Zeitmanagement reicht nicht: Warum Mindset entscheidet",
+    "description": "Warum Tools allein keine innere Freiheit schaffen – und wie der Shift von Zeitmanagement zu Purpose und Selbstfürsorge wirklich funktioniert.",
+    "spotifyUrl": null,
+    "tags": [
+      "Selbstfuehrung",
+      "Fokus"
+    ],
+    "featured": false,
+    "trackIdOverride": null
   },
   "9": {
-    "subpage": "episodes/ep-09-schwierige-stakeholder-als-trainingspartner.html"
+    "subpage": "episodes/ep-09-schwierige-stakeholder-als-trainingspartner.html",
+    "title": "Schwierige Stakeholder als Trainingspartner",
+    "seoTitle": "Schwierige Stakeholder: Führungsstärke durch Reibung",
+    "description": "Warum schwierige Menschen keine Störung sind – und wie Founder mit Minderleistern, Verletzlichkeit und Teamvielfalt echte Führungsreife entwickeln.",
+    "spotifyUrl": null,
+    "tags": [
+      "Fuehrung",
+      "Stakeholder"
+    ],
+    "featured": false,
+    "trackIdOverride": null
   },
   "10": {
-    "subpage": "episodes/ep-10-die-kunst-und-praxis-des-loslassens.html"
+    "subpage": "episodes/ep-10-die-kunst-und-praxis-des-loslassens.html",
+    "title": "Die Kunst und Praxis des Loslassens",
+    "seoTitle": "Loslassen als Führungskompetenz: Mehr Wirkung im Team",
+    "description": "Warum Loslassen keine Schwäche ist – und wie Founder mit Delegation, Theorie U und Open Space echte Innovation und Vertrauen aufbauen.",
+    "spotifyUrl": null,
+    "tags": [
+      "Fuehrung",
+      "Team"
+    ],
+    "featured": false,
+    "trackIdOverride": null
   },
   "11": {
-    "subpage": "episodes/ep-11-harmonie-macht-teams-dumm.html"
+    "subpage": "episodes/ep-11-harmonie-macht-teams-dumm.html",
+    "title": "Harmonie macht Teams dumm",
+    "seoTitle": "Konflikte in Teams: Warum Harmonie Innovation blockiert",
+    "description": "Warum konstruktive Konflikte die Voraussetzung für Innovation sind – und wie Founder mit Open Mind, Open Heart und Open Will schöpferische Dialoge führen.",
+    "spotifyUrl": null,
+    "tags": [
+      "Team",
+      "Fuehrung"
+    ],
+    "featured": false,
+    "trackIdOverride": null
   },
   "12": {
-    "subpage": "episodes/ep-12-reconnected-deine-staerken-leben-statt-an-dir-zu-zweife.html"
+    "subpage": "episodes/ep-12-reconnected-deine-staerken-leben-statt-an-dir-zu-zweife.html",
+    "title": "Reconnected: Deine Stärken leben – statt an dir zu zweifeln",
+    "seoTitle": "Stärkenorientierung: Warum Schwächenfokus nicht funktioniert",
+    "description": "Was Gallup-Forschung über die besten Leader zeigt – und wie Founder mit Stärken, Bienenblick und Purpose echte Wirksamkeit und Freude entwickeln.",
+    "spotifyUrl": null,
+    "tags": [
+      "Selbstfuehrung",
+      "Staerken"
+    ],
+    "featured": false,
+    "trackIdOverride": null
   },
   "13": {
-    "subpage": "episodes/ep-13-es-braucht-nur-dich-wie-eine-person-gestoerte-beziehung.html"
+    "subpage": "episodes/ep-13-es-braucht-nur-dich-wie-eine-person-gestoerte-beziehung.html",
+    "title": "Es braucht nur dich: Wie eine Person gestörte Beziehungen transformiert",
+    "seoTitle": "Beziehungen im Business heilen: It takes one",
+    "description": "Warum gestörte Business-Beziehungen Geld kosten – und wie Founder mit dem It-Takes-One-Ansatz Verbindung, Energie und Teampower zurückgewinnen.",
+    "spotifyUrl": null,
+    "tags": [
+      "Beziehungen",
+      "Team"
+    ],
+    "featured": false,
+    "trackIdOverride": null
   },
   "14": {
-    "subpage": "episodes/ep-14-ich-muss-ist-eine-luege.html"
+    "subpage": "episodes/ep-14-ich-muss-ist-eine-luege.html",
+    "title": "„Ich muss\" ist eine Lüge",
+    "seoTitle": "„Ich muss\" ist eine Lüge: Vom Zwang zur Wahlfreiheit",
+    "description": "Warum „Ich muss\" ein selbst erzeugtes Gefängnis ist – und wie ein einziger Satz Foundern hilft, vom Pflichtprogramm zur echten Gestaltungskraft zu kommen.",
+    "spotifyUrl": null,
+    "tags": [
+      "Selbstfuehrung",
+      "Sinn"
+    ],
+    "featured": false,
+    "trackIdOverride": null
   },
   "15": {
-    "subpage": "episodes/ep-15-warum-dein-pitch-scheitert-und-wie-du-investoren-wirkli.html"
+    "subpage": "episodes/ep-15-warum-dein-pitch-scheitert-und-wie-du-investoren-wirkli.html",
+    "title": "Warum dein Pitch scheitert – und wie du Investoren wirklich überzeugst",
+    "seoTitle": "Investor-Pitch: 6 Faktoren für echtes Vertrauen",
+    "description": "Warum Pitch-Decks allein nicht reichen – und welche 6 Prinzipien Gründer brauchen, um Investoren als Partner zu gewinnen, nicht nur als Geldgeber.",
+    "spotifyUrl": null,
+    "tags": [
+      "Investoren",
+      "Pitch"
+    ],
+    "featured": false,
+    "trackIdOverride": null
   },
   "16": {
-    "subpage": "episodes/ep-16-wenn-worte-stimmen-aber-das-vertrauen-fehlt.html"
+    "subpage": "episodes/ep-16-wenn-worte-stimmen-aber-das-vertrauen-fehlt.html",
+    "title": "Wenn Worte stimmen, aber das Vertrauen fehlt",
+    "seoTitle": "Embodied Leadership: Kongruenz als Vertrauensbasis",
+    "description": "Warum perfekte Worte allein kein Vertrauen schaffen – und wie die 3-Sync-Praxis Körper, Emotion und Verstand synchronisiert für wirklich überzeugende Führung.",
+    "spotifyUrl": null,
+    "tags": [
+      "Fuehrung",
+      "Praesenz"
+    ],
+    "featured": false,
+    "trackIdOverride": null
   },
   "17": {
-    "subpage": "episodes/ep-17-warum-brillante-koepfe-sich-selbst-im-weg-stehen.html"
+    "subpage": "episodes/ep-17-warum-brillante-koepfe-sich-selbst-im-weg-stehen.html",
+    "title": "Warum brillante Köpfe sich selbst im Weg stehen",
+    "seoTitle": "Overthinking stoppen: Warum kluge Köpfe sich lähmen",
+    "description": "Warum intelligente Founder besonders anfällig für Selbstsabotage sind – und wie vier Hebel helfen, aus Paralyse durch Analyse auszusteigen und handlungsfähig zu bleiben.",
+    "spotifyUrl": null,
+    "tags": [
+      "Selbstfuehrung",
+      "Klarheit"
+    ],
+    "featured": false,
+    "trackIdOverride": null
   },
   "18": {
-    "subpage": "episodes/ep-18-raum-fuer-das-was-entstehen-will.html"
+    "subpage": "episodes/ep-18-raum-fuer-das-was-entstehen-will.html",
+    "title": "Raum für das, was entstehen will",
+    "seoTitle": "Vivid Visioning: Zukunft fühlen, nicht nur planen",
+    "description": "Wie Founder mit Vivid Visioning eine klare innere Orientierung entwickeln – als persönliche Praxis und als Führungsinstrument für Alignment im Team.",
+    "spotifyUrl": null,
+    "tags": [
+      "Vision",
+      "Selbstfuehrung"
+    ],
+    "featured": false,
+    "trackIdOverride": null
   },
   "19": {
-    "subpage": "episodes/ep-19-wer-bin-ich-und-wenn-ja-wie-viele.html"
+    "subpage": "episodes/ep-19-wer-bin-ich-und-wenn-ja-wie-viele.html",
+    "title": "Wer bin ich – und wenn ja, wie viele?",
+    "seoTitle": "Founder-Rollen: Unternehmer, Manager, Experte meistern",
+    "description": "Warum Rollenunklarheit für 80% der Überforderung verantwortlich ist – und wie Founder mit bewusstem Rollenswitchen Burnout vermeiden und klarer führen.",
+    "spotifyUrl": null,
+    "tags": [
+      "Founder",
+      "Rollen"
+    ],
+    "featured": true,
+    "trackIdOverride": "1000756936240"
   },
   "20": {
-    "subpage": "episodes/ep-20-passion-reicht-nicht-warum-investoren-nachhaltige-obses.html"
+    "subpage": "episodes/ep-20-passion-reicht-nicht-warum-investoren-nachhaltige-obses.html",
+    "title": "Passion reicht nicht – warum Investoren nachhaltige Obsession suchen",
+    "seoTitle": "Founder-Obsession: Nachhaltiger Drive statt Hustle-Burnout",
+    "description": "Warum Passion nicht reicht und Hustle-Kultur Founder zerstört – und wie fünf konkrete Obsessions-Quellen nachhaltigen Drive für zehn Jahre Unternehmertum erzeugen.",
+    "spotifyUrl": null,
+    "tags": [
+      "Investoren",
+      "Founder"
+    ],
+    "featured": false,
+    "trackIdOverride": "1000758342975"
   },
   "21": {
-    "subpage": "episodes/ep-21-dein-deck-ueberzeugt-dein-nervensystem-nicht.html"
+    "subpage": "episodes/ep-21-dein-deck-ueberzeugt-dein-nervensystem-nicht.html",
+    "title": "Dein Deck überzeugt. Dein Nervensystem nicht.",
+    "seoTitle": "Investor Presence: Warum dein Nervensystem entscheidet",
+    "description": "Warum Ghosting nach gutem Pitch an Inkongruenz liegt – und wie der 3-Sync-Check-In Foundern hilft, Körper, Emotion und Verstand vor Investorengesprächen zu synchronisieren.",
+    "spotifyUrl": null,
+    "tags": [
+      "Investoren",
+      "Praesenz"
+    ],
+    "featured": false,
+    "trackIdOverride": "1000759956462"
   },
   "22": {
-    "subpage": "episodes/ep-22-investoren-kaufen-keine-produkte-sie-kaufen-zukuenfte.html"
+    "subpage": "episodes/ep-22-investoren-kaufen-keine-produkte-sie-kaufen-zukuenfte.html",
+    "title": "Investoren kaufen keine Produkte. Sie kaufen Zukünfte.",
+    "seoTitle": "Vision Resonance: Warum Investoren Zukünfte kaufen",
+    "description": "Warum solide KPIs allein kein Funding erzeugen – und wie Founder mit narrativer Kohärenz, Vision Translation und Embodiment echte Investor-Resonanz aufbauen.",
+    "spotifyUrl": null,
+    "tags": [
+      "Investoren",
+      "Vision"
+    ],
+    "featured": false,
+    "trackIdOverride": null
   },
   "23": {
-    "subpage": "episodes/ep-23-bist-du-dieser-founder-oder-spielst-du-diese-rolle.html"
+    "subpage": "episodes/ep-23-bist-du-dieser-founder-oder-spielst-du-diese-rolle.html",
+    "title": "Bist du dieser Founder – oder spielst du diese Rolle?",
+    "seoTitle": "Founder Fit: Warum Gewissheit mehr zählt als ein guter Pitch",
+    "description": "Warum Lebenslauf und Pitch-Training Investor-Vertrauen nicht erzeugen – und wie Founder ihre Origin Story und echten Founder Fit von innen aufbauen.",
+    "spotifyUrl": null,
+    "tags": [
+      "Investoren",
+      "Founder"
+    ],
+    "featured": false,
+    "trackIdOverride": null
   },
   "24": {
-    "subpage": "episodes/ep-24-waechst-du-oder-skalierst-du-deine-probleme.html"
+    "subpage": "episodes/ep-24-waechst-du-oder-skalierst-du-deine-probleme.html",
+    "title": "Wächst du – oder skalierst du deine Probleme?",
+    "seoTitle": "Scalable Logic: Wächst du oder skalierst du dein Chaos?",
+    "description": "Warum mehr Umsatz Probleme nicht löst – und wie Founder mit LTV/CAC, dem CPR-Framework und ehrlichen Fragen herausfinden, ob ihr Modell wirklich skalierbar ist.",
+    "spotifyUrl": "https://open.spotify.com/episode/4DZmaCcL4ext8ZtLtQAc7j",
+    "tags": [
+      "Investoren",
+      "Skalierung"
+    ],
+    "featured": false,
+    "trackIdOverride": null
   },
   "25": {
-    "subpage": "episodes/ep-25-du-bist-eine-einladung-oder-ein-kampf-investoren-spuere.html"
+    "subpage": "episodes/ep-25-du-bist-eine-einladung-oder-ein-kampf-investoren-spuere.html",
+    "title": "Du bist eine Einladung. Oder ein Kampf. Investoren spüren den Unterschied in Sekunden.",
+    "seoTitle": "Presence unter Druck: Krieger, Liebender und Erdung im Pitch",
+    "description": "Warum Körpersprache-Tipps nicht reichen – und wie Founder mit Grounding und zwei Archetypen unter Druck resonanzfähig bleiben und Investor-Vertrauen aufbauen.",
+    "spotifyUrl": "https://open.spotify.com/episode/0eTvxZVxnUHcm5Gcm5qnwX",
+    "tags": [
+      "Investoren",
+      "Praesenz"
+    ],
+    "featured": false,
+    "trackIdOverride": null
   },
   "26": {
-    "subpage": "episodes/ep-26-deine-analytische-staerke-ist-dein-groesster-hebel-und-.html"
+    "subpage": "episodes/ep-26-deine-analytische-staerke-ist-dein-groesster-hebel-und-.html",
+    "title": "Deine analytische Stärke ist dein größter Hebel. Und manchmal dein blinder Fleck.",
+    "seoTitle": "Analytische Stärke als Führungshebel — und ihr blinder Fleck | Leise Kraft",
+    "description": "Warum starke Founder mit perfekten Decks trotzdem kein Commitment erzeugen — und was wirklich entscheidet, ob Investoren dir folgen.",
+    "spotifyUrl": "https://open.spotify.com/episode/4Ecd2lMfICpniOGoV88nC3",
+    "tags": [
+      "Founder",
+      "Staerken"
+    ],
+    "featured": false,
+    "trackIdOverride": null
   },
   "27": {
-    "subpage": "episodes/ep-27-scalable-logic-die-drei-fragen-die-investoren-wirklich-.html"
+    "subpage": "episodes/ep-27-scalable-logic-die-drei-fragen-die-investoren-wirklich-.html",
+    "title": "Wie investitionswürdig ist dein Unternehmen wirklich?",
+    "seoTitle": "Scalable Logic: 3 Fragen, die Investoren wirklich stellen",
+    "description": "Moat, Unit Economics, Cash-Logik: Die drei Fragen, an denen Funding-Gespräche kippen — und wie deine Antworten unter Druck wirklich tragen.",
+    "spotifyUrl": "https://open.spotify.com/episode/7E3oMKfIT4PrwvBX0yKOqH",
+    "tags": [
+      "Investoren",
+      "Skalierung"
+    ],
+    "featured": false,
+    "trackIdOverride": null
   },
   "28": {
-    "subpage": "episodes/ep-28-wo-machst-du-gerade-zu-viel.html"
+    "subpage": "episodes/ep-28-wo-machst-du-gerade-zu-viel.html",
+    "title": "Wo machst du gerade zu viel?",
+    "seoTitle": "Wo machst du gerade zu viel? Der Founder-Antrieb",
+    "description": "Warum mehr arbeiten dein Funding kostet und dein Team lähmt. Der Action Bias bei Foundern und die eine Frage, die das Muster aufbricht.",
+    "spotifyUrl": "https://open.spotify.com/episode/0OWlf5mWTyS9NNnEVufCTG",
+    "tags": [
+      "Founder",
+      "Selbstfuehrung"
+    ],
+    "featured": true,
+    "trackIdOverride": null
+  },
+  "29": {
+    "subpage": "episodes/ep-29-ich-frage-erst-um-hilfe-wenn-ich-es-nicht-mehr-alleine-.html",
+    "title": "Ich frage erst um Hilfe, wenn ich es nicht mehr alleine schaffe.",
+    "seoTitle": "Um Hilfe bitten: Warum echte Stärke Verbindung braucht",
+    "description": "Warum der Satz „Ich frage erst um Hilfe“ Founder isoliert – und was Maori-Krieger, US-Marines und ein BMW-Vorstand über echte Stärke zeigen.",
+    "spotifyUrl": "https://open.spotify.com/episode/4XMYfKW17GE2AemR0sDDf0",
+    "tags": [
+      "Selbstfuehrung",
+      "Beziehungen"
+    ],
+    "featured": false,
+    "trackIdOverride": null
   }
 }

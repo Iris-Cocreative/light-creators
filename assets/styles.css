@@ -20,6 +20,16 @@
   --text-on-dark:      var(--color-cream);
   --text-on-dark-muted: rgba(255, 248, 230, 0.65);
   --accent:            var(--color-gold);
+  --gold:              var(--color-gold);
+  /* Typografie auf hellem Grund. Soft Gold erreicht auf Luminous Sand nur
+     Kontrast 1.77 und faellt damit unter jede Schwelle. Open Horizon war eine
+     Fehlentscheidung und wurde zurueckgenommen, siehe Commit-Historie. Beide
+     Werte stammen aus dem Gold Gradient des Corporate Design.
+     --color-eyebrow (Kontrast 4.94) fuer kleine, gesperrte Eyebrow-Zeilen.
+     --color-gold-em (Kontrast 3.51) fuer em und Hervorhebungen in
+     Ueberschriften, dort ist die Schrift gross genug fuer die 3:1-Schwelle. */
+  --color-eyebrow:     #8D651E;
+  --color-gold-em:     #A87D34;
   --line-light:        rgba(4, 23, 31, 0.14);
   --line-light-soft:   rgba(4, 23, 31, 0.08);
   --line-dark:         rgba(255, 248, 230, 0.16);
@@ -71,7 +81,7 @@ p { font-weight: 300; }
   font-weight: 400;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--color-eyebrow);
 }
 .eyebrow--muted { color: var(--text-muted); }
 .eyebrow--on-dark { color: var(--accent); }
@@ -105,6 +115,14 @@ nav.top.nav-scrolled {
 nav.top.nav-scrolled .logo { color: var(--color-cream); }
 nav.top.nav-scrolled .logo em { color: var(--accent); }
 nav.top.nav-scrolled .nav-toggle { color: var(--color-cream); }
+/* Im gescrollten Zustand liegt ein dunkler Verlauf unter der Leiste. Logo und
+   Hamburger wurden hier immer schon aufgehellt, die Navigationspunkte nicht.
+   Auf Seiten mit hellem Hero stand dadurch dunkle Schrift auf dunklem Grund,
+   gemessen bis hinunter auf Kontrast 1.00. */
+nav.top.nav-scrolled .nav-meta,
+nav.top.nav-scrolled .nav-meta a { color: rgba(255, 248, 230, 0.85); }
+nav.top.nav-scrolled .nav-meta a:hover { color: var(--color-cream); }
+nav.top.nav-scrolled .nav-meta .sep { color: rgba(255, 248, 230, 0.45); }
 nav.top.nav-scrolled .nav-meta .nav-cta { border-color: rgba(255, 248, 230, 0.55); color: var(--color-cream); }
 nav.top.nav-scrolled .nav-meta .nav-cta:hover { background: var(--color-cream); color: var(--color-deep-blue); border-color: var(--color-cream); }
 /* When menu is open, instantly remove backdrop-filter (0.4s transition would delay full-screen overlay) */
@@ -391,6 +409,16 @@ nav.top.nav--open {
   color: var(--text-on-dark-muted);
   max-width: 50ch;
 }
+.hero-founder-link {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--text-on-dark-muted);
+}
+.hero-founder-link a {
+  color: var(--text-on-dark);
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: 2px;
+}
 .hero-meta {
   display: flex;
   gap: 2rem;
@@ -535,6 +563,84 @@ nav.top.nav--open {
 @media (max-width: 640px) {
   .hero-cta-row { flex-direction: column; align-items: stretch; }
   .hero-cta-row .btn { text-align: center; justify-content: center; }
+}
+
+/* ============================================
+   HERO — FUEHREN-SEITE, zweispaltig
+   Links Text auf Luminous Sand, rechts das Portraet in einer eigenen
+   Spalte. Kein Hintergrundbild, kein Verlauf, keine Abdunklung, damit
+   das Hochformat nicht auf Kopfhoehe beschnitten wird.
+   ============================================ */
+.hero--split {
+  background: var(--color-cream);
+  color: var(--text);
+  min-height: 70vh;
+  display: grid;
+  grid-template-columns: 55fr 45fr;
+  align-items: center;
+  padding: 6.25rem 0 0;
+  position: relative;
+  overflow: hidden;
+}
+.hero--split::before,
+.hero--split::after { display: none; }
+.hero--split .hero-split-text {
+  padding: clamp(2rem, 4vh, 3rem) clamp(2rem, 4vw, 3.5rem) clamp(2rem, 4vh, 3rem) clamp(2rem, 5vw, 4.5rem);
+}
+.hero--split .hero-text {
+  margin: 0;
+  /* Deckel statt Spaltenbreite: bei 1920 waere die 55-Prozent-Spalte
+     rund 900 Pixel breit, das liest sich nicht mehr ruhig. */
+  max-width: 36rem;
+  text-align: left;
+}
+.hero--split .hero-sub { max-width: 30rem; color: var(--text-muted); }
+.hero--split h1 { font-size: clamp(2rem, 3.4vw, 3.1rem); color: var(--text); }
+.hero--split h1 em { display: inline; color: var(--color-gold-em); }
+.hero--split .eyebrow { color: var(--color-eyebrow); }
+.hero--split .hero-eyebrow .dot { background: var(--accent); }
+.hero--split .logo { color: var(--text); white-space: nowrap; }
+.hero--split .logo em { color: var(--accent); }
+.hero--split .nav-meta { color: var(--text-muted); }
+.hero--split .nav-meta a:hover { color: var(--text); }
+.hero--split .nav-toggle { color: var(--text); }
+/* nav.top ist fixiert und volle Breite. Statt die Navigation seitlich zu
+   deckeln, was sie schon ab 1400 Pixeln auf zwei Zeilen brach, beginnt der
+   Hero unterhalb der Navigationsleiste. Sie steht damit ueber die ganze
+   Breite auf Luminous Sand und bleibt in dunkler Schrift lesbar. */
+.hero-split-media {
+  position: relative;
+  align-self: stretch;
+  min-height: calc(70vh - 6.25rem);
+}
+.hero-split-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  display: block;
+}
+@media (max-width: 1100px) {
+  .hero--split { grid-template-columns: 58fr 42fr; }
+}
+@media (max-width: 880px) {
+  .hero--split {
+    display: flex;
+    flex-direction: column;
+    min-height: auto;
+    padding-top: 5rem;
+  }
+  /* Bild oben, Text darunter. nav.top ist fixiert und damit ausserhalb
+     des Flusses, die Reihenfolge betrifft nur die beiden Inhaltsspalten. */
+  .hero-split-media { order: -1; min-height: 45vh; height: 45vh; }
+  .hero--split .hero-split-text {
+    padding: clamp(2.5rem, 6vw, 3.5rem) clamp(2rem, 5vw, 3rem) clamp(3rem, 8vw, 4rem);
+  }
+  .hero--split .hero-text,
+  .hero--split .hero-sub { max-width: 100%; }
+  .hero-split-media img { object-position: center top; }
 }
 
 /* HERO PHOTO — full-height right-aligned variant */
@@ -741,10 +847,31 @@ podcast-cover { display: contents; }
 @media (max-width: 880px) { .qa-aside { position: static; } }
 .qa-aside .eyebrow { margin-bottom: 1.5rem; display: block; }
 .qa-aside h2 { font-style: italic; font-weight: 300; }
-.qa-aside h2 em { color: var(--accent); }
+.qa-aside h2 em { color: var(--color-gold-em); }
 .qa-body p { margin-bottom: 1.5rem; max-width: 56ch; }
 .qa-body p:last-child { margin-bottom: 0; }
 .qa-body strong, .qa-body b { font-weight: 500; color: var(--text); }
+
+/* Modifier fuer die Kategorie-Aussage. Nur eine Instanz, Startseite,
+   Abschnitt "Die Luecke". Die zweispaltige Grundform traegt eine kursive
+   Zwischenfrage in einer rund 425 Pixel schmalen Spalte. Die zentrale
+   Aussage der Seite passt dort nicht hinein, sie liefe fuenfzeilig um.
+   Deshalb hier einspaltig, Ueberschrift ueber dem Text, volle Breite.
+   Kein anderer .qa-section-Abschnitt wird beruehrt. */
+.qa-section--kategorie { padding: clamp(5rem, 10vw, 7rem) 0; }
+.qa-section--kategorie .qa-grid {
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 4vw, 3rem);
+}
+.qa-section--kategorie .qa-aside { position: static; top: auto; }
+.qa-section--kategorie .qa-aside h2 {
+  font-size: clamp(2.8rem, 7vw, 5.6rem);
+  font-weight: 300;
+  font-style: normal;
+  max-width: none;
+}
+.qa-section--kategorie .qa-body { max-width: 38rem; }
+.qa-section--kategorie .qa-body p { max-width: none; }
 
 .pull-quote {
   font-family: var(--font-heading);
@@ -757,7 +884,7 @@ podcast-cover { display: contents; }
   border-left: 1px solid var(--accent);
   max-width: 36ch;
 }
-.pull-quote em { color: var(--accent); }
+.pull-quote em { color: var(--color-gold-em); }
 
 /* ARROW LIST */
 .arrow-list {
@@ -781,7 +908,7 @@ podcast-cover { display: contents; }
   color: var(--accent);
   font-style: normal;
 }
-.arrow-list--checks li::before { content: "✓"; color: var(--accent); }
+.arrow-list--checks li::before { content: "✓"; color: var(--color-eyebrow); }
 .arrow-list--on-dark li { color: var(--text-on-dark); }
 
 /* ============================================
@@ -798,7 +925,7 @@ podcast-cover { display: contents; }
 }
 .section-intro .eyebrow { display: block; margin-bottom: 1.5rem; }
 .section-intro h2 { max-width: 24ch; margin: 0 auto; }
-.section-intro h2 em { color: var(--accent); }
+.section-intro h2 em { color: var(--color-gold-em); }
 .section-intro p { max-width: 50ch; margin: 1.5rem auto 0; color: var(--text-muted); }
 
 .section-coda {
@@ -813,7 +940,7 @@ podcast-cover { display: contents; }
   margin-left: auto;
   margin-right: auto;
 }
-.section-coda em { color: var(--accent); }
+.section-coda em { color: var(--color-gold-em); }
 
 /* ============================================
    FACTORS SECTION (5 list — dark teal)
@@ -883,6 +1010,33 @@ podcast-cover { display: contents; }
   display: block;
   filter: saturate(0.95);
 }
+.wege-section { background: var(--bg-soft); }
+/* Drei-Wege- und Formate-Raster: dieselben Karten, nur ohne Bildcontainer */
+.role-card--textonly {
+  padding-top: 2rem;
+  border-top: 1px solid var(--line-light);
+}
+.role-card--textonly h3 { font-size: clamp(1.25rem, 2.1vw, 1.55rem); line-height: 1.3; }
+.role-card--textonly p { max-width: none; margin-bottom: 1.5rem; }
+.role-card-links {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-items: flex-start;
+}
+/* mehrzeilige Links: Unterstreichung folgt dem Textfluss, statt einen
+   Rahmen ueber die volle Kastenbreite zu ziehen */
+.role-card-links .text-link {
+  display: inline;
+  font-size: 0.95rem;
+  border-bottom: none;
+  text-decoration: underline;
+  text-decoration-color: var(--line-light);
+  text-underline-offset: 0.28em;
+}
+.role-card-links .text-link:hover { text-decoration-color: var(--accent); }
+.role-card-links .text-link .arrow { margin-left: 0.35rem; }
 .role-card h3 {
   font-family: var(--font-heading);
   font-size: clamp(1.5rem, 2.6vw, 1.9rem);
@@ -891,12 +1045,28 @@ podcast-cover { display: contents; }
   margin-bottom: 0.5rem;
   letter-spacing: -0.01em;
 }
-.role-card h3 em { color: var(--accent); font-style: italic; }
+.role-card h3 em { color: var(--color-gold-em); font-style: italic; }
 .role-card p {
   color: var(--text-muted);
   font-size: 1rem;
   line-height: 1.6;
   max-width: 32ch;
+}
+/* vier optisch gleichwertige Absaetze, Abschnitt "Der Moment" */
+.moment-list {
+  margin: clamp(2.5rem, 5vw, 4rem) 0 clamp(2rem, 4vw, 3rem);
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2.25rem);
+}
+.moment-list p {
+  margin: 0;
+  padding-left: 1.75rem;
+  border-left: 1px solid var(--line-light);
+  font-family: var(--font-heading);
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  line-height: 1.55;
+  color: var(--text);
+  max-width: 62ch;
 }
 .roles-coda {
   max-width: 60ch;
@@ -955,6 +1125,35 @@ podcast-cover { display: contents; }
   max-width: 60ch;
   font-size: 1.02rem;
   line-height: 1.6;
+}
+/* Methoden-Einheiten: breitere Symbolspalte, .methode-symbol ist 96px */
+.factors-list--methode .factor {
+  grid-template-columns: 120px 1fr;
+  align-items: start;
+}
+@media (max-width: 600px) {
+  .factors-list--methode .factor { grid-template-columns: 1fr; }
+}
+.methode-ziffer {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+}
+.factors-list--methode .factor-content p { margin-bottom: 0.85rem; }
+.factors-list--methode .factor-content p:last-child { margin-bottom: 0; }
+/* Zweckzeile je Bewegung, zwischen Titel und den beiden Beispielzeilen.
+   Sagt, wozu der Schritt da ist, bevor die Beispiele sagen, wie er
+   aussieht. Bewusst derselbe gedaempfte Ton wie die Beispielzeilen, sie
+   setzt sich allein durch Kursivsatz und Position ab. Eine hellere
+   Farbe haette die abstrakte Zeile optisch ueber die konkreten
+   gestellt. Kontrast 5,48 zu 1 auf dem Sektionsgrund. */
+.factors-list--methode .factor-content .methode-zweck {
+  font-style: italic;
+  margin-bottom: 1.1rem;
 }
 .factors-coda {
   max-width: var(--container-narrow);
@@ -1031,7 +1230,7 @@ podcast-cover { display: contents; }
 
 .about-content .eyebrow { display: block; margin-bottom: 1.5rem; }
 .about-content h2 { margin-bottom: 1.5rem; }
-.about-content h2 em { color: var(--accent); }
+.about-content h2 em { color: var(--color-gold-em); }
 .about-content > p { margin-bottom: 1.5rem; max-width: 56ch; }
 .about-content h3 {
   margin-top: 2.5rem;
@@ -1109,14 +1308,33 @@ podcast-cover { display: contents; }
   .provenexpert-seal { margin-left: auto; margin-right: auto; }
 }
 
-/* Official HR Excellence Award mark — cream plate so the logo keeps its own
-   colours on the dark section. Replaces the old .award-badge text pill. */
-.award-logo {
-  display: block;
-  width: clamp(112px, 11vw, 150px);
-  height: auto;
-  margin-top: 1.5rem;
+/* Qualifikationsnachweis: Logo links, Zusatztext rechts.
+   Das ICF-Logo ist dunkelblau auf transparent und laege auf dem
+   Sektionsgrund #04171F bei 1,81 zu 1, also unlesbar. Deshalb eine
+   Creme-Platte, darauf 9,52 zu 1. */
+.credential {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+.credential-mark {
+  flex: 0 0 auto;
+  width: 72px;
+  height: 72px;
+  padding: 0.6rem;
+  background: var(--color-cream);
   border: 1px solid var(--line-dark);
+}
+.credential-mark img { display: block; width: 100%; height: auto; }
+.credential-note {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  max-width: 42ch;
+  margin: 0;
+}
+@media (max-width: 520px) {
+  .credential { flex-direction: column; align-items: flex-start; gap: 1rem; }
 }
 
 /* ============================================
@@ -1206,7 +1424,7 @@ podcast-cover { display: contents; }
   margin-top: 0.2rem;
   letter-spacing: 0.02em;
 }
-.testimonial-role .sep { margin: 0 0.35rem; color: var(--accent); }
+.testimonial-role .sep { margin: 0 0.35rem; color: var(--color-eyebrow); }
 
 .testimonials-link {
   text-align: center;
@@ -1244,6 +1462,24 @@ podcast-cover { display: contents; }
   font-style: normal;
 }
 .who-list li:last-child { border-bottom: none; }
+/* Platzhalter-Label im .who-exclusion-Kasten klar vom Kursivtext abheben */
+.who-exclusion strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-family: var(--font-body);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.lang-note {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
 .who-exclusion {
   margin-top: 2rem;
   padding: 1.5rem 1.75rem;
@@ -1351,6 +1587,8 @@ podcast-cover { display: contents; }
   gap: clamp(1.5rem, 3vw, 2rem);
 }
 @media (max-width: 880px) { .next-grid { grid-template-columns: 1fr; } }
+.next-grid--three { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 1080px) { .next-grid--three { grid-template-columns: 1fr; } }
 .next-card {
   padding: clamp(2.5rem, 4vw, 3.5rem);
   border: 1px solid var(--line-light);
@@ -1377,7 +1615,7 @@ podcast-cover { display: contents; }
   font-size: 1rem;
 }
 .next-card h3 { font-style: italic; margin-bottom: 1rem; position: relative; z-index: 1; }
-.next-card h3 em { color: var(--accent); }
+.next-card h3 em { color: var(--color-gold-em); }
 .next-card p { color: var(--text-muted); margin-bottom: 2rem; flex-grow: 1; position: relative; z-index: 1; }
 .next-card .duration {
   font-size: 0.78rem;
@@ -1928,4 +2166,83 @@ footer {
   margin-top: 3rem;
   padding-top: 2.5rem;
   border-top: 1px solid rgba(4,23,31,0.15);
+}
+
+/* ============================================
+   METHODE — SYMBOLE (schoepferische Dialoge)
+   ============================================ */
+.methode-symbol {
+  width: 96px;
+  height: 96px;
+  color: var(--gold);
+}
+@media (max-width: 640px) {
+  .methode-symbol { width: 56px; height: 56px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .methode-symbol { animation: none; transition: none; }
+}
+
+
+/* ============================================
+   FARBRHYTHMUS — dunkle Abschnitte
+   Zwei helle Abschnitte, dann ein dunkler. Der dunkle markiert jeweils
+   einen Wendepunkt im Lesefluss. Nie zwei dunkle direkt hintereinander.
+   Nur Hintergrund und die daraus folgenden Textfarben, keine Abstaende,
+   keine Groessen, keine neuen Komponenten.
+   Der Block steht bewusst am Ende des Stylesheets. .qa-section,
+   .who-section und .next-section setzen ihren eigenen Hintergrund und
+   stehen weiter unten. Bei gleicher Spezifitaet entscheidet die
+   Reihenfolge, davor haben sie gewonnen.
+   ============================================ */
+.section--teal,
+.section--umber,
+.section--midnight { color: var(--text-on-dark); }
+.section--teal     { background: var(--color-teal); }
+.section--umber    { background: var(--color-graphite); }
+.section--midnight { background: var(--color-deep-blue); }
+
+.section--teal h1, .section--teal h2, .section--teal h3, .section--teal h4,
+.section--umber h1, .section--umber h2, .section--umber h3, .section--umber h4,
+.section--midnight h1, .section--midnight h2, .section--midnight h3, .section--midnight h4 {
+  color: var(--text-on-dark);
+}
+.section--teal h2 em,
+.section--umber h2 em,
+.section--midnight h2 em { color: var(--accent); }
+
+.section--teal p,
+.section--umber p,
+.section--midnight p { color: var(--text-on-dark-muted); }
+
+.section--teal .eyebrow,
+.section--umber .eyebrow,
+.section--midnight .eyebrow { color: var(--accent); }
+
+.section--teal .section-intro p,
+.section--umber .section-intro p,
+.section--midnight .section-intro p { color: var(--text-on-dark-muted); }
+
+/* Die vier Absaetze der Methode tragen links eine Linie */
+.section--teal .moment-list p {
+  color: var(--text-on-dark);
+  border-left-color: var(--line-dark);
+}
+
+/* .text-link setzt Farbe und Linie auf die hellen Werte */
+.section--teal .text-link,
+.section--umber .text-link,
+.section--midnight .text-link {
+  color: var(--text-on-dark);
+  border-bottom-color: var(--line-dark);
+}
+.section--teal .text-link:hover,
+.section--umber .text-link:hover,
+.section--midnight .text-link:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* Abgrenzungskasten */
+.section--umber .who-exclusion {
+  color: var(--text-on-dark-muted);
+  background: rgba(224, 183, 111, 0.08);
+  border-left-color: var(--accent);
 }

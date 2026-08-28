@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fund a place · The Threshold Program</title>
+<meta name="description" content="For parents, foundations and companies who want to make a place in The Threshold Program possible for a young adult." />
+<link rel="canonical" href="https://davidliebnau.com/threshold/partner/en/" />
+<link rel="alternate" hreflang="de" href="https://davidliebnau.com/threshold/partner/" />
+<link rel="alternate" hreflang="en" href="https://davidliebnau.com/threshold/partner/en/" />
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://davidliebnau.com/threshold/partner/en/" />
+<meta property="og:title" content="Fund a place · The Threshold Program" />
+<meta property="og:description" content="For parents, foundations and companies who want to make a place in The Threshold Program possible for a young adult." />
+<meta property="og:image" content="https://davidliebnau.com/assets/og-image.jpg" />
+<meta property="og:locale" content="en_GB" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Fund a place · The Threshold Program" />
+
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="/assets/favicon-32.png" type="image/png" sizes="32x32" />
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+
+<link rel="stylesheet" href="/assets/fonts.css" />
+
+<style>
+  :root {
+    --midnight: #04171F;
+    --earth: #393231;
+    --gold: #FFDB9D;
+    --gold-dark: #A87D34;
+    --sun: #E0B76F;
+    --morning-dew: #83A16E;
+    --open-horizon: #05404C;
+    --summit: #FFF8E6;
+    --stone: #D7D0C2;
+    --warm-gray: #A8A196;
+    --slate: #6E6661;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Hanken Grotesk', 'HK Grotesk', sans-serif;
+    background-color: var(--summit);
+    color: var(--earth);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+  a { color: inherit; }
+  img { max-width: 100%; }
+
+  /* HERO */
+  .hero {
+    position: relative; min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden;
+  }
+  .hero-img {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; object-position: center 30%;
+  }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(4,23,31,0.25) 0%, rgba(4,23,31,0.6) 50%, rgba(4,23,31,0.95) 100%);
+  }
+  .hero-content { position: relative; z-index: 2; padding: 0 72px 88px; }
+  .hero-eyebrow { display: flex; align-items: center; gap: 16px; margin-bottom: 36px; }
+  .hero-eyebrow .line { width: 40px; height: 1px; background: var(--gold-dark); }
+  .hero-eyebrow span {
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; color: var(--sun);
+  }
+  .hero-opening {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 300; font-style: italic;
+    color: var(--sun); max-width: 620px; line-height: 1.65; margin-bottom: 32px;
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 62px; font-weight: 400; color: var(--stone); line-height: 1.1;
+    max-width: 780px; margin-bottom: 40px;
+  }
+  .hero-title strong { color: #fff; font-weight: 400; }
+  .hero-title em { font-style: italic; color: var(--sun); }
+  .hero-body {
+    font-size: 15px; color: var(--warm-gray); max-width: 540px; line-height: 1.85;
+    border-left: 2px solid rgba(168,125,52,0.5); padding-left: 24px;
+  }
+
+  /* SECTIONS */
+  section { padding: 88px 72px; }
+  .section-dark { background: var(--midnight); }
+  .section-earth { background: var(--earth); }
+  .section-horizon { background: var(--open-horizon); }
+  .section-light { background: var(--summit); }
+  .section-white { background: #fff; }
+
+  .label-light {
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; color: var(--sun); opacity: 0.85;
+  }
+  .label-gold {
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; color: var(--gold-dark);
+  }
+  .divider { width: 48px; height: 1px; background: var(--gold-dark); margin: 20px 0; }
+  .divider-faint { width: 48px; height: 1px; background: rgba(168,125,52,0.4); margin: 20px 0; }
+  .sec-h2-dark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 46px; font-weight: 400; line-height: 1.15; color: #fff; margin-top: 14px;
+  }
+  .sec-h2-light {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 46px; font-weight: 400; line-height: 1.15; color: var(--midnight); margin-top: 14px;
+  }
+  .sec-lead-dark { font-size: 15px; color: var(--warm-gray); line-height: 1.8; max-width: 600px; margin-top: 16px; }
+  .sec-lead-light { font-size: 15px; color: var(--slate); line-height: 1.8; max-width: 600px; margin-top: 16px; }
+
+  /* PHOTO BREAK */
+  .photo-break {
+    position: relative; overflow: hidden;
+    display: grid; grid-template-columns: 1fr 1fr; min-height: 520px;
+  }
+  .pb-image-col { position: relative; overflow: hidden; }
+  .pb-image-col img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+  .pb-text-col { display: flex; flex-direction: column; justify-content: center; padding: 80px 64px; }
+  .pb-text-col.dark { background: var(--midnight); }
+  .pb-text-col.earth { background: var(--earth); }
+  .pb-text-col.horizon { background: var(--open-horizon); }
+  .pb-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 300; font-style: italic;
+    color: #fff; line-height: 1.5;
+  }
+  .pb-quote em { color: var(--sun); font-style: italic; }
+  .pb-caption { margin-top: 24px; font-size: 13px; color: var(--warm-gray); line-height: 1.7; max-width: 380px; }
+
+  /* TENSION */
+  .tension-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 56px; }
+  .tension-card { padding: 44px 40px; background: rgba(255,255,255,0.03); }
+  .tension-card-alt { background: rgba(168,125,52,0.06); }
+  .tension-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 25px; color: #fff; font-weight: 400; line-height: 1.35; margin-bottom: 18px;
+  }
+  .tension-body { font-size: 14px; color: var(--warm-gray); line-height: 1.85; }
+  .tension-body em { font-style: italic; color: var(--sun); font-family: 'Cormorant Garamond', serif; font-size: 16px; }
+  .insight { margin-top: 56px; padding: 48px 56px; background: rgba(168,125,52,0.07); border-left: 3px solid var(--gold-dark); }
+  .insight p { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 300; font-style: italic; color: #fff; line-height: 1.55; max-width: 720px; }
+  .insight .attribution { margin-top: 18px; font-family: 'Hanken Grotesk', sans-serif; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sun); font-style: normal; }
+
+  /* RESEARCH / CREDIBILITY STRIP */
+  .research-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: 56px; }
+  .research-cell { padding: 32px 26px; background: rgba(255,255,255,0.04); border-top: 2px solid var(--gold-dark); }
+  .research-source { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #fff; font-weight: 500; margin-bottom: 10px; }
+  .research-finding { font-size: 13px; color: var(--warm-gray); line-height: 1.7; }
+  .research-finding em { font-style: italic; color: var(--sun); }
+
+  /* FOUR MOVEMENTS (DIMENSIONS) */
+  .dimensions-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; margin-bottom: 48px; }
+  .dimensions-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+  .dim-card { padding: 34px 28px; background: rgba(255,255,255,0.03); border-top: 2px solid rgba(168,125,52,0.3); }
+  .dim-icon { font-family: 'Cormorant Garamond', serif; font-size: 26px; color: var(--gold-dark); margin-bottom: 14px; font-style: italic; }
+  .dim-name { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #fff; margin-bottom: 2px; }
+  .dim-tagline { font-size: 12px; letter-spacing: 0.04em; color: var(--sun); font-weight: 500; margin-bottom: 12px; }
+  .dim-question { font-family: 'Cormorant Garamond', serif; font-size: 15px; font-style: italic; color: var(--sun); margin-bottom: 14px; line-height: 1.4; }
+  .dim-body { font-size: 13px; color: var(--warm-gray); line-height: 1.75; }
+
+  /* PROCESS */
+  .process-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: 56px; }
+  .process-cell { padding: 34px 26px; background: rgba(5,64,76,0.5); border-top: 2px solid transparent; }
+  .process-cell.hl { background: rgba(5,64,76,0.95); border-top-color: var(--gold-dark); }
+  .pc-phase { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 12px; font-weight: 500; }
+  .pc-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #fff; margin-bottom: 8px; font-weight: 400; }
+  .pc-timing { font-family: 'Cormorant Garamond', serif; font-size: 14px; font-style: italic; color: var(--sun); margin-bottom: 16px; }
+  .pc-items { list-style: none; }
+  .pc-items li { font-size: 13px; color: var(--warm-gray); padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.05); line-height: 1.5; }
+  .pc-items li::before { content: '→ '; color: var(--gold-dark); }
+
+  /* SINGLE PILOT CARD */
+  .pilot-wrap { display: grid; grid-template-columns: 1.3fr 1fr; gap: 2px; margin-top: 56px; }
+  .pkg { padding: 48px 44px; background: rgba(168,125,52,0.09); border: 1px solid rgba(168,125,52,0.28); position: relative; }
+  .pkg-badge { position: absolute; top: -1px; left: 44px; background: var(--gold-dark); color: var(--midnight); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; padding: 4px 12px; font-weight: 600; }
+  .pkg-level { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 12px; font-weight: 500; margin-top: 8px; }
+  .pkg-name { font-family: 'Cormorant Garamond', serif; font-size: 30px; color: #fff; font-weight: 400; margin-bottom: 12px; }
+  .pkg-for { font-size: 14px; color: var(--warm-gray); line-height: 1.7; margin-bottom: 28px; max-width: 420px; }
+  .pkg-price { font-family: 'Cormorant Garamond', serif; font-size: 40px; color: var(--sun); font-weight: 300; margin-bottom: 4px; }
+  .pkg-note { font-size: 12px; color: var(--warm-gray); margin-bottom: 4px; }
+  .pkg-includes { list-style: none; margin-top: 28px; }
+  .pkg-includes li { font-size: 13px; color: var(--warm-gray); padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.06); line-height: 1.5; }
+  .pkg-includes li::before { content: '✓  '; color: var(--morning-dew); font-size: 12px; }
+  .pilot-side { padding: 48px 40px; background: rgba(255,255,255,0.03); display: flex; flex-direction: column; justify-content: center; gap: 28px; }
+  .pilot-side-block .label-gold { color: var(--sun); }
+  .pilot-side-block p { font-size: 14px; color: var(--warm-gray); line-height: 1.75; margin-top: 10px; }
+
+  /* OUTCOMES */
+  .outcomes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 56px; }
+  .oc { padding: 40px; background: #fff; border-top: 2px solid var(--gold-dark); }
+  .oc.alt { background: var(--summit); }
+  .oc-tag { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 14px; font-weight: 500; }
+  .oc-title { font-family: 'Cormorant Garamond', serif; font-size: 26px; color: var(--midnight); font-weight: 400; margin-bottom: 14px; line-height: 1.25; }
+  .oc-body { font-size: 14px; color: var(--slate); line-height: 1.85; }
+  .oc-body em { font-style: italic; color: var(--earth); }
+
+  /* WAS DU MITNIMMST */
+  .leave-list { list-style: none; margin-top: 40px; max-width: 640px; }
+  .leave-list li { font-size: 15px; color: var(--slate); padding: 14px 0 14px 32px; border-bottom: 1px solid rgba(4,23,31,0.08); position: relative; line-height: 1.6; }
+  .leave-list li::before { content: '✓'; position: absolute; left: 0; top: 14px; color: var(--morning-dew); font-weight: 600; }
+
+  /* DREAM */
+  .dream { position: relative; min-height: 480px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+  .dream img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
+  .dream-overlay { position: absolute; inset: 0; background: rgba(4,23,31,0.62); }
+  .dream-content { position: relative; z-index: 2; text-align: center; padding: 80px 72px; }
+  .dream-quote { font-family: 'Cormorant Garamond', serif; font-size: 34px; font-weight: 300; font-style: italic; color: var(--stone); line-height: 1.45; max-width: 780px; margin: 0 auto; }
+  .dream-quote em { color: var(--sun); }
+  .dream-note { margin-top: 24px; font-size: 12px; color: var(--warm-gray); letter-spacing: 0.08em; text-transform: uppercase; }
+
+  /* TEAM / FACILITATOR */
+  .team-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 56px; margin-top: 56px; align-items: start; }
+  .coach-name { font-family: 'Cormorant Garamond', serif; font-size: 28px; color: #fff; font-weight: 400; margin-bottom: 4px; }
+  .coach-role { font-size: 13px; color: var(--sun); letter-spacing: 0.03em; line-height: 1.5; }
+  .coach-bio { font-size: 14px; color: var(--warm-gray); line-height: 1.85; margin-bottom: 20px; }
+  .coach-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .coach-tag { font-size: 11px; color: var(--gold-dark); border: 1px solid rgba(168,125,52,0.25); padding: 4px 12px; letter-spacing: 0.03em; }
+  .fac-photo-col { border-top: 3px solid var(--gold-dark); overflow: hidden; }
+  .fac-portrait { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: center 25%; display: block; }
+
+  /* TESTIMONIALS */
+  .testimonial-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 56px; }
+  .testimonial-card { padding: 40px 40px; background: rgba(255,255,255,0.04); border-top: 2px solid rgba(168,125,52,0.35); }
+  .testimonial-quote { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 300; font-style: italic; color: #fff; line-height: 1.55; }
+  .testimonial-attr { margin-top: 20px; font-size: 12px; color: var(--sun); letter-spacing: 0.03em; }
+  .testimonial-attr span { display: block; color: var(--warm-gray); font-size: 11px; margin-top: 2px; }
+
+  /* PARTNER MODELS */
+  .partner-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: 56px; }
+  .partner-card { padding: 36px 28px; background: rgba(255,255,255,0.04); display: flex; flex-direction: column; }
+  .partner-card.hl { background: rgba(168,125,52,0.1); border: 1px solid rgba(168,125,52,0.28); }
+  .partner-name { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #fff; font-weight: 400; margin-bottom: 14px; }
+  .partner-body { font-size: 13px; color: var(--stone); line-height: 1.75; flex: 1; }
+
+  /* FAQ */
+  .faq-list { margin-top: 56px; display: flex; flex-direction: column; gap: 2px; }
+  .faq-row { padding: 30px 0; border-bottom: 1px solid rgba(4,23,31,0.1); }
+  .faq-q { font-family: 'Cormorant Garamond', serif; font-size: 21px; color: var(--midnight); font-weight: 500; margin-bottom: 10px; }
+  .faq-a { font-size: 14px; color: var(--slate); line-height: 1.8; max-width: 680px; }
+
+  /* CTA */
+  .cta-section { background: var(--earth); padding: 96px 72px; text-align: center; }
+  .cta-title { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 400; color: #fff; line-height: 1.2; margin-bottom: 18px; max-width: 800px; margin-left: auto; margin-right: auto; }
+  .cta-title em { font-style: italic; color: var(--sun); }
+  .cta-body { font-size: 15px; color: var(--warm-gray); max-width: 500px; margin: 0 auto 36px; line-height: 1.8; }
+  .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .btn-p { background: var(--gold-dark); color: var(--midnight); padding: 15px 36px; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; text-decoration: none; font-family: 'Hanken Grotesk', sans-serif; display: inline-block; }
+  .btn-s { border: 1px solid rgba(168,125,52,0.4); color: var(--sun); padding: 15px 36px; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 400; text-decoration: none; font-family: 'Hanken Grotesk', sans-serif; display: inline-block; }
+  .cta-reassurance { margin-top: 36px; font-family: 'Cormorant Garamond', serif; font-size: 17px; font-style: italic; color: var(--stone); opacity: 0.8; }
+  .cta-email-note { margin-top: 22px; font-size: 13px; color: var(--warm-gray); }
+  .cta-email-note a { color: var(--sun); text-decoration: underline; font-weight: 500; }
+
+  /* FOOTER */
+  .footer { background: var(--midnight); padding: 36px 72px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: #fff; }
+  .footer-sub { font-size: 12px; color: var(--warm-gray); margin-top: 3px; }
+  .footer-contact { font-size: 13px; color: var(--warm-gray); text-align: right; }
+  .footer-nav { font-size: 12px; color: var(--warm-gray); letter-spacing: 0.06em; margin-top: 8px; text-align: right; }
+  .footer-nav a { color: var(--warm-gray); text-decoration: none; border-bottom: 1px solid rgba(168,125,52,0.4); }
+  .footer-nav a:hover { color: var(--sun); }
+  .footer-nav a.is-current { color: var(--sun); border-bottom-color: transparent; }
+  .footer-nav .sep { margin: 0 8px; opacity: 0.5; }
+
+  .team-grid-portrait { grid-template-columns: 300px 1fr; }
+  .research-strip-3 { grid-template-columns: repeat(3, 1fr); }
+
+  @media (max-width: 900px) {
+    .hero-content, section, .cta-section, .footer { padding-left: 28px; padding-right: 28px; }
+    .hero-title { font-size: 38px; }
+    .photo-break { grid-template-columns: 1fr; }
+    .pb-image-col { min-height: 300px; }
+    .pb-text-col { padding: 48px 28px; }
+    .tension-grid, .dimensions-intro, .team-grid, .outcomes-grid, .process-row, .research-strip, .testimonial-grid, .pilot-wrap { grid-template-columns: 1fr; }
+    .dimensions-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+    .partner-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+    .dream-content { padding: 60px 28px; }
+    .dream-quote { font-size: 24px; }
+    .cta-title { font-size: 34px; }
+    .sec-h2-dark, .sec-h2-light { font-size: 32px; overflow-wrap: break-word; }
+  }
+
+  @media (max-width: 560px) {
+    .dimensions-grid, .partner-grid { grid-template-columns: 1fr; }
+  }
+</style><style>
+/* Rueckweg oben links. Die Threshold-Seite hat keine Navigation, ihr
+   einziger Rueckweg steht im Footer. Diese Seite ist zusaetzlich direkt
+   von der Startseite verlinkt, deshalb hier ein dezenter Textlink. */
+.rueckweg {
+  position: absolute;
+  top: 28px;
+  left: 28px;
+  z-index: 5;
+  font-family: var(--sans, inherit);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  color: var(--warm-gray);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(168, 125, 52, 0.4);
+  padding-bottom: 2px;
+}
+.rueckweg:hover { color: var(--sun); }
+@media (max-width: 900px) { .rueckweg { top: 20px; left: 20px; } }
+</style>
+</head>
+<body>
+
+<a class="rueckweg" href="/index-en.html">← David Liebnau</a>
+
+<!-- ════════ HERO ════════ -->
+<section class="section-dark" style="padding-top:110px;">
+  <div class="label-light">The Threshold Program</div>
+  <div class="divider-faint"></div>
+  <h1 class="sec-h2-dark">Make a place possible.</h1>
+  <p class="sec-lead-dark">Threshold is a six-day programme for young adults between 18 and 28 who face a decision that will shape what follows. Two guided days alone in nature, a small group, one concrete next step and six weeks of support afterwards.</p>
+</section>
+
+<!-- ════════ HELPING WITHOUT PRESCRIBING THE WAY ════════ -->
+<section class="section-light">
+  <h2 class="sec-h2-light">Helping, without prescribing the way.</h2>
+  <p class="sec-lead-light">Parents know this tension. You see that your child is at a point where something is being decided. You have experience, opinions and usually a fairly clear sense of what would be good. And at the same time you know: the more clearly you say it, the less it becomes their own answer.</p>
+  <p class="sec-lead-light" style="margin-top:16px;">Threshold does not take this relationship from you and does not replace parental guidance. For six days it creates the conditions in which your child can find out for themselves what their next step is. Without your opinion in the room. And without anyone else’s.</p>
+</section>
+
+<!-- ════════ WHO FUNDS THE PLACES ════════ -->
+<section class="section-earth">
+  <div class="label-light">Funding</div>
+  <div class="divider-faint"></div>
+  <h2 class="sec-h2-dark">Who funds the places.</h2>
+  <p class="sec-lead-dark">Some participants pay themselves. Some are supported by their parents. And some places are covered by foundations, educational institutions or employers who want to open access for young people who could not otherwise afford it.</p>
+</section>
+
+<!-- ════════ WHAT YOU RECEIVE ════════ -->
+<section class="section-light">
+  <div class="label-light">In return</div>
+  <div class="divider-faint"></div>
+  <h2 class="sec-h2-light">What you receive.</h2>
+  <p class="sec-lead-light">For scholarships: a written reflection from the person you supported, with their consent. Not marketing material, but the words of a young person about what has changed.</p>
+</section>
+
+<section class="section-horizon" id="warum">
+  <div class="label-light">Partnership with Threshold</div>
+  <div class="divider-faint"></div>
+  <h2 class="sec-h2-dark">Why these years. <em>And why now.</em></h2>
+  <p class="sec-lead-dark">Between 18 and 28, much of what a life later draws on is decided. Which direction someone takes. By what standard they measure it. Whether they stay capable of acting under pressure. It is also the phase of life with the least support. School is over, an employer is not yet responsible, and parents are not neutral.</p>
+  <p class="sec-lead-dark">There is a second shift, and it concerns every organisation. The more routine is automated, the more depends on what a person can contribute that is not a copy of something that already exists. That question cannot be read up on. It needs a place where no one prescribes the outcome.</p>
+  <div class="research-strip research-strip-3">
+    <div class="research-cell">
+      <div class="research-source">Self-knowledge</div>
+      <div class="research-finding">Someone who has worked out their own strengths still knows them in five years. A test result is known until the next folder.</div>
+    </div>
+    <div class="research-cell">
+      <div class="research-source">Innovation from clarity</div>
+      <div class="research-finding">People who have found their own ground move differently under pressure. They build instead of freezing.</div>
+    </div>
+    <div class="research-cell">
+      <div class="research-source">Agency in uncertainty</div>
+      <div class="research-finding">Taking a real step without waiting for the next instruction. That is precisely what a machine cannot do.</div>
+    </div>
+  </div>
+  <div class="insight">
+    <p>Funding a place in this founding group is an investment in exactly that resilience, at the point in a young person’s life where six days can shape decisions that last for years.</p>
+  </div>
+  <div style="margin-top:64px;">
+    <div class="label-light">Ways of working together</div>
+    <div class="divider-faint"></div>
+  </div>
+  <div class="partner-grid">
+    <div class="partner-card">
+      <div class="partner-name">Scholarship Partner</div>
+      <div class="partner-body">Fund one or more places for young adults who could not otherwise take part. Your support is credited directly to the people you help, and with their consent you receive a short written reflection on what has changed.</div>
+    </div>
+    <div class="partner-card">
+      <div class="partner-name">Impact Partner</div>
+      <div class="partner-body">Receive access to anonymised before-and-after reflections and outcome notes from each cohort. Built for foundations and institutions that track what actually builds resilience in young people.</div>
+    </div>
+    <div class="partner-card">
+      <div class="partner-name">Employer and Talent Partner</div>
+      <div class="partner-body">Send your own emerging talent or leaders in transition. The place is positioned internally as an investment in their development.</div>
+    </div>
+    <div class="partner-card hl">
+      <div class="partner-name">Founding Partner</div>
+      <div class="partner-body">This is the first Threshold group. Those who carry the programme through this first year are named Founding Partners of The Threshold Program, with visibility in future materials and first access to the next groups.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ COSTS ════════ -->
+<section class="section-light">
+  <div class="label-light">Costs</div>
+  <div class="divider-faint"></div>
+  <h2 class="sec-h2-light">Costs.</h2>
+  <p class="sec-lead-light">An introductory rate applies for the founding group. We discuss the cost per place in conversation. Our <a href="/agb/" style="color:var(--gold-dark); text-decoration:underline;">terms and conditions</a> apply.</p>
+</section>
+
+<!-- ════════ CLOSING CTA ════════ -->
+<div class="cta-section">
+  <h2 class="cta-title">In 30 minutes we will know<br/><em>whether it fits.</em></h2>
+  <p class="cta-body">In 30 minutes we explore together whether this programme is the right one, how the six days unfold and what value it creates.</p>
+  <div class="cta-buttons">
+    <a class="btn-p" href="mailto:dl@light-creators.com?subject=The%20Threshold%20Program%20%E2%80%93%20partnership">Request a partnership →</a>
+    <a class="btn-s" href="/threshold/en/">To the programme</a>
+  </div>
+  <p class="cta-reassurance">No pressure, no sales pitch, just an honest look at whether this fits.</p>
+</div>
+
+<!-- ════════ FOOTER ════════ -->
+<div class="footer">
+  <div>
+    <div class="footer-brand">The Threshold Program</div>
+    <div class="footer-sub">Conscious leadership at critical turning points</div>
+  </div>
+  <div>
+    <div class="footer-contact">dl@light-creators.com<br/>Fund a place</div>
+    <div class="footer-nav">
+      <a class="is-current" href="/threshold/partner/en/">Partner</a><span class="sep">·</span><a href="/threshold/en/">The Threshold Program</a>
+      <span class="sep">·</span><a href="/index-en.html">davidliebnau.com</a>
+      <span class="sep">·</span><a href="/threshold/partner/">Deutsch</a>
+      <span class="sep">·</span><a href="/impressum/">Legal Notice</a><span class="sep">·</span><a href="/datenschutz/">Privacy Policy</a><span class="sep">·</span><a href="/agb/">Terms</a><span class="sep">·</span><a href="/widerruf/">Right of Withdrawal</a><span class="sep">·</span><a href="/ki-einsatz/">AI Use</a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
