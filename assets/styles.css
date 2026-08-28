@@ -1308,6 +1308,35 @@ podcast-cover { display: contents; }
   .provenexpert-seal { margin-left: auto; margin-right: auto; }
 }
 
+/* Qualifikationsnachweis: Logo links, Zusatztext rechts.
+   Das ICF-Logo ist dunkelblau auf transparent und laege auf dem
+   Sektionsgrund #04171F bei 1,81 zu 1, also unlesbar. Deshalb eine
+   Creme-Platte, darauf 9,52 zu 1. */
+.credential {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+.credential-mark {
+  flex: 0 0 auto;
+  width: 72px;
+  height: 72px;
+  padding: 0.6rem;
+  background: var(--color-cream);
+  border: 1px solid var(--line-dark);
+}
+.credential-mark img { display: block; width: 100%; height: auto; }
+.credential-note {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  max-width: 42ch;
+  margin: 0;
+}
+@media (max-width: 520px) {
+  .credential { flex-direction: column; align-items: flex-start; gap: 1rem; }
+}
+
 /* ============================================
    TESTIMONIALS
    ============================================ */
