@@ -36,8 +36,8 @@ Betroffene Stellen, sobald entschieden ist:
 | `threshold/index.html` | 550, 771, 772, 774, 785 | Bewerbung, Partnerschaft, Hinweiszeile, Footer |
 | `threshold/en/index.html` | 563, 784, 785, 787, 798 | dieselben Stellen auf Englisch |
 | `index-en.html` | 473, 514, 581 | Threshold-Bewerbung, direkte E-Mail, Footer |
-| `episodes/*.html` | je 1 | Footer, 29 Dateien |
-| `generate-episodes.js` | 255 | Footer in der Vorlage |
+| `episodes/*.html` | je 1 | Footer, 30 Dateien, erzeugt aus der Vorlage |
+| `tools/generate_episode.py` | PAGE_TEMPLATE | Footer in der Vorlage |
 | `fuehren/index.html` | – | Briefing-Gespräch, sobald die Seite steht |
 | `threshold/partner/index.html` | – | Partnerschaft anfragen, sobald die Seite steht |
 
@@ -116,20 +116,55 @@ light-creators.com.
 
 ## Technische Schulden
 
-### generate-episodes.js läuft nicht
+### generate-episodes.js ist abgelöst
 
-Zwei Gründe:
+Erledigt. `generate-episodes.js` ist entfernt, an seine Stelle tritt
+`tools/generate_episode.py`. Node ist auf der Zielmaschine nicht
+installiert, das Skript läuft mit der Python-Standardbibliothek.
 
-1. Die Vorlage enthält den SEO-Block nicht, den alle 29 erzeugten Dateien
-   tragen. Ein Lauf würde canonical, robots, og, twitter und beide
-   JSON-LD-Blöcke in allen 29 Dateien löschen.
-2. Die Quelldatei `episode-content.md` liegt nicht im Repository.
+Die Vorlage trägt den vollständigen SEO-Block (canonical, robots, og,
+twitter, beide JSON-LD-Blöcke) und den Footer mit allen sechs Links unter
+„Arbeite mit David". Die alte Sperre ist damit gegenstandslos.
 
-Der Lauf ist deshalb gesperrt und bricht ohne `--force` ab. Die Sperre wurde
-nie ausgeführt, Node war beim Einbau nicht installiert.
+Der redaktionelle Text bleibt in der Episodenseite. `rebuild` liest ihn
+heraus, setzt die Hülle neu und schreibt ihn unverändert zurück; weicht eine
+Datei von der erwarteten Struktur ab, bricht der Lauf ab, bevor etwas
+geschrieben wird.
 
-**Zu tun:** SEO-Block in die Vorlage aufnehmen, Quelldatei beschaffen,
-Sperre entfernen.
+### Neue Episode einpflegen
+
+`episodes-meta.json` ist die einzige Wahrheit pro Episode. Aus einem Eintrag
+entstehen vier Zielorte: die Episodenseite, die `<noscript>`-Zeile in
+`podcast.html`, die Featured-Karten und der Eintrag in `sitemap.xml`.
+
+1. Text der Folge als Datei in `content/` ablegen. Überschriften mit `## `
+   auszeichnen, alles andere wird ein Absatz.
+2. Einen Befehl ausführen:
+
+```
+python3 tools/generate_episode.py new 30 \
+  --title "..." --seo-title "..." --description "..." \
+  --content content/ep-30.txt --tags "Fuehrung,Team" \
+  --spotify "https://open.spotify.com/episode/..."
+```
+
+Das schreibt die Seite und aktualisiert `episodes-meta.json`, `podcast.html`
+und `sitemap.xml` in einem Zug.
+
+Weitere Befehle: `check --diff` zeigt, was sich ändern würde, ohne zu
+schreiben. `rebuild` baut alle Episodenseiten aus der Vorlage neu. `sync`
+schreibt nur die abgeleiteten Stellen neu.
+
+Die iTunes-Abfrage in `podcast.html` bleibt davon unberührt. Sie füllt das
+Archiv live aus dem Apple-Feed und braucht keine Pflege. Die Tabelle
+`NUMBER_OVERRIDES` für die Folgen 19 bis 21 bleibt die arbeitende Quelle;
+`trackIdOverride` in `episodes-meta.json` hält dieselbe Zuordnung, und das
+Skript bricht ab, wenn beide auseinanderlaufen.
+
+Offen: Für die Folgen 0 bis 23 fehlt die `spotifyUrl`. Ohne Wert verlinkt
+„Jetzt reinhören" auf die Show statt auf die Folge. Die öffentliche
+Spotify-Seite gibt ohne Login nur die sechs neuesten Folgen preis; die
+übrigen Adressen müssen aus dem Spotify-Konto nachgetragen werden.
 
 ### Farb-Tokens laufen auseinander
 
