@@ -153,7 +153,15 @@
   .dimensions-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; margin-bottom: 48px; }
   .dimensions-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
   .dim-card { padding: 34px 28px; background: rgba(255,255,255,0.03); border-top: 2px solid rgba(168,125,52,0.3); }
-  .dim-icon { font-family: 'Cormorant Garamond', serif; font-size: 26px; color: var(--gold-dark); margin-bottom: 14px; font-style: italic; }
+  .dim-icon { font-family: 'Cormorant Garamond', serif; font-size: 26px; color: var(--gold-dark); font-style: italic; }
+  /* Methodensymbol neben der Ziffer. 56px, nicht die 96px der Startseite:
+     die Karte ist bei 1440 nur 267px breit und traegt 13px-Fliesstext, ein
+     96px-Symbol waere knapp viermal so hoch wie die Ziffer daneben.
+     Soft Gold statt Gold Dark, 9,10 zu 1 auf der Kartenflaeche. */
+  .dim-head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .dim-symbol { width: 56px; height: 56px; flex: 0 0 auto; color: var(--sun); }
+  @media (max-width: 700px) { .dim-symbol { width: 48px; height: 48px; } }
+  @media (prefers-reduced-motion: reduce) { .dim-symbol { animation: none; transition: none; } }
   .dim-name { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #fff; margin-bottom: 2px; }
   .dim-tagline { font-size: 12px; letter-spacing: 0.04em; color: var(--sun); font-weight: 500; margin-bottom: 12px; }
   .dim-question { font-family: 'Cormorant Garamond', serif; font-size: 15px; font-style: italic; color: var(--sun); margin-bottom: 14px; line-height: 1.4; }
@@ -364,28 +372,92 @@
   <p class="sec-lead-dark">There's a name for this place: the threshold. The old way of moving through the world doesn't carry you anymore, and the new one hasn't found its form. Six days won't make that discomfort disappear. They give it a shape you can work with — through a craft we call the generative dialogues, four movements that structure everything that happens in Finland.</p>
   <div class="dimensions-grid">
     <div class="dim-card">
-      <div class="dim-icon">01</div>
+      <div class="dim-head">
+        <svg class="dim-symbol" aria-hidden="true" focusable="false" viewBox="0 0 240 240" fill="none" stroke="currentColor" stroke-width="1.25" xmlns="http://www.w3.org/2000/svg">
+            <g transform="rotate(-12 120 120)">
+              <ellipse cx="120" cy="120" rx="102" ry="86"/>
+              <ellipse cx="120" cy="120" rx="84" ry="68" opacity="0.75"/>
+              <ellipse cx="120" cy="120" rx="66" ry="50" opacity="0.5"/>
+              <ellipse cx="120" cy="120" rx="48" ry="32" opacity="0.3" stroke-dasharray="3 7"/>
+              <ellipse cx="120" cy="120" rx="30" ry="15" opacity="0.16" stroke-dasharray="2 8"/>
+            </g>
+          </svg>
+        <div class="dim-icon">01</div>
+      </div>
       <div class="dim-name">Letting Go</div>
       <div class="dim-tagline">Make space.</div>
       <div class="dim-question">What are you still carrying that was never actually yours?</div>
       <div class="dim-body">Silence. Distance from screens and feeds. A conscious release of noise, old habits, and the version of yourself that was built for other people's approval.</div>
     </div>
     <div class="dim-card">
-      <div class="dim-icon">02</div>
+      <div class="dim-head">
+        <svg class="dim-symbol" aria-hidden="true" focusable="false" viewBox="0 0 240 240" fill="none" stroke="currentColor" stroke-width="1.25" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="78" cy="120" r="72"/>
+            <circle cx="162" cy="120" r="72"/>
+            <g opacity="0.85">
+              <ellipse cx="120" cy="120" rx="30" ry="6"/>
+              <ellipse cx="120" cy="110" rx="29.3" ry="6"/>
+              <ellipse cx="120" cy="130" rx="29.3" ry="6"/>
+              <ellipse cx="120" cy="100" rx="27.2" ry="6"/>
+              <ellipse cx="120" cy="140" rx="27.2" ry="6"/>
+              <ellipse cx="120" cy="90" rx="23.5" ry="6"/>
+              <ellipse cx="120" cy="150" rx="23.5" ry="6"/>
+              <ellipse cx="120" cy="80" rx="17.9" ry="5"/>
+              <ellipse cx="120" cy="160" rx="17.9" ry="5"/>
+              <ellipse cx="120" cy="70" rx="9.8" ry="4"/>
+              <ellipse cx="120" cy="170" rx="9.8" ry="4"/>
+            </g>
+          </svg>
+        <div class="dim-icon">02</div>
+      </div>
       <div class="dim-name">Connecting</div>
       <div class="dim-tagline">Return to yourself.</div>
       <div class="dim-question">Who are you when no one is asking anything of you?</div>
       <div class="dim-body">Reconnection with yourself first — body, breath, quiet. Then real encounter with the others in the group, without performance or comparison.</div>
     </div>
     <div class="dim-card">
-      <div class="dim-icon">03</div>
+      <div class="dim-head">
+        <svg class="dim-symbol" aria-hidden="true" focusable="false" viewBox="0 0 240 240" fill="none" stroke="currentColor" stroke-width="1.25" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="dim-gold-gradient" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#FFDB9D"/>
+                <stop offset="1" stop-color="#A87D34"/>
+              </linearGradient>
+            </defs>
+            <g opacity="0.9">
+              <ellipse cx="64" cy="120" rx="56" ry="92"/>
+              <ellipse cx="72" cy="120" rx="48" ry="86"/>
+              <ellipse cx="80" cy="120" rx="40" ry="80"/>
+              <ellipse cx="88" cy="120" rx="32" ry="74"/>
+              <ellipse cx="176" cy="120" rx="56" ry="92"/>
+              <ellipse cx="168" cy="120" rx="48" ry="86"/>
+              <ellipse cx="160" cy="120" rx="40" ry="80"/>
+              <ellipse cx="152" cy="120" rx="32" ry="74"/>
+            </g>
+            <circle cx="120" cy="120" r="6.5" fill="url(#dim-gold-gradient)" stroke="none"/>
+          </svg>
+        <div class="dim-icon">03</div>
+      </div>
       <div class="dim-name">Recognizing</div>
       <div class="dim-tagline">Discover what is truly yours.</div>
       <div class="dim-question">What do you actually bring that no one else does?</div>
       <div class="dim-body">Your own strengths and the true state of things, seen clearly — through honest reflection and listening, not through comparison.</div>
     </div>
     <div class="dim-card">
-      <div class="dim-icon">04</div>
+      <div class="dim-head">
+        <svg class="dim-symbol" aria-hidden="true" focusable="false" viewBox="0 0 240 240" fill="none" stroke="currentColor" stroke-width="1.25" xmlns="http://www.w3.org/2000/svg">
+            <g opacity="0.55">
+              <ellipse cx="120" cy="120" rx="40" ry="96"/>
+              <ellipse cx="120" cy="120" rx="40" ry="96" transform="rotate(30 120 120)"/>
+              <ellipse cx="120" cy="120" rx="40" ry="96" transform="rotate(60 120 120)"/>
+              <ellipse cx="120" cy="120" rx="40" ry="96" transform="rotate(90 120 120)"/>
+              <ellipse cx="120" cy="120" rx="40" ry="96" transform="rotate(120 120 120)"/>
+              <ellipse cx="120" cy="120" rx="40" ry="96" transform="rotate(150 120 120)"/>
+            </g>
+            <ellipse cx="120" cy="120" rx="100" ry="26" transform="rotate(-16 120 120)" stroke-width="1.9"/>
+          </svg>
+        <div class="dim-icon">04</div>
+      </div>
       <div class="dim-name">Creating</div>
       <div class="dim-tagline">Turn clarity into action.</div>
       <div class="dim-question">What will you build from what you now know?</div>
