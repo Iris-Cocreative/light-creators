@@ -143,6 +143,39 @@ dort wiederverwendet werden können: `role-entrepreneur.webp`,
 
 ---
 
+## Später, nicht dringend
+
+- [ ] **Vorvertragliche Pflichtinformationen nach Art. 246c EGBGB.**
+      Betrifft nicht die Website, sondern die Anmeldebestätigung per
+      E-Mail. Pflichtangaben sind unter anderem: welche technischen
+      Schritte zum Vertragsschluss führen, ob der Vertragstext
+      gespeichert und zugänglich ist, wie Eingabefehler erkannt und
+      korrigiert werden können, welche Sprachen zur Verfügung stehen.
+      Bei Buchung über Gespräch und E-Mail entspannter als bei einem
+      Shop, gehört aber in die Bestätigung. Claude kann das Dokument
+      entwerfen, sobald der genaue Buchungsablauf feststeht: Kommt der
+      Vertrag im Gespräch zustande oder erst mit der schriftlichen
+      Bestätigung, und werden AGB und Widerrufsbelehrung mitgeschickt.
+      Verschoben am 1. September 2026, aktuell nicht wichtig.
+
+- [ ] **DPMA-Markenrecherche „The Threshold Program".**
+      Keine eigenen Markenrechte angemeldet und vorerst auch nicht
+      geplant. Das Risiko liegt umgekehrt: Jemand anderes könnte den
+      Namen für Coaching- oder Weiterbildungsleistungen eingetragen
+      haben, dann droht eine Abmahnung, obwohl nichts angemeldet wurde.
+      Echte Registerrecherche im DPMAregister, keine Websuche. Bei einer
+      Gründungsgruppe gering relevant. Vor bezahlter Werbung oder
+      größerer Reichweite einmal prüfen lassen.
+      Verschoben am 1. September 2026.
+
+- [x] **Auftragsverarbeitungsvertrag mit GitHub.** Am 1. September 2026
+      als ausreichend abgehakt: Das GitHub Data Protection Agreement
+      läuft in der Regel über die Nutzungsbedingungen mit. Ziffer 2 der
+      Datenschutzerklärung beschreibt Hosting, Drittlandtransfer und
+      EU-US Data Privacy Framework korrekt.
+
+---
+
 ## Erledigt
 
 - [x] Positionierung und Klammer festgelegt: Bewusstes Leadership an
