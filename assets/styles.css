@@ -1346,11 +1346,6 @@ podcast-cover { display: contents; }
   color: var(--color-eyebrow);
   border-color: var(--color-eyebrow);
 }
-.trust-proof__date {
-  display: block;
-  margin-top: 0.4rem;
-  font-size: 0.8rem;
-}
 
 /* Qualifikationsnachweis: Logo links, Zusatztext rechts.
    Das ICF-Logo ist dunkelblau auf transparent und laege auf dem
