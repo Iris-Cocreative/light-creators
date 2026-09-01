@@ -97,20 +97,43 @@ Beschneiden.**
 - [ ] HR Excellence Award Logo: Nutzungsrechte klären.
   Ausgezeichnet wurde ein Programm der SYNK GROUP. Ohne schriftliche
   Freigabe der SYNK GROUP wird das Logo nicht auf der Website geführt.
-  Beide Bilddateien liegen ungenutzt im Assets-Ordner. Der textliche
-  Bezug auf den Award bleibt bestehen, er ist davon nicht betroffen.
+  Der textliche Bezug auf den Award bleibt bestehen, er ist davon nicht
+  betroffen.
 
-Die beiden Dateien sind `assets/HREA_Logo_Gewinner_2017_web.png`
+Die beiden Dateien waren `assets/HREA_Logo_Gewinner_2017_web.png`
 (600 × 1183, transparent, sRGB) und die ältere
-`assets/hr-excellence-award-2017.png`. Kommt die Freigabe, ist die erste
-sofort verwendbar.
+`assets/hr-excellence-award-2017.png`. Beide wurden beim Aufräumen am
+01.09.2026 aus dem Arbeitsbaum entfernt, weil sie von keiner Seite
+eingebunden waren. **Sie sind nicht verloren.** Kommt die Freigabe der
+SYNK GROUP, holt man sie zurück mit:
+
+```
+git checkout 6672aca -- assets/HREA_Logo_Gewinner_2017_web.png
+```
 
 ### Ungenutzte Bilder
 
 `assets/role-entrepreneur.webp`, `assets/role-manager.webp` und
 `assets/role-expert.webp` werden seit dem Relaunch nicht mehr
-eingebunden. Sie bleiben liegen, mögliche Wiederverwendung auf
+eingebunden. Sie bleiben bewusst liegen, mögliche Wiederverwendung auf
 light-creators.com.
+
+Am 01.09.2026 wurden 20 sonst nirgends referenzierte Dateien entfernt,
+zusammen rund 22 MB: sieben große Portraits und Hintergründe aus der
+Zeit vor dem Relaunch, die beiden Award-Logos, das nicht mehr genutzte
+ProvenExpert-Siegelbild, vier lose Dateien im Wurzelverzeichnis und
+sechs Icon-Dateien aus `quiz-assets` und `solo-assets`. Alle über
+`git checkout 6672aca -- <pfad>` wiederherstellbar. Bewusst behalten:
+die Bilddateien in `briefing/` als Beleg zu den Briefings und die sechs
+SVGs, an denen noch die Archivseiten hängen.
+
+### Tote Verweise im Archiv
+
+`_archiv/founder-resonance-bloecke.html` und `_archiv/index-en-alt.html`
+haben 31 tote Bildverweise, weil ihre relativen Pfade beim Verschieben
+nach `_archiv/` nicht mitgezogen wurden. Bestand schon vor dem
+Aufräumen. Ohne Folgen, weil `robots.txt` das Archiv sperrt und es nicht
+verlinkt ist. Wenn es stört: Pfade auf `/assets/...` umstellen.
 
 ---
 
