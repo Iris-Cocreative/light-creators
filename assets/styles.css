@@ -1297,35 +1297,59 @@ podcast-cover { display: contents; }
 
 /* ProvenExpert rating seal — third-party widget injects a fixed-width circle,
    so cap and centre it rather than letting it dictate the column. */
-.provenexpert-seal {
+/* Bewertungsnachweis ProvenExpert. Die von ProvenExpert exportierbare
+   Kachel ist ein Abbild ihres Widgets samt totem "Mehr Infos"-Link und
+   ⓘ-Symbol - das liest sich als Screenshot, nicht als Siegel. Deshalb der
+   Nachweis in der eigenen Typografie, mit ProvenExpert als benannter und
+   verlinkter Quelle, damit die Angabe ueberpruefbar bleibt.
+   Kontrast auf Luminous Sand: Sterne --color-gold-em 3.51 zu 1, als
+   aria-hidden Grafik an der 3er-Schwelle gemessen und bei 24px ohnehin
+   grosser Text; Note --text 17.27 zu 1; Zusatz --text-muted 5.10 zu 1. */
+.trust-proof {
   margin-top: 2.5rem;
-  max-width: 300px;
+  max-width: 34rem;
 }
-.provenexpert-seal img,
-.provenexpert-seal svg,
-.provenexpert-seal iframe { max-width: 100%; height: auto; }
-@media (max-width: 720px) {
-  .provenexpert-seal { margin-left: auto; margin-right: auto; }
+.trust-proof__score {
+  display: flex;
+  align-items: baseline;
+  gap: 0.65rem;
+  margin: 0 0 0.4rem;
 }
-
-/* Die Durchschnittsnote als Text unter dem Siegel. Das Siegelbild selbst
-   zeigt nur Anzahl und Stichtag, und ProvenExperts Kreis-Widget gibt die
-   Note ueberhaupt nicht aus - deshalb hier in der eigenen Typografie statt
-   als nachgebautes Fremdlogo. */
-.pe-rating {
-  margin-top: 0.9rem;
-  font-size: 0.95rem;
-  line-height: 1.4;
-  color: var(--text-muted);
-  max-width: 300px;
-}
-.pe-rating__value {
-  font-family: var(--font-heading);
-  font-size: 1.9rem;
-  font-style: italic;
+.trust-proof__stars {
+  font-size: 1.5rem;
   line-height: 1;
+  letter-spacing: 0.06em;
   color: var(--color-gold-em);
-  margin-right: 0.15em;
+}
+.trust-proof__score strong {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.75rem;
+  line-height: 1;
+  color: var(--text);
+}
+.trust-proof__meta {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+.trust-proof__link {
+  color: var(--text);
+  border-bottom: 1px solid var(--line-light);
+  white-space: nowrap;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.trust-proof__link:hover,
+.trust-proof__link:focus-visible {
+  color: var(--color-eyebrow);
+  border-color: var(--color-eyebrow);
+}
+.trust-proof__date {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.8rem;
 }
 
 /* Qualifikationsnachweis: Logo links, Zusatztext rechts.
