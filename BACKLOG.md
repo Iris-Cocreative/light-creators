@@ -3,7 +3,7 @@
 Offene Punkte, die außerhalb des Relaunch-Briefings liegen oder auf eine
 Entscheidung, eine Lieferung oder ein externes Set-up warten.
 
-Stand: 2026-08-22
+Stand: 2026-09-01
 
 ---
 
@@ -11,52 +11,42 @@ Stand: 2026-08-22
 
 ### E-Mail-Adressen für die drei Call-to-Action-Buttons
 
-Es gibt **keine `@davidliebnau.com`-Adresse**. Im Repository kommen nur zwei
-Adressen vor, beide auf der Domain `light-creators.com`. Threshold läuft aber
-unter davidliebnau.com, ein Bewerber oder eine Stiftung darf nicht in einer
-Mail an eine fremd wirkende Firma landen.
-
-**Übergangslösung, aktiv:** Alle drei Buttons gehen auf
-`dl@light-creators.com`, die Betreffzeilen bleiben unverändert.
-`info@light-creators.com` wird für diese Buttons nicht mehr verwendet.
-
-**Set-up erforderlich:** Einrichtung mindestens einer Adresse auf
-`@davidliebnau.com`, zum Beispiel `david@`, `hallo@` oder getrennt nach
-Zweck. Danach ein Sweep über alle unten genannten Fundstellen.
-
-Betroffene Stellen, sobald entschieden ist:
-
-| Datei | Zeilen | Kontext |
-|---|---|---|
-| `index.html` | 114, 578 | Briefing-Gespräch, Hero und CTA-Block |
-| `index.html` | 586 | Threshold Bewerbungsgespräch |
-| `index.html` | 594 | Threshold Partnerschaft |
-| `index.html` | 601, 663 | direkte E-Mail, Footer |
-| `podcast.html` | 343, 480 | Briefing-Gespräch, Footer |
-| `threshold/index.html` | 550, 771, 772, 774, 785 | Bewerbung, Partnerschaft, Hinweiszeile, Footer |
-| `threshold/en/index.html` | 563, 784, 785, 787, 798 | dieselben Stellen auf Englisch |
-| `index-en.html` | 473, 514, 581 | Threshold-Bewerbung, direkte E-Mail, Footer |
-| `episodes/*.html` | je 1 | Footer, 30 Dateien, erzeugt aus der Vorlage |
-| `tools/generate_episode.py` | PAGE_TEMPLATE | Footer in der Vorlage |
-| `fuehren/index.html` | – | Briefing-Gespräch, sobald die Seite steht |
-| `threshold/partner/index.html` | – | Partnerschaft anfragen, sobald die Seite steht |
-
-Nicht angefasst, weil außerhalb des Auftrags: `solo.html`,
-`landing-pages/*`.
+Erledigt. Alle Call-to-Action-Buttons laufen auf `mail@davidliebnau.com`.
+Die Übergangslösung über `dl@light-creators.com` ist abgelöst, die
+Fundstellentabelle von August 2026 damit gegenstandslos. Seit dem
+Phase-1-Sprint kommen die vier Nachfragewege auf den Threshold-Seiten
+dazu, ebenfalls auf dieselbe Adresse, unterschieden über die Betreffzeile.
 
 ### Impressum und Datenschutz
 
-`/impressum/` und `/datenschutz/` stehen als Platzhalter mit `noindex`.
-Der juristische Text fehlt und wird von David geliefert. Bis dahin bleiben
-beide Seiten aus der Sitemap heraus.
-
-Für eine gewerbliche deutsche Website ist das fehlende Impressum ein
-Risiko, unabhängig vom Relaunch.
+Erledigt. `/impressum/` und `/datenschutz/` tragen den echten Text, stehen
+nicht mehr auf `noindex` und sind in der Sitemap. Dasselbe gilt für
+`/agb/`, `/widerruf/` und `/ki-einsatz/`.
 
 ### LinkedIn-Empfehlungen
 
-Der Wortlaut fehlt. Auf `/fuehren/` steht dafür ein markierter Platzhalter
-im Belege-Abschnitt.
+Drei Empfehlungen liegen im Wortlaut vor und stehen seit dem
+Phase-1-Sprint kontextnah auf `/fuehren/` und `/fuehren/en/`: Pa M.K.
+Sinyan bei „Wie ich arbeite", Viktor Szücs bei „Formate", David Kling im
+Belege-Abschnitt. Die Testimonial-Wand am Seitenende ist damit aufgelöst.
+
+- [ ] Empfehlung 4 und 5 im Wortlaut liefern. Kriterien und Einbauort
+  stehen als markierter Kommentarblock im Belege-Abschnitt beider
+  Führen-Seiten. Nichts erfinden.
+- [ ] Anschließend `/fuehren/en/` mit derselben Empfehlung ergänzen.
+
+Regel R2 ist seit dem Phase-1-Sprint technisch abgesichert:
+`assets/award-context.js` prüft jede Award-Fundstelle im gerenderten Text
+und hängt den Rollen-Satz zur SYNK GROUP an, wenn er im Block oder im
+unmittelbar vorangehenden Element fehlt. Eingebunden ist der Wächter auf
+`/fuehren/` und `/fuehren/en/`.
+
+- [ ] Entscheiden, ob der Wächter auch auf `index.html`, `index-en.html`
+  und `podcast.html` läuft. Dort genügt eine Zeile vor `</body>`:
+  `<script src="/assets/award-context.js" defer></script>`.
+  Für `threshold/index.html` und `threshold/en/index.html` käme zusätzlich
+  die Regel `.award-context` in deren Inline-CSS dazu, weil diese Seiten
+  `assets/styles.css` nicht laden.
 
 ---
 
@@ -70,6 +60,23 @@ im Belege-Abschnitt.
   und drei auf `/threshold/partner/en/` (Drei Wege, Threshold-Teaser,
   Footer). Threshold selbst zeigte schon auf `/threshold/en/`.
   `podcast.html` bleibt deutsch, der Text sagt das mit „In German".
+
+### Englischer Partnerblock steht doppelt
+
+Gefunden im Phase-1-Sprint. `/threshold/partner/en/` existiert als
+eigenständige Seite, aber `threshold/en/index.html` trägt in der Section
+`#partners` weiterhin den vollständigen Partnerblock: Research-Strip mit
+drei Zellen, Insight-Kasten und alle vier Partner-Karten. Die deutsche
+Fassung wurde beim Anlegen der Partnerseite auf einen kurzen Teaser plus
+Link zurückgebaut, die englische nicht.
+
+Folgen: rund 40 Zeilen Text stehen auf zwei indexierbaren URLs identisch,
+und die beiden Sprachfassungen der Threshold-Seite laufen inhaltlich
+auseinander.
+
+- [ ] Entscheiden, ob `#partners` auf `threshold/en/index.html` auf denselben
+  kurzen Teaser zurückgebaut wird wie auf der deutschen Seite. Bewusst
+  nicht auf Verdacht geändert, das ist eine redaktionelle Entscheidung.
 
 ### ProvenExpert-Siegel auf Englisch
 
@@ -87,10 +94,12 @@ im Belege-Abschnitt.
 `threshold/og-image.jpg` ist **1920 × 1440**, also 4:3. Open Graph erwartet
 1,91:1. Facebook und LinkedIn beschneiden das Bild oben und unten.
 
-`assets/og-image.jpg` ist mit 1200 × 630 korrekt und wird vorerst auch auf
-`/threshold/partner/` verwendet. Ein passend zugeschnittenes Bild für
-Threshold und die Partnerseite liefert David nach. **Kein automatisches
-Beschneiden.**
+`assets/og-image.jpg` ist mit 1200 × 630 korrekt und läuft vorerst auf
+`/threshold/partner/`, `/threshold/partner/en/`, `/fuehren/` und
+`/fuehren/en/` mit. Ein passend zugeschnittenes Bild für Threshold, die
+Partnerseite und die Führen-Seite liefert David nach. **Kein automatisches
+Beschneiden.** Der Punkt blieb im Phase-1-Sprint offen und ist der einzige
+SEO-Punkt der vier Money Pages, der nicht abgeschlossen ist.
 
 ### HR Excellence Award Logo: Nutzungsrechte klären
 
