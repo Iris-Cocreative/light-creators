@@ -847,5 +847,23 @@
     beobachter.observe(ziel);
   })();
 </script>
+<script>
+  // Plausible: einmalig melden, wenn der FAQ-Bereich zuerst sichtbar wird
+  (function () {
+    var ziel = document.querySelector('.faq-list');
+    if (!ziel || !('IntersectionObserver' in window)) return;
+    var gemeldet = false;
+    var beobachter = new IntersectionObserver(function (eintraege) {
+      eintraege.forEach(function (e) {
+        if (e.isIntersecting && !gemeldet) {
+          gemeldet = true;
+          if (window.plausible) window.plausible('threshold_faq_seen');
+          beobachter.disconnect();
+        }
+      });
+    }, { threshold: 0.25 });
+    beobachter.observe(ziel);
+  })();
+</script>
 </body>
 </html>

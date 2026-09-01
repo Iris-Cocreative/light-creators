@@ -819,6 +819,9 @@
       <div class="partner-body">This is the first Threshold group. Partners who join now are named as founding partners of the Threshold Program, with visibility in future materials and first access to the next groups and formats.</div>
     </div>
   </div>
+  <div style="margin-top:32px;">
+    <a class="plausible-event-name=threshold_partner_link_click" href="/threshold/partner/en/" style="color:var(--sun); text-decoration:underline; font-size:15px;">For parents, foundations and companies &rarr;</a>
+  </div>
 </section>
 
 <!-- ════════ FAQ ════════ -->
@@ -889,6 +892,24 @@
         if (e.isIntersecting && !gemeldet) {
           gemeldet = true;
           if (window.plausible) window.plausible('threshold_price_scroll');
+          beobachter.disconnect();
+        }
+      });
+    }, { threshold: 0.25 });
+    beobachter.observe(ziel);
+  })();
+</script>
+<script>
+  // Plausible: einmalig melden, wenn der FAQ-Bereich zuerst sichtbar wird
+  (function () {
+    var ziel = document.querySelector('.faq-list');
+    if (!ziel || !('IntersectionObserver' in window)) return;
+    var gemeldet = false;
+    var beobachter = new IntersectionObserver(function (eintraege) {
+      eintraege.forEach(function (e) {
+        if (e.isIntersecting && !gemeldet) {
+          gemeldet = true;
+          if (window.plausible) window.plausible('threshold_faq_seen');
           beobachter.disconnect();
         }
       });
