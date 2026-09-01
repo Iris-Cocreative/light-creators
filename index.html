@@ -366,12 +366,20 @@
         <p>Was sich damals zeigte, leitet mich noch heute: die Arbeit an gelingenden Beziehungen und der innere Ruf, Räume und schöpferische Dialoge zu schaffen, die es meinen Kunden ermöglichen, ihre eigene Vision zu erkennen und kraftvoll zu verwirklichen.</p>
         <p>Dieser Mission folge ich in den Wäldern Finnlands. In Online-Meetings. In Besprechungsräumen von Unternehmen und Hotels.</p>
 
-        <!-- ProvenExpert Bewertungssiegel -->
+        <!-- ProvenExpert Bewertungssiegel.
+             Lokal gehostet, kein Aufruf an ProvenExpert beim Seitenaufruf.
+             Das Siegelbild traegt Anzahl (10) und Stichtag (21.04.2026); die
+             Durchschnittsnote steht als Text daneben, weil das Bild sie nicht
+             enthaelt und das Kreis-Widget von ProvenExpert sie ebenfalls nicht
+             ausgibt - geprueft am 01.09.2026, es rendert nur "Kundenbewertungen"
+             und "Mehr Infos". Note, Anzahl und Stichtag gehoeren zusammen und
+             muessen gemeinsam nachgezogen werden, wenn das Bild getauscht wird. -->
         <div class="provenexpert-seal">
           <a href="https://www.provenexpert.com/de-de/david-liebnau-light-creators-tribe/" target="_blank" rel="noopener">
             <img src="/assets/images/provenexpert-siegel.png" width="250" height="300" loading="lazy"
-                 alt="ProvenExpert Bewertungssiegel: David Liebnau &ndash; Light Creators Tribe, Kundenbewertungen" />
+                 alt="ProvenExpert Bewertungssiegel: David Liebnau &ndash; Light Creators Tribe, 4,98 von 5 aus 10 Kundenbewertungen" />
           </a>
+          <p class="pe-rating"><span class="pe-rating__value">4,98</span> von 5 im Durchschnitt</p>
         </div>
       </div>
     </div>

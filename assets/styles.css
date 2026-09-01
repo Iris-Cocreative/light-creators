@@ -1308,6 +1308,26 @@ podcast-cover { display: contents; }
   .provenexpert-seal { margin-left: auto; margin-right: auto; }
 }
 
+/* Die Durchschnittsnote als Text unter dem Siegel. Das Siegelbild selbst
+   zeigt nur Anzahl und Stichtag, und ProvenExperts Kreis-Widget gibt die
+   Note ueberhaupt nicht aus - deshalb hier in der eigenen Typografie statt
+   als nachgebautes Fremdlogo. */
+.pe-rating {
+  margin-top: 0.9rem;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: var(--text-muted);
+  max-width: 300px;
+}
+.pe-rating__value {
+  font-family: var(--font-heading);
+  font-size: 1.9rem;
+  font-style: italic;
+  line-height: 1;
+  color: var(--color-gold-em);
+  margin-right: 0.15em;
+}
+
 /* Qualifikationsnachweis: Logo links, Zusatztext rechts.
    Das ICF-Logo ist dunkelblau auf transparent und laege auf dem
    Sektionsgrund #04171F bei 1,81 zu 1, also unlesbar. Deshalb eine
