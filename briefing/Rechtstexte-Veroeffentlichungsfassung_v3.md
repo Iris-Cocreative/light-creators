@@ -1,19 +1,14 @@
-# Rechtstexte für davidliebnau.com
+# Rechtstexte davidliebnau.com
 
-Fassung 2, Stand August 2026.
+Veröffentlichungsfassung, Stand August 2026.
+Diese Datei enthält ausschließlich Text, der auf die Website geht. Keine
+internen Notizen, keine Platzhalter.
 
-**Kein Rechtsrat.** Diese Texte decken die üblichen Punkte ab. Vor der
-Veröffentlichung sollte jemand mit Zulassung darübersehen, besonders bei den
-AGB. Die Fassung ist so gebaut, dass die Seite damit online gehen kann.
-
-Es sind nur noch vier Stellen offen, alle mit ⟨spitzen Klammern⟩ markiert.
-Sie stehen gesammelt am Ende unter „Was noch fehlt".
+Seiten: `/impressum/` · `/datenschutz/` · `/ki-einsatz/` · `/agb/` · `/widerruf/`
 
 ---
 
-# TEIL 0 · Impressum
-
-Erreichbar unter `/impressum/`, verlinkt aus dem Footer jeder Seite.
+# Impressum
 
 ## Angaben gemäß § 5 DDG
 
@@ -24,7 +19,7 @@ Gardeschützenweg 103
 ## Kontakt
 
 Telefon: +49 170 4326737
-E-Mail: dl@light-creators.com
+E-Mail: mail@davidliebnau.com
 
 ## Umsatzsteuer-Identifikationsnummer
 
@@ -85,7 +80,7 @@ Stand: August 2026
 
 ---
 
-# TEIL 1 · Datenschutzerklärung
+# Datenschutzerklärung
 
 ## 1. Verantwortlicher
 
@@ -94,7 +89,7 @@ Verantwortlich für die Datenverarbeitung auf dieser Website ist:
 David Liebnau
 Gardeschützenweg 103
 12203 Berlin
-E-Mail: dl@light-creators.com
+E-Mail: mail@davidliebnau.com
 Telefon: +49 170 4326737
 
 ## 2. Hosting
@@ -117,18 +112,11 @@ zertifiziert.
 
 ## 3. Schriftarten
 
-Diese Website nutzt Schriftarten des Dienstes Google Fonts, bereitgestellt
-durch die Google Ireland Limited, Gordon House, Barrow Street, Dublin 4,
-Irland. Beim Aufruf einer Seite lädt dein Browser die verwendeten
-Schriftarten von einem Google-Server. Dabei wird deine IP-Adresse an Google
-übermittelt. Eine Speicherung oder Auswertung dieser Daten durch mich findet
-nicht statt.
-
-Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Das berechtigte Interesse
-liegt in der einheitlichen und technisch zuverlässigen Darstellung der
-Website.
-
-Weitere Informationen von Google: https://policies.google.com/privacy
+Diese Website nutzt die Schriftarten Newsreader und Hanken Grotesk. Die
+Schriftdateien werden auf dem eigenen Server ausgeliefert. Es findet
+keine Verbindung zu Servern von Google oder einem anderen Drittanbieter
+statt, und es werden keine Daten wie deine IP-Adresse an Dritte
+übermittelt.
 
 ## 4. Kontaktaufnahme per E-Mail
 
@@ -147,20 +135,61 @@ Ablauf der gesetzlichen Aufbewahrungsfristen.
 
 Wenn du an einem Programm teilnimmst, verarbeite ich die Angaben, die für
 Durchführung und Abrechnung erforderlich sind. Dazu können Angaben zur
-gesundheitlichen Teilnahmefähigkeit gehören, die du mir freiwillig mitteilst.
-Solche Angaben verarbeite ich ausschließlich zur sicheren Durchführung des
-Programms, auf Grundlage deiner ausdrücklichen Einwilligung nach Art. 9 Abs.
-2 lit. a DSGVO, und lösche sie nach Programmende, soweit keine gesetzliche
-Aufbewahrungspflicht besteht.
+gesundheitlichen Teilnahmefähigkeit gehören.
+
+Freiwillige Angaben zu deiner gesundheitlichen Situation, die über das
+für die sichere Durchführung Erforderliche hinausgehen, verarbeite ich
+auf Grundlage deiner ausdrücklichen Einwilligung nach Art. 9 Abs. 2 lit.
+a DSGVO.
+
+Stehst du zum Zeitpunkt der Teilnahme in ärztlicher oder
+psychotherapeutischer Behandlung wegen einer körperlichen oder
+psychischen Erkrankung, bitte ich dich um eine ärztliche Bescheinigung
+deiner Teilnahmefähigkeit. Diese Verarbeitung ist zur Beurteilung deiner
+Teilnahmefähigkeit und damit zur sicheren Durchführung des Programms
+erforderlich und stützt sich auf Art. 9 Abs. 2 lit. h DSGVO in
+Verbindung mit § 22 Abs. 1 Nr. 1 Buchstabe b BDSG.
+
+In beiden Fällen verarbeite ich diese Angaben ausschließlich zur
+sicheren Durchführung des Programms und lösche sie nach Programmende,
+soweit keine gesetzliche Aufbewahrungspflicht besteht.
 
 Inhalte aus Gesprächen und Gruppen gebe ich nicht weiter und trage sie nicht
 in externe Systeme ein. Näheres dazu in meiner Selbstverpflichtung zum
 Einsatz von KI.
 
-## 6. Cookies
+## 6. Cookies und Webanalyse
 
-Diese Website setzt keine eigenen Cookies und verwendet keine Analyse- oder
-Trackingdienste.
+Diese Website setzt keine eigenen Cookies.
+
+Für eine anonyme Reichweitenmessung nutze ich Plausible Analytics, ein
+cookiefreies Webanalyse-Tool. Anbieter ist Plausible Insights OÜ, Västriku
+tn 2, 50403 Tartu, Estland.
+
+Plausible erhebt beim Aufruf einer Seite technische Daten wie die
+aufgerufene URL, die Herkunftsseite, das Land, den Gerätetyp und den
+Browser. Deine IP-Adresse wird dabei nur kurzzeitig zur Berechnung eines
+täglich rotierenden, nicht zurückverfolgbaren Werts verarbeitet und
+anschließend nicht gespeichert. Es findet keine Speicherung
+personenbezogener Daten, keine geräteübergreifende Nachverfolgung und
+keine Profilbildung statt. Die Auswertung erfolgt ausschließlich in
+aggregierter, anonymer Form.
+
+Die Verarbeitung erfolgt auf Servern innerhalb der EU. Eine Übermittlung
+in ein Drittland findet nicht statt.
+
+Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Das berechtigte Interesse
+liegt in der anonymen, datensparsamen Analyse der Websitenutzung, ohne
+dich als Person zu identifizieren oder zu verfolgen.
+
+Mit Plausible besteht ein Auftragsverarbeitungsvertrag nach Art. 28
+DSGVO, der mit der Nutzung der Plausible-Dienste automatisch zustande
+kommt.
+
+Der Verarbeitung kannst du jederzeit widersprechen; Näheres zu deinem
+Widerspruchsrecht findest du unter Ziffer 8.
+
+Weitere Informationen von Plausible: https://plausible.io/data-policy
 
 ## 7. Verlinkte Angebote
 
@@ -190,13 +219,7 @@ Stand: August 2026
 
 ---
 
-# TEIL 2 · Selbstverpflichtung zum Einsatz von KI
-
-Erreichbar unter `/ki-einsatz/`, im Footer neben Impressum und Datenschutz.
-Gesetzlich nicht vorgeschrieben, aber ein Vertrauenselement für
-Corporate-Einkäufer und für Eltern.
-
-## Wie ich mit Künstlicher Intelligenz arbeite
+# Wie ich mit Künstlicher Intelligenz arbeite
 
 KI gehört zu meinem Handwerkszeug. Ich nutze sie beim Schreiben, beim
 Strukturieren von Konzepten und bei der Entwicklung von Programmen. Weil ich
@@ -226,9 +249,8 @@ Aufzeichnung, keine Analyse im Hintergrund, keine Auswertung von Gesagtem. Wo
 ich ein digitales Werkzeug einsetze, sage ich es vorher.
 
 **Ich sage, wo KI beteiligt war.**
-Wo KI wesentlich an einem Text, einem Bild oder einem Material mitgewirkt
-hat, weise ich darauf hin, soweit das gesetzlich gefordert ist oder für das
-Verständnis eine Rolle spielt.
+Wo ich generative KI für Texte, Bilder oder Audio auf dieser Website
+einsetze, weise ich darauf hin.
 
 **Rahmen und Stand der Technik.**
 Ich halte mich an die Datenschutz-Grundverordnung und an die Vorgaben des EU
@@ -238,45 +260,18 @@ Stand: August 2026
 
 ---
 
-# TEIL 3 · AGB
+# Allgemeine Geschäftsbedingungen
 
-## Vorbemerkung zur gewählten Konstruktion
-
-Der Ablauf, den du dir vorgestellt hast, ist beibehalten: Gespräch,
-Anzahlung, Platz gesichert, danach gestaffelte Stornobedingungen. Eine
-Änderung habe ich vorgenommen, und die ist wichtig.
-
-**Das Widerrufsrecht wird gewährt, zusätzlich zur Stornostaffel.** Die
-SYNK-Bedingungen kennen keines, weil dort Unternehmen buchen. Deine
-Teilnehmenden und deren Eltern sind Verbraucher, die per E-Mail buchen. Damit
-liegt ein Fernabsatzvertrag vor. Es gibt zwar eine gesetzliche Ausnahme für
-Freizeitveranstaltungen mit festem Termin, aber ob ein sechstägiges
-Entwicklungsprogramm darunterfällt, ist ungeklärt.
-
-Das Risiko ist asymmetrisch. Wer das Widerrufsrecht zu Unrecht gewährt,
-verliert im Einzelfall eine Anzahlung. Wer es zu Unrecht verweigert, hat
-keine wirksame Belehrung, und dann läuft die Frist nicht an: Ein Teilnehmer
-könnte auch nach Monaten noch widerrufen und den vollen Betrag
-zurückverlangen.
-
-Praktisch fällt es kaum ins Gewicht. Threshold wird Monate im Voraus gebucht,
-die vierzehn Tage sind lange vorbei, bevor die Stornostaffel überhaupt
-greift.
-
----
-
-## Allgemeine Geschäftsbedingungen
-
-### § 1 Geltungsbereich und Anbieter
+## § 1 Geltungsbereich und Anbieter
 
 Diese Bedingungen gelten für Verträge über die Teilnahme an Programmen, die
-David Liebnau, Gardeschützenweg 103, 12203 Berlin, mit Verbrauchern
-schließt, insbesondere für The Threshold Program.
+David Liebnau, Gardeschützenweg 103, 12203 Berlin, mit Verbrauchern schließt,
+insbesondere für The Threshold Program.
 
 Für Aufträge von Unternehmen und Organisationen gelten diese Bedingungen
 nicht. Dort gilt das jeweilige individuelle Angebot.
 
-### § 2 Zustandekommen des Vertrags
+## § 2 Zustandekommen des Vertrags
 
 Die Darstellung der Programme auf dieser Website ist kein bindendes Angebot,
 sondern eine Einladung zur Anfrage.
@@ -286,7 +281,7 @@ zusagen, erhältst du von mir eine Anmeldebestätigung in Textform mit allen
 Angaben zu Termin, Ort, Leistungen und Preis. Mit dieser Bestätigung kommt
 der Vertrag zustande.
 
-### § 3 Leistungen
+## § 3 Leistungen
 
 Der Leistungsumfang ergibt sich aus der Programmbeschreibung und der
 Anmeldebestätigung.
@@ -302,7 +297,7 @@ Ich schulde eine sorgfältige, fachlich fundierte Durchführung, keinen
 bestimmten Erfolg. Das Programm ersetzt weder eine Psychotherapie noch eine
 medizinische Behandlung.
 
-### § 4 Preise und Zahlung
+## § 4 Preise und Zahlung
 
 Es gilt der in der Anmeldebestätigung genannte Preis. Alle Preise verstehen
 sich inklusive der gesetzlichen Umsatzsteuer.
@@ -317,7 +312,7 @@ Gesamtbetrag sofort fällig.
 
 Auf Anfrage ist Ratenzahlung möglich. Sprich mich an, bevor du buchst.
 
-### § 5 Widerrufsrecht
+## § 5 Widerrufsrecht
 
 Verbrauchern steht ein gesetzliches Widerrufsrecht von vierzehn Tagen zu.
 Einzelheiten in der Widerrufsbelehrung, die du zusammen mit der
@@ -328,11 +323,10 @@ Solange die Widerrufsfrist läuft, geht das Widerrufsrecht den
 Stornobedingungen nach § 6 vor. Bei fristgerechtem Widerruf erstatte ich alle
 bereits gezahlten Beträge einschließlich der Anzahlung vollständig.
 
-### § 6 Rücktritt durch Teilnehmende
+## § 6 Rücktritt durch Teilnehmende
 
-Nach Ablauf der Widerrufsfrist kannst du bis zum Programmbeginn
-zurücktreten. Es gelten folgende Stornokosten, jeweils bezogen auf den
-Programmpreis:
+Nach Ablauf der Widerrufsfrist kannst du bis zum Programmbeginn zurücktreten.
+Es gelten folgende Stornokosten, jeweils bezogen auf den Programmpreis:
 
 | Zeitpunkt des Rücktritts | Stornokosten |
 |---|---|
@@ -350,12 +344,13 @@ entsprechend.
 
 Der Rücktritt bedarf der Textform.
 
-### § 7 Absage und Änderungen durch den Anbieter
+## § 7 Absage und Änderungen durch den Anbieter
 
 Programme finden ab einer Mindestteilnehmerzahl von vier Personen statt. Wird
 sie nicht erreicht, kann ich das Programm bis 30 Tage vor Beginn absagen.
 Bereits gezahlte Beträge erstatte ich vollständig. Weitergehende Ansprüche,
-insbesondere auf Ersatz von Reise- oder Stornokosten Dritter, bestehen nicht.
+insbesondere auf Ersatz von Reise- oder Stornokosten Dritter, bestehen
+nicht, soweit sich aus § 9 dieser Bedingungen nichts anderes ergibt.
 
 Bei Krankheit, höherer Gewalt oder anderen Gründen, die ich nicht zu
 vertreten habe, kann ich das Programm verschieben oder absagen. Auch hier
@@ -364,7 +359,7 @@ erstatte ich gezahlte Beträge vollständig.
 Geringfügige Änderungen des Ablaufs bleiben vorbehalten, soweit der Charakter
 des Programms gewahrt bleibt.
 
-### § 8 Mitwirkung und Eigenverantwortung
+## § 8 Mitwirkung und Eigenverantwortung
 
 Die Teilnahme setzt körperliche und psychische Belastbarkeit voraus. Teile
 des Programms finden im Freien statt, unter anderem eine begleitete Zeit
@@ -385,7 +380,7 @@ Tiefe. Es ist keine Therapie und ersetzt keine.
 Der Abschluss einer Reiserücktritts- und einer Auslandskrankenversicherung
 wird dringend empfohlen.
 
-### § 9 Haftung
+## § 9 Haftung
 
 Ich hafte unbeschränkt bei Vorsatz und grober Fahrlässigkeit sowie bei
 Verletzung von Leben, Körper oder Gesundheit.
@@ -398,13 +393,13 @@ vertragstypischen, vorhersehbaren Schaden begrenzt.
 
 Die Haftung nach dem Produkthaftungsgesetz bleibt unberührt.
 
-### § 10 Vertraulichkeit
+## § 10 Vertraulichkeit
 
 Was in der Gruppe geteilt wird, bleibt in der Gruppe. Diese Verpflichtung
 gilt für alle Beteiligten, für mich ebenso wie für alle Teilnehmenden, und
 sie gilt über das Programmende hinaus.
 
-### § 11 Unterlagen und Urheberrecht
+## § 11 Unterlagen und Urheberrecht
 
 Alle Arbeitsunterlagen, Materialien und Aufzeichnungen, die im Rahmen des
 Programms überlassen werden, sind urheberrechtlich geschützt. Sie stehen
@@ -412,7 +407,7 @@ ausschließlich den Teilnehmenden zur eigenen Verwendung zur Verfügung und
 dürfen ohne meine Einwilligung weder vervielfältigt noch weitergegeben noch
 für eigene Angebote verwertet werden.
 
-### § 12 Weltanschauliche Unabhängigkeit
+## § 12 Weltanschauliche Unabhängigkeit
 
 Meine Arbeit beruht auf Führungsforschung, Persönlichkeitsentwicklung und
 kontemplativer Praxis. Sie ist keiner Ideologie, keiner Religionsgemeinschaft
@@ -424,10 +419,9 @@ nahestehenden Unternehmen ab. In meinen Programmen wird nicht nach Methoden
 von L. Ron Hubbard oder damit zusammenhängenden Verfahren gearbeitet.
 
 Teilnehmende entscheiden im Programm eigenständig. Es besteht keine
-Verpflichtung zu Anschlussangeboten und keine Erwartung fortgesetzter
-Bindung.
+Verpflichtung zu Anschlussangeboten und keine Erwartung fortgesetzter Bindung.
 
-### § 13 Schlussbestimmungen
+## § 13 Schlussbestimmungen
 
 Es gilt deutsches Recht. Gegenüber Verbrauchern gilt dies nur, soweit dadurch
 nicht zwingende Schutzvorschriften des Staates entzogen werden, in dem der
@@ -443,14 +437,12 @@ Stand: August 2026
 
 ---
 
-# TEIL 4 · Widerrufsbelehrung
+# Widerrufsbelehrung
 
-**Der Wortlaut dieser Belehrung ist gesetzlich vorgegeben.** Nicht
-umformulieren, nicht sprachlich glätten, nicht kürzen. Abweichungen können
-dazu führen, dass die Widerrufsfrist nicht zu laufen beginnt.
-
-Die Belehrung gehört an zwei Stellen: auf eine eigene Seite der Website und
-in die Anmeldebestätigung, die du per E-Mail verschickst.
+<!-- Redaktioneller Hinweis, nicht auf der Live-Seite veröffentlichen:
+Der folgende Wortlaut entspricht dem gesetzlichen Muster nach Anlage zu
+Art. 246a § 1 Abs. 2 EGBGB und darf nicht verändert werden. Diese Notiz
+ist kein Teil der Belehrung und darf nicht mit ausgeliefert werden. -->
 
 ## Widerrufsrecht
 
@@ -462,7 +454,7 @@ Die Widerrufsfrist beträgt vierzehn Tage ab dem Tag des Vertragsabschlusses.
 Um Ihr Widerrufsrecht auszuüben, müssen Sie uns
 
 David Liebnau, Gardeschützenweg 103, 12203 Berlin,
-Telefon +49 170 4326737, E-Mail dl@light-creators.com
+Telefon +49 170 4326737, E-Mail mail@davidliebnau.com
 
 mittels einer eindeutigen Erklärung (z. B. ein mit der Post versandter Brief
 oder E-Mail) über Ihren Entschluss, diesen Vertrag zu widerrufen,
@@ -498,7 +490,7 @@ Dienstleistungen entspricht.
 Formular aus und senden Sie es zurück.)
 
 An David Liebnau, Gardeschützenweg 103, 12203 Berlin,
-E-Mail dl@light-creators.com:
+E-Mail mail@davidliebnau.com:
 
 Hiermit widerrufe(n) ich/wir (*) den von mir/uns (*) abgeschlossenen Vertrag
 über den Kauf der folgenden Waren (*)/die Erbringung der folgenden
@@ -515,34 +507,3 @@ Unterschrift des/der Verbraucher(s) (nur bei Mitteilung auf Papier)
 Datum
 
 (*) Unzutreffendes streichen.
-
----
-
-# TEIL 5 · Was noch fehlt
-
-Zwei Punkte. Beide blockieren die Veröffentlichung nicht.
-
-1. **Umsatzsteuer.** Ich bin davon ausgegangen, dass du regelbesteuert bist,
-   weil du eine Umsatzsteuer-Identifikationsnummer hast. Falls du
-   Kleinunternehmer nach § 19 UStG bist, muss der Satz in § 4 lauten: „Gemäß
-   § 19 UStG wird keine Umsatzsteuer ausgewiesen." Eine Frage an deine
-   Steuerberatung, keine an einen Anwalt.
-2. **Anwaltliche Durchsicht der AGB.** Insbesondere Stornostaffel und
-   Haftungsklausel. Die Texte sind veröffentlichungsfähig, aber ein Blick von
-   jemandem mit Zulassung ist bei Verbraucherverträgen gut investiertes Geld.
-
----
-
-# TEIL 6 · Hinweis für später
-
-**Nach der Umstellung auf lokale Schriftarten** wird Abschnitt 3 der
-Datenschutzerklärung ersetzt durch:
-
-> ## 3. Schriftarten
->
-> Diese Website nutzt Schriftarten, die lokal auf dem Server dieser Website
-> gespeichert sind. Eine Verbindung zu Servern Dritter findet dabei nicht
-> statt.
-
-Dann auch das Datum unter „Stand" aktualisieren. Der Rest bleibt unverändert,
-das Impressum ist davon nicht betroffen.
