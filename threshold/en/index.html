@@ -303,6 +303,12 @@
     .dimensions-grid, .partner-grid { grid-template-columns: 1fr; }
   }
 </style>
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-PE8LepbzU6ohWEdNxpoeQ.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
 </head>
 <body>
 
@@ -627,7 +633,7 @@
       <div class="pilot-side-block">
         <div class="label-gold">Applying</div>
         <p>Places aren't filled in the order applications arrive. Every application starts with a short, honest conversation with David — to see whether this is the right threshold for you, and you for the group.</p>
-        <p style="margin-top:10px;"><a href="mailto:mail@davidliebnau.com?subject=The%20Threshold%20Program%20—%20Application" style="color:var(--sun); text-decoration:underline; font-size:13px;">Start the conversation →</a></p>
+        <p style="margin-top:10px;"><a class="plausible-event-name=threshold_cta_click" href="mailto:mail@davidliebnau.com?subject=The%20Threshold%20Program%20—%20Application" style="color:var(--sun); text-decoration:underline; font-size:13px;">Start the conversation →</a></p>
       </div>
       <div class="pilot-side-block">
         <div class="label-gold">If Money Is A Barrier</div>
@@ -872,5 +878,23 @@
   </div>
 </div>
 
+<script>
+  // Plausible: einmalig melden, wenn der Investitionsblock zuerst sichtbar wird
+  (function () {
+    var ziel = document.querySelector('.pkg');
+    if (!ziel || !('IntersectionObserver' in window)) return;
+    var gemeldet = false;
+    var beobachter = new IntersectionObserver(function (eintraege) {
+      eintraege.forEach(function (e) {
+        if (e.isIntersecting && !gemeldet) {
+          gemeldet = true;
+          if (window.plausible) window.plausible('threshold_price_scroll');
+          beobachter.disconnect();
+        }
+      });
+    }, { threshold: 0.25 });
+    beobachter.observe(ziel);
+  })();
+</script>
 </body>
 </html>

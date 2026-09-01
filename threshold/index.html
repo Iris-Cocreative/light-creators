@@ -292,6 +292,12 @@
     .dimensions-grid, .partner-grid { grid-template-columns: 1fr; }
   }
 </style>
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-PE8LepbzU6ohWEdNxpoeQ.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
 </head>
 <body>
 
@@ -614,7 +620,7 @@
       <div class="pilot-side-block">
         <div class="label-gold">Bewerbung</div>
         <p>Die Plätze werden nicht einfach nach Reihenfolge vergeben. Jede Bewerbung beginnt mit einem kurzen persönlichen Gespräch mit David – um gemeinsam herauszufinden, ob THRESHOLD gerade der richtige Schritt ist.</p>
-        <p style="margin-top:10px;"><a href="mailto:mail@davidliebnau.com?subject=The%20Threshold%20Program%20—%20Bewerbung" style="color:var(--sun); text-decoration:underline; font-size:13px;">Gespräch beginnen →</a></p>
+        <p style="margin-top:10px;"><a class="plausible-event-name=threshold_cta_click" href="mailto:mail@davidliebnau.com?subject=The%20Threshold%20Program%20—%20Bewerbung" style="color:var(--sun); text-decoration:underline; font-size:13px;">Gespräch beginnen →</a></p>
       </div>
       <div class="pilot-side-block">
         <div class="label-gold">Wenn Geld eine Hürde ist</div>
@@ -762,7 +768,7 @@
   <h2 class="sec-h2-dark">Wenn jemand anderes den Platz bezahlt.</h2>
   <p class="sec-lead-dark">Manche Plätze werden von Eltern finanziert, andere von Stiftungen, Bildungsträgern oder Arbeitgebern. Wenn das für dich in Frage kommt, schick diesen Link weiter.</p>
   <div style="margin-top:32px;">
-    <a href="/threshold/partner/" style="color:var(--sun); text-decoration:underline; font-size:15px;">Für Eltern, Stiftungen und Unternehmen →</a>
+    <a class="plausible-event-name=threshold_partner_link_click" href="/threshold/partner/" style="color:var(--sun); text-decoration:underline; font-size:15px;">Für Eltern, Stiftungen und Unternehmen →</a>
   </div>
 </section>
 
@@ -823,5 +829,23 @@
   </div>
 </div>
 
+<script>
+  // Plausible: einmalig melden, wenn der Investitionsblock zuerst sichtbar wird
+  (function () {
+    var ziel = document.querySelector('.pkg');
+    if (!ziel || !('IntersectionObserver' in window)) return;
+    var gemeldet = false;
+    var beobachter = new IntersectionObserver(function (eintraege) {
+      eintraege.forEach(function (e) {
+        if (e.isIntersecting && !gemeldet) {
+          gemeldet = true;
+          if (window.plausible) window.plausible('threshold_price_scroll');
+          beobachter.disconnect();
+        }
+      });
+    }, { threshold: 0.25 });
+    beobachter.observe(ziel);
+  })();
+</script>
 </body>
 </html>
