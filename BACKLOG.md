@@ -3,7 +3,7 @@
 Offene Punkte, die außerhalb des Relaunch-Briefings liegen oder auf eine
 Entscheidung, eine Lieferung oder ein externes Set-up warten.
 
-Stand: 2026-09-01
+Stand: 2026-09-02
 
 ---
 
@@ -61,22 +61,18 @@ unmittelbar vorangehenden Element fehlt. Eingebunden ist der Wächter auf
   Footer). Threshold selbst zeigte schon auf `/threshold/en/`.
   `podcast.html` bleibt deutsch, der Text sagt das mit „In German".
 
-### Englischer Partnerblock steht doppelt
+### Englischer Partnerblock stand doppelt
 
-Gefunden im Phase-1-Sprint. `/threshold/partner/en/` existiert als
-eigenständige Seite, aber `threshold/en/index.html` trägt in der Section
-`#partners` weiterhin den vollständigen Partnerblock: Research-Strip mit
-drei Zellen, Insight-Kasten und alle vier Partner-Karten. Die deutsche
-Fassung wurde beim Anlegen der Partnerseite auf einen kurzen Teaser plus
-Link zurückgebaut, die englische nicht.
+Erledigt am 02.09.2026. `threshold/en/index.html` trug in `#partners`
+weiterhin den vollständigen Block mit Research-Strip, Insight-Kasten und
+allen vier Partner-Karten, obwohl `/threshold/partner/en/` als eigene
+Seite existiert. Rund 40 Zeilen standen damit identisch auf zwei
+indexierbaren URLs.
 
-Folgen: rund 40 Zeilen Text stehen auf zwei indexierbaren URLs identisch,
-und die beiden Sprachfassungen der Threshold-Seite laufen inhaltlich
-auseinander.
-
-- [ ] Entscheiden, ob `#partners` auf `threshold/en/index.html` auf denselben
-  kurzen Teaser zurückgebaut wird wie auf der deutschen Seite. Bewusst
-  nicht auf Verdacht geändert, das ist eine redaktionelle Entscheidung.
+Der Block ist jetzt auf denselben kurzen Teaser zurückgebaut wie in der
+deutschen Fassung: Label, Überschrift, zwei Sätze und der Link auf
+`/threshold/partner/en/`. Interne Sprungmarken auf `#partners` gab es
+keine, es musste nichts mit umziehen.
 
 ### ProvenExpert-Siegel auf Englisch
 
@@ -94,12 +90,33 @@ auseinander.
 `threshold/og-image.jpg` ist **1920 × 1440**, also 4:3. Open Graph erwartet
 1,91:1. Facebook und LinkedIn beschneiden das Bild oben und unten.
 
-`assets/og-image.jpg` ist mit 1200 × 630 korrekt und läuft vorerst auf
-`/threshold/partner/`, `/threshold/partner/en/`, `/fuehren/` und
-`/fuehren/en/` mit. Ein passend zugeschnittenes Bild für Threshold, die
-Partnerseite und die Führen-Seite liefert David nach. **Kein automatisches
-Beschneiden.** Der Punkt blieb im Phase-1-Sprint offen und ist der einzige
-SEO-Punkt der vier Money Pages, der nicht abgeschlossen ist.
+Erledigt für die vier Money Pages, am 02.09.2026. `/fuehren/` und
+`/fuehren/en/` tragen `assets/og-image-fuehren.jpg`, ein 1200 × 628 großer
+Zuschnitt aus `assets/hero-fuehren-split.webp`. `/threshold/partner/` und
+`/threshold/partner/en/` tragen `assets/og-image-threshold-partner.jpg`,
+denselben Zuschnitt aus `assets/threshold-teaser.jpg`, dem Bild, das auf
+der Startseite schon den Threshold-Teaser trägt. Beide Seitenpaare
+zusätzlich mit `og:image:width`, `og:image:height` und `twitter:image`.
+
+Die Regel **kein automatisches Beschneiden** galt und gilt für
+`threshold/og-image.jpg`. Diese Datei ist unangetastet, die
+Threshold-Hauptseiten laufen weiter darauf und werden in der Vorschau oben
+und unten beschnitten. Ein passend zugeschnittenes Bild dafür liefert
+David nach.
+
+- [ ] Entscheiden, ob `assets/og-image-threshold-partner.jpg` bleibt. Das
+  Motiv ist eine Gruppensilhouette im Sonnenuntergang, thematisch
+  passend, aber generisch. Ein Bild aus Finnland wäre stärker. Umstellen
+  kostet eine Zeile pro Seite.
+
+Anmerkung zur Quelle: Das Briefing nannte `hero-fuehren-split.webp` mit
+1200 × 1500. Die Datei ist tatsächlich 1400 × 1400. Die Maße 1200 × 1500
+stehen als `width` und `height` am `<img>` in `fuehren/index.html` und
+`fuehren/en/index.html` und stimmen damit nicht mit der Datei überein.
+
+- [ ] `width` und `height` des Hero-Bildes auf `/fuehren/` auf 1400 × 1400
+  korrigieren. Das falsche Seitenverhältnis reserviert beim Laden den
+  falschen Platz und erzeugt einen Layoutsprung.
 
 ### HR Excellence Award Logo: Nutzungsrechte klären
 
@@ -143,6 +160,44 @@ haben 31 tote Bildverweise, weil ihre relativen Pfade beim Verschieben
 nach `_archiv/` nicht mitgezogen wurden. Bestand schon vor dem
 Aufräumen. Ohne Folgen, weil `robots.txt` das Archiv sperrt und es nicht
 verlinkt ist. Wenn es stört: Pfade auf `/assets/...` umstellen.
+
+---
+
+## Messung
+
+### Plausible-Goals nachziehen
+
+Klick-Events laufen über CSS-Klassen (`plausible-event-name=…`), Scrolltiefe
+über `window.plausible()`. Das Script `pa-PE8LepbzU6ohWEdNxpoeQ.js` wertet
+die Klassen aus, geprüft am 02.09.2026 am ausgelieferten Script.
+
+**Ein Event im Code erscheint erst im Dashboard, wenn dort ein Goal mit
+demselben Namen angelegt ist.** Neu aus dem Phase-1-Sprint, neun Stück:
+
+```
+threshold_path_application_click
+threshold_path_waitlist_click
+threshold_path_later_click
+threshold_path_institution_click
+partner_path_partnership_click
+partner_path_waitlist_click
+partner_path_later_click
+partner_path_institution_click
+fuehren_cta3_click
+```
+
+- [ ] Diese neun Goals im Plausible-Dashboard anlegen.
+
+Bereits vorhanden und unverändert: `cta_briefing_click`,
+`nav_threshold_click`, `outbound_light_creators_click`,
+`fuehren_cta1_click`, `fuehren_cta2_click`, `threshold_cta_click`,
+`threshold_partner_link_click`, `partner_request_click`,
+`threshold_price_scroll`, `threshold_faq_seen`.
+
+Namenskonvention: `<bereich>_<sache>_<verb>`, Klick-Events enden auf
+`_click`. Die vier Wege tragen zusätzlich das Segment `path`, damit sie im
+Dashboard zusammen stehen. Deutsche und englische Fassung teilen sich einen
+Namen; getrennt wird nach Teilnehmer- und Partnerseite, nicht nach Sprache.
 
 ---
 
