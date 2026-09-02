@@ -86,8 +86,8 @@ Nur vier Zielpfade kommen im Repository überhaupt vor.
 
 | Ziel | Verlinkte Anker | Nackt im Fließtext | In nicht ausgelieferten Dateien |
 |---|---|---|---|
-| `https://light-creators.com` (Wurzel) | 71 | 5 | Doku, Archiv, Generatorvorlage |
-| `https://light-creators.com/en` | 32 | — | Generatorvorlage |
+| `https://light-creators.com` (Wurzel) | 74 | 5 | Doku, Archiv, Generatorvorlage |
+| `https://light-creators.com/en` | 31 | — | Generatorvorlage |
 | `light-creators.com/quiz` | — | 4 | Archiv, Quelldatei |
 | `light-creators.com/call` | — | 4 | Archiv, Quelldatei |
 
@@ -112,8 +112,13 @@ Ziel existiert, wird in Phase 2 nicht angefasst, Bruchrisiko gering.
 | `fuehren/en/index.html` | 296 | Footer-Anker | 1 |
 | `episodes/*.html` (30 Dateien) | je CTA-Block und Footer | Anker | 60 |
 
-**Summe 74 Anker auf die Wurzel.** Davon tragen fünf auf den beiden Startseiten das Event
-`outbound_light_creators_click`; die übrigen 69 sind ungemessen.
+**Summe 74 Anker auf die Wurzel** auf ausgelieferten Seiten. Davon tragen fünf auf den
+beiden Startseiten das Event `outbound_light_creators_click`; die übrigen 69 sind
+ungemessen.
+
+Ein 75. Anker steht in `landing-pages/flourishing-life-eltern-v2.html:1487`. Die Datei
+trägt `noindex` und ist von keiner Seite verlinkt, deshalb zählt sie hier nicht mit —
+sie steht in Abschnitt 6.
 
 Technisch stabil: Die Wurzel bleibt erreichbar, auch wenn dort etwas anderes ausgeliefert
 wird. **Inhaltlich ist genau das der Bruch** — siehe Liste C.
@@ -188,10 +193,21 @@ umformuliert wird.
 | `fuehren/en/index.html` | 296 | Footer, englisch | Wurzel |
 | `episodes/*.html` | 30× CTA, 30× Footer | „Für Founder Resonance: light-creators.com" | Wurzel |
 
-**Das sind 71 von 74 Wurzel-Ankern.** Die Beschriftung sagt in fast allen Fällen
-ausdrücklich „Founder Resonance". Wird die Wurzel zum Marken-Hub, zeigen 71 Links mit
-Founder-Versprechen auf eine Seite, die zwei Wege anbietet und den Founder-Weg erst nach
-der Selbstselektion erreichbar macht.
+**Das betrifft alle 74 ausgelieferten Wurzel-Anker.** Nachgezählt am 02.09.2026:
+71 tragen „Founder Resonance" im Linktext selbst. Die restlichen drei lauten nur
+„Zu light-creators.com →" beziehungsweise „To light-creators.com →", stehen aber
+jeweils in einem Block, dessen Überschrift oder Absatz das Versprechen unmittelbar
+davor gibt:
+
+| Datei | Zeile | Was direkt darüber steht |
+|---|---|---|
+| `index.html` | 335 | `<h3>Gründen. Für Founder.</h3>` und „Diese Arbeit läuft unter Founder Resonance." |
+| `index-en.html` | 335 | `<h3>Founding. For founders.</h3>` und „This work runs under Founder Resonance." |
+| `podcast.html` | 424 | `<h3>Für Founder Resonance: <em>light-creators.com</em></h3>` |
+
+Wird die Wurzel zum Marken-Hub, zeigen damit 74 Links mit Founder-Versprechen auf eine
+Seite, die zwei Wege anbietet und den Founder-Weg erst nach der Selbstselektion
+erreichbar macht.
 
 Das ist nicht zwingend falsch — der Hub führt weiter zum Founder-Weg. Es ist aber ein
 zusätzlicher Schritt, der vorher nicht da war, und er trifft **jede Episodenseite**.
@@ -238,7 +254,7 @@ Besucher ausgeliefert.
 | `briefing/*.md` | 55 | Arbeitsdokumente |
 | `BACKLOG.md`, `README.md`, `COMPLETION-SPRINT-2026-08-16.md` | 10 | Arbeitsdokumente |
 | `quiz-assets/*` | 14 | Prototypen, `noindex`, an Webflow gebunden |
-| `landing-pages/*` | 9 | `noindex` |
+| `landing-pages/*` | 9 | `noindex`, unverlinkt. Enthält in `flourishing-life-eltern-v2.html:1487` einen 75. Wurzel-Anker |
 | `quiz-2.0.html`, `solo.html` | 4 | `noindex` bzw. nicht verlinkt |
 
 ---
@@ -251,7 +267,7 @@ Keine dieser Fragen wird hier beantwortet oder durch eine Annahme ersetzt.
 |---|---|---|
 | **RF-1** | Der Korrektur-Commit nach dem Publish muss vier Ebenen erfassen: die beiden Episodenseiten, `content/ep-29.txt` und `tools/generate_episode.py`. Soll er das in einem Commit tun oder pro Ebene getrennt, damit die Rücknahme feiner wird? | S10 |
 | **RF-2** | Zieht die englische Founder-Fassung `/en` zusammen mit der deutschen Wurzel auf einen Interim-Pfad um, oder bleibt sie, wo sie ist? Betrifft 31 ausgelieferte Anker. Im Briefing nicht adressiert; OD-2b spricht nur von „der alten Startseite". | S1, F1 |
-| **RF-3** | Die 71 Wurzel-Anker tragen fast alle die Beschriftung „Founder Resonance". Sollen sie nach dem Umbau auf den Interim-Pfad umgehängt werden, oder bleiben sie auf der Wurzel und die Beschriftung wird angepasst? Das ist eine redaktionelle Entscheidung mit 71 Fundstellen, davon 60 in generierten Episoden. | F1, S10 |
+| **RF-3** | Alle 74 ausgelieferten Wurzel-Anker geben ein Founder-Resonance-Versprechen, 71 im Linktext, drei im Text unmittelbar davor. Sollen sie nach dem Umbau auf den Interim-Pfad umgehängt werden, oder bleiben sie auf der Wurzel und die Beschriftung wird angepasst? Das ist eine redaktionelle Entscheidung mit 71 Fundstellen, davon 60 in generierten Episoden. | F1, S10 |
 | **RF-4** | `Person.worksFor.Organization.url` in den beiden JSON-LD-Blöcken: bleibt die Wurzel, oder zeigt sie nach dem Umzug auf den Founder-Pfad? | OD-2b |
 
 ---
@@ -263,6 +279,7 @@ angesprochen. Wird einer davon verschoben, braucht er eine Weiterleitung:
 
 ```
 /            ← 74 Anker + 5 Fließtextnennungen, alle Seitentypen
+             (75 mit der noindex-Datei unter landing-pages/)
 /en          ← 31 Anker, Podcast und alle 30 Episoden
 /quiz        ← 4 nackte Nennungen, ep-28 und ep-29
 /call        ← 4 nackte Nennungen, ep-28 und ep-29

@@ -32,7 +32,7 @@ Alles hier ist am 02.09.2026 im Code oder live geprüft, nichts stammt aus einem
 | `light-creators.com/about` antwortet **404** | Live-Abruf | OD-7 |
 | `/`, `/en`, `/quiz`, `/call`, `/quiz-en`, `/call-en`, `/podcast`, `/buch`, `/impressum`, `/datenschutz`, `/abgs` antworten **200** | Live-Abruf | OD-2b, OD-3, OD-4 |
 | Auf `light-creators.com` läuft ein Meta Pixel (`fbq`, `connect.facebook.net`), **kein Plausible** | Live-Abruf | OD-1b, S-P0 |
-| **74 Anker** aus diesem Repository zeigen auf die Wurzel, **71 davon** mit der Beschriftung „Founder Resonance" | CC-6 | OD-2b, RF-3 |
+| **74 Anker** auf ausgelieferten Seiten zeigen auf die Wurzel, **alle 74** mit Founder-Resonance-Versprechen: 71 im Linktext, drei im Text unmittelbar davor. Ein 75. steht in einer `noindex`-Datei | CC-6 | OD-2b, RF-3 |
 | **31 Anker** zeigen auf `/en`, davon 30 in generierten Episoden | CC-6 | RF-2 |
 | Die nackten URLs `/quiz` und `/call` stehen in **ep-28 und ep-29** plus `content/ep-29.txt` | CC-6 | RF-1 |
 | Zielpfade insgesamt: nur vier (`/`, `/en`, `/quiz`, `/call`) | CC-6 | Redirect-Liste |
@@ -64,8 +64,8 @@ aussteht.
 **Sachstand.** Der Founder-Inhalt zieht laut R-B unverändert auf einen eigenen Pfad und
 bleibt als Interim live. Welcher Slug, ist offen. Ob die Seite indexiert bleibt, ist offen.
 
-**Warum das der Angelpunkt ist.** An OD-2b hängen 71 Anker, deren Beschriftung ein
-Founder-Angebot zusagt. Solange der Slug nicht feststeht, lässt sich RF-3 nicht
+**Warum das der Angelpunkt ist.** An OD-2b hängen 74 Anker, die ein Founder-Angebot
+zusagen. Solange der Slug nicht feststeht, lässt sich RF-3 nicht
 entscheiden, und die Redirect-Liste des Webflow-Strangs bleibt unvollständig.
 
 **Zu entscheiden sind drei Dinge, nicht eines:**
@@ -127,7 +127,7 @@ die Zahlen sind nicht vergleichbar, und die primäre KPI zählt nur `nextgen` un
 |---|---|---|---|
 | **RF-1** | Der Korrektur-Commit nach dem Publish muss vier Ebenen erfassen: `ep-28`, `ep-29`, `content/ep-29.txt`, `tools/generate_episode.py`. Ein Commit oder vier? | Wer nur die beiden Episodenseiten korrigiert, bekommt die alte URL beim nächsten Generatorlauf zurück. | **Ein Commit.** Die vier Ebenen gehören zu einer Änderung; getrennt zurückgenommen ergäbe jede für sich einen inkonsistenten Zustand. |
 | **RF-2** | Zieht `/en` mit der deutschen Wurzel auf einen Interim-Pfad um? | 31 Anker, davon 30 in generierten Episoden. Im Briefing nicht adressiert, OD-2b spricht nur von „der alten Startseite". | **Keine.** Das ist Teil derselben Markenentscheidung wie OD-2b und gehört dorthin. |
-| **RF-3** | Die 71 Wurzel-Anker mit der Beschriftung „Founder Resonance": umhängen auf den Interim-Pfad oder auf der Wurzel lassen und die Beschriftung anpassen? | 60 davon stehen in generierten Episoden und in `tools/generate_episode.py`. | **Umhängen, nicht umformulieren.** Die Beschriftung in 30 Episoden zu ändern ist ein redaktioneller Eingriff in datierte Inhalte; das Linkziel zu ändern ist es nicht. Beides läuft über dieselbe Generatorvorlage, der Aufwand ist gleich. |
+| **RF-3** | Die 74 Wurzel-Anker mit Founder-Resonance-Versprechen: umhängen auf den Interim-Pfad oder auf der Wurzel lassen und die Beschriftung anpassen? | 60 davon stehen in generierten Episoden und in `tools/generate_episode.py`. | **Umhängen, nicht umformulieren.** Die Beschriftung in 30 Episoden zu ändern ist ein redaktioneller Eingriff in datierte Inhalte; das Linkziel zu ändern ist es nicht. Beides läuft über dieselbe Generatorvorlage, der Aufwand ist gleich. |
 | **RF-4** | `Person.worksFor.Organization.url` in den beiden JSON-LD-Blöcken: bleibt die Wurzel? | `index.html:34`, `index-en.html:34`. Die Aussage lautet: David Liebnau arbeitet für die Organisation „Light Creators" unter dieser URL. | **Bleibt die Wurzel.** Die Organisation heißt Light Creators und residiert auf der Wurzel, unabhängig davon, welches Angebot dort steht. Der Interim-Pfad wäre ein Produktpfad, keine Organisations-URL. |
 
 ---
