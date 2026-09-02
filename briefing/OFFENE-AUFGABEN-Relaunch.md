@@ -176,6 +176,44 @@ dort wiederverwendet werden können: `role-entrepreneur.webp`,
 
 ---
 
+## Hängt am Abschluss der Pilotkohorte
+
+Diese Punkte liegen nicht offen, weil sie jemand vergessen hat, sondern
+weil die Voraussetzung dafür erst mit der ersten Gruppe im Mai 2027
+entsteht. Vorher sind sie nicht entscheidbar. Zusammen gruppiert, damit
+nach dem Piloten an einer Stelle steht, was dann fällig wird.
+
+- [ ] **Threshold-Preis nach dem Piloten.**
+  Der Preis steht nur an einer Stelle, im Investitionsblock der
+  Threshold-Seite. Überall sonst heißt es "Einführungspreis" oder
+  "Kosten im Gespräch". Nach dem Piloten dort ändern, sonst nirgends.
+  Der Wechsel hängt am Abschluss der Kohorte, nicht an einem
+  Kalenderdatum.
+- [ ] **Inhouse-Variante von Threshold.**
+  Etwa für eine Kooperation mit der INTES Akademie. Betrifft die
+  Formulierung "Termine auf Anfrage" und möglicherweise eine eigene Seite.
+  Erst bauen, wenn die Nachfrage über echte Gespräche belegt ist. Der
+  Anfragepfad für Organisationen auf den Threshold-Seiten trägt dafür
+  seit dem 01.09.2026 eine eigene Auswahl im Formulartext.
+- [ ] **Eigenes Bildmaterial aus Finnland.**
+  `assets/og-image-threshold-partner.jpg` ist ein Zuschnitt aus
+  `assets/threshold-teaser.jpg`, einer Gruppensilhouette im
+  Sonnenuntergang. Thematisch passend, aber generisch. Ein Bild aus dem
+  Programm selbst wäre stärker — es existiert noch nicht und entsteht mit
+  der ersten Pilotgruppe. Bis dahin bleibt der Zuschnitt bewusst stehen,
+  er ist keine Übergangslösung aus Zeitmangel.
+  Betrifft dann auch `threshold/og-image.jpg`, das mit 1920 × 1440 im
+  Format 4:3 liegt und in der Vorschau oben und unten beschnitten wird.
+  Für diese Datei gilt weiterhin: kein automatisches Beschneiden.
+- [ ] **Schriftliche Rückmeldungen der Teilnehmenden.**
+  `/threshold/partner/` verspricht Stipendien-Partnern eine schriftliche
+  Rückmeldung der Person, die sie unterstützt haben, und Impact-Partnern
+  anonymisierte Vorher-Nachher-Reflexionen. Beides entsteht erst mit der
+  ersten Kohorte. Nach dem Piloten prüfen, ob die Zusage eingelöst werden
+  kann oder umformuliert werden muss.
+
+---
+
 ## Später, kein Zeitdruck
 
 - [ ] **Design-Tokens vereinheitlichen.**
@@ -191,13 +229,6 @@ dort wiederverwendet werden können: `role-entrepreneur.webp`,
   (#FFDB9D nach #A87D34). Gehört als Token nach `assets/styles.css`.
 - [ ] **Neues Quiz und Funnel für die junge Zielgruppe.**
   Kommt an davidliebnau.com, nicht an light-creators.com.
-- [ ] **Threshold-Preis nach dem Piloten.**
-  Der Preis steht nur an einer Stelle, im Investitionsblock der
-  Threshold-Seite. Überall sonst heißt es "Einführungspreis" oder
-  "Kosten im Gespräch". Nach dem Piloten dort ändern, sonst nirgends.
-- [ ] **Inhouse-Variante von Threshold.**
-  Etwa für eine Kooperation mit der INTES Akademie. Betrifft die
-  Formulierung "Termine auf Anfrage" und möglicherweise eine eigene Seite.
 
 ---
 

@@ -101,22 +101,22 @@ zusätzlich mit `og:image:width`, `og:image:height` und `twitter:image`.
 Die Regel **kein automatisches Beschneiden** galt und gilt für
 `threshold/og-image.jpg`. Diese Datei ist unangetastet, die
 Threshold-Hauptseiten laufen weiter darauf und werden in der Vorschau oben
-und unten beschnitten. Ein passend zugeschnittenes Bild dafür liefert
-David nach.
+und unten beschnitten.
 
-- [ ] Entscheiden, ob `assets/og-image-threshold-partner.jpg` bleibt. Das
-  Motiv ist eine Gruppensilhouette im Sonnenuntergang, thematisch
-  passend, aber generisch. Ein Bild aus Finnland wäre stärker. Umstellen
-  kostet eine Zeile pro Seite.
+`assets/og-image-threshold-partner.jpg` bleibt so stehen, wie es ist. Das
+Motiv ist thematisch passend, aber generisch; ein Bild aus dem Programm
+selbst wäre stärker. Das existiert noch nicht und entsteht mit der ersten
+Pilotgruppe. Der Punkt ist deshalb kein Rest, der liegen geblieben ist,
+sondern wartet auf Material. Er steht zusammen mit den anderen
+Nachbereitungspunkten des Piloten unter „Hängt am Abschluss der
+Pilotkohorte" in `briefing/OFFENE-AUFGABEN-Relaunch.md`. Dasselbe gilt
+für `threshold/og-image.jpg`.
 
 Anmerkung zur Quelle: Das Briefing nannte `hero-fuehren-split.webp` mit
-1200 × 1500. Die Datei ist tatsächlich 1400 × 1400. Die Maße 1200 × 1500
-stehen als `width` und `height` am `<img>` in `fuehren/index.html` und
-`fuehren/en/index.html` und stimmen damit nicht mit der Datei überein.
-
-- [ ] `width` und `height` des Hero-Bildes auf `/fuehren/` auf 1400 × 1400
-  korrigieren. Das falsche Seitenverhältnis reserviert beim Laden den
-  falschen Platz und erzeugt einen Layoutsprung.
+1200 × 1500. Es gibt die Datei zweimal. `briefing/hero-fuehren-split.webp`
+ist 1200 × 1500, `assets/hero-fuehren-split.webp`, die ausgelieferte
+Fassung, ist 1400 × 1400 — andere Prüfsumme, offenbar später neu
+exportiert. Die Maße im Briefing stammen aus der Briefing-Kopie.
 
 ### HR Excellence Award Logo: Nutzungsrechte klären
 
@@ -321,5 +321,11 @@ gekürzt wird. Bewusst nicht im Relaunch geändert.
   Telefonnummer im Repository, Datei ist von der Website nicht verlinkt.
 - Die Threshold-Seiten haben keine Hauptnavigation. Der einzige Rückweg auf
   davidliebnau.com steht im Footer.
+- Das Hero-Bild `assets/hero-david.webp` steht auf `index.html` und
+  `index-en.html` ohne `width` und `height`. Beim Abgleich aller
+  `<img>`-Elemente am 02.09.2026 die einzigen beiden Fundstellen ohne Maße,
+  neben drei Bildern in `solo.html`, das von der Website nicht verlinkt ist.
+  Bewusst nicht angefasst: die Startseite gehört nicht zu diesem Sprint, und
+  ob dort Maße etwas ändern, hängt daran, wie das CSS das Bild bemisst.
 - `README.md` enthält nur die Zeile `# light-creators`. Der Repository-Name
   passt nicht zum Inhalt, hier liegt davidliebnau.com.
