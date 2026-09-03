@@ -381,13 +381,29 @@ Offen bleibt eine kleinere Frage:
 
 - `solo.html` nennt die Telefonnummer `+49 170 43 26 737`. Einzige
   Telefonnummer im Repository, Datei ist von der Website nicht verlinkt.
-- Die Threshold-Seiten haben keine Hauptnavigation. Der einzige Rückweg auf
-  davidliebnau.com steht im Footer.
 - Das Hero-Bild `assets/hero-david.webp` steht auf `index.html` und
   `index-en.html` ohne `width` und `height`. Beim Abgleich aller
   `<img>`-Elemente am 02.09.2026 die einzigen beiden Fundstellen ohne Maße,
   neben drei Bildern in `solo.html`, das von der Website nicht verlinkt ist.
   Bewusst nicht angefasst: die Startseite gehört nicht zu diesem Sprint, und
   ob dort Maße etwas ändern, hängt daran, wie das CSS das Bild bemisst.
+- **Das Repository ist öffentlich, und `briefing/` wird mit ausgeliefert.**
+  Geprüft am 03.09.2026: `https://davidliebnau.com/briefing/LCT-Farbpalette.md`,
+  `.../briefing/OFFENE-AUFGABEN-Relaunch.md` und die Vorschaubilder unter
+  `briefing/og-vorschau/` antworten alle mit `200`. Auch `BACKLOG.md` selbst
+  ist abrufbar. Das sind interne Planungsunterlagen auf einer öffentlichen
+  Domain — nicht verlinkt und nicht indexiert, aber lesbar, wer den Pfad
+  kennt. Der Ordner `_briefings/` ist nicht betroffen: GitHub Pages baut mit
+  Jekyll, und Jekyll überspringt Verzeichnisse mit führendem Unterstrich.
+  Behebung wäre eine Umbenennung von `briefing/` nach `_briefings/` oder ein
+  `_config.yml` mit `exclude`. Nicht angefasst, weil die Umbenennung
+  Verweise in mehreren Dateien bricht und die Entscheidung David gehört.
+- **Zwei Claude-Code-Sitzungen teilen sich einen Arbeitsbaum.** Am 03.09.2026
+  hat eine zweite Sitzung um 22:11 Uhr `git checkout phase2-zulieferungen`
+  ausgeführt, während in dieser Sitzung auf `main` gearbeitet wurde. Der
+  fertige Commit landete dadurch auf dem falschen Branch und musste per
+  Cherry-Pick zurückgeholt werden. Es ging nichts verloren, aber der Ablauf
+  wiederholt sich, solange beide Sitzungen im selben Verzeichnis laufen.
+  Sauber wäre `git worktree` je Sitzung.
 - `README.md` enthält nur die Zeile `# light-creators`. Der Repository-Name
   passt nicht zum Inhalt, hier liegt davidliebnau.com.
