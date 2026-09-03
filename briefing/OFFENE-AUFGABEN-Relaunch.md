@@ -69,26 +69,33 @@ Erledigtes abhaken und mit Datum versehen, damit klar bleibt, was noch offen ist
 
 ## Phase 1: Conversionpfade
 
-Gebaut auf `phase1/threshold-proof-seo`. Abnahme und Merge stehen aus,
-deshalb hier noch nicht abgehakt.
+Gebaut auf `phase1/threshold-proof-seo`, **gemergt und live seit dem
+03.09.2026** (Merge-Commit `9534eae`, GitHub-Pages-Build durchgelaufen und
+gegen die Produktionsdomain verifiziert).
 
-- [ ] **1A Threshold-Angebotslogik.** Gebaut am 01.09.2026. Vier
-  unterscheidbare Nachfragewege auf allen vier Threshold-Seiten, als
-  mailto mit eigener Betreffzeile, eigenem Feldgerüst und eigenem
-  Folgetext. Nach dem Merge abhaken.
-- [ ] **1B Corporate Proof auf `/fuehren/`.** Gebaut am 01.09.2026. Drei
-  Empfehlungen kontextnah platziert, Testimonial-Wand aufgelöst, Regel R2
-  über `assets/award-context.js` technisch abgesichert. Nach dem Merge
-  abhaken. Danach wird die Seite eingefroren, bis Plausible-Daten
-  vorliegen.
-- [ ] **1D SEO der vier Money Pages.** Gebaut am 01. und 02.09.2026.
-  hreflang beidseitig plus x-default, Twitter-Meta vollständig, eigene
-  og:images. Nach dem Merge abhaken, dann die Live-Auslieferung auf
-  Produktion einmal real abrufen und in einem Social-Preview-Check
-  gegenprüfen.
-- [ ] **Goals im Plausible-Dashboard anlegen.** Der Code allein reicht
-  nicht. Die Liste der neun neuen Goal-Namen steht im Ergebnisbericht zum
-  Sprint und in `BACKLOG.md`.
+- [x] **1A Threshold-Angebotslogik.** Gebaut am 01.09.2026, live am
+  03.09.2026. Vier unterscheidbare Nachfragewege auf allen vier
+  Threshold-Seiten, als mailto mit eigener Betreffzeile, eigenem Feldgerüst
+  und eigenem Folgetext.
+- [x] **1B Corporate Proof auf `/fuehren/`.** Gebaut am 01.09.2026, live am
+  03.09.2026. Drei Empfehlungen kontextnah platziert, Testimonial-Wand
+  aufgelöst, Regel R2 über `assets/award-context.js` technisch abgesichert.
+  Die Seite ist damit eingefroren, bis Plausible-Daten vorliegen.
+- [x] **1D SEO der vier Money Pages.** Gebaut am 01. und 02.09.2026, live am
+  03.09.2026. hreflang beidseitig plus x-default, Twitter-Meta vollständig,
+  eigene og:images. Live-Auslieferung real abgerufen: alle acht Seiten mit
+  200, beide og:images erreichbar.
+- [ ] **Social-Preview-Check der vier Money Pages.** Steht noch aus. Geht
+  jetzt, weil die Bilder live sind.
+- [x] **Goals im Plausible-Dashboard angelegt.** Erledigt am 03.09.2026,
+  von David angelegt und im Dashboard verifiziert. Im Account stehen 19
+  Custom Events plus die vier Standard-Goals; die 19 decken sich mit dem
+  Bestand im Code. Vollständige Namensliste in `BACKLOG.md` unter „Messung".
+- [x] **Verkabelung der neun neuen Goals geprüft.** Ebenfalls am 03.09.2026,
+  gegen die Live-Domain und **ohne eine einzige Konversion** zu erzeugen: Die
+  Sendewege wurden abgefangen und die Nutzlast mitgelesen, statt echte Klicks
+  abzusetzen. In allen 18 geprüften Fällen stimmt der gesendete Eventname mit
+  der Klasse im Markup überein. Vorgehen und Grenzen in `BACKLOG.md`.
 
 ---
 
