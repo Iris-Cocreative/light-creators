@@ -1,9 +1,32 @@
 # CC-2 · Symbol-Set „Schöpferische Dialoge"
 
 **Aufgabe:** CC-2 aus `phase2-lightcreators-claude-code.md`
-**Übergabepunkt:** I-2, fällig nach Freigabepunkt F2
-**Stand:** 2. September 2026
-**Zielsektion:** Sektion 4 der neuen Startseite, Copy-Strings `S4.*`
+**Übergabepunkt:** I-2
+**Stand:** 3. September 2026 — **Neubau nach Regel R-K.** Ersetzt die Fassung vom 02.09.2026.
+**Geltende Regeln:** **R-K** (maßgeblicher Satz, Farbe, Einbettung, Barrierefreiheit), **R-E**
+
+> **Was sich gegenüber dem 02.09. geändert hat.** Die erste Fassung wurde aus dem
+> **falschen Symbolsatz** exportiert und enthielt vier PNG-Fallbacks. Beides ist mit R-K
+> hinfällig. Diese Fassung ist ein Neubau, keine Korrektur.
+
+---
+
+## 0. Widerspruch zum Aufgabentext, ausgewiesen
+
+Abschnitt CC-2 des Briefings ist zum Stand 03.09.2026 **nicht** auf R-K nachgezogen. Er
+verlangt weiterhin unter Punkt 3 „pro Symbol zusätzlich ein PNG … Kantenlänge 512 px" und
+beschreibt unter „Farbwerte" den Goldverlauf als das zu dokumentierende Merkmal.
+
+**R-K steht in Abschnitt 1a („Diese Punkte sind entschieden") und ist vom 03.09.2026,
+der CC-2-Abschnitt ist älter.** Diese Lieferung folgt R-K. Der Widerspruch ist hier
+benannt, statt stillschweigend in die eine oder andere Richtung aufgelöst zu werden.
+
+| Punkt | CC-2-Abschnitt (älter) | R-K (gültig) | Hier umgesetzt |
+|---|---|---|---|
+| Maßgeblicher Satz | Verlaufssatz, `assets/icons/` | `currentColor`-Satz | `currentColor`-Satz |
+| PNG-Fallback | vier PNG à 512 px | entfällt | **keine PNG** |
+| Farbe | Verlauf `#FFDB9D` → `#A87D34` | `#A87D34`, einfarbig | `#A87D34` per CSS |
+| Einbau | Asset-Upload | inline eingebettet | inline |
 
 ---
 
@@ -11,169 +34,158 @@
 
 | Datei | Größe | Herkunft |
 |---|---|---|
-| `01-loslassen.svg` | 578 B | Kopie von `assets/icons/01-loslassen.svg`, byte-identisch |
-| `02-verbinden.svg` | 827 B | Kopie von `assets/icons/02-verbinden.svg`, byte-identisch |
-| `03-erkennen.svg` | 877 B | Kopie von `assets/icons/03-erkennen.svg`, byte-identisch |
-| `04-gestalten.svg` | 761 B | Kopie von `assets/icons/04-gestalten.svg`, byte-identisch |
-| `01-loslassen@2x.png` | 42 KB | 512 × 512, transparent, erzeugt am 02.09.2026 |
-| `02-verbinden@2x.png` | 40 KB | dito |
-| `03-erkennen@2x.png` | 54 KB | dito |
-| `04-gestalten@2x.png` | 66 KB | dito |
+| `01-loslassen.svg` | 578 B | Kopie von `briefing/01-loslassen.svg` |
+| `02-verbinden.svg` | 827 B | Kopie von `briefing/02-verbinden.svg` |
+| `03-erkennen.svg` | 669 B | Kopie von `briefing/03-erkennen.svg` |
+| `04-gestalten.svg` | 761 B | Kopie von `briefing/04-gestalten.svg` |
+| `symbole-README.md` | diese Datei | — |
 
-Die vier Originale unter `assets/icons/` sind **unverändert**. Es wurde kopiert, nicht
-verschoben. Die Prüfsummen der Kopien stimmen mit denen der Originale überein.
+**Vier SVG, ein README. Keine PNG.**
+
+Die Originale unter `briefing/` und unter `assets/icons/` sind **unverändert**. Es wurde
+kopiert, nicht verschoben. Alle vier Kopien parsen fehlerfrei als XML.
+
+### Warum die PNG-Fallbacks gestrichen sind
+
+Sie hatten genau einen Zweck: ein Ersatzformat, falls der **SVG-Upload als Webflow-Asset**
+klemmt. Nach R-K werden die Symbole **inline in das Markup eingebettet**, nicht als Asset
+hochgeladen. Damit gibt es keinen Upload, der klemmen könnte — der Fallback sichert einen
+Weg ab, den niemand mehr geht.
+
+Dazu kommt: Ein PNG kann keine offene Farbe tragen. Die vier Rasterungen der ersten
+Fassung trugen `#E3C486` eingebrannt, also nicht einmal den nach R-K gültigen Wert. Sie
+hätten bei jeder Farbänderung neu erzeugt werden müssen, während die SVG-Lösung eine
+CSS-Zeile braucht. Ein Fallback, der die Entscheidung gegen sich hat, ist kein Fallback,
+sondern eine zweite Wahrheit.
 
 ---
 
-## 2. Fundstelle — und ein Fund, der im Briefing nicht steht
+## 2. Welcher Satz maßgeblich ist — und wie klein der Unterschied wirklich ist
 
-Das Briefing nennt `03-erkennen.svg` als bekannten Dateinamen und geht von einem Satz aus.
-**Es liegen zwei Sätze im Repository**, an zwei Orten, und sie sind nicht identisch.
+Im Repository liegen zwei Sätze der vier Symbole:
 
-| Ort | Zustand |
+| Ort | Merkmal |
 |---|---|
-| `assets/icons/` | Trägt den Goldverlauf in `03-erkennen.svg`. Kein `style="color:…"` am Wurzelelement. |
-| `briefing/` | Trägt `style="color:#E3C486"` am Wurzelelement. **Kein Goldverlauf** in `03-erkennen.svg`; der Mittelpunkt ist dort mit `currentColor` gefüllt. |
+| `briefing/` | **maßgeblich (R-K).** Trug `style="color:#E3C486"` am Wurzelelement. `03-erkennen` füllt den Mittelpunkt mit `currentColor`. |
+| `assets/icons/` | Verlaufssatz. Kein `style`. `03-erkennen` füllt den Mittelpunkt mit `url(#gold-gradient)`. |
 
-Übernommen wurde der Satz aus **`assets/icons/`**, weil er der Beschreibung im Briefing
-entspricht: Der Verlauf ist dort tatsächlich als `linearGradient` in `03-erkennen.svg`
-definiert. Der `briefing/`-Satz ist damit als ältere oder abgezweigte Variante zu
-behandeln. Umbenannt oder zusammengeführt wurde nichts.
+Nach Entfernen der Inline-Farbe (siehe Abschnitt 3) zeigt sich, dass die beiden Sätze
+**fast dasselbe** sind:
 
-### Zweiter Fund: die Symbole sind heute nirgends eingebunden
+| Datei | Verhältnis zu `assets/icons/` |
+|---|---|
+| `01-loslassen.svg` | **byte-identisch** |
+| `02-verbinden.svg` | **byte-identisch** |
+| `04-gestalten.svg` | **byte-identisch** |
+| `03-erkennen.svg` | weicht ab — nur im Goldpunkt |
 
-Das Briefing begründet das Kopieren damit, dass die Originale „auf `davidliebnau.com` in
-Verwendung sind". Das trifft nicht zu. Eine Suche über alle HTML- und CSS-Dateien findet
-**keine einzige Referenz** auf `01-loslassen`, `02-verbinden`, `03-erkennen`,
-`04-gestalten` oder auf das Verzeichnis `assets/icons/`. Die Symbole liegen ungenutzt.
+Der **einzige** inhaltliche Unterschied zwischen den Sätzen steckt in `03-erkennen.svg`:
 
-Das ändert nichts am Vorgehen — kopieren statt verschieben bleibt richtig, weil die
-Dateien Bestand sind und Phase 2 keine bestehende Datei anfasst. Es ändert aber die
-Risikolage: Ein späterer Umzug der Originale bräche nichts auf `davidliebnau.com`.
+```
+Verlaufssatz:      <circle … fill="url(#gold-gradient)" stroke="none"/>   + <defs> mit linearGradient
+currentColor-Satz: <circle … fill="currentColor" stroke="none"/>          ohne <defs>
+```
+
+**Praktische Folge:** Der Punkt folgt jetzt derselben Farbe wie die Konturen. Ein Symbol,
+eine Farbe, eine CSS-Zeile. Der Verlauf `#FFDB9D` → `#A87D34` ist damit für Phase 2
+stillgelegt — er bleibt in `assets/icons/03-erkennen.svg` erhalten und ist dort
+dokumentiert (`briefing/LCT-Farbpalette.md`).
+
+Ein Nebenbefund, der die Wahl stützt: **`#A87D34` aus R-K ist genau das dunkle Ende
+dieses Verlaufs.** Die Entscheidung nimmt also keinen fremden Wert, sondern friert den
+Verlauf auf sein dunkles Ende ein — den Teil, der auf hellem Grund trägt.
 
 ---
 
-## 3. Technische Daten
+## 3. Die einzige Änderung an den Kopien
 
-Alle vier Dateien sind gleich aufgebaut:
+Aus allen vier Dateien wurde genau eine Zeichenfolge entfernt:
 
 ```
-viewBox      0 0 240 240
-width/height 240 × 240   (im Attribut; die viewBox skaliert frei)
-fill         none
-stroke       currentColor
-stroke-width 1.25
-role         img
-aria-label   Loslassen | Verbinden | Erkennen | Gestalten
+ style="color:#E3C486"
 ```
+
+**Warum.** R-K setzt die Farbe auf `#A87D34` und nennt sie „eine CSS-Zeile, jederzeit
+änderbar". Eine Inline-`color` am Wurzelelement des SVG **schlägt eine geerbte CSS-Regel**
+— die Symbole wären beim Einbetten `#E3C486` geblieben und die CSS-Zeile wirkungslos.
+Zusätzlich trug der Wert nicht die entschiedene Farbe.
+
+Ohne die Inline-Farbe erben alle vier Symbole ihre Farbe vom Container. Das ist der
+Zustand, den R-K beschreibt.
+
+**Nicht** geändert wurden: `viewBox`, `width`, `height`, `stroke`, `stroke-width`,
+Geometrie, Deckkraftwerte, `role` und `aria-label`. Die Änderung ist in einem Schritt
+rücknehmbar, indem die Zeichenfolge wieder eingesetzt wird.
+
+---
+
+## 4. Farbe und Einbau
+
+**Farbe: `#A87D34`** (R-K). Begründung aus der Entscheidung: Die Striche sind haarfein
+(`stroke-width: 1.25`) und stark abgeschwächt (Deckkraft bis herunter auf 0,16); das
+hellere Gold verschwindet auf hellem Grund.
+
+Gesetzt wird sie **einmal am Container**, nicht in den Dateien:
+
+```css
+.dialoge-symbol { color: #A87D34; }
+```
+
+```html
+<span class="dialoge-symbol">
+  <svg viewBox="0 0 240 240" … aria-hidden="true"> … </svg>
+</span>
+```
+
+| Merkmal | Wert |
+|---|---|
+| ViewBox | `0 0 240 240` (alle vier, R-K) |
+| `width` / `height` im Attribut | `240` — die ViewBox skaliert frei, CSS gewinnt |
+| `stroke` | `currentColor` |
+| `stroke-width` | `1.25`, in `04-gestalten` zusätzlich `1.9` auf der äußeren Ellipse |
+| `fill` | `none`, Ausnahme: Mittelpunkt in `03-erkennen` mit `currentColor` |
 
 | Symbol | Aufbau | Deckkraftstufen |
 |---|---|---|
 | 01 Loslassen | 5 Ellipsen, gemeinsam um −12° gedreht, nach innen kleiner und blasser, die inneren zwei gestrichelt | 1 · 0,75 · 0,5 · 0,3 · 0,16 |
 | 02 Verbinden | 2 Kreise (r 72), überlappend; in der Schnittmenge 11 waagerechte Ellipsen | 0,85 auf der Ellipsengruppe |
 | 03 Erkennen | 8 Ellipsen, vier links und vier rechts, dazwischen ein gefüllter Punkt (r 6,5) | 0,9 auf der Ellipsengruppe |
-| 04 Gestalten | 6 hochkant-Ellipsen in 30°-Schritten gedreht, darüber eine breite Ellipse um −16° mit stärkerer Kontur (1,9) | 0,55 auf der Rosettengruppe |
+| 04 Gestalten | 6 hochkant-Ellipsen in 30°-Schritten gedreht, darüber eine breite Ellipse um −16° | 0,55 auf der Rosettengruppe |
 
 ---
 
-## 4. Farbwerte
+## 5. Barrierefreiheit — `aria-hidden="true"` beim Einbetten
 
-### Der Goldverlauf
+**Die vier Symbole sind dekorativ.** Jedes steht direkt neben seiner eigenen sichtbaren
+Beschriftung — „01 LOSLASSEN", „02 VERBINDEN", „03 ERKENNEN", „04 GESTALTEN" (Copy-Strings
+`S4.01.NUM` und `S4.01.H3` und so weiter).
 
-Nur in `03-erkennen.svg`, nur auf der Füllung des Mittelpunkts, nicht auf den Konturen:
+**Beim Einbetten werden `role="img"` und `aria-label="…"` durch `aria-hidden="true"`
+ersetzt** (R-K). Das ist keine Feinheit, sondern verhindert eine konkrete Doppelung:
 
-```xml
-<linearGradient id="gold-gradient" x1="0" y1="0" x2="0" y2="1">
-  <stop offset="0" stop-color="#FFDB9D"/>
-  <stop offset="1" stop-color="#A87D34"/>
-</linearGradient>
-```
-
-| Rolle | Wert |
-|---|---|
-| Verlauf oben | `#FFDB9D` |
-| Verlauf unten | `#A87D34` |
-| Richtung | senkrecht, oben nach unten |
-| Angewandt auf | `fill` des `<circle cx="120" cy="120" r="6.5">` |
-
-**Geprüft, wie im Briefing verlangt:** Der Verlauf kommt in den anderen drei Symbolen
-**nicht** vor. `01`, `02` und `04` enthalten kein `<defs>` und keinen `linearGradient`.
-Die `id="gold-gradient"` ist damit auch nur in einer Datei vergeben; beim Inline-Einbau
-mehrerer Symbole auf einer Seite entsteht kein ID-Konflikt.
-
-### Die Konturfarbe ist offen
-
-Die Konturen aller vier Symbole stehen auf `stroke="currentColor"`. Der kanonische Satz
-unter `assets/icons/` setzt **keine** `color`. Ein Symbol, das so als eigenständige Datei
-hochgeladen und über `<img>` eingebunden wird, rendert deshalb **schwarz**, weil
-`currentColor` auf den Vorgabewert fällt.
-
-Im Repository stehen drei verschiedene Goldwerte:
-
-| Wert | Wo | Rolle |
-|---|---|---|
-| `#E0B76F` | `assets/styles.css`, `--color-gold` | Das Gold von `davidliebnau.com` |
-| `#E3C486` | nur in den `briefing/`-Kopien der Symbole | Ein dritter Wert, der sonst nirgends im Repository vorkommt |
-| `#FFDB9D` → `#A87D34` | `03-erkennen.svg` | Der Verlauf |
-
-**Gegenprobe an den Markenvorgaben.** `briefing/LCT-Farbpalette.md` (seit 03.09.2026
-auf `main`) führt die Palette aus den LCT Brand Design Guidelines. Sie bestätigt zwei
-Befunde dieses README von der Marken-Seite her: Soft Gold ist dort `#E0B76F`
-(am Original gemessen `#DFB76F`), und der Gold Gradient `#FFDB9D` → `#A87D34` ist
-**im CSS nicht als Variable definiert** — er lebt ausschließlich in
-`assets/icons/03-erkennen.svg`. `#E3C486` kommt in den Brand Guidelines nicht vor.
-
-**Welcher Wert für Light Creators gilt, ist nicht entschieden.** Das hängt an **OD-9**
-(eigenes Design-System oder Übernahme von `davidliebnau.com`, ausdrücklich einschließlich
-der Frage, ob die Symbolfarben angepasst werden). Es wurde deshalb kein Wert in die
-SVG-Kopien geschrieben.
-
-**Für den Webflow-Strang heißt das:** Die Konturfarbe wird dort gesetzt, nicht hier —
-entweder über eine `color`-Regel auf dem Container beim Inline-Einbau, oder durch eine
-Variable, sobald OD-9 entschieden ist.
-
-### Die PNG tragen einen provisorischen Wert
-
-Ein PNG kann keine offene Farbe haben. Die vier Fallback-Dateien wurden mit `#E3C486`
-gerastert — dem einzigen Wert, der im Repository für genau diese Symbole steht. Das ist
-**keine Farbentscheidung**, sondern die Voraussetzung dafür, dass überhaupt ein PNG
-entsteht. Fällt OD-9 anders aus, müssen die vier PNG neu erzeugt werden; die SVG nicht.
-
-Erzeugt mit Quick Look (`qlmanage -t -s 512`) aus temporären Kopien, in die `color`
-injiziert wurde. Die Kopien in diesem Verzeichnis blieben dabei unangetastet.
-Transparenz geprüft: alle vier haben einen Alphakanal.
-
----
-
-## 5. Alt-Text-Regel
-
-**Die vier Symbole sind dekorativ und bekommen `alt=""`.**
-
-Jedes Symbol steht direkt neben seiner eigenen Textbeschriftung — „01 LOSLASSEN",
-„02 VERBINDEN", „03 ERKENNEN", „04 GESTALTEN" (Copy-Strings `S4.01.NUM` und `S4.01.H3`
-und so weiter). Ein Alt-Text würde diese Beschriftung doppeln: Screenreader-Nutzer hörten
-denselben Inhalt zweimal hintereinander.
-
-### Achtung — die SVG widersprechen dieser Regel von innen
-
-Alle vier Dateien tragen am Wurzelelement:
+Die vier Dateien tragen im Auslieferungszustand am Wurzelelement:
 
 ```xml
 role="img" aria-label="Loslassen"
 ```
 
-Das hat je nach Einbauart unterschiedliche Folgen:
+Solange ein SVG über `<img src="…" alt="">` eingebunden wird, ist das folgenlos — der
+Browser behandelt es als ersetztes Bild, und `aria-label` **im** SVG wird nicht vorgelesen.
+**Inline eingebettet wirkt es dagegen.** Der Screenreader liest dann „Loslassen" und
+unmittelbar danach die sichtbare Beschriftung „01 LOSLASSEN": derselbe Inhalt zweimal.
 
-| Einbauart | Wirkung | Bewertung |
+Weil R-K die Inline-Einbettung festlegt, ist der Austausch verbindlich:
+
+| | Vorher (Datei) | Nachher (eingebettet) |
 |---|---|---|
-| `<img src="01-loslassen.svg" alt="">` | Der Browser behandelt das SVG als ersetztes Bild. `aria-label` **im** SVG wird nicht vorgelesen. `alt=""` gewinnt. | **unkritisch** |
-| SVG inline ins HTML kopiert | `role="img"` und `aria-label` wirken. Der Screenreader liest „Loslassen" — und direkt danach die sichtbare Beschriftung „01 LOSLASSEN". | **Regelbruch** |
+| Wurzelelement | `role="img" aria-label="Loslassen"` | `aria-hidden="true"` |
 
-**Empfehlung an den Webflow-Strang:** als `<img>` mit `alt=""` einbinden, nicht inline.
-Wird inline gebraucht (etwa weil die Konturfarbe per CSS gesteuert werden soll), müssen
-`role="img"` und `aria-label` durch `aria-hidden="true"` ersetzt werden. Diese Änderung
-gehört dann in den Webflow-Strang, nicht in die Kopien hier — sie würde die
-Byte-Identität zu den Originalen brechen.
+**Warum die Dateien den Austausch nicht schon mitbringen.** Er gehört an die Einbaustelle,
+nicht in die Zulieferung: `aria-hidden` ist nur richtig, solange die Beschriftung
+tatsächlich daneben steht. Fiele sie im Layout weg, wäre `aria-label` wieder die richtige
+Wahl. Die Dateien bleiben deshalb neutral, und der Webflow-Strang setzt es beim Einbetten.
+Das ist die einzige Stelle, an der diese Lieferung Nacharbeit verlangt — sie ist hier
+ausdrücklich benannt.
 
 ---
 
@@ -186,11 +198,51 @@ Byte-Identität zu den Originalen brechen.
 | `03-erkennen` | `S4.03.NUM`, `S4.03.H3`, `S4.03.P` | 03 · ERKENNEN | Wahrnehmen, was wirklich deins ist – und was entstehen will. |
 | `04-gestalten` | `S4.04.NUM`, `S4.04.H3`, `S4.04.P` | 04 · GESTALTEN | Erkenntnis in Erfahrungen, Entscheidungen und konkrete Schritte übersetzen. |
 
+Sektion 4 löst **kein** Analytics-Event aus, siehe `analytics-lightcreators-home.md`.
+
 ---
 
-## 7. Rückfragen
+## 7. Fundstelle im Repository
+
+Beide Sätze liegen unverändert an ihrem Platz:
+
+```
+briefing/0{1..4}-*.svg        ← maßgeblich (R-K), Quelle dieser Kopien
+assets/icons/0{1..4}-*.svg    ← Verlaufssatz
+```
+
+Ein Befund aus der Erhebung vom 03.09.2026, der eine Annahme im Briefing korrigiert:
+Punkt 2 des CC-2-Abschnitts begründet „Kopieren, nicht verschieben" damit, dass die
+Originale „auf `davidliebnau.com` in Verwendung sind". **Das trifft nicht zu.** Keines der
+vier Symbole wird von einer ausgelieferten Seite eingebunden — es gibt weder ein `<img>`
+noch einen CSS-Verweis darauf. Am Vorgehen ändert das nichts (kopiert wurde ohnehin), aber
+die Begründung stimmt nicht: Die Symbole liegen ungenutzt im Repository.
+
+`assets/icons/` enthält daneben die fünf Icons der Founder-Resonance-Faktoren
+(`Obsession.svg`, `Presence.svg`, `Vision.svg`, `Founder Fit.svg`, `Scalable Logic.svg`).
+Sie gehören zum Founder-Material und sind in `founder-material-inventar.md` erfasst.
+
+---
+
+## 8. Abnahme
+
+| Kriterium | Ergebnis |
+|---|---|
+| Vier SVG vorhanden | **ja** |
+| Alle vier parsen fehlerfrei als XML | **ja** |
+| Aus dem `currentColor`-Satz (R-K) | **ja** |
+| Kein `linearGradient`, kein `#E3C486` mehr enthalten | **ja, geprüft** |
+| ViewBox durchgehend `0 0 240 240` | **ja** |
+| Keine PNG im Verzeichnis | **ja** |
+| Originale in `briefing/` und `assets/icons/` unverändert | **ja** |
+| Keine Datei außerhalb von `_briefings/phase2-lightcreators/` berührt (R-E) | **ja** |
+
+---
+
+## 9. Rückfragen
 
 | ID | Frage | Blockiert |
 |---|---|---|
-| **RF-9** | Welcher Goldwert gilt für die Symbole auf Light Creators — `#E0B76F` wie auf `davidliebnau.com`, `#E3C486` wie in den `briefing/`-Kopien, oder ein eigener Wert? Solange das offen ist, tragen die SVG keine Farbe und die PNG einen provisorischen Wert. | OD-9 |
-| **RF-10** | Es liegen zwei nicht identische Sätze der vier Symbole im Repository, unter `assets/icons/` und unter `briefing/`. Soll einer davon später der führende werden? Das wäre eine Änderung an bestehenden Dateien und fällt damit unter R-E, also frühestens nach dem Phase-1-Merge. | nach P1 |
+| **RF-16** | Das Entfernen von `style="color:#E3C486"` ist die einzige Änderung an den Kopien und meine Auslegung von R-K („eine CSS-Zeile, jederzeit änderbar"). Falls die Symbole stattdessen ihre Farbe selbst tragen sollen, sag Bescheid — dann wird der Wert auf `#A87D34` gesetzt statt entfernt, und die CSS-Zeile entfällt. | — |
+| ~~RF-9~~ | Goldwert — **entschieden: `#A87D34`** (R-K, 03.09.2026). | erledigt |
+| ~~RF-10~~ | Führender Satz — **entschieden: der `currentColor`-Satz** (R-K, 03.09.2026). | erledigt |

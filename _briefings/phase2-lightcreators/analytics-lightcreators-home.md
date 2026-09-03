@@ -31,11 +31,12 @@ Der Growth-Tarif unterstützt keine Custom Properties. Daraus folgen drei Dinge:
 | `light.home.tribeperson.click` + `person=<slug>` | entfällt, siehe Abschnitt 3 |
 | `light.home.nav.click` + `target=<slug>` | entfällt, siehe Abschnitt 3 |
 
-**Offener Punkt aus dem Briefing, hier weitergereicht:** Am 02.09.2026 wurden im
-Plausible-Konto versuchsweise die drei Properties `position`, `person` und `target`
-angelegt. Ob sie inzwischen gelöscht sind, lässt sich aus diesem Repository nicht
-feststellen. **Vor dem Tarifwechsel prüfen und löschen.** Sie werden hier nicht
-eingeplant. Siehe RF-12.
+**Stand der drei Alt-Properties (Antwort auf RF-12, 03.09.2026).** Die am 02.09.2026
+versuchsweise angelegten Properties `position`, `person` und `target` sind **noch nicht
+gelöscht**. David entfernt sie demnächst. Sie werden in dieser Spezifikation nicht
+eingeplant und tauchen in keinem Snippet auf; solange sie im Konto stehen, sind sie
+Altbestand ohne Sender. **Offener Handgriff, kein offener Punkt** — er blockiert weder
+den Bau noch S-P0.
 
 ### Entscheidung vom 03.09.2026 — R-F ist bestätigt
 
@@ -227,7 +228,7 @@ müssen von Hand angelegt werden.
 
 | # | Goal-Name | `goal_angelegt` |
 |---|---|---|
-| 1 | `light.home.hero.click` | **ja** (Stand 02.09.2026) |
+| 1 | `light.home.hero.click` | **ja** — bestätigt 03.09.2026 |
 | 2 | `light.home.nextgen.click` | nein |
 | 3 | `light.home.nextgenfinale.click` | nein |
 | 4 | `light.home.founders.click` | nein |
@@ -238,10 +239,9 @@ müssen von Hand angelegt werden.
 | 9 | `light.home.tribe.reach` | nein |
 | 10 | `light.home.zweiwege.reach` | nein |
 
-**Der Stand von `light.home.hero.click` stammt aus dem Briefing, nicht aus einer eigenen
-Prüfung.** Aus diesem Repository ist der Zustand des Plausible-Kontos für
-`light-creators.com` nicht einsehbar. Vor dem Anlegen der übrigen neun ist der Stand im
-Dashboard zu verifizieren.
+**Bestätigt am 03.09.2026 (Antwort auf RF-15).** `light.home.hero.click` ist im
+Plausible-Konto als Goal angelegt und von David bestätigt. Die übrigen **neun fehlen
+noch** und müssen vor dem Publish von Hand angelegt werden.
 
 **Voraussetzung, die vor allen Goals kommt:** Plausible muss auf `light-creators.com`
 überhaupt laufen. Das ist Schritt **S-P0** im Webflow-Strang (Regel R-A) und zum Stand
@@ -296,7 +296,7 @@ und Partnerseite, nicht nach Sprache.
 
 | Event | Domain | Seite | Zweck | Mechanik | Status | `goal_angelegt` |
 |---|---|---|---|---|---|---|
-| `light.home.hero.click` | light-creators.com | `/` | Hero-CTA | Data-Attribut | geplant | ja |
+| `light.home.hero.click` | light-creators.com | `/` | Hero-CTA | Data-Attribut | geplant | ja (bestätigt 03.09.) |
 | `light.home.nextgen.click` | light-creators.com | `/` | Next Gen, Sektion 6 | Data-Attribut | geplant | nein |
 | `light.home.nextgenfinale.click` | light-creators.com | `/` | Next Gen, Sektion 9 | Data-Attribut | geplant | nein |
 | `light.home.founders.click` | light-creators.com | `/` | Founders, Sektion 6 | Data-Attribut | geplant | nein |
@@ -332,20 +332,35 @@ existiert auf `davidliebnau.com` also **nicht**. Nach dem Publish stehen im selb
 Plausible-Konto zwei Namenswelten nebeneinander: 19 Events in `snake_case` ohne Präfix und
 10 Events in `punkt.notation` mit `light.`-Präfix.
 
-**Bewertung, keine Entscheidung.** Praktisch ist das kein Fehler: Die Domains sind in
+### Entschieden am 03.09.2026: **Weg B**
+
+> **Die 19 Altnamen bleiben unverändert. Künftige Events auf `davidliebnau.com`
+> bekommen das Präfix `david.*`.** Es wird nichts umbenannt, nichts neu angelegt,
+> keine Historie abgeschnitten. Innerhalb von `davidliebnau.com` entsteht damit
+> bewusst ein Mischbestand: 19 Altnamen in `snake_case`, alles Neue in
+> `david.<seite>.<objekt>.<aktion>`.
+
+**Was daraus für dieses Repository folgt.** Für Phase 2 nichts — hier entsteht kein
+neues Event auf `davidliebnau.com`. Die Regel greift beim nächsten Event, das dort
+hinzukommt; sie steht hier, damit sie dann nicht neu hergeleitet werden muss.
+
+Beispiel für den nächsten Fall: ein neuer CTA auf `/fuehren/` hieße nach Weg B
+`david.fuehren.<objekt>.click`, nicht `fuehren_cta4_click`.
+
+**Zur Begründung, die zu Weg B geführt hat:** Praktisch ist der Mischbestand kein Fehler: Die Domains sind in
 Plausible ohnehin getrennte Sites, die Zuordnung geht nie verloren, und die 19 Goals sind
 seit dem 03.09.2026 angelegt und verifiziert. Eine Umbenennung würde die Goals im
 Dashboard brechen und die Historie abschneiden — die neuen Namen zählten bei null, die
 alten blieben als tote Goals stehen. Sie fiele außerdem unter **R-E** und käme frühestens
 nach dem Phase-1-Merge in Frage.
 
-Drei Wege stehen offen. Die Entscheidung liegt bei David, siehe RF-14:
+Die drei erwogenen Wege, zur Nachvollziehbarkeit:
 
-| Weg | Folge |
-|---|---|
-| **A · So lassen** | Zwei Namenswelten, sauber nach Domain getrennt. Kein Bruch, kein Aufwand. Das Schema aus dem Briefing gilt dann nur für Neues. |
-| **B · Nur Neues nach Schema** | Wie A, aber ausdrücklich festgehalten: `davidliebnau.com` bekommt bei künftigen Events ebenfalls `david.*`. Die 19 Altnamen bleiben. Mischbestand innerhalb einer Domain. |
-| **C · Alles vereinheitlichen** | Ein Schema über beide Domains. Kostet 19 Goal-Neuanlagen, bricht die Historie, berührt neun bestehende Dateien und fällt unter R-E. |
+| Weg | Folge | |
+|---|---|---|
+| A · So lassen | Zwei Namenswelten nach Domain getrennt. Für `davidliebnau.com` bliebe auch künftig alles `snake_case`. | verworfen |
+| **B · Nur Neues nach Schema** | Die 19 Altnamen bleiben, künftige Events auf `davidliebnau.com` bekommen `david.*`. Mischbestand innerhalb einer Domain, dafür kein Bruch. | **gewählt** |
+| C · Alles vereinheitlichen | Ein Schema über beide Domains. Kostet 19 Goal-Neuanlagen, bricht die Historie, berührt neun bestehende Dateien und fällt unter R-E. | verworfen |
 
 ---
 
@@ -353,11 +368,11 @@ Drei Wege stehen offen. Die Entscheidung liegt bei David, siehe RF-14:
 
 | ID | Frage | Blockiert |
 |---|---|---|
-| **RF-12** | Sind die drei am 02.09.2026 versuchsweise angelegten Properties `position`, `person` und `target` im Plausible-Konto inzwischen gelöscht? Aus dem Repository nicht feststellbar. Sie werden hier nicht eingeplant, müssen aber vor dem Tarifwechsel weg. | S-P0 |
+| ~~RF-12~~ | **Beantwortet 03.09.2026:** nein, die drei Properties stehen noch im Konto und werden demnächst entfernt. Hier nicht eingeplant, blockiert nichts. | erledigt |
 | **RF-13** | Zeigt das eingebaute Goal „Outbound Link: Click" die Aufschlüsselung nach Ziel-URL auch auf Growth? Plausible hängt bei getaggten Links die Zieladresse automatisch als eingebaute Property `url` an — ob Growth sie im Dashboard aufschlüsselt, ist damit nicht beantwortet. Bestimmt, ob das Tribe-Paket die Portrait-Links überhaupt einzeln messen kann. | Tribe-Paket (T0) |
 | **RF-14** | Das Briefing nennt 13 Goals, diese Spezifikation kommt auf 10. Die Differenz sind die beiden unter R-F gestrichenen Events `light.home.tribeperson.click` und `light.home.nav.click`. Sollen sie unter eigenen Eventnamen zurückkommen? Bestimmt die endgültige Goal-Zahl. | F2 |
-| **RF-14** | Welcher der drei Wege A, B oder C aus Abschnitt 7.4 gilt? Ohne Antwort entsteht Weg A durch Unterlassen — das ist vertretbar, sollte aber eine Entscheidung sein und kein Versehen. | F2 |
-| **RF-15** | Ist `light.home.hero.click` im Plausible-Konto tatsächlich schon als Goal angelegt? Der Stand stammt aus dem Briefing (02.09.2026) und ist aus diesem Repository nicht überprüfbar. | S-P0 |
+| ~~RF-14~~ | **Beantwortet 03.09.2026: Weg B.** Die 19 Altnamen bleiben, künftige Events auf `davidliebnau.com` bekommen `david.*`. Siehe Abschnitt 7.4. | erledigt |
+| ~~RF-15~~ | **Beantwortet 03.09.2026:** ja, angelegt und bestätigt. Die übrigen neun fehlen noch. | erledigt |
 
 ---
 

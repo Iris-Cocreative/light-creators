@@ -284,10 +284,10 @@ Keine dieser Fragen wird hier beantwortet oder durch eine Annahme ersetzt.
 
 | ID | Frage | Blockiert |
 |---|---|---|
-| **RF-1** | Der Korrektur-Commit nach dem Publish muss vier Ebenen erfassen: die beiden Episodenseiten, `content/ep-29.txt` und `tools/generate_episode.py`. Soll er das in einem Commit tun oder pro Ebene getrennt, damit die Rücknahme feiner wird? | S10 |
-| **RF-2** | Zieht die englische Founder-Fassung `/en` zusammen mit der deutschen Wurzel auf einen Interim-Pfad um, oder bleibt sie, wo sie ist? Betrifft 31 ausgelieferte Anker. Im Briefing nicht adressiert; OD-2b spricht nur von „der alten Startseite". | S1, F1 |
-| **RF-3** | Alle 74 ausgelieferten Wurzel-Anker geben ein Founder-Resonance-Versprechen, 71 im Linktext, drei im Text unmittelbar davor. Sollen sie nach dem Umbau auf den Interim-Pfad umgehängt werden, oder bleiben sie auf der Wurzel und die Beschriftung wird angepasst? Das ist eine redaktionelle Entscheidung mit 74 Fundstellen, davon 60 in generierten Episoden. | F1, S10 |
-| **RF-4** | `Person.worksFor.Organization.url` in den beiden JSON-LD-Blöcken: bleibt die Wurzel, oder zeigt sie nach dem Umzug auf den Founder-Pfad? | OD-2b |
+| ~~RF-1~~ | **Beantwortet 03.09.2026: ein Commit**, wie empfohlen. Er erfasst alle vier Ebenen zusammen: beide Episodenseiten, `content/ep-29.txt` und die Generatorvorlage. | erledigt |
+| ~~RF-2~~ | **Beantwortet 03.09.2026 -> Regel R-J:** `/en` bleibt, wo es ist. Phase 2 ersetzt die deutsche Wurzel, nicht die englische Founder-Seite. Die 31 Anker bleiben gueltig; B-2 entfaellt. | erledigt |
+| ~~RF-3~~ | **Beantwortet 03.09.2026: umhaengen auf `/founder`**, nicht umformulieren - wie empfohlen. Betrifft alle 74 Anker, davon 60 in generierten Episoden, plus die Generatorvorlage. Siehe Abschnitt 9. | erledigt |
+| ~~RF-4~~ | **Beantwortet 03.09.2026: bleibt die Wurzel.** Die Organisation wohnt weiterhin unter `https://light-creators.com`; der Marken-Hub ist ihre Startseite. B-1 ist geschlossen. | erledigt |
 
 ---
 
@@ -310,3 +310,96 @@ funktioniert. Ein Besucher, der den Text nur liest und sich den Pfad merkt, beko
 einer Weiterleitung nichts mit, und die gedruckte Zeile bleibt falsch, sobald der Pfad
 sich ändert. Deshalb ist der Korrektur-Commit für ep-28 und ep-29 nach dem Publish nicht
 optional, sondern die einzige Absicherung für diese vier Stellen.
+
+---
+
+## 9. Nach Freigabepunkt F1 — was sich am 03.09.2026 geklärt hat
+
+F1 ist erteilt. Damit sind alle vier Rückfragen dieses Berichts beantwortet und die
+Redirect-Lage sieht anders aus als in Abschnitt 8 angenommen.
+
+### 9.1 Es braucht keine einzige Weiterleitung
+
+| Pfad | Bisherige Annahme | Nach R-H / R-J | Weiterleitung nötig? |
+|---|---|---|---|
+| `/` | könnte umziehen | bleibt erreichbar, bekommt den neuen Hub | **nein** |
+| `/en` | könnte mitziehen (B-2) | bleibt unverändert (R-J) | **nein** |
+| `/quiz` | stabil | unverändert | **nein** |
+| `/call` | stabil | unverändert | **nein** |
+
+**Kein 301 von `/` auf `/founder`** (R-H, ausdrücklich). Die Wurzel verschwindet nicht,
+sie bekommt neuen Inhalt — eine Weiterleitung dort würde die neue Startseite unerreichbar
+machen. `/founder` ist ein **neuer** Pfad, kein Ziel einer Umleitung, und bleibt
+indexiert.
+
+**Liste B ist damit leer, was die Zielpfade angeht.** B-1 (JSON-LD) und B-2 (`/en`) sind
+durch RF-4 und R-J geschlossen. Es bleiben B-3 und B-4 — und die sind keine Frage der
+Zielpfade, sondern der zwei Ebenen im Repository.
+
+### 9.2 Was dennoch zu tun ist: die 74 Anker umhängen
+
+RF-3 ist mit **umhängen** beantwortet. Die Anker zeigen heute auf `https://light-creators.com`
+und geben ein Founder-Resonance-Versprechen; nach dem Publish liegt dieses Angebot auf
+`/founder`. Sie werden deshalb auf `https://light-creators.com/founder` gezogen, ihre
+Beschriftung bleibt unangetastet.
+
+**Das ist keine Weiterleitungsfrage, sondern eine Textänderung an 74 Stellen** — und
+gerade weil es keinen 301 gibt, ist sie die einzige Absicherung. Ohne sie landen alle 74
+Links auf dem Hub statt beim Angebot, das sie zusagen.
+
+Umfang, gegen `main` bei `2060bb8` gezählt:
+
+| Ebene | Fundstellen | Anmerkung |
+|---|---|---|
+| `episodes/*.html` | 60 | 30 Dateien, je CTA-Block und Footer |
+| `index.html` | 5 | |
+| `index-en.html` | 4 | |
+| `podcast.html` | 3 | |
+| `fuehren/index.html` | 1 | |
+| `fuehren/en/index.html` | 1 | |
+| **Summe ausgeliefert** | **74** | |
+| `tools/generate_episode.py` | 2 | Vorlage — **muss mit**, sonst kommt der alte Pfad zurück |
+| `landing-pages/flourishing-life-eltern-v2.html` | 1 | `noindex`, unverlinkt — Entscheidung offen, siehe RF-17 |
+
+Nicht betroffen: die 31 `/en`-Anker (R-J), die vier nackten `/quiz`- und `/call`-URLs, die
+beiden JSON-LD-Blöcke (RF-4) und die Fundstellen in `_archiv/` und den Arbeitsdokumenten.
+
+### 9.3 Wann das passiert — und warum nicht jetzt
+
+**Nicht in diesem Paket.** Alle 77 Fundstellen liegen außerhalb von
+`_briefings/phase2-lightcreators/` und fallen damit unter **R-E**. Sie werden erst
+angefasst, wenn der Phase-1-Review durch ist und der Webflow-Strang `/founder` als live
+zurückmeldet — vorher zeigte der neue Link ins Leere.
+
+Reihenfolge, damit zu keinem Zeitpunkt ein toter Link ausgeliefert wird:
+
+1. Webflow: alte Startseite liegt unter `/founder`, erreichbar, indexiert.
+2. Rückmeldung an dieses Repository, dass `/founder` mit 200 antwortet.
+3. Phase-1-Merge abwarten (**R-E**).
+4. **Ein** Commit (RF-1) über alle Ebenen: 74 Anker, Generatorvorlage, gegebenenfalls die
+   `noindex`-Landingpage.
+5. Gegenprobe: kein `href="https://light-creators.com"` ohne Pfad mehr im ausgelieferten
+   Bestand.
+
+Schritt 4 gehört zu **S10** und ist einzeln zurücknehmbar.
+
+### 9.4 Die drei neuen Zielpfade, live geprüft am 03.09.2026
+
+| Pfad | HTTP | Bewertung |
+|---|---|---|
+| `/the-art-and-practice-of-a-flourishing-life` | **200** | Ziel des Next-Gen-CTA (R-I). Existiert, nichts zu tun. |
+| `/founder` | **404** | **Erwartet.** Der Pfad entsteht erst, wenn der Webflow-Strang die alte Startseite dorthin zieht (R-H). Er ist die Bedingung für Schritt 2 in 9.3. |
+| `#tribe` | — | Sprungmarke auf der neuen Startseite, kein eigener Pfad. Entsteht mit Sektion 5. |
+
+Nebenbefund zu R-I: Die beiden Unterseiten der Flourishing-Life-Welt sind unter den
+naheliegenden Slugs `…-fuer-dich` und `…-fuer-eltern` **nicht** erreichbar (je 404).
+Für diesen Bericht folgenlos — R-I zielt ohnehin auf die Übersichtsseite —, aber es
+heißt: Die tatsächlichen Slugs der beiden Unterseiten sind hier unbekannt. Falls sie
+später verlinkt werden sollen, müssen sie erst erhoben werden.
+
+### 9.5 Was jetzt noch offen ist
+
+| ID | Frage | Blockiert |
+|---|---|---|
+| **RF-17** | Soll der 75. Wurzel-Anker in `landing-pages/flourishing-life-eltern-v2.html:1487` mit umgehängt werden? Die Datei trägt `noindex` und ist von keiner Seite verlinkt; der Link steht im Fußbereich als reine Kontaktangabe ohne Founder-Versprechen. Mitnehmen kostet nichts, Auslassen fällt niemandem auf. | S10 |
+| ~~RF-18~~ | **Selbst geprüft am 03.09.2026, erledigt:** `/the-art-and-practice-of-a-flourishing-life` antwortet mit **200**. Der Next-Gen-CTA aus R-I zeigt auf einen bestehenden Pfad. | erledigt |

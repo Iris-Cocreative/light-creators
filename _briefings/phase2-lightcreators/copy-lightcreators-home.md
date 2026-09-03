@@ -12,6 +12,12 @@ vorhanden, ohne Zusatz und ohne Auslassung; die Texte stimmen zeichengenau mit A
 überein. Genau ein Eintrag trägt `Heading, Level 1`, jede Sektion 2 bis 9 genau einen
 `Heading, Level 2`.
 
+**Nachtrag vom 03.09.2026 (Schritt S2b).** Freigabepunkt **F1** ist erteilt. Die fünf
+CTA-Linkziele sind nach Regel **R-I** eingetragen; OD-3, OD-4 und OD-5 sind damit
+geschlossen. Weiterhin offen und auf **F2** wartend: die öffentliche Beschriftung
+für „Next Gen“ (OD-6), die Sektionsüberschrift `S7.H2` und der
+Navigationspunkt `NAV.5` (OD-7).
+
 ---
 
 ## Lesehinweis
@@ -24,7 +30,7 @@ Ein Block je String. Der Webflow-Strang setzt Texte über `set_text` gegen die `
 | `quelle` | Abschnitt im V3-Dokument |
 | `element` | Elementtyp und Überschriftenebene |
 | `dom-id` | technischer Griff, siehe Regel unten |
-| `linkziel` | nur bei Links. `OFFEN` heißt: keine Adresse, keine Platzhalter-URL. |
+| `linkziel` | nur bei Links. Alle CTA-Ziele sind seit **F1 vom 03.09.2026** gesetzt (Regel **R-I**). Einzige Ausnahme: `S5.LINK`, das Muster der Personenlinks — es ist kein CTA-Ziel und kommt mit dem Tribe-Paket (**R-G**). |
 | `betroffen-von` | offene Entscheidung, die diesen String verändern kann |
 | `text` | der Text, unverändert |
 
@@ -516,7 +522,7 @@ solange er es zurückmeldet.
 - quelle: V3 §11
 - element: Muster der Linkbeschriftung
 - dom-id: s5-link
-- linkziel: OFFEN · pro Person, Zulieferung David
+- linkziel: PRO PERSON · Zulieferung Tribe-Paket (R-G). Kein CTA-Ziel, deshalb nicht Gegenstand von F1.
 - text: |
     `<Vorname>s Arbeit entdecken ↗`
 
@@ -607,9 +613,9 @@ solange er es zurückmeldet.
 ### S6.NG.CTA
 - provenance: HIS/EXISTING
 - quelle: V3 §12
-- element: Link — **Ziel offen, OD-3**
+- element: Link
 - dom-id: s6-ng-cta
-- linkziel: OFFEN · OD-3
+- linkziel: /the-art-and-practice-of-a-flourishing-life · R-I, F1 vom 03.09.2026
 - betroffen-von: OD-6 · Beschriftung enthält Next-Gen
 - text: |
     Die Next-Gen-Welt entdecken →
@@ -681,9 +687,9 @@ solange er es zurückmeldet.
 ### S6.FO.CTA
 - provenance: HIS/EXISTING
 - quelle: V3 §12
-- element: Link — **Ziel offen, OD-4**
+- element: Link
 - dom-id: s6-fo-cta
-- linkziel: OFFEN · OD-4
+- linkziel: /founder · R-I, F1 vom 03.09.2026
 - text: |
     Founder Resonance entdecken →
 
@@ -866,9 +872,9 @@ solange er es zurückmeldet.
 ### S9.CTA1
 - provenance: HIS/EXISTING
 - quelle: V3 §15
-- element: Link — Ziel wie `S6.NG.CTA`
+- element: Link
 - dom-id: s9-cta1
-- linkziel: OFFEN · OD-3, identisch mit S6.NG.CTA
+- linkziel: /the-art-and-practice-of-a-flourishing-life — identisch mit S6.NG.CTA · R-I, F1 vom 03.09.2026
 - text: |
     Ich suche meinen Weg →
 
@@ -884,9 +890,9 @@ solange er es zurückmeldet.
 ### S9.CTA2
 - provenance: HIS/EXISTING
 - quelle: V3 §15
-- element: Link — Ziel wie `S6.FO.CTA`
+- element: Link
 - dom-id: s9-cta2
-- linkziel: OFFEN · OD-4, identisch mit S6.FO.CTA
+- linkziel: /founder — identisch mit S6.FO.CTA · R-I, F1 vom 03.09.2026
 - text: |
     Ich baue etwas auf →
 
@@ -901,9 +907,9 @@ solange er es zurückmeldet.
 ### S9.CTA3
 - provenance: HIS/EXISTING
 - quelle: V3 §15
-- element: Link — **Ziel offen, OD-5**
+- element: Link
 - dom-id: s9-cta3
-- linkziel: OFFEN · OD-5
+- linkziel: #tribe — Sprungmarke auf derselben Seite, kein Seitenwechsel · R-I, F1 vom 03.09.2026
 - text: |
     Ich möchte die Menschen kennenlernen →
 
@@ -1030,7 +1036,7 @@ die Prüfung auf die H1-Ebene genau einen Treffer liefert, nämlich den Block `S
 | 55 | `S5.P4` | HIS/EXISTING | Absatz — **Prüfen gegen OD-11** | freigabe-offen | OD-11 · Tribe-Mitgliedschaft ist nicht definiert |
 | 56 | `S5.LABEL.A` | HIS/EXISTING | Label über Stimme A | freigabe-offen | — |
 | 57 | `S5.LABEL.B` | HIS/EXISTING | Label über Stimme B | fest | — |
-| 58 | `S5.LINK` | HIS/EXISTING | Muster der Linkbeschriftung | freigabe-offen | Linkziel pro Person |
+| 58 | `S5.LINK` | HIS/EXISTING | Muster der Linkbeschriftung | freigabe-offen | Linkziel pro Person · Tribe-Paket (R-G) |
 | 59 | `S6.H2` | HIS/EXISTING | H2 | fest | — |
 | 60 | `S6.P1` | HIS/EXISTING | Absatz | fest | — |
 | 61 | `S6.P2` | HIS/EXISTING | Absatz | fest | — |
@@ -1041,7 +1047,7 @@ die Prüfung auf die H1-Ebene genau einen Treffer liefert, nämlich den Block `S
 | 66 | `S6.NG.P3` | HIS/EXISTING | Absatz | fest | — |
 | 67 | `S6.NG.P4` | HIS/EXISTING | Absatz | fest | — |
 | 68 | `S6.NG.TAGS` | HIS/EXISTING | Schlagwortzeile | fest | — |
-| 69 | `S6.NG.CTA` | HIS/EXISTING | Link — **Ziel offen, OD-3** | freigabe-offen | OD-6 · Beschriftung enthält Next-Gen / Linkziel OD-3 |
+| 69 | `S6.NG.CTA` | HIS/EXISTING | Link → `/the-art-and-practice-of-a-flourishing-life` | freigabe-offen | Linkziel gesetzt (R-I). Weiterhin offen ist allein die **Beschriftung**, sie hängt an OD-6. |
 | 70 | `S6.FO.EYEBROW` | HIS/EXISTING | Label | fest | — |
 | 71 | `S6.FO.H3` | HIS/EXISTING | H3 | fest | — |
 | 72 | `S6.FO.P1` | HIS/EXISTING | Absatz | fest | — |
@@ -1050,7 +1056,7 @@ die Prüfung auf die H1-Ebene genau einen Treffer liefert, nämlich den Block `S
 | 75 | `S6.FO.P4` | HIS/EXISTING | Absatz | fest | — |
 | 76 | `S6.FO.P5` | HIS/EXISTING | Absatz, hervorgehoben | fest | — |
 | 77 | `S6.FO.TAGS` | HIS/EXISTING | Schlagwortzeile | fest | — |
-| 78 | `S6.FO.CTA` | HIS/EXISTING | Link — **Ziel offen, OD-4** | freigabe-offen | Linkziel OD-4 |
+| 78 | `S6.FO.CTA` | HIS/EXISTING | Link → `/founder` | fest | Linkziel gesetzt, R-I |
 | 79 | `S7.H2` | NEW | H2 | freigabe-offen | OD-10 · alternativ visuell versteckte H2, siehe Hinweis im Briefing |
 | 80 | `S7.A.H3` | HIS/EXISTING | H3 | fest | — |
 | 81 | `S7.A.P` | HIS/EXISTING | Absatz | fest | — |
@@ -1072,11 +1078,11 @@ die Prüfung auf die H1-Ebene genau einen Treffer liefert, nämlich den Block `S
 | 97 | `S9.P2` | HIS/EXISTING | Absatz | fest | — |
 | 98 | `S9.P3` | HIS/EXISTING | Absatz | fest | — |
 | 99 | `S9.P4` | HIS/EXISTING | Absatz | fest | — |
-| 100 | `S9.CTA1` | HIS/EXISTING | Link — Ziel wie `S6.NG.CTA` | freigabe-offen | Linkziel OD-3 |
+| 100 | `S9.CTA1` | HIS/EXISTING | Link → `/the-art-and-practice-of-a-flourishing-life` | fest | Linkziel gesetzt, R-I |
 | 101 | `S9.CTA1.SUB` | HIS/EXISTING | Unterzeile | fest | OD-6 · Unterzeile Next Gen |
-| 102 | `S9.CTA2` | HIS/EXISTING | Link — Ziel wie `S6.FO.CTA` | freigabe-offen | Linkziel OD-4 |
+| 102 | `S9.CTA2` | HIS/EXISTING | Link → `/founder` | fest | Linkziel gesetzt, R-I |
 | 103 | `S9.CTA2.SUB` | HIS/EXISTING | Unterzeile | fest | — |
-| 104 | `S9.CTA3` | HIS/EXISTING | Link — **Ziel offen, OD-5** | freigabe-offen | Linkziel OD-5 |
+| 104 | `S9.CTA3` | HIS/EXISTING | Link → `#tribe` | fest | Sprungmarke, kein Seitenwechsel. Linkziel gesetzt, R-I |
 | 105 | `S9.CTA3.SUB` | HIS/EXISTING | Unterzeile | fest | — |
 | 106 | `NAV.1` | HIS/EXISTING | Navigationslink | fest | — |
 | 107 | `NAV.2` | HIS/EXISTING | Navigationslink | fest | — |
@@ -1104,10 +1110,11 @@ Textänderung und bräuchte eine Freigabe.
 
 ## Was diese Datei nicht enthält
 
-- **Keine Linkadressen.** `S6.NG.CTA`, `S6.FO.CTA`, `S9.CTA1`, `S9.CTA2`, `S9.CTA3` und
-  `S5.LINK` tragen im Feld `linkziel` den Wert `OFFEN` mit der zugehörigen
-  Entscheidungs-ID. Es steht dort keine Platzhalter-URL, kein `#`, kein `/`. Eine
-  Platzhalteradresse würde beim Bau übersehen und ginge live.
+- **Nur noch eine offene Linkadresse.** Seit **F1 vom 03.09.2026** tragen `S6.NG.CTA`,
+  `S6.FO.CTA`, `S9.CTA1`, `S9.CTA2` und `S9.CTA3` ihre Zieladresse nach Regel **R-I**.
+  Offen bleibt allein `S5.LINK`, das Beschriftungsmuster der Personenlinks — es ist
+  kein CTA-Ziel, war deshalb nicht Gegenstand von F1 und kommt mit dem Tribe-Paket
+  (**R-G**). Auch dort steht keine Platzhalter-URL.
 - **Keine SEO-Texte.** Title, Meta Description und Open-Graph-Text stehen nicht im
   V3-Dokument und sind damit NEW. Sie hängen an **OD-10** und gehören in die
   Seiteneinstellungen, nicht in diese Datei.
