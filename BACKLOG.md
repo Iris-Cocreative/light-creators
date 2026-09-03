@@ -3,7 +3,7 @@
 Offene Punkte, die außerhalb des Relaunch-Briefings liegen oder auf eine
 Entscheidung, eine Lieferung oder ein externes Set-up warten.
 
-Stand: 2026-09-02
+Stand: 2026-09-03
 
 ---
 
@@ -312,6 +312,33 @@ Satz kostet 56 Pixel und ist nicht die Ursache. Die Länge kommt aus
 
 Zu prüfen für V2: ob auf Mobil das Bild entfällt oder der Fließtext
 gekürzt wird. Bewusst nicht im Relaunch geändert.
+
+---
+
+## Redaktionell offen
+
+### Bowie-Zitat: Zuschreibung nicht belegt
+
+Am Ende des Vier-Schritte-Blocks auf beiden Startseiten steht:
+
+> „Tomorrow belongs to those – who can hear it coming." — David Bowie
+
+`index.html:300`, `index-en.html:300`. Aufgenommen aus Davids Review vom 03.09.2026.
+
+Zwei Punkte:
+
+- [ ] **Zuschreibung klären.** Die Zuschreibung an David Bowie ist nicht belegt. Bis
+  das geklärt ist, das Zitat nicht auf weitere Seiten übernehmen. Entscheidung liegt
+  bei David: belegen, umformulieren oder entfernen.
+- [ ] **Interpunktion.** Der Gedankenstrich mitten im Satz ist falsch gesetzt. Ein
+  Halbgeviertstrich zwischen Subjekt und Relativsatz gehört dort nicht hin. Wird mit
+  der Zuschreibung zusammen entschieden, nicht einzeln korrigiert.
+
+Zum Bestand: In den Episoden kommt Bowie dreimal vor, jeweils als freie Wiedergabe im
+Fließtext, nicht als Zitat mit Anführungszeichen —
+`ep-04` („Die Zukunft gehört denen, die sie kommen hören"), `ep-16` (Fallschirm-Bild)
+und `ep-22`. Diese Stellen sind von der Entscheidung mitbetroffen, falls sie
+grundsätzlich ausfällt.
 
 ---
 

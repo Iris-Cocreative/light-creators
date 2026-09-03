@@ -266,6 +266,21 @@
   .weg-note { margin-top: 44px; max-width: 780px; font-size: 13px; color: var(--warm-gray); line-height: 1.85; }
   .weg-note a { color: var(--sun); text-decoration: underline; }
 
+  /* RUECKWEG-LEISTE — Navigation zurueck aus den Threshold-Seiten */
+  .rueckweg {
+    position: absolute; top: 28px; left: 28px; z-index: 5;
+    display: flex; flex-wrap: wrap; align-items: center; gap: 0 10px;
+    font-size: 13px; letter-spacing: 0.06em; color: var(--warm-gray);
+  }
+  .rueckweg a {
+    color: var(--warm-gray); text-decoration: none;
+    border-bottom: 1px solid rgba(168, 125, 52, 0.4); padding-bottom: 2px;
+  }
+  .rueckweg a:hover { color: var(--sun); }
+  .rueckweg a.is-current { color: var(--sun); border-bottom-color: transparent; }
+  .rueckweg .sep { opacity: 0.5; }
+  @media (max-width: 900px) { .rueckweg { top: 20px; left: 20px; font-size: 12px; } }
+
   /* FOOTER */
   .footer { background: var(--midnight); padding: 36px 72px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
   .footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: #fff; }
@@ -307,6 +322,15 @@
 </script>
 </head>
 <body>
+
+<nav class="rueckweg" aria-label="Zurueck zur Website">
+  <a href="/">← David Liebnau</a>
+  <span class="sep">·</span><a href="/fuehren/">Führen</a>
+  <span class="sep">·</span><a class="is-current" href="/threshold/">Threshold</a>
+  <span class="sep">·</span><a href="/threshold/partner/">Plätze finanzieren</a>
+  <span class="sep">·</span><a href="/threshold/en/">EN</a>
+</nav>
+
 
 <!-- ════════ HERO ════════ -->
 <div class="hero">
