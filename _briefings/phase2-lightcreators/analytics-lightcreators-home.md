@@ -2,7 +2,8 @@
 
 **Aufgabe:** CC-4 aus `phase2-lightcreators-claude-code.md`
 **Übergabepunkt:** I-4, fällig nach Freigabepunkt F2
-**Stand:** 3. September 2026
+**Stand:** 3. September 2026, ergänzt am Abend desselben Tages um die
+bestätigte Tarifentscheidung
 **Erhoben auf:** Branch `phase2-zulieferungen`, Stand `main` (Commit `2060bb8`)
 **Geltende Regel:** **R-F — Plausible-Tarif Growth, keine Custom Properties.**
 
@@ -35,6 +36,41 @@ Plausible-Konto versuchsweise die drei Properties `position`, `person` und `targ
 angelegt. Ob sie inzwischen gelöscht sind, lässt sich aus diesem Repository nicht
 feststellen. **Vor dem Tarifwechsel prüfen und löschen.** Sie werden hier nicht
 eingeplant. Siehe RF-12.
+
+### Entscheidung vom 03.09.2026 — R-F ist bestätigt
+
+David bleibt nach der Trial-Phase beim Growth-Jahresplan. Damit ist R-F keine
+Annahme mehr, sondern gesetzt:
+
+- **Keine Custom Properties.** `position=zweiwege` und `person=<slug>` tragen nicht.
+- Die Unterscheidung wandert dauerhaft in den Eventnamen.
+
+**Die Falle, die daran hängt.** In der laufenden Trial-Phase sind alle
+Business-Funktionen freigeschaltet, Custom Properties eingeschlossen. Was jetzt an
+Properties angelegt und getestet wird, **funktioniert** — im Dashboard, in der
+Aufschlüsselung, in jeder Probe. Und es **verschwindet beim Tarifwechsel auf Growth**,
+ohne Vorwarnung und ohne dass die Events selbst kaputtgehen: die Namen zählen weiter,
+die Aufschlüsselung ist weg.
+
+Daraus folgt für jede Abnahme in Phase 2: **Eine gelungene Property-Probe während der
+Trial beweist nichts.** Sie ist kein Beleg dafür, dass die Messung nach dem Wechsel
+noch steht. Umgekehrt gilt: was ohne Properties gemessen wird, überlebt den Wechsel
+unverändert. Deshalb wird hier ausschließlich so gebaut.
+
+Die am 02.09.2026 versuchsweise angelegten Properties sind aus demselben Grund vor dem
+Wechsel zu löschen, nicht erst danach (RF-12).
+
+### Offene Zahl: 13 Goals im Briefing, 10 in dieser Datei
+
+Das Briefing nennt als Fallback **13 Goals statt 10**. Diese Spezifikation kommt auf
+**zehn**, weil sie unter R-F zwei Events ersatzlos streicht statt sie in eigene Namen
+aufzulösen: `light.home.tribeperson.click` (ein Name je Portrait) und
+`light.home.nav.click` (ein Name je Navigationsziel), siehe Abschnitt 3.
+
+Die Differenz ist keine Rechenungenauigkeit, sondern eine Sachfrage: **sollen diese
+beiden Messungen unter eigenen Eventnamen zurückkommen?** Wenn ja, steigt die Zahl —
+auf wie viel genau, hängt davon ab, wie viele Portraits und Navigationsziele die Seite
+am Ende hat. Diese Datei setzt keine der beiden Varianten voraus. Siehe RF-14.
 
 ---
 
@@ -319,6 +355,7 @@ Drei Wege stehen offen. Die Entscheidung liegt bei David, siehe RF-14:
 |---|---|---|
 | **RF-12** | Sind die drei am 02.09.2026 versuchsweise angelegten Properties `position`, `person` und `target` im Plausible-Konto inzwischen gelöscht? Aus dem Repository nicht feststellbar. Sie werden hier nicht eingeplant, müssen aber vor dem Tarifwechsel weg. | S-P0 |
 | **RF-13** | Zeigt das eingebaute Goal „Outbound Link: Click" die Aufschlüsselung nach Ziel-URL auch auf Growth? Plausible hängt bei getaggten Links die Zieladresse automatisch als eingebaute Property `url` an — ob Growth sie im Dashboard aufschlüsselt, ist damit nicht beantwortet. Bestimmt, ob das Tribe-Paket die Portrait-Links überhaupt einzeln messen kann. | Tribe-Paket (T0) |
+| **RF-14** | Das Briefing nennt 13 Goals, diese Spezifikation kommt auf 10. Die Differenz sind die beiden unter R-F gestrichenen Events `light.home.tribeperson.click` und `light.home.nav.click`. Sollen sie unter eigenen Eventnamen zurückkommen? Bestimmt die endgültige Goal-Zahl. | F2 |
 | **RF-14** | Welcher der drei Wege A, B oder C aus Abschnitt 7.4 gilt? Ohne Antwort entsteht Weg A durch Unterlassen — das ist vertretbar, sollte aber eine Entscheidung sein und kein Versehen. | F2 |
 | **RF-15** | Ist `light.home.hero.click` im Plausible-Konto tatsächlich schon als Goal angelegt? Der Stand stammt aus dem Briefing (02.09.2026) und ist aus diesem Repository nicht überprüfbar. | S-P0 |
 
