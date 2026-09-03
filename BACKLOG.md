@@ -317,28 +317,27 @@ gekürzt wird. Bewusst nicht im Relaunch geändert.
 
 ## Redaktionell offen
 
-### Bowie-Zitat: Zuschreibung nicht belegt
+### Bowie-Zitat: entfernt
 
-Am Ende des Vier-Schritte-Blocks auf beiden Startseiten steht:
+Stand 03.09.2026: erledigt. Das Zitat
 
 > „Tomorrow belongs to those – who can hear it coming." — David Bowie
 
-`index.html:300`, `index-en.html:300`. Aufgenommen aus Davids Review vom 03.09.2026.
+stand am Ende des Vier-Schritte-Blocks auf `index.html:302` und
+`index-en.html:302`. Auf Davids Entscheidung entfernt, weil die
+Zuschreibung nicht belegt war. Der `.factors-coda`-Wrapper ging mit; die
+zugehoerigen CSS-Regeln in `assets/styles.css` bleiben, weil die
+archivierten Founder-Bloecke unter `_archiv/` sie weiterhin verwenden.
 
-Zwei Punkte:
+Offen bleibt eine kleinere Frage:
 
-- [ ] **Zuschreibung klären.** Die Zuschreibung an David Bowie ist nicht belegt. Bis
-  das geklärt ist, das Zitat nicht auf weitere Seiten übernehmen. Entscheidung liegt
-  bei David: belegen, umformulieren oder entfernen.
-- [ ] **Interpunktion.** Der Gedankenstrich mitten im Satz ist falsch gesetzt. Ein
-  Halbgeviertstrich zwischen Subjekt und Relativsatz gehört dort nicht hin. Wird mit
-  der Zuschreibung zusammen entschieden, nicht einzeln korrigiert.
-
-Zum Bestand: In den Episoden kommt Bowie dreimal vor, jeweils als freie Wiedergabe im
-Fließtext, nicht als Zitat mit Anführungszeichen —
-`ep-04` („Die Zukunft gehört denen, die sie kommen hören"), `ep-16` (Fallschirm-Bild)
-und `ep-22`. Diese Stellen sind von der Entscheidung mitbetroffen, falls sie
-grundsätzlich ausfällt.
+- [ ] **Drei freie Wiedergaben in den Episoden.** `ep-04` gibt den Gedanken
+  im Fliesstext wieder („David Bowie hat gesagt: Die Zukunft gehört denen,
+  die sie kommen hören"), `ep-16` das Fallschirm-Bild, `ep-22` eine weitere
+  Stelle. Alle drei stehen ohne Anfuehrungszeichen als Paraphrase, nicht als
+  Zitat, und in datierten Episoden. Sie sind bewusst stehen geblieben.
+  Entscheidung, ob sie ebenfalls weichen, liegt bei David — das waere ein
+  redaktioneller Eingriff in veroeffentlichte Folgen.
 
 ---
 
