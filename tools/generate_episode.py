@@ -343,6 +343,8 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
   <nav class="top">
     <a href="../index.html" class="logo">David Liebnau<em>.</em></a>
     <div class="nav-meta">
+      <a href="../index.html">Home</a>
+      <span class="sep">·</span>
       <a href="../fuehren/">Führen</a>
       <span class="sep">·</span>
       <a href="../threshold/">Threshold</a>
