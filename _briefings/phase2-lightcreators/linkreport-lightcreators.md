@@ -2,9 +2,14 @@
 
 **Aufgabe:** CC-6 aus `phase2-lightcreators-claude-code.md`
 **Übergabepunkt:** I-5, fällig vor Freigabepunkt F1
-**Stand der Erhebung:** 2. September 2026
-**Erhoben auf:** Branch `phase2-zulieferungen`, abgezweigt von `phase1/threshold-proof-seo` (Commit `1cd3e07`)
+**Stand der Erhebung:** 3. September 2026
+**Erhoben auf:** Branch `phase2-zulieferungen`, Stand `main` (Commit `2060bb8`, „docs: Farbpalette aus den LCT Brand Design Guidelines festhalten")
 **Änderungen an bestehenden Dateien:** keine. `ep-28` und `ep-29` sind unangetastet.
+
+> **Hinweis zu den Zeilennummern.** Dieser Bericht wurde am 03.09.2026 gegen den
+> aktuellen `main` neu erhoben. Gegenüber der Fassung vom 02.09.2026 haben sich durch
+> die Phase-1-Commits Zeilennummern verschoben (typisch +2 bis +5). Die hier genannten
+> Nummern gelten für `main` bei `2060bb8`. Die **Anzahlen** haben sich nicht verändert.
 
 ---
 
@@ -23,10 +28,10 @@ aus der der Generator die Seite erzeugt.
 
 | Fundstelle | Zeile | URL |
 |---|---|---|
-| `episodes/ep-28-wo-machst-du-gerade-zu-viel.html` | 161 | `light-creators.com/quiz` |
-| `episodes/ep-28-wo-machst-du-gerade-zu-viel.html` | 162 | `light-creators.com/call` |
-| `episodes/ep-29-ich-frage-erst-um-hilfe-wenn-ich-es-nicht-mehr-alleine-.html` | 148 | `light-creators.com/quiz` |
-| `episodes/ep-29-ich-frage-erst-um-hilfe-wenn-ich-es-nicht-mehr-alleine-.html` | 149 | `light-creators.com/call` |
+| `episodes/ep-28-wo-machst-du-gerade-zu-viel.html` | 163 | `light-creators.com/quiz` |
+| `episodes/ep-28-wo-machst-du-gerade-zu-viel.html` | 164 | `light-creators.com/call` |
+| `episodes/ep-29-ich-frage-erst-um-hilfe-wenn-ich-es-nicht-mehr-alleine-.html` | 150 | `light-creators.com/quiz` |
+| `episodes/ep-29-ich-frage-erst-um-hilfe-wenn-ich-es-nicht-mehr-alleine-.html` | 151 | `light-creators.com/call` |
 | `content/ep-29.txt` | 51 | `light-creators.com/quiz` |
 | `content/ep-29.txt` | 53 | `light-creators.com/call` |
 
@@ -34,10 +39,9 @@ Es sind also **vier** nackte URLs auf zwei veröffentlichten Seiten, plus zwei i
 Quelldatei. Ein späterer Korrektur-Commit muss beide Episoden erfassen, sonst bleibt die
 Hälfte stehen.
 
-`content/` enthält nur diese eine Datei. Für ep-28 liegt keine Quelldatei im Repository;
-ein `rebuild`-Lauf des Generators liest den redaktionellen Text aus der Seite selbst.
+`content/` enthält nur diese eine Datei. Für ep-28 liegt keine Quelldatei im Repository.
 Praktische Folge: Ein Korrektur-Commit müsste bei ep-29 **zwei** Orte anfassen, die Seite
-und `content/ep-29.txt`, sonst schreibt der nächste Generatorlauf die alte URL zurück.
+und `content/ep-29.txt`, sonst schreibt ein späterer Generatorlauf die alte URL zurück.
 
 ### K-2 · Zwei weitere Episoden nennen die Domain im Fließtext, ohne Pfad
 
@@ -47,8 +51,8 @@ betroffen — siehe Liste C.
 
 | Fundstelle | Zeile | Text |
 |---|---|---|
-| `episodes/ep-23-…-diese-rolle.html` | 139 | `<h3>Oder mach zuerst das Resonance Assessment: light-creators.com</h3>` |
-| `episodes/ep-26-…-groesster-hebel-und-.html` | 155 | Bio-Absatz, endet auf „Mehr unter light-creators.com" |
+| `episodes/ep-23-…-diese-rolle.html` | 141 | `<h3>Oder mach zuerst das Resonance Assessment: light-creators.com</h3>` |
+| `episodes/ep-26-…-groesster-hebel-und-.html` | 157 | Bio-Absatz, endet auf „Mehr unter light-creators.com" |
 
 ---
 
@@ -59,9 +63,13 @@ Dateitypen `.html`, `.md`, `.json`, `.js`, `.py`, `.txt`, `.xml`, `.css`. Erfass
 sowohl Vorkommen in Attributen (`href`, `src`, `content`) als auch nackte Nennungen im
 Fließtext, mit und ohne `https://`.
 
-Ausgeschlossen: das Verzeichnis `.git` und `_briefings/` selbst.
+Ausgeschlossen: das Verzeichnis `.git`, `_briefings/` selbst und die beiden
+Phase-2-Briefings unter `briefing/`.
 
-Die Zielpfade wurden am 2. September 2026 **live abgerufen**, nicht nur gegen die Liste im
+Roher Fundbestand: 285 Zeilen. Nach Abzug der eigenen Zulieferungen und der beiden
+Phase-2-Briefings: **181 Zeilen** in 60 Dateien.
+
+Die Zielpfade wurden am **3. September 2026 live abgerufen**, nicht nur gegen die Liste im
 Briefing abgeglichen.
 
 | Pfad | HTTP | Pfad | HTTP |
@@ -84,16 +92,24 @@ relevante Tatsache: Beide Ziele müssten neu entstehen.
 
 Nur vier Zielpfade kommen im Repository überhaupt vor.
 
-| Ziel | Verlinkte Anker | Nackt im Fließtext | In nicht ausgelieferten Dateien |
+| Ziel | Verlinkte Anker (ausgeliefert) | Nackt im Fließtext | In nicht ausgelieferten Dateien |
 |---|---|---|---|
-| `https://light-creators.com` (Wurzel) | 74 | 5 | Doku, Archiv, Generatorvorlage |
+| `https://light-creators.com` (Wurzel) | 74 | 5 | Doku, Archiv, Generatorvorlage, 1 noindex-Landingpage |
 | `https://light-creators.com/en` | 31 | — | Generatorvorlage |
 | `light-creators.com/quiz` | — | 4 | Archiv, Quelldatei |
 | `light-creators.com/call` | — | 4 | Archiv, Quelldatei |
 
+Gegenprobe über das ganze Repository: 79 Wurzel-Anker insgesamt = 74 ausgeliefert
++ 2 in `_archiv/` + 2 in der Generatorvorlage + 1 in einer `noindex`-Landingpage.
+32 `/en`-Anker insgesamt = 31 ausgeliefert + 1 in der Generatorvorlage.
+
 **Kein einziger Link zeigt auf einen tieferen Pfad als diese vier.** Es gibt keine
 Verweise auf `/podcast`, `/buch`, `/quiz-en`, `/call-en` oder die Rechtsseiten von
 `light-creators.com`.
+
+Separat davon, ohne Bezug zur Seitenstruktur: 16 Nennungen von Mailadressen unter der
+Domain (`info@light-creators.com` 12×, `dl@light-creators.com` 4×). Sie sind von einem
+Umbau der Website nicht betroffen und stehen nur der Vollständigkeit halber hier.
 
 ---
 
@@ -105,11 +121,11 @@ Ziel existiert, wird in Phase 2 nicht angefasst, Bruchrisiko gering.
 
 | Datei | Zeilen | Art | Anzahl |
 |---|---|---|---|
-| `index.html` | 123, 335, 631, 648, 693 | Anker, teils mit Plausible-Event | 5 |
-| `index-en.html` | 123, 335, 632, 693 | Anker, teils mit Plausible-Event | 4 |
-| `podcast.html` | 424, 504, 546 | Anker | 3 |
-| `fuehren/index.html` | 297 | Footer-Anker | 1 |
-| `fuehren/en/index.html` | 296 | Footer-Anker | 1 |
+| `index.html` | 125, 336, 636, 653, 698 | Anker, teils mit Plausible-Event | 5 |
+| `index-en.html` | 125, 336, 637, 698 | Anker, teils mit Plausible-Event | 4 |
+| `podcast.html` | 426, 506, 548 | Anker | 3 |
+| `fuehren/index.html` | 302 | Footer-Anker | 1 |
+| `fuehren/en/index.html` | 301 | Footer-Anker | 1 |
 | `episodes/*.html` (30 Dateien) | je CTA-Block und Footer | Anker | 60 |
 
 **Summe 74 Anker auf die Wurzel** auf ausgelieferten Seiten. Davon tragen fünf auf den
@@ -127,19 +143,20 @@ wird. **Inhaltlich ist genau das der Bruch** — siehe Liste C.
 
 | Datei | Zeilen | Anzahl |
 |---|---|---|
-| `podcast.html` | 554 | 1 |
+| `podcast.html` | 556 | 1 |
 | `episodes/*.html` (30 Dateien) | Footer, „English" | 30 |
-| `tools/generate_episode.py` | 423 | Vorlage, nicht ausgeliefert |
+| `tools/generate_episode.py` | 425 | Vorlage, nicht ausgeliefert |
 
 **Summe 31 ausgelieferte Anker.** `/en` ist die englische Founder-Seite und wird in
 Phase 2 nicht umgebaut. Nach Regel R-B zieht der Founder-Inhalt der **deutschen** Wurzel
 auf einen Interim-Pfad um; ob `/en` davon mitbetroffen ist, steht im Briefing nicht und
-ist eine offene Frage — siehe Abschnitt 6, Rückfrage RF-2.
+ist eine offene Frage — siehe Rückfrage RF-2.
 
 ### A-3 · `/quiz` und `/call` als nackte URLs
 
-Die vier Fundstellen aus K-1. Beide Zielseiten antworten mit 200. Phase 2 baut die
-Startseite um, nicht `/quiz` oder `/call`. Damit sind sie für diese Phase **stabil**.
+Die vier Fundstellen aus K-1. Beide Zielseiten antworten mit 200 (live geprüft
+03.09.2026). Phase 2 baut die Startseite um, nicht `/quiz` oder `/call`. Damit sind sie
+für diese Phase **stabil**.
 
 Sie bleiben als **Beobachtungspunkt** im Bericht, weil sie die einzigen Stellen im
 gesamten Repository sind, die auf einen tieferen Pfad zeigen, und weil sie als reiner
@@ -156,12 +173,15 @@ Ziel könnte sich durch Phase 2 oder eine Folgephase ändern.
 |---|---|---|---|---|
 | **B-1** | `index.html:34`, `index-en.html:34` | `https://light-creators.com` in JSON-LD, `Person.worksFor.Organization.url` | Strukturierte Daten, kein sichtbarer Link. Die Aussage lautet: David Liebnau arbeitet für die Organisation „Light Creators" unter dieser URL. Wird die Wurzel zum Marken-Hub, bleibt die Aussage richtig. Zieht der Founder-Inhalt weg und die Wurzel wird etwas anderes, ist zu prüfen, ob `Organization.url` weiter stimmt. | OD-2b |
 | **B-2** | `episodes/*.html`, 30× Footer-Anker `/en` | `https://light-creators.com/en` | Betroffen, sobald die englische Founder-Fassung ebenfalls umzieht. Im Briefing nicht adressiert. | RF-2 |
-| **B-3** | `tools/generate_episode.py:381, 415, 423` | Wurzel und `/en` in `PAGE_TEMPLATE` | Nicht ausgeliefert, aber die Quelle für alle 30 Episoden. Eine Pfadänderung, die nur in den Episodenseiten korrigiert wird, kommt beim nächsten `rebuild` zurück. **Die Vorlage muss bei jedem Korrektur-Commit mitlaufen.** | jeder Pfadwechsel |
-| **B-4** | `content/ep-29.txt:51, 53` | `/quiz`, `/call` | Quelldatei für ep-29. Gleiche Mechanik wie B-3: Korrektur nur in der HTML-Datei wird vom nächsten Generatorlauf überschrieben. | jeder Pfadwechsel |
+| **B-3** | `tools/generate_episode.py:383, 417, 425` | Wurzel und `/en` in `PAGE_TEMPLATE` | Nicht ausgeliefert, aber die Quelle für alle 30 Episoden. Eine Pfadänderung, die nur in den Episodenseiten korrigiert wird, kommt bei einem späteren Generatorlauf zurück. **Die Vorlage muss bei jedem Korrektur-Commit mitlaufen.** | jeder Pfadwechsel |
+| **B-4** | `content/ep-29.txt:51, 53` | `/quiz`, `/call` | Quelldatei für ep-29. Gleiche Mechanik wie B-3: Korrektur nur in der HTML-Datei wird von einem späteren Generatorlauf überschrieben. | jeder Pfadwechsel |
 
 **B-3 und B-4 sind der eigentliche Fallstrick dieses Berichts.** Das Repository hat zwei
 Ebenen, die dieselbe URL tragen: die erzeugte Seite und ihre Quelle. Wer nur die Seiten
 korrigiert, hat es scheinbar erledigt.
+
+> Der Generator steht nach Abschnitt 7.3 des Briefings unter Sperre. B-3 ist deshalb
+> kein Auftrag, sondern eine Notiz für den Zeitpunkt, an dem die Sperre fällt.
 
 ---
 
@@ -180,30 +200,29 @@ umformuliert wird.
 
 | Datei | Zeile | Beschriftung | Ziel heute |
 |---|---|---|---|
-| `index.html` | 123 | „Founder Resonance Assessment auf light-creators.com" | Wurzel |
-| `index.html` | 631 | „Für Founder Resonance: light-creators.com" | Wurzel |
-| `index.html` | 648 | „→ light-creators.com" mit Unterzeile „Founder Resonance" | Wurzel |
-| `index.html` | 693 | Footer: „Für Founder Resonance: light-creators.com" | Wurzel |
-| `index-en.html` | 123 | „Founder Resonance Assessment at light-creators.com" | Wurzel |
-| `index-en.html` | 632, 693 | „For Founder Resonance: light-creators.com" | Wurzel |
-| `podcast.html` | 424 | im Block „Für Founder Resonance: *light-creators.com*" | Wurzel |
-| `podcast.html` | 504 | „→ light-creators.com", Unterzeile „Founder Resonance" | Wurzel |
-| `podcast.html` | 546 | Footer | Wurzel |
-| `fuehren/index.html` | 297 | Footer: „Für Founder Resonance: light-creators.com" | Wurzel |
-| `fuehren/en/index.html` | 296 | Footer, englisch | Wurzel |
+| `index.html` | 125 | „Founder Resonance Assessment auf light-creators.com" | Wurzel |
+| `index.html` | 636 | „Für Founder Resonance: light-creators.com" | Wurzel |
+| `index.html` | 653 | „→ light-creators.com" mit Unterzeile „Founder Resonance" | Wurzel |
+| `index.html` | 698 | Footer: „Für Founder Resonance: light-creators.com" | Wurzel |
+| `index-en.html` | 125 | „Founder Resonance Assessment at light-creators.com" | Wurzel |
+| `index-en.html` | 637, 698 | „For Founder Resonance: light-creators.com" | Wurzel |
+| `podcast.html` | 506 | „→ light-creators.com", Unterzeile „Founder Resonance" | Wurzel |
+| `podcast.html` | 548 | Footer | Wurzel |
+| `fuehren/index.html` | 302 | Footer: „Für Founder Resonance: light-creators.com" | Wurzel |
+| `fuehren/en/index.html` | 301 | Footer, englisch | Wurzel |
 | `episodes/*.html` | 30× CTA, 30× Footer | „Für Founder Resonance: light-creators.com" | Wurzel |
 
-**Das betrifft alle 74 ausgelieferten Wurzel-Anker.** Nachgezählt am 02.09.2026:
+**Das betrifft alle 74 ausgelieferten Wurzel-Anker.** Nachgezählt am 03.09.2026:
 71 tragen „Founder Resonance" im Linktext selbst. Die restlichen drei lauten nur
 „Zu light-creators.com →" beziehungsweise „To light-creators.com →", stehen aber
 jeweils in einem Block, dessen Überschrift oder Absatz das Versprechen unmittelbar
 davor gibt:
 
-| Datei | Zeile | Was direkt darüber steht |
+| Datei | Zeile Anker | Was direkt darüber steht |
 |---|---|---|
-| `index.html` | 335 | `<h3>Gründen. Für Founder.</h3>` und „Diese Arbeit läuft unter Founder Resonance." |
-| `index-en.html` | 335 | `<h3>Founding. For founders.</h3>` und „This work runs under Founder Resonance." |
-| `podcast.html` | 424 | `<h3>Für Founder Resonance: <em>light-creators.com</em></h3>` |
+| `index.html` | 336 | `<h3>Gründen. Für Founder.</h3>` und „Diese Arbeit läuft unter Founder Resonance." |
+| `index-en.html` | 336 | `<h3>Founding. For founders.</h3>` und „This work runs under Founder Resonance." |
+| `podcast.html` | 426 | `<h3>Für Founder Resonance: <em>light-creators.com</em></h3>` (Zeile 424) |
 
 Wird die Wurzel zum Marken-Hub, zeigen damit 74 Links mit Founder-Versprechen auf eine
 Seite, die zwei Wege anbietet und den Founder-Weg erst nach der Selbstselektion
@@ -216,15 +235,15 @@ zusätzlicher Schritt, der vorher nicht da war, und er trifft **jede Episodensei
 
 | Datei | Zeile | Text | Art |
 |---|---|---|---|
-| `episodes/ep-23-…` | 139 | „Oder mach zuerst das Resonance Assessment: light-creators.com" | `<h3>`, nicht verlinkt |
-| `episodes/ep-26-…` | 155 | Bio: „… Mehr unter light-creators.com" | Absatz, nicht verlinkt |
-| `index.html` | 644 | „Founder work lives at light-creators.com." | Absatz, nicht verlinkt |
-| `podcast.html` | 500 | derselbe Satz | Absatz, nicht verlinkt |
+| `episodes/ep-23-…` | 141 | „Oder mach zuerst das Resonance Assessment: light-creators.com" | `<h3>`, nicht verlinkt |
+| `episodes/ep-26-…` | 157 | Bio: „… Mehr unter light-creators.com" | Absatz, nicht verlinkt |
+| `index.html` | 649 | „Founder work lives at light-creators.com." | Absatz, nicht verlinkt |
+| `podcast.html` | 502 | derselbe Satz | Absatz, nicht verlinkt |
 | `ep-28`, `ep-29` | siehe K-1 | „→ light-creators.com/quiz" / „/call" | Absatz, nicht verlinkt |
 
 ### C-3 · Nennung in der Datenschutzerklärung
 
-`datenschutz/index.html:176`, Ziffer 8 „Verlinkte Angebote": „Diese Website verlinkt auf
+`datenschutz/index.html:178`, Ziffer 8 „Verlinkte Angebote": „Diese Website verlinkt auf
 externe Angebote, unter anderem auf Spotify, Apple Podcasts, LinkedIn und
 light-creators.com."
 
@@ -251,7 +270,7 @@ Besucher ausgeliefert.
 |---|---|---|
 | `_archiv/index-en-alt.html` | 14 | Archiv, `robots.txt` sperrt `/_archiv/`, `noindex`. Enthält als einzige Stelle außerhalb der Episoden `/quiz` und `/call` |
 | `_archiv/founder-resonance-bloecke.html` | 1 | Archiv, gesperrt |
-| `briefing/*.md` | 55 | Arbeitsdokumente |
+| `briefing/*.md` | 55 | Arbeitsdokumente (ohne die beiden Phase-2-Briefings) |
 | `BACKLOG.md`, `README.md`, `COMPLETION-SPRINT-2026-08-16.md` | 10 | Arbeitsdokumente |
 | `quiz-assets/*` | 14 | Prototypen, `noindex`, an Webflow gebunden |
 | `landing-pages/*` | 9 | `noindex`, unverlinkt. Enthält in `flourishing-life-eltern-v2.html:1487` einen 75. Wurzel-Anker |
@@ -267,7 +286,7 @@ Keine dieser Fragen wird hier beantwortet oder durch eine Annahme ersetzt.
 |---|---|---|
 | **RF-1** | Der Korrektur-Commit nach dem Publish muss vier Ebenen erfassen: die beiden Episodenseiten, `content/ep-29.txt` und `tools/generate_episode.py`. Soll er das in einem Commit tun oder pro Ebene getrennt, damit die Rücknahme feiner wird? | S10 |
 | **RF-2** | Zieht die englische Founder-Fassung `/en` zusammen mit der deutschen Wurzel auf einen Interim-Pfad um, oder bleibt sie, wo sie ist? Betrifft 31 ausgelieferte Anker. Im Briefing nicht adressiert; OD-2b spricht nur von „der alten Startseite". | S1, F1 |
-| **RF-3** | Alle 74 ausgelieferten Wurzel-Anker geben ein Founder-Resonance-Versprechen, 71 im Linktext, drei im Text unmittelbar davor. Sollen sie nach dem Umbau auf den Interim-Pfad umgehängt werden, oder bleiben sie auf der Wurzel und die Beschriftung wird angepasst? Das ist eine redaktionelle Entscheidung mit 71 Fundstellen, davon 60 in generierten Episoden. | F1, S10 |
+| **RF-3** | Alle 74 ausgelieferten Wurzel-Anker geben ein Founder-Resonance-Versprechen, 71 im Linktext, drei im Text unmittelbar davor. Sollen sie nach dem Umbau auf den Interim-Pfad umgehängt werden, oder bleiben sie auf der Wurzel und die Beschriftung wird angepasst? Das ist eine redaktionelle Entscheidung mit 74 Fundstellen, davon 60 in generierten Episoden. | F1, S10 |
 | **RF-4** | `Person.worksFor.Organization.url` in den beiden JSON-LD-Blöcken: bleibt die Wurzel, oder zeigt sie nach dem Umzug auf den Founder-Pfad? | OD-2b |
 
 ---
