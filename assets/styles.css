@@ -30,6 +30,13 @@
      Ueberschriften, dort ist die Schrift gross genug fuer die 3:1-Schwelle. */
   --color-eyebrow:     #8D651E;
   --color-gold-em:     #A87D34;
+  /* Tiefes Gold, nur fuer Text auf dem Foto-Hero der Startseite. Der
+     Bildbereich hinter dem Founder-Link hat eine gemessene Leuchtdichte von
+     0,57 bis 0,90; der dunkelste Fleck ist der kritische. --color-eyebrow
+     kommt dort nur auf 3,10, --color-gold-em auf 2,20. #6B4A12 ist der
+     hellste Ton des Gold Gradient, der ueber den ganzen Bereich 4,5
+     erreicht (schlechtester Fall 4,76). Gemessen am 03.09.2026. */
+  --color-gold-deep:   #6B4A12;
   --line-light:        rgba(4, 23, 31, 0.14);
   --line-light-soft:   rgba(4, 23, 31, 0.08);
   --line-dark:         rgba(255, 248, 230, 0.16);
@@ -513,6 +520,18 @@ nav.top.nav--open {
   max-width: 56ch;
   line-height: 1.6;
 }
+/* Der Founder-Link war die einzige Zeile im Hero, fuer die es keine
+   Foto-Variante gab: Er behielt die hellen Farben des dunklen Heros und
+   stand damit hell auf hellem Foto. Gemessen wurde das lange nicht
+   auffaellig, weil der CSS-Hintergrund des Elternelements dunkel ist und
+   das Foto erst darueber liegt. */
+.hero--photo-bg .hero-founder-link { color: var(--text); }  /* nicht --text-muted: das Label kommt im dunkelsten Bildfleck nur auf 4,22 */
+.hero--photo-bg .hero-founder-link a {
+  color: var(--color-gold-deep);
+  font-weight: 500;
+  border-bottom-color: var(--color-gold-em);
+}
+.hero--photo-bg .hero-founder-link a:hover { color: var(--color-deep-blue); }
 .hero--photo-bg .eyebrow { color: var(--color-deep-blue); }
 .hero--photo-bg .hero-eyebrow .dot { background: var(--color-deep-blue); }
 @media (max-width: 1100px) {
