@@ -113,8 +113,15 @@ Im Repository stehen drei verschiedene Goldwerte:
 | Wert | Wo | Rolle |
 |---|---|---|
 | `#E0B76F` | `assets/styles.css`, `--color-gold` | Das Gold von `davidliebnau.com` |
-| `#E3C486` | nur in den `briefing/`-Kopien der Symbole | Ein vierter, sonst nirgends verwendeter Wert |
+| `#E3C486` | nur in den `briefing/`-Kopien der Symbole | Ein dritter Wert, der sonst nirgends im Repository vorkommt |
 | `#FFDB9D` → `#A87D34` | `03-erkennen.svg` | Der Verlauf |
+
+**Gegenprobe an den Markenvorgaben.** `briefing/LCT-Farbpalette.md` (seit 03.09.2026
+auf `main`) führt die Palette aus den LCT Brand Design Guidelines. Sie bestätigt zwei
+Befunde dieses README von der Marken-Seite her: Soft Gold ist dort `#E0B76F`
+(am Original gemessen `#DFB76F`), und der Gold Gradient `#FFDB9D` → `#A87D34` ist
+**im CSS nicht als Variable definiert** — er lebt ausschließlich in
+`assets/icons/03-erkennen.svg`. `#E3C486` kommt in den Brand Guidelines nicht vor.
 
 **Welcher Wert für Light Creators gilt, ist nicht entschieden.** Das hängt an **OD-9**
 (eigenes Design-System oder Übernahme von `davidliebnau.com`, ausdrücklich einschließlich
@@ -185,5 +192,5 @@ Byte-Identität zu den Originalen brechen.
 
 | ID | Frage | Blockiert |
 |---|---|---|
-| **RF-7** | Welcher Goldwert gilt für die Symbole auf Light Creators — `#E0B76F` wie auf `davidliebnau.com`, `#E3C486` wie in den `briefing/`-Kopien, oder ein eigener Wert? Solange das offen ist, tragen die SVG keine Farbe und die PNG einen provisorischen Wert. | OD-9 |
-| **RF-8** | Es liegen zwei nicht identische Sätze der vier Symbole im Repository, unter `assets/icons/` und unter `briefing/`. Soll einer davon später der führende werden? Das wäre eine Änderung an bestehenden Dateien und fällt damit unter R-E, also frühestens nach dem Phase-1-Merge. | nach P1 |
+| **RF-9** | Welcher Goldwert gilt für die Symbole auf Light Creators — `#E0B76F` wie auf `davidliebnau.com`, `#E3C486` wie in den `briefing/`-Kopien, oder ein eigener Wert? Solange das offen ist, tragen die SVG keine Farbe und die PNG einen provisorischen Wert. | OD-9 |
+| **RF-10** | Es liegen zwei nicht identische Sätze der vier Symbole im Repository, unter `assets/icons/` und unter `briefing/`. Soll einer davon später der führende werden? Das wäre eine Änderung an bestehenden Dateien und fällt damit unter R-E, also frühestens nach dem Phase-1-Merge. | nach P1 |

@@ -3,9 +3,14 @@
 **Aufgabe:** CC-1 aus `phase2-lightcreators-claude-code.md`  
 **Übergabepunkt:** I-1, fällig nach Freigabepunkt F2  
 **Quelle:** Anhang A des Briefings, dort aus „Light Creators Tribe · Briefing Website-Update V3“  
-**Stand:** 2. September 2026  
+**Stand:** 3. September 2026 (Erstfassung 02.09., am 03.09. gegen Anhang A nachgeprüft)  
 **Erzeugung:** maschinell aus Anhang A extrahiert, nicht abgetippt. Kein Text wurde
 geglättet, gekürzt oder umgestellt.
+
+**Nachprüfung am 03.09.2026.** Alle 110 String-IDs aus Anhang A sind genau einmal
+vorhanden, ohne Zusatz und ohne Auslassung; die Texte stimmen zeichengenau mit Anhang A
+überein. Genau ein Eintrag trägt `Heading, Level 1`, jede Sektion 2 bis 9 genau einen
+`Heading, Level 2`.
 
 ---
 
@@ -443,6 +448,11 @@ solange er es zurückmeldet.
     Erkenntnis in Erfahrungen, Entscheidungen und konkrete Schritte übersetzen.
 
 ## Sektion 5 · Der reale Tribe
+
+> **Regel R-G.** Die Tribe-Sektion und ihr CMS werden in einem separaten Paket gebaut;
+> David liefert die Bausteine nach. Diese Datei enthält deshalb **nur** die acht
+> Intro- und Struktur-Strings `S5.*`. Keine Personendaten, keine Portrait-Alt-Texte,
+> kein Importschema und keine Feldliste — weder hier noch anderswo in diesem Paket.
 
 ### S5.H2
 - provenance: HIS/EXISTING
@@ -1111,4 +1121,4 @@ Textänderung und bräuchte eine Freigabe.
 
 | ID | Frage | Blockiert |
 |---|---|---|
-| **RF-9** | `S5.LABEL.A` ist im V3-Dokument als nicht sichtbarer Text vermerkt: Stimme A steht ohne Label, Stimme B trägt „Was mich mit Light Creators verbindet:". Soll das so bleiben — eine Stimme mit Label, eine ohne —, oder war das im V3 eine Auslassung? Betrifft das CMS-Feldmodell der Tribe-Collection. | F2, S3 |
+| **RF-11** | `S5.LABEL.A` ist im V3-Dokument als nicht sichtbarer Text vermerkt: Stimme A steht ohne Label, Stimme B trägt „Was mich mit Light Creators verbindet:". Soll das so bleiben — eine Stimme mit Label, eine ohne —, oder war das im V3 eine Auslassung? Betrifft das CMS-Feldmodell der Tribe-Collection. | F2, Tribe-Paket (T0) |
