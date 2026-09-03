@@ -1,6 +1,6 @@
 # Offene Aufgaben nach dem Relaunch
 
-Stand: 21. August 2026. Reihenfolge ist eine Empfehlung, nicht bindend.
+Stand: 2. September 2026. Reihenfolge ist eine Empfehlung, nicht bindend.
 Erledigtes abhaken und mit Datum versehen, damit klar bleibt, was noch offen ist.
 
 ---
@@ -15,43 +15,98 @@ Erledigtes abhaken und mit Datum versehen, damit klar bleibt, was noch offen ist
 - [ ] **AGB entscheiden.** Falls du keine hast, bleibt der Link entfernt.
   Falls du welche brauchst, etwa für die Threshold-Buchung, ist das ein
   eigenes Thema.
-- [ ] **Platzhalterkasten auf den Rechtsseiten entfernen,** sobald der echte
-  Text steht. Aktuell steht dort `.who-exclusion` als markierter Platzhalter,
-  beide Seiten sind auf `noindex` und nicht in der Sitemap.
-- [ ] **Eigene Bilder für die Vorschau (og:image)** von `/fuehren/` und
-  `/threshold/partner/`. Vorläufig läuft dort das Bild der Startseite mit.
+- [x] **Platzhalterkasten auf den Rechtsseiten entfernt.** Erledigt vor dem
+  01.09.2026. Impressum, Datenschutz, AGB, Widerruf und KI-Einsatz tragen
+  echten Text, stehen nicht mehr auf `noindex` und sind in der Sitemap.
+- [x] **Eigene Bilder für die Vorschau (og:image).** Erledigt am 02.09.2026.
+  `/fuehren/` und `/fuehren/en/` tragen `assets/og-image-fuehren.jpg`, ein
+  1200 × 628 großer Zuschnitt aus `hero-fuehren-split.webp`.
+  `/threshold/partner/` und `/threshold/partner/en/` tragen
+  `assets/og-image-threshold-partner.jpg`, denselben Zuschnitt aus dem
+  bestehenden `assets/threshold-teaser.jpg`. Beide mit `og:image:width`,
+  `og:image:height` und `twitter:image`.
+- [ ] **og:image der Threshold-Hauptseiten.** `threshold/og-image.jpg` ist
+  weiterhin 1920 × 1440, also 4:3, und wird oben und unten beschnitten.
+  Dafür gilt die alte Regel unverändert: kein automatisches Beschneiden,
+  das Bild liefert David. Der Zuschnitt der Partnerseiten stammt aus einer
+  anderen Datei und berührt diese Regel nicht.
 
 ---
 
 ## Aus dem Relaunch heraus, kurzfristig
 
-- [ ] **Zieladressen der drei Buttons festlegen.**
-  Briefing-Gespräch, Threshold-Bewerbungsgespräch, Partnerschaftsanfrage.
-  Formular, Kalenderlink oder Mailadresse, jeweils entscheiden.
-- [ ] **LinkedIn-Empfehlungen im Wortlaut liefern.**
-  Drei bis fünf Stück, mit Name und Funktion. Kommen in den Belege-Abschnitt
-  der Führen-Seite und in den Testimonial-Block.
+- [x] **Zieladressen der Buttons festgelegt.** Alle laufen auf
+  `mail@davidliebnau.com`, unterschieden über die Betreffzeile. Seit dem
+  Phase-1-Sprint kommen acht weitere Betreffzeilen für die vier
+  Nachfragewege dazu. Kein Formulardienst, kein Kalenderlink.
+- [ ] **LinkedIn-Empfehlung 4 und 5 im Wortlaut liefern.**
+  Drei liegen vor und stehen seit dem 01.09.2026 kontextnah auf
+  `/fuehren/` und `/fuehren/en/`: Sinyan bei „Wie ich arbeite", Szücs bei
+  „Formate", Kling im Belege-Abschnitt. Kriterien und Einbauort für die
+  fehlenden zwei stehen als markierter Kommentarblock in beiden Dateien.
   Achtung: Der Wortlaut muss die Rolle bei der SYNK GROUP erkennen lassen,
-  wo der Award erwähnt wird (Regel R2).
-- [ ] **Partnerschaftswege für `/threshold/partner/` freigeben.**
-  Claude Code legt den bestehenden Text vor, du entscheidest über die
-  Anpassung auf Zahler statt Teilnehmer.
+  wo der Award erwähnt wird (Regel R2). `assets/award-context.js` trägt den
+  Rollen-Satz automatisch nach, falls er im Zitat fehlt.
+- [x] **Partnerschaftswege für `/threshold/partner/` freigegeben.** Die vier
+  Wege der Zusammenarbeit stehen auf Zahler formuliert, dazu seit dem
+  Phase-1-Sprint vier Nachfragewege für die Anfrage selbst.
 
 ---
 
 ## Vor dem Merge
 
-- [ ] **Visueller Abnahmedurchgang.** In der Bausitzung war der Browser-Bereich
-  ausgeblendet, Scrollen und Layout-Messungen funktionierten nicht,
-  `window.innerWidth` meldete 0. Geprüft wurde über DOM und Vorschauseiten.
-  Vor dem Merge alle geänderten Seiten einmal in echt durchsehen, auf
-  Desktop und Mobil.
-- [ ] **`/fuehren/` und `/threshold/partner/` müssen existieren.**
-  Bis dahin laufen vier Links auf der Startseite ins Leere. Der Pull Request
-  darf vorher nicht gemergt werden.
+- [ ] **Visueller Abnahmedurchgang, Phase 1.** Macht David selbst, auf
+  Desktop und Mobil: die vier Threshold-Seiten und `/fuehren/`, mit Fokus
+  auf die vier mailto-Wege und die Zitat-Platzierungen. Erst danach mergen.
+  Claude Code soll dafür nicht das Browser-Tooling reparieren.
+- [x] **`/fuehren/` und `/threshold/partner/` müssen existieren.** Erledigt.
+  Beide Seiten stehen, dazu die englischen Fassungen.
 - [ ] **Generator-Sperre ist ungetestet.** Node war beim Einbau nicht
   installiert. Bei Gelegenheit einmal `node generate-episodes.js` ohne
   `--force` ausführen und prüfen, dass sauber abgebrochen wird.
+
+---
+
+## Phase 1: Conversionpfade
+
+Gebaut auf `phase1/threshold-proof-seo`. Abnahme und Merge stehen aus,
+deshalb hier noch nicht abgehakt.
+
+- [ ] **1A Threshold-Angebotslogik.** Gebaut am 01.09.2026. Vier
+  unterscheidbare Nachfragewege auf allen vier Threshold-Seiten, als
+  mailto mit eigener Betreffzeile, eigenem Feldgerüst und eigenem
+  Folgetext. Nach dem Merge abhaken.
+- [ ] **1B Corporate Proof auf `/fuehren/`.** Gebaut am 01.09.2026. Drei
+  Empfehlungen kontextnah platziert, Testimonial-Wand aufgelöst, Regel R2
+  über `assets/award-context.js` technisch abgesichert. Nach dem Merge
+  abhaken. Danach wird die Seite eingefroren, bis Plausible-Daten
+  vorliegen.
+- [ ] **1D SEO der vier Money Pages.** Gebaut am 01. und 02.09.2026.
+  hreflang beidseitig plus x-default, Twitter-Meta vollständig, eigene
+  og:images. Nach dem Merge abhaken, dann die Live-Auslieferung auf
+  Produktion einmal real abrufen und in einem Social-Preview-Check
+  gegenprüfen.
+- [ ] **Goals im Plausible-Dashboard anlegen.** Der Code allein reicht
+  nicht. Die Liste der neun neuen Goal-Namen steht im Ergebnisbericht zum
+  Sprint und in `BACKLOG.md`.
+
+---
+
+## Werkzeug
+
+- [ ] **Browser-Bereich in Claude Code ist unbrauchbar für die visuelle
+  Abnahme.** Zum zweiten Mal aufgetreten, am 21.08.2026 und am
+  01.09.2026: Der Browser-Bereich ist ausgeblendet, Scrollen und
+  Screenshots laufen nach 30 Sekunden in einen Timeout,
+  `window.innerWidth` meldet 0. Was funktioniert: `fetch`, DOM-Auswertung
+  über `DOMParser` und berechnete Stile über `getComputedStyle`. Damit
+  lassen sich Struktur, Farben, Kontraste, Verweise und Metadaten prüfen,
+  aber kein Layout und keine Optik.
+
+  Konsequenz, damit es nicht in jedem Sprint neu improvisiert wird: Die
+  visuelle Abnahme macht David im eigenen Browser. Claude Code prüft über
+  DOM und berechnete Stile und schreibt dazu, was damit nicht geprüft
+  werden konnte. Kein Versuch, das Werkzeug zu reparieren.
 
 ---
 
@@ -112,9 +167,50 @@ dort wiederverwendet werden können: `role-entrepreneur.webp`,
 - [ ] **Neue Texte übersetzen.**
   Im Relaunch wurden auf den englischen Seiten nur Signaturzeile, Navigation
   und die Award-Formulierung angeglichen. Die neuen Abschnitte fehlen dort.
-- [ ] **Englische Partnerseite `/threshold/en/partner/`.**
-  Solange sie fehlt, bleibt der englische Partnerblock auf der
-  Threshold-Seite stehen.
+- [x] **Englische Partnerseite.** Erledigt. Sie liegt unter
+  `/threshold/partner/en/`, nicht unter `/threshold/en/partner/`. Der
+  vollständige Partnerblock stand bis zum 02.09.2026 zusätzlich in
+  `threshold/en/index.html` und ist dort jetzt auf denselben kurzen Teaser
+  zurückgebaut wie in der deutschen Fassung. Der Inhalt steht damit nur
+  noch auf einer indexierbaren URL.
+
+---
+
+## Hängt am Abschluss der Pilotkohorte
+
+Diese Punkte liegen nicht offen, weil sie jemand vergessen hat, sondern
+weil die Voraussetzung dafür erst mit der ersten Gruppe im Mai 2027
+entsteht. Vorher sind sie nicht entscheidbar. Zusammen gruppiert, damit
+nach dem Piloten an einer Stelle steht, was dann fällig wird.
+
+- [ ] **Threshold-Preis nach dem Piloten.**
+  Der Preis steht nur an einer Stelle, im Investitionsblock der
+  Threshold-Seite. Überall sonst heißt es "Einführungspreis" oder
+  "Kosten im Gespräch". Nach dem Piloten dort ändern, sonst nirgends.
+  Der Wechsel hängt am Abschluss der Kohorte, nicht an einem
+  Kalenderdatum.
+- [ ] **Inhouse-Variante von Threshold.**
+  Etwa für eine Kooperation mit der INTES Akademie. Betrifft die
+  Formulierung "Termine auf Anfrage" und möglicherweise eine eigene Seite.
+  Erst bauen, wenn die Nachfrage über echte Gespräche belegt ist. Der
+  Anfragepfad für Organisationen auf den Threshold-Seiten trägt dafür
+  seit dem 01.09.2026 eine eigene Auswahl im Formulartext.
+- [ ] **Eigenes Bildmaterial aus Finnland.**
+  `assets/og-image-threshold-partner.jpg` ist ein Zuschnitt aus
+  `assets/threshold-teaser.jpg`, einer Gruppensilhouette im
+  Sonnenuntergang. Thematisch passend, aber generisch. Ein Bild aus dem
+  Programm selbst wäre stärker — es existiert noch nicht und entsteht mit
+  der ersten Pilotgruppe. Bis dahin bleibt der Zuschnitt bewusst stehen,
+  er ist keine Übergangslösung aus Zeitmangel.
+  Betrifft dann auch `threshold/og-image.jpg`, das mit 1920 × 1440 im
+  Format 4:3 liegt und in der Vorschau oben und unten beschnitten wird.
+  Für diese Datei gilt weiterhin: kein automatisches Beschneiden.
+- [ ] **Schriftliche Rückmeldungen der Teilnehmenden.**
+  `/threshold/partner/` verspricht Stipendien-Partnern eine schriftliche
+  Rückmeldung der Person, die sie unterstützt haben, und Impact-Partnern
+  anonymisierte Vorher-Nachher-Reflexionen. Beides entsteht erst mit der
+  ersten Kohorte. Nach dem Piloten prüfen, ob die Zusage eingelöst werden
+  kann oder umformuliert werden muss.
 
 ---
 
@@ -133,13 +229,6 @@ dort wiederverwendet werden können: `role-entrepreneur.webp`,
   (#FFDB9D nach #A87D34). Gehört als Token nach `assets/styles.css`.
 - [ ] **Neues Quiz und Funnel für die junge Zielgruppe.**
   Kommt an davidliebnau.com, nicht an light-creators.com.
-- [ ] **Threshold-Preis nach dem Piloten.**
-  Der Preis steht nur an einer Stelle, im Investitionsblock der
-  Threshold-Seite. Überall sonst heißt es "Einführungspreis" oder
-  "Kosten im Gespräch". Nach dem Piloten dort ändern, sonst nirgends.
-- [ ] **Inhouse-Variante von Threshold.**
-  Etwa für eine Kooperation mit der INTES Akademie. Betrifft die
-  Formulierung "Termine auf Anfrage" und möglicherweise eine eigene Seite.
 
 ---
 

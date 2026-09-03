@@ -2285,3 +2285,102 @@ footer {
   background: rgba(224, 183, 111, 0.08);
   border-left-color: var(--accent);
 }
+
+/* ============================================
+   INLINE-EMPFEHLUNGEN (Proof im Fliesstext)
+   Keine Testimonial-Wand am Seitenende, sondern eine Empfehlung direkt an
+   dem Absatz, zu dem sie inhaltlich gehoert. Funktioniert auf hellem Grund
+   und, ueber die Ueberschreibungen weiter unten, auf den dunklen Sections.
+   ============================================ */
+.proof-quote {
+  margin: clamp(2.25rem, 4vw, 3rem) 0 0;
+  padding-left: clamp(1.25rem, 2.5vw, 1.75rem);
+  border-left: 2px solid var(--accent);
+  max-width: 62ch;
+}
+.proof-quote blockquote {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.05rem, 1.5vw, 1.18rem);
+  line-height: 1.55;
+  color: var(--text);
+}
+.proof-quote figcaption {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-top: 1.15rem;
+}
+.proof-photo {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  /* Portraits sind auf transparente Kreise freigestellt, der Hintergrund
+     verhindert, dass sie auf sehr hellem Grund verschwinden. */
+  background: var(--bg-soft);
+}
+.proof-ident { display: block; min-width: 0; }
+.proof-name {
+  display: block;
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 1.02rem;
+  color: var(--text);
+}
+.proof-role {
+  display: block;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+  margin-top: 0.15rem;
+  letter-spacing: 0.02em;
+}
+.proof-role .sep { margin: 0 0.35rem; color: var(--color-eyebrow); }
+
+.section--teal .proof-quote blockquote,
+.section--umber .proof-quote blockquote,
+.section--midnight .proof-quote blockquote,
+.section--teal .proof-name,
+.section--umber .proof-name,
+.section--midnight .proof-name { color: var(--text-on-dark); }
+
+.section--teal .proof-role,
+.section--umber .proof-role,
+.section--midnight .proof-role { color: var(--text-on-dark-muted); }
+
+.section--teal .proof-role .sep,
+.section--umber .proof-role .sep,
+.section--midnight .proof-role .sep { color: var(--accent); }
+
+.section--teal .proof-photo,
+.section--umber .proof-photo,
+.section--midnight .proof-photo { background: rgba(255, 248, 230, 0.1); }
+
+/* ============================================
+   R2: AWARD-KONTEXT
+   Der HR Excellence Award darf nur zusammen mit der Rolle bei der SYNK GROUP
+   erscheinen. Diese Klasse traegt den Rollen-Satz. Gesetzt wird sie entweder
+   von Hand oder von assets/award-context.js, das jede Award-Fundstelle prueft
+   und den Satz nachtraegt, wenn er fehlt. Dadurch kann die Regel auch dann
+   nicht brechen, wenn ein Zitat spaeter gekuerzt oder neu eingesetzt wird.
+   ============================================ */
+.award-context {
+  display: block;
+  margin-top: 0.75rem;
+  font-family: var(--font-body);
+  font-style: normal;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  color: var(--text-muted);
+  border-left: 1px solid var(--accent);
+  padding-left: 0.85rem;
+  max-width: 60ch;
+}
+.section--teal .award-context,
+.section--umber .award-context,
+.section--midnight .award-context { color: var(--text-on-dark-muted); }

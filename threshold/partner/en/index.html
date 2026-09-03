@@ -8,15 +8,20 @@
 <link rel="canonical" href="https://davidliebnau.com/threshold/partner/en/" />
 <link rel="alternate" hreflang="de" href="https://davidliebnau.com/threshold/partner/" />
 <link rel="alternate" hreflang="en" href="https://davidliebnau.com/threshold/partner/en/" />
+<link rel="alternate" hreflang="x-default" href="https://davidliebnau.com/threshold/partner/" />
 
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://davidliebnau.com/threshold/partner/en/" />
 <meta property="og:title" content="Fund a place · The Threshold Program" />
 <meta property="og:description" content="For parents, foundations and companies who want to make a place in The Threshold Program possible for a young adult." />
-<meta property="og:image" content="https://davidliebnau.com/assets/og-image.jpg" />
+<meta property="og:image" content="https://davidliebnau.com/assets/og-image-threshold-partner.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="628" />
 <meta property="og:locale" content="en_GB" />
 <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://davidliebnau.com/assets/og-image-threshold-partner.jpg" />
 <meta name="twitter:title" content="Fund a place · The Threshold Program" />
+<meta name="twitter:description" content="For parents, foundations and companies who want to make a place in The Threshold Program possible for a young adult." />
 
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
 <link rel="icon" href="/assets/favicon-32.png" type="image/png" sizes="32x32" />
@@ -254,6 +259,54 @@
   .cta-email-note { margin-top: 22px; font-size: 13px; color: var(--warm-gray); }
   .cta-email-note a { color: var(--sun); text-decoration: underline; font-weight: 500; }
 
+  /* NAECHSTE SCHRITTE — vier Nachfragezustaende */
+  .weg-link { display: inline-block; margin-top: 18px; font-size: 13px; color: var(--sun); text-decoration: underline; font-weight: 500; }
+  .weg-link:hover { color: var(--gold); }
+  .weg-next { margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(168,125,52,0.22); font-size: 12px; color: var(--warm-gray); line-height: 1.7; }
+  .weg-note { margin-top: 44px; max-width: 780px; font-size: 13px; color: var(--warm-gray); line-height: 1.85; }
+  .weg-note a { color: var(--sun); text-decoration: underline; }
+
+  /* NAVIGATION — Muster wie auf /fuehren/, in der Threshold-Formensprache */
+  nav.top {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; padding: 20px 72px;
+    transition: background 0.3s ease, padding 0.3s ease;
+  }
+  /* Schleier, damit die Leiste auch ueber hellen Bildstellen lesbar bleibt.
+     Verschwindet, sobald der feste Hintergrund uebernimmt. */
+  nav.top::before {
+    content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+    background: linear-gradient(to bottom, rgba(4, 23, 31, 0.85), rgba(4, 23, 31, 0));
+    transition: opacity 0.3s ease;
+  }
+  nav.top.nav-scrolled::before { opacity: 0; }
+  nav.top.nav-scrolled {
+    background: rgba(4, 23, 31, 0.94);
+    -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+    padding: 12px 72px;
+  }
+  nav.top .logo {
+    font-family: 'Cormorant Garamond', serif; font-size: 20px;
+    color: #fff; text-decoration: none; white-space: nowrap;
+  }
+  nav.top .logo em { font-style: italic; color: var(--sun); }
+  .nav-meta {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 0 8px;
+    font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--warm-gray);
+  }
+  .nav-meta a { color: var(--warm-gray); text-decoration: none; transition: color 0.3s; }
+  .nav-meta a:hover { color: var(--sun); }
+  .nav-meta a.is-current { color: var(--sun); }
+  .nav-meta .sep { opacity: 0.45; }
+  @media (max-width: 900px) {
+    nav.top { padding: 14px 20px; flex-direction: column; align-items: flex-start; gap: 6px; }
+    nav.top.nav-scrolled { padding: 10px 20px; }
+    nav.top .logo { font-size: 18px; }
+    .nav-meta { font-size: 11px; letter-spacing: 0.06em; }
+  }
+
   /* FOOTER */
   .footer { background: var(--midnight); padding: 36px 72px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
   .footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: #fff; }
@@ -286,27 +339,7 @@
   @media (max-width: 560px) {
     .dimensions-grid, .partner-grid { grid-template-columns: 1fr; }
   }
-</style><style>
-/* Rueckweg oben links. Die Threshold-Seite hat keine Navigation, ihr
-   einziger Rueckweg steht im Footer. Diese Seite ist zusaetzlich direkt
-   von der Startseite verlinkt, deshalb hier ein dezenter Textlink. */
-.rueckweg {
-  position: absolute;
-  top: 28px;
-  left: 28px;
-  z-index: 5;
-  font-family: var(--sans, inherit);
-  font-size: 13px;
-  letter-spacing: 0.06em;
-  color: var(--warm-gray);
-  text-decoration: none;
-  border-bottom: 1px solid rgba(168, 125, 52, 0.4);
-  padding-bottom: 2px;
-}
-.rueckweg:hover { color: var(--sun); }
-@media (max-width: 900px) { .rueckweg { top: 20px; left: 20px; } }
-</style>
-<!-- Privacy-friendly analytics by Plausible -->
+</style><!-- Privacy-friendly analytics by Plausible -->
 <script async src="https://plausible.io/js/pa-PE8LepbzU6ohWEdNxpoeQ.js"></script>
 <script>
   window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
@@ -315,7 +348,12 @@
 </head>
 <body>
 
-<a class="rueckweg" href="/index-en.html">← David Liebnau</a>
+<nav class="top">
+  <a href="/index-en.html" class="logo">David Liebnau<em>.</em></a>
+  <div class="nav-meta">
+    <a href="/fuehren/en/">Leading</a><span class="sep">·</span><a href="/threshold/en/">Threshold</a><span class="sep">·</span><a href="/threshold/partner/en/" class="is-current">Fund a place</a><span class="sep">·</span><a href="/podcast.html">Podcast</a><span class="sep">·</span><a href="/threshold/partner/">DE</a><span class="sep">·</span><a href="/threshold/partner/en/" class="is-current">EN</a>
+  </div>
+</nav>
 
 <!-- ════════ HERO ════════ -->
 <section class="section-dark" style="padding-top:110px;">
@@ -403,6 +441,41 @@
   <p class="sec-lead-light">An introductory rate applies for the founding group. We discuss the cost per place in conversation. Our <a href="/agb/" style="color:var(--gold-dark); text-decoration:underline;">terms and conditions</a> apply.</p>
 </section>
 
+<!-- ════════ NÄCHSTE SCHRITTE — VIER NACHFRAGEZUSTÄNDE ════════ -->
+<section class="section-horizon" id="naechste-schritte">
+  <div class="label-light">Next Steps</div>
+  <div class="divider-faint"></div>
+  <h2 class="sec-h2-dark">Four routes, depending on<br/>where you actually stand.</h2>
+  <p class="sec-lead-dark">Not every enquiry fits May 2027. Take the route that matches your situation — each one leads to a different next step.</p>
+  <div class="partner-grid">
+    <div class="partner-card">
+      <div class="partner-name">The date works</div>
+      <div class="partner-body">You want to make a place in the Founding Group in May 2027 possible — for your child, for someone you accompany, or anonymously for someone who otherwise wouldn't get one.</div>
+      <a class="plausible-event-name=partner_path_partnership_click weg-link" href="mailto:mail@davidliebnau.com?subject=The%20Threshold%20Program%20%E2%80%94%20Partnership&body=Hello%20David%2C%0D%0A%0D%0AI%27d%20like%20to%20make%20a%20place%20in%20the%20Founding%20Group%20in%20May%202027%20possible.%0D%0A%0D%0AName%3A%0D%0AOrganisation%20%28if%20applicable%29%3A%0D%0ANumber%20of%20places%3A%0D%0ABest%20way%20to%20reach%20me%3A%0D%0AMessage%3A%0D%0A">Request a partnership →</a>
+      <div class="weg-next">What happens next: David replies within two working days and offers a conversation of about 30 minutes. That covers places, process and costs. Nothing is agreed until it is confirmed in writing afterwards.</div>
+    </div>
+    <div class="partner-card">
+      <div class="partner-name">The group is full</div>
+      <div class="partner-body">If all ten places are taken, funding isn't off the table. People do drop out, and then it matters who is already standing by.</div>
+      <a class="plausible-event-name=partner_path_waitlist_click weg-link" href="mailto:mail@davidliebnau.com?subject=The%20Threshold%20Program%20%E2%80%94%20Waiting%20List%20May%202027%20%28funding%29&body=Hello%20David%2C%0D%0A%0D%0AI%27d%20like%20to%20go%20on%20the%20waiting%20list%20to%20fund%20a%20place%20in%20May%202027.%0D%0A%0D%0AName%3A%0D%0AOrganisation%20%28if%20applicable%29%3A%0D%0ANumber%20of%20places%3A%0D%0ABest%20way%20to%20reach%20me%3A%0D%0A">Join the waiting list →</a>
+      <div class="weg-next">What happens next: You get a short confirmation. David gets in touch only if a place opens up, in the order requests came in. No newsletter, no reminder emails.</div>
+    </div>
+    <div class="partner-card">
+      <div class="partner-name">May 2027 doesn't fit</div>
+      <div class="partner-body">The budget year, a board decision, or the situation of the person you want to support — sometimes timing is the only thing that doesn't line up.</div>
+      <a class="plausible-event-name=partner_path_later_click weg-link" href="mailto:mail@davidliebnau.com?subject=The%20Threshold%20Program%20%E2%80%94%20Later%20Date%20%28funding%29&body=Hello%20David%2C%0D%0A%0D%0AMay%202027%20doesn%27t%20work%20for%20us.%20Please%20note%20us%20for%20a%20later%20group.%0D%0A%0D%0AName%3A%0D%0AOrganisation%20%28if%20applicable%29%3A%0D%0AFrom%20when%20would%20it%20work%3A%0D%0ABest%20way%20to%20reach%20me%3A%0D%0A">Note us for a later group →</a>
+      <div class="weg-next">What happens next: David records your time window and gets in touch once a group falls inside it. Until then you hear nothing. If the window changes, just write again.</div>
+    </div>
+    <div class="partner-card hl">
+      <div class="partner-name">Your own cohort or in-house</div>
+      <div class="partner-body">Several places at once, a group of your own, or a format that runs at your site. There is deliberately no page to click through here — there is a conversation.</div>
+      <a class="plausible-event-name=partner_path_institution_click weg-link" href="mailto:mail@davidliebnau.com?subject=The%20Threshold%20Program%20%E2%80%94%20Organisation%20Enquiry&body=Hello%20David%2C%0D%0A%0D%0Awe%27re%20interested%20in%20The%20Threshold%20Program%20as%20an%20organisation.%0D%0A%0D%0AOrganisation%3A%0D%0AContact%20person%20and%20role%3A%0D%0AApproximate%20group%20size%3A%0D%0ATime%20frame%3A%0D%0AWhat%20this%20is%20about%20%28please%20tick%20or%20add%29%3A%0D%0A%5B%20%5D%20Funding%20individual%20places%0D%0A%5B%20%5D%20A%20cohort%20of%20our%20own%0D%0A%5B%20%5D%20In-house%20format%20or%20partnership%0D%0AMessage%3A%0D%0A">Enquire as an organisation →</a>
+      <div class="weg-next">What happens next: David replies within two working days. The first conversation covers number of places, time frame and format. There is no price list for organisations; we settle costs there.</div>
+    </div>
+  </div>
+  <p class="weg-note">None of these four routes is a booking or a binding commitment. All four open an email to <a href="mailto:mail@davidliebnau.com">mail@davidliebnau.com</a> with the details David needs — write directly if your email app doesn't open. Funding is agreed only once David confirms it in writing after the conversation. An introductory rate applies to the Founding Group; costs per place are settled in the conversation, and the participant contribution is set out in the investment block on the <a href="/threshold/en/#investition">Threshold page</a>. Our <a href="/agb/">terms</a> and <a href="/widerruf/">right of withdrawal</a> apply.</p>
+</section>
+
 <!-- ════════ CLOSING CTA ════════ -->
 <div class="cta-section">
   <h2 class="cta-title">In 30 minutes we will know<br/><em>whether it fits.</em></h2>
@@ -431,5 +504,15 @@
   </div>
 </div>
 
+<script>
+  // Navigationsleiste bekommt beim Scrollen einen Hintergrund
+  (function () {
+    var nav = document.querySelector('nav.top');
+    if (!nav) return;
+    function updateNav() { nav.classList.toggle('nav-scrolled', window.scrollY > 60); }
+    window.addEventListener('scroll', updateNav, { passive: true });
+    updateNav();
+  })();
+</script>
 </body>
 </html>

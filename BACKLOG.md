@@ -3,7 +3,7 @@
 Offene Punkte, die außerhalb des Relaunch-Briefings liegen oder auf eine
 Entscheidung, eine Lieferung oder ein externes Set-up warten.
 
-Stand: 2026-08-22
+Stand: 2026-09-03
 
 ---
 
@@ -11,52 +11,42 @@ Stand: 2026-08-22
 
 ### E-Mail-Adressen für die drei Call-to-Action-Buttons
 
-Es gibt **keine `@davidliebnau.com`-Adresse**. Im Repository kommen nur zwei
-Adressen vor, beide auf der Domain `light-creators.com`. Threshold läuft aber
-unter davidliebnau.com, ein Bewerber oder eine Stiftung darf nicht in einer
-Mail an eine fremd wirkende Firma landen.
-
-**Übergangslösung, aktiv:** Alle drei Buttons gehen auf
-`dl@light-creators.com`, die Betreffzeilen bleiben unverändert.
-`info@light-creators.com` wird für diese Buttons nicht mehr verwendet.
-
-**Set-up erforderlich:** Einrichtung mindestens einer Adresse auf
-`@davidliebnau.com`, zum Beispiel `david@`, `hallo@` oder getrennt nach
-Zweck. Danach ein Sweep über alle unten genannten Fundstellen.
-
-Betroffene Stellen, sobald entschieden ist:
-
-| Datei | Zeilen | Kontext |
-|---|---|---|
-| `index.html` | 114, 578 | Briefing-Gespräch, Hero und CTA-Block |
-| `index.html` | 586 | Threshold Bewerbungsgespräch |
-| `index.html` | 594 | Threshold Partnerschaft |
-| `index.html` | 601, 663 | direkte E-Mail, Footer |
-| `podcast.html` | 343, 480 | Briefing-Gespräch, Footer |
-| `threshold/index.html` | 550, 771, 772, 774, 785 | Bewerbung, Partnerschaft, Hinweiszeile, Footer |
-| `threshold/en/index.html` | 563, 784, 785, 787, 798 | dieselben Stellen auf Englisch |
-| `index-en.html` | 473, 514, 581 | Threshold-Bewerbung, direkte E-Mail, Footer |
-| `episodes/*.html` | je 1 | Footer, 30 Dateien, erzeugt aus der Vorlage |
-| `tools/generate_episode.py` | PAGE_TEMPLATE | Footer in der Vorlage |
-| `fuehren/index.html` | – | Briefing-Gespräch, sobald die Seite steht |
-| `threshold/partner/index.html` | – | Partnerschaft anfragen, sobald die Seite steht |
-
-Nicht angefasst, weil außerhalb des Auftrags: `solo.html`,
-`landing-pages/*`.
+Erledigt. Alle Call-to-Action-Buttons laufen auf `mail@davidliebnau.com`.
+Die Übergangslösung über `dl@light-creators.com` ist abgelöst, die
+Fundstellentabelle von August 2026 damit gegenstandslos. Seit dem
+Phase-1-Sprint kommen die vier Nachfragewege auf den Threshold-Seiten
+dazu, ebenfalls auf dieselbe Adresse, unterschieden über die Betreffzeile.
 
 ### Impressum und Datenschutz
 
-`/impressum/` und `/datenschutz/` stehen als Platzhalter mit `noindex`.
-Der juristische Text fehlt und wird von David geliefert. Bis dahin bleiben
-beide Seiten aus der Sitemap heraus.
-
-Für eine gewerbliche deutsche Website ist das fehlende Impressum ein
-Risiko, unabhängig vom Relaunch.
+Erledigt. `/impressum/` und `/datenschutz/` tragen den echten Text, stehen
+nicht mehr auf `noindex` und sind in der Sitemap. Dasselbe gilt für
+`/agb/`, `/widerruf/` und `/ki-einsatz/`.
 
 ### LinkedIn-Empfehlungen
 
-Der Wortlaut fehlt. Auf `/fuehren/` steht dafür ein markierter Platzhalter
-im Belege-Abschnitt.
+Drei Empfehlungen liegen im Wortlaut vor und stehen seit dem
+Phase-1-Sprint kontextnah auf `/fuehren/` und `/fuehren/en/`: Pa M.K.
+Sinyan bei „Wie ich arbeite", Viktor Szücs bei „Formate", David Kling im
+Belege-Abschnitt. Die Testimonial-Wand am Seitenende ist damit aufgelöst.
+
+- [ ] Empfehlung 4 und 5 im Wortlaut liefern. Kriterien und Einbauort
+  stehen als markierter Kommentarblock im Belege-Abschnitt beider
+  Führen-Seiten. Nichts erfinden.
+- [ ] Anschließend `/fuehren/en/` mit derselben Empfehlung ergänzen.
+
+Regel R2 ist seit dem Phase-1-Sprint technisch abgesichert:
+`assets/award-context.js` prüft jede Award-Fundstelle im gerenderten Text
+und hängt den Rollen-Satz zur SYNK GROUP an, wenn er im Block oder im
+unmittelbar vorangehenden Element fehlt. Eingebunden ist der Wächter auf
+`/fuehren/` und `/fuehren/en/`.
+
+- [ ] Entscheiden, ob der Wächter auch auf `index.html`, `index-en.html`
+  und `podcast.html` läuft. Dort genügt eine Zeile vor `</body>`:
+  `<script src="/assets/award-context.js" defer></script>`.
+  Für `threshold/index.html` und `threshold/en/index.html` käme zusätzlich
+  die Regel `.award-context` in deren Inline-CSS dazu, weil diese Seiten
+  `assets/styles.css` nicht laden.
 
 ---
 
@@ -70,6 +60,19 @@ im Belege-Abschnitt.
   und drei auf `/threshold/partner/en/` (Drei Wege, Threshold-Teaser,
   Footer). Threshold selbst zeigte schon auf `/threshold/en/`.
   `podcast.html` bleibt deutsch, der Text sagt das mit „In German".
+
+### Englischer Partnerblock stand doppelt
+
+Erledigt am 02.09.2026. `threshold/en/index.html` trug in `#partners`
+weiterhin den vollständigen Block mit Research-Strip, Insight-Kasten und
+allen vier Partner-Karten, obwohl `/threshold/partner/en/` als eigene
+Seite existiert. Rund 40 Zeilen standen damit identisch auf zwei
+indexierbaren URLs.
+
+Der Block ist jetzt auf denselben kurzen Teaser zurückgebaut wie in der
+deutschen Fassung: Label, Überschrift, zwei Sätze und der Link auf
+`/threshold/partner/en/`. Interne Sprungmarken auf `#partners` gab es
+keine, es musste nichts mit umziehen.
 
 ### ProvenExpert-Siegel auf Englisch
 
@@ -87,10 +90,33 @@ im Belege-Abschnitt.
 `threshold/og-image.jpg` ist **1920 × 1440**, also 4:3. Open Graph erwartet
 1,91:1. Facebook und LinkedIn beschneiden das Bild oben und unten.
 
-`assets/og-image.jpg` ist mit 1200 × 630 korrekt und wird vorerst auch auf
-`/threshold/partner/` verwendet. Ein passend zugeschnittenes Bild für
-Threshold und die Partnerseite liefert David nach. **Kein automatisches
-Beschneiden.**
+Erledigt für die vier Money Pages, am 02.09.2026. `/fuehren/` und
+`/fuehren/en/` tragen `assets/og-image-fuehren.jpg`, ein 1200 × 628 großer
+Zuschnitt aus `assets/hero-fuehren-split.webp`. `/threshold/partner/` und
+`/threshold/partner/en/` tragen `assets/og-image-threshold-partner.jpg`,
+denselben Zuschnitt aus `assets/threshold-teaser.jpg`, dem Bild, das auf
+der Startseite schon den Threshold-Teaser trägt. Beide Seitenpaare
+zusätzlich mit `og:image:width`, `og:image:height` und `twitter:image`.
+
+Die Regel **kein automatisches Beschneiden** galt und gilt für
+`threshold/og-image.jpg`. Diese Datei ist unangetastet, die
+Threshold-Hauptseiten laufen weiter darauf und werden in der Vorschau oben
+und unten beschnitten.
+
+`assets/og-image-threshold-partner.jpg` bleibt so stehen, wie es ist. Das
+Motiv ist thematisch passend, aber generisch; ein Bild aus dem Programm
+selbst wäre stärker. Das existiert noch nicht und entsteht mit der ersten
+Pilotgruppe. Der Punkt ist deshalb kein Rest, der liegen geblieben ist,
+sondern wartet auf Material. Er steht zusammen mit den anderen
+Nachbereitungspunkten des Piloten unter „Hängt am Abschluss der
+Pilotkohorte" in `briefing/OFFENE-AUFGABEN-Relaunch.md`. Dasselbe gilt
+für `threshold/og-image.jpg`.
+
+Anmerkung zur Quelle: Das Briefing nannte `hero-fuehren-split.webp` mit
+1200 × 1500. Es gibt die Datei zweimal. `briefing/hero-fuehren-split.webp`
+ist 1200 × 1500, `assets/hero-fuehren-split.webp`, die ausgelieferte
+Fassung, ist 1400 × 1400 — andere Prüfsumme, offenbar später neu
+exportiert. Die Maße im Briefing stammen aus der Briefing-Kopie.
 
 ### HR Excellence Award Logo: Nutzungsrechte klären
 
@@ -134,6 +160,44 @@ haben 31 tote Bildverweise, weil ihre relativen Pfade beim Verschieben
 nach `_archiv/` nicht mitgezogen wurden. Bestand schon vor dem
 Aufräumen. Ohne Folgen, weil `robots.txt` das Archiv sperrt und es nicht
 verlinkt ist. Wenn es stört: Pfade auf `/assets/...` umstellen.
+
+---
+
+## Messung
+
+### Plausible-Goals nachziehen
+
+Klick-Events laufen über CSS-Klassen (`plausible-event-name=…`), Scrolltiefe
+über `window.plausible()`. Das Script `pa-PE8LepbzU6ohWEdNxpoeQ.js` wertet
+die Klassen aus, geprüft am 02.09.2026 am ausgelieferten Script.
+
+**Ein Event im Code erscheint erst im Dashboard, wenn dort ein Goal mit
+demselben Namen angelegt ist.** Neu aus dem Phase-1-Sprint, neun Stück:
+
+```
+threshold_path_application_click
+threshold_path_waitlist_click
+threshold_path_later_click
+threshold_path_institution_click
+partner_path_partnership_click
+partner_path_waitlist_click
+partner_path_later_click
+partner_path_institution_click
+fuehren_cta3_click
+```
+
+- [ ] Diese neun Goals im Plausible-Dashboard anlegen.
+
+Bereits vorhanden und unverändert: `cta_briefing_click`,
+`nav_threshold_click`, `outbound_light_creators_click`,
+`fuehren_cta1_click`, `fuehren_cta2_click`, `threshold_cta_click`,
+`threshold_partner_link_click`, `partner_request_click`,
+`threshold_price_scroll`, `threshold_faq_seen`.
+
+Namenskonvention: `<bereich>_<sache>_<verb>`, Klick-Events enden auf
+`_click`. Die vier Wege tragen zusätzlich das Segment `path`, damit sie im
+Dashboard zusammen stehen. Deutsche und englische Fassung teilen sich einen
+Namen; getrennt wird nach Teilnehmer- und Partnerseite, nicht nach Sprache.
 
 ---
 
@@ -251,11 +315,44 @@ gekürzt wird. Bewusst nicht im Relaunch geändert.
 
 ---
 
+## Redaktionell offen
+
+### Bowie-Zitat: Zuschreibung nicht belegt
+
+Am Ende des Vier-Schritte-Blocks auf beiden Startseiten steht:
+
+> „Tomorrow belongs to those – who can hear it coming." — David Bowie
+
+`index.html:300`, `index-en.html:300`. Aufgenommen aus Davids Review vom 03.09.2026.
+
+Zwei Punkte:
+
+- [ ] **Zuschreibung klären.** Die Zuschreibung an David Bowie ist nicht belegt. Bis
+  das geklärt ist, das Zitat nicht auf weitere Seiten übernehmen. Entscheidung liegt
+  bei David: belegen, umformulieren oder entfernen.
+- [ ] **Interpunktion.** Der Gedankenstrich mitten im Satz ist falsch gesetzt. Ein
+  Halbgeviertstrich zwischen Subjekt und Relativsatz gehört dort nicht hin. Wird mit
+  der Zuschreibung zusammen entschieden, nicht einzeln korrigiert.
+
+Zum Bestand: In den Episoden kommt Bowie dreimal vor, jeweils als freie Wiedergabe im
+Fließtext, nicht als Zitat mit Anführungszeichen —
+`ep-04` („Die Zukunft gehört denen, die sie kommen hören"), `ep-16` (Fallschirm-Bild)
+und `ep-22`. Diese Stellen sind von der Entscheidung mitbetroffen, falls sie
+grundsätzlich ausfällt.
+
+---
+
 ## Kleinkram
 
 - `solo.html` nennt die Telefonnummer `+49 170 43 26 737`. Einzige
   Telefonnummer im Repository, Datei ist von der Website nicht verlinkt.
 - Die Threshold-Seiten haben keine Hauptnavigation. Der einzige Rückweg auf
   davidliebnau.com steht im Footer.
+- Das Hero-Bild `assets/hero-david.webp` steht auf `index.html` und
+  `index-en.html` ohne `width` und `height`. Beim Abgleich aller
+  `<img>`-Elemente am 02.09.2026 die einzigen beiden Fundstellen ohne Maße,
+  neben drei Bildern in `solo.html`, das von der Website nicht verlinkt ist.
+  Bewusst nicht angefasst: die Startseite gehört nicht zu diesem Sprint, und
+  ob dort Maße etwas ändern, hängt daran, wie das CSS das Bild bemisst.
 - `README.md` enthält nur die Zeile `# light-creators`. Der Repository-Name
   passt nicht zum Inhalt, hier liegt davidliebnau.com.
