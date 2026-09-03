@@ -266,6 +266,47 @@
   .weg-note { margin-top: 44px; max-width: 780px; font-size: 13px; color: var(--warm-gray); line-height: 1.85; }
   .weg-note a { color: var(--sun); text-decoration: underline; }
 
+  /* NAVIGATION — Muster wie auf /fuehren/, in der Threshold-Formensprache */
+  nav.top {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; padding: 20px 72px;
+    transition: background 0.3s ease, padding 0.3s ease;
+  }
+  /* Schleier, damit die Leiste auch ueber hellen Bildstellen lesbar bleibt.
+     Verschwindet, sobald der feste Hintergrund uebernimmt. */
+  nav.top::before {
+    content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+    background: linear-gradient(to bottom, rgba(4, 23, 31, 0.85), rgba(4, 23, 31, 0));
+    transition: opacity 0.3s ease;
+  }
+  nav.top.nav-scrolled::before { opacity: 0; }
+  nav.top.nav-scrolled {
+    background: rgba(4, 23, 31, 0.94);
+    -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+    padding: 12px 72px;
+  }
+  nav.top .logo {
+    font-family: 'Cormorant Garamond', serif; font-size: 20px;
+    color: #fff; text-decoration: none; white-space: nowrap;
+  }
+  nav.top .logo em { font-style: italic; color: var(--sun); }
+  .nav-meta {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 0 8px;
+    font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--warm-gray);
+  }
+  .nav-meta a { color: var(--warm-gray); text-decoration: none; transition: color 0.3s; }
+  .nav-meta a:hover { color: var(--sun); }
+  .nav-meta a.is-current { color: var(--sun); }
+  .nav-meta .sep { opacity: 0.45; }
+  @media (max-width: 900px) {
+    nav.top { padding: 14px 20px; flex-direction: column; align-items: flex-start; gap: 6px; }
+    nav.top.nav-scrolled { padding: 10px 20px; }
+    nav.top .logo { font-size: 18px; }
+    .nav-meta { font-size: 11px; letter-spacing: 0.06em; }
+  }
+
   /* FOOTER */
   .footer { background: var(--midnight); padding: 36px 72px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
   .footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: #fff; }
@@ -307,6 +348,17 @@
 </script>
 </head>
 <body>
+
+
+<nav class="top">
+  <a href="/" class="logo">David Liebnau<em>.</em></a>
+  <div class="nav-meta">
+    <a href="/">Home</a>
+    <span class="sep">·</span>
+    <a href="/fuehren/">Führen</a><span class="sep">·</span><a href="/threshold/" class="is-current">Threshold</a><span class="sep">·</span><a href="/threshold/partner/">Plätze finanzieren</a><span class="sep">·</span><a href="/podcast.html">Podcast</a><span class="sep">·</span><a href="/threshold/" class="is-current">DE</a><span class="sep">·</span><a href="/threshold/en/">EN</a>
+  </div>
+</nav>
+
 
 <!-- ════════ HERO ════════ -->
 <div class="hero">
@@ -905,6 +957,16 @@
       });
     }, { threshold: 0.25 });
     beobachter.observe(ziel);
+  })();
+</script>
+<script>
+  // Navigationsleiste bekommt beim Scrollen einen Hintergrund
+  (function () {
+    var nav = document.querySelector('nav.top');
+    if (!nav) return;
+    function updateNav() { nav.classList.toggle('nav-scrolled', window.scrollY > 60); }
+    window.addEventListener('scroll', updateNav, { passive: true });
+    updateNav();
   })();
 </script>
 </body>

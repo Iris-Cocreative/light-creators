@@ -3,7 +3,7 @@
 Offene Punkte, die außerhalb des Relaunch-Briefings liegen oder auf eine
 Entscheidung, eine Lieferung oder ein externes Set-up warten.
 
-Stand: 2026-09-02
+Stand: 2026-09-03
 
 ---
 
@@ -165,41 +165,77 @@ verlinkt ist. Wenn es stört: Pfade auf `/assets/...` umstellen.
 
 ## Messung
 
-### Plausible-Goals nachziehen
+### Plausible-Goals — angelegt
 
-Klick-Events laufen über CSS-Klassen (`plausible-event-name=…`), Scrolltiefe
-über `window.plausible()`. Das Script `pa-PE8LepbzU6ohWEdNxpoeQ.js` wertet
-die Klassen aus, geprüft am 02.09.2026 am ausgelieferten Script.
+**Erledigt am 03.09.2026.** David hat die Goals im Dashboard angelegt und dort
+verifiziert. Im Account stehen 19 Custom Events plus die vier Standard-Goals.
+Die 19 decken sich mit dem Bestand im Code, siehe Liste unten.
 
-**Ein Event im Code erscheint erst im Dashboard, wenn dort ein Goal mit
-demselben Namen angelegt ist.** Neu aus dem Phase-1-Sprint, neun Stück:
+Klick-Events laufen über CSS-Klassen (`plausible-event-name=…`), Scrolltiefe über
+`window.plausible()`. Ein Event im Code erscheint im Dashboard erst, wenn dort ein
+Goal desselben Namens existiert — deshalb der Punkt überhaupt.
+
+**Die 19 Namen, maschinell aus dem Code gezogen (Stand `main`, 03.09.2026):**
 
 ```
-threshold_path_application_click
-threshold_path_waitlist_click
-threshold_path_later_click
-threshold_path_institution_click
-partner_path_partnership_click
-partner_path_waitlist_click
-partner_path_later_click
-partner_path_institution_click
-fuehren_cta3_click
+cta_briefing_click                 nav_threshold_click
+fuehren_cta1_click                 outbound_light_creators_click
+fuehren_cta2_click                 partner_path_institution_click
+fuehren_cta3_click                 partner_path_later_click
+partner_path_partnership_click     partner_path_waitlist_click
+partner_request_click              threshold_cta_click
+threshold_faq_seen                 threshold_partner_link_click
+threshold_path_application_click   threshold_path_institution_click
+threshold_path_later_click         threshold_path_waitlist_click
+threshold_price_scroll
 ```
 
-- [ ] Diese neun Goals im Plausible-Dashboard anlegen.
+Namenskonvention: `<bereich>_<sache>_<verb>`, Klick-Events enden auf `_click`. Die
+acht Nachfragewege tragen zusätzlich das Segment `path`, damit sie im Dashboard
+zusammen stehen. Deutsche und englische Fassung teilen sich einen Namen; getrennt
+wird nach Teilnehmer- und Partnerseite, nicht nach Sprache.
 
-Bereits vorhanden und unverändert: `cta_briefing_click`,
-`nav_threshold_click`, `outbound_light_creators_click`,
-`fuehren_cta1_click`, `fuehren_cta2_click`, `threshold_cta_click`,
-`threshold_partner_link_click`, `partner_request_click`,
-`threshold_price_scroll`, `threshold_faq_seen`.
+### Verkabelung der neun neuen Goals — geprüft ohne Konversion
 
-Namenskonvention: `<bereich>_<sache>_<verb>`, Klick-Events enden auf
-`_click`. Die vier Wege tragen zusätzlich das Segment `path`, damit sie im
-Dashboard zusammen stehen. Deutsche und englische Fassung teilen sich einen
-Namen; getrennt wird nach Teilnehmer- und Partnerseite, nicht nach Sprache.
+Am 03.09.2026 gegen die Live-Domain geprüft. Keines der neun neuen Goals hatte zu
+dem Zeitpunkt eine Konversion; bei neun Besuchern pro Woche ist das erwartbar, taugt
+aber nicht als Beleg, dass die Verkabelung stimmt.
+
+Statt eines Testklicks wurde die Nutzlast abgefangen: `fetch`, `sendBeacon` und
+`XMLHttpRequest` überschrieben, jeder Aufruf an Plausible mitgelesen und
+zurückgehalten. Dazu ein Klick-Abfang in der Capture-Phase, der nur die
+Standardaktion unterdrückt — das Ereignis läuft weiter, das Mailprogramm öffnet
+nicht. **Es hat kein einziger Aufruf das Dashboard erreicht.**
+
+Ergebnis: In allen geprüften Fällen stimmt der gesendete Eventname exakt mit der
+Klasse im Markup überein.
+
+| Seite | geprüfte Events | Ergebnis |
+|---|---|---|
+| `/threshold/` | 4 Nachfragewege | 4 von 4 |
+| `/threshold/en/` | 6, inklusive der beiden aus Phase 0 | 6 von 6 |
+| `/threshold/partner/` | 4 Nachfragewege plus `partner_request_click` | 5 von 5 |
+| `/fuehren/` | `fuehren_cta1/2/3_click` | 3 von 3 |
+
+Nicht geprüft und weiterhin offen: die Netzwerkstrecke selbst, also dass ein
+tatsächlich abgesendeter Aufruf im Dashboard als Konversion ankommt. Dafür spricht,
+dass vier Goals aus Phase 0 über dasselbe Script auf derselben Domain zählen; die
+Strecke ist damit belegt, nur nicht für die neuen Namen einzeln.
+
+**Ein Nebenbefund aus der Nutzlast.** Bei einem getaggten Link hängt Plausible die
+Zieladresse als Property `url` an. Bei den acht mailto-Wegen ist das die vollständige
+`mailto:`-Adresse **einschließlich des vorausgefüllten Textkörpers** — also des leeren
+Feldgerüsts, nicht der Eingaben eines Besuchers. Personenbezogene Daten entstehen
+dabei nicht, weil der Rumpf erst im Mailprogramm des Besuchers gefüllt wird und
+dieses nichts an Plausible zurückmeldet.
+
+- [ ] Zur Kenntnis nehmen und entscheiden, ob das so bleiben soll. Wer es nicht will,
+  müsste die Feldgerüste aus den `href` nehmen und anders einsetzen — dann verlieren
+  die Wege ihren wesentlichen Vorteil.
 
 ---
+
+## Technische Schulden---
 
 ## Technische Schulden
 
@@ -312,6 +348,32 @@ Satz kostet 56 Pixel und ist nicht die Ursache. Die Länge kommt aus
 
 Zu prüfen für V2: ob auf Mobil das Bild entfällt oder der Fließtext
 gekürzt wird. Bewusst nicht im Relaunch geändert.
+
+---
+
+## Redaktionell offen
+
+### Bowie-Zitat: entfernt
+
+Stand 03.09.2026: erledigt. Das Zitat
+
+> „Tomorrow belongs to those – who can hear it coming." — David Bowie
+
+stand am Ende des Vier-Schritte-Blocks auf `index.html:302` und
+`index-en.html:302`. Auf Davids Entscheidung entfernt, weil die
+Zuschreibung nicht belegt war. Der `.factors-coda`-Wrapper ging mit; die
+zugehoerigen CSS-Regeln in `assets/styles.css` bleiben, weil die
+archivierten Founder-Bloecke unter `_archiv/` sie weiterhin verwenden.
+
+Offen bleibt eine kleinere Frage:
+
+- [ ] **Drei freie Wiedergaben in den Episoden.** `ep-04` gibt den Gedanken
+  im Fliesstext wieder („David Bowie hat gesagt: Die Zukunft gehört denen,
+  die sie kommen hören"), `ep-16` das Fallschirm-Bild, `ep-22` eine weitere
+  Stelle. Alle drei stehen ohne Anfuehrungszeichen als Paraphrase, nicht als
+  Zitat, und in datierten Episoden. Sie sind bewusst stehen geblieben.
+  Entscheidung, ob sie ebenfalls weichen, liegt bei David — das waere ein
+  redaktioneller Eingriff in veroeffentlichte Folgen.
 
 ---
 
