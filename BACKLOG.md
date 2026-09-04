@@ -25,15 +25,25 @@ nicht mehr auf `noindex` und sind in der Sitemap. Dasselbe gilt für
 
 ### LinkedIn-Empfehlungen
 
-Drei Empfehlungen liegen im Wortlaut vor und stehen seit dem
-Phase-1-Sprint kontextnah auf `/fuehren/` und `/fuehren/en/`: Pa M.K.
-Sinyan bei „Wie ich arbeite", Viktor Szücs bei „Formate", David Kling im
-Belege-Abschnitt. Die Testimonial-Wand am Seitenende ist damit aufgelöst.
+**Abgeschlossen am 04.09.2026 bei sechs Zitaten.** Das Ursprungsbriefing
+nannte fünf als Obergrenze; David hat sie am selben Tag aufgehoben, weil der
+Belege-Abschnitt mit einem einzigen Zitat zu dünn wirkte.
 
-- [ ] Empfehlung 4 und 5 im Wortlaut liefern. Kriterien und Einbauort
-  stehen als markierter Kommentarblock im Belege-Abschnitt beider
-  Führen-Seiten. Nichts erfinden.
-- [ ] Anschließend `/fuehren/en/` mit derselben Empfehlung ergänzen.
+Auf `/fuehren/` und `/fuehren/en/` steht jedes Zitat **inline bei der
+Aussage, die es belegt**, nicht mehr gesammelt am Ende eines Blocks:
+
+| Zitat | Steht bei |
+|---|---|
+| Pa M.K. Sinyan | Ergebnisse |
+| Jacob Harz | Ergebnisse, hinter Sinyan — erst der Fachkollege, dann der Klient |
+| Daniel Euteneuer | Formate, „Einzelarbeit auf Geschäftsführungsebene" |
+| Viktor Szücs | Formate, „Programme" |
+| David Kling | Belege |
+| Bettina Rufnak | Belege, unter Kling |
+
+Die Testimonial-Wand am Seitenende ist damit aufgelöst. Der frühere
+Kommentarblock in beiden Dateien ist auf den einen Satz eingedampft, der
+auch für spätere Zitate gilt.
 
 Regel R2 ist seit dem Phase-1-Sprint technisch abgesichert:
 `assets/award-context.js` prüft jede Award-Fundstelle im gerenderten Text
@@ -87,15 +97,56 @@ keine, es musste nichts mit umziehen.
 
 ### og:image für Threshold und die Partnerseite
 
-`threshold/og-image.jpg` ist **1920 × 1440**, also 4:3. Open Graph erwartet
-1,91:1. Facebook und LinkedIn beschneiden das Bild oben und unten.
+**Erledigt am 04.09.2026.** Alle acht Seiten mit Vorschaubild tragen jetzt
+ein Bild im Verhältnis 1,91:1. Nichts wird von den Plattformen beschnitten.
+
+**Nachtrag desselben Tages: die vier gebauten Karten liegen in doppelter
+Auflösung**, 2400 × 1256 statt 1200 × 628, weil sie im LinkedIn-Inspector
+unscharf wirkten. Ursache war nicht die Datei — bei 1:1 waren die alten
+Karten scharf —, sondern die Anzeige: eine 1200 Pixel breite Karte, die auf
+einem Retina-Bildschirm 1200 Punkte breit dargestellt wird, hat dort nur die
+halbe nötige Pixeldichte. Keine Quelle wird dabei hochgerechnet: das
+Porträt kommt aus 1400 × 1400, das Threshold-Bild aus 1920 × 1440, beide
+werden weiterhin verkleinert. Der Renderer nimmt den Faktor als siebtes
+Argument, live wird mit 2 gebaut.
+
+**Zweiter Nachtrag, 04.09.2026: Schriftgröße auf den Threshold-Karten.**
+David meldete, dass die deutsche Karte trotz doppelter Auflösung schwer zu
+lesen ist. Ursache war nicht die Auflösung, sondern der Satz: die deutsche
+Kopfzeile ist mit 40 Zeichen länger als die englische mit 34, davon standen
+58 Prozent in der goldenen Kursive gegen 47 Prozent auf Englisch, und der
+automatische Umbruch trennte mitten in der Wortgruppe („was als / Nächstes").
+Geändert in zwei Schritten, weil der erste noch nicht reichte: Umbruch von
+Hand hinter das Komma, sodass die Goldkursive eine eigene Zeile bekommt, und
+Bildhöhe von 440 über 380 auf **320**, damit die Textspalte von 453 auf **613
+Punkt** wächst. Erst dadurch ließ sich die Kopfzeile von 46 auf **66 Punkt**
+setzen. Die längere deutsche Zeile misst damit 578 von 613 Punkten.
+
+Der Renderer meldet beim Bauen Zeilenzahl und breiteste Zeile, damit ein
+ungewollter Umbruch auffällt, bevor die Karte live geht.
+
+Zum Farbwert, weil er beim Prüfen mit anfiel: Luminous Sand auf Midnight Blue
+steht bei 17,27:1, Soft Gold bei 9,74:1. Beide weit über der Anforderung, die
+Goldkursive ist also nicht das Problem gewesen.
+
+**Die Partnerseiten sind am selben Tag nachgezogen**, ebenfalls gebaute Karten
+in doppelter Auflösung: `assets/og-partner-de.jpg` und `-en.jpg`, gebaut aus
+`assets/threshold-teaser.jpg`, Kopfzeile 60 Punkt. Der deutsche Wortlaut
+„Hoffnung in die Zukunft fördern." stammt von David. Die englische Fassung
+„Fostering hope for the future." ist eine Übertragung und noch nicht
+freigegeben. Der frühere Zuschnitt
+`assets/og-image-threshold-partner.jpg` ist entfallen.
+
+**Nicht umgestellt** ist allein `assets/og-image.jpg` auf beiden Startseiten
+und der Podcastseite. Es liegt weiter in 1200 × 630 und wirkt auf Retina
+weicher. Ein größeres Original ist im Repository nicht vorhanden.
 
 Erledigt für die vier Money Pages, am 02.09.2026. Für `/fuehren/` am
 03.09.2026 ersetzt: statt des Zuschnitts steht dort jetzt eine gebaute
 Karte, 1200 × 628, Porträt rechts als unbeschnittenes Quadrat auf Midnight
 Blue `#04171F`, Text links in Cormorant Garamond und Hanken Grotesk.
 Deutsch und Englisch haben eigene Dateien, weil Text darauf steht:
-`assets/og-image-fuehren-de.jpg` und `assets/og-image-fuehren-en.jpg`.
+`assets/og-fuehren-de.jpg` und `assets/og-fuehren-en.jpg`.
 Der frühere gemeinsame Zuschnitt `assets/og-image-fuehren.jpg` ist
 entfallen. `/threshold/partner/` und
 `/threshold/partner/en/` tragen `assets/og-image-threshold-partner.jpg`,
@@ -103,10 +154,20 @@ denselben Zuschnitt aus `assets/threshold-teaser.jpg`, dem Bild, das auf
 der Startseite schon den Threshold-Teaser trägt. Beide Seitenpaare
 zusätzlich mit `og:image:width`, `og:image:height` und `twitter:image`.
 
-Die Regel **kein automatisches Beschneiden** galt und gilt für
-`threshold/og-image.jpg`. Diese Datei ist unangetastet, die
-Threshold-Hauptseiten laufen weiter darauf und werden in der Vorschau oben
-und unten beschnitten.
+Die Threshold-Hauptseiten tragen seit dem 04.09.2026
+`assets/og-threshold-de.jpg` und `-en.jpg`, ebenfalls gebaute Karten:
+das vorhandene Bild vollständig, in seinem eigenen 4:3-Verhältnis, rechts auf
+Midnight Blue, links der Satz aus dem og:title.
+
+Die Regel **kein automatisches Beschneiden** ist dabei gewahrt geblieben.
+`threshold/og-image.jpg` ist unangetastet und dient der Karte als Quelle.
+Beschnitten wird nichts, das Bild wird nur kleiner gesetzt.
+
+**Offen bleibt das Motiv selbst.** Es zeigt eine Gruppe als Silhouette auf
+einer Anhöhe im Sonnenuntergang, weder Finnland noch Wald, und dasselbe Foto
+liegt als Zuschnitt auch auf den beiden Partnerseiten. Vier Threshold-Seiten
+teilen sich damit ein Motiv. Das ist eine inhaltliche Entscheidung, die bei
+David liegt, keine technische.
 
 `assets/og-image-threshold-partner.jpg` bleibt so stehen, wie es ist. Das
 Motiv ist thematisch passend, aber generisch; ein Bild aus dem Programm
@@ -239,8 +300,6 @@ dieses nichts an Plausible zurückmeldet.
   die Wege ihren wesentlichen Vorteil.
 
 ---
-
-## Technische Schulden---
 
 ## Technische Schulden
 

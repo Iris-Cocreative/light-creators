@@ -7,30 +7,33 @@ Erledigtes abhaken und mit Datum versehen, damit klar bleibt, was noch offen ist
 
 ## Sofort, unabhängig vom Relaunch
 
-- [ ] **Impressum und Datenschutzerklärung inhaltlich erstellen.**
-  Claude Code legt die Seiten `/impressum/` und `/datenschutz/` mit Platzhalter an.
-  Der Text kommt von dir oder deinem Anwalt, nicht von einer KI.
-  Betrifft: 100 tote Links auf der gesamten Website. Threshold-Seiten haben
-  bisher gar keine Rechtslinks im Footer.
-- [ ] **AGB entscheiden.** Falls du keine hast, bleibt der Link entfernt.
-  Falls du welche brauchst, etwa für die Threshold-Buchung, ist das ein
-  eigenes Thema.
+- [x] **Impressum und Datenschutzerklärung inhaltlich erstellen.** Erledigt,
+  gegen die Live-Domain geprüft am 04.09.2026. `/impressum/`, `/datenschutz/`,
+  `/agb/`, `/widerruf/` und `/ki-einsatz/` antworten alle mit 200 und tragen
+  echten Text, keine Platzhalterzeichen mehr. Die Threshold-Seiten führen die
+  Rechtslinks im Footer.
+- [x] **AGB entscheiden.** Erledigt. `/agb/` steht und ist verlinkt, der Text
+  ist durch die juristische Durchsicht gegangen. Offen bleibt davon getrennt,
+  ob für die Threshold-Buchung eigene Bedingungen nötig sind; das hängt am
+  Piloten und steht weiter unten.
 - [x] **Platzhalterkasten auf den Rechtsseiten entfernt.** Erledigt vor dem
   01.09.2026. Impressum, Datenschutz, AGB, Widerruf und KI-Einsatz tragen
   echten Text, stehen nicht mehr auf `noindex` und sind in der Sitemap.
 - [x] **Eigene Bilder für die Vorschau (og:image).** Erledigt am 02.09.2026.
   `/fuehren/` und `/fuehren/en/` tragen seit dem 03.09.2026 eine gebaute
   Karte statt eines Zuschnitts, je Sprache eine eigene Datei:
-  `assets/og-image-fuehren-de.jpg` und `assets/og-image-fuehren-en.jpg`.
+  `assets/og-fuehren-de.jpg` und `assets/og-fuehren-en.jpg`.
   `/threshold/partner/` und `/threshold/partner/en/` tragen
   `assets/og-image-threshold-partner.jpg`, denselben Zuschnitt aus dem
   bestehenden `assets/threshold-teaser.jpg`. Beide mit `og:image:width`,
   `og:image:height` und `twitter:image`.
-- [ ] **og:image der Threshold-Hauptseiten.** `threshold/og-image.jpg` ist
-  weiterhin 1920 × 1440, also 4:3, und wird oben und unten beschnitten.
-  Dafür gilt die alte Regel unverändert: kein automatisches Beschneiden,
-  das Bild liefert David. Der Zuschnitt der Partnerseiten stammt aus einer
-  anderen Datei und berührt diese Regel nicht.
+- [x] **og:image der Threshold-Hauptseiten.** Erledigt am 04.09.2026.
+  `/threshold/` und `/threshold/en/` tragen gebaute Karten,
+  `assets/og-threshold-de.jpg` und `-en.jpg`, mit dem vorhandenen Bild
+  vollständig und unbeschnitten. Die Regel kein automatisches Beschneiden
+  ist gewahrt: `threshold/og-image.jpg` bleibt unverändert und dient als
+  Quelle. Die Wahl des Motivs bleibt eine offene Frage an David, siehe
+  BACKLOG.
 
 ---
 
@@ -40,14 +43,15 @@ Erledigtes abhaken und mit Datum versehen, damit klar bleibt, was noch offen ist
   `mail@davidliebnau.com`, unterschieden über die Betreffzeile. Seit dem
   Phase-1-Sprint kommen acht weitere Betreffzeilen für die vier
   Nachfragewege dazu. Kein Formulardienst, kein Kalenderlink.
-- [ ] **LinkedIn-Empfehlung 4 und 5 im Wortlaut liefern.**
-  Drei liegen vor und stehen seit dem 01.09.2026 kontextnah auf
-  `/fuehren/` und `/fuehren/en/`: Sinyan bei „Wie ich arbeite", Szücs bei
-  „Formate", Kling im Belege-Abschnitt. Kriterien und Einbauort für die
-  fehlenden zwei stehen als markierter Kommentarblock in beiden Dateien.
-  Achtung: Der Wortlaut muss die Rolle bei der SYNK GROUP erkennen lassen,
-  wo der Award erwähnt wird (Regel R2). `assets/award-context.js` trägt den
-  Rollen-Satz automatisch nach, falls er im Zitat fehlt.
+- [x] **LinkedIn-Empfehlungen: entschieden und abgeschlossen bei sechs.**
+  Erledigt am 04.09.2026. Auf `/fuehren/` und `/fuehren/en/` stehen sechs
+  Zitate, jedes inline bei der Aussage, die es belegt: Sinyan und Harz bei
+  den Ergebnissen, Euteneuer bei „Einzelarbeit auf Geschäftsführungsebene",
+  Szücs bei „Programme", Kling und Rufnak im Belege-Abschnitt. Die
+  Obergrenze von fünf aus dem Ursprungsbriefing hat David am selben Tag
+  aufgehoben. Der Punkt ist geschlossen, nicht wartend.
+  Der Kommentarblock in beiden Dateien ist auf den einen Satz eingedampft,
+  der auch für spätere Zitate gilt: Regel R2 und `award-context.js`.
 - [x] **Partnerschaftswege für `/threshold/partner/` freigegeben.** Die vier
   Wege der Zusammenarbeit stehen auf Zahler formuliert, dazu seit dem
   Phase-1-Sprint vier Nachfragewege für die Anfrage selbst.
@@ -62,9 +66,12 @@ Erledigtes abhaken und mit Datum versehen, damit klar bleibt, was noch offen ist
   Claude Code soll dafür nicht das Browser-Tooling reparieren.
 - [x] **`/fuehren/` und `/threshold/partner/` müssen existieren.** Erledigt.
   Beide Seiten stehen, dazu die englischen Fassungen.
-- [ ] **Generator-Sperre ist ungetestet.** Node war beim Einbau nicht
-  installiert. Bei Gelegenheit einmal `node generate-episodes.js` ohne
-  `--force` ausführen und prüfen, dass sauber abgebrochen wird.
+- [x] **Generator-Sperre ist ungetestet.** Gegenstandslos, geprüft am
+  04.09.2026. `generate-episodes.js` existiert im Repository nicht mehr,
+  an seine Stelle ist `tools/generate_episode.py` getreten. Node ist auf
+  der Maschine weiterhin nicht installiert und wird auch nicht mehr
+  gebraucht. Die Sperre, die getestet werden sollte, gehörte zum
+  entfernten Skript.
 
 ---
 
@@ -86,8 +93,17 @@ gegen die Produktionsdomain verifiziert).
   03.09.2026. hreflang beidseitig plus x-default, Twitter-Meta vollständig,
   eigene og:images. Live-Auslieferung real abgerufen: alle acht Seiten mit
   200, beide og:images erreichbar.
-- [ ] **Social-Preview-Check der vier Money Pages.** Steht noch aus. Geht
-  jetzt, weil die Bilder live sind.
+- [ ] **Social-Preview-Check.** Technisch abgeschlossen und gegen die
+  Live-Domain geprüft, am 04.09.2026: alle neun Seiten mit Vorschaubild
+  tragen og:image mit Maßen und Bildbeschreibung, dazu die vollständigen
+  twitter-Entsprechungen; jedes Bild antwortet mit 200 und liefert byteweise
+  das, was im Repository liegt. Sechs Seiten tragen gebaute Karten in
+  2400 × 1256.
+
+  **Was aussteht, ist die Sichtprüfung im LinkedIn Post Inspector durch
+  David.** Läuft. Hinweis aus dem Verlauf: LinkedIn speichert das gerenderte
+  Bild je URL und bis zu sieben Tage. Ändert sich der Bildinhalt, muss der
+  Dateiname sich mit ändern, sonst zeigt der Inspector die alte Fassung.
 - [x] **Goals im Plausible-Dashboard angelegt.** Erledigt am 03.09.2026,
   von David angelegt und im Dashboard verifiziert. Im Account stehen 19
   Custom Events plus die vier Standard-Goals; die 19 decken sich mit dem
@@ -120,14 +136,12 @@ gegen die Produktionsdomain verifiziert).
 
 ## Podcast
 
-- [ ] **SEO-Block in die Generator-Vorlage nachtragen.**
-  Datei: `generate-episodes.js`, Funktion `generatePage()`, Zeilen 141 bis 286.
-  Die 29 erzeugten Episoden enthalten je einen SEO-Block, den die Vorlage
-  nicht kennt: canonical, robots, 9 x og und twitter, JSON-LD PodcastEpisode,
-  JSON-LD BreadcrumbList. Ein Generatorlauf würde alle 29 überschreiben.
-  Vorläufig ist eine Sperre im Skript eingebaut.
-  Zusätzlich: `CONTENT_FILE` zeigt auf einen Windows-Downloads-Pfad, die
-  Quelldatei liegt nicht im Repository.
+- [x] **SEO-Block in die Generator-Vorlage nachtragen.** Erledigt mit der
+  Ablösung des Skripts, geprüft am 04.09.2026. `tools/generate_episode.py`
+  trägt canonical, robots, og und twitter sowie beide JSON-LD-Blöcke
+  (PodcastEpisode und BreadcrumbList). Ein Lauf überschreibt die Episoden
+  nicht mehr um ihren SEO-Block. Der alte Windows-Pfad in `CONTENT_FILE`
+  ist mit dem alten Skript entfallen.
 - [ ] **podcast.html vollständig überarbeiten.**
   Im Relaunch wurden nur die gröbsten Founder-Stellen ersetzt. Die Seite ist
   strukturell weiterhin eine Founder-Landingpage. Offen: Hero-Aufbau,

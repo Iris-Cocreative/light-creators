@@ -1006,6 +1006,27 @@ podcast-cover { display: contents; }
 @media (max-width: 880px) {
   .roles-grid { grid-template-columns: 1fr; gap: 2rem; }
 }
+
+/* Die Zitate zu den Formaten stehen in einer eigenen Zeile unter dem Raster,
+   spaltengleich mit dem Format, das sie belegen. Dasselbe Raster, damit die
+   Kanten stimmen; die mittlere Spalte bleibt frei, weil es fuer
+   "Fuehrungsteam-Begleitung" kein Zitat gibt. */
+.format-proofs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+.format-proofs .proof-quote {
+  margin-top: 0;
+  max-width: none;   /* die Spalte begrenzt bereits */
+}
+.format-col-1 { grid-column: 1; }
+.format-col-3 { grid-column: 3; }
+@media (max-width: 880px) {
+  .format-proofs { grid-template-columns: 1fr; gap: 2rem; }
+  .format-col-1, .format-col-3 { grid-column: auto; }
+}
 .role-card {
   display: flex;
   flex-direction: column;
@@ -2322,6 +2343,15 @@ footer {
   line-height: 1.55;
   color: var(--text);
 }
+/* Mehrabsaetzige Zitate: der Browser-Standardabstand passt nicht zum Rest.
+   color: inherit ist nicht kosmetisch, sondern notwendig. Auf den dunklen
+   Sections faerbt .section--teal p jeden Absatz mit 65 Prozent Deckung; ein
+   einteiliges Zitat bekommt ueber .section--teal .proof-quote blockquote
+   dagegen die volle Farbe. Ohne diese Zeile stuende ein mehrabsaetziges
+   Zitat blasser da als das Zitat daneben. */
+.proof-quote blockquote p { margin: 0; color: inherit; }
+.proof-quote blockquote p + p { margin-top: 0.85em; }
+
 .proof-quote figcaption {
   display: flex;
   align-items: center;
