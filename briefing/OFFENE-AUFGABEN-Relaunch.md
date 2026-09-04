@@ -43,14 +43,14 @@ Erledigtes abhaken und mit Datum versehen, damit klar bleibt, was noch offen ist
   `mail@davidliebnau.com`, unterschieden über die Betreffzeile. Seit dem
   Phase-1-Sprint kommen acht weitere Betreffzeilen für die vier
   Nachfragewege dazu. Kein Formulardienst, kein Kalenderlink.
-- [ ] **LinkedIn-Empfehlung 4 und 5 im Wortlaut liefern.**
-  Drei liegen vor und stehen seit dem 01.09.2026 kontextnah auf
-  `/fuehren/` und `/fuehren/en/`: Sinyan bei „Wie ich arbeite", Szücs bei
-  „Formate", Kling im Belege-Abschnitt. Kriterien und Einbauort für die
-  fehlenden zwei stehen als markierter Kommentarblock in beiden Dateien.
-  Achtung: Der Wortlaut muss die Rolle bei der SYNK GROUP erkennen lassen,
-  wo der Award erwähnt wird (Regel R2). `assets/award-context.js` trägt den
-  Rollen-Satz automatisch nach, falls er im Zitat fehlt.
+- [x] **LinkedIn-Empfehlungen: entschieden und abgeschlossen bei fünf.**
+  Erledigt am 04.09.2026. Auf `/fuehren/` und `/fuehren/en/` stehen fünf
+  Zitate, jedes inline bei der Aussage, die es belegt: Sinyan und Harz bei
+  den Ergebnissen, Euteneuer bei „Einzelarbeit auf Geschäftsführungsebene",
+  Szücs bei „Programme", Kling im Belege-Abschnitt. Fünf ist die Obergrenze
+  aus dem Ursprungsbriefing, der Punkt ist damit geschlossen, nicht wartend.
+  Der Kommentarblock in beiden Dateien ist auf den einen Satz eingedampft,
+  der auch für spätere Zitate gilt: Regel R2 und `award-context.js`.
 - [x] **Partnerschaftswege für `/threshold/partner/` freigegeben.** Die vier
   Wege der Zusammenarbeit stehen auf Zahler formuliert, dazu seit dem
   Phase-1-Sprint vier Nachfragewege für die Anfrage selbst.

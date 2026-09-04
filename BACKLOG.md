@@ -25,15 +25,23 @@ nicht mehr auf `noindex` und sind in der Sitemap. Dasselbe gilt für
 
 ### LinkedIn-Empfehlungen
 
-Drei Empfehlungen liegen im Wortlaut vor und stehen seit dem
-Phase-1-Sprint kontextnah auf `/fuehren/` und `/fuehren/en/`: Pa M.K.
-Sinyan bei „Wie ich arbeite", Viktor Szücs bei „Formate", David Kling im
-Belege-Abschnitt. Die Testimonial-Wand am Seitenende ist damit aufgelöst.
+**Abgeschlossen am 04.09.2026 bei fünf Zitaten.** Fünf ist die Obergrenze
+aus dem Ursprungsbriefing; der Punkt ist entschieden, nicht wartend.
 
-- [ ] Empfehlung 4 und 5 im Wortlaut liefern. Kriterien und Einbauort
-  stehen als markierter Kommentarblock im Belege-Abschnitt beider
-  Führen-Seiten. Nichts erfinden.
-- [ ] Anschließend `/fuehren/en/` mit derselben Empfehlung ergänzen.
+Auf `/fuehren/` und `/fuehren/en/` steht jedes Zitat **inline bei der
+Aussage, die es belegt**, nicht mehr gesammelt am Ende eines Blocks:
+
+| Zitat | Steht bei |
+|---|---|
+| Pa M.K. Sinyan | Ergebnisse |
+| Jacob Harz | Ergebnisse, hinter Sinyan — erst der Fachkollege, dann der Klient |
+| Daniel Euteneuer | Formate, „Einzelarbeit auf Geschäftsführungsebene" |
+| Viktor Szücs | Formate, „Programme" |
+| David Kling | Belege |
+
+Die Testimonial-Wand am Seitenende ist damit aufgelöst. Der frühere
+Kommentarblock in beiden Dateien ist auf den einen Satz eingedampft, der
+auch für spätere Zitate gilt.
 
 Regel R2 ist seit dem Phase-1-Sprint technisch abgesichert:
 `assets/award-context.js` prüft jede Award-Fundstelle im gerenderten Text

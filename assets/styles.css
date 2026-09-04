@@ -1006,6 +1006,20 @@ podcast-cover { display: contents; }
 @media (max-width: 880px) {
   .roles-grid { grid-template-columns: 1fr; gap: 2rem; }
 }
+
+/* Formate als gestapelte Zeilen statt Rasterspalten. Notwendig, damit jedes
+   Zitat direkt bei dem Format steht, das es belegt: in einer Rasterspalte von
+   rund 340 px waeren die Zitate zwoelf sehr kurze Zeilen lang. Unter 880 px
+   sieht das genauso aus wie das umgebrochene Raster vorher. */
+.format-stack {
+  margin: clamp(2.5rem, 5vw, 4rem) 0 clamp(2rem, 4vw, 3rem);
+}
+.format-stack .role-card + .role-card {
+  margin-top: clamp(2.75rem, 5vw, 3.75rem);
+}
+/* Der Abstand unter der Beschreibung entfaellt, das Zitat bringt seinen
+   eigenen oberen Abstand mit. */
+.format-stack .role-card > p { margin-bottom: 0; }
 .role-card {
   display: flex;
   flex-direction: column;
@@ -2322,6 +2336,10 @@ footer {
   line-height: 1.55;
   color: var(--text);
 }
+/* Mehrabsaetzige Zitate: der Browser-Standardabstand passt nicht zum Rest. */
+.proof-quote blockquote p { margin: 0; }
+.proof-quote blockquote p + p { margin-top: 0.85em; }
+
 .proof-quote figcaption {
   display: flex;
   align-items: center;
