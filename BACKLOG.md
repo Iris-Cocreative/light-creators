@@ -25,8 +25,9 @@ nicht mehr auf `noindex` und sind in der Sitemap. Dasselbe gilt für
 
 ### LinkedIn-Empfehlungen
 
-**Abgeschlossen am 04.09.2026 bei fünf Zitaten.** Fünf ist die Obergrenze
-aus dem Ursprungsbriefing; der Punkt ist entschieden, nicht wartend.
+**Abgeschlossen am 04.09.2026 bei sechs Zitaten.** Das Ursprungsbriefing
+nannte fünf als Obergrenze; David hat sie am selben Tag aufgehoben, weil der
+Belege-Abschnitt mit einem einzigen Zitat zu dünn wirkte.
 
 Auf `/fuehren/` und `/fuehren/en/` steht jedes Zitat **inline bei der
 Aussage, die es belegt**, nicht mehr gesammelt am Ende eines Blocks:
@@ -38,6 +39,7 @@ Aussage, die es belegt**, nicht mehr gesammelt am Ende eines Blocks:
 | Daniel Euteneuer | Formate, „Einzelarbeit auf Geschäftsführungsebene" |
 | Viktor Szücs | Formate, „Programme" |
 | David Kling | Belege |
+| Bettina Rufnak | Belege, unter Kling |
 
 Die Testimonial-Wand am Seitenende ist damit aufgelöst. Der frühere
 Kommentarblock in beiden Dateien ist auf den einen Satz eingedampft, der

@@ -43,12 +43,13 @@ Erledigtes abhaken und mit Datum versehen, damit klar bleibt, was noch offen ist
   `mail@davidliebnau.com`, unterschieden über die Betreffzeile. Seit dem
   Phase-1-Sprint kommen acht weitere Betreffzeilen für die vier
   Nachfragewege dazu. Kein Formulardienst, kein Kalenderlink.
-- [x] **LinkedIn-Empfehlungen: entschieden und abgeschlossen bei fünf.**
-  Erledigt am 04.09.2026. Auf `/fuehren/` und `/fuehren/en/` stehen fünf
+- [x] **LinkedIn-Empfehlungen: entschieden und abgeschlossen bei sechs.**
+  Erledigt am 04.09.2026. Auf `/fuehren/` und `/fuehren/en/` stehen sechs
   Zitate, jedes inline bei der Aussage, die es belegt: Sinyan und Harz bei
   den Ergebnissen, Euteneuer bei „Einzelarbeit auf Geschäftsführungsebene",
-  Szücs bei „Programme", Kling im Belege-Abschnitt. Fünf ist die Obergrenze
-  aus dem Ursprungsbriefing, der Punkt ist damit geschlossen, nicht wartend.
+  Szücs bei „Programme", Kling und Rufnak im Belege-Abschnitt. Die
+  Obergrenze von fünf aus dem Ursprungsbriefing hat David am selben Tag
+  aufgehoben. Der Punkt ist geschlossen, nicht wartend.
   Der Kommentarblock in beiden Dateien ist auf den einen Satz eingedampft,
   der auch für spätere Zitate gilt: Regel R2 und `award-context.js`.
 - [x] **Partnerschaftswege für `/threshold/partner/` freigegeben.** Die vier
