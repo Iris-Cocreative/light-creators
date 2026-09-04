@@ -3,7 +3,8 @@
 **Aufgabe:** CC-6 aus `phase2-lightcreators-claude-code.md`
 **Übergabepunkt:** I-5, fällig vor Freigabepunkt F1
 **Stand der Erhebung:** 3. September 2026
-**Erhoben auf:** Branch `phase2-zulieferungen`, Stand `main` (Commit `2060bb8`, „docs: Farbpalette aus den LCT Brand Design Guidelines festhalten")
+**Erhoben auf:** Branch `phase2-zulieferungen`, Stand `main` (Commit `2060bb8`)
+**Nachgeprüft:** 4. September 2026 gegen `main` bei `98b50ce` — Zeilennummern und Anzahlen unverändert
 **Änderungen an bestehenden Dateien:** keine. `ep-28` und `ep-29` sind unangetastet.
 
 > **Hinweis zu den Zeilennummern.** Dieser Bericht wurde am 03.09.2026 gegen den

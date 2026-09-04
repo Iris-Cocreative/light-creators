@@ -4,6 +4,7 @@
 **Zweck:** Klarheit darüber, was für Phase 3 bereitliegt. In Phase 2 wird nichts davon verwendet.
 **Stand:** 3. September 2026
 **Erhoben auf:** Branch `phase2-zulieferungen`, Stand `main` (Commit `2060bb8`)
+**Nachgeprüft:** 4. September 2026 gegen `main` bei `98b50ce` — Zeilennummern und Anzahlen unverändert
 **Änderungen an bestehenden Dateien:** keine. Nichts aus `_archiv/` wurde kopiert, aufbereitet oder verschoben.
 
 > **Regel aus dem Briefing, hier eingehalten.** Migration ist Bestandteil des

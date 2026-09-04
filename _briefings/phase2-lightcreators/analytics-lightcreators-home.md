@@ -71,7 +71,7 @@ aufzulösen: `light.home.tribeperson.click` (ein Name je Portrait) und
 Die Differenz ist keine Rechenungenauigkeit, sondern eine Sachfrage: **sollen diese
 beiden Messungen unter eigenen Eventnamen zurückkommen?** Wenn ja, steigt die Zahl —
 auf wie viel genau, hängt davon ab, wie viele Portraits und Navigationsziele die Seite
-am Ende hat. Diese Datei setzt keine der beiden Varianten voraus. Siehe RF-14.
+am Ende hat. Diese Datei setzt keine der beiden Varianten voraus. Siehe RF-19.
 
 ---
 
@@ -370,7 +370,7 @@ Die drei erwogenen Wege, zur Nachvollziehbarkeit:
 |---|---|---|
 | ~~RF-12~~ | **Beantwortet 03.09.2026:** nein, die drei Properties stehen noch im Konto und werden demnächst entfernt. Hier nicht eingeplant, blockiert nichts. | erledigt |
 | **RF-13** | Zeigt das eingebaute Goal „Outbound Link: Click" die Aufschlüsselung nach Ziel-URL auch auf Growth? Plausible hängt bei getaggten Links die Zieladresse automatisch als eingebaute Property `url` an — ob Growth sie im Dashboard aufschlüsselt, ist damit nicht beantwortet. Bestimmt, ob das Tribe-Paket die Portrait-Links überhaupt einzeln messen kann. | Tribe-Paket (T0) |
-| **RF-14** | Das Briefing nennt 13 Goals, diese Spezifikation kommt auf 10. Die Differenz sind die beiden unter R-F gestrichenen Events `light.home.tribeperson.click` und `light.home.nav.click`. Sollen sie unter eigenen Eventnamen zurückkommen? Bestimmt die endgültige Goal-Zahl. | F2 |
+| **RF-19** | Das Briefing nennt 13 Goals, diese Spezifikation kommt auf 10. Die Differenz sind die beiden unter R-F gestrichenen Events `light.home.tribeperson.click` und `light.home.nav.click`. Sollen sie unter eigenen Eventnamen zurückkommen? Bestimmt die endgültige Goal-Zahl. | F2 |
 | ~~RF-14~~ | **Beantwortet 03.09.2026: Weg B.** Die 19 Altnamen bleiben, künftige Events auf `davidliebnau.com` bekommen `david.*`. Siehe Abschnitt 7.4. | erledigt |
 | ~~RF-15~~ | **Beantwortet 03.09.2026:** ja, angelegt und bestätigt. Die übrigen neun fehlen noch. | erledigt |
 
