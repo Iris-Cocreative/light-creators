@@ -28,9 +28,20 @@ let VARIANTE = CommandLine.arguments[4]   // A | B | C
 let SPRACHE = CommandLine.arguments.count > 5 ? CommandLine.arguments[5] : "de"
 
 let B: CGFloat = 1200, H: CGFloat = 628
-let RAND: CGFloat = 44, KANTE: CGFloat = 540
+let RAND: CGFloat = 44
 let TEXT_X: CGFloat = 72
-let TEXT_B: CGFloat = B - RAND - KANTE - TEXT_X - 44   // 500
+
+// Das Bild wird nie beschnitten. Es bekommt eine Hoehe, die Breite folgt aus
+// dem Seitenverhaeltnis, und es sitzt rechts, senkrecht mittig.
+let qurl = URL(fileURLWithPath: QUELLE) as CFURL
+guard let src = CGImageSourceCreateWithURL(qurl, nil),
+      let bild = CGImageSourceCreateImageAtIndex(src, 0, nil) else { fatalError("Bild") }
+let SEITEN = CGFloat(bild.width) / CGFloat(bild.height)
+let BILD_H: CGFloat = (VARIANTE.hasPrefix("T")) ? 440 : 540
+let BILD_B: CGFloat = (BILD_H * SEITEN).rounded()
+let BILD_X: CGFloat = B - RAND - BILD_B
+let BILD_Y: CGFloat = ((H - BILD_H) / 2).rounded()
+let TEXT_B: CGFloat = BILD_X - TEXT_X - 44
 
 func farbe(_ hex: UInt32, _ a: CGFloat = 1) -> CGColor {
   CGColor(red: CGFloat((hex >> 16) & 255)/255, green: CGFloat((hex >> 8) & 255)/255,
@@ -115,6 +126,15 @@ case "A":
     (absatz([Stueck(text: name, font: cor(64), color: SAND, tracking: 0),
              Stueck(text: ".", font: corI(64), color: GOLD, tracking: 0)], zeilenhoehe: 1.0), 26),
     (absatz([Stueck(text: claimA, font: han(21), color: SAND, tracking: 0)], zeilenhoehe: 1.5), 0)]
+case "T1":
+  let kopf1 = SPRACHE == "en" ? "Before you choose " : "Bevor du wählst, "
+  let kopf2 = SPRACHE == "en" ? "what comes next." : "was als Nächstes kommt."
+  bloecke = [
+    (absatz([Stueck(text: "THRESHOLD", font: hanM(13), color: GOLD, tracking: 2.4)], zeilenhoehe: 1.0), 24),
+    (absatz([Stueck(text: kopf1, font: cor(46), color: SAND, tracking: 0),
+             Stueck(text: kopf2, font: corI(46), color: GOLD, tracking: 0)], zeilenhoehe: 1.24), 0)]
+case "T2":
+  bloecke = []
 case "B":
   bloecke = [
     (absatz([Stueck(text: h1a, font: cor(46), color: SAND, tracking: 0),
@@ -135,15 +155,13 @@ guard let ctx = CGContext(data: nil, width: Int(B), height: Int(H), bitsPerCompo
 ctx.setFillColor(MIDNIGHT)
 ctx.fill(CGRect(x: 0, y: 0, width: B, height: H))
 
-// Portrait rechts, quadratisch, vollstaendig sichtbar
-let qurl = URL(fileURLWithPath: QUELLE) as CFURL
-guard let src = CGImageSourceCreateWithURL(qurl, nil),
-      let bild = CGImageSourceCreateImageAtIndex(src, 0, nil) else { fatalError("Bild") }
+// Bild rechts, unbeschnitten
 ctx.interpolationQuality = .high
-ctx.draw(bild, in: CGRect(x: B - RAND - KANTE, y: RAND, width: KANTE, height: KANTE))
+ctx.draw(bild, in: CGRect(x: BILD_X, y: BILD_Y, width: BILD_B, height: BILD_H))
 
 // Textblock optisch mittig zur Bildkante
 let hoehen = bloecke.map { hoehe($0.0) }
+if bloecke.isEmpty { print("ohne Text") }
 let gesamt = hoehen.reduce(0, +) + bloecke.dropLast().map { $0.1 }.reduce(0, +)
 var y = H/2 + gesamt/2
 for (i, b) in bloecke.enumerated() {
