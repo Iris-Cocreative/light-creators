@@ -42,7 +42,7 @@ let qurl = URL(fileURLWithPath: QUELLE) as CFURL
 guard let src = CGImageSourceCreateWithURL(qurl, nil),
       let bild = CGImageSourceCreateImageAtIndex(src, 0, nil) else { fatalError("Bild") }
 let SEITEN = CGFloat(bild.width) / CGFloat(bild.height)
-let BILD_H: CGFloat = (VARIANTE.hasPrefix("T")) ? 440 : 540
+let BILD_H: CGFloat = (VARIANTE.hasPrefix("T") || VARIANTE.hasPrefix("P")) ? 380 : 540
 let BILD_B: CGFloat = (BILD_H * SEITEN).rounded()
 let BILD_X: CGFloat = B - RAND - BILD_B
 let BILD_Y: CGFloat = ((H - BILD_H) / 2).rounded()
@@ -105,6 +105,11 @@ func zeichne(_ ctx: CGContext, _ s: NSAttributedString, y_oben: CGFloat, h: CGFl
   let fs = CTFramesetterCreateWithAttributedString(s)
   let pfad = CGPath(rect: CGRect(x: TEXT_X, y: y_oben - h, width: TEXT_B, height: h), transform: nil)
   let frame = CTFramesetterCreateFrame(fs, CFRangeMake(0, 0), pfad, nil)
+  if let zeilen = CTFrameGetLines(frame) as? [CTLine] {
+    let breiten = zeilen.map { CTLineGetTypographicBounds($0, nil, nil, nil) }
+    FileHandle.standardError.write(("  Zeilen: \(zeilen.count), breiteste "
+      + String(format: "%.0f", breiten.max() ?? 0) + " von \(Int(TEXT_B))\n").data(using: .utf8)!)
+  }
   CTFrameDraw(frame, ctx)
 }
 
@@ -132,12 +137,20 @@ case "A":
              Stueck(text: ".", font: corI(64), color: GOLD, tracking: 0)], zeilenhoehe: 1.0), 26),
     (absatz([Stueck(text: claimA, font: han(21), color: SAND, tracking: 0)], zeilenhoehe: 1.5), 0)]
 case "T1":
-  let kopf1 = SPRACHE == "en" ? "Before you choose " : "Bevor du wählst, "
+  let kopf1 = SPRACHE == "en" ? "Before you choose\n" : "Bevor du wählst,\n"
   let kopf2 = SPRACHE == "en" ? "what comes next." : "was als Nächstes kommt."
   bloecke = [
-    (absatz([Stueck(text: "THRESHOLD", font: hanM(13), color: GOLD, tracking: 2.4)], zeilenhoehe: 1.0), 24),
-    (absatz([Stueck(text: kopf1, font: cor(46), color: SAND, tracking: 0),
-             Stueck(text: kopf2, font: corI(46), color: GOLD, tracking: 0)], zeilenhoehe: 1.24), 0)]
+    (absatz([Stueck(text: "THRESHOLD", font: hanM(15), color: GOLD, tracking: 2.6)], zeilenhoehe: 1.0), 26),
+    (absatz([Stueck(text: kopf1, font: cor(54), color: SAND, tracking: 0),
+             Stueck(text: kopf2, font: corI(54), color: GOLD, tracking: 0)], zeilenhoehe: 1.22), 0)]
+case "P1":
+  // Partnerseiten. Wortlaut ist der Seitentitel, nichts hinzuerfunden.
+  let p1 = SPRACHE == "en" ? "Fund " : "Plätze "
+  let p2 = SPRACHE == "en" ? "a place." : "finanzieren."
+  bloecke = [
+    (absatz([Stueck(text: "THRESHOLD", font: hanM(15), color: GOLD, tracking: 2.6)], zeilenhoehe: 1.0), 26),
+    (absatz([Stueck(text: p1, font: cor(54), color: SAND, tracking: 0),
+             Stueck(text: p2, font: corI(54), color: GOLD, tracking: 0)], zeilenhoehe: 1.22), 0)]
 case "T2":
   bloecke = []
 case "B":

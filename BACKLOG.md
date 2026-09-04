@@ -100,11 +100,29 @@ Porträt kommt aus 1400 × 1400, das Threshold-Bild aus 1920 × 1440, beide
 werden weiterhin verkleinert. Der Renderer nimmt den Faktor als siebtes
 Argument, live wird mit 2 gebaut.
 
-**Nicht mit umgestellt** sind `assets/og-image.jpg` (beide Startseiten und
-die Podcastseite) und `assets/og-image-threshold-partner.jpg`. Beide liegen
-weiter in einfacher Auflösung und wirken auf Retina entsprechend weicher.
-Für die Partnerseiten wäre eine gebaute Karte in doppelter Auflösung machbar;
-für die Startseiten fehlt ein größeres Original als 1200 × 630.
+**Zweiter Nachtrag, 04.09.2026: Schriftgröße auf den Threshold-Karten.**
+David meldete, dass die deutsche Karte trotz doppelter Auflösung schwer zu
+lesen ist. Ursache war nicht die Auflösung, sondern der Satz: die deutsche
+Kopfzeile ist mit 40 Zeichen länger als die englische mit 34, davon standen
+58 Prozent in der goldenen Kursive gegen 47 Prozent auf Englisch, und der
+automatische Umbruch trennte mitten in der Wortgruppe („was als / Nächstes").
+Geändert: Kopfzeile von 46 auf 54 Punkt, Umbruch von Hand hinter das Komma,
+sodass die Goldkursive eine eigene Zeile bekommt, Bildhöhe von 440 auf 380,
+damit die Textspalte von 453 auf 533 Punkt wächst. Der Renderer meldet jetzt
+Zeilenzahl und breiteste Zeile, damit ein ungewollter Umbruch auffällt.
+
+Zum Farbwert, weil er beim Prüfen mit anfiel: Luminous Sand auf Midnight Blue
+steht bei 17,27:1, Soft Gold bei 9,74:1. Beide weit über der Anforderung, die
+Goldkursive ist also nicht das Problem gewesen.
+
+**Die Partnerseiten sind am selben Tag nachgezogen**, ebenfalls gebaute Karten
+in doppelter Auflösung: `assets/og-partner-de.jpg` und `-en.jpg`, gebaut aus
+`assets/threshold-teaser.jpg`. Der frühere Zuschnitt
+`assets/og-image-threshold-partner.jpg` ist entfallen.
+
+**Nicht umgestellt** ist allein `assets/og-image.jpg` auf beiden Startseiten
+und der Podcastseite. Es liegt weiter in 1200 × 630 und wirkt auf Retina
+weicher. Ein größeres Original ist im Repository nicht vorhanden.
 
 Erledigt für die vier Money Pages, am 02.09.2026. Für `/fuehren/` am
 03.09.2026 ersetzt: statt des Zuschnitts steht dort jetzt eine gebaute
