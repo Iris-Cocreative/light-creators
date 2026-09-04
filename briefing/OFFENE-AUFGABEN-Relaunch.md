@@ -7,14 +7,15 @@ Erledigtes abhaken und mit Datum versehen, damit klar bleibt, was noch offen ist
 
 ## Sofort, unabhängig vom Relaunch
 
-- [ ] **Impressum und Datenschutzerklärung inhaltlich erstellen.**
-  Claude Code legt die Seiten `/impressum/` und `/datenschutz/` mit Platzhalter an.
-  Der Text kommt von dir oder deinem Anwalt, nicht von einer KI.
-  Betrifft: 100 tote Links auf der gesamten Website. Threshold-Seiten haben
-  bisher gar keine Rechtslinks im Footer.
-- [ ] **AGB entscheiden.** Falls du keine hast, bleibt der Link entfernt.
-  Falls du welche brauchst, etwa für die Threshold-Buchung, ist das ein
-  eigenes Thema.
+- [x] **Impressum und Datenschutzerklärung inhaltlich erstellen.** Erledigt,
+  gegen die Live-Domain geprüft am 04.09.2026. `/impressum/`, `/datenschutz/`,
+  `/agb/`, `/widerruf/` und `/ki-einsatz/` antworten alle mit 200 und tragen
+  echten Text, keine Platzhalterzeichen mehr. Die Threshold-Seiten führen die
+  Rechtslinks im Footer.
+- [x] **AGB entscheiden.** Erledigt. `/agb/` steht und ist verlinkt, der Text
+  ist durch die juristische Durchsicht gegangen. Offen bleibt davon getrennt,
+  ob für die Threshold-Buchung eigene Bedingungen nötig sind; das hängt am
+  Piloten und steht weiter unten.
 - [x] **Platzhalterkasten auf den Rechtsseiten entfernt.** Erledigt vor dem
   01.09.2026. Impressum, Datenschutz, AGB, Widerruf und KI-Einsatz tragen
   echten Text, stehen nicht mehr auf `noindex` und sind in der Sitemap.
