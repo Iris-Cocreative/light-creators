@@ -291,8 +291,6 @@ dieses nichts an Plausible zurückmeldet.
 
 ---
 
-## Technische Schulden---
-
 ## Technische Schulden
 
 ### generate-episodes.js ist abgelöst

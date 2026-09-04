@@ -64,9 +64,12 @@ Erledigtes abhaken und mit Datum versehen, damit klar bleibt, was noch offen ist
   Claude Code soll dafür nicht das Browser-Tooling reparieren.
 - [x] **`/fuehren/` und `/threshold/partner/` müssen existieren.** Erledigt.
   Beide Seiten stehen, dazu die englischen Fassungen.
-- [ ] **Generator-Sperre ist ungetestet.** Node war beim Einbau nicht
-  installiert. Bei Gelegenheit einmal `node generate-episodes.js` ohne
-  `--force` ausführen und prüfen, dass sauber abgebrochen wird.
+- [x] **Generator-Sperre ist ungetestet.** Gegenstandslos, geprüft am
+  04.09.2026. `generate-episodes.js` existiert im Repository nicht mehr,
+  an seine Stelle ist `tools/generate_episode.py` getreten. Node ist auf
+  der Maschine weiterhin nicht installiert und wird auch nicht mehr
+  gebraucht. Die Sperre, die getestet werden sollte, gehörte zum
+  entfernten Skript.
 
 ---
 
@@ -88,8 +91,17 @@ gegen die Produktionsdomain verifiziert).
   03.09.2026. hreflang beidseitig plus x-default, Twitter-Meta vollständig,
   eigene og:images. Live-Auslieferung real abgerufen: alle acht Seiten mit
   200, beide og:images erreichbar.
-- [ ] **Social-Preview-Check der vier Money Pages.** Steht noch aus. Geht
-  jetzt, weil die Bilder live sind.
+- [ ] **Social-Preview-Check.** Technisch abgeschlossen und gegen die
+  Live-Domain geprüft, am 04.09.2026: alle neun Seiten mit Vorschaubild
+  tragen og:image mit Maßen und Bildbeschreibung, dazu die vollständigen
+  twitter-Entsprechungen; jedes Bild antwortet mit 200 und liefert byteweise
+  das, was im Repository liegt. Sechs Seiten tragen gebaute Karten in
+  2400 × 1256.
+
+  **Was aussteht, ist die Sichtprüfung im LinkedIn Post Inspector durch
+  David.** Läuft. Hinweis aus dem Verlauf: LinkedIn speichert das gerenderte
+  Bild je URL und bis zu sieben Tage. Ändert sich der Bildinhalt, muss der
+  Dateiname sich mit ändern, sonst zeigt der Inspector die alte Fassung.
 - [x] **Goals im Plausible-Dashboard angelegt.** Erledigt am 03.09.2026,
   von David angelegt und im Dashboard verifiziert. Im Account stehen 19
   Custom Events plus die vier Standard-Goals; die 19 decken sich mit dem
@@ -122,14 +134,12 @@ gegen die Produktionsdomain verifiziert).
 
 ## Podcast
 
-- [ ] **SEO-Block in die Generator-Vorlage nachtragen.**
-  Datei: `generate-episodes.js`, Funktion `generatePage()`, Zeilen 141 bis 286.
-  Die 29 erzeugten Episoden enthalten je einen SEO-Block, den die Vorlage
-  nicht kennt: canonical, robots, 9 x og und twitter, JSON-LD PodcastEpisode,
-  JSON-LD BreadcrumbList. Ein Generatorlauf würde alle 29 überschreiben.
-  Vorläufig ist eine Sperre im Skript eingebaut.
-  Zusätzlich: `CONTENT_FILE` zeigt auf einen Windows-Downloads-Pfad, die
-  Quelldatei liegt nicht im Repository.
+- [x] **SEO-Block in die Generator-Vorlage nachtragen.** Erledigt mit der
+  Ablösung des Skripts, geprüft am 04.09.2026. `tools/generate_episode.py`
+  trägt canonical, robots, og und twitter sowie beide JSON-LD-Blöcke
+  (PodcastEpisode und BreadcrumbList). Ein Lauf überschreibt die Episoden
+  nicht mehr um ihren SEO-Block. Der alte Windows-Pfad in `CONTENT_FILE`
+  ist mit dem alten Skript entfallen.
 - [ ] **podcast.html vollständig überarbeiten.**
   Im Relaunch wurden nur die gröbsten Founder-Stellen ersetzt. Die Seite ist
   strukturell weiterhin eine Founder-Landingpage. Offen: Hero-Aufbau,
