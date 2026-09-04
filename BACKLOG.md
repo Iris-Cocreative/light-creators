@@ -90,9 +90,14 @@ keine, es musste nichts mit umziehen.
 `threshold/og-image.jpg` ist **1920 × 1440**, also 4:3. Open Graph erwartet
 1,91:1. Facebook und LinkedIn beschneiden das Bild oben und unten.
 
-Erledigt für die vier Money Pages, am 02.09.2026. `/fuehren/` und
-`/fuehren/en/` tragen `assets/og-image-fuehren.jpg`, ein 1200 × 628 großer
-Zuschnitt aus `assets/hero-fuehren-split.webp`. `/threshold/partner/` und
+Erledigt für die vier Money Pages, am 02.09.2026. Für `/fuehren/` am
+03.09.2026 ersetzt: statt des Zuschnitts steht dort jetzt eine gebaute
+Karte, 1200 × 628, Porträt rechts als unbeschnittenes Quadrat auf Midnight
+Blue `#04171F`, Text links in Cormorant Garamond und Hanken Grotesk.
+Deutsch und Englisch haben eigene Dateien, weil Text darauf steht:
+`assets/og-image-fuehren-de.jpg` und `assets/og-image-fuehren-en.jpg`.
+Der frühere gemeinsame Zuschnitt `assets/og-image-fuehren.jpg` ist
+entfallen. `/threshold/partner/` und
 `/threshold/partner/en/` tragen `assets/og-image-threshold-partner.jpg`,
 denselben Zuschnitt aus `assets/threshold-teaser.jpg`, dem Bild, das auf
 der Startseite schon den Threshold-Teaser trägt. Beide Seitenpaare

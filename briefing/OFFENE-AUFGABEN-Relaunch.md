@@ -19,8 +19,9 @@ Erledigtes abhaken und mit Datum versehen, damit klar bleibt, was noch offen ist
   01.09.2026. Impressum, Datenschutz, AGB, Widerruf und KI-Einsatz tragen
   echten Text, stehen nicht mehr auf `noindex` und sind in der Sitemap.
 - [x] **Eigene Bilder für die Vorschau (og:image).** Erledigt am 02.09.2026.
-  `/fuehren/` und `/fuehren/en/` tragen `assets/og-image-fuehren.jpg`, ein
-  1200 × 628 großer Zuschnitt aus `hero-fuehren-split.webp`.
+  `/fuehren/` und `/fuehren/en/` tragen seit dem 03.09.2026 eine gebaute
+  Karte statt eines Zuschnitts, je Sprache eine eigene Datei:
+  `assets/og-image-fuehren-de.jpg` und `assets/og-image-fuehren-en.jpg`.
   `/threshold/partner/` und `/threshold/partner/en/` tragen
   `assets/og-image-threshold-partner.jpg`, denselben Zuschnitt aus dem
   bestehenden `assets/threshold-teaser.jpg`. Beide mit `og:image:width`,
