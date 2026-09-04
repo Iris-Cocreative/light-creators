@@ -26,11 +26,13 @@ Erledigtes abhaken und mit Datum versehen, damit klar bleibt, was noch offen ist
   `assets/og-image-threshold-partner.jpg`, denselben Zuschnitt aus dem
   bestehenden `assets/threshold-teaser.jpg`. Beide mit `og:image:width`,
   `og:image:height` und `twitter:image`.
-- [ ] **og:image der Threshold-Hauptseiten.** `threshold/og-image.jpg` ist
-  weiterhin 1920 × 1440, also 4:3, und wird oben und unten beschnitten.
-  Dafür gilt die alte Regel unverändert: kein automatisches Beschneiden,
-  das Bild liefert David. Der Zuschnitt der Partnerseiten stammt aus einer
-  anderen Datei und berührt diese Regel nicht.
+- [x] **og:image der Threshold-Hauptseiten.** Erledigt am 04.09.2026.
+  `/threshold/` und `/threshold/en/` tragen gebaute Karten,
+  `assets/og-image-threshold-de.jpg` und `-en.jpg`, mit dem vorhandenen Bild
+  vollständig und unbeschnitten. Die Regel kein automatisches Beschneiden
+  ist gewahrt: `threshold/og-image.jpg` bleibt unverändert und dient als
+  Quelle. Die Wahl des Motivs bleibt eine offene Frage an David, siehe
+  BACKLOG.
 
 ---
 

@@ -87,8 +87,8 @@ keine, es musste nichts mit umziehen.
 
 ### og:image für Threshold und die Partnerseite
 
-`threshold/og-image.jpg` ist **1920 × 1440**, also 4:3. Open Graph erwartet
-1,91:1. Facebook und LinkedIn beschneiden das Bild oben und unten.
+**Erledigt am 04.09.2026.** Alle acht Seiten mit Vorschaubild tragen jetzt
+ein Bild im Verhältnis 1,91:1. Nichts wird von den Plattformen beschnitten.
 
 Erledigt für die vier Money Pages, am 02.09.2026. Für `/fuehren/` am
 03.09.2026 ersetzt: statt des Zuschnitts steht dort jetzt eine gebaute
@@ -103,10 +103,20 @@ denselben Zuschnitt aus `assets/threshold-teaser.jpg`, dem Bild, das auf
 der Startseite schon den Threshold-Teaser trägt. Beide Seitenpaare
 zusätzlich mit `og:image:width`, `og:image:height` und `twitter:image`.
 
-Die Regel **kein automatisches Beschneiden** galt und gilt für
-`threshold/og-image.jpg`. Diese Datei ist unangetastet, die
-Threshold-Hauptseiten laufen weiter darauf und werden in der Vorschau oben
-und unten beschnitten.
+Die Threshold-Hauptseiten tragen seit dem 04.09.2026
+`assets/og-image-threshold-de.jpg` und `-en.jpg`, ebenfalls gebaute Karten:
+das vorhandene Bild vollständig, in seinem eigenen 4:3-Verhältnis, rechts auf
+Midnight Blue, links der Satz aus dem og:title.
+
+Die Regel **kein automatisches Beschneiden** ist dabei gewahrt geblieben.
+`threshold/og-image.jpg` ist unangetastet und dient der Karte als Quelle.
+Beschnitten wird nichts, das Bild wird nur kleiner gesetzt.
+
+**Offen bleibt das Motiv selbst.** Es zeigt eine Gruppe als Silhouette auf
+einer Anhöhe im Sonnenuntergang, weder Finnland noch Wald, und dasselbe Foto
+liegt als Zuschnitt auch auf den beiden Partnerseiten. Vier Threshold-Seiten
+teilen sich damit ein Motiv. Das ist eine inhaltliche Entscheidung, die bei
+David liegt, keine technische.
 
 `assets/og-image-threshold-partner.jpg` bleibt so stehen, wie es ist. Das
 Motiv ist thematisch passend, aber generisch; ein Bild aus dem Programm
