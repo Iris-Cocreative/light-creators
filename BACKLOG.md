@@ -90,12 +90,28 @@ keine, es musste nichts mit umziehen.
 **Erledigt am 04.09.2026.** Alle acht Seiten mit Vorschaubild tragen jetzt
 ein Bild im Verhältnis 1,91:1. Nichts wird von den Plattformen beschnitten.
 
+**Nachtrag desselben Tages: die vier gebauten Karten liegen in doppelter
+Auflösung**, 2400 × 1256 statt 1200 × 628, weil sie im LinkedIn-Inspector
+unscharf wirkten. Ursache war nicht die Datei — bei 1:1 waren die alten
+Karten scharf —, sondern die Anzeige: eine 1200 Pixel breite Karte, die auf
+einem Retina-Bildschirm 1200 Punkte breit dargestellt wird, hat dort nur die
+halbe nötige Pixeldichte. Keine Quelle wird dabei hochgerechnet: das
+Porträt kommt aus 1400 × 1400, das Threshold-Bild aus 1920 × 1440, beide
+werden weiterhin verkleinert. Der Renderer nimmt den Faktor als siebtes
+Argument, live wird mit 2 gebaut.
+
+**Nicht mit umgestellt** sind `assets/og-image.jpg` (beide Startseiten und
+die Podcastseite) und `assets/og-image-threshold-partner.jpg`. Beide liegen
+weiter in einfacher Auflösung und wirken auf Retina entsprechend weicher.
+Für die Partnerseiten wäre eine gebaute Karte in doppelter Auflösung machbar;
+für die Startseiten fehlt ein größeres Original als 1200 × 630.
+
 Erledigt für die vier Money Pages, am 02.09.2026. Für `/fuehren/` am
 03.09.2026 ersetzt: statt des Zuschnitts steht dort jetzt eine gebaute
 Karte, 1200 × 628, Porträt rechts als unbeschnittenes Quadrat auf Midnight
 Blue `#04171F`, Text links in Cormorant Garamond und Hanken Grotesk.
 Deutsch und Englisch haben eigene Dateien, weil Text darauf steht:
-`assets/og-image-fuehren-de.jpg` und `assets/og-image-fuehren-en.jpg`.
+`assets/og-fuehren-de.jpg` und `assets/og-fuehren-en.jpg`.
 Der frühere gemeinsame Zuschnitt `assets/og-image-fuehren.jpg` ist
 entfallen. `/threshold/partner/` und
 `/threshold/partner/en/` tragen `assets/og-image-threshold-partner.jpg`,
@@ -104,7 +120,7 @@ der Startseite schon den Threshold-Teaser trägt. Beide Seitenpaare
 zusätzlich mit `og:image:width`, `og:image:height` und `twitter:image`.
 
 Die Threshold-Hauptseiten tragen seit dem 04.09.2026
-`assets/og-image-threshold-de.jpg` und `-en.jpg`, ebenfalls gebaute Karten:
+`assets/og-threshold-de.jpg` und `-en.jpg`, ebenfalls gebaute Karten:
 das vorhandene Bild vollständig, in seinem eigenen 4:3-Verhältnis, rechts auf
 Midnight Blue, links der Satz aus dem og:title.
 

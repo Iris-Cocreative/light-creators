@@ -21,14 +21,14 @@ Erledigtes abhaken und mit Datum versehen, damit klar bleibt, was noch offen ist
 - [x] **Eigene Bilder für die Vorschau (og:image).** Erledigt am 02.09.2026.
   `/fuehren/` und `/fuehren/en/` tragen seit dem 03.09.2026 eine gebaute
   Karte statt eines Zuschnitts, je Sprache eine eigene Datei:
-  `assets/og-image-fuehren-de.jpg` und `assets/og-image-fuehren-en.jpg`.
+  `assets/og-fuehren-de.jpg` und `assets/og-fuehren-en.jpg`.
   `/threshold/partner/` und `/threshold/partner/en/` tragen
   `assets/og-image-threshold-partner.jpg`, denselben Zuschnitt aus dem
   bestehenden `assets/threshold-teaser.jpg`. Beide mit `og:image:width`,
   `og:image:height` und `twitter:image`.
 - [x] **og:image der Threshold-Hauptseiten.** Erledigt am 04.09.2026.
   `/threshold/` und `/threshold/en/` tragen gebaute Karten,
-  `assets/og-image-threshold-de.jpg` und `-en.jpg`, mit dem vorhandenen Bild
+  `assets/og-threshold-de.jpg` und `-en.jpg`, mit dem vorhandenen Bild
   vollständig und unbeschnitten. Die Regel kein automatisches Beschneiden
   ist gewahrt: `threshold/og-image.jpg` bleibt unverändert und dient als
   Quelle. Die Wahl des Motivs bleibt eine offene Frage an David, siehe

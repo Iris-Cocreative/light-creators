@@ -14,7 +14,8 @@
 // Gebraucht werden cormorant-400-normal-latin, cormorant-400-italic-latin,
 // hanken-300-normal-latin und hanken-500-normal-latin.
 //
-// Varianten: A Name groß, B Headline, C Claim groß. Live ist C.
+// Varianten: A Name groß, B Headline, C Claim groß, T1 Threshold. Live sind C und T1.
+// Siebtes Argument ist der Ausgabefaktor, live wird mit 2 gebaut.
 import Foundation
 import CoreGraphics
 import CoreText
@@ -26,6 +27,10 @@ let QUELLE = CommandLine.arguments[2]     // Portrait
 let ZIEL = CommandLine.arguments[3]       // Ausgabedatei
 let VARIANTE = CommandLine.arguments[4]   // A | B | C
 let SPRACHE = CommandLine.arguments.count > 5 ? CommandLine.arguments[5] : "de"
+// Ausgabefaktor. Das Layout rechnet immer in 1200 x 628; der Faktor vergroessert
+// nur die Rasterung, damit die Karte auf Retina-Anzeigen scharf bleibt.
+let SKALA: CGFloat = CommandLine.arguments.count > 6
+  ? (CGFloat(Double(CommandLine.arguments[6]) ?? 1) ) : 1
 
 let B: CGFloat = 1200, H: CGFloat = 628
 let RAND: CGFloat = 44
@@ -149,9 +154,10 @@ default:
 
 // ── Leinwand ────────────────────────────────────────────────────────────────
 let raum = CGColorSpaceCreateDeviceRGB()
-guard let ctx = CGContext(data: nil, width: Int(B), height: Int(H), bitsPerComponent: 8,
-                          bytesPerRow: 0, space: raum,
+guard let ctx = CGContext(data: nil, width: Int(B * SKALA), height: Int(H * SKALA),
+                          bitsPerComponent: 8, bytesPerRow: 0, space: raum,
                           bitmapInfo: CGImageAlphaInfo.noneSkipLast.rawValue) else { fatalError("Kontext") }
+ctx.scaleBy(x: SKALA, y: SKALA)
 ctx.setFillColor(MIDNIGHT)
 ctx.fill(CGRect(x: 0, y: 0, width: B, height: H))
 
