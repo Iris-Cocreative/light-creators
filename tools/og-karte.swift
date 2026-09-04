@@ -42,7 +42,9 @@ let qurl = URL(fileURLWithPath: QUELLE) as CFURL
 guard let src = CGImageSourceCreateWithURL(qurl, nil),
       let bild = CGImageSourceCreateImageAtIndex(src, 0, nil) else { fatalError("Bild") }
 let SEITEN = CGFloat(bild.width) / CGFloat(bild.height)
-let BILD_H: CGFloat = (VARIANTE.hasPrefix("T") || VARIANTE.hasPrefix("P")) ? 380 : 540
+// Threshold traegt den laengsten Satz und bekommt deshalb die schmalste
+// Bildspalte, damit die Kopfzeile gross gesetzt werden kann.
+let BILD_H: CGFloat = (VARIANTE.hasPrefix("T") || VARIANTE.hasPrefix("P")) ? 320 : 540
 let BILD_B: CGFloat = (BILD_H * SEITEN).rounded()
 let BILD_X: CGFloat = B - RAND - BILD_B
 let BILD_Y: CGFloat = ((H - BILD_H) / 2).rounded()
@@ -141,16 +143,17 @@ case "T1":
   let kopf2 = SPRACHE == "en" ? "what comes next." : "was als Nächstes kommt."
   bloecke = [
     (absatz([Stueck(text: "THRESHOLD", font: hanM(15), color: GOLD, tracking: 2.6)], zeilenhoehe: 1.0), 26),
-    (absatz([Stueck(text: kopf1, font: cor(54), color: SAND, tracking: 0),
-             Stueck(text: kopf2, font: corI(54), color: GOLD, tracking: 0)], zeilenhoehe: 1.22), 0)]
+    (absatz([Stueck(text: kopf1, font: cor(66), color: SAND, tracking: 0),
+             Stueck(text: kopf2, font: corI(66), color: GOLD, tracking: 0)], zeilenhoehe: 1.22), 0)]
 case "P1":
-  // Partnerseiten. Wortlaut ist der Seitentitel, nichts hinzuerfunden.
-  let p1 = SPRACHE == "en" ? "Fund " : "Plätze "
-  let p2 = SPRACHE == "en" ? "a place." : "finanzieren."
+  // Partnerseiten. Deutscher Wortlaut von David, 04.09.2026.
+  // Die englische Fassung ist eine Uebertragung und noch nicht freigegeben.
+  let p1 = SPRACHE == "en" ? "Fostering hope\n" : "Hoffnung in die Zukunft\n"
+  let p2 = SPRACHE == "en" ? "for the future." : "fördern."
   bloecke = [
     (absatz([Stueck(text: "THRESHOLD", font: hanM(15), color: GOLD, tracking: 2.6)], zeilenhoehe: 1.0), 26),
-    (absatz([Stueck(text: p1, font: cor(54), color: SAND, tracking: 0),
-             Stueck(text: p2, font: corI(54), color: GOLD, tracking: 0)], zeilenhoehe: 1.22), 0)]
+    (absatz([Stueck(text: p1, font: cor(60), color: SAND, tracking: 0),
+             Stueck(text: p2, font: corI(60), color: GOLD, tracking: 0)], zeilenhoehe: 1.22), 0)]
 case "T2":
   bloecke = []
 case "B":

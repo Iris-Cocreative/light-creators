@@ -106,10 +106,14 @@ lesen ist. Ursache war nicht die Auflösung, sondern der Satz: die deutsche
 Kopfzeile ist mit 40 Zeichen länger als die englische mit 34, davon standen
 58 Prozent in der goldenen Kursive gegen 47 Prozent auf Englisch, und der
 automatische Umbruch trennte mitten in der Wortgruppe („was als / Nächstes").
-Geändert: Kopfzeile von 46 auf 54 Punkt, Umbruch von Hand hinter das Komma,
-sodass die Goldkursive eine eigene Zeile bekommt, Bildhöhe von 440 auf 380,
-damit die Textspalte von 453 auf 533 Punkt wächst. Der Renderer meldet jetzt
-Zeilenzahl und breiteste Zeile, damit ein ungewollter Umbruch auffällt.
+Geändert in zwei Schritten, weil der erste noch nicht reichte: Umbruch von
+Hand hinter das Komma, sodass die Goldkursive eine eigene Zeile bekommt, und
+Bildhöhe von 440 über 380 auf **320**, damit die Textspalte von 453 auf **613
+Punkt** wächst. Erst dadurch ließ sich die Kopfzeile von 46 auf **66 Punkt**
+setzen. Die längere deutsche Zeile misst damit 578 von 613 Punkten.
+
+Der Renderer meldet beim Bauen Zeilenzahl und breiteste Zeile, damit ein
+ungewollter Umbruch auffällt, bevor die Karte live geht.
 
 Zum Farbwert, weil er beim Prüfen mit anfiel: Luminous Sand auf Midnight Blue
 steht bei 17,27:1, Soft Gold bei 9,74:1. Beide weit über der Anforderung, die
@@ -117,7 +121,10 @@ Goldkursive ist also nicht das Problem gewesen.
 
 **Die Partnerseiten sind am selben Tag nachgezogen**, ebenfalls gebaute Karten
 in doppelter Auflösung: `assets/og-partner-de.jpg` und `-en.jpg`, gebaut aus
-`assets/threshold-teaser.jpg`. Der frühere Zuschnitt
+`assets/threshold-teaser.jpg`, Kopfzeile 60 Punkt. Der deutsche Wortlaut
+„Hoffnung in die Zukunft fördern." stammt von David. Die englische Fassung
+„Fostering hope for the future." ist eine Übertragung und noch nicht
+freigegeben. Der frühere Zuschnitt
 `assets/og-image-threshold-partner.jpg` ist entfallen.
 
 **Nicht umgestellt** ist allein `assets/og-image.jpg` auf beiden Startseiten
