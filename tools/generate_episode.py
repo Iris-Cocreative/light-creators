@@ -380,7 +380,7 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
 @@BODY@@
 
 @@BODYCLOSE@@
-      <a href="https://light-creators.com" class="btn btn--ghost" target="_blank" rel="noopener">Für Founder Resonance: light-creators.com <span class="arrow">→</span></a>
+      <a href="https://light-creators.com/founder" class="btn btn--ghost" target="_blank" rel="noopener">Für Founder Resonance: light-creators.com <span class="arrow">→</span></a>
       <a href="../threshold/" class="btn btn--gold">The Threshold Program: sechs Tage für junge Erwachsene <span class="arrow">→</span></a>
     </div>
   </div>
@@ -414,7 +414,7 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
           <li><a href="../threshold/partner/">Plätze finanzieren</a></li>
           <li><a href="../index.html#contact">Kontakt</a></li>
           <li><a href="mailto:mail@davidliebnau.com">E-Mail</a></li>
-          <li><a href="https://light-creators.com" target="_blank" rel="noopener">Für Founder Resonance: light-creators.com</a></li>
+          <li><a href="https://light-creators.com/founder" target="_blank" rel="noopener">Für Founder Resonance: light-creators.com</a></li>
         </ul>
       </div>
 
