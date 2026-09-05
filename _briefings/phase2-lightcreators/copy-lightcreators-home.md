@@ -12,11 +12,19 @@ vorhanden, ohne Zusatz und ohne Auslassung; die Texte stimmen zeichengenau mit A
 überein. Genau ein Eintrag trägt `Heading, Level 1`, jede Sektion 2 bis 9 genau einen
 `Heading, Level 2`.
 
-**Nachtrag vom 03.09.2026 (Schritt S2b).** Freigabepunkt **F1** ist erteilt. Die fünf
+**Nachtrag vom 03.09.2026 (Schritt S2b) — teilweise überholt, siehe den Nachtrag vom 04.09. darunter.** Freigabepunkt **F1** ist erteilt. Die fünf
 CTA-Linkziele sind nach Regel **R-I** eingetragen; OD-3, OD-4 und OD-5 sind damit
 geschlossen. Weiterhin offen und auf **F2** wartend: die öffentliche Beschriftung
 für „Next Gen“ (OD-6), die Sektionsüberschrift `S7.H2` und der
 Navigationspunkt `NAV.5` (OD-7).
+
+**Nachtrag vom 4. September 2026 (nach F2).** Die Regeln **R-L bis R-Q** sind
+eingearbeitet. Damit ist **kein Body-String mehr freigabe-offen außer den Tribe-Strings**:
+`S1.EYEBROW` ist auf LIGHT CREATORS umgeschrieben (R-M), die Navigation auf das
+Aufklappmenü umgebaut und `NAV.5` gestrichen (R-N), „Next Gen“ als öffentliche
+Beschriftung bestätigt (R-O), `S7.H2` als visuell verstecktes Heading festgelegt (R-Q).
+OD-6, OD-7 und OD-10 sind erledigt. Die SEO-Texte aus **R-P** stehen im Abschnitt
+„Seiteneinstellungen“.
 
 ---
 
@@ -45,12 +53,16 @@ solange er es zurückmeldet.
 ## Sektion 1 · Hero
 
 ### S1.EYEBROW
-- provenance: HIS/EXISTING
-- quelle: V3 §4
+- provenance: REWRITTEN (R-M, 03.09.2026)
+- vorher: LIGHT CREATORS TRIBE — wörtlich aus V3 §4
+- grund-aenderung: R-L. Die Marke heißt Light Creators; Light Creators Tribe bezeichnet
+  ausschließlich die Community-Ebene. Der Eyebrow steht über dem Hero und benennt die
+  Marke, nicht die Community.
+- quelle: V3 §4, geändert durch R-M
 - element: Eyebrow, kein Heading
 - dom-id: s1-eyebrow
 - text: |
-    LIGHT CREATORS TRIBE
+    LIGHT CREATORS
 
 ### S1.H1
 - provenance: HIS/EXISTING
@@ -557,7 +569,7 @@ solange er es zurückmeldet.
 - quelle: V3 §12
 - element: Label
 - dom-id: s6-ng-eyebrow
-- betroffen-von: OD-6 · öffentliche Bezeichnung für Next Gen
+- hinweis: „Next Gen“ ist als öffentliche Bezeichnung bestätigt (R-O). OD-6 erledigt.
 - text: |
     ICH SUCHE, WAS MEINS IST
 
@@ -566,7 +578,7 @@ solange er es zurückmeldet.
 - quelle: V3 §12
 - element: Heading, Level 3
 - dom-id: s6-ng-h3
-- betroffen-von: OD-6 · nur mittelbar, falls die Wegbezeichnung wechselt
+- hinweis: Die Wegbezeichnung wechselt nicht mehr (R-O). OD-6 erledigt.
 - text: |
     Vom Suchen zum Finden.
 
@@ -616,7 +628,6 @@ solange er es zurückmeldet.
 - element: Link
 - dom-id: s6-ng-cta
 - linkziel: /the-art-and-practice-of-a-flourishing-life · R-I, F1 vom 03.09.2026
-- betroffen-von: OD-6 · Beschriftung enthält Next-Gen
 - text: |
     Die Next-Gen-Welt entdecken →
 
@@ -696,12 +707,24 @@ solange er es zurückmeldet.
 ## Sektion 7 · LIGHT · CREATORS · TRIBE
 
 ### S7.H2
-- provenance: NEW · FREIGABE OFFEN
+- provenance: NEW · FREIGEGEBEN (R-Q, 03.09.2026)
 - grund-neu: Sektionstitel dient als Überschrift, im V3-Dokument nicht ausformuliert
-- quelle: V3 §13
-- element: Heading, Level 2
+- quelle: V3 §13, festgelegt durch R-Q
+- element: Heading, Level 2 — **visuell versteckt** (visually-hidden, nicht `display:none`,
+  sonst fällt es aus dem Screenreader-Baum)
 - dom-id: s7-h2
-- betroffen-von: OD-10 · alternativ visuell versteckte H2, siehe Hinweis im Briefing
+- hinweis: Die drei großen Wörter LIGHT, CREATORS und TRIBE bleiben reine
+  Gestaltungselemente und tragen **keine** Heading-Semantik. Sie sind damit auch nicht
+  dieser String. Siehe `S7.DEKO`.
+- text: |
+    Light Creators Tribe
+
+### S7.DEKO
+- provenance: HIS/EXISTING
+- quelle: V3 §13
+- element: Gestaltungselement, **kein Heading**, `aria-hidden="true"`
+- dom-id: s7-deko
+- hinweis: Nur Optik. Die Vorlesefassung liefert `S7.H2`.
 - text: |
     LIGHT · CREATORS · TRIBE
 
@@ -883,7 +906,7 @@ solange er es zurückmeldet.
 - quelle: V3 §15
 - element: Unterzeile
 - dom-id: s9-cta1-sub
-- betroffen-von: OD-6 · Unterzeile Next Gen
+- hinweis: Unterzeile „Next Gen“, bestätigt durch R-O. OD-6 erledigt.
 - text: |
     Next Gen
 
@@ -925,46 +948,58 @@ solange er es zurückmeldet.
 
 ### NAV.1
 - provenance: HIS/EXISTING
-- quelle: V3 §16
+- quelle: V3 §16, Ziel festgelegt durch R-N
 - element: Navigationslink
 - dom-id: nav-1
+- linkziel: #manifest — Sprungmarke auf derselben Seite
 - text: |
     Manifest
 
 ### NAV.2
 - provenance: HIS/EXISTING
-- quelle: V3 §16
+- quelle: V3 §16, Ziel festgelegt durch R-N
 - element: Navigationslink
 - dom-id: nav-2
+- linkziel: #tribe — Sprungmarke auf derselben Seite, identisch mit S9.CTA3
 - text: |
     Tribe
 
 ### NAV.3
-- provenance: HIS/EXISTING
-- quelle: V3 §16
-- element: Navigationslink
+- provenance: NEW · FREIGEGEBEN (R-N, 03.09.2026)
+- grund-neu: Sammelbegriff für das Aufklappmenü, im V3-Dokument nicht vorhanden
+- quelle: R-N
+- element: **Aufklappmenü, kein Link.** Trägt selbst kein Ziel.
 - dom-id: nav-3
-- betroffen-von: OD-6 · Navigationsbeschriftung Next Gen
+- hinweis: Muss über die Tastatur bedienbar sein und seinen Zustand melden
+  (`aria-expanded`), sonst ist das Menü für Screenreader-Nutzer geschlossen.
+- text: |
+    Wege
+
+### NAV.3a
+- provenance: HIS/EXISTING
+- quelle: V3 §16, Einordnung durch R-N, Beschriftung bestätigt durch R-O
+- element: Eintrag im Aufklappmenü NAV.3
+- dom-id: nav-3a
+- linkziel: /the-art-and-practice-of-a-flourishing-life — wie S6.NG.CTA
 - text: |
     Next Gen
 
-### NAV.4
+### NAV.3b
 - provenance: HIS/EXISTING
-- quelle: V3 §16
-- element: Navigationslink
-- dom-id: nav-4
+- quelle: V3 §16, Einordnung durch R-N
+- element: Eintrag im Aufklappmenü NAV.3
+- dom-id: nav-3b
+- linkziel: /founder — wie S6.FO.CTA
 - text: |
     Founders
 
-### NAV.5
-- provenance: NEW · FREIGABE OFFEN
-- grund-neu: Zielseite existiert nicht, OD-7
-- quelle: V3 §16
-- element: Navigationslink
-- dom-id: nav-5
-- betroffen-von: OD-7 · About-Seite existiert nicht
-- text: |
-    About
+> **Gestrichen: `NAV.5` „About" (R-N).** Ersatzlos. Der Navigationspunkt zeigte auf eine
+> Seite, die es nicht gibt; OD-7 ist damit erledigt und nicht vertagt.
+>
+> **Umnummeriert.** `NAV.3` hieß bis zum 03.09.2026 „Next Gen" und `NAV.4` „Founders".
+> Beide sind jetzt Einträge im Aufklappmenü und heißen `NAV.3a` und `NAV.3b`. Die
+> Beschriftungen sind unverändert; nur ihre Einordnung hat sich geändert. Wer die alten
+> IDs in einer Zulieferung stehen hat, muss sie ersetzen.
 
 ---
 
@@ -979,7 +1014,7 @@ die Prüfung auf die H1-Ebene genau einen Treffer liefert, nämlich den Block `S
 
 | # | String-ID | Provenance | Element | status | hängt an |
 |---|---|---|---|---|---|
-| 1 | `S1.EYEBROW` | HIS/EXISTING | Eyebrow, kein Heading | fest | — |
+| 1 | `S1.EYEBROW` | **REWRITTEN** | Eyebrow, kein Heading | fest | R-M · vorher LIGHT CREATORS TRIBE |
 | 2 | `S1.H1` | HIS/EXISTING | H1 | fest | — |
 | 3 | `S1.LEAD1` | HIS/EXISTING | Absatz | fest | — |
 | 4 | `S1.LEAD2` | HIS/EXISTING | Absatz | fest | — |
@@ -1040,14 +1075,14 @@ die Prüfung auf die H1-Ebene genau einen Treffer liefert, nämlich den Block `S
 | 59 | `S6.H2` | HIS/EXISTING | H2 | fest | — |
 | 60 | `S6.P1` | HIS/EXISTING | Absatz | fest | — |
 | 61 | `S6.P2` | HIS/EXISTING | Absatz | fest | — |
-| 62 | `S6.NG.EYEBROW` | HIS/EXISTING | Label | fest | OD-6 · öffentliche Bezeichnung für Next Gen |
-| 63 | `S6.NG.H3` | HIS/EXISTING | H3 | fest | OD-6 · nur mittelbar, falls die Wegbezeichnung wechselt |
+| 62 | `S6.NG.EYEBROW` | HIS/EXISTING | Label | fest | R-O · OD-6 erledigt |
+| 63 | `S6.NG.H3` | HIS/EXISTING | H3 | fest | R-O · OD-6 erledigt |
 | 64 | `S6.NG.P1` | HIS/EXISTING | Absatz | fest | — |
 | 65 | `S6.NG.P2` | HIS/EXISTING | Absatz | fest | — |
 | 66 | `S6.NG.P3` | HIS/EXISTING | Absatz | fest | — |
 | 67 | `S6.NG.P4` | HIS/EXISTING | Absatz | fest | — |
 | 68 | `S6.NG.TAGS` | HIS/EXISTING | Schlagwortzeile | fest | — |
-| 69 | `S6.NG.CTA` | HIS/EXISTING | Link → `/the-art-and-practice-of-a-flourishing-life` | freigabe-offen | Linkziel gesetzt (R-I). Weiterhin offen ist allein die **Beschriftung**, sie hängt an OD-6. |
+| 69 | `S6.NG.CTA` | HIS/EXISTING | Link → `/the-art-and-practice-of-a-flourishing-life` | fest | Linkziel R-I, Beschriftung „Next Gen“ bestätigt durch R-O · OD-6 erledigt |
 | 70 | `S6.FO.EYEBROW` | HIS/EXISTING | Label | fest | — |
 | 71 | `S6.FO.H3` | HIS/EXISTING | H3 | fest | — |
 | 72 | `S6.FO.P1` | HIS/EXISTING | Absatz | fest | — |
@@ -1057,7 +1092,8 @@ die Prüfung auf die H1-Ebene genau einen Treffer liefert, nämlich den Block `S
 | 76 | `S6.FO.P5` | HIS/EXISTING | Absatz, hervorgehoben | fest | — |
 | 77 | `S6.FO.TAGS` | HIS/EXISTING | Schlagwortzeile | fest | — |
 | 78 | `S6.FO.CTA` | HIS/EXISTING | Link → `/founder` | fest | Linkziel gesetzt, R-I |
-| 79 | `S7.H2` | NEW | H2 | freigabe-offen | OD-10 · alternativ visuell versteckte H2, siehe Hinweis im Briefing |
+| 79 | `S7.H2` | NEW | H2, visuell versteckt | fest | R-Q · OD-10 erledigt |
+| 79a | `S7.DEKO` | HIS/EXISTING | Gestaltungselement, aria-hidden | fest | R-Q · kein Heading |
 | 80 | `S7.A.H3` | HIS/EXISTING | H3 | fest | — |
 | 81 | `S7.A.P` | HIS/EXISTING | Absatz | fest | — |
 | 82 | `S7.B.H3` | HIS/EXISTING | H3 | fest | — |
@@ -1079,16 +1115,17 @@ die Prüfung auf die H1-Ebene genau einen Treffer liefert, nämlich den Block `S
 | 98 | `S9.P3` | HIS/EXISTING | Absatz | fest | — |
 | 99 | `S9.P4` | HIS/EXISTING | Absatz | fest | — |
 | 100 | `S9.CTA1` | HIS/EXISTING | Link → `/the-art-and-practice-of-a-flourishing-life` | fest | Linkziel gesetzt, R-I |
-| 101 | `S9.CTA1.SUB` | HIS/EXISTING | Unterzeile | fest | OD-6 · Unterzeile Next Gen |
+| 101 | `S9.CTA1.SUB` | HIS/EXISTING | Unterzeile | fest | R-O · OD-6 erledigt |
 | 102 | `S9.CTA2` | HIS/EXISTING | Link → `/founder` | fest | Linkziel gesetzt, R-I |
 | 103 | `S9.CTA2.SUB` | HIS/EXISTING | Unterzeile | fest | — |
 | 104 | `S9.CTA3` | HIS/EXISTING | Link → `#tribe` | fest | Sprungmarke, kein Seitenwechsel. Linkziel gesetzt, R-I |
 | 105 | `S9.CTA3.SUB` | HIS/EXISTING | Unterzeile | fest | — |
-| 106 | `NAV.1` | HIS/EXISTING | Navigationslink | fest | — |
-| 107 | `NAV.2` | HIS/EXISTING | Navigationslink | fest | — |
-| 108 | `NAV.3` | HIS/EXISTING | Navigationslink | freigabe-offen | OD-6 · Navigationsbeschriftung Next Gen |
-| 109 | `NAV.4` | HIS/EXISTING | Navigationslink | fest | — |
-| 110 | `NAV.5` | NEW | Navigationslink | freigabe-offen | OD-7 · About-Seite existiert nicht |
+| 106 | `NAV.1` | HIS/EXISTING | Navigationslink → `#manifest` | fest | R-N |
+| 107 | `NAV.2` | HIS/EXISTING | Navigationslink → `#tribe` | fest | R-N |
+| 108 | `NAV.3` | **NEW** | Aufklappmenü, kein Link | fest | R-N · Sammelbegriff „Wege“ |
+| 109 | `NAV.3a` | HIS/EXISTING | Menüeintrag → Flourishing-Übersicht | fest | R-N, R-O · OD-6 erledigt · vorher NAV.3 |
+| 110 | `NAV.3b` | HIS/EXISTING | Menüeintrag → `/founder` | fest | R-N · vorher NAV.4 |
+| — | ~~`NAV.5`~~ | ~~NEW~~ | ~~Navigationslink „About“~~ | **gestrichen** | R-N · ersatzlos, OD-7 erledigt |
 
 **110 Strings gesamt. 99 `fest`, 11 `freigabe-offen`.**
 
@@ -1115,9 +1152,10 @@ Textänderung und bräuchte eine Freigabe.
   Offen bleibt allein `S5.LINK`, das Beschriftungsmuster der Personenlinks — es ist
   kein CTA-Ziel, war deshalb nicht Gegenstand von F1 und kommt mit dem Tribe-Paket
   (**R-G**). Auch dort steht keine Platzhalter-URL.
-- **Keine SEO-Texte.** Title, Meta Description und Open-Graph-Text stehen nicht im
-  V3-Dokument und sind damit NEW. Sie hängen an **OD-10** und gehören in die
-  Seiteneinstellungen, nicht in diese Datei.
+- **SEO-Texte stehen jetzt in Abschnitt „Seiteneinstellungen“** am Ende dieser Datei.
+  Sie waren bis zum 03.09.2026 offen (OD-10) und sind mit **R-P** freigegeben. Sie
+  gehören **nicht** in den Seitenkörper, sondern in die Webflow-Seiteneinstellungen —
+  deshalb stehen sie getrennt und zählen nicht zu den 110 Body-Strings.
 - **Keine Personendaten.** Sektion 5 enthält nur die Struktur-Strings. Namen, Rollen,
   Stimmen und Links der Tribe-Personen sind Zulieferung David und laufen über das
   CMS, nicht über diese Datei. „Anna Mustermann" aus dem V3-Dokument ist ein
@@ -1129,3 +1167,50 @@ Textänderung und bräuchte eine Freigabe.
 | ID | Frage | Blockiert |
 |---|---|---|
 | **RF-11** | `S5.LABEL.A` ist im V3-Dokument als nicht sichtbarer Text vermerkt: Stimme A steht ohne Label, Stimme B trägt „Was mich mit Light Creators verbindet:". Soll das so bleiben — eine Stimme mit Label, eine ohne —, oder war das im V3 eine Auslassung? Betrifft das CMS-Feldmodell der Tribe-Collection. | F2, Tribe-Paket (T0) |
+
+---
+
+## Seiteneinstellungen (R-P, freigegeben 03.09.2026)
+
+**Nicht Teil der 110 Body-Strings.** Diese vier Texte gehören in die
+Webflow-Seiteneinstellungen der Startseite, nicht in den Seitenkörper. Alle vier sind
+**NEW** — sie stammen nicht aus dem V3-Dokument. Damit ist **OD-10 erledigt**.
+
+### SEO.TITLE
+- provenance: NEW · FREIGEGEBEN (R-P)
+- element: Seitentitel, `<title>`
+- text: |
+    Light Creators — Finde, was nur du bist
+
+### SEO.DESC
+- provenance: NEW · FREIGEGEBEN (R-P)
+- element: Meta Description
+- text: |
+    Es gibt etwas in jedem Menschen, das sich nicht kopieren lässt. Light Creators lädt ein, dem Eigenen näherzukommen – und daraus etwas in die Welt zu bringen.
+
+### SEO.OG.TITLE
+- provenance: NEW · FREIGEGEBEN (R-P)
+- element: Open-Graph-Titel, `og:title`
+- text: |
+    Finde, was nur du bist. Und bring es in die Welt.
+
+### SEO.OG.DESC
+- provenance: NEW · FREIGEGEBEN (R-P)
+- element: Open-Graph-Beschreibung, `og:description`
+- text: |
+    Eine Einladung, dem Eigenen näherzukommen – und daraus etwas zu erschaffen.
+
+### Anmerkungen zum Setzen
+
+- **Der Seitentitel trägt kein „Tribe“.** Das ist R-L: Die Marke heißt Light Creators.
+- **Zeichenlängen**, gemessen am 04.09.2026: `SEO.TITLE` **39**, `SEO.DESC` **157**,
+  `SEO.OG.TITLE` **49**, `SEO.OG.DESC` **75**. Alle vier liegen innerhalb der üblichen
+  Anzeigegrenzen (Titel rund 60, Description rund 160 Zeichen). Die Description schöpft
+  den Rahmen mit 157 fast aus — sollte sie später ergänzt werden, wird sie im
+  Suchergebnis abgeschnitten. Nichts zu tun, nur zu wissen.
+- **Der Gedankenstrich** in `SEO.TITLE` ist ein Halbgeviertstrich (—), in `SEO.DESC`
+  und `SEO.OG.DESC` ein Bindestrich mit Leerzeichen (–). Beide wörtlich aus R-P
+  übernommen, nicht vereinheitlicht.
+- **Das OG-Bild** ist nicht Teil dieser Datei. Es läuft nach **R-Y** über den
+  Webflow-Strang.
+

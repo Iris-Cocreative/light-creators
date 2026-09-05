@@ -152,6 +152,29 @@ Gesetzt wird sie **einmal am Container**, nicht in den Dateien:
 | 03 Erkennen | 8 Ellipsen, vier links und vier rechts, dazwischen ein gefüllter Punkt (r 6,5) | 0,9 auf der Ellipsengruppe |
 | 04 Gestalten | 6 hochkant-Ellipsen in 30°-Schritten gedreht, darüber eine breite Ellipse um −16° | 0,55 auf der Rosettengruppe |
 
+### Gegenprobe an der Kontrastregel R-T
+
+**R-T (03.09.2026) verbietet Gold als Textfarbe auf hellem Grund.** Gemessen auf Luminous
+Sand `#FFF8E6`: heller Goldton 1,25:1, Soft Gold 1,77:1, dunkles Gold **3,51:1** — alle
+unter der Fließtextschwelle von 4,5:1.
+
+**Die vier Symbole sind davon nicht betroffen**, und zwar aus zwei unabhängigen Gründen:
+
+1. **Sie sind kein Text.** Für Grafiken, die Information tragen, gilt die Schwelle 3:1
+   (WCAG 1.4.11). `#A87D34` erreicht auf Luminous Sand 3,51:1 und liegt darüber.
+2. **Sie tragen ohnehin keine Information.** Nach Abschnitt 5 sind sie dekorativ und
+   bekommen `aria-hidden="true"`; die Bedeutung steht in der Beschriftung daneben. Für rein
+   dekorative Grafiken schreibt WCAG gar keinen Mindestkontrast vor.
+
+R-T und R-K widersprechen sich also nicht: R-T regelt Textfarben, R-K die Strichfarbe eines
+Ornaments. **Eine Einschränkung bleibt.** Die Striche sind haarfein (`stroke-width: 1.25`)
+und teils bis auf Deckkraft 0,16 abgeschwächt. Ein Strich mit Deckkraft 0,16 hat
+rechnerisch keinen Kontrast von 3,51:1 mehr, sondern deutlich weniger — er verschwindet auf
+hellem Grund fast. Das ist gewollt (die Symbole leben von dieser Staffelung), aber es heißt:
+**Auf hellen Sektionen sind die inneren Ringe faktisch unsichtbar.** Wer sie sehen will,
+setzt die Symbole auf Midnight Blue, wo die ganze Goldfamilie zwischen 4,92:1 und 13,83:1
+liegt. Siehe RF-21.
+
 ---
 
 ## 5. Barrierefreiheit — `aria-hidden="true"` beim Einbetten
@@ -243,6 +266,7 @@ Sie gehören zum Founder-Material und sind in `founder-material-inventar.md` erf
 
 | ID | Frage | Blockiert |
 |---|---|---|
+| **RF-21** | Auf welchem Grund stehen die vier Symbole — hell (Luminous Sand) oder dunkel (Midnight Blue)? Auf hellem Grund verschwinden die inneren, stark abgeschwächten Ringe nahezu. Das ist kein Barrierefreiheitsfehler (sie sind dekorativ), aber eine Gestaltungsfrage. | — |
 | **RF-16** | Das Entfernen von `style="color:#E3C486"` ist die einzige Änderung an den Kopien und meine Auslegung von R-K („eine CSS-Zeile, jederzeit änderbar"). Falls die Symbole stattdessen ihre Farbe selbst tragen sollen, sag Bescheid — dann wird der Wert auf `#A87D34` gesetzt statt entfernt, und die CSS-Zeile entfällt. | — |
 | ~~RF-9~~ | Goldwert — **entschieden: `#A87D34`** (R-K, 03.09.2026). | erledigt |
 | ~~RF-10~~ | Führender Satz — **entschieden: der `currentColor`-Satz** (R-K, 03.09.2026). | erledigt |

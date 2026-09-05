@@ -2,10 +2,12 @@
 
 **Aufgabe:** CC-4 aus `phase2-lightcreators-claude-code.md`
 **Übergabepunkt:** I-4, fällig nach Freigabepunkt F2
-**Stand:** 3. September 2026, ergänzt am Abend desselben Tages um die
-bestätigte Tarifentscheidung
-**Erhoben auf:** Branch `phase2-zulieferungen`, Stand `main` (Commit `2060bb8`)
-**Geltende Regel:** **R-F — Plausible-Tarif Growth, keine Custom Properties.**
+**Stand:** 4. September 2026, nach **F1** und **F2**. Vorstufen: 03.09. Neubau nach R-F,
+am selben Abend um die bestätigte Tarifentscheidung ergänzt.
+**Erhoben auf:** Branch `phase2-zulieferungen`, Eventbestand aus `main` bei `2060bb8`,
+am 04.09.2026 gegen `ebdab50` nachgeprüft — 19 Events, unverändert.
+**Geltende Regeln:** **R-F** (Growth, keine Custom Properties), **R-V** (S-P0 ausgeführt),
+**Weg B** aus RF-14 (Namensregel, Abschnitt 7.2a).
 
 > Diese Datei ersetzt die Fassung vom 02.09.2026 vollständig. Die alte Fassung war auf
 > Custom Properties gebaut (`position`, `person`, `target`) und ist mit R-F unvereinbar.
@@ -243,9 +245,17 @@ müssen von Hand angelegt werden.
 Plausible-Konto als Goal angelegt und von David bestätigt. Die übrigen **neun fehlen
 noch** und müssen vor dem Publish von Hand angelegt werden.
 
-**Voraussetzung, die vor allen Goals kommt:** Plausible muss auf `light-creators.com`
-überhaupt laufen. Das ist Schritt **S-P0** im Webflow-Strang (Regel R-A) und zum Stand
-dieser Datei nicht als erledigt gemeldet.
+**S-P0 ist ausgeführt (R-V, 03.09.2026).** Plausible steht im Site-Head von
+`light-creators.com`, der Meta-Pixel-Block wortgleich darüber, nach dem Schreiben
+gegengeprüft. **Wirksam wird es erst mit dem nächsten Publish im Designer** — bis dahin
+misst die Live-Seite nichts.
+
+Damit bleiben vor der ersten belastbaren Zahl genau zwei Handgriffe:
+
+1. **Neun Goals im Dashboard anlegen** (alle außer `light.home.hero.click`).
+2. **Drei überflüssige Custom Properties löschen** — `position`, `person`, `target`
+   (RF-12). Sie funktionieren in der laufenden Trial und verschwinden beim Wechsel auf
+   Growth; siehe die Trial-Falle in Abschnitt 1.
 
 ---
 
@@ -306,6 +316,33 @@ und Partnerseite, nicht nach Sprache.
 | `light.home.bigidea.reach` | light-creators.com | `/` | Scrolltiefe Sektion 3 | `IntersectionObserver` | geplant | nein |
 | `light.home.tribe.reach` | light-creators.com | `/` | Scrolltiefe Sektion 5 | `IntersectionObserver` | geplant | nein |
 | `light.home.zweiwege.reach` | light-creators.com | `/` | Scrolltiefe Sektion 6 | `IntersectionObserver` | geplant | nein |
+
+### 7.2a Namensregel für alles Künftige — Weg B, festgeschrieben
+
+**Entschieden am 03.09.2026 (RF-14), hier als Regel formuliert, damit sie beim nächsten
+Event nicht neu hergeleitet werden muss.**
+
+| | Regel |
+|---|---|
+| **Bestand `davidliebnau.com`** | Die **19 Altnamen bleiben unverändert.** Keine Umbenennung. Sie würde die 19 im Dashboard angelegten Goals brechen und ihre Historie abschneiden: die neuen Namen zählten bei null, die alten blieben als tote Goals stehen. |
+| **Neues auf `davidliebnau.com`** | Präfix **`david.`**, Schema `david.<seite>.<objekt>.<aktion>`. |
+| **Neues auf `light-creators.com`** | Präfix **`light.`**, Schema `light.<seite>.<objekt>.<aktion>`. |
+
+**Beispiel für den nächsten Fall.** Ein vierter CTA auf `/fuehren/` heißt nach Weg B
+`david.fuehren.<objekt>.click` — **nicht** `fuehren_cta4_click`, obwohl die drei
+bestehenden CTA dort so heißen. Der Mischbestand innerhalb von `davidliebnau.com` ist
+gewollt und der Preis dafür, dass keine Historie abreißt.
+
+**Was das für Phase 2 heißt: nichts.** Hier entsteht kein neues Event auf
+`davidliebnau.com`. Die Regel greift beim nächsten Mal.
+
+**Eine Änderung am Bestand, die Weg B nicht berührt.** Der Reach-Schwellwert der beiden
+bestehenden Events `threshold_price_scroll` und `threshold_faq_seen` wurde am 04.09.2026
+von 0,25 auf 0,4 angeglichen (Branch `analytics-reach-schwellwert`). Das ändert **den
+Namen nicht**, nur wann das Event feuert. Folge fürs Lesen der Zahlen: beide feuern
+künftig etwas später und damit seltener; die Zeitreihe hat am Publish-Datum einen Bruch.
+
+---
 
 ### 7.3 Stillgelegt
 
@@ -368,11 +405,11 @@ Die drei erwogenen Wege, zur Nachvollziehbarkeit:
 
 | ID | Frage | Blockiert |
 |---|---|---|
-| ~~RF-12~~ | **Beantwortet 03.09.2026:** nein, die drei Properties stehen noch im Konto und werden demnächst entfernt. Hier nicht eingeplant, blockiert nichts. | erledigt |
+| **RF-12** | **Weiterhin offen, Stand 04.09.2026.** Die drei Properties `position`, `person` und `target` stehen noch im Konto und werden demnächst entfernt. In dieser Spezifikation nicht eingeplant, blockiert den Bau nicht — muss aber **vor** dem Wechsel auf Growth weg (R-V nennt es als einen von zwei Resthandgriffen). | vor Growth |
 | **RF-13** | Zeigt das eingebaute Goal „Outbound Link: Click" die Aufschlüsselung nach Ziel-URL auch auf Growth? Plausible hängt bei getaggten Links die Zieladresse automatisch als eingebaute Property `url` an — ob Growth sie im Dashboard aufschlüsselt, ist damit nicht beantwortet. Bestimmt, ob das Tribe-Paket die Portrait-Links überhaupt einzeln messen kann. | Tribe-Paket (T0) |
 | **RF-19** | Das Briefing nennt 13 Goals, diese Spezifikation kommt auf 10. Die Differenz sind die beiden unter R-F gestrichenen Events `light.home.tribeperson.click` und `light.home.nav.click`. Sollen sie unter eigenen Eventnamen zurückkommen? Bestimmt die endgültige Goal-Zahl. | F2 |
 | ~~RF-14~~ | **Beantwortet 03.09.2026: Weg B.** Die 19 Altnamen bleiben, künftige Events auf `davidliebnau.com` bekommen `david.*`. Siehe Abschnitt 7.4. | erledigt |
-| ~~RF-15~~ | **Beantwortet 03.09.2026:** ja, angelegt und bestätigt. Die übrigen neun fehlen noch. | erledigt |
+| ~~RF-15~~ | **Beantwortet 03.09.2026:** `light.home.hero.click` ist angelegt und bestätigt. Die übrigen **neun fehlen weiterhin** (R-V). | erledigt |
 
 ---
 
