@@ -1,7 +1,7 @@
 # CC-8 · Übergabepaket Phase 2 · `light-creators.com`
 
 **Aufgabe:** CC-8 aus `phase2-lightcreators-claude-code.md`
-**Stand:** 5. September 2026, nach **F1**, **F2**, **R-W** (Phase 1 live) und **R-Z**
+**Stand:** 6. September 2026. Nach **F1**, **F2**, **R-W**, **R-Z** — und nach dem Merge der 74 Anker.
 **Branch:** `phase2-zulieferungen`, Stand `main` bei `ebdab50`
 **Charakter:** **Zwischenstand.** Abgeschlossen wird CC-8 nach S9. Fortgeschrieben am 04./05.09.2026.
 
@@ -24,7 +24,7 @@ Verzeichnis nicht.
 | Branch | Inhalt | Zustand |
 |---|---|---|
 | [`phase2-zulieferungen`](https://github.com/Iris-Cocreative/light-creators/tree/phase2-zulieferungen/_briefings/phase2-lightcreators) | dieses Paket | gepusht, **nicht** für `main` bestimmt |
-| [`founder-pfad-umhaengen`](https://github.com/Iris-Cocreative/light-creators/tree/founder-pfad-umhaengen) | 74 Anker + Generatorvorlage auf `/founder` | gepusht, **wartet auf Signal** (R-X) |
+| ~~`founder-pfad-umhaengen`~~ | 74 Anker + Generatorvorlage auf `/founder` | **erledigt, Branch überholt** — siehe 4.1 |
 | [`analytics-reach-schwellwert`](https://github.com/Iris-Cocreative/light-creators/tree/analytics-reach-schwellwert) | Reach-Schwellwert 0,25 → 0,4 | gepusht, **mergefähig** |
 
 ---
@@ -104,9 +104,25 @@ Linktexte, Plausible-Klassen und Attribute unverändert.
 | `_archiv/index-en-alt.html` (2) | Archiv, nicht ausgeliefert |
 | `landing-pages/flourishing-life-eltern-v2.html` (1) | `noindex`, unverlinkt, hängt an **RF-17** |
 
-> **⚠ Nicht mergen vor dem Webflow-Publish von `/founder`** (R-X). Die Seite ist angelegt
-> (Page-ID `6a9b3c6b0b1f07241e741771`, R-Z), aber noch nicht veröffentlicht. Vorher liefen
-> 74 Links ins Leere.
+#### Gemergt und live seit dem 06.09.2026
+
+Das Gate aus R-X wurde vor dem Merge geprüft, nicht vorausgesetzt: `/founder` antwortete mit
+**HTTP 200**, 16 KB Inhalt, ohne Weiterleitung und ohne `noindex`. Danach Fast-Forward auf
+`main`, Commit **`67ae2b3`**, veröffentlicht.
+
+**Live gegengeprüft** (Stichprobe über Startseite, Podcast, `/fuehren/`, zwei Episoden,
+`index-en.html`, `/fuehren/en/`): Alle Anker zeigen auf `/founder`; `/en`, `/quiz` und
+`/call` unverändert. Alle vier Zielpfade antworten mit 200.
+
+> **Ein Fehler, der vor dem Veröffentlichen gefunden wurde.** Der ursprüngliche Commit auf
+> `founder-pfad-umhaengen` (`01e0f3f`) enthielt **40 statt 36 Dateien**: ein `git add -A`
+> hatte vier unversionierte Dateien mitgenommen — zwei Testimonial-PNG und die beiden
+> Briefing-Dokumente. Geprüft: die PNG werden von keiner Seite referenziert (alle Seiten
+> nutzen `.webp`, und die sind seit `ebdab50` versioniert). Weil `main` noch nicht gepusht
+> war, wurde der Commit mit exakt den 36 beabsichtigten Dateien neu gebaut. Der Branch
+> `founder-pfad-umhaengen` trägt weiterhin die fehlerhafte Fassung und **kann gelöscht
+> werden**. Lehre fürs nächste Mal: in einem Repository mit unversionierten Arbeitsdateien
+> nicht `git add -A`, sondern die Pfade nennen.
 
 ### 4.2 Reach-Schwellwert — `analytics-reach-schwellwert`
 
@@ -190,9 +206,12 @@ Auslegung von mir) und **RF-19** (eine Zahl, die im Dashboard sichtbar wird).
 
 | Wer | Was | Danach |
 |---|---|---|
-| **Webflow** | `/founder` publishen (Seite liegt, R-Z) | dann **Signal an Code** |
-| **Claude Code** | auf Signal: `founder-pfad-umhaengen` mergen | 74 Links zeigen richtig |
+| ~~Webflow~~ | ~~`/founder` publishen~~ | **erledigt 05.09.** |
+| ~~Claude Code~~ | ~~74 Anker mergen~~ | **erledigt 06.09., `67ae2b3`** |
 | **David** | `analytics-reach-schwellwert` mergen — hängt an nichts | Schwellwerte einheitlich |
+| **David** | Branch `founder-pfad-umhaengen` löschen (überholt) | Aufräumen |
+| **David** | vier unversionierte Dateien: committen oder ignorieren | siehe 9.3 |
+| **Webflow** | zwei H1 und fehlende h2-Ebene auf `/founder`, Seitentitel gegen R-L | siehe 9.3 |
 | **David** | neun Goals anlegen, drei Properties löschen | Messung belastbar |
 | **Webflow** | Startseite bauen: Copy, Symbole, Snippets liegen bereit | S7 ff. |
 | **Claude Code** | nach S9: CC-8 abschließen, RF-17 entscheiden | S10 |
@@ -215,3 +234,33 @@ nur eine Sitzung gleichzeitig.**
 **Reversibilität.** Das Zulieferungspaket besteht ausschließlich aus neuen Dateien in einem
 eigenen Verzeichnis. Die beiden Eingriffe in den Bestand liegen auf getrennten Branches und
 sind einzeln zurücknehmbar. Kein bestehendes Artefakt wurde überschrieben.
+
+### 9.3 Zwei Befunde, die nicht in dieses Repository gehören
+
+**`/founder` hat zwei H1 und keine h2-Ebene.** R-Z hält die Seite mit „31 Überschriften,
+sieben Sektionen, ein H1" für verifiziert. Live gemessen am 05. und 06.09.2026, nach Abzug
+von Kommentaren, `<script>` und `<style>`: **33 Überschriften, zwei H1, kein h2** — dazu
+5× h3, 5× h4, 21× h5.
+
+| H1 | Wortlaut |
+|---|---|
+| 1 | Warum glauben Investoren deiner Vision nicht? |
+| 2 | Finde deinen größten Hebel |
+
+Zwei H1 machen nichts kaputt, schwächen aber die Dokumentstruktur, und die übersprungene
+h2-Ebene lässt die Gliederung für Screenreader-Nutzer springen. Die Seite ist ein Duplikat
+der alten Startseite; der Befund gilt damit vermutlich auch für die Wurzel, solange sie
+nicht ersetzt ist.
+
+**Der Seitentitel widerspricht R-L.** Er lautet `Light Creators Tribe | Founder Resonance
+Assessment`. R-L verlangt „durchgängig: Seitentitel … Light Creators"; R-U nimmt davon
+ausdrücklich nur das Logo aus, nicht den Titel.
+
+Beides ist Webflow-Arbeit und wurde von hier aus **nicht** angefasst — hier steht es nur,
+damit es nicht zwischen zwei Strängen verlorengeht.
+
+**Vier unversionierte Dateien** liegen weiter im Arbeitsverzeichnis: die beiden
+Testimonial-PNG (Ausgangsmaterial, von keiner Seite referenziert) und die beiden
+Briefing-Dokumente. Dazu eine `.DS_Store` in `assets/testimonials/`, die von keiner
+`.gitignore`-Regel erfasst wird. Committen oder ignorieren ist Davids Entscheidung.
+
