@@ -63,13 +63,40 @@ vereinheitlichen" / Font-Migration), ist jetzt aber nicht mehr
 8. Visuell prüfen, dass sich am Schriftbild nichts sichtbar verändert
    hat — Schnitte, Kursiv/Fett-Varianten, Desktop und Mobil, DE und EN.
 
-### Abnahme Block 1
+### Abnahme Block 1 — **erledigt, nachgeprüft am 09.09.2026**
 
-- [ ] Grep auf `fonts.googleapis.com` / `fonts.gstatic.com` liefert null
-      Treffer im gesamten Repository.
-- [ ] Schriftdateien liegen lokal im Repository, referenziert über
-      `@font-face`.
-- [ ] Schriftbild optisch unverändert geprüft.
+> **Block 1 ist umgesetzt und verifiziert. Nicht erneut beauftragen.**
+> Am 09.09.2026 wurde gegengeprüft, dass die Umstellung tatsächlich steht;
+> auslösend war, dass diese unabgehakte Liste zu einem hinfälligen Auftrag
+> geführt hatte.
+
+- [x] **Kein Aufruf an Google.** Keine ausgelieferte Seite und kein
+      ausgeliefertes Stylesheet lädt von `fonts.googleapis.com` oder
+      `fonts.gstatic.com`. David hat es am 09.09.2026 zusätzlich über die
+      Netzwerkaufzeichnung bestätigt: neun WOFF2-Dateien vom eigenen Server,
+      kein Fremdaufruf.
+
+      **Zur Genauigkeit:** Ein Grep über das ganze Repository liefert
+      *nicht* null Treffer, sondern zwei — beide harmlos und keine
+      Ladevorgänge:
+      - `styles.html`: ein Webflow-Export, in dem die Zeilen als maskierter
+        Beispielcode stehen (`&lt;link …&gt;`), nicht als Markup.
+      - `assets/fonts.css`: ein Kommentar, der festhält, dass es *keine*
+        Verbindung mehr gibt.
+
+      Das Abnahmekriterium war als „null Treffer" formuliert und ist in
+      dieser wörtlichen Fassung nicht erfüllbar. Erfüllt ist, was es meinte.
+
+- [x] **Schriftdateien liegen lokal.** 26 WOFF2 unter `assets/fonts/`
+      (Cormorant und Hanken, Schnitte 200 bis 600, je normal/italic und
+      latin/latin-ext), eingebunden über `@font-face` in `assets/fonts.css`.
+      Die von David gezählten neun sind die auf einer einzelnen Seite
+      tatsächlich geladenen — eine Seite lädt nur die Schnitte, die sie
+      braucht. Kein Widerspruch.
+
+- [x] **Schriftbild optisch unverändert.** Von David geprüft. Dieser Punkt
+      ist aus dem Repository heraus nicht nachprüfbar und wird hier auf
+      seine Aussage hin abgehakt.
 
 ---
 
