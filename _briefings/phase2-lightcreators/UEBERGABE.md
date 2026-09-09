@@ -1,7 +1,7 @@
 # CC-8 · Übergabepaket Phase 2 · `light-creators.com`
 
 **Aufgabe:** CC-8 aus `phase2-lightcreators-claude-code.md`
-**Stand:** 6. September 2026. Nach **F1**, **F2**, **R-W**, **R-Z** — und nach dem Merge der 74 Anker.
+**Stand:** 9. September 2026. Nach **F1**, **F2**, den Regeln **R-W bis R-Z**, dem Merge aller 75 Anker und dem Fortfall von **OD-1b**.
 **Branch:** `phase2-zulieferungen`, Stand `main` bei `ebdab50`
 **Charakter:** **Zwischenstand.** Abgeschlossen wird CC-8 nach S9. Fortgeschrieben am 04./05.09.2026.
 
@@ -146,18 +146,23 @@ Beispiel für den nächsten Fall, damit die Regel nicht neu hergeleitet werden m
 
 ### 5.1 Nicht überprüfbar aus diesem Repository
 
-- **Neun der zehn Goals fehlen** im Plausible-Konto (R-V). Nur `light.home.hero.click` ist
-  angelegt.
-- **Drei überflüssige Custom Properties** stehen noch im Konto (RF-12). Sie funktionieren
-  in der laufenden Trial und verschwinden beim Wechsel auf Growth — eine gelungene Probe
-  jetzt beweist nichts über nachher.
+- ~~Neun der zehn Goals fehlen~~ — **erledigt 09.09.2026: alle elf sind angelegt und
+  verifiziert**, einschließlich des neuen `light.home.david.click`.
+- ~~Drei überflüssige Custom Properties~~ — **abgegeben an den Webflow-Strang**, dort
+  angestoßen (ex-RF-12). Der Punkt bleibt sachlich richtig: Sie funktionieren in der
+  laufenden Trial und verschwinden beim Wechsel auf Growth, eine gelungene Probe jetzt
+  beweist nichts über nachher. Er wird nur woanders erledigt.
 - **Der Einbau der Snippets im Browser.** Geprüft ist ihre Logik gegen eine DOM-Attrappe,
-  nicht ihr Einbau.
+  nicht ihr Einbau. **Teilweise aufgelöst:** Für die Symbole liegt der Einbaunachweis
+  inzwischen vor (42 SVG-Elemente, `currentColor`, `aria-hidden` — siehe RF-16). Für die
+  beiden Plausible-Snippets steht er weiterhin aus.
 
 ### 5.2 Außerhalb dieser Phase
 
 - **Tribe-CMS** (R-G): kein Importschema, keine Feldliste, keine Portrait-Alt-Texte.
 - **Bilder** (R-Y): über den Webflow-Strang.
+- **Rechtstexte `light-creators.com`**: über die Anwaltsprüfung. Anderer Hoster als GitHub
+  Pages, kein ProvenExpert, kein Pixel mehr — siehe 10.2.
 - **Das Logo** (R-U): bleibt vorerst „Light Creators Tribe“, obwohl das R-L widerspricht.
   Die Adaption macht später ein Designer.
 
@@ -184,39 +189,47 @@ Beispiel für den nächsten Fall, damit die Regel nicht neu hergeleitet werden m
 
 ---
 
-## 7. Offene Rückfragen
+## 7. Rückfragen — Stand 09.09.2026
 
-| ID | Datei | Frage | Blockiert |
-|---|---|---|---|
-| **RF-12** | CC-4 | Drei Custom Properties im Konto löschen — vor dem Wechsel auf Growth, nicht danach. | vor Growth |
-| **RF-13** | CC-4 | Zeigt „Outbound Link: Click“ die Ziel-URL-Aufschlüsselung auch auf Growth? | Tribe-Paket |
-| **RF-16** | CC-2 | Inline-`color` aus den Symbolen **entfernt** statt auf `#A87D34` gesetzt — richtig ausgelegt? | — |
-| **RF-17** | CC-6 | Den 75. Wurzel-Anker in der `noindex`-Landingpage mit umhängen? | S10 |
-| **RF-19** | CC-4 | Briefing nennt 13 Goals, Spezifikation kommt auf 10. Sollen die zwei gestrichenen Messungen unter eigenen Namen zurückkommen? | — |
-| **RF-21** | CC-2 | Stehen die Symbole auf hellem oder dunklem Grund? Auf hell verschwinden die inneren Ringe nahezu. | — |
-| **RF-5 – RF-8** | CC-7 | Vier Fragen zum Founder-Material. | Phase 3 |
-| **RF-11** | CC-1 | `S5.LABEL.A`: eine Stimme mit Label, eine ohne — so gewollt? | Tribe-Paket |
+Von den elf offenen Punkten sind **neun geschlossen**, einer abgegeben, einer bleibt.
 
-**Keine davon blockiert den Bau.** Am ehesten lohnen den kurzen Blick **RF-16** (eine
-Auslegung von mir) und **RF-19** (eine Zahl, die im Dashboard sichtbar wird).
+### 7.1 Was noch offen ist
 
----
+| ID | Art | Inhalt |
+|---|---|---|
+| **RF-13** | **Prüfschritt, keine Entscheidung** | Ob Plausible Growth die Ziel-URL bei Outbound-Links aufschlüsselt, lässt sich nicht herleiten, nur messen: einen getaggten externen Link klicken und im Dashboard nachsehen. **`light.home.david.click` ist genau so ein Link** — der Test geht damit, sobald die Startseite live ist, ohne aufs Tribe-Paket zu warten. |
+| **RF-7** | **Sperre, keine Frage** | Die acht namentlichen Kundenstimmen sind **nicht freigegeben** und damit nicht verwendbar — weder auf `light-creators.com` noch in Phase 3 —, bis ein Nachweis **je Person** vorliegt. Offen ist allein, ob ein solcher Nachweis außerhalb des Repositories existiert. |
+| **RF-5, RF-6, RF-8** | **Phase 3** | Markenentscheidungen zum Founder-Material, keine technischen Fragen. Bleiben stehen, wo sie stehen. |
+
+### 7.2 Was geschlossen wurde
+
+**Konvention:** `**RF-n**` heißt offen, `~~RF-n~~` heißt geschlossen — paketweit, damit ein Grep die Wahrheit sagt.
+
+| ID | Ergebnis |
+|---|---|
+| ~~RF-11~~ | Absicht, keine Auslassung. Das Label gehört zur **Vorlage**, nicht zur Person — also ins Template, nicht in die CMS-Collection. |
+| ~~RF-16~~ | Richtig entschieden **und im Einbau verifiziert**: 42 SVG-Elemente, `currentColor` erhalten, `aria-hidden` gesetzt, `role`/`aria-label` entfernt. Mit fest eingeschriebener Farbe wäre der Vorteil weg gewesen. |
+| ~~RF-17~~ | Mitnehmen. Umgesetzt, Commit `330ce2a`. |
+| ~~RF-19~~ | Zehn, nicht dreizehn — die Dreizehn stammte aus einer überholten Briefing-Fassung. Die zwei gestrichenen Events kommen **nicht** zurück. |
+| ~~RF-21~~ | Dunkler Grund: Midnight Blue. Auf hell wären die inneren Ringe verschwunden. |
+| ~~RF-12~~ | **Abgegeben.** Die drei Custom Properties laufen über den Webflow-Strang. Nicht mehr auf dieser Liste. |
+| ~~RF-9~~, ~~RF-10~~ | schon am 03.09. durch R-K geschlossen. |
+| ~~RF-1~~ – ~~RF-4~~, ~~RF-15~~, ~~RF-18~~ | schon am 03./04.09. geschlossen. |
 
 ## 8. Nächste Schritte
 
-| Wer | Was | Danach |
-|---|---|---|
-| ~~Webflow~~ | ~~`/founder` publishen~~ | **erledigt 05.09.** |
-| ~~Claude Code~~ | ~~74 Anker mergen~~ | **erledigt 06.09., `67ae2b3`** |
-| **David** | `analytics-reach-schwellwert` mergen — hängt an nichts | Schwellwerte einheitlich |
-| **David** | Branch `founder-pfad-umhaengen` löschen (überholt) | Aufräumen |
-| **David** | vier unversionierte Dateien: committen oder ignorieren | siehe 9.3 |
-| **Webflow** | zwei H1 und fehlende h2-Ebene auf `/founder`, Seitentitel gegen R-L | siehe 9.3 |
-| **David** | neun Goals anlegen, drei Properties löschen | Messung belastbar |
-| **Webflow** | Startseite bauen: Copy, Symbole, Snippets liegen bereit | S7 ff. |
-| **Claude Code** | nach S9: CC-8 abschließen, RF-17 entscheiden | S10 |
-
----
+| Wer | Was |
+|---|---|
+| ~~Webflow~~ | ~~`/founder` publishen~~ · erledigt 05.09. |
+| ~~Claude Code~~ | ~~74 + 1 Anker umhängen~~ · erledigt, `67ae2b3` und `330ce2a`, live |
+| ~~David~~ | ~~elf Goals anlegen~~ · erledigt 09.09. |
+| **David** | `analytics-reach-schwellwert` mergen — hängt an nichts |
+| **David** | Branch `founder-pfad-umhaengen` löschen (überholt) |
+| **David** | vier unversionierte Dateien: committen oder ignorieren (siehe 9.3) |
+| **Webflow** | drei Custom Properties in Plausible löschen (ex-RF-12) |
+| **Webflow** | zwei H1 und fehlende h2-Ebene auf `/founder`, Seitentitel gegen R-L (siehe 9.3) |
+| **Anwaltsprüfung** | Rechtstexte `light-creators.com` neu — anderer Hoster, kein ProvenExpert, kein Pixel. **Nicht dieser Strang.** |
+| **Tribe-Paket** | RF-13 messen, RF-11 umsetzen, RF-7 nur mit Nachweis |
 
 ## 9. Zwei Hinweise zum Arbeitsstand
 
@@ -263,4 +276,75 @@ damit es nicht zwischen zwei Strängen verlorengeht.
 Testimonial-PNG (Ausgangsmaterial, von keiner Seite referenziert) und die beiden
 Briefing-Dokumente. Dazu eine `.DS_Store` in `assets/testimonials/`, die von keiner
 `.gitignore`-Regel erfasst wird. Committen oder ignorieren ist Davids Entscheidung.
+
+---
+
+## 10. Nachtrag 09.09.2026 — was sich zum Abschluss von Phase 2 geändert hat
+
+### 10.1 Elf Messpunkte statt zehn
+
+Die neue **Origin-Story-Sektion** trägt einen Link „Mehr über David" auf
+`davidliebnau.com`. Er bekommt `light.home.david.click`; das Goal ist angelegt.
+
+Das ist nicht bloß ein Zähler mehr. **Es ist das einzige Event der Startseite, das die
+Domain verlässt** — und damit das Gegenstück zu `outbound_light_creators_click`, das seit
+Phase 0 in der Gegenrichtung zählt. Zusammen ergeben die beiden erstmals ein Bild des
+Verkehrs **zwischen** den Domains statt zweier getrennter Inseln.
+
+Nebeneffekt: **RF-13 wird früher prüfbar.** Es brauchte einen getaggten externen Link,
+um Plausibles Outbound-Aufschlüsselung zu testen — der ist jetzt da, ohne aufs Tribe-Paket
+zu warten.
+
+### 10.2 OD-1b geschlossen: kein Meta Pixel, keine Cookies
+
+Der Pixel ist auf Davids Entscheidung von `light-creators.com` entfernt. **Die Site setzt
+keine Cookies mehr und fährt ausschließlich Plausible.** In der Analytics-Spezifikation und
+im Linkbericht ist der Punkt gestrichen, nicht vertagt.
+
+Die Rechtstexte für die Domain werden ohnehin neu geschrieben — anderer Hoster als GitHub
+Pages, kein ProvenExpert, kein Pixel. Das läuft über die Anwaltsprüfung und **nicht über
+diesen Strang**; es steht hier nur, damit die Verbindung sichtbar bleibt.
+
+### 10.3 Zwei Seitenfassungen, und wie die Zweisprachigkeit gebaut ist
+
+| Slug | Fassung | Wird später |
+|---|---|---|
+| `/v3` | deutsch | die **Wurzel** |
+| `/v3-en` | englisch | **`/en`** |
+
+Beide sind Entwürfe. **Für die 75 umgehängten Anker ändert sich nichts:** `/founder`
+bleibt ihr Ziel, `/en` existiert heute und bleibt erhalten.
+
+**Die Zweisprachigkeit läuft über Seitenpaare mit `-en`-Suffix, nicht über Webflows
+eingebaute Lokalisierung.** Das ist dieselbe Bauweise wie auf `davidliebnau.com`
+(`index.html` / `index-en.html`, `/fuehren/` / `/fuehren/en/`).
+
+Zwei Folgen, die man kennen sollte:
+
+- **Fürs Messen:** Deutsche und englische Fassung sind getrennte Seiten mit getrennten
+  Seitenaufrufen. Bei Webflow-Lokalisierung lägen beide unter einem Pfad. Die Eventnamen
+  sind davon unberührt — sie unterscheiden nach Weg, nicht nach Sprache, genau wie die
+  19 Namen auf `davidliebnau.com`.
+- **Für die Pflege:** Jede Textänderung ist zweimal zu machen. Das ist der Preis dieser
+  Bauweise und auf der anderen Domain seit Phase 0 so.
+
+### 10.4 Der Auftrag zum Selbsthosten der Schriften war hinfällig
+
+`davidliebnau.com` hostet die Schriften längst selbst. Unabhängig gegengeprüft: keine
+ausgelieferte Seite und kein ausgeliefertes Stylesheet lädt von `fonts.googleapis.com`
+oder `fonts.gstatic.com`; 26 WOFF2 liegen unter `assets/fonts/`, eingebunden über
+`@font-face`. David hat es zusätzlich über die Netzwerkaufzeichnung bestätigt — neun
+Dateien je Seitenaufruf, kein Fremdaufruf. **Beide Zahlen stimmen: 26 liegen im
+Repository, neun lädt eine einzelne Seite.**
+
+Auslöser des hinfälligen Auftrags war eine **unabgehakte Abnahmeliste** in
+`briefing/Briefing_Google-Fonts_und_Rechtstexte-v3_Claude_Code.md`. Sie ist jetzt
+abgehakt (Commit `fea5e8d`), mit einer Korrektur: Das Kriterium „Grep liefert null Treffer
+im gesamten Repository" ist in dieser wörtlichen Fassung **nicht erfüllbar** — es gibt zwei
+Treffer, beide ohne Ladevorgang (maskierter Beispielcode in einem Webflow-Export, und ein
+Kommentar in `assets/fonts.css`, der das Gegenteil festhält). Erfüllt ist, was gemeint war.
+
+**Die Briefing-Datei wurde nicht gelöscht.** Sie dokumentiert eine juristisch veranlasste
+Umsetzung und gehört zum Nachweis. Wenn sie trotzdem weg soll, ist das eine Entscheidung,
+die jemand ausdrücklich treffen sollte.
 

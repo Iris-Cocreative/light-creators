@@ -1166,7 +1166,7 @@ Textänderung und bräuchte eine Freigabe.
 
 | ID | Frage | Blockiert |
 |---|---|---|
-| **RF-11** | `S5.LABEL.A` ist im V3-Dokument als nicht sichtbarer Text vermerkt: Stimme A steht ohne Label, Stimme B trägt „Was mich mit Light Creators verbindet:". Soll das so bleiben — eine Stimme mit Label, eine ohne —, oder war das im V3 eine Auslassung? Betrifft das CMS-Feldmodell der Tribe-Collection. | F2, Tribe-Paket (T0) |
+| ~~RF-11~~ | **Beantwortet 09.09.2026: Absicht, keine Auslassung.** Stimme A beantwortet „Was möchtest du in die Welt bringen?“ und steht als eigene Aussage der Person; ein Label darüber machte sie zu einem Formularfeld. Stimme B braucht das Label, weil sonst unklar bleibt, worauf der Satz antwortet. **Fürs Feldmodell:** Das Label ist keine Eigenschaft der Person, sondern der Vorlage — es gehört nicht in die CMS-Collection, sondern ins Template. Umsetzung im Tribe-Paket. | erledigt |
 
 ---
 

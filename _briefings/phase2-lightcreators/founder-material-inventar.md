@@ -125,13 +125,35 @@ also nicht verwaist, hängt aber an derselben offenen Frage OD-9.
 Die Datei enthält 14 Verweise auf `light-creators.com`, darunter als einzige Stelle
 außerhalb der Episoden Links auf `/quiz` und `/call` — siehe CC-6, Abschnitt 6.
 
-> **Rechtshinweis, nicht beantwortet.** Der Testimonial-Abschnitt enthält acht
-> Kundenstimmen mit vollem Namen, Position und Arbeitgeber, teils von Personen aus
-> Konzernen. Das sind Personendaten und Zitate. Ob für diese Verwendung eine dokumentierte
-> Freigabe vorliegt, geht aus dem Repository nicht hervor. Solange die Datei gesperrt und
-> unverlinkt ist, entsteht daraus kein Außenkontakt. **Vor jeder Wiederverwendung in
-> Phase 3 ist der Freigabestand je Person zu klären.** Die Zitate sind hier bewusst nicht
-> abgedruckt. Siehe RF-7.
+> ## ⛔ Sperrvermerk — die acht Kundenstimmen sind NICHT freigegeben
+>
+> **Entscheidung vom 09.09.2026. Dies ist keine offene Frage mehr, sondern eine Vorgabe.**
+>
+> Der Testimonial-Abschnitt in `index-en-alt.html` enthält acht Kundenstimmen mit vollem
+> Namen, Position und Arbeitgeber, teils von Personen aus Konzernen. Das sind
+> **Personendaten und Zitate**.
+>
+> **Bis ein Nachweis vorliegt, gilt: keine Freigabe.** Nicht „ungeklärt", nicht
+> „vermutlich in Ordnung" — **nicht verwendbar.**
+>
+> Der Grund ist nicht formal: Eine Zustimmung, die für eine alte englische Seite erteilt
+> wurde, deckt **keine** Wiederverwendung auf einer anderen Domain. Wer sie dennoch
+> überträgt, verwendet Personendaten ohne Rechtsgrundlage.
+>
+> **Was das praktisch heißt**
+>
+> | | |
+> |---|---|
+> | Übernahme nach `light-creators.com` | **nein**, bis ein Nachweis je Person vorliegt |
+> | Übernahme in Phase 3 | **nein**, gleiche Bedingung |
+> | Die Zitate hier abdrucken | **nein** — sie stehen bewusst nirgends in diesem Paket |
+> | Datei belassen, wo sie ist | ja. Sie ist gesperrt und unverlinkt, es entsteht kein Außenkontakt. |
+>
+> Der Nachweis ist **je Person** zu führen, nicht pauschal für den Abschnitt. Berührt
+> zusätzlich **OD-12** (Verhältnis zur bestehenden `Testimonials`-Collection in Webflow).
+>
+> Dieser Vermerk steht hier in dieser Schärfe, damit aus „offen" nicht mit der Zeit ein
+> „wird schon passen" wird.
 
 ---
 
@@ -204,5 +226,5 @@ sondern die Feststellung, dass sie dort nicht aus denselben Gründen ausscheiden
 |---|---|---|
 | **RF-5** | Der CTA-Block „Founder Resonance Assessment" ist gesichert, aber nur **englisch** in `index-en-alt.html`. Die deutsche Fassung und die Quiz-Logik selbst liegen auf `light-creators.com/quiz` und in den Webflow-gebundenen Prototypen unter `quiz-assets/`. Braucht Phase 3 eine deutschsprachige Sicherung in diesem Repository, oder bleibt sie dort, wo sie ist? | Phase 3 |
 | **RF-6** | Die fünf Faktoren liegen in drei Fassungen vor: zwei deutsche in `founder-resonance-bloecke.html` und eine englische in `index-en-alt.html`. Welche ist die gültige — oder werden sie für Phase 3 neu geschrieben? | Phase 3 |
-| **RF-7** | Für die acht namentlichen Kundenstimmen in `index-en-alt.html` liegt im Repository kein Freigabenachweis. Existiert er außerhalb, und gilt er auch für eine Wiederverwendung auf `light-creators.com`? Berührt zusätzlich **OD-12** (Verhältnis zur bestehenden `Testimonials`-Collection in Webflow). | Phase 3 |
+| **RF-7** | **Keine offene Frage mehr, sondern eine Sperre (09.09.2026):** Bis ein Freigabenachweis **je Person** vorliegt, sind die acht Kundenstimmen **nicht verwendbar** — weder auf `light-creators.com` noch in Phase 3. Siehe den Sperrvermerk oben. Offen bleibt allein, **ob** ein Nachweis außerhalb des Repositories existiert. | gesperrt bis Nachweis |
 | **RF-8** | Die alte englische Startseite ist als ganze Seite gesichert, die alte deutsche nicht — von ihr existieren nur die zwei ausgeschnittenen Faktoren-Blöcke. War das beabsichtigt, oder fehlt eine Sicherung? Für Phase 3 wäre der Unterschied erheblich. | Phase 3 |

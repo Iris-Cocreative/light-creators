@@ -173,11 +173,17 @@ rechnerisch keinen Kontrast von 3,51:1 mehr, sondern deutlich weniger — er ver
 hellem Grund fast. Das ist gewollt (die Symbole leben von dieser Staffelung), aber es heißt:
 **Auf hellen Sektionen sind die inneren Ringe faktisch unsichtbar.** Wer sie sehen will,
 setzt die Symbole auf Midnight Blue, wo die ganze Goldfamilie zwischen 4,92:1 und 13,83:1
-liegt. Siehe RF-21.
+liegt. **Genau so ist es gebaut** (bestätigt 09.09.2026): Die Sektion liegt auf Midnight
+Blue. Die Einschränkung ist damit gegenstandslos, der Befund bleibt als Begründung stehen.
 
 ---
 
 ## 5. Barrierefreiheit — `aria-hidden="true"` beim Einbetten
+
+> **Im Einbau bestätigt, 09.09.2026.** Die Symbole stehen in Webflow. Gegengeprüft: 42
+> SVG-Elemente vorhanden, `stroke="currentColor"` erhalten, `aria-hidden` gesetzt, `role`
+> und `aria-label` entfernt. Die Regel unten wurde also nicht nur dokumentiert, sondern
+> auch angewandt.
 
 **Die vier Symbole sind dekorativ.** Jedes steht direkt neben seiner eigenen sichtbaren
 Beschriftung — „01 LOSLASSEN", „02 VERBINDEN", „03 ERKENNEN", „04 GESTALTEN" (Copy-Strings
@@ -266,7 +272,7 @@ Sie gehören zum Founder-Material und sind in `founder-material-inventar.md` erf
 
 | ID | Frage | Blockiert |
 |---|---|---|
-| **RF-21** | Auf welchem Grund stehen die vier Symbole — hell (Luminous Sand) oder dunkel (Midnight Blue)? Auf hellem Grund verschwinden die inneren, stark abgeschwächten Ringe nahezu. Das ist kein Barrierefreiheitsfehler (sie sind dekorativ), aber eine Gestaltungsfrage. | — |
-| **RF-16** | Das Entfernen von `style="color:#E3C486"` ist die einzige Änderung an den Kopien und meine Auslegung von R-K („eine CSS-Zeile, jederzeit änderbar"). Falls die Symbole stattdessen ihre Farbe selbst tragen sollen, sag Bescheid — dann wird der Wert auf `#A87D34` gesetzt statt entfernt, und die CSS-Zeile entfällt. | — |
+| ~~RF-21~~ | **Beantwortet 09.09.2026: dunkler Grund.** Die Sektion der vier Dialoge liegt auf Midnight Blue, die Symbole in `#A87D34` auf einer Goldverlaufslinie. Auf hellem Grund wären die inneren Ringe tatsächlich verschwunden. | erledigt |
+| ~~RF-16~~ | **Bestätigt 09.09.2026, im Einbau verifiziert.** Das Entfernen der Inline-Farbe war richtig: Die Symbole stehen in Webflow, die Farbe kommt aus der CSS-Klasse. Gegengeprüft wurden 42 SVG-Elemente, `stroke="currentColor"` erhalten, `aria-hidden` gesetzt, `role` und `aria-label` entfernt. Mit fest eingeschriebener Farbe wäre der Vorteil weg gewesen. | erledigt |
 | ~~RF-9~~ | Goldwert — **entschieden: `#A87D34`** (R-K, 03.09.2026). | erledigt |
 | ~~RF-10~~ | Führender Satz — **entschieden: der `currentColor`-Satz** (R-K, 03.09.2026). | erledigt |

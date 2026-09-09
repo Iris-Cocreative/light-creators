@@ -79,8 +79,15 @@ am Ende hat. Diese Datei setzt keine der beiden Varianten voraus. Siehe RF-19.
 
 ## 2. Die Eventtabelle
 
-Schema `brand.page.object.action`, cookiefrei über Plausible. **Zehn Eventnamen, keine
+Schema `brand.page.object.action`, cookiefrei über Plausible. **Elf Eventnamen, keine
 Properties.** Die Tabelle ist verbindlich.
+
+> **Nachtrag 09.09.2026.** Mit der neuen Origin-Story-Sektion kam `light.home.david.click`
+> hinzu (Zeile 6a). Aus zehn Ereignissen sind **elf** geworden. Es ist das einzige Event der
+> Startseite, das **die Domain verlässt** — es zählt einen Klick nach `davidliebnau.com` und
+> ist damit das Gegenstück zu `outbound_light_creators_click`, das seit Phase 0 in der
+> Gegenrichtung zählt. Beide zusammen ergeben erstmals ein Bild des Verkehrs **zwischen**
+> den Domains.
 
 | # | Route | Eventname | Ausgelöst durch | Copy-String |
 |---|---|---|---|---|
@@ -90,6 +97,7 @@ Properties.** Die Tabelle ist verbindlich.
 | 4 | Founders, Sektion Zwei Wege | `light.home.founders.click` | Klick | `S6.FO.CTA` |
 | 5 | Founders, finale Einladung | `light.home.foundersfinale.click` | Klick | `S9.CTA2` |
 | 6 | Tribe-Pfad „Menschen kennenlernen" | `light.home.tribe.click` | Klick | `S9.CTA3` |
+| 6a | Origin-Story, Link auf `davidliebnau.com` | `light.home.david.click` | Klick | — (neue Sektion, nicht in Anhang A) |
 | 7 | Scrolltiefe Recognition | `light.home.recognition.reach` | 40 % der Sektion sichtbar, einmal pro Seitenaufruf | Sektion 2 |
 | 8 | Scrolltiefe Big Idea | `light.home.bigidea.reach` | dito | Sektion 3 |
 | 9 | Scrolltiefe Tribe | `light.home.tribe.reach` | dito | Sektion 5 |
@@ -130,9 +138,13 @@ in `BACKLOG.md`, Abschnitt „Messung"). Das ist eine eingebaute Property, keine
 Property — ob Growth sie im Dashboard aufschlüsselt, ist damit **nicht** beantwortet.
 Siehe RF-13.
 
-**Meta Pixel.** Kein Vorschlag in dieser Spezifikation. Der Pixel läuft site-weit auf
-`light-creators.com` und ist eine offene Entscheidung, keine technische Aufgabe. Verweis
-auf **OD-1b**.
+**Meta Pixel — entfernt, OD-1b geschlossen (09.09.2026).** Der Pixel ist auf Davids
+Entscheidung von `light-creators.com` heruntergenommen. **Die Site setzt damit keine
+Cookies mehr; es läuft ausschließlich Plausible.** Der Punkt ist erledigt, nicht vertagt.
+
+Eine Folge, die nicht hierher gehört, aber daran hängt: Die Rechtstexte für
+`light-creators.com` müssen neu geschrieben werden (anderer Hoster, kein ProvenExpert,
+kein Pixel). Das läuft über die Anwaltspruefung, nicht über diesen Strang.
 
 ---
 
@@ -165,12 +177,13 @@ Genau zwei Attribute, keine Properties:
 | Next-Gen-CTA Sektion 9 (`S9.CTA1`) | `data-plausible-event` | `light.home.nextgenfinale.click` |
 | Founders-CTA Sektion 9 (`S9.CTA2`) | `data-plausible-event` | `light.home.foundersfinale.click` |
 | Tribe-CTA Sektion 9 (`S9.CTA3`) | `data-plausible-event` | `light.home.tribe.click` |
+| Origin-Story, Link „Mehr über David“ | `data-plausible-event` | `light.home.david.click` |
 | Sektion 2 Recognition | `data-reach-event` | `light.home.recognition.reach` |
 | Sektion 3 Big Idea | `data-reach-event` | `light.home.bigidea.reach` |
 | Sektion 5 Tribe | `data-reach-event` | `light.home.tribe.reach` |
 | Sektion 6 Zwei Wege | `data-reach-event` | `light.home.zweiwege.reach` |
 
-Zehn Attribute, zehn Eventnamen, eins zu eins.
+Elf Attribute, elf Eventnamen, eins zu eins.
 
 ---
 
@@ -225,25 +238,29 @@ Snippets, nicht ihren Einbau. Der Einbaunachweis entsteht im Webflow-Strang.
 ## 6. Goal-Liste fürs Dashboard
 
 Goals entstehen im Plausible-Dashboard **nicht automatisch** aus eintreffenden Events.
-Ein Event, für das kein Goal desselben Namens existiert, erscheint dort nicht. Alle zehn
-müssen von Hand angelegt werden.
+Ein Event, für das kein Goal desselben Namens existiert, erscheint dort nicht.
+
+**Stand 09.09.2026: alle elf sind angelegt und verifiziert.**
 
 | # | Goal-Name | `goal_angelegt` |
 |---|---|---|
-| 1 | `light.home.hero.click` | **ja** — bestätigt 03.09.2026 |
-| 2 | `light.home.nextgen.click` | nein |
-| 3 | `light.home.nextgenfinale.click` | nein |
-| 4 | `light.home.founders.click` | nein |
-| 5 | `light.home.foundersfinale.click` | nein |
-| 6 | `light.home.tribe.click` | nein |
-| 7 | `light.home.recognition.reach` | nein |
-| 8 | `light.home.bigidea.reach` | nein |
-| 9 | `light.home.tribe.reach` | nein |
-| 10 | `light.home.zweiwege.reach` | nein |
+| 1 | `light.home.hero.click` | ja — 03.09.2026 |
+| 2 | `light.home.nextgen.click` | ja |
+| 3 | `light.home.nextgenfinale.click` | ja |
+| 4 | `light.home.founders.click` | ja |
+| 5 | `light.home.foundersfinale.click` | ja |
+| 6 | `light.home.tribe.click` | ja |
+| 7 | `light.home.david.click` | ja — 09.09.2026, mit der Origin-Story hinzugekommen |
+| 8 | `light.home.recognition.reach` | ja |
+| 9 | `light.home.bigidea.reach` | ja |
+| 10 | `light.home.tribe.reach` | ja |
+| 11 | `light.home.zweiwege.reach` | ja |
 
-**Bestätigt am 03.09.2026 (Antwort auf RF-15).** `light.home.hero.click` ist im
-Plausible-Konto als Goal angelegt und von David bestätigt. Die übrigen **neun fehlen
-noch** und müssen vor dem Publish von Hand angelegt werden.
+**Damit ist der Handgriff aus R-V erledigt**, der noch neun fehlende Goals nannte. Offen
+bleibt aus R-V nur das Löschen der drei überflüssigen Custom Properties — und das läuft
+über den Webflow-Strang, nicht über diesen (siehe Abschnitt 8).
+
+
 
 **S-P0 ist ausgeführt (R-V, 03.09.2026).** Plausible steht im Site-Head von
 `light-creators.com`, der Meta-Pixel-Block wortgleich darüber, nach dem Schreiben
@@ -302,7 +319,7 @@ halten fest, dass David die Goals am 03.09.2026 im Dashboard angelegt und verifi
 Deutsche und englische Fassung teilen sich je einen Namen. Getrennt wird nach Teilnehmer-
 und Partnerseite, nicht nach Sprache.
 
-### 7.2 Geplant `light-creators.com` — 10 Events
+### 7.2 Geplant `light-creators.com` — 11 Events
 
 | Event | Domain | Seite | Zweck | Mechanik | Status | `goal_angelegt` |
 |---|---|---|---|---|---|---|
@@ -315,6 +332,7 @@ und Partnerseite, nicht nach Sprache.
 | `light.home.recognition.reach` | light-creators.com | `/` | Scrolltiefe Sektion 2 | `IntersectionObserver` | geplant | nein |
 | `light.home.bigidea.reach` | light-creators.com | `/` | Scrolltiefe Sektion 3 | `IntersectionObserver` | geplant | nein |
 | `light.home.tribe.reach` | light-creators.com | `/` | Scrolltiefe Sektion 5 | `IntersectionObserver` | geplant | nein |
+| `light.home.david.click` | light-creators.com | `/` | Origin-Story -> `davidliebnau.com`, **ausgehend** | Data-Attribut | geplant | **ja** (09.09.) |
 | `light.home.zweiwege.reach` | light-creators.com | `/` | Scrolltiefe Sektion 6 | `IntersectionObserver` | geplant | nein |
 
 ### 7.2a Namensregel für alles Künftige — Weg B, festgeschrieben
@@ -348,11 +366,11 @@ künftig etwas später und damit seltener; die Zeitreihe hat am Publish-Datum ei
 
 | Event | Domain | Grund |
 |---|---|---|
-| `light.home.nav.click` | light-creators.com | Nie implementiert. Aus der Spezifikation entfernt, siehe Abschnitt 3. |
-| `light.home.tribeperson.click` | light-creators.com | Nie implementiert. Vertagt in das Tribe-Paket (R-G). |
+| `light.home.nav.click` | light-creators.com | **Endgültig stillgelegt (RF-19, 06.09.2026).** Interne Navigationsklicks sind an den Seitenaufrufen der Zielseiten ablesbar. Ohne Property wäre das Event ohnehin nur eine Sammelzahl ohne Ziel. |
+| `light.home.tribeperson.click` | light-creators.com | **Endgültig stillgelegt (RF-19, 06.09.2026).** Die Portrait-Links laufen über Plausibles eingebautes Outbound-Goal, nicht über ein eigenes Event. Siehe RF-13. |
 
-Beide sind hier geführt, damit sie nicht später als Lücke wiederentdeckt und erneut
-eingeplant werden.
+**Beide kommen nicht zurück.** Das ist entschieden, nicht vertagt — sie stehen hier, damit
+sie nicht später als Lücke wiederentdeckt und erneut eingeplant werden.
 
 ### 7.4 Widerspruch zum Schema — ausgewiesen, nicht geglättet
 
@@ -405,11 +423,11 @@ Die drei erwogenen Wege, zur Nachvollziehbarkeit:
 
 | ID | Frage | Blockiert |
 |---|---|---|
-| **RF-12** | **Weiterhin offen, Stand 04.09.2026.** Die drei Properties `position`, `person` und `target` stehen noch im Konto und werden demnächst entfernt. In dieser Spezifikation nicht eingeplant, blockiert den Bau nicht — muss aber **vor** dem Wechsel auf Growth weg (R-V nennt es als einen von zwei Resthandgriffen). | vor Growth |
-| **RF-13** | Zeigt das eingebaute Goal „Outbound Link: Click" die Aufschlüsselung nach Ziel-URL auch auf Growth? Plausible hängt bei getaggten Links die Zieladresse automatisch als eingebaute Property `url` an — ob Growth sie im Dashboard aufschlüsselt, ist damit nicht beantwortet. Bestimmt, ob das Tribe-Paket die Portrait-Links überhaupt einzeln messen kann. | Tribe-Paket (T0) |
-| **RF-19** | Das Briefing nennt 13 Goals, diese Spezifikation kommt auf 10. Die Differenz sind die beiden unter R-F gestrichenen Events `light.home.tribeperson.click` und `light.home.nav.click`. Sollen sie unter eigenen Eventnamen zurückkommen? Bestimmt die endgültige Goal-Zahl. **F2 ist durch, ohne dass die Frage entschieden wurde** — sie wird jetzt fällig, wenn die neun fehlenden Goals im Dashboard angelegt werden. | vor dem Anlegen der Goals |
+| ~~RF-12~~ | **Nicht mehr in diesem Strang (09.09.2026).** Das Löschen der drei Custom Properties `position`, `person` und `target` läuft über den Webflow-Strang und ist dort angestoßen. Aus dieser Liste genommen. | abgegeben |
+| **RF-13** | **Kein Entscheidungspunkt, sondern ein Prüfschritt fürs Tribe-Paket.** Ob Growth die Ziel-URL bei Outbound-Links aufschlüsselt, ist unbekannt und lässt sich nicht herleiten, nur messen: sobald der erste getaggte externe Link live ist, einmal klicken und im Dashboard nachsehen. **`light.home.david.click` ist genau so ein Link** — der Test geht damit früher als gedacht, ohne aufs Tribe-Paket zu warten. | Prüfschritt, Tribe-Paket |
+| ~~RF-19~~ | **Beantwortet 06.09.2026: zehn, nicht dreizehn.** Die Dreizehn stammte aus einer überholten Briefing-Fassung. Die beiden gestrichenen Events kommen **nicht** zurück; Begründungen stehen in Abschnitt 7.3. (Durch `light.home.david.click` sind es seit dem 09.09. elf — das ist ein Zuwachs, keine Rücknahme.) | erledigt |
 | ~~RF-14~~ | **Beantwortet 03.09.2026: Weg B.** Die 19 Altnamen bleiben, künftige Events auf `davidliebnau.com` bekommen `david.*`. Siehe Abschnitt 7.4. | erledigt |
-| ~~RF-15~~ | **Beantwortet 03.09.2026:** `light.home.hero.click` ist angelegt und bestätigt. Die übrigen **neun fehlen weiterhin** (R-V). | erledigt |
+| ~~RF-15~~ | **Beantwortet 03.09.2026, inzwischen überholt:** `light.home.hero.click` war damals das einzige angelegte Goal. **Seit 09.09.2026 sind alle elf angelegt und verifiziert.** | erledigt |
 
 ---
 

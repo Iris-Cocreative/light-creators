@@ -248,11 +248,16 @@ zusätzlicher Schritt, der vorher nicht da war, und er trifft **jede Episodensei
 externe Angebote, unter anderem auf Spotify, Apple Podcasts, LinkedIn und
 light-creators.com."
 
-Die Aussage bleibt richtig, solange irgendein Link dorthin zeigt. **Berührt aber OD-1b:**
-Läuft auf `light-creators.com` weiterhin ein Meta Pixel, ist zu prüfen, ob dieser Satz
-als Hinweis ausreicht oder ob die Weiterleitung auf einen Drittanbieter-Tracker
-deutlicher benannt werden muss. Das ist eine Rechtsfrage und wird hier nur benannt, nicht
-beantwortet.
+Die Aussage bleibt richtig, solange irgendein Link dorthin zeigt.
+
+**OD-1b ist erledigt (09.09.2026).** Der Meta Pixel ist von `light-creators.com` entfernt;
+die Site setzt keine Cookies mehr und fährt ausschließlich Plausible. Die hier zuvor
+gestellte Frage — ob der Satz als Hinweis auf einen Drittanbieter-Tracker ausreicht —
+**stellt sich nicht mehr**, weil es keinen Tracker mehr gibt, auf den weitergeleitet würde.
+
+Was daran hängt und **nicht** hierher gehört: Die Rechtstexte für `light-creators.com`
+werden ohnehin neu geschrieben (anderer Hoster als GitHub Pages, kein ProvenExpert, kein
+Pixel). Das läuft über die Anwaltsprüfung.
 
 ### C-4 · Kommentar in `assets/styles.css`
 
@@ -402,5 +407,39 @@ später verlinkt werden sollen, müssen sie erst erhoben werden.
 
 | ID | Frage | Blockiert |
 |---|---|---|
-| **RF-17** | Soll der 75. Wurzel-Anker in `landing-pages/flourishing-life-eltern-v2.html:1487` mit umgehängt werden? Die Datei trägt `noindex` und ist von keiner Seite verlinkt; der Link steht im Fußbereich als reine Kontaktangabe ohne Founder-Versprechen. Mitnehmen kostet nichts, Auslassen fällt niemandem auf. | S10 |
+| ~~RF-17~~ | **Beantwortet und umgesetzt 09.09.2026: mitnehmen.** Der 75. Anker in `landing-pages/flourishing-life-eltern-v2.html:1487` zeigt jetzt auf `/founder` (Commit `330ce2a`). Begründung war nicht die Wirkung — die Datei bleibt `noindex` und unverlinkt —, sondern dass ein einzelner nicht migrierter Anker später mehr Rätselraten kostet als die Änderung. | erledigt |
 | ~~RF-18~~ | **Selbst geprüft am 03.09.2026, erledigt:** `/the-art-and-practice-of-a-flourishing-life` antwortet mit **200**. Der Next-Gen-CTA aus R-I zeigt auf einen bestehenden Pfad. | erledigt |
+
+---
+
+## 10. Nachtrag 09.09.2026 — Stand nach dem Umhängen
+
+**Es zeigt kein ausgelieferter Anker mehr auf die Wurzel.** Nach Commit `67ae2b3` (74
+Anker plus Generatorvorlage) und `330ce2a` (der 75.) verbleiben genau zwei Fundstellen,
+beide in `_archiv/index-en-alt.html` — Archiv, absichtlich unverändert.
+
+Live gegengeprüft am 06.09.2026 über Startseite, `podcast.html`, `/fuehren/`,
+`/fuehren/en/`, `index-en.html` und zwei Episodenseiten: alle Anker auf `/founder`,
+`/en`, `/quiz` und `/call` unverändert, alle vier Zielpfade mit 200.
+
+### Neue Slugs, die beim nächsten Linkbericht auftauchen werden
+
+Auf `light-creators.com` liegen inzwischen zwei Entwurfsfassungen der neuen Startseite:
+
+| Slug | Fassung | Später |
+|---|---|---|
+| `/v3` | deutsch | wird zur **Wurzel** |
+| `/v3-en` | englisch | wird zu **`/en`** |
+
+**Für die 75 Anker ändert das nichts** — `/founder` bleibt ihr Ziel, und `/en` existiert
+heute schon und bleibt erhalten. Der Hinweis steht hier nur, damit die beiden Slugs beim
+nächsten Bericht nicht als unbekannte Pfade auffallen.
+
+**Eine Beobachtung, die über den Linkbericht hinausgeht:** Die Zweisprachigkeit läuft über
+**Seitenpaare mit `-en`-Suffix**, nicht über Webflows eingebaute Lokalisierung. Das ist
+dieselbe Bauweise wie auf `davidliebnau.com` (`index.html` / `index-en.html`,
+`/fuehren/` / `/fuehren/en/`). Folge fürs Messen: Deutsche und englische Fassung sind
+**getrennte Seiten mit getrennten Seitenaufrufen** — anders als bei Webflow-Lokalisierung,
+wo beide unter einem Pfad liefen. Die Eventnamen bleiben davon unberührt; sie unterscheiden
+nach Weg, nicht nach Sprache.
+
