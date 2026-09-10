@@ -1,7 +1,7 @@
 # CC-8 · Übergabepaket Phase 2 · `light-creators.com`
 
 **Aufgabe:** CC-8 aus `phase2-lightcreators-claude-code.md`
-**Stand:** 9. September 2026. Nach **F1**, **F2**, den Regeln **R-W bis R-Z**, dem Merge aller 75 Anker und dem Fortfall von **OD-1b**.
+**Stand:** 10. September 2026. Nach **F1**, **F2**, den Regeln **R-W bis R-Z**, dem Merge aller 75 Anker und dem Fortfall von **OD-1b**.
 **Branch:** `phase2-zulieferungen`, Stand `main` bei `ebdab50`
 **Charakter:** **Zwischenstand.** Abgeschlossen wird CC-8 nach S9. Fortgeschrieben am 04./05.09.2026.
 
@@ -347,4 +347,132 @@ Kommentar in `assets/fonts.css`, der das Gegenteil festhält). Erfüllt ist, was
 **Die Briefing-Datei wurde nicht gelöscht.** Sie dokumentiert eine juristisch veranlasste
 Umsetzung und gehört zum Nachweis. Wenn sie trotzdem weg soll, ist das eine Entscheidung,
 die jemand ausdrücklich treffen sollte.
+
+---
+
+## 11. Nachtrag 10.09.2026 — nach dem Startseiten-Tausch
+
+### 11.1 Die Adressstruktur, wie sie jetzt live steht
+
+| Adresse | Inhalt |
+|---|---|
+| `/` | Marken-Hub **deutsch** |
+| `/en` | Marken-Hub **englisch** |
+| `/founder` | Founder Resonance deutsch, unverändert |
+| `/founder-en` | Founder Resonance englisch — **neu**, lag vorher auf `/en` |
+| `/old-home-2` | die alte deutsche Startseite |
+| `/the-art-and-practice-of-a-flourishing-life` | Next Gen |
+| ~~`/v3`~~, ~~`/v3-en`~~ | existieren nicht mehr (404, geprüft) |
+
+Alle sechs bestehenden Adressen am 10.09.2026 mit 200 geprüft, die beiden alten
+Entwurfs-Slugs mit 404.
+
+**Die Zweisprachigkeit läuft über Seitenpaare mit `-en`-Suffix, nicht über Webflows
+Lokalisierung.** Das war zwischenzeitlich falsch geschlossen worden, weil
+`locales.secondary` leer ist — ein leeres Feld beweist hier nichts, weil die Bauweise
+gar nicht darüber läuft. Dieselbe Bauweise wie auf `davidliebnau.com`.
+
+### 11.2 Fünf englische Anker umgehängt
+
+Mit `/founder-en` gibt es erstmals eine englische Founder-Seite. Die englischen Anker
+zeigten ersatzweise auf die deutsche `/founder`; englische Besucher landeten auf deutschem
+Inhalt.
+
+| Datei | Anker |
+|---|---|
+| `index-en.html` | 4 |
+| `fuehren/en/index.html` | **1 — in der Aufgabenstellung nicht genannt** |
+
+**Es waren fünf, nicht vier.** Beide Dateien führen `<html lang="en">`. Geprüft, dass in
+keiner Datei mit `lang="en"` noch ein Anker auf `/founder` steht. Commit `e151313`.
+
+Die 72 verbleibenden `/founder`-Anker stehen sämtlich auf deutschen Seiten und zeigen
+richtig.
+
+### 11.3 Offen: 32 Anker auf `light-creators.com/en`
+
+Diese Adresse trug bis zum Tausch die **englische Founder-Seite** und trägt jetzt den
+**Marken-Hub**. 32 Fundstellen zeigen weiter dorthin:
+
+| Ort | Anzahl |
+|---|---|
+| `episodes/*.html` | 30 |
+| `podcast.html` | 1 |
+| `tools/generate_episode.py` | 1 |
+
+Sie stehen alle an derselben Stelle: in einer Fußzeilenspalte mit der Überschrift
+**„English"**, direkt unter „For international clients". Der Linktext ist die nackte
+Adresse `light-creators.com/en`.
+
+**Warum ich sie nicht angefasst habe.** Zwei Lesarten sind vertretbar, und sie führen zu
+verschiedenen Zielen:
+
+| Lesart | Ziel | Folge |
+|---|---|---|
+| Die Spalte ist das englische Gegenstück zum deutschen „Für Founder Resonance"-Link darüber | `/founder-en` | **Der Linktext müsste mit** — 32 Dateien, Text *und* Ziel |
+| Die Spalte verweist auf „die englische Seite von Light Creators" | `/en`, bleibt | nichts zu tun |
+
+Die erste Lesart ist die wahrscheinlichere — die Spalte stand neben dem Founder-Link und
+`/en` *war* die Founder-Seite. Aber sie kostet eine Änderung an 32 Linktexten, und
+Linktexte sind Inhalt, nicht Technik. **Das ist eine Entscheidung, keine Korrektur.**
+Siehe RF-22.
+
+### 11.4 Rechtstexte `davidliebnau.com` — gemessen, ein Fehler gefunden
+
+Sieben Seiten mit Netzwerkaufzeichnung geprüft. **Es laden genau zwei Fremd-Hosts:**
+
+| Host | Wo | Im Text |
+|---|---|---|
+| `plausible.io` | alle Seiten | Ziffer 6, korrekt beschrieben |
+| `open.spotify.com` | **nur `/podcast.html`** | **fehlte** |
+
+**Der Fehler war der Spiegelfall des Problems auf `light-creators.com`.** Dort standen
+Dienste im Text, die nicht liefen. Hier lief einer, der als bloßer Verweis beschrieben
+war: Das Spotify-Abspielfenster ist ein `iframe`, das **beim Seitenaufruf automatisch
+lädt** und dabei die IP-Adresse überträgt — der Text führte Spotify unter „Verlinkte
+Angebote" mit dem Satz „Beim Anklicken dieser Links verlässt du diese Website".
+
+Behoben mit Commit `2a16985`: neuer Abschnitt 8 „Podcast-Player von Spotify", Ziffern
+verschoben, Querverweise mitgezogen.
+
+**Geprüft und richtig befunden, unverändert gelassen:** GitHub Pages als Hoster (Ziffer 2),
+selbst gehostete Schriften (Ziffer 3), Plausible cookiefrei mit EU-Servern (Ziffer 6),
+ProvenExpert lädt nichts nach (Ziffer 7).
+
+**Nicht im Text und laufen auch nicht** — über alle 46 ausgelieferten Seiten gegengeprüft,
+null Treffer: Google Analytics, gtag, Google Fonts, Adobe Fonts/Typekit, Meta Pixel,
+reCAPTCHA, YouTube, Vimeo, Cookiebot. `document.cookie` ist auf jeder gemessenen Seite
+leer.
+
+**Impressum** vollständig: Anschrift, Telefon, E-Mail, USt-IdNr. `DE363826204`,
+Verantwortlicher nach § 18 Abs. 2 MStV. Keine Änderung nötig.
+
+**Eine Korrektur an deiner Vorgabe:** Plausible sitzt laut Handelsregister in **Tartu**
+(Västriku tn 2, 50403), nicht in Tallinn. Der bestehende Text nennt Tartu und ist damit
+richtig — ich habe ihn nicht „korrigiert".
+
+### 11.5 Was daraus für `light-creators.com` folgt
+
+- **Elf Messpunkte** auf der Startseite, `light.home.david.click` eingeschlossen.
+- **Meta Pixel entfernt, OD-1b geschlossen**, keine Cookies, **kein Einwilligungsbanner
+  nötig** — solange kein Embed hinzukommt, das wie das Spotify-Fenster ohne Klick lädt.
+- **Adobe Fonts entfernt**, gemessen bestätigt.
+- **Ein DPA nach Art. 28 DSGVO** ist bei Webflow außerhalb von Enterprise nicht separat
+  abschließbar; es ist Bestandteil der Nutzungsbedingungen.
+- Die Rechtstexte der Domain gehen über die **Anwaltsprüfung**, nicht über diesen Strang.
+
+### 11.6 Die Lehre, als Verfahren
+
+**Nachsehen statt annehmen.** Bei Rechtstexten heißt das: messen, was läuft, dann
+schreiben, was gemessen wurde. Drei Fälle in zwei Wochen, alle nach demselben Muster:
+
+| Fall | Angenommen | Gemessen |
+|---|---|---|
+| Google Fonts | müssten noch umgestellt werden | seit Langem selbst gehostet |
+| `light-creators.com` | Analytics, Fonts, reCAPTCHA, YouTube, Vimeo laufen | nichts davon lief |
+| Spotify | nur verlinkt | eingebettet, lädt ohne Klick |
+
+Zweimal stand zu viel im Text, einmal zu wenig. Die Abweichung geht in **beide**
+Richtungen — deshalb ist der Abgleich in beide Richtungen zu führen: kein Dienst genannt,
+der nicht läuft, **und** kein Dienst geladen, der nicht genannt ist.
 
