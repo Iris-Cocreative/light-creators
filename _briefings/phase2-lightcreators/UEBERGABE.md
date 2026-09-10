@@ -199,6 +199,7 @@ Von den elf offenen Punkten sind **neun geschlossen**, einer abgegeben, einer bl
 |---|---|---|
 | **RF-13** | **Prüfschritt, keine Entscheidung** | Ob Plausible Growth die Ziel-URL bei Outbound-Links aufschlüsselt, lässt sich nicht herleiten, nur messen: einen getaggten externen Link klicken und im Dashboard nachsehen. **`light.home.david.click` ist genau so ein Link** — der Test geht damit, sobald die Startseite live ist, ohne aufs Tribe-Paket zu warten. |
 | **RF-7** | **Sperre, keine Frage** | Die acht namentlichen Kundenstimmen sind **nicht freigegeben** und damit nicht verwendbar — weder auf `light-creators.com` noch in Phase 3 —, bis ein Nachweis **je Person** vorliegt. Offen ist allein, ob ein solcher Nachweis außerhalb des Repositories existiert. |
+| **RF-22** | **Entscheidung** | 32 Anker auf `light-creators.com/en` in der Fußzeilenspalte „English“: auf `/founder-en` umhängen (dann müssen 32 Linktexte mit, weil dort die nackte Adresse als Text steht) oder auf dem Marken-Hub belassen? Siehe 11.3. |
 | **RF-5, RF-6, RF-8** | **Phase 3** | Markenentscheidungen zum Founder-Material, keine technischen Fragen. Bleiben stehen, wo sie stehen. |
 
 ### 7.2 Was geschlossen wurde
