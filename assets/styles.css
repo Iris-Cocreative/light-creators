@@ -1868,6 +1868,73 @@ podcast-cover { display: contents; }
   border-radius: 12px;
   display: block;
 }
+/* --- Spotify-Player: Platzhalter, laedt erst auf Klick --------------------- */
+.player-wrap { flex-direction: column; align-items: stretch; gap: .75rem; }
+.player-slot { display: flex; align-items: center; }
+.player-slot iframe { width: 100%; border: 0; border-radius: 12px; display: block; }
+
+.player-poster {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  max-height: 352px;
+  margin: 0 auto;
+  padding: 0;
+  border: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  background: none;
+  color: var(--color-cream);
+  font: inherit;
+  text-align: left;
+}
+.player-poster-img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.player-poster-veil {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(4,23,31,.82) 0%, rgba(4,23,31,.30) 55%, rgba(4,23,31,.12) 100%);
+  transition: background .25s ease;
+}
+.player-poster-body {
+  position: absolute; inset: auto 0 0 0;
+  display: flex; align-items: center; gap: 1rem;
+  padding: 1.25rem;
+}
+.player-poster-play { flex: 0 0 auto; display: block; color: var(--accent); transition: transform .25s ease; }
+.player-poster-text { display: block; min-width: 0; }
+.player-poster-kicker {
+  display: block;
+  font-size: .8rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: .2rem;
+}
+.player-poster-title {
+  display: block;
+  font-size: clamp(1.05rem, 2.2vw, 1.35rem); line-height: 1.25;
+  color: var(--color-cream);
+}
+.player-poster:hover .player-poster-play,
+.player-poster:focus-visible .player-poster-play { transform: scale(1.06); }
+.player-poster:hover .player-poster-veil { background: linear-gradient(to top, rgba(4,23,31,.88) 0%, rgba(4,23,31,.38) 55%, rgba(4,23,31,.18) 100%); }
+.player-poster:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.player-note {
+  margin: 0;
+  font-size: .82rem; line-height: 1.5;
+  color: var(--text-on-dark-muted);
+}
+.player-note a { color: var(--accent); text-underline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .player-poster-play, .player-poster-veil { transition: none; }
+  .player-poster:hover .player-poster-play { transform: none; }
+}
+
 .player-meta .eyebrow { display: block; margin-bottom: 1.25rem; }
 .player-meta h2 { margin-bottom: 1.25rem; }
 .player-meta p { color: var(--text-on-dark-muted); margin-bottom: 1rem; max-width: 48ch; }

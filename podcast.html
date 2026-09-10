@@ -173,15 +173,31 @@
       </div>
 
       <div class="player-wrap">
-        <iframe
-          src="https://open.spotify.com/embed/show/2VJVvcbnTtvoDrmSSdTGZ2?theme=0"
-          height="352"
-          frameborder="0"
-          allowfullscreen
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          loading="lazy"
-          title="Leise Kraft — Spotify Player">
-        </iframe>
+        <div class="player-slot" id="spotify-slot">
+          <button type="button" class="player-poster" id="spotify-start"
+                  aria-label="Spotify-Player laden und Leise Kraft abspielen">
+            <img class="player-poster-img" src="assets/podcast-cover-spotify.webp"
+                 width="800" height="800" alt="" />
+            <span class="player-poster-veil"></span>
+            <span class="player-poster-body">
+              <span class="player-poster-play" aria-hidden="true">
+                <svg viewBox="0 0 64 64" width="56" height="56" fill="none">
+                  <circle cx="32" cy="32" r="31" fill="rgba(4,23,31,.55)" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M26 21.5 44 32 26 42.5Z" fill="currentColor"/>
+                </svg>
+              </span>
+              <span class="player-poster-text">
+                <span class="player-poster-kicker">Leise Kraft</span>
+                <span class="player-poster-title">Alle Folgen abspielen</span>
+              </span>
+            </span>
+          </button>
+        </div>
+        <p class="player-note">
+          Der Player wird erst auf Klick geladen. Dabei baut dein Browser eine Verbindung
+          zu Spotify auf und &uuml;bertr&auml;gt dabei deine IP-Adresse.
+          <a href="/datenschutz/#spotify">Mehr dazu</a>
+        </p>
       </div>
     </div>
   </div>
@@ -801,5 +817,29 @@
     </ul>
   </nav>
 </noscript>
+<script>
+  /* Spotify-Player: laedt erst auf Klick.
+     Bewusst ohne localStorage und ohne Cookie - die Entscheidung wird nicht
+     gespeichert, ein Klick je Seitenaufruf. Sonst holten wir uns ueber die
+     Hintertuer genau die Speicherung zurueck, die die Seite nicht hat. */
+  (function () {
+    var knopf = document.getElementById('spotify-start');
+    var platz = document.getElementById('spotify-slot');
+    if (!knopf || !platz) return;
+
+    knopf.addEventListener('click', function () {
+      var rahmen = document.createElement('iframe');
+      rahmen.src = 'https://open.spotify.com/embed/show/2VJVvcbnTtvoDrmSSdTGZ2?theme=0';
+      rahmen.height = '352';
+      rahmen.setAttribute('frameborder', '0');
+      rahmen.setAttribute('allowfullscreen', '');
+      rahmen.setAttribute('allow', 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture');
+      rahmen.title = 'Leise Kraft \u2014 Spotify Player';
+      platz.replaceChildren(rahmen);
+      rahmen.focus({ preventScroll: true });
+      if (typeof window.plausible === 'function') window.plausible('podcast_player_load');
+    }, { once: true });
+  })();
+</script>
 </body>
 </html>
