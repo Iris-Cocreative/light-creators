@@ -1,7 +1,7 @@
 # CC-8 · Übergabepaket Phase 2 · `light-creators.com`
 
 **Aufgabe:** CC-8 aus `phase2-lightcreators-claude-code.md`
-**Stand:** 10. September 2026. Nach **F1**, **F2**, den Regeln **R-W bis R-Z**, dem Merge aller 75 Anker und dem Fortfall von **OD-1b**.
+**Stand:** 10. September 2026, abends. Nach **F1**, **F2**, den Regeln **R-W bis R-Z**, dem Merge aller 75 Anker und dem Fortfall von **OD-1b**.
 **Branch:** `phase2-zulieferungen`, Stand `main` bei `ebdab50`
 **Charakter:** **Zwischenstand.** Abgeschlossen wird CC-8 nach S9. Fortgeschrieben am 04./05.09.2026.
 
@@ -199,7 +199,8 @@ Von den elf offenen Punkten sind **neun geschlossen**, einer abgegeben, einer bl
 |---|---|---|
 | **RF-13** | **Prüfschritt, keine Entscheidung** | Ob Plausible Growth die Ziel-URL bei Outbound-Links aufschlüsselt, lässt sich nicht herleiten, nur messen: einen getaggten externen Link klicken und im Dashboard nachsehen. **`light.home.david.click` ist genau so ein Link** — der Test geht damit, sobald die Startseite live ist, ohne aufs Tribe-Paket zu warten. |
 | **RF-7** | **Sperre, keine Frage** | Die acht namentlichen Kundenstimmen sind **nicht freigegeben** und damit nicht verwendbar — weder auf `light-creators.com` noch in Phase 3 —, bis ein Nachweis **je Person** vorliegt. Offen ist allein, ob ein solcher Nachweis außerhalb des Repositories existiert. |
-| **RF-22** | **Entscheidung** | 32 Anker auf `light-creators.com/en` in der Fußzeilenspalte „English“: auf `/founder-en` umhängen (dann müssen 32 Linktexte mit, weil dort die nackte Adresse als Text steht) oder auf dem Marken-Hub belassen? Siehe 11.3. |
+| ~~RF-22~~ | **Entschieden 10.09.2026: nichts ändern.** Die Spalte heißt „English“ — das ist ein Sprachverweis, kein Angebotsverweis. Die Symmetrie zum deutschen Founder-Link stammte daraus, dass `/en` einmal die einzige englische Seite war; das war eine Notlösung, keine Absicht. Der Hub bietet beide Wege an und ist für einen Sprachwechsel das bessere Ziel. Der Linktext stimmt weiterhin. | erledigt |
+| **RF-23** | **Produktentscheidung** | Soll der Episodenabruf bei Apple auf `/podcast.html` entfallen und die Liste allein aus `episodes-meta.json` gebaut werden? Dann kein Fremdaufruf mehr — aber die Liste aktualisiert sich nicht mehr von selbst. Siehe 12.2. |
 | **RF-5, RF-6, RF-8** | **Phase 3** | Markenentscheidungen zum Founder-Material, keine technischen Fragen. Bleiben stehen, wo sie stehen. |
 
 ### 7.2 Was geschlossen wurde
@@ -390,33 +391,20 @@ keiner Datei mit `lang="en"` noch ein Anker auf `/founder` steht. Commit `e15131
 Die 72 verbleibenden `/founder`-Anker stehen sämtlich auf deutschen Seiten und zeigen
 richtig.
 
-### 11.3 Offen: 32 Anker auf `light-creators.com/en`
+### 11.3 Entschieden: die 32 `/en`-Anker bleiben
 
-Diese Adresse trug bis zum Tausch die **englische Founder-Seite** und trägt jetzt den
-**Marken-Hub**. 32 Fundstellen zeigen weiter dorthin:
+32 Fundstellen zeigen auf `light-creators.com/en` — 30 Episoden, `podcast.html`, die
+Generatorvorlage. Sie stehen alle in einer Fußzeilenspalte **„English"**, mit der nackten
+Adresse als Linktext.
 
-| Ort | Anzahl |
-|---|---|
-| `episodes/*.html` | 30 |
-| `podcast.html` | 1 |
-| `tools/generate_episode.py` | 1 |
+**Entscheidung vom 10.09.2026: nichts ändern.** Die Spalte ist ein *Sprach*verweis, kein
+*Angebots*verweis. Dass sie neben dem deutschen Founder-Link stand, lag daran, dass `/en`
+einmal die einzige englische Seite war — eine Notlösung, keine Absicht. Heute trägt `/en`
+einen Hub, der beide Wege anbietet; für jemanden, der aus einer Episode heraus auf
+„English" klickt, ist das das bessere Ziel als eine Landingpage mit nur einem Weg.
 
-Sie stehen alle an derselben Stelle: in einer Fußzeilenspalte mit der Überschrift
-**„English"**, direkt unter „For international clients". Der Linktext ist die nackte
-Adresse `light-creators.com/en`.
-
-**Warum ich sie nicht angefasst habe.** Zwei Lesarten sind vertretbar, und sie führen zu
-verschiedenen Zielen:
-
-| Lesart | Ziel | Folge |
-|---|---|---|
-| Die Spalte ist das englische Gegenstück zum deutschen „Für Founder Resonance"-Link darüber | `/founder-en` | **Der Linktext müsste mit** — 32 Dateien, Text *und* Ziel |
-| Die Spalte verweist auf „die englische Seite von Light Creators" | `/en`, bleibt | nichts zu tun |
-
-Die erste Lesart ist die wahrscheinlichere — die Spalte stand neben dem Founder-Link und
-`/en` *war* die Founder-Seite. Aber sie kostet eine Änderung an 32 Linktexten, und
-Linktexte sind Inhalt, nicht Technik. **Das ist eine Entscheidung, keine Korrektur.**
-Siehe RF-22.
+Dazu kommt: Der Linktext ist die Adresse selbst und stimmt weiter. 32 Linktexte
+umzuschreiben wären 32 Gelegenheiten für einen Tippfehler, ohne erkennbaren Nutzen.
 
 ### 11.4 Rechtstexte `davidliebnau.com` — gemessen, ein Fehler gefunden
 
@@ -476,4 +464,94 @@ schreiben, was gemessen wurde. Drei Fälle in zwei Wochen, alle nach demselben M
 Zweimal stand zu viel im Text, einmal zu wenig. Die Abweichung geht in **beide**
 Richtungen — deshalb ist der Abgleich in beide Richtungen zu führen: kein Dienst genannt,
 der nicht läuft, **und** kein Dienst geladen, der nicht genannt ist.
+
+---
+
+## 12. Nachtrag 10.09.2026, abends — Spotify gelöst, Apple gefunden
+
+### 12.1 Der Player lädt jetzt erst auf Klick
+
+Statt das Problem zu beschreiben, ist es beseitigt. `/podcast.html` zog beim Seitenaufruf
+ein Fremd-Dokument samt Skripten von `open.spotify.com` in die Seite. Jetzt steht dort ein
+Platzhalter, der wie Teil der Seite aussieht — Cover, Reihentitel, Abspielsymbol in Gold —
+und **kein Datenschutztext auf dem Knopf**. Der sachliche Hinweis steht klein darunter.
+
+**Gemessen, lokal und live:**
+
+| Zustand | Anfragen an `open.spotify.com` | iframes | Cookies | `localStorage` |
+|---|---|---|---|---|
+| vor dem Klick | **0** | 0 | keine | leer |
+| nach dem Klick | **1** | 1 | keine | leer |
+| nach Neuladen | **0** | 0 | keine | leer |
+
+**Die Entscheidung wird nicht gespeichert** — kein Cookie, kein `localStorage`. Ein Klick
+je Seitenaufruf. Andernfalls hätten wir uns über die Hintertür genau die Speicherung
+zurückgeholt, die die Seite gerade nicht hat.
+
+Maße und Radius entsprechen dem bisherigen iframe (505 × 352, 12 px), damit das Layout
+unverändert bleibt. Als `<button>` gebaut, tastaturerreichbar, mit `aria-label`.
+
+**Nebenwirkung in dieselbe Richtung:** Die Seite lädt beim Aufruf kein Fremd-Dokument
+mehr. Ladezeit und Datenschutz ziehen hier am selben Strang.
+
+Commit `98e1f87`. Abschnitt 8 der Datenschutzerklärung entsprechend umgeschrieben; der
+Hinweis an die Anwaltsprüfung entfällt.
+
+### 12.2 Dabei ein zweiter Fund: Apple
+
+Die Live-Gegenprobe nach dem Umbau zeigte einen Fremd-Host, der in keiner früheren Messung
+zuverlässig auftauchte:
+
+```
+fetch https://itunes.apple.com/lookup?id=1841403507&entity=podcastEpisode&limit=200
+```
+
+`/podcast.html` holt die Episodenliste bei Apple. **Sichtbar war das nur bei kaltem
+Zwischenspeicher** — die Antwort liegt im `sessionStorage`, und bei warmem Speicher
+entsteht gar keine Anfrage. Genau der Fall, in dem eine Messung ein sauberes Ergebnis
+vortäuscht.
+
+Erhoben: nur auf `podcast.html`, einmal je Browsersitzung, keine Cookies, kein
+`localStorage`. Apple ist die **Quelle** der Episodenliste; `episodes-meta.json` ergänzt
+nur die Verweise auf die Unterseiten.
+
+Aufgenommen als Abschnitt 9 der Datenschutzerklärung (Commit `efe0494`).
+
+**Nicht entfernt, und warum.** Man könnte den Abruf streichen und die Liste allein aus
+`episodes-meta.json` bauen — dann gäbe es keinen Fremdaufruf mehr. Aber die Liste
+aktualisierte sich nicht mehr von selbst, wenn eine Folge erscheint. Das ist eine
+**Produktentscheidung, keine Textkorrektur**, und gehört deshalb David. Siehe RF-23.
+
+### 12.3 Was das Messwerkzeug angeht
+
+**Die Netzwerkliste des Browser-Bereichs zeigte nur Anfragen an die eigene Domain.** Hätte
+ich ihr geglaubt, wäre „keine Drittanbieter" herausgekommen — mit Spotify und Apple im
+Hintergrund. Erst `performance.getEntriesByType('resource')` brachte beide zum Vorschein.
+
+Dazu kommt der Zwischenspeicher-Fall aus 12.2: Dieselbe Seite, zweimal gemessen, zwei
+verschiedene Ergebnisse — ohne dass sich etwas geändert hätte.
+
+**Die Regel daraus: Liefert eine Messung ein auffällig sauberes Ergebnis, ist der erste
+Verdacht das Werkzeug.** Ein Werkzeug, das zu wenig zeigt, ist gefährlicher als eines, das
+nichts zeigt — sein Schweigen sieht aus wie ein Ergebnis.
+
+Praktisch heißt das für diese Art Prüfung:
+
+- **Nicht einer Quelle glauben.** Netzwerkliste *und* Performance-API *und* statische
+  Erhebung über den Quelltext.
+- **Mit kaltem Zwischenspeicher messen**, sonst bleiben zwischengespeicherte Fremdaufrufe
+  unsichtbar.
+- **Die Verdachtsliste ist ein Anfang, kein Umfang.** Spotify stand nicht darauf, Apple
+  auch nicht. Beide wurden gefunden, weil erhoben statt abgehakt wurde.
+
+### 12.4 Stand der Drittanbieter auf `davidliebnau.com`
+
+| Dienst | Wo | Wann | Im Text |
+|---|---|---|---|
+| Plausible | alle Seiten | beim Aufruf | Ziffer 6 |
+| Apple Podcasts (API) | nur `/podcast.html` | einmal je Sitzung | Ziffer 9 |
+| Spotify (Player) | nur `/podcast.html` | **erst auf Klick** | Ziffer 8 |
+
+Sonst nichts. Kein Google, kein Meta, kein Typekit, kein Einwilligungswerkzeug, keine
+Cookies.
 
