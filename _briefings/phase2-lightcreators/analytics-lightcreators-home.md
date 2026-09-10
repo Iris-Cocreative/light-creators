@@ -433,7 +433,9 @@ Die drei erwogenen Wege, zur Nachvollziehbarkeit:
 
 ## 9. Was diese Spezifikation nicht enthält
 
-- **Keinen Vorschlag zum Meta Pixel.** Nur der Verweis auf **OD-1b**.
+- **Nichts zum Meta Pixel.** Es gibt keinen mehr: Er ist am 09.09.2026 von
+  `light-creators.com` entfernt, die Site setzt keine Cookies und fährt ausschließlich
+  Plausible. **OD-1b ist damit geschlossen**, nicht vertagt.
 - **Keine Properties.** Weder Custom Properties noch eine Vorbereitung darauf.
 - **Keine Tribe-Messung.** `light.home.tribe.click` und `light.home.tribe.reach` messen
   den Pfad und die Sektion, nicht einzelne Personen. Alles Personenbezogene gehört ins
