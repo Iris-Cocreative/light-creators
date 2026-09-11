@@ -225,13 +225,15 @@
 
     <!--
       ENTWURF · NICHT VEROEFFENTLICHEN
-      Zur anwaltlichen Pruefung. Offene Punkte in eckigen Klammern.
-      Voraussetzungen vor dem Mergen:
-      1. Die Bestaetigungsmail schickt diese Bedingungen UND die
-         Widerrufsbelehrung tatsaechlich mit. Vorher waere "Vertragstext"
-         eine Zusage, die nicht eingehalten wird.
-      2. [VERTRAGSSPRACHE ENTSCHEIDEN] ist entschieden.
-      3. "Stand: August 2026" unten im selben Schritt nachziehen.
+      Zur anwaltlichen Pruefung. Keine offenen Platzhalter mehr.
+      Beim Mergen im selben Schritt:
+      1. Diesen Kommentar entfernen. tools/rechtstexte_pdf.py bricht bei einem
+         ENTWURF-Vermerk ab.
+      2. "Stand: August 2026" unten nachziehen.
+      3. PDFs neu erzeugen: python3 tools/rechtstexte_pdf.py
+      Kein Merge-Hindernis mehr (11.09.2026): Vertragssprache entschieden
+      (Deutsch). Bestaetigungsmail mit AGB und Widerrufsbelehrung wird erst mit
+      der ersten Anmeldung akut; es laufen keine.
     -->
     <h2>&sect; 13 Informationen zum Vertragsschluss</h2>
 
@@ -245,10 +247,8 @@
     Gespr&auml;ch.</p>
 
     <p class="rs-lead">Sprache</p>
-    <p>Diese Bedingungen und die Widerrufsbelehrung liegen in deutscher Sprache vor.
-    [VERTRAGSSPRACHE ENTSCHEIDEN: Wird der Vertrag nur auf Deutsch geschlossen, oder
-    auch auf Englisch f&uuml;r Teilnehmende, die &uuml;ber die englische Threshold-Seite
-    kommen?]</p>
+    <p>Der Vertrag wird ausschlie&szlig;lich in deutscher Sprache geschlossen. Diese
+    Bedingungen und die Widerrufsbelehrung liegen nur auf Deutsch vor.</p>
 
     <p class="rs-lead">Vertragstext</p>
     <p>Diese Bedingungen und die Widerrufsbelehrung sende ich dir zusammen mit der
