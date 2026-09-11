@@ -1,39 +1,99 @@
 # Offene Aufgaben nach dem Relaunch
 
-Stand: 2. September 2026. Reihenfolge ist eine Empfehlung, nicht bindend.
+Stand: 10. September 2026. Zusammengeführt aus zwei Ständen (siehe Kasten).
+Reihenfolge ist eine Empfehlung, nicht bindend.
 Erledigtes abhaken und mit Datum versehen, damit klar bleibt, was noch offen ist.
 
+> ## ⚠ Die maßgebliche Fassung dieser Datei liegt im Repository
+>
+> **`briefing/OFFENE-AUFGABEN-Relaunch.md`**, auf `main`. Nur dort.
+>
+> **Jede Kopie außerhalb ist als veraltet zu behandeln** — die Wissensablage eines
+> Chat-Projekts, ein heruntergeladener Stand, ein Anhang in einer Nachricht. Solche
+> Kopien sind Momentaufnahmen; sie wandern nicht mit. Wer auf ihnen aufbaut,
+> eröffnet Erledigtes erneut.
+>
+> **Das ist am 10.09.2026 passiert.** Die Überarbeitung setzte auf einer Kopie vom
+> 21. August auf statt auf der Repository-Fassung vom 2. September. Acht bereits
+> abgehakte Punkte standen dadurch wieder offen, und bei den Vorschaubildern kam
+> eine Aussage über einen Zustand dazu, der nie angesehen worden war. Beim
+> Zusammenführen wurden alle acht gegen die Wirklichkeit nachgemessen, nicht gegen
+> die alte Datei.
+>
+> **Vor dem Bearbeiten: `git pull`. Nach dem Bearbeiten: committen.**
+
+> **Zu den zwei Ständen:** Zwischen dem 21. August und heute liegen der
+> Webflow-Umzug, der Startseiten-Tausch auf light-creators.com und eine
+> vollständige Rechtstext-Prüfung auf beiden Domains. Neu hinzugekommene Punkte
+> sind mit **NEU** gekennzeichnet.
+
+---
+
+## Dringend
+
+- [ ] **NEU · Die Next-Gen-Tür endet in einer Sackgasse.**
+  Alle drei Next-Gen-Einstiege auf der neuen Startseite von
+  light-creators.com zeigen auf `/the-art-and-practice-of-a-flourishing-life`.
+  Diese Seite trägt das Eyebrow „FÜR ELTERN · VERTRAULICH", spricht in
+  Sie-Form über junge Menschen statt mit ihnen, und hat **null ausgehende
+  Links**. Ein Neunzehnjähriger, der auf „Ich suche meinen Weg" klickt,
+  landet dort.
+  Wird in Phase 2.5 durch `/next-gen` gelöst. Falls das länger als ein paar
+  Tage dauert: die drei Einstiege vorübergehend auf Threshold umhängen.
+  Der jetzige Zustand ist schlechter als kein Link.
+
+- [ ] **NEU · Founder-Route ist blind.**
+  `/founder`, `/quiz` und `/call` tragen kein einziges Tracking-Attribut.
+  Der site-weite Binder ist aktiv, es fehlen nur die Attribute.
+  Solange nicht gemessen wird, kein Freeze — ein Freeze ohne Messung friert
+  genau den Zustand ein, über den man nichts lernt.
 ---
 
 ## Sofort, unabhängig vom Relaunch
 
 - [x] **Impressum und Datenschutzerklärung inhaltlich erstellen.** Erledigt,
-  gegen die Live-Domain geprüft am 04.09.2026. `/impressum/`, `/datenschutz/`,
-  `/agb/`, `/widerruf/` und `/ki-einsatz/` antworten alle mit 200 und tragen
-  echten Text, keine Platzhalterzeichen mehr. Die Threshold-Seiten führen die
-  Rechtslinks im Footer.
-- [x] **AGB entscheiden.** Erledigt. `/agb/` steht und ist verlinkt, der Text
-  ist durch die juristische Durchsicht gegangen. Offen bleibt davon getrennt,
-  ob für die Threshold-Buchung eigene Bedingungen nötig sind; das hängt am
-  Piloten und steht weiter unten.
+  gegen die Live-Domain geprüft am 04.09.2026, erneut am 10.09.2026.
+  `/impressum/`, `/datenschutz/`, `/agb/`, `/widerruf/` und `/ki-einsatz/`
+  antworten alle mit 200 und tragen echten Text, keine Platzhalterzeichen.
+- [x] **AGB entscheiden.** Erledigt. `/agb/` steht auf davidliebnau.com
+  (13.383 Zeichen, HTTP 200) und ist verlinkt, der Text ist durch die
+  juristische Durchsicht gegangen. Offen bleibt davon getrennt, ob für die
+  Threshold-Buchung eigene Bedingungen nötig sind; das hängt am Piloten und
+  steht unter „Hängt am Abschluss der Pilotkohorte".
 - [x] **Platzhalterkasten auf den Rechtsseiten entfernt.** Erledigt vor dem
-  01.09.2026. Impressum, Datenschutz, AGB, Widerruf und KI-Einsatz tragen
-  echten Text, stehen nicht mehr auf `noindex` und sind in der Sitemap.
+  01.09.2026. Alle fünf Rechtsseiten tragen echten Text, stehen nicht mehr auf
+  `noindex` und sind in der Sitemap. Am 10.09.2026 gegengeprüft: null
+  Platzhalterzeichen in allen fünf Dateien.
+- [x] **`.who-exclusion` geprüft — kein Platzhalter.** Erledigt am 10.09.2026.
+  Der Kasten steht in `fuehren/index.html:231` und `fuehren/en/index.html:231`
+  und enthält **fertigen Text** („Für Standardtrainings von der Stange…"). Er
+  bleibt. Der Punkt ist beantwortet, nicht offen — hier festgehalten, damit er
+  beim nächsten Durchgang nicht erneut als Verdacht auftaucht.
 - [x] **Eigene Bilder für die Vorschau (og:image).** Erledigt am 02.09.2026.
-  `/fuehren/` und `/fuehren/en/` tragen seit dem 03.09.2026 eine gebaute
-  Karte statt eines Zuschnitts, je Sprache eine eigene Datei:
-  `assets/og-fuehren-de.jpg` und `assets/og-fuehren-en.jpg`.
-  `/threshold/partner/` und `/threshold/partner/en/` tragen
-  `assets/og-image-threshold-partner.jpg`, denselben Zuschnitt aus dem
-  bestehenden `assets/threshold-teaser.jpg`. Beide mit `og:image:width`,
+  `/fuehren/` und `/fuehren/en/` tragen seit dem 03.09.2026 je eine eigene
+  gebaute Karte: `assets/og-fuehren-de.jpg` und `assets/og-fuehren-en.jpg`.
+  **Am 10.09.2026 im Markup gegengeprüft** — es läuft dort *nicht* das Bild der
+  Startseite mit. `/threshold/partner/` und `/threshold/partner/en/` tragen
+  `assets/og-image-threshold-partner.jpg`. Alle mit `og:image:width`,
   `og:image:height` und `twitter:image`.
 - [x] **og:image der Threshold-Hauptseiten.** Erledigt am 04.09.2026.
   `/threshold/` und `/threshold/en/` tragen gebaute Karten,
-  `assets/og-threshold-de.jpg` und `-en.jpg`, mit dem vorhandenen Bild
-  vollständig und unbeschnitten. Die Regel kein automatisches Beschneiden
-  ist gewahrt: `threshold/og-image.jpg` bleibt unverändert und dient als
-  Quelle. Die Wahl des Motivs bleibt eine offene Frage an David, siehe
-  BACKLOG.
+  `assets/og-threshold-de.jpg` und `-en.jpg`. Die Regel kein automatisches
+  Beschneiden ist gewahrt: `threshold/og-image.jpg` bleibt unverändert und
+  dient als Quelle. Die Wahl des Motivs bleibt eine offene Frage, siehe BACKLOG.
+
+- [ ] **NEU · Meta-Angaben auf `/founder` aktualisieren.**
+  Am 10.09.2026 an der Live-Seite gemessen, und der Befund ist schärfer als
+  zunächst notiert:
+  - Titel: `Light Creators Tribe | Founder Resonance Assessment`. **Widerspricht
+    R-L**, wonach durchgängig *Light Creators* im Seitentitel stehen soll; R-U
+    nimmt davon ausdrücklich nur das Logo aus, nicht den Titel.
+  - **Keine** Meta-Description.
+  - **Kein `og:image` und kein `og:title`** — nicht ein altes, sondern gar keins.
+    Beim Teilen entsteht damit keine Vorschaukarte.
+  - Zwei `<h1>` und **kein einziges `<h2>`** (dazu 5 × h3, 5 × h4, 21 × h5).
+    R-Z hält die Seite mit „ein H1" für verifiziert; gemessen sind es zwei.
+    Kein Fehler, der etwas kaputtmacht, aber die Gliederung springt.
 
 ---
 
@@ -41,79 +101,76 @@ Erledigtes abhaken und mit Datum versehen, damit klar bleibt, was noch offen ist
 
 - [x] **Zieladressen der Buttons festgelegt.** Alle laufen auf
   `mail@davidliebnau.com`, unterschieden über die Betreffzeile. Seit dem
-  Phase-1-Sprint kommen acht weitere Betreffzeilen für die vier
-  Nachfragewege dazu. Kein Formulardienst, kein Kalenderlink.
+  Phase-1-Sprint kommen acht weitere Betreffzeilen für die vier Nachfragewege
+  dazu. Kein Formulardienst, kein Kalenderlink.
 - [x] **LinkedIn-Empfehlungen: entschieden und abgeschlossen bei sechs.**
   Erledigt am 04.09.2026. Auf `/fuehren/` und `/fuehren/en/` stehen sechs
-  Zitate, jedes inline bei der Aussage, die es belegt: Sinyan und Harz bei
-  den Ergebnissen, Euteneuer bei „Einzelarbeit auf Geschäftsführungsebene",
-  Szücs bei „Programme", Kling und Rufnak im Belege-Abschnitt. Die
-  Obergrenze von fünf aus dem Ursprungsbriefing hat David am selben Tag
-  aufgehoben. Der Punkt ist geschlossen, nicht wartend.
-  Der Kommentarblock in beiden Dateien ist auf den einen Satz eingedampft,
-  der auch für spätere Zitate gilt: Regel R2 und `award-context.js`.
+  Zitate, jedes inline bei der Aussage, die es belegt: Sinyan und Harz bei den
+  Ergebnissen, Euteneuer bei „Einzelarbeit auf Geschäftsführungsebene", Szücs
+  bei „Programme", Kling und Rufnak im Belege-Abschnitt. Die Obergrenze von
+  fünf aus dem Ursprungsbriefing wurde am selben Tag aufgehoben. **Am
+  10.09.2026 gegengeprüft:** sechs Porträts im Markup. Der Punkt ist
+  geschlossen, nicht wartend. Regel R2 ist über `assets/award-context.js`
+  technisch abgesichert.
 - [x] **Partnerschaftswege für `/threshold/partner/` freigegeben.** Die vier
   Wege der Zusammenarbeit stehen auf Zahler formuliert, dazu seit dem
   Phase-1-Sprint vier Nachfragewege für die Anfrage selbst.
+
+- [ ] **NEU · Belege für die Zahlen auf `/founder`.**
+  „8/10 Logic, 4/10 Resonance, ca. 70 %" sind eigene Beobachtungsdaten.
+  Entweder belegbare Grundlage nachliefern oder vorsichtiger formulieren,
+  bevor die Seite eingefroren wird.
 
 ---
 
 ## Vor dem Merge
 
-- [ ] **Visueller Abnahmedurchgang, Phase 1.** Macht David selbst, auf
-  Desktop und Mobil: die vier Threshold-Seiten und `/fuehren/`, mit Fokus
-  auf die vier mailto-Wege und die Zitat-Platzierungen. Erst danach mergen.
-  Claude Code soll dafür nicht das Browser-Tooling reparieren.
-- [x] **`/fuehren/` und `/threshold/partner/` müssen existieren.** Erledigt.
-  Beide Seiten stehen, dazu die englischen Fassungen.
-- [x] **Generator-Sperre ist ungetestet.** Gegenstandslos, geprüft am
-  04.09.2026. `generate-episodes.js` existiert im Repository nicht mehr,
-  an seine Stelle ist `tools/generate_episode.py` getreten. Node ist auf
-  der Maschine weiterhin nicht installiert und wird auch nicht mehr
-  gebraucht. Die Sperre, die getestet werden sollte, gehörte zum
-  entfernten Skript.
+- [ ] **Visueller Abnahmedurchgang.** Alle geänderten Seiten einmal in echt
+  durchsehen, auf Desktop und Mobil.
+- [ ] **`/fuehren/` und `/threshold/partner/` müssen existieren.**
+  Bis dahin laufen vier Links auf der Startseite ins Leere. Der Pull Request
+  darf vorher nicht gemergt werden.
+- [ ] **Generator-Sperre ist ungetestet.** Bei Gelegenheit einmal
+  `node generate-episodes.js` ohne `--force` ausführen und prüfen, dass
+  sauber abgebrochen wird.
+---
+
+## Datenschutz und Geschwindigkeit
+
+- [x] **NEU · Spotify-Player auf Klick-zum-Laden umgestellt.** Erledigt am
+  10.09.2026, Commit `98e1f87`, live. Alle drei Vorgaben eingehalten: Der
+  Platzhalter sieht aus wie Teil der Seite (Cover, Reihentitel, Abspielsymbol,
+  **kein Datenschutztext auf dem Knopf**), der sachliche Hinweis steht klein
+  darunter, und die **Entscheidung wird nicht gespeichert** — kein
+  `localStorage`, kein Cookie, ein Klick je Seitenaufruf.
+  Gemessen in drei Zuständen: vor dem Klick **0** Anfragen an
+  `open.spotify.com`, nach dem Klick **1**, nach Neuladen wieder **0**;
+  `document.cookie` und `localStorage` in allen drei Zuständen leer.
+  Abschnitt 8 der Datenschutzerklärung entsprechend zurückangepasst.
+- [x] **Dabei gefunden: Episodenabruf bei Apple.** Erledigt am 10.09.2026,
+  Commit `efe0494`. `/podcast.html` ruft beim Seitenaufruf die öffentliche
+  Podcast-Schnittstelle von Apple ab. **In früheren Messungen unsichtbar**,
+  weil die Antwort im `sessionStorage` liegt — bei warmem Zwischenspeicher
+  entsteht gar keine Anfrage. Als Abschnitt 9 in die Datenschutzerklärung
+  aufgenommen. Ob der Abruf entfallen soll, ist eine Produktentscheidung
+  (RF-23), keine Textkorrektur.
+- [ ] **NEU · Ladezeit messen**, vorher und nachher, auf Mobil über Mobilfunk.
+  Geschwindigkeit hat hohe Priorität. Der Player-Umbau sollte hier messbar
+  wirken: Die Podcast-Seite zieht beim Aufruf kein Fremd-Dokument mehr.
 
 ---
 
-## Phase 1: Conversionpfade
+## Nach Abschluss der Gestaltungsiteration
 
-Gebaut auf `phase1/threshold-proof-seo`, **gemergt und live seit dem
-03.09.2026** (Merge-Commit `9534eae`, GitHub-Pages-Build durchgelaufen und
-gegen die Produktionsdomain verifiziert).
-
-- [x] **1A Threshold-Angebotslogik.** Gebaut am 01.09.2026, live am
-  03.09.2026. Vier unterscheidbare Nachfragewege auf allen vier
-  Threshold-Seiten, als mailto mit eigener Betreffzeile, eigenem Feldgerüst
-  und eigenem Folgetext.
-- [x] **1B Corporate Proof auf `/fuehren/`.** Gebaut am 01.09.2026, live am
-  03.09.2026. Drei Empfehlungen kontextnah platziert, Testimonial-Wand
-  aufgelöst, Regel R2 über `assets/award-context.js` technisch abgesichert.
-  Die Seite ist damit eingefroren, bis Plausible-Daten vorliegen.
-- [x] **1D SEO der vier Money Pages.** Gebaut am 01. und 02.09.2026, live am
-  03.09.2026. hreflang beidseitig plus x-default, Twitter-Meta vollständig,
-  eigene og:images. Live-Auslieferung real abgerufen: alle acht Seiten mit
-  200, beide og:images erreichbar.
-- [ ] **Social-Preview-Check.** Technisch abgeschlossen und gegen die
-  Live-Domain geprüft, am 04.09.2026: alle neun Seiten mit Vorschaubild
-  tragen og:image mit Maßen und Bildbeschreibung, dazu die vollständigen
-  twitter-Entsprechungen; jedes Bild antwortet mit 200 und liefert byteweise
-  das, was im Repository liegt. Sechs Seiten tragen gebaute Karten in
-  2400 × 1256.
-
-  **Was aussteht, ist die Sichtprüfung im LinkedIn Post Inspector durch
-  David.** Läuft. Hinweis aus dem Verlauf: LinkedIn speichert das gerenderte
-  Bild je URL und bis zu sieben Tage. Ändert sich der Bildinhalt, muss der
-  Dateiname sich mit ändern, sonst zeigt der Inspector die alte Fassung.
-- [x] **Goals im Plausible-Dashboard angelegt.** Erledigt am 03.09.2026,
-  von David angelegt und im Dashboard verifiziert. Im Account stehen 19
-  Custom Events plus die vier Standard-Goals; die 19 decken sich mit dem
-  Bestand im Code. Vollständige Namensliste in `BACKLOG.md` unter „Messung".
-- [x] **Verkabelung der neun neuen Goals geprüft.** Ebenfalls am 03.09.2026,
-  gegen die Live-Domain und **ohne eine einzige Konversion** zu erzeugen: Die
-  Sendewege wurden abgefangen und die Nutzlast mitgelesen, statt echte Klicks
-  abzusetzen. In allen 18 geprüften Fällen stimmt der gesendete Eventname mit
-  der Klasse im Markup überein. Vorgehen und Grenzen in `BACKLOG.md`.
-
+- [ ] **NEU · Bildoptimierung light-creators.com.**
+  Alle Bilder der Startseite auf die tatsächliche Anzeigegröße bringen,
+  Qualität 78, progressive JPEGs. Erwartete Ersparnis 60 bis 70 Prozent
+  des Bildgewichts.
+  Voraussetzung: Die Bildauswahl steht fest, sonst doppelte Arbeit.
+  Teilweise erledigt: Naturfoto der Origin Story von 1441 auf 504 KB.
+- [ ] **NEU · Regel für neue Bilder durchsetzen.**
+  Nie breiter als das Doppelte der Anzeigebreite, nie über 500 KB,
+  JPEG Qualität 78, progressiv. Gilt für alles, was ab jetzt gebaut wird.
 ---
 
 ## Werkzeug
@@ -131,17 +188,18 @@ gegen die Produktionsdomain verifiziert).
   visuelle Abnahme macht David im eigenen Browser. Claude Code prüft über
   DOM und berechnete Stile und schreibt dazu, was damit nicht geprüft
   werden konnte. Kein Versuch, das Werkzeug zu reparieren.
-
 ---
 
 ## Podcast
 
-- [x] **SEO-Block in die Generator-Vorlage nachtragen.** Erledigt mit der
-  Ablösung des Skripts, geprüft am 04.09.2026. `tools/generate_episode.py`
-  trägt canonical, robots, og und twitter sowie beide JSON-LD-Blöcke
-  (PodcastEpisode und BreadcrumbList). Ein Lauf überschreibt die Episoden
-  nicht mehr um ihren SEO-Block. Der alte Windows-Pfad in `CONTENT_FILE`
-  ist mit dem alten Skript entfallen.
+- [ ] **SEO-Block in die Generator-Vorlage nachtragen.**
+  Datei: `generate-episodes.js`, Funktion `generatePage()`, Zeilen 141 bis 286.
+  Die 29 erzeugten Episoden enthalten je einen SEO-Block, den die Vorlage
+  nicht kennt: canonical, robots, 9 x og und twitter, JSON-LD PodcastEpisode,
+  JSON-LD BreadcrumbList. Ein Generatorlauf würde alle 29 überschreiben.
+  Vorläufig ist eine Sperre im Skript eingebaut.
+  Zusätzlich: `CONTENT_FILE` zeigt auf einen Windows-Downloads-Pfad, die
+  Quelldatei liegt nicht im Repository.
 - [ ] **podcast.html vollständig überarbeiten.**
   Im Relaunch wurden nur die gröbsten Founder-Stellen ersetzt. Die Seite ist
   strukturell weiterhin eine Founder-Landingpage. Offen: Hero-Aufbau,
@@ -151,51 +209,16 @@ gegen die Produktionsdomain verifiziert).
   URL-Slug. Aktuelle Entscheidung: bleiben unverändert als datiertes Archiv,
   nur der Rahmen wurde aktualisiert. Falls du das später anders willst,
   betrifft es auch die Slugs und damit Weiterleitungen.
-- [ ] **ep-28 nach dem Webflow-Umzug prüfen.**
-  Im Fließtext stehen die nackten URLs `light-creators.com/quiz` und
-  `light-creators.com/call`. Sie bleiben als redaktioneller Inhalt stehen.
-  Wenn sich beim Umzug die Struktur von light-creators.com ändert, sind das
-  die einzigen beiden Stellen in den Episoden, die brechen können.
-
----
-
-## Umzug der Founder-Inhalte auf light-creators.com
-
-Läuft nicht über Claude Code, sondern über den Webflow-Connector im Chat.
-Sieben Schritte, wir stehen bei Schritt 1.
-
-- [ ] 1. Webflow-Verbindung freigeben und Projekte auflisten
-- [ ] 2. Bestand aufnehmen: welche Seiten, welche Sections existieren heute
-- [ ] 3. Zielbild festlegen: was steht danach wo
-- [ ] 4. Auftrag schreiben
-- [ ] 5. Founder-Blöcke aus `_archiv/founder-resonance-bloecke.html` holen
-- [ ] 6. In Webflow umsetzen, Section für Section
-- [ ] 7. Prüfen und veröffentlichen
-
-Was umzieht: die fünf Resonance-Faktoren, der Resonance Gap, das Founder
-Resonance Assessment, die Zeile "Das Update, das alle anderen Updates erst
-möglich macht" als neue Hero-Headline, dazu Hero-Variante C aus der
-Textabstimmung.
-
-Material liegt in `_archiv/founder-resonance-bloecke.html`, gesichert aus
-`index.html` und `podcast.html`. Zusätzlich liegen drei Bilder brach, die
-dort wiederverwendet werden können: `role-entrepreneur.webp`,
-`role-manager.webp`, `role-expert.webp`.
-
 ---
 
 ## Englische Fassungen
 
-- [ ] **Neue Texte übersetzen.**
+- [ ] **Neue Texte auf davidliebnau.com übersetzen.**
   Im Relaunch wurden auf den englischen Seiten nur Signaturzeile, Navigation
   und die Award-Formulierung angeglichen. Die neuen Abschnitte fehlen dort.
-- [x] **Englische Partnerseite.** Erledigt. Sie liegt unter
-  `/threshold/partner/en/`, nicht unter `/threshold/en/partner/`. Der
-  vollständige Partnerblock stand bis zum 02.09.2026 zusätzlich in
-  `threshold/en/index.html` und ist dort jetzt auf denselben kurzen Teaser
-  zurückgebaut wie in der deutschen Fassung. Der Inhalt steht damit nur
-  noch auf einer indexierbaren URL.
-
+- [ ] **Englische Partnerseite `/threshold/en/partner/`.**
+  Solange sie fehlt, bleibt der englische Partnerblock auf der
+  Threshold-Seite stehen.
 ---
 
 ## Hängt am Abschluss der Pilotkohorte
@@ -233,11 +256,13 @@ nach dem Piloten an einer Stelle steht, was dann fällig wird.
   anonymisierte Vorher-Nachher-Reflexionen. Beides entsteht erst mit der
   ersten Kohorte. Nach dem Piloten prüfen, ob die Zusage eingelöst werden
   kann oder umformuliert werden muss.
-
 ---
 
 ## Später, kein Zeitdruck
 
+- [ ] **NEU · Nicht öffentliche Seiten auf light-creators.com absichern.**
+  `/old-home-2`, `/quiz-copy` und `/lp2-quiz-admin` sind öffentlich
+  erreichbar und indexierbar. Entweder auf noindex setzen oder entfernen.
 - [ ] **Design-Tokens vereinheitlichen.**
   `landing-pages/flourishing-life-eltern-v2.html`, Zeilen 30 bis 42, enthält
   eine Token-Sammlung, die den Namen des Corporate Designs näher folgt
@@ -252,47 +277,77 @@ nach dem Piloten an einer Stelle steht, was dann fällig wird.
 - [ ] **Neues Quiz und Funnel für die junge Zielgruppe.**
   Kommt an davidliebnau.com, nicht an light-creators.com.
 
+- [ ] **Weitere Tribe-Profile.**
+  Drei stehen im CMS: Angelina Reichel, David Liebnau, Finn Trigo.
+  Jedes weitere braucht Foto, Rolle und beide Antworten in DE und EN,
+  dazu die dokumentierte Zustimmung der Person.
+
 ---
 
-## Später, nicht dringend
+## Offene Rückfragen bei Claude Code
 
-- [ ] **Vorvertragliche Pflichtinformationen nach Art. 246c EGBGB.**
-      Betrifft nicht die Website, sondern die Anmeldebestätigung per
-      E-Mail. Pflichtangaben sind unter anderem: welche technischen
-      Schritte zum Vertragsschluss führen, ob der Vertragstext
-      gespeichert und zugänglich ist, wie Eingabefehler erkannt und
-      korrigiert werden können, welche Sprachen zur Verfügung stehen.
-      Bei Buchung über Gespräch und E-Mail entspannter als bei einem
-      Shop, gehört aber in die Bestätigung. Claude kann das Dokument
-      entwerfen, sobald der genaue Buchungsablauf feststeht: Kommt der
-      Vertrag im Gespräch zustande oder erst mit der schriftlichen
-      Bestätigung, und werden AGB und Widerrufsbelehrung mitgeschickt.
-      Verschoben am 1. September 2026, aktuell nicht wichtig.
+Stand 10.09.2026: **sechs offen, sechzehn geschlossen.**
 
-- [ ] **DPMA-Markenrecherche „The Threshold Program".**
-      Keine eigenen Markenrechte angemeldet und vorerst auch nicht
-      geplant. Das Risiko liegt umgekehrt: Jemand anderes könnte den
-      Namen für Coaching- oder Weiterbildungsleistungen eingetragen
-      haben, dann droht eine Abmahnung, obwohl nichts angemeldet wurde.
-      Echte Registerrecherche im DPMAregister, keine Websuche. Bei einer
-      Gründungsgruppe gering relevant. Vor bezahlter Werbung oder
-      größerer Reichweite einmal prüfen lassen.
-      Verschoben am 1. September 2026.
-
-- [x] **Auftragsverarbeitungsvertrag mit GitHub.** Am 1. September 2026
-      als ausreichend abgehakt: Das GitHub Data Protection Agreement
-      läuft in der Regel über die Nutzungsbedingungen mit. Ziffer 2 der
-      Datenschutzerklärung beschreibt Hosting, Drittlandtransfer und
-      EU-US Data Privacy Framework korrekt.
+- **RF-5, RF-6, RF-8** — Phase 3, Markenentscheidungen zum Founder-Material
+- **RF-7** — **gesperrt bis Nachweis.** Die acht namentlichen Kundenstimmen sind
+  ohne Freigabenachweis je Person nicht verwendbar. Nicht „ungeklärt", sondern
+  nicht verwendbar.
+- **RF-13** — von Entscheidung zu Prüfschritt umgeschrieben.
+  `light.home.david.click` ist der erste getaggte externe Link auf der
+  Startseite und dient als Testfall für Plausibles Outbound-Aufschlüsselung.
+- **RF-23 · NEU** — soll der Episodenabruf bei Apple auf `/podcast.html`
+  entfallen und die Liste allein aus `episodes-meta.json` gebaut werden? Dann
+  kein Fremdaufruf mehr, aber die Liste aktualisiert sich nicht mehr von selbst.
 
 ---
 
 ## Erledigt
 
+**September 2026**
+
+- [x] **10.09.** Startseiten-Tausch auf light-creators.com vollzogen.
+      Neue Struktur: `/` Marken-Hub deutsch, `/en` Marken-Hub englisch,
+      `/founder` Founder Resonance deutsch, `/founder-en` englisch (neu),
+      `/old-home-2` alte Startseite. `/v3` und `/v3-en` existieren nicht mehr.
+- [x] **10.09.** Datenschutzerklärung light-creators.com neu geschrieben.
+      Google Analytics, Google Fonts, reCAPTCHA, YouTube, Vimeo und ein
+      Cookiebot-Fehlertext standen darin, ohne dass irgendetwas davon lief.
+      Ersetzt durch den gemessenen Ist-Zustand.
+- [x] **10.09.** Adobe Fonts von light-creators.com entfernt.
+      Lief unbemerkt aus der Iris-Vorlage mit und schickte bei jedem
+      Seitenaufruf ein Zählpixel an Adobe. Gemessen bestätigt: acht
+      Anfragen weniger pro Seitenaufruf.
+- [x] **10.09.** Rechtstexte davidliebnau.com geprüft — gemessen, nicht
+      gelesen. Sieben Seiten mit Netzwerkaufzeichnung. Ergebnis: nur
+      Plausible und Spotify laden fremd. Impressum vollständig.
+- [x] **10.09.** Fünf englische Anker von `/founder` auf `/founder-en`
+      umgehängt. Es waren fünf, nicht vier: `fuehren/en/index.html` trug einen
+      weiteren, der in der Aufgabenstellung nicht genannt war.
+- [x] **10.09.** Spotify-Player auf Klick-zum-Laden umgestellt, Apple-Abruf in
+      der Datenschutzerklärung benannt. Siehe „Datenschutz und Geschwindigkeit".
+- [x] **10.09.** Diese Datei aus zwei auseinandergelaufenen Ständen
+      zusammengeführt, acht fälschlich wiedereröffnete Punkte gegen die
+      Wirklichkeit nachgemessen und mit Datum zurückgeholt.
+- [x] **10.09.** `ep-28` geprüft: `light-creators.com/quiz` und `/call`
+      existieren nach dem Umzug unverändert. Die Links brechen nicht.
+- [x] **09.09.** Englische Fassung der neuen Startseite gebaut,
+      Sprachumschaltung DE/EN in beiden Navigationen.
+- [x] **08.09.** Tribe-Sektion an das CMS gebunden, drei Profile.
+- [x] **08.09.** Meta Pixel von light-creators.com entfernt.
+      Die Site setzt seitdem keine Cookies und braucht kein
+      Einwilligungsbanner.
+- [x] **03.09.** Umzug der Founder-Inhalte auf light-creators.com
+      abgeschlossen, alle sieben Schritte.
+- [x] **03.09.** Impressum und Datenschutzerklärung für davidliebnau.com
+      stehen inhaltlich.
+
+**August 2026**
+
 - [x] Positionierung und Klammer festgelegt: Bewusstes Leadership an
       kritischen Wendepunkten
 - [x] Seitenarchitektur festgelegt: Startseite für Entscheider und Zahler,
-      `/fuehren/` neu, `/threshold/partner/` neu, Founder auf light-creators.com
+      `/fuehren/` neu, `/threshold/partner/` neu, Founder auf
+      light-creators.com
 - [x] Alle Startseitentexte abgestimmt
 - [x] Vier Symbole der schöpferischen Dialoge gestaltet und im Repository
 - [x] Briefing für Claude Code geschrieben und übergeben
