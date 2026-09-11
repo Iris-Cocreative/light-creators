@@ -95,32 +95,32 @@ Erledigtes abhaken und mit Datum versehen, damit klar bleibt, was noch offen ist
     R-Z hält die Seite mit „ein H1" für verifiziert; gemessen sind es zwei.
     Kein Fehler, der etwas kaputtmacht, aber die Gliederung springt.
 
-- [ ] **NEU · Vertragssprache für englischsprachige Teilnehmende.**
-  `/threshold/en/` verkauft das Programm auf Englisch — nennt den Preis
-  (990 €), spricht von Buchung, fordert zur Bewerbung auf — und verlinkt
-  dafür auf „terms“ und „right of withdrawal“. Beide Seiten liegen nur auf
-  Deutsch vor („This page is available in German only“). Englischsprachige
-  Verbraucher werden also auf Vertragsbedingungen verwiesen, die sie
-  möglicherweise nicht lesen können.
-  „Vertrag ausschließlich auf Deutsch“ hineinzuschreiben wäre formal sauber, aber
-  praktisch heikel: Wer auf Englisch angesprochen wird und bucht, hat gute
-  Argumente, dass die AGB nicht wirksam einbezogen wurden. Zwei Wege, beide
-  kosten etwas:
-  - AGB und Widerrufsbelehrung ins Englische übersetzen, Sprachwahl je nach
-    Einstieg.
-  - Die englische Seite so umbauen, dass sie zur Kontaktaufnahme führt statt
-    zur Buchung.
-  Entscheiden anwaltliche Prüfung und David. Davon hängt der Platzhalter
-  `[VERTRAGSSPRACHE ENTSCHEIDEN]` im AGB-Entwurf ab (Branch
-  `feature/agb-vertragsschluss`), der bis dahin **offen bleibt**.
+- [ ] **NEU · Englische Threshold-Seite passt nicht zur Vertragssprache.**
+  Entschieden am 11.09.2026: **Der Vertrag wird ausschließlich auf Deutsch
+  geschlossen** (eingetragen im AGB-Entwurf, siehe unter „Erledigt“).
+  Offen bleibt die Folge davon: `/threshold/en/` verkauft weiter auf Englisch —
+  Preis 990 €, Buchung, Bewerbung — und verweist auf Bedingungen, die es nur auf
+  Deutsch gibt. Wer auf Englisch angesprochen wird und bucht, hat gute Argumente,
+  dass die AGB nicht wirksam einbezogen wurden. Mit der Entscheidung für Deutsch
+  bleibt von den zwei Wegen einer: **die englische Seite so umbauen, dass sie zur
+  Kontaktaufnahme führt statt zur Buchung.** Für die anwaltliche Prüfung.
 
 - [ ] **NEU · Bestätigungsmail muss AGB und Widerrufsbelehrung mitschicken.**
-  Voraussetzung, bevor der AGB-Entwurf live gehen darf. Dort steht künftig,
-  dass beide Texte mit der Anmeldebestätigung per E-Mail kommen — nach
-  § 312f Abs. 2 BGB auf einem dauerhaften Datenträger, was eine Website nicht
-  erfüllt. Geht der Satz live, bevor die Mail das tut, steht in den AGB eine
-  Zusage, die nicht eingehalten wird. **Liegt bei David**, Signal an Code,
-  wenn die Mail steht.
+  **Kein Merge-Hindernis mehr** (11.09.2026): Es laufen keine Anmeldungen, der
+  Punkt wird erst mit der ersten akut. Dann muss die Mail beide Texte als
+  dauerhaften Datenträger enthalten (§ 312f Abs. 2 BGB). Die PDFs dafür liegen
+  bereit: `agb/AGB-David-Liebnau.pdf` und
+  `widerruf/Widerrufsbelehrung-David-Liebnau.pdf`.
+  Zur Genauigkeit: § 5 sagt seit August nur zu, dass die *Widerrufsbelehrung* mit
+  der Bestätigung kommt. Dass auch *diese Bedingungen* mitgehen, und zwar per
+  E-Mail, sagt erst der neue § 13. **Liegt bei David.**
+
+- [ ] **NEU · Widerrufsbelehrung trägt kein Stand-Datum.**
+  `/agb/` endet mit „Stand: August 2026“, `/widerruf/` hat gar keines. Deshalb
+  bleibt im PDF der Widerrufsbelehrung die Kopfzeile rechts leer; das Skript
+  meldet es als Warnung. Kein Datum erfunden. Wenn gewünscht: eine Zeile
+  `<p class="rs-stand">Stand: …</p>` auf `/widerruf/` ergänzen — welches Datum,
+  ist deine Entscheidung. Danach PDFs neu erzeugen.
 
 ---
 
@@ -332,6 +332,18 @@ Stand 10.09.2026: **sechs offen, sechzehn geschlossen.**
 
 **September 2026**
 
+- [x] **11.09.** AGB und Widerrufsbelehrung als PDF, **aus dem Quelltext
+      erzeugt**: `agb/AGB-David-Liebnau.pdf`,
+      `widerruf/Widerrufsbelehrung-David-Liebnau.pdf`. Neu erzeugen mit
+      `python3 tools/rechtstexte_pdf.py`, prüfen mit `--check`. Gleiche Quelle
+      ergibt gleiche Bytes. Geprüft: Textschicht vollständig (922/922 und
+      365/365 Wörter), jedes Wort suchbar, keine Navigation im PDF, der
+      Entwurfs-§ 13 nicht enthalten. **Nach dem Merge des AGB-Entwurfs neu
+      erzeugen** — steht in der Merge-Checkliste des Entwurfs.
+- [x] **11.09.** Vertragssprache entschieden: **ausschließlich Deutsch.** Im
+      AGB-Entwurf auf `feature/agb-vertragsschluss` eingetragen; dort sind
+      damit keine Platzhalter mehr offen. Folge für die englische Threshold-Seite
+      siehe unter „Sofort“.
 - [x] **11.09.** Toter Link im Impressum von light-creators.com **entfernt**,
       über Webflow, veröffentlicht. Der Verweis auf die seit 20.07.2025
       eingestellte EU-Plattform zur Online-Streitbeilegung ist weg. **Am
