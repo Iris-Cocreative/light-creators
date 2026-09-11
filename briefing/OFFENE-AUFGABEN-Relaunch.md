@@ -1,6 +1,6 @@
 # Offene Aufgaben nach dem Relaunch
 
-Stand: 11. September 2026. Am 10.09. aus zwei Ständen zusammengeführt (siehe Kasten).
+Stand: 11. September 2026, abends. Am 10.09. aus zwei Ständen zusammengeführt (siehe Kasten).
 Reihenfolge ist eine Empfehlung, nicht bindend.
 Erledigtes abhaken und mit Datum versehen, damit klar bleibt, was noch offen ist.
 
@@ -95,16 +95,6 @@ Erledigtes abhaken und mit Datum versehen, damit klar bleibt, was noch offen ist
     R-Z hält die Seite mit „ein H1" für verifiziert; gemessen sind es zwei.
     Kein Fehler, der etwas kaputtmacht, aber die Gliederung springt.
 
-- [ ] **NEU · Toter Link im Impressum von light-creators.com.**
-  `light-creators.com/impressum` verlinkt `ec.europa.eu/consumers/odr`, die
-  EU-Plattform zur Online-Streitbeilegung. Sie ist seit dem **20.07.2025
-  eingestellt** (Verordnung (EU) 2024/3228); der Link führt auf eine
-  Umzugsseite der Kommission. Am 11.09.2026 gemessen, am selben Tag, an dem die
-  dortigen Rechtstexte überarbeitet wurden. Link entfernen, die Aussage zur
-  Nichtteilnahme an Verbraucherschlichtung kann bleiben.
-  **Nicht in diesem Repository** — light-creators.com läuft über Webflow.
-  Gegenprobe auf davidliebnau.com siehe unter „Erledigt“: dort kein Link.
-
 - [ ] **NEU · Vertragssprache für englischsprachige Teilnehmende.**
   `/threshold/en/` verkauft das Programm auf Englisch — nennt den Preis
   (990 €), spricht von Buchung, fordert zur Bewerbung auf — und verlinkt
@@ -112,10 +102,25 @@ Erledigtes abhaken und mit Datum versehen, damit klar bleibt, was noch offen ist
   Deutsch vor („This page is available in German only“). Englischsprachige
   Verbraucher werden also auf Vertragsbedingungen verwiesen, die sie
   möglicherweise nicht lesen können.
-  Zu entscheiden: Vertrag nur auf Deutsch, oder auch auf Englisch? Davon hängt
-  der Platzhalter `[VERTRAGSSPRACHE ENTSCHEIDEN]` im AGB-Entwurf ab
-  (Branch `feature/agb-vertragsschluss`). Geschäftsentscheidung mit
-  rechtlicher Seite — für die anwaltliche Prüfung.
+  „Vertrag ausschließlich auf Deutsch“ hineinzuschreiben wäre formal sauber, aber
+  praktisch heikel: Wer auf Englisch angesprochen wird und bucht, hat gute
+  Argumente, dass die AGB nicht wirksam einbezogen wurden. Zwei Wege, beide
+  kosten etwas:
+  - AGB und Widerrufsbelehrung ins Englische übersetzen, Sprachwahl je nach
+    Einstieg.
+  - Die englische Seite so umbauen, dass sie zur Kontaktaufnahme führt statt
+    zur Buchung.
+  Entscheiden anwaltliche Prüfung und David. Davon hängt der Platzhalter
+  `[VERTRAGSSPRACHE ENTSCHEIDEN]` im AGB-Entwurf ab (Branch
+  `feature/agb-vertragsschluss`), der bis dahin **offen bleibt**.
+
+- [ ] **NEU · Bestätigungsmail muss AGB und Widerrufsbelehrung mitschicken.**
+  Voraussetzung, bevor der AGB-Entwurf live gehen darf. Dort steht künftig,
+  dass beide Texte mit der Anmeldebestätigung per E-Mail kommen — nach
+  § 312f Abs. 2 BGB auf einem dauerhaften Datenträger, was eine Website nicht
+  erfüllt. Geht der Satz live, bevor die Mail das tut, steht in den AGB eine
+  Zusage, die nicht eingehalten wird. **Liegt bei David**, Signal an Code,
+  wenn die Mail steht.
 
 ---
 
@@ -327,6 +332,16 @@ Stand 10.09.2026: **sechs offen, sechzehn geschlossen.**
 
 **September 2026**
 
+- [x] **11.09.** Toter Link im Impressum von light-creators.com **entfernt**,
+      über Webflow, veröffentlicht. Der Verweis auf die seit 20.07.2025
+      eingestellte EU-Plattform zur Online-Streitbeilegung ist weg. **Am
+      11.09.2026 live nachgemessen:** null Treffer im Impressum, ebenso auf
+      `/agb` und `/abgs`. Es steht nur noch der Satz zur Nichtteilnahme:
+      „Wir sind zur Teilnahme an einem Streitbeilegungsverfahren vor einer
+      Verbraucherschlichtungsstelle weder verpflichtet noch bereit.“
+      Inhaltlich gleich mit davidliebnau.com, im Wortlaut nicht: dort
+      „Ich bin nicht bereit und nicht verpflichtet …“. Das „wir“ passt zur
+      Markenseite, das „ich“ zum Einzelunternehmer — kein Handlungsbedarf.
 - [x] **11.09.** § 18 Abs. 2 MStV im Impressum von davidliebnau.com geprüft —
       **war bereits erfüllt.** Der Auftrag vom 11.09. sollte die Angabe
       ergänzen, weil die Rechtsprüfung sie vermisste. Sie steht aber seit dem
