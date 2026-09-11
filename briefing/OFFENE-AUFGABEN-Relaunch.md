@@ -1,6 +1,6 @@
 # Offene Aufgaben nach dem Relaunch
 
-Stand: 10. September 2026. Zusammengeführt aus zwei Ständen (siehe Kasten).
+Stand: 11. September 2026. Am 10.09. aus zwei Ständen zusammengeführt (siehe Kasten).
 Reihenfolge ist eine Empfehlung, nicht bindend.
 Erledigtes abhaken und mit Datum versehen, damit klar bleibt, was noch offen ist.
 
@@ -94,6 +94,28 @@ Erledigtes abhaken und mit Datum versehen, damit klar bleibt, was noch offen ist
   - Zwei `<h1>` und **kein einziges `<h2>`** (dazu 5 × h3, 5 × h4, 21 × h5).
     R-Z hält die Seite mit „ein H1" für verifiziert; gemessen sind es zwei.
     Kein Fehler, der etwas kaputtmacht, aber die Gliederung springt.
+
+- [ ] **NEU · Toter Link im Impressum von light-creators.com.**
+  `light-creators.com/impressum` verlinkt `ec.europa.eu/consumers/odr`, die
+  EU-Plattform zur Online-Streitbeilegung. Sie ist seit dem **20.07.2025
+  eingestellt** (Verordnung (EU) 2024/3228); der Link führt auf eine
+  Umzugsseite der Kommission. Am 11.09.2026 gemessen, am selben Tag, an dem die
+  dortigen Rechtstexte überarbeitet wurden. Link entfernen, die Aussage zur
+  Nichtteilnahme an Verbraucherschlichtung kann bleiben.
+  **Nicht in diesem Repository** — light-creators.com läuft über Webflow.
+  Gegenprobe auf davidliebnau.com siehe unter „Erledigt“: dort kein Link.
+
+- [ ] **NEU · Vertragssprache für englischsprachige Teilnehmende.**
+  `/threshold/en/` verkauft das Programm auf Englisch — nennt den Preis
+  (990 €), spricht von Buchung, fordert zur Bewerbung auf — und verlinkt
+  dafür auf „terms“ und „right of withdrawal“. Beide Seiten liegen nur auf
+  Deutsch vor („This page is available in German only“). Englischsprachige
+  Verbraucher werden also auf Vertragsbedingungen verwiesen, die sie
+  möglicherweise nicht lesen können.
+  Zu entscheiden: Vertrag nur auf Deutsch, oder auch auf Englisch? Davon hängt
+  der Platzhalter `[VERTRAGSSPRACHE ENTSCHEIDEN]` im AGB-Entwurf ab
+  (Branch `feature/agb-vertragsschluss`). Geschäftsentscheidung mit
+  rechtlicher Seite — für die anwaltliche Prüfung.
 
 ---
 
@@ -305,6 +327,21 @@ Stand 10.09.2026: **sechs offen, sechzehn geschlossen.**
 
 **September 2026**
 
+- [x] **11.09.** § 18 Abs. 2 MStV im Impressum von davidliebnau.com geprüft —
+      **war bereits erfüllt.** Der Auftrag vom 11.09. sollte die Angabe
+      ergänzen, weil die Rechtsprüfung sie vermisste. Sie steht aber seit dem
+      **23.08.2026** im Impressum (Commit `913aa88`), wortgleich mit dem
+      Vorschlag, dazu „Angaben gemäß § 5 DDG“. Live bestätigt. Nichts
+      geändert; ein zweiter Block wäre eine Dopplung gewesen. Die Prüfung vom
+      11.09. hat diese Stelle übersehen.
+- [x] **11.09.** OS-Plattform-Link auf davidliebnau.com geprüft — **keiner
+      vorhanden.** Alle fünf Rechtsseiten (`/impressum/`, `/datenschutz/`,
+      `/agb/`, `/widerruf/`, `/ki-einsatz/`) im Quelltext und live gemessen:
+      null Treffer. Das Impressum enthält nur die Aussage zur Nichtteilnahme an
+      Verbraucherschlichtung, wortgleich mit den Schlussbestimmungen der AGB
+      (live § 13, im Entwurf § 14). Die
+      Einschätzung „korrekt“ der Rechtsprüfung stimmt hier — nachgemessen, weil
+      sie denselben Sachverhalt bei light-creators.com falsch eingeschätzt hatte.
 - [x] **10.09.** Startseiten-Tausch auf light-creators.com vollzogen.
       Neue Struktur: `/` Marken-Hub deutsch, `/en` Marken-Hub englisch,
       `/founder` Founder Resonance deutsch, `/founder-en` englisch (neu),
