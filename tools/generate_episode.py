@@ -330,6 +330,7 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
 
 <link rel="stylesheet" href="../assets/styles.css" />
 <script src="../assets/podcast-cover.js"></script>
+<script src="../assets/nav-toggle.js" defer></script>
 <!-- Privacy-friendly analytics by Plausible -->
 <script async src="https://plausible.io/js/pa-PE8LepbzU6ohWEdNxpoeQ.js"></script>
 <script>
@@ -342,7 +343,7 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
 <header class="ep-hero on-dark">
   <nav class="top">
     <a href="../index.html" class="logo">David Liebnau<em>.</em></a>
-    <div class="nav-meta">
+    <div class="nav-meta" id="nav-meta">
       <a href="../index.html">Home</a>
       <span class="sep">·</span>
       <a href="../fuehren/">Führen</a>
@@ -359,6 +360,9 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
       <span class="sep">/</span>
       <a href="../index-en.html">EN</a>
     </div>
+    <button class="nav-toggle" type="button" aria-label="Menü" aria-expanded="false" aria-controls="nav-meta">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
   <div class="container">
     <div class="ep-hero-grid">

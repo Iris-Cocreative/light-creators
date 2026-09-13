@@ -78,6 +78,7 @@
   window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
   plausible.init()
 </script>
+<script src="assets/nav-toggle.js" defer></script>
 </head>
 <body>
 
@@ -85,7 +86,7 @@
 <header class="hero hero--photo-bg">
   <nav class="top">
     <a href="index-en.html" class="logo">David Liebnau<em>.</em></a>
-    <div class="nav-meta">
+    <div class="nav-meta" id="nav-meta">
       <a href="/index-en.html" style="color: var(--color-eyebrow);">Home</a>
       <span class="sep">·</span>
       <a href="/fuehren/en/">Leading</a>
@@ -102,6 +103,9 @@
       <span class="sep">/</span>
       <a href="index-en.html" style="color: var(--accent);">EN</a>
     </div>
+    <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav-meta">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
   <div class="container">

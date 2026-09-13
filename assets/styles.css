@@ -2496,3 +2496,20 @@ footer {
 .section--teal .award-context,
 .section--umber .award-context,
 .section--midnight .award-context { color: var(--text-on-dark-muted); }
+
+/* ============================================
+   NAV-SCHALTER — Ergaenzung
+   Die Darstellung des Schalters und des Overlays steht weiter oben und
+   bleibt unveraendert. Hier nur, was dort fehlte: ein sichtbarer Fokusring
+   fuer die Tastaturbedienung und die Ruecksicht auf reduzierte Bewegung.
+   ============================================ */
+
+.nav-toggle:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-toggle span { transition: none; }
+}
