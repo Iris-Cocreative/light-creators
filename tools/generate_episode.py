@@ -349,11 +349,11 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
       <span class="sep">·</span>
       <a href="../threshold/">Threshold</a>
       <span class="sep">·</span>
+      <a class="plausible-event-name=outbound_lc_nav_click_de" href="https://light-creators.com/">Light Creators&#160;&#8599;</a>
+      <span class="sep">·</span>
       <a href="../podcast.html">Podcast</a>
       <span class="sep">·</span>
       <a href="../index.html#about">Über mich</a>
-      <span class="sep">·</span>
-      <a href="../index.html#contact">Kontakt</a>
       <span class="sep">·</span>
       <a href="../index.html" style="color: var(--accent);">DE</a>
       <span class="sep">/</span>
