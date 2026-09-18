@@ -26,29 +26,8 @@
     }
   });
 
-  // Responsive nav: inject hamburger toggle into nav.top on every page
-  document.addEventListener('DOMContentLoaded', function () {
-    var nav = document.querySelector('nav.top');
-    if (!nav) return;
-
-    var btn = document.createElement('button');
-    btn.className = 'nav-toggle';
-    btn.setAttribute('aria-label', 'Menü öffnen');
-    btn.innerHTML = '<span></span><span></span><span></span>';
-    nav.appendChild(btn);
-
-    btn.addEventListener('click', function () {
-      var open = nav.classList.toggle('nav--open');
-      btn.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
-      document.body.style.overflow = open ? 'hidden' : '';
-    });
-
-    nav.querySelectorAll('.nav-meta a').forEach(function (a) {
-      a.addEventListener('click', function () {
-        nav.classList.remove('nav--open');
-        btn.setAttribute('aria-label', 'Menü öffnen');
-        document.body.style.overflow = '';
-      });
-    });
-  });
+  // Der mobile Nav-Schalter lag frueher hier und wurde per JavaScript in
+  // nav.top eingehaengt. Er liegt jetzt als <button> im Markup, die Logik
+  // in assets/nav-toggle.js. Grund: er fehlte auf sieben Seiten, die diese
+  // Datei nicht laden, und ein Nav-Schalter gehoert nicht in podcast-cover.
 })();
