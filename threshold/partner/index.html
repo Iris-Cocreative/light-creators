@@ -31,6 +31,18 @@
 <link rel="stylesheet" href="/assets/fonts.css" />
 
 <style>
+  /* FARBEN LAUT FARBLEITFADEN (Stand 22.09.2026)
+     Die Variablennamen bleiben (P17). In Berichten, Kommentaren und
+     Commit-Nachrichten gelten die Namen links.
+       Midnight Blue   #04171F                     --midnight
+       Earth           #393231                     --earth
+       Open Horizon    #05404C                     --open-horizon
+       Morning Dew     #83A18E                     --morning-dew
+       Summit Mist     #FFF8E6                     --summit
+       Sun Touch       #E0B76F                     --sun
+       Gold Gradient   #FFDB9D -> #A87D34          --gold -> --gold-dark
+       Neutraltoene    #D7D0C2, #A8A196, #6E6661   --stone, --warm-gray, --slate */
+
   :root {
     --midnight: #04171F;
     --earth: #393231;
@@ -44,6 +56,14 @@
     --warm-gray: #A8A196;
     --slate: #6E6661;
     --seam: 88px;
+    /* Flaechen ueber der Atmosphaere (E3.2): Midnight Blue durchsichtig,
+       Earth getoent, Open Horizon deckend. */
+    --earth-alpha: 0.84;
+    --surface-dark: transparent;
+    --surface-earth: rgba(57, 50, 49, var(--earth-alpha)); /* Earth */
+    --surface-horizon: var(--open-horizon);
+    --th-atmo-bild: url(/assets/threshold-atmo.avif);
+    --th-atmo-schleier: 0.62; /* wie Founder */
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -94,9 +114,9 @@
 
   /* SECTIONS */
   section { padding: 88px 72px; }
-  .section-dark { background: var(--midnight); }
-  .section-earth { background: var(--earth); }
-  .section-horizon { background: var(--open-horizon); }
+  .section-dark { background: var(--surface-dark); }
+  .section-earth { background: var(--surface-earth); }
+  .section-horizon { background: var(--surface-horizon); }
   .section-light { background: var(--summit); }
   .section-white { background: #fff; }
 
@@ -127,9 +147,9 @@
   .pb-image-col { position: relative; overflow: hidden; }
   .pb-image-col img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
   .pb-text-col { display: flex; flex-direction: column; justify-content: center; padding: 80px 64px; }
-  .pb-text-col.dark { background: var(--midnight); }
-  .pb-text-col.earth { background: var(--earth); }
-  .pb-text-col.horizon { background: var(--open-horizon); }
+  .pb-text-col.dark { background: var(--surface-dark); }
+  .pb-text-col.earth { background: var(--surface-earth); }
+  .pb-text-col.horizon { background: var(--surface-horizon); }
   .pb-quote {
     font-family: 'Cormorant Garamond', serif;
     font-size: 28px; font-weight: 300; font-style: italic;
@@ -250,7 +270,7 @@
   .faq-a { font-size: 14px; color: var(--slate); line-height: 1.8; max-width: 680px; }
 
   /* CTA */
-  .cta-section { background: var(--earth); padding: 96px 72px; text-align: center; }
+  .cta-section { background: var(--surface-earth); padding: 96px 72px; text-align: center; }
   .cta-title { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 400; color: #fff; line-height: 1.2; margin-bottom: 18px; max-width: 800px; margin-left: auto; margin-right: auto; }
   .cta-title em { font-style: italic; color: var(--sun); }
   .cta-body { font-size: 15px; color: var(--warm-gray); max-width: 500px; margin: 0 auto 36px; line-height: 1.8; }
@@ -324,40 +344,93 @@
   .footer-nav .sep { margin: 0 8px; opacity: 0.5; }
 
 
-  /* NAEHTE ZWISCHEN DUNKLEN TOENEN (E3 neu, 22.09.2026)
-     Folgt auf eine dunkle Flaeche eine dunkle in anderem Ton, laufen beide
-     ineinander aus: die obere bis zum Mittelton an der Kante, die untere von
-     dort in ihren eigenen Ton. Nur Hintergrund, kein Overlay. --seam ist das
-     obere und untere Padding der Sektionen (88px), der Verlauf liegt also nie
-     hinter Text oder Karten. Uebergaenge dunkel/hell bleiben hart. */
-  .section-dark { --tone: var(--midnight); }
-  .section-earth, .cta-section { --tone: var(--earth); }
-  .section-horizon { --tone: var(--open-horizon); }
-  .from-dark { --prev: var(--midnight); }
-  .from-earth { --prev: var(--earth); }
-  .from-horizon { --prev: var(--open-horizon); }
-  .to-dark { --next: var(--midnight); }
-  .to-earth { --next: var(--earth); }
-  .to-horizon { --next: var(--open-horizon); }
-  :is(.from-dark, .from-earth, .from-horizon, .to-dark, .to-earth, .to-horizon) {
+  /* MARKENATMOSPHAERE (E3.2, 22.09.2026)
+     Eine einzige fixierte Ebene hinter der ganzen Seite. Die Sektionen sind
+     Fenster darauf, deshalb kann an keiner Sektionskante eine Naht entstehen.
+     - 100lvh statt svh/vh: mit svh endet die Ebene auf dem iPhone zu frueh,
+       sobald die Safari-Leisten einklappen (Lehre von light-creators.com).
+     - Fixiertes Element statt background-attachment: fixed (geht auf iOS nicht).
+     - 40px ueber jeden Rand, damit nie eine Bildkante sichtbar wird.
+     Das Bild ist ein strahlenfreier Ausschnitt der Markengrafik. Die Koernung
+     ist eine nur abdunkelnde Kachel (im Mittel 5 %), sie hebt nie den hellsten
+     Punkt des Grunds und kostet deshalb keinen Kontrast. */
+  .th-atmo {
+    position: fixed;
+    top: -40px; left: -40px;
+    width: calc(100% + 80px);
+    height: calc(100vh + 80px);
+    height: calc(100lvh + 80px);
+    z-index: -1;
+    pointer-events: none;
+    background-color: var(--midnight);
+    background-image:
+      url(/assets/threshold-grain.png),
+      linear-gradient(rgba(4, 23, 31, var(--th-atmo-schleier)), rgba(4, 23, 31, var(--th-atmo-schleier))),
+      var(--th-atmo-bild);
+    background-size: 80px 80px, auto, cover;
+    background-position: 0 0, 0 0, 50% 50%;
+    background-repeat: repeat, no-repeat, no-repeat;
+  }
+
+  /* NAEHTE ZWISCHEN DUNKLEN FLAECHEN (E3 neu, mit E3.2 umgestellt)
+     Jede dunkle Flaeche hat einen Ton (--tone): Midnight Blue durchsichtig,
+     Earth getoent, Open Horizon deckend. Folgen zwei verschiedene
+     aufeinander, laufen beide im Padding ineinander aus: die obere bis zur
+     Mitte an der Kante, die untere von dort in den eigenen Ton. Beide Seiten
+     liegen ueber derselben Ebene, an der Kante ist der Pixel also gleich.
+     Earth zu Midnight Blue ist damit ein reiner Alpha-Verlauf der Earth-Toenung.
+     --seam ist das obere und untere Padding der Sektionen (88px), der Verlauf
+     liegt nie hinter Text oder Karten. Uebergaenge dunkel/hell bleiben hart. */
+  .section-dark, .pb-text-col.dark { --tone: var(--surface-dark); }
+  .section-earth, .pb-text-col.earth, .cta-section { --tone: var(--surface-earth); }
+  .section-horizon, .pb-text-col.horizon { --tone: var(--surface-horizon); }
+  .from-dark { --prev: var(--surface-dark); }
+  .from-earth { --prev: var(--surface-earth); }
+  .from-horizon { --prev: var(--surface-horizon); }
+  .to-dark { --next: var(--surface-dark); }
+  .to-earth { --next: var(--surface-earth); }
+  .to-horizon { --next: var(--surface-horizon); }
+  /* Unter dem Hero: dessen Verlauf endet fast deckend in Midnight Blue. */
+  .from-night { --prev: var(--midnight); --prev-reach: 0px; }
+  /* zwei Klassen Gewicht, damit es auch .pb-text-col.earth usw. schlaegt */
+  :is(section, .cta-section, .pb-text-col):is(.from-night, .from-dark, .from-earth, .from-horizon, .to-dark, .to-earth, .to-horizon) {
+    background-color: transparent;
     background-image: linear-gradient(to bottom,
-      var(--prev, var(--tone)) calc(-1 * var(--seam)),
+      var(--prev, var(--tone)) calc(-1 * var(--prev-reach, var(--seam))),
       var(--tone) var(--seam),
       var(--tone) calc(100% - var(--seam)),
       var(--next, var(--tone)) calc(100% + var(--next-reach, var(--seam))));
   }
-  /* Die Fusszeile hat nur 36px Padding: dort laeuft der CTA allein ganz aus. */
-  .cta-section.to-dark { --next-reach: 0px; }
+  /* Die Fusszeile bleibt deckend und hat nur 36px Padding: dort laeuft der
+     CTA allein ganz in deckendes Midnight Blue aus. */
+  .cta-section.to-dark { --next: var(--midnight); --next-reach: 0px; }
+  /* Textspalten der Foto-Bloecke: laufen innerhalb der Spalte ganz in den Ton
+     der Nachbarflaeche aus, weil daneben das Foto an die Kante stoesst. */
+  .pb-text-col:is(.from-dark, .from-earth, .from-horizon, .to-dark, .to-earth, .to-horizon) { --prev-reach: 0px; --next-reach: 0px; }
+  @media (max-width: 900px) {
+    /* gestapelt liegt ueber der Spalte das Foto, nicht die Sektion */
+    .photo-break .pb-text-col { --prev: var(--tone); }
+  }
 
-  /* Kleine Sekundaerschrift auf Erd- und Horizontflaechen. --warm-gray bleibt,
-     hier reicht es auf den halbtransparenten Karten nicht fuer 4,5:1.
-     #B8B1A6 kommt auf der hellsten Karte (#0F4853) auf 4,77:1. */
-  :is(.section-earth, .section-horizon, .pb-text-col.earth, .pb-text-col.horizon, .cta-section)
+  /* Kleine Sekundaerschrift auf dunklen Flaechen. --warm-gray bleibt, reicht
+     aber auf den halbtransparenten Karten und ueber der Atmosphaere nicht fuer
+     4,5:1. #B8B1A6 kommt auf der hellsten Petrol-Karte (#0F4853) auf 4,77:1
+     und ueber dem hellsten Punkt der Atmosphaere (Schleier 0,62, unter einer
+     Karte, jede Scrollposition, 320 bis 1920px) auf mindestens 4,98:1. */
+  :is(.section-dark, .section-earth, .section-horizon, .pb-text-col, .cta-section)
     :is(.sec-lead-dark, .pb-caption, .tension-body, .research-finding, .dim-body, .pc-items li,
         .pkg-for, .pkg-note, .pkg-includes li, .pkg-terms, .pilot-side-block p, .coach-bio,
         .team-together p, .testimonial-attr span, .cta-body, .cta-email-note, .weg-next, .weg-note) {
     color: #B8B1A6;
   }
+
+
+  /* Kleine Gold-Labels (E3.2, 5.1). --gold-dark bleibt. Auf dunklen Flaechen
+     Sun Touch, auf Summit Mist und Weiss eine abgedunkelte Ableitung des
+     dunklen Gold-Gradient-Endes (Projektregel fuer kleine Labels auf Sand). */
+  :is(.section-dark, .section-earth, .section-horizon, .pb-text-col, .cta-section)
+    :is(.label-gold, .pc-phase, .pkg-level, .coach-tag, .oc-tag) { color: var(--sun); }
+  :is(.section-light, .section-white) :is(.label-gold, .pc-phase, .pkg-level, .coach-tag, .oc-tag) { color: #8D651E; }
 
   .team-grid-portrait { grid-template-columns: 300px 1fr; }
   .research-strip-3 { grid-template-columns: repeat(3, 1fr); }
@@ -367,7 +440,7 @@
     .hero-title { font-size: 38px; }
     .photo-break { grid-template-columns: 1fr; }
     .pb-image-col { min-height: 300px; }
-    .pb-text-col { padding: 48px 28px; }
+    .pb-text-col { padding: 88px 28px; }
     .tension-grid, .dimensions-intro, .team-grid, .outcomes-grid, .process-row, .research-strip, .testimonial-grid, .pilot-wrap { grid-template-columns: 1fr; }
     .dimensions-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
     .partner-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
@@ -388,6 +461,7 @@
 </script>
 </head>
 <body>
+<div class="th-atmo" aria-hidden="true"></div>
 
 <nav class="top">
   <a href="/" class="logo">David Liebnau<em>.</em></a>
@@ -423,7 +497,7 @@
 
 <!-- ════════ WAS DU ZURUECKBEKOMMST ════════ -->
 <section class="section-light">
-  <div class="label-light">Rückmeldung</div>
+  <div class="label-gold">Rückmeldung</div>
   <div class="divider-faint"></div>
   <h2 class="sec-h2-light">Was du zurückbekommst.</h2>
   <p class="sec-lead-light">Bei Stipendien: eine schriftliche Rückmeldung der Person, die du unterstützt hast, mit ihrer Zustimmung. Kein Marketingmaterial, sondern die eigenen Worte eines jungen Menschen darüber, was sich verändert hat.</p>
@@ -478,7 +552,7 @@
 
 <!-- ════════ KOSTEN ════════ -->
 <section class="section-light">
-  <div class="label-light">Kosten</div>
+  <div class="label-gold">Kosten</div>
   <div class="divider-faint"></div>
   <h2 class="sec-h2-light">Kosten.</h2>
   <p class="sec-lead-light">Für die Gründungsgruppe gilt ein Einführungspreis. Die Kosten pro Platz besprechen wir im Gespräch. Es gelten die <a href="/agb/" style="color:var(--gold-dark); text-decoration:underline;">AGB</a>.</p>
