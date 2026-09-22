@@ -37,12 +37,13 @@
     --gold: #FFDB9D;
     --gold-dark: #A87D34;
     --sun: #E0B76F;
-    --morning-dew: #83A16E;
+    --morning-dew: #83A18E;
     --open-horizon: #05404C;
     --summit: #FFF8E6;
     --stone: #D7D0C2;
     --warm-gray: #A8A196;
     --slate: #6E6661;
+    --seam: 88px;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -313,11 +314,50 @@
   .footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: #fff; }
   .footer-sub { font-size: 12px; color: var(--warm-gray); margin-top: 3px; }
   .footer-contact { font-size: 13px; color: var(--warm-gray); text-align: right; }
-  .footer-nav { font-size: 12px; color: var(--warm-gray); letter-spacing: 0.06em; margin-top: 8px; text-align: right; }
+  .footer-nav { font-size: 12px; color: var(--warm-gray); letter-spacing: 0.06em; margin-top: 8px; text-align: right;
+    /* Die Links stehen ohne Leerzeichen hintereinander; als Flex-Zeile darf die Kette
+       zwischen den Eintraegen umbrechen, sonst laeuft sie bei 320/360px ueber. */
+    display: flex; flex-wrap: wrap; justify-content: flex-end; }
   .footer-nav a { color: var(--warm-gray); text-decoration: none; border-bottom: 1px solid rgba(168,125,52,0.4); }
   .footer-nav a:hover { color: var(--sun); }
   .footer-nav a.is-current { color: var(--sun); border-bottom-color: transparent; }
   .footer-nav .sep { margin: 0 8px; opacity: 0.5; }
+
+
+  /* NAEHTE ZWISCHEN DUNKLEN TOENEN (E3 neu, 22.09.2026)
+     Folgt auf eine dunkle Flaeche eine dunkle in anderem Ton, laufen beide
+     ineinander aus: die obere bis zum Mittelton an der Kante, die untere von
+     dort in ihren eigenen Ton. Nur Hintergrund, kein Overlay. --seam ist das
+     obere und untere Padding der Sektionen (88px), der Verlauf liegt also nie
+     hinter Text oder Karten. Uebergaenge dunkel/hell bleiben hart. */
+  .section-dark { --tone: var(--midnight); }
+  .section-earth, .cta-section { --tone: var(--earth); }
+  .section-horizon { --tone: var(--open-horizon); }
+  .from-dark { --prev: var(--midnight); }
+  .from-earth { --prev: var(--earth); }
+  .from-horizon { --prev: var(--open-horizon); }
+  .to-dark { --next: var(--midnight); }
+  .to-earth { --next: var(--earth); }
+  .to-horizon { --next: var(--open-horizon); }
+  :is(.from-dark, .from-earth, .from-horizon, .to-dark, .to-earth, .to-horizon) {
+    background-image: linear-gradient(to bottom,
+      var(--prev, var(--tone)) calc(-1 * var(--seam)),
+      var(--tone) var(--seam),
+      var(--tone) calc(100% - var(--seam)),
+      var(--next, var(--tone)) calc(100% + var(--next-reach, var(--seam))));
+  }
+  /* Die Fusszeile hat nur 36px Padding: dort laeuft der CTA allein ganz aus. */
+  .cta-section.to-dark { --next-reach: 0px; }
+
+  /* Kleine Sekundaerschrift auf Erd- und Horizontflaechen. --warm-gray bleibt,
+     hier reicht es auf den halbtransparenten Karten nicht fuer 4,5:1.
+     #B8B1A6 kommt auf der hellsten Karte (#0F4853) auf 4,77:1. */
+  :is(.section-earth, .section-horizon, .pb-text-col.earth, .pb-text-col.horizon, .cta-section)
+    :is(.sec-lead-dark, .pb-caption, .tension-body, .research-finding, .dim-body, .pc-items li,
+        .pkg-for, .pkg-note, .pkg-includes li, .pkg-terms, .pilot-side-block p, .coach-bio,
+        .team-together p, .testimonial-attr span, .cta-body, .cta-email-note, .weg-next, .weg-note) {
+    color: #B8B1A6;
+  }
 
   .team-grid-portrait { grid-template-columns: 300px 1fr; }
   .research-strip-3 { grid-template-columns: repeat(3, 1fr); }
@@ -445,7 +485,7 @@
 </section>
 
 <!-- ════════ NÄCHSTE SCHRITTE — VIER NACHFRAGEZUSTÄNDE ════════ -->
-<section class="section-horizon" id="naechste-schritte">
+<section class="section-horizon to-earth" id="naechste-schritte">
   <div class="label-light">Nächste Schritte</div>
   <div class="divider-faint"></div>
   <h2 class="sec-h2-dark">Vier Wege, je nachdem<br/>wo ihr gerade steht.</h2>
@@ -480,7 +520,7 @@
 </section>
 
 <!-- ════════ ABSCHLUSS-CTA ════════ -->
-<div class="cta-section">
+<div class="cta-section from-horizon to-dark">
   <h2 class="cta-title">In 30 Minuten wissen wir,<br/><em>ob es passt.</em></h2>
   <p class="cta-body">In 30 Minuten erforschen wir gemeinsam, ob dieses Programm das Richtige ist, wie die sechs Tage ablaufen und welchen Mehrwert es bringt.</p>
   <div class="cta-buttons">
