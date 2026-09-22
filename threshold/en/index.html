@@ -56,7 +56,7 @@
     --surface-dark: transparent;
     --surface-earth: rgba(57, 50, 49, var(--earth-alpha)); /* Earth */
     --surface-horizon: var(--open-horizon);
-    --th-atmo-bild: url(/assets/threshold-atmo.avif);
+    --th-atmo-bild: url(/assets/threshold-atmo-quer.avif);
     --th-atmo-schleier: 0.62; /* wie Founder */
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -446,6 +446,86 @@
     :is(.label-gold, .pc-phase, .pkg-level, .coach-tag, .oc-tag) { color: var(--sun); }
   :is(.section-light, .section-white) :is(.label-gold, .pc-phase, .pkg-level, .coach-tag, .oc-tag, .agb-link) { color: #8D651E; }
 
+  /* Lichtebene (E3.3): rechte Seite der Markengrafik ab x 640, gespiegelt und
+     um 30 Grad im Uhrzeigersinn gedreht, fest ins Bild gerechnet. Das Licht
+     steigt von links unten nach rechts oben. Der Bildmittelpunkt sitzt etwas
+     links unterhalb der Mitte (x 250, y 400 im gespiegelten Ausschnitt), damit
+     der hellste Punkt bei Schleier 0,62 an jeder Scrollposition 4,5:1 zulaesst. Hochformat eigene Fassung,
+     damit die Diagonale auch schmal erhalten bleibt. */
+  @media (max-aspect-ratio: 3/4) { :root { --th-atmo-bild: url(/assets/threshold-atmo-hoch.avif); } }
+
+  /* AUFGEHENDES LICHT UEBER DEN EARTH-FLAECHEN (E3.3, 22.09.2026)
+     Jede Earth-Sektion traegt eine weiche, von links nach rechts ansteigende
+     Bergkante (Grat) in Midnight Blue und dahinter einen Schein in Sun Touch.
+     Von Flaeche zu Flaeche steigt der Schein hoeher und wird heller
+     (.earth-step-1 Morgengrauen bis .earth-step-4 Morgen); die Earth-Toenung
+     wird nach rechts oben lichter (60deg, wie die Diagonale der Lichtebene).
+     Alles liegt in ::before hinter dem Inhalt. Oben und unten blendet es ueber
+     --grat-fade in die ruhige Toenung aus E3.2 zurueck: an den Kanten liegt
+     reine Toenung, die Naehte bleiben unveraendert. Die Textspalten der
+     Foto-Bloecke und der CTA sind ausgenommen. */
+  .section-earth:is(.earth-step-1, .earth-step-2, .earth-step-3, .earth-step-4) {
+    position: relative; isolation: isolate;
+    --grat-fade: 160px;
+    /* Ueberblendzonen nur dort, wo eine dunkle Nachbarflaeche per Naht anschliesst */
+    --m-o0: 0px; --m-o1: 0px; --m-u0: 0px; --m-u1: 0px;
+    --grat-hoehe: 52%;
+    --grat-unten: calc(var(--m-u1) + 24px);
+    --schein-x: 80%;
+    --schein-rx: 24%;
+    --schein-ry: 240px;
+    --grat-a: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 60' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%2304171F' stop-opacity='.55'/%3E%3Cstop offset='.7' stop-color='%2304171F' stop-opacity='.25'/%3E%3Cstop offset='1' stop-color='%2304171F' stop-opacity='0'/%3E%3C/linearGradient%3E%3Cfilter id='b' x='-10%25' y='-30%25' width='120%25' height='160%25'%3E%3CfeGaussianBlur stdDeviation='1.4 1'/%3E%3C/filter%3E%3C/defs%3E%3Cpath d='M0 46 C14 44,22 40,32 41 C44 42,50 33,60 31 C70 29,78 22,88 19 C93 18,97 17,100 16 L100 60 L0 60 Z' fill='url%28%23g%29' filter='url%28%23b%29'/%3E%3C/svg%3E");
+    --grat-b: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 60' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%2304171F' stop-opacity='.55'/%3E%3Cstop offset='.7' stop-color='%2304171F' stop-opacity='.25'/%3E%3Cstop offset='1' stop-color='%2304171F' stop-opacity='0'/%3E%3C/linearGradient%3E%3Cfilter id='b' x='-10%25' y='-30%25' width='120%25' height='160%25'%3E%3CfeGaussianBlur stdDeviation='1.4 1'/%3E%3C/filter%3E%3C/defs%3E%3Cpath d='M0 48 C10 47,20 42,30 43 C40 44,48 38,58 35 C68 32,74 27,84 25 C92 23,96 20,100 18 L100 60 L0 60 Z' fill='url%28%23g%29' filter='url%28%23b%29'/%3E%3C/svg%3E");
+    --grat-c: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 60' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%2304171F' stop-opacity='.55'/%3E%3Cstop offset='.7' stop-color='%2304171F' stop-opacity='.25'/%3E%3Cstop offset='1' stop-color='%2304171F' stop-opacity='0'/%3E%3C/linearGradient%3E%3Cfilter id='b' x='-10%25' y='-30%25' width='120%25' height='160%25'%3E%3CfeGaussianBlur stdDeviation='1.4 1'/%3E%3C/filter%3E%3C/defs%3E%3Cpath d='M0 44 C12 45,18 41,28 39 C38 37,46 39,56 34 C66 29,76 26,86 21 C92 19,96 18,100 17 L100 60 L0 60 Z' fill='url%28%23g%29' filter='url%28%23b%29'/%3E%3C/svg%3E");
+    /* Grundflaeche: Toenung nur in den Nahtzonen, innen uebernimmt ::before */
+    background-color: transparent;
+    background-image: linear-gradient(to bottom,
+      var(--prev, var(--tone)) calc(-1 * var(--prev-reach, var(--seam))),
+      var(--tone) var(--m-o0),
+      transparent var(--m-o1),
+      transparent calc(100% - var(--m-u1)),
+      var(--tone) calc(100% - var(--m-u0)),
+      var(--next, var(--tone)) calc(100% + var(--next-reach, var(--seam))));
+  }
+  .section-earth:is(.earth-step-1, .earth-step-2, .earth-step-3, .earth-step-4):is(.from-dark, .from-horizon) {
+    --m-o0: var(--seam); --m-o1: calc(var(--seam) + var(--grat-fade));
+  }
+  .section-earth:is(.earth-step-1, .earth-step-2, .earth-step-3, .earth-step-4):is(.to-dark, .to-horizon) {
+    --m-u0: var(--seam); --m-u1: calc(var(--seam) + var(--grat-fade));
+  }
+  .section-earth:is(.earth-step-1, .earth-step-2, .earth-step-3, .earth-step-4)::before {
+    content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+    background:
+      var(--grat) left bottom var(--grat-unten) / 100% var(--grat-hoehe) no-repeat,
+      radial-gradient(ellipse var(--schein-rx) var(--schein-ry) at var(--schein-x)
+        calc(100% - var(--grat-unten) - 0.733 * var(--grat-hoehe) - var(--schein-hub)),
+        rgba(224, 183, 111, var(--schein-a)), rgba(224, 183, 111, 0) 70%),
+      linear-gradient(60deg, rgba(57, 50, 49, var(--toenung-lu)), rgba(57, 50, 49, var(--toenung-ro)));
+    -webkit-mask-image: linear-gradient(to bottom, transparent var(--m-o0), #000 var(--m-o1),
+      #000 calc(100% - var(--m-u1)), transparent calc(100% - var(--m-u0)));
+    mask-image: linear-gradient(to bottom, transparent var(--m-o0), #000 var(--m-o1),
+      #000 calc(100% - var(--m-u1)), transparent calc(100% - var(--m-u0)));
+  }
+  /* Stufen: Schein (Deckkraft, Hoehe ueber der Kante), Toenung links unten -> rechts oben */
+  .earth-step-1 { --grat: var(--grat-a); --schein-a: 0.06; --schein-hub: 2%;  --toenung-lu: 0.94; --toenung-ro: 0.84; }
+  /* Stufe 2 liegt auf der Hauptseite hinter der Preisspalte: Schein und Aufhellung
+     so weit zurueckgenommen, dass kleine Schrift dort 4,5:1 haelt. */
+  .earth-step-2 { --grat: var(--grat-b); --schein-a: 0.10; --schein-hub: 7%;  --toenung-lu: 0.93; --toenung-ro: 0.78; }
+  .earth-step-3 { --grat: var(--grat-c); --schein-a: 0.20; --schein-hub: 12%; --toenung-lu: 0.92; --toenung-ro: 0.62; }
+  .earth-step-4 { --grat: var(--grat-a); --schein-a: 0.26; --schein-hub: 17%; --toenung-lu: 0.90; --toenung-ro: 0.50; }
+  @media (max-width: 700px) {
+    /* Handy: Kante flacher, Schein sitzt ueber dem hoechsten Punkt der Kante */
+    .section-earth:is(.earth-step-1, .earth-step-2, .earth-step-3, .earth-step-4) {
+      --grat-hoehe: 360px; --schein-x: 74%; --schein-rx: 36%; --schein-ry: 150px;
+    }
+    /* Schmal liegt der Schein zwangslaeufig hinter Kartentext (Zitate, Rollenzeilen).
+       Damit 4,5:1 haelt, steigt er hier nur leise; der Aufgang traegt vor allem die Toenung. */
+    .earth-step-1 { --schein-hub: 20px;  --schein-a: 0.04; }
+    .earth-step-2 { --schein-hub: 60px;  --schein-a: 0.06; }
+    .earth-step-3 { --schein-hub: 100px; --schein-a: 0.08; }
+    .earth-step-4 { --schein-hub: 140px; --schein-a: 0.10; }
+  }
+
   .team-grid-portrait { grid-template-columns: 300px 1fr; }
   .research-strip-3 { grid-template-columns: repeat(3, 1fr); }
 
@@ -653,7 +733,7 @@
 </section>
 
 <!-- ════════ C — WHY THIS COMBINATION ════════ -->
-<section class="section-earth from-dark">
+<section class="section-earth from-dark earth-step-1">
   <div class="label-light">Why This Combination</div>
   <div class="divider-faint"></div>
   <h2 class="sec-h2-dark">Modern leadership science.<br/>Old ways of finding clarity.</h2>
@@ -780,7 +860,7 @@
 </section>
 
 <!-- ════════ E — THE PILOT (PRACTICAL DETAILS) ════════ -->
-<section class="section-earth from-horizon" id="investition">
+<section class="section-earth from-horizon earth-step-2" id="investition">
   <div class="label-light">The Investment</div>
   <div class="divider-faint"></div>
   <h2 class="sec-h2-dark">Founding Group 2027.</h2>
@@ -868,7 +948,7 @@
 </div>
 
 <!-- ════════ WHY PARENTS TRUST THIS PROGRAM ════════ -->
-<section class="section-earth to-dark">
+<section class="section-earth to-dark earth-step-3">
   <div class="label-light">For Parents</div>
   <div class="divider-faint"></div>
   <h2 class="sec-h2-dark">Why parents trust<br/>this program.</h2>
@@ -926,7 +1006,7 @@
 </section>
 
 <!-- ════════ TESTIMONIALS ════════ -->
-<section class="section-earth from-dark to-horizon">
+<section class="section-earth from-dark to-horizon earth-step-4">
   <div class="label-light">What People Say After Working With David</div>
   <div class="divider-faint"></div>
   <h2 class="sec-h2-dark">Drawn from years of<br/>leadership and coaching work.</h2>
