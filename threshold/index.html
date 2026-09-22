@@ -31,12 +31,13 @@
     --gold: #FFDB9D;
     --gold-dark: #A87D34;
     --sun: #E0B76F;
-    --morning-dew: #83A16E;
+    --morning-dew: #83A18E;
     --open-horizon: #05404C;
     --summit: #FFF8E6;
     --stone: #D7D0C2;
     --warm-gray: #A8A196;
     --slate: #6E6661;
+    --seam: 88px;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -192,6 +193,7 @@
   .pkg-note { font-size: 12px; color: var(--warm-gray); margin-bottom: 4px; }
   .pkg-includes { list-style: none; margin-top: 28px; }
   .pkg-includes li { font-size: 13px; color: var(--warm-gray); padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.06); line-height: 1.5; }
+  .pkg-terms { color: var(--warm-gray); }
   .pkg-includes li::before { content: '✓  '; color: var(--morning-dew); font-size: 12px; }
   .pilot-side { padding: 48px 40px; background: rgba(255,255,255,0.03); display: flex; flex-direction: column; justify-content: center; gap: 28px; }
   .pilot-side-block .label-gold { color: var(--sun); }
@@ -315,11 +317,50 @@
   .footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: #fff; }
   .footer-sub { font-size: 12px; color: var(--warm-gray); margin-top: 3px; }
   .footer-contact { font-size: 13px; color: var(--warm-gray); text-align: right; }
-  .footer-nav { font-size: 12px; color: var(--warm-gray); letter-spacing: 0.06em; margin-top: 8px; text-align: right; }
+  .footer-nav { font-size: 12px; color: var(--warm-gray); letter-spacing: 0.06em; margin-top: 8px; text-align: right;
+    /* Die Links stehen ohne Leerzeichen hintereinander; als Flex-Zeile darf die Kette
+       zwischen den Eintraegen umbrechen, sonst laeuft sie bei 320/360px ueber. */
+    display: flex; flex-wrap: wrap; justify-content: flex-end; }
   .footer-nav a { color: var(--warm-gray); text-decoration: none; border-bottom: 1px solid rgba(168,125,52,0.4); }
   .footer-nav a:hover { color: var(--sun); }
   .footer-nav a.is-current { color: var(--sun); border-bottom-color: transparent; }
   .footer-nav .sep { margin: 0 8px; opacity: 0.5; }
+
+
+  /* NAEHTE ZWISCHEN DUNKLEN TOENEN (E3 neu, 22.09.2026)
+     Folgt auf eine dunkle Flaeche eine dunkle in anderem Ton, laufen beide
+     ineinander aus: die obere bis zum Mittelton an der Kante, die untere von
+     dort in ihren eigenen Ton. Nur Hintergrund, kein Overlay. --seam ist das
+     obere und untere Padding der Sektionen (88px), der Verlauf liegt also nie
+     hinter Text oder Karten. Uebergaenge dunkel/hell bleiben hart. */
+  .section-dark { --tone: var(--midnight); }
+  .section-earth, .cta-section { --tone: var(--earth); }
+  .section-horizon { --tone: var(--open-horizon); }
+  .from-dark { --prev: var(--midnight); }
+  .from-earth { --prev: var(--earth); }
+  .from-horizon { --prev: var(--open-horizon); }
+  .to-dark { --next: var(--midnight); }
+  .to-earth { --next: var(--earth); }
+  .to-horizon { --next: var(--open-horizon); }
+  :is(.from-dark, .from-earth, .from-horizon, .to-dark, .to-earth, .to-horizon) {
+    background-image: linear-gradient(to bottom,
+      var(--prev, var(--tone)) calc(-1 * var(--seam)),
+      var(--tone) var(--seam),
+      var(--tone) calc(100% - var(--seam)),
+      var(--next, var(--tone)) calc(100% + var(--next-reach, var(--seam))));
+  }
+  /* Die Fusszeile hat nur 36px Padding: dort laeuft der CTA allein ganz aus. */
+  .cta-section.to-dark { --next-reach: 0px; }
+
+  /* Kleine Sekundaerschrift auf Erd- und Horizontflaechen. --warm-gray bleibt,
+     hier reicht es auf den halbtransparenten Karten nicht fuer 4,5:1.
+     #B8B1A6 kommt auf der hellsten Karte (#0F4853) auf 4,77:1. */
+  :is(.section-earth, .section-horizon, .pb-text-col.earth, .pb-text-col.horizon, .cta-section)
+    :is(.sec-lead-dark, .pb-caption, .tension-body, .research-finding, .dim-body, .pc-items li,
+        .pkg-for, .pkg-note, .pkg-includes li, .pkg-terms, .pilot-side-block p, .coach-bio,
+        .team-together p, .testimonial-attr span, .cta-body, .cta-email-note, .weg-next, .weg-note) {
+    color: #B8B1A6;
+  }
 
   .team-grid-portrait { grid-template-columns: 300px 1fr; }
   .research-strip-3 { grid-template-columns: repeat(3, 1fr); }
@@ -422,7 +463,7 @@
 </div>
 
 <!-- ════════ B — DIE ENTWICKLUNGSKANTE, BENANNT ════════ -->
-<section class="section-dark">
+<section class="section-dark to-earth">
   <div class="label-light">Das Handwerk</div>
   <div class="divider-faint"></div>
   <h2 class="sec-h2-dark">Die Kante, an der das Alte nicht mehr trägt, und das Neue noch keine Form hat.</h2>
@@ -527,7 +568,7 @@
 </section>
 
 <!-- ════════ C — WARUM DIESE KOMBINATION ════════ -->
-<section class="section-earth">
+<section class="section-earth from-dark">
   <div class="label-light">Warum diese Kombination</div>
   <div class="divider-faint"></div>
   <h2 class="sec-h2-dark">Moderne Führungswissenschaft.<br/>Alte Wege zur Klarheit.</h2>
@@ -572,7 +613,7 @@
 </div>
 
 <!-- ════════ D — DAS PROGRAMM, TAG FÜR TAG ════════ -->
-<section class="section-horizon">
+<section class="section-horizon to-earth">
   <div class="label-light">Wie sich die sechs Tage entfalten</div>
   <div class="divider-faint"></div>
   <h2 class="sec-h2-dark">The Threshold Program,<br/>Tag für Tag.</h2>
@@ -652,7 +693,7 @@
 </section>
 
 <!-- ════════ E — GRÜNDUNGSGRUPPE 2027 (PRAKTISCHE DETAILS) ════════ -->
-<section class="section-earth" id="investition">
+<section class="section-earth from-horizon" id="investition">
   <div class="label-light">Die Investition</div>
   <div class="divider-faint"></div>
   <h2 class="sec-h2-dark">Gründungsgruppe 2027.</h2>
@@ -672,7 +713,7 @@
         <li>Vollständige Begleitung durch David Liebnau während der gesamten Zeit</li>
         <li>Ein Kickoff-Gespräch vor Programmstart und ein 6-wöchiger Integrations-Sprint danach</li>
       </ul>
-      <p style="margin-top:24px; font-size:13px; color:var(--warm-gray); line-height:1.75;">Mit der Anmeldebestätigung wird eine Anzahlung von 20 Prozent fällig, damit ist dein Platz reserviert. Der Rest ist 30 Tage vor Beginn fällig. Ratenzahlung ist auf Anfrage möglich. Enthalten sind Unterkunft und Verpflegung vor Ort, alle Materialien und die Begleitung über sechs Wochen nach dem Programm. Anreise und Versicherungen kommen dazu. Es gelten die <a href="/agb/" style="color:var(--sun); text-decoration:underline;">AGB</a> und die <a href="/widerruf/" style="color:var(--sun); text-decoration:underline;">Widerrufsbelehrung</a>.</p>
+      <p class="pkg-terms" style="margin-top:24px; font-size:13px; line-height:1.75;">Mit der Anmeldebestätigung wird eine Anzahlung von 20 Prozent fällig, damit ist dein Platz reserviert. Der Rest ist 30 Tage vor Beginn fällig. Ratenzahlung ist auf Anfrage möglich. Enthalten sind Unterkunft und Verpflegung vor Ort, alle Materialien und die Begleitung über sechs Wochen nach dem Programm. Anreise und Versicherungen kommen dazu. Es gelten die <a href="/agb/" style="color:var(--sun); text-decoration:underline;">AGB</a> und die <a href="/widerruf/" style="color:var(--sun); text-decoration:underline;">Widerrufsbelehrung</a>.</p>
     </div>
     <div class="pilot-side">
       <div class="pilot-side-block">
@@ -740,7 +781,7 @@
 </div>
 
 <!-- ════════ WARUM ELTERN DIESEM PROGRAMM VERTRAUEN ════════ -->
-<section class="section-earth">
+<section class="section-earth to-dark">
   <div class="label-light">Für Eltern</div>
   <div class="divider-faint"></div>
   <h2 class="sec-h2-dark">Warum Eltern diesem<br/>Programm vertrauen.</h2>
@@ -772,7 +813,7 @@
 </section>
 
 <!-- ════════ FACILITATOR ════════ -->
-<section class="section-dark">
+<section class="section-dark from-earth to-earth">
   <div class="label-light">Wer das begleitet</div>
   <div class="divider-faint"></div>
   <h2 class="sec-h2-dark">Begleitet von<br/>David Liebnau.</h2>
@@ -798,7 +839,7 @@
 </section>
 
 <!-- ════════ TESTIMONIALS ════════ -->
-<section class="section-earth">
+<section class="section-earth from-dark to-horizon">
   <div class="label-light">Was Menschen sagen, nachdem sie mit David gearbeitet haben</div>
   <div class="divider-faint"></div>
   <h2 class="sec-h2-dark">Aus Jahren der Führungs-<br/>und Coaching-Arbeit.</h2>
@@ -824,7 +865,7 @@
 </section>
 
 <!-- ════════ PARTNERSCHAFT MIT THRESHOLD ════════ -->
-<section class="section-horizon" id="partners">
+<section class="section-horizon from-earth" id="partners">
   <div class="label-light">Wenn jemand anderes zahlt</div>
   <div class="divider-faint"></div>
   <h2 class="sec-h2-dark">Wenn jemand anderes den Platz bezahlt.</h2>
@@ -864,7 +905,7 @@
 </section>
 
 <!-- ════════ NÄCHSTE SCHRITTE — VIER NACHFRAGEZUSTÄNDE ════════ -->
-<section class="section-horizon" id="naechste-schritte">
+<section class="section-horizon to-earth" id="naechste-schritte">
   <div class="label-light">Nächste Schritte</div>
   <div class="divider-faint"></div>
   <h2 class="sec-h2-dark">Vier Wege, je nachdem<br/>wo du gerade stehst.</h2>
@@ -899,7 +940,7 @@
 </section>
 
 <!-- ════════ CTA ════════ -->
-<div class="cta-section">
+<div class="cta-section from-horizon to-dark">
   <h2 class="cta-title">Starte jetzt deinen schöpferischen Dialog<br/><em>mit David.</em></h2>
   <p class="cta-body">Schreib mir eine kurze Mail. Dann führen wir ein unverbindliches Bewerbungsgespräch und schauen gemeinsam, ob THRESHOLD gerade der richtige nächste Schritt für dich ist. Bewerbungen sind jetzt offen für die Gründungsgruppe 2027 — bis zu zehn Plätze, ein Gespräch nach dem anderen.</p>
   <div class="cta-buttons">
