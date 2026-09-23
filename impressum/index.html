@@ -67,7 +67,7 @@
       <span class="sep">&middot;</span>
       <a href="/#about">&Uuml;ber mich</a>
       <span class="sep">&middot;</span>
-      <a href="/" style="color: var(--color-eyebrow);">DE</a>
+      <a class="is-current" href="/">DE</a>
       <span class="sep">/</span>
       <a href="/index-en.html">EN</a>
     </div>
@@ -167,5 +167,17 @@
   </div>
 </footer>
 
+<script>
+  /* Leiste am Seitenanfang durchsichtig, beim Scrollen mit eigenem Hintergrund.
+     Dieselbe Steuerung wie auf den uebrigen Seiten; hier fehlte sie, dadurch
+     stand die Navigation beim Scrollen ohne Grund ueber dem Inhalt. */
+  (function () {
+    var nav = document.querySelector('nav.top');
+    if (!nav) return;
+    function updateNav() { nav.classList.toggle('nav-scrolled', window.scrollY > 60); }
+    window.addEventListener('scroll', updateNav, { passive: true });
+    updateNav();
+  })();
+</script>
 </body>
 </html>
