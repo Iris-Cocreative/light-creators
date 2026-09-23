@@ -41,6 +41,17 @@ python3 tools/pruefwerkzeug/pruefen.py nav           # nur die Leiste, oben und 
 python3 tools/pruefwerkzeug/pruefen.py statisch      # Links, Sprungmarken, Kopfdaten, Events
 ```
 
+Strukturierte Daten prüft nicht dieses Werkzeug, sondern der Validator von
+schema.org. Er nimmt auch einzelne Blöcke ohne Veröffentlichung an:
+
+```bash
+curl -s -X POST https://validator.schema.org/validate --data-urlencode url=https://davidliebnau.com/threshold/
+```
+
+Die Antwort beginnt mit `)]}'`, diese Zeile vor dem Auswerten abschneiden.
+Googles Test für Rich-Suchergebnisse braucht dagegen eine öffentlich
+erreichbare Seite und einen Browser: `search.google.com/test/rich-results`.
+
 Ohne Zusatz laufen sie auf drei stellvertretenden Seiten: Startseite (langer
 Foto-Hero), `/fuehren/` (heller Hero) und eine Episodenseite aus der Vorlage.
 Vollständig mit `--alle`, eigene Auswahl mit `--seiten / /podcast.html`.
