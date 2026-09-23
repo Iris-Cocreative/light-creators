@@ -56,6 +56,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Lange Woerter und ausgeschriebene URLs duerfen umbrechen. Ohne das liefen
+   bei 320px die Ueberschrift der AGB ("Geschaeftsbedingungen"), zwei
+   Episodentitel und die ausgeschriebenen Links der Datenschutzerklaerung
+   ueber den rechten Rand. */
+h1, h2, h3, h4, h5, p, li, dd, dt, td, th, figcaption, a { overflow-wrap: break-word; }
+
 img { max-width: 100%; display: block; }
 
 h1, h2, h3, h4, h5, h6 {
@@ -2259,6 +2265,9 @@ footer {
   .ep-hero-grid { grid-template-columns: 1fr; }
   .ep-hero-cover { display: none; }
 }
+/* Ohne min-width: 0 bestimmt das laengste Wort der Ueberschrift die Mindestbreite
+   der Rasterspalte; bei 320px lief die Spalte dadurch ueber den Rand. */
+.ep-hero-text { min-width: 0; }
 .ep-back {
   display: inline-block;
   color: var(--color-gold);
