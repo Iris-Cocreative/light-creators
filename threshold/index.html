@@ -571,6 +571,28 @@
     .earth-step-4 { --schein-a: 0.18; }
   }
 
+
+  /* STIMMEN MIT FOTO (23.09.2026)
+     Aufbau und Klassennamen wie auf der Startseite, damit die Stimmen ueberall
+     gleich funktionieren; die Regeln fuer .testimonial-photo stammen von dort.
+     Die Portraets sind freigestellt, also transparente Kreise. Auf der
+     Startseite liegt dahinter ein heller Ton. Hier stehen die Stimmen auf
+     Midnight Blue: statt des hellen Tons eine sehr leichte weisse Flaeche mit
+     1px Kante, damit die Kreise nicht ins Dunkle ausfransen. Kein Schatten,
+     keine neuen Farbwerte. Name und Rolle behalten ihre Threshold-Typografie. */
+  .testimonial-attr { display: flex; align-items: center; gap: 16px; }
+  .testimonial-photo {
+    flex: 0 0 auto;
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .testimonial-ident { display: block; min-width: 0; margin-top: 0; }
+  .testimonial-attr .testimonial-name { display: block; color: var(--sun); font-size: 12px; letter-spacing: 0.03em; margin-top: 0; }
+  .testimonial-role { display: block; font-size: 11px; margin-top: 2px; }
+
   .team-grid-portrait { grid-template-columns: 300px 1fr; }
   .research-strip-3 { grid-template-columns: repeat(3, 1fr); }
 
@@ -1057,19 +1079,43 @@
   <div class="testimonial-grid">
     <div class="testimonial-card">
       <div class="testimonial-quote">„Ich habe David als fantastischen Trainer kennengelernt, mit einer besonderen Stärke und Authentizität, wenn es um das Thema Selbstführung geht. Seine Begleitung und seine Impulse waren von unschätzbarem Wert dabei, unseren neu ernannten Führungskräften zu helfen, zentrale Führungskompetenzen aufzubauen und durch diese unsicheren Zeiten zu navigieren."</div>
-      <div class="testimonial-attr">Viktor Szücs<span>Senior Director Leadership Development &amp; Cultural Transformation, Lufthansa Group · aus dem Englischen übersetzt</span></div>
+      <div class="testimonial-attr">
+        <img class="testimonial-photo" src="/assets/testimonials/viktor-szuecs.webp" width="320" height="320" loading="lazy" alt="" />
+        <span class="testimonial-ident">
+          <span class="testimonial-name">Viktor Szücs</span>
+          <span class="testimonial-role">Senior Director Leadership Development &amp; Cultural Transformation, Lufthansa Group · aus dem Englischen übersetzt</span>
+        </span>
+      </div>
     </div>
     <div class="testimonial-card">
       <div class="testimonial-quote">„David gehört zu den stärksten Learning-&amp;-Development-Fachleuten, mit denen ich je zusammenarbeiten durfte."</div>
-      <div class="testimonial-attr">Pa M.K. Sinyan<span>Regional Managing Partner EMEA, Gallup · aus dem Englischen übersetzt</span></div>
+      <div class="testimonial-attr">
+        <img class="testimonial-photo" src="/assets/testimonials/pa-sinyan.webp" width="320" height="320" loading="lazy" alt="" />
+        <span class="testimonial-ident">
+          <span class="testimonial-name">Pa M.K. Sinyan</span>
+          <span class="testimonial-role">Regional Managing Partner EMEA, Gallup · aus dem Englischen übersetzt</span>
+        </span>
+      </div>
     </div>
     <div class="testimonial-card">
       <div class="testimonial-quote">„Du vermittelst mit besonderer Gabe, festgetrampelte Pfade, Sackgassen und Hamsterräder zu verlassen, und mit neuer Energie und Motivation die Dinge zu verfolgen, auf die es ankommt. Mit Hilfe deiner Methoden konnte ich meinen inneren Antrieb nicht nur wiederentdecken, sondern nachhaltig auf ein höheres Level heben."</div>
-      <div class="testimonial-attr">Peter Koch<span>Deputy Head of Sales Digital Media EMEA, Felix Schoeller</span></div>
+      <div class="testimonial-attr">
+        <img class="testimonial-photo" src="/assets/testimonials/peter-koch.webp" width="320" height="320" loading="lazy" alt="" />
+        <span class="testimonial-ident">
+          <span class="testimonial-name">Peter Koch</span>
+          <span class="testimonial-role">Deputy Head of Sales Digital Media EMEA, Felix Schoeller</span>
+        </span>
+      </div>
     </div>
     <div class="testimonial-card">
       <div class="testimonial-quote">„Ich habe David in prozessorientierten Workshops erlebt. Jedes Mal war ich beeindruckt von der Leichtigkeit, mit der er die Teilnehmenden durch diese Formate geführt hat. Wie ein warmes Messer durch Butter: immer wieder eine zielführende Frage oder inspirierende Geschichte zur Hand. Er macht die Erkundung des Ungewissen zu einem wundervollen Erlebnis."</div>
-      <div class="testimonial-attr">Martin Braun<span>Leadership Coach &amp; Berater</span></div>
+      <div class="testimonial-attr">
+        <img class="testimonial-photo" src="/assets/testimonials/martin-braun.webp" width="320" height="320" loading="lazy" alt="" />
+        <span class="testimonial-ident">
+          <span class="testimonial-name">Martin Braun</span>
+          <span class="testimonial-role">Leadership Coach &amp; Berater</span>
+        </span>
+      </div>
     </div>
   </div>
 </section>
