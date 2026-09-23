@@ -356,7 +356,7 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
       <span class="sep">·</span>
       <a href="../index.html#about">Über mich</a>
       <span class="sep">·</span>
-      <a href="../index.html" style="color: var(--accent);">DE</a>
+      <a class="is-current" href="../index.html">DE</a>
       <span class="sep">/</span>
       <a href="../index-en.html">EN</a>
     </div>
