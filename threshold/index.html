@@ -621,6 +621,82 @@
   window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
   plausible.init()
 </script>
+  <!-- Der Preis in diesem Block ist derselbe wie im sichtbaren Text der Seite.
+       990 Euro gelten fuer die Gruendungsgruppe, die Preislogik danach ist noch
+       offen. Wandert der sichtbare Preis, muss dieses Feld mitwandern, sonst
+       laufen Auszeichnung und Seite auseinander. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Course",
+        "@id": "https://davidliebnau.com/threshold/#kurs",
+        "name": "The Threshold Program",
+        "description": "In der finnischen Wildnis. Raum für die Antworten, die wirklich deine sind.",
+        "url": "https://davidliebnau.com/threshold/",
+        "image": "https://davidliebnau.com/assets/og-threshold-de-v2.jpg",
+        "inLanguage": "de",
+        "provider": {
+          "@id": "https://davidliebnau.com/#david"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "990",
+          "priceCurrency": "EUR",
+          "availability": "https://schema.org/InStock",
+          "category": "Paid",
+          "url": "https://davidliebnau.com/threshold/",
+          "validFrom": "2026-09-01"
+        },
+        "hasCourseInstance": {
+          "@type": "CourseInstance",
+          "name": "Gründungsgruppe 2027",
+          "courseMode": "Onsite",
+          "courseWorkload": "P6D",
+          "startDate": "2027-05-08",
+          "endDate": "2027-05-13",
+          "inLanguage": "de",
+          "maximumAttendeeCapacity": 10,
+          "location": {
+            "@type": "Place",
+            "name": "Finnland",
+            "address": {
+              "@type": "PostalAddress",
+              "addressCountry": "FI"
+            }
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": "990",
+            "priceCurrency": "EUR",
+            "availability": "https://schema.org/InStock",
+            "category": "Paid",
+            "url": "https://davidliebnau.com/threshold/",
+            "validFrom": "2026-09-01"
+          }
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Start",
+            "item": "https://davidliebnau.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "The Threshold Program",
+            "item": "https://davidliebnau.com/threshold/"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 <div class="th-atmo" aria-hidden="true"></div>

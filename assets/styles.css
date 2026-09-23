@@ -18,7 +18,10 @@
   --text:              var(--color-deep-blue);
   --text-muted:        rgba(4, 23, 31, 0.62);
   --text-on-dark:      var(--color-cream);
-  --text-on-dark-muted: rgba(255, 248, 230, 0.65);
+  /* Sekundaerschrift auf dunklem Grund. Das fruehere rgba(255, 248, 230, 0.65)
+     kam auf den helleren dunklen Flaechen nur auf 3,7 : 1. #B8B1A6 ist derselbe
+     Ton wie auf Threshold, dort gemessen mindestens 4,77 : 1. */
+  --text-on-dark-muted: #B8B1A6;
   --accent:            var(--color-gold);
   --gold:              var(--color-gold);
   /* Typografie auf hellem Grund. Soft Gold erreicht auf Luminous Sand nur
@@ -1802,7 +1805,7 @@ podcast-cover { display: contents; }
   font-size: 0.78rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(255, 248, 230, 0.5);
+  color: var(--text-on-dark-muted);
   position: relative; z-index: 1;
 }
 
@@ -2579,3 +2582,62 @@ footer {
    auf 1,73:1. Ohne zusaetzliche Deckkraft traegt ihre Farbe (--text-muted)
    von sich aus 4,74:1. */
 .footer-legal .sep { opacity: 1; }
+
+/* ============================================
+   SCHLEIER HINTER TEXT AUF FOTOFLAECHEN (23.09.2026)
+   Dieselbe Loesung wie in der Navigationsleiste: ein weicher Schleier hinter
+   der Schrift, der nach aussen auslaeuft. Kein Kasten, keine harte Flaeche,
+   die Fotos bleiben Fotos. Ziel sind 4,5 : 1 an der hellsten Stelle hinter
+   jeder Zeile, gemessen mit tools/pruefwerkzeug gegen das tatsaechliche Pixel.
+   ============================================ */
+
+/* Podcast-Cover: die Zeile unten links liegt auf dem hellsten Fleck des
+   Portraits (Sakko und Hemd) und kam dort auf 2,75 : 1. */
+.cover-host { isolation: isolate; }
+.cover-host::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  inset: -1.4em -2.4em -3em -2.4em;
+  background: radial-gradient(ellipse at 35% 60%,
+    rgba(4, 23, 31, 0.5) 0%,
+    rgba(4, 23, 31, 0.42) 45%,
+    rgba(4, 23, 31, 0) 80%);
+}
+
+/* Spotify-Poster: bei schmalen Fenstern steigt der Text in den hellen Teil des
+   Covers. Der vorhandene Schleier liegt am unteren Rand, dieser waechst mit
+   dem Textblock mit und laeuft nach oben aus. */
+.player-poster-body { isolation: isolate; }
+.player-poster-body::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  inset: -2.5rem -0.5rem -1rem -0.5rem;
+  background: linear-gradient(to top,
+    rgba(4, 23, 31, 0.72) 0%,
+    rgba(4, 23, 31, 0.66) 52%,
+    rgba(4, 23, 31, 0.34) 80%,
+    rgba(4, 23, 31, 0) 100%);
+}
+
+/* Dunkler Hero: bei schmalen Fenstern liegt die Textspalte auf dem Foto, und
+   der Flaechenschleier des Heros ist am unteren Ende der Spalte zu duenn.
+   Der Schleier folgt der Spalte und verschwindet vor ihrem Rand. */
+@media (max-width: 880px) {
+  .hero.on-dark .hero-grid > *:first-child { position: relative; isolation: isolate; }
+  .hero.on-dark .hero-grid > *:first-child::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    pointer-events: none;
+    inset: -1.5rem -1.5rem -3rem -1.5rem;
+    background: linear-gradient(180deg,
+      rgba(4, 23, 31, 0) 0%,
+      rgba(4, 23, 31, 0.58) 14%,
+      rgba(4, 23, 31, 0.58) 74%,
+      rgba(4, 23, 31, 0) 100%);
+  }
+}
