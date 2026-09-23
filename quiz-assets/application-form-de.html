@@ -245,6 +245,64 @@
     stroke-width: 2;
     fill: none;
   }
+
+  /* ── Mehrzeilige Labels (Sept 2026): Label im Textfluss, Textfeld darunter.
+        Verhindert, dass lange Fragen auf schmalen Screens in den Platzhalter laufen. ── */
+  .dc-form .input-group.input-group--textarea,
+  .dc-form .input-group.input-group--textarea-lg {
+    height: auto;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 0;
+    border: 1px solid var(--_color---neutral--mid-gray-1);
+    border-radius: var(--_components---input--border-radius);
+    transition: border-color .3s cubic-bezier(.165, .84, .44, 1);
+  }
+  .dc-form .input-group--textarea .input-label,
+  .dc-form .input-group--textarea-lg .input-label {
+    padding-right: 1rem;
+  }
+  .dc-form .input-group--textarea .input,
+  .dc-form .input-group--textarea-lg .input {
+    position: relative;
+    inset: auto;
+    flex: 1 1 auto;
+    border: 0;
+    min-height: 120px;
+    padding: .5rem 1rem 1rem;
+    resize: vertical;
+  }
+  .dc-form .input-group--textarea-lg .input {
+    min-height: 170px;
+  }
+  .dc-form .input-group--textarea:hover,
+  .dc-form .input-group--textarea-lg:hover {
+    border-color: var(--primary--accent);
+  }
+  .dc-form .input-group--textarea:focus-within,
+  .dc-form .input-group--textarea-lg:focus-within {
+    border-color: var(--_color---primary--sun-touch);
+  }
+  .dc-form__field.has-error .input-group--textarea,
+  .dc-form__field.has-error .input-group--textarea-lg {
+    border-color: #B85450;
+  }
+
+  /* ── Sendefehler: sichtbar statt stiller Erfolgsmeldung ── */
+  .dc-form__send-error {
+    display: none;
+    margin-top: 24px;
+    padding: 18px 22px;
+    border: 1px solid rgba(232, 101, 90, 0.5);
+    background: rgba(184, 84, 80, 0.08);
+    border-radius: var(--_components---button--border-radius, 8px);
+    line-height: 1.65;
+  }
+  .dc-form__send-error a {
+    color: #CE9B44;
+    text-decoration: underline;
+  }
 </style>
 
 <div class="dc-form" id="dcForm">
@@ -276,11 +334,11 @@
             <input class="input w-input" maxlength="256" name="firstName" placeholder="dein Vorname" type="text" id="dc-firstName" required autocomplete="given-name">
           </div>
           <div class="input-group">
-            <label for="dc-email" class="input-label">Email*</label>
-            <input class="input w-input" maxlength="256" name="email" placeholder="deine Email-Adresse" type="email" id="dc-email" required autocomplete="email">
+            <label for="dc-email" class="input-label">E-Mail*</label>
+            <input class="input w-input" maxlength="256" name="email" placeholder="deine E-Mail-Adresse" type="email" id="dc-email" required autocomplete="email">
           </div>
         </div>
-        <p class="dc-form__error-msg paragraph-sm">Bitte gib deinen Namen und eine gültige Email-Adresse ein.</p>
+        <p class="dc-form__error-msg paragraph-sm">Bitte gib deinen Namen und eine gültige E-Mail-Adresse ein.</p>
       </div>
 
       <div class="dc-form__field">
@@ -418,17 +476,17 @@
           <label for="dc-investmentReadiness" class="input-label">Investitionsbereitschaft*</label>
           <select class="input w-input" id="dc-investmentReadiness" name="investmentReadiness" required>
             <option value="" disabled selected>auswählen...</option>
-            <option value="Budget upfront">Ja, ich habe Budget für Coaching (€3.000–10.000 upfront)</option>
-            <option value="Payment plan">Ja, über einen Payment Plan (z.B. 3–6 Raten)</option>
-            <option value="Success fee">Ja, über Success Fee (reduzierter Upfront + % bei Funding-Erfolg)</option>
+            <option value="Budget upfront">Ja, ich habe Budget für Coaching (3.000–10.000 € im Voraus)</option>
+            <option value="Payment plan">Ja, über einen Ratenplan (z.B. 3–6 Raten)</option>
+            <option value="Success fee">Ja, über eine Erfolgsbeteiligung (reduzierter Betrag im Voraus plus % bei Funding-Erfolg)</option>
             <option value="Depends">Kommt drauf an (zeig mir erst den Wert)</option>
             <option value="Free only">Nein, ich suche nur kostenloses Feedback</option>
           </select>
         </div>
         <p class="dc-form__error-msg paragraph-sm">Bitte wähle eine Option.</p>
         <div class="dc-form__callout paragraph-sm">
-          <strong>💡 Was bedeutet Success Fee?</strong><br>
-          Reduzierter Upfront-Betrag (z.B. €2.000 statt €4.500) + vereinbarter % vom Funding (z.B. 2%), wenn du in 6 Monaten erfolgreich abschließt. Nur wenn du gewinnst, gewinne ich.
+          <strong>💡 Was bedeutet Erfolgsbeteiligung?</strong><br>
+          Reduzierter Betrag im Voraus (z.B. 2.000 € statt 4.500 €) plus ein vereinbarter Prozentsatz vom Funding (z.B. 2 %), wenn du in 6 Monaten erfolgreich abschließt. Nur wenn du gewinnst, gewinne ich.
         </div>
       </div>
 
@@ -489,6 +547,11 @@
     </div>
 
     <!-- ══ ABSENDEN ══ -->
+    <div class="dc-form__send-error paragraph-sm" id="dcError" role="alert">
+      <strong>Deine Bewerbung konnte gerade nicht gesendet werden.</strong><br>
+      Bitte versuche es in einem Moment noch einmal. Wenn es weiterhin nicht klappt, <a href="mailto:dl@light-creators.com" id="dcErrorMail">schick mir deine Antworten per E-Mail</a> – sie sind dort schon eingetragen.
+    </div>
+
     <button type="submit" class="dc-form__submit" id="dcSubmitBtn">Bewerbung abschicken</button>
 
   </form>
@@ -496,11 +559,13 @@
 
 <script>
 (function() {
-  var WEBHOOK = 'https://cocreative.app.n8n.cloud/webhook/2f90ce51-d413-4c17-865a-95f4bbdd72b7';
+  var WEBHOOK = 'https://cocreative.app.n8n.cloud/webhook/8fc48002-9d7e-455c-a6b0-ec42e3e4e517';
   var SUCCESS_URL = '/bewerbung-eingegangen';   /* Danke-Seite mit Video */
   var form = document.getElementById('dcFormEl');
   var successEl = document.getElementById('dcSuccess');
   var submitBtn = document.getElementById('dcSubmitBtn');
+  var errorEl = document.getElementById('dcError');
+  var errorMail = document.getElementById('dcErrorMail');
 
   var quizRadios = document.querySelectorAll('input[name="quizTaken"]');
   var ftWrap = document.getElementById('dc-founderTypeWrap');
@@ -577,7 +642,7 @@
 
     return {
       form: 'discovery-call',
-      language: document.documentElement.lang || 'de',
+      language: 'DE',
       firstName: form.querySelector('#dc-firstName').value.trim(),
       email: form.querySelector('#dc-email').value.trim(),
       linkedin: form.querySelector('#dc-linkedin').value.trim() || null,
@@ -592,6 +657,7 @@
       investmentReadiness: form.querySelector('#dc-investmentReadiness').value,
       fundingTimeline: form.querySelector('#dc-fundingTimeline').value,
       expectations: exps,
+      pageUrl: window.location.href,
       submittedAt: new Date().toISOString()
     };
   }
@@ -608,25 +674,53 @@
     submitBtn.disabled = true;
     submitBtn.textContent = 'Wird gesendet...';
 
+    var data = collect();
+    errorEl.style.display = 'none';
+    var ctrl = window.AbortController ? new AbortController() : null;
+    var timer = setTimeout(function() { if (ctrl) ctrl.abort(); }, 30000);
+
     fetch(WEBHOOK, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(collect())
+      body: JSON.stringify(data),
+      signal: ctrl ? ctrl.signal : undefined
     })
     .then(function(res) {
-      if (!res.ok) throw new Error('Submission failed');
-      /* Inline-Erfolgszustand als Fallback, falls die Weiterleitung blockiert wird */
+      clearTimeout(timer);
+      /* Nur eine bestätigte Zustellung zählt: n8n antwortet {"ok":true} erst,
+         nachdem die Benachrichtigung an David verschickt wurde. */
+      return res.json().catch(function() { return {}; }).then(function(body) {
+        if (!res.ok || !body || body.ok !== true) throw new Error('Submission not confirmed (' + res.status + ')');
+      });
+    })
+    .then(function() {
       form.style.display = 'none';
       successEl.classList.add('visible');
-      /* Weiterleitung auf die Danke-Seite mit dem Video */
       window.location.href = SUCCESS_URL;
     })
     .catch(function(err) {
+      clearTimeout(timer);
       console.error('Form error:', err);
       submitBtn.disabled = false;
       submitBtn.textContent = 'Bewerbung abschicken';
-      alert('Etwas ist schiefgelaufen. Bitte versuche es erneut oder kontaktiere uns direkt.');
+      errorMail.href = mailtoFor(data);
+      errorEl.style.display = 'block';
+      errorEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
   });
+
+  /* Fallback: Antworten als vorausgefüllte E-Mail, falls der Versand scheitert */
+  function mailtoFor(d) {
+    var lines = [];
+    Object.keys(d).forEach(function(k) {
+      if (k === 'form' || k === 'scores' || k === 'answers') return;
+      var v = d[k];
+      if (v === null || v === undefined || v === '') return;
+      lines.push(k + ': ' + (Array.isArray(v) ? v.join(', ') : v));
+    });
+    var body = lines.join('\n');
+    if (body.length > 1800) body = body.slice(0, 1800) + '\n...';
+    return 'mailto:dl@light-creators.com?subject=' + encodeURIComponent('Bewerbung Diagnostic Call') + '&body=' + encodeURIComponent(body);
+  }
 })();
 </script>

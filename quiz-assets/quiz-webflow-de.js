@@ -167,7 +167,7 @@
             text: 'Nach Investor-Meetings fühle ich mich meistens:',
             options: [
                 { text: 'Unsicher, ob ich als mein authentisches Selbst aufgetreten bin', scores: { presence: 4 } },
-                { text: 'Bewusst, dass ich eher performt als connected habe', scores: { presence: 5 } },
+                { text: 'Bewusst, dass ich eher funktioniert als mich verbunden habe', scores: { presence: 5 } },
                 { text: 'Energetisiert \u2014 als hätten sie das echte Ich gesehen', scores: { presence: 10 } },
                 { text: 'Erschöpft vom Management meiner Energie', scores: { presence: 2 } }
             ]
@@ -196,7 +196,7 @@
             id: 9, section: 'Abschnitt 2 von 3', factor: 'Founder Fit',
             text: 'Wenn Investoren "Warum du?" fragen, fühlt sich deine Antwort an wie:',
             options: [
-                { text: 'Eine Aufzählung meines Lebenslaufs und meiner Credentials', scores: { fit: 3 } },
+                { text: 'Eine Aufzählung meines Lebenslaufs und meiner Qualifikationen', scores: { fit: 3 } },
                 { text: 'Logisch, aber von der Mission losgelöst', scores: { fit: 5 } },
                 { text: 'Eine unvermeidliche persönliche Geschichte, die hierher führte', scores: { fit: 10 } },
                 { text: 'Defensiv oder kompensatorisch', scores: { fit: 2 } }
@@ -206,7 +206,7 @@
             id: 10, section: 'Abschnitt 2 von 3', factor: 'Founder Fit',
             text: 'Deine persönliche Geschichte und die Mission dieses Unternehmens fühlen sich an wie:',
             options: [
-                { text: 'Professionell aligned, aber nicht tief verbunden', scores: { fit: 5 } },
+                { text: 'Beruflich stimmig, aber nicht tief verbunden', scores: { fit: 5 } },
                 { text: 'Getrennte Teile meiner Identität', scores: { fit: 2 } },
                 { text: 'Ein einziger, kohärenter roter Faden', scores: { fit: 10 } },
                 { text: 'Stark intellektuell, schwächer emotional', scores: { fit: 4 } }
@@ -218,7 +218,7 @@
             options: [
                 { text: 'Ich referenziere allgemeine Trends ("der Markt wächst")', scores: { logic: 3 } },
                 { text: 'Ich benenne spezifische Shifts, die neue Möglichkeiten geschaffen haben', scores: { logic: 10 } },
-                { text: 'Ich fokussiere mich mehr auf unsere Bereitschaft als auf Market Timing', scores: { logic: 4 } },
+                { text: 'Ich fokussiere mich mehr auf unsere Bereitschaft als auf den Markt-Zeitpunkt', scores: { logic: 4 } },
                 { text: 'Ich tue mich schwer, Timing über "gute Opportunity" hinaus zu artikulieren', scores: { logic: 2 } }
             ]
         },
@@ -316,7 +316,7 @@
             name: 'The Integrated Builder', label: 'an Integrated Builder',
             tagline: 'Du bist fast da. Jetzt geht es um die letzten 10%.',
             desc: 'Du bringst vieles bereits in eine natürliche Stimmigkeit: Präsenz, Klarheit, Vision und persönliche Geschichte sind erkennbar miteinander verbunden. Das ist selten \u2014 und ein starkes Fundament.\n\nDeine nächste Entwicklungsstufe liegt nicht im Fixen großer Lücken, sondern im Feinschliff: Wo fehlt Schärfe im Timing? Wo könnte deine Lösung noch logischer erklärt werden? Wo kann deine Vision noch bildhafter werden?\n\nDu bist nah an einer kongruenten Gesamtpräsenz. Jetzt geht es darum, diese Stimmigkeit bewusst zu verstärken, damit Investoren dich nicht nur als "solide", sondern als "unvermeidlich" erleben.',
-            lever: 'Optimization & Precision (all factors)',
+            lever: 'Optimierung & Präzision (alle Faktoren)',
             leverScore: '7\u20138/10', leverGoal: '9/10+',
             nextStep: 'Feile an den letzten 10%, die deine Stimmigkeit zur echten Anziehungskraft machen.',
             course: ['Tag 1\u20132: Präzision im Timing (warum genau jetzt \u2014 nicht früher, nicht später?)', 'Tag 3\u20134: Vision Vividness (von klar zu viszeral)', 'Tag 5\u20136: Letzte 10% Optimierung (alle Faktoren)', 'Tag 7: Von "solide" zu "unvermeidlich" \u2014 die letzte Schicht'],
@@ -329,8 +329,8 @@
             name: 'The Almost-There Founder', label: 'an Almost-There Founder',
             tagline: 'Alles ist da. Jetzt braucht es Kohärenz.',
             desc: 'Du hast viele Elemente bereits angedeutet: Vision, Energie, Logik, Fit \u2014 alles ist da, aber noch nicht vollständig ausgereift. Es wirkt, als würdest du kurz vor einem Durchbruch stehen, bei dem die verschiedenen Teile deines Foundership miteinander in Einklang kommen.\n\nDeine Entwicklung liegt im Zusammenführen: Was ist deine tiefere Obsession? Wie erzählst du deine persönliche Story so, dass sie Sinn macht? Was ist der ursächliche Pain, und warum ist das Timing genau jetzt richtig?\n\nWenn diese Bausteine sich verbinden, entsteht eine klare, resonante Präsenz, die Investoren intuitiv vertrauen lässt.\n\nDu bist nah dran \u2014 jetzt geht es um Kohärenz.',
-            lever: 'Focus & Narrative Coherence',
-            leverScore: '5\u20136/10 (all factors)', leverGoal: '8/10',
+            lever: 'Fokus & narrative Kohärenz',
+            leverScore: '5\u20136/10 (alle Faktoren)', leverGoal: '8/10',
             nextStep: 'Bring deine verschiedenen Stärken in ein kohärentes, fühlbares Gesamtbild.',
             course: ['Tag 1\u20132: Origin Story Clarity (deine persönliche Verbindung)', 'Tag 3\u20134: Sustainable Obsession (was treibt dich wirklich?)', 'Tag 5\u20136: Narrative Kohärenz (alle Teile verbinden)', 'Tag 7: Der Durchbruch \u2014 wenn alles zusammenkommt'],
             outcomes: ['Du hast ein kohärentes, vollständiges Bild deines Foundership', 'Alle Elemente fügen sich zu einer klaren, fühlbaren Story zusammen', 'Du kannst ein Diagnostic Call anfragen (optional)'],
@@ -342,8 +342,8 @@
             name: 'The Overloaded Operator', label: 'an Overloaded Operator',
             tagline: 'Du trägst viel. Weniger Last erzeugt mehr Wirkung.',
             desc: 'Du trägst viel \u2014 vielleicht zu viel. Du bist kompetent, verantwortungsbewusst und detailstark, aber genau diese Stärken können dich überfrachten.\n\nDeine Energie wirkt manchmal zerstreut oder erschöpft, und Investoren spüren, dass du zu viel gleichzeitig hältst. Der operative Druck überdeckt deine Vision, deine natürliche Präsenz und die Tiefe deiner inneren Motivation.\n\nNichts davon ist ein Defizit \u2014 es ist ein Zeichen dafür, wie wichtig dir alles ist. Doch deine Resonanz entsteht erst, wenn du wieder Raum bekommst: für Klarheit, für Fokus, für den inneren Ruf.\n\nWeniger Last. Mehr Essenz. Und damit mehr Vertrauen.',
-            lever: 'Relief & Internal Prioritization',
-            leverScore: 'Presence: 2/10, Obsession: toxic', leverGoal: 'create space',
+            lever: 'Entlastung & innere Priorisierung',
+            leverScore: 'Presence: 2/10, Obsession: toxisch', leverGoal: 'Raum schaffen',
             nextStep: 'Entdecke, wie du Raum schaffst, um wieder klar und resonant zu führen.',
             course: ['Tag 1\u20132: Von toxischer zu nachhaltiger Obsession', 'Tag 3\u20134: Entlastung & Delegation (Raum schaffen)', 'Tag 5\u20136: Präsenz unter Druck (Nervensystem-Regulation)', 'Tag 7: Weniger Last. Mehr Essenz. Mehr Wirkung.'],
             outcomes: ['Du weißt, wie du operative Last reduzierst \u2014 ohne Produktivität zu verlieren', 'Du hast Strategien für nachhaltige Obsession', 'Du kannst ein Diagnostic Call anfragen (optional)'],
@@ -355,7 +355,7 @@
             name: 'The Disconnected Genius', label: 'a Disconnected Genius',
             tagline: 'Deine Brillanz ist da. Jetzt braucht sie Erdung.',
             desc: 'Du siehst Dinge, bevor andere sie sehen. Deine Gedanken sind schnell, tief und oft richtungsweisend. Aber du überholst manchmal dein eigenes Nervensystem \u2014 und deine Zuhörer gleich mit.\n\nWas für dich selbstverständlich ist, wirkt für andere abstrakt oder schwer greifbar. Dazu kommt: Die operative Mechanik \u2014 wie Wachstum konkret funktioniert, welche Schritte von 10 zu 100 Kunden führen \u2014 bleibt im Gespräch oft im Ungefähren.\n\nDeine Brillanz wird spürbar, aber nicht fühlbar und nicht greifbar. Das erzeugt Distanz, obwohl du Verbundenheit willst.\n\nDein größter Hebel liegt darin, Tempo zu reduzieren, Energie zu erden und deine Vision in klare, operative Schritte zu übersetzen, die andere unmittelbar nachvollziehen können.\n\nWenn Genius, Präsenz und Wachstumslogik zusammenfinden, entsteht eine außergewöhnliche Strahlkraft.',
-            lever: 'Grounding & Translatability',
+            lever: 'Erdung & Übersetzbarkeit',
             leverScore: 'Presence: 3/10, Fit: 3/10, Logic: 3/10', leverGoal: '7/10+',
             nextStep: 'Erfahre, wie du deine Brillanz fühlbar, zugänglich und operativ konkret machst.',
             course: ['Tag 1\u20132: Erdung & Entschleunigung (Nervensystem)', 'Tag 3\u20134: Übersetzbarkeit \u2014 von abstrakt zu konkret und greifbar', 'Tag 5\u20136: Skalierbare Kommunikation (deine Wachstumslogik für andere zugänglich machen)', 'Tag 7: Wenn Genius landet \u2014 Brillanz, die wirklich ankommt'],

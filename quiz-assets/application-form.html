@@ -58,10 +58,10 @@
   ║                                                                     ║
   ║  WEBHOOK                                                            ║
   ║    POST → https://cocreative.app.n8n.cloud/webhook/                 ║
-  ║           2f90ce51-d413-4c17-865a-95f4bbdd72b7                      ║
-  ║    Sends all fields as a flat JSON object.                          ║
+  ║           8fc48002-9d7e-455c-a6b0-ec42e3e4e517                      ║
+  ║    Sends all fields as a flat JSON object. Success = {"ok":true}.   ║
   ║    Hidden field: "form": "discovery-call"                           ║
-  ║    Hidden field: "language": from <html lang="...">                 ║
+  ║    Hidden field: "language": "EN"                                   ║
   ║                                                                     ║
   ║  SUCCESS REDIRECT                                                   ║
   ║    After successful POST: window.location = /application-received   ║
@@ -455,6 +455,64 @@
     stroke-width: 2;
     fill: none;
   }
+
+  /* ── Multi-line labels (Sept 2026): label in the text flow, textarea below it.
+        Stops long questions running into the placeholder on narrow screens. ── */
+  .dc-form .input-group.input-group--textarea,
+  .dc-form .input-group.input-group--textarea-lg {
+    height: auto;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 0;
+    border: 1px solid var(--_color---neutral--mid-gray-1);
+    border-radius: var(--_components---input--border-radius);
+    transition: border-color .3s cubic-bezier(.165, .84, .44, 1);
+  }
+  .dc-form .input-group--textarea .input-label,
+  .dc-form .input-group--textarea-lg .input-label {
+    padding-right: 1rem;
+  }
+  .dc-form .input-group--textarea .input,
+  .dc-form .input-group--textarea-lg .input {
+    position: relative;
+    inset: auto;
+    flex: 1 1 auto;
+    border: 0;
+    min-height: 120px;
+    padding: .5rem 1rem 1rem;
+    resize: vertical;
+  }
+  .dc-form .input-group--textarea-lg .input {
+    min-height: 170px;
+  }
+  .dc-form .input-group--textarea:hover,
+  .dc-form .input-group--textarea-lg:hover {
+    border-color: var(--primary--accent);
+  }
+  .dc-form .input-group--textarea:focus-within,
+  .dc-form .input-group--textarea-lg:focus-within {
+    border-color: var(--_color---primary--sun-touch);
+  }
+  .dc-form__field.has-error .input-group--textarea,
+  .dc-form__field.has-error .input-group--textarea-lg {
+    border-color: #B85450;
+  }
+
+  /* ── Send error: visible, never a silent success ── */
+  .dc-form__send-error {
+    display: none;
+    margin-top: 24px;
+    padding: 18px 22px;
+    border: 1px solid rgba(232, 101, 90, 0.5);
+    background: rgba(184, 84, 80, 0.08);
+    border-radius: var(--_components---button--border-radius, 8px);
+    line-height: 1.65;
+  }
+  .dc-form__send-error a {
+    color: #CE9B44;
+    text-decoration: underline;
+  }
 </style>
 
 <div class="dc-form" id="dcForm">
@@ -737,6 +795,11 @@
     </div>
 
     <!-- ══ SUBMIT BUTTON ══ -->
+    <div class="dc-form__send-error paragraph-sm" id="dcError" role="alert">
+      <strong>Your application could not be sent just now.</strong><br>
+      Please try again in a moment. If it still does not work, <a href="mailto:dl@light-creators.com" id="dcErrorMail">email me your answers</a> – they are already filled in.
+    </div>
+
     <button type="submit" class="dc-form__submit" id="dcSubmitBtn">Submit Application</button>
 
   </form>
@@ -756,7 +819,7 @@
      
      WEBHOOK URL:
        https://cocreative.app.n8n.cloud/webhook/
-       2f90ce51-d413-4c17-865a-95f4bbdd72b7
+       8fc48002-9d7e-455c-a6b0-ec42e3e4e517
      
      SUCCESS URL:
        /application-received
@@ -771,11 +834,13 @@
      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
 <script>
 (function() {
-  var WEBHOOK = 'https://cocreative.app.n8n.cloud/webhook/2f90ce51-d413-4c17-865a-95f4bbdd72b7';
+  var WEBHOOK = 'https://cocreative.app.n8n.cloud/webhook/8fc48002-9d7e-455c-a6b0-ec42e3e4e517';
   var SUCCESS_URL = '/application-received';
   var form = document.getElementById('dcFormEl');
   var successEl = document.getElementById('dcSuccess');
   var submitBtn = document.getElementById('dcSubmitBtn');
+  var errorEl = document.getElementById('dcError');
+  var errorMail = document.getElementById('dcErrorMail');
 
   /* ── CONDITIONAL 1: Quiz taken → show Founder Type dropdown ──
      When "Yes" is selected, the #dc-founderTypeWrap gets .visible
@@ -869,7 +934,7 @@
 
     return {
       form: 'discovery-call',                                          /* hidden field: identifies this form in n8n */
-      language: document.documentElement.lang || 'en',                 /* hidden field: from <html lang="..."> */
+      language: 'EN',                                                  /* hidden field */
       firstName: form.querySelector('#dc-firstName').value.trim(),
       email: form.querySelector('#dc-email').value.trim(),
       linkedin: form.querySelector('#dc-linkedin').value.trim() || null,
@@ -884,6 +949,7 @@
       investmentReadiness: form.querySelector('#dc-investmentReadiness').value,
       fundingTimeline: form.querySelector('#dc-fundingTimeline').value,
       expectations: exps,                                              /* array of selected strings */
+      pageUrl: window.location.href,
       submittedAt: new Date().toISOString()                            /* UTC timestamp */
     };
   }
@@ -904,25 +970,53 @@
     submitBtn.disabled = true;
     submitBtn.textContent = 'Submitting...';
 
+    var data = collect();
+    errorEl.style.display = 'none';
+    var ctrl = window.AbortController ? new AbortController() : null;
+    var timer = setTimeout(function() { if (ctrl) ctrl.abort(); }, 30000);
+
     fetch(WEBHOOK, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(collect())
+      body: JSON.stringify(data),
+      signal: ctrl ? ctrl.signal : undefined
     })
     .then(function(res) {
-      if (!res.ok) throw new Error('Submission failed');
-      /* Show inline success state as fallback in case redirect is delayed/blocked */
+      clearTimeout(timer);
+      /* Only a confirmed delivery counts: n8n answers {"ok":true} only
+         after the notification to David has been sent. */
+      return res.json().catch(function() { return {}; }).then(function(body) {
+        if (!res.ok || !body || body.ok !== true) throw new Error('Submission not confirmed (' + res.status + ')');
+      });
+    })
+    .then(function() {
       form.style.display = 'none';
       successEl.classList.add('visible');
-      /* Redirect to thank-you page */
       window.location.href = SUCCESS_URL;
     })
     .catch(function(err) {
+      clearTimeout(timer);
       console.error('Form error:', err);
       submitBtn.disabled = false;
       submitBtn.textContent = 'Submit Application';
-      alert('Something went wrong. Please try again or contact us directly.');
+      errorMail.href = mailtoFor(data);
+      errorEl.style.display = 'block';
+      errorEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
   });
+
+  /* Fallback: answers as a pre-filled email if sending fails */
+  function mailtoFor(d) {
+    var lines = [];
+    Object.keys(d).forEach(function(k) {
+      if (k === 'form' || k === 'scores' || k === 'answers') return;
+      var v = d[k];
+      if (v === null || v === undefined || v === '') return;
+      lines.push(k + ': ' + (Array.isArray(v) ? v.join(', ') : v));
+    });
+    var body = lines.join('\n');
+    if (body.length > 1800) body = body.slice(0, 1800) + '\n...';
+    return 'mailto:dl@light-creators.com?subject=' + encodeURIComponent('Diagnostic Call application') + '&body=' + encodeURIComponent(body);
+  }
 })();
 </script>
