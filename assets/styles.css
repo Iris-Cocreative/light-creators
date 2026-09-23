@@ -114,10 +114,27 @@ nav.top {
   transition: background 0.4s ease, backdrop-filter 0.4s ease, -webkit-backdrop-filter 0.4s ease, border-color 0.4s ease;
 }
 nav.top.nav-scrolled {
-  background: linear-gradient(180deg, rgba(4, 23, 31, 0.78) 0%, rgba(4, 23, 31, 0.55) 70%, rgba(4, 23, 31, 0) 100%);
+  /* Der Verlauf lief bisher schon bei 70 Prozent der Leistenhoehe aus, genau dort
+     steht aber die Schrift. Ueber hellen Abschnitten stand dadurch helle Schrift
+     auf hellem Grund, gemessen bis 1,00:1. Jetzt traegt er bis unter die Zeile. */
+  background: linear-gradient(180deg, rgba(4, 23, 31, 0.92) 0%, rgba(4, 23, 31, 0.88) 62%, rgba(4, 23, 31, 0) 100%);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
+/* Schleier hinter der Leiste, solange sie ueber dem Hero-Foto liegt (Loesung wie
+   auf Threshold): ein weicher Verlauf, der nach unten auslaeuft, damit die Leiste
+   leicht bleibt und kein Balken wird. Sobald nav-scrolled greift, uebernimmt
+   dessen eigener Hintergrund. Heroes mit hellem Grund brauchen ihn nicht. */
+:is(.hero--photo-bg, .hero.on-dark, .ep-hero.on-dark) > nav.top::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(4, 23, 31, 0.82) 0%, rgba(4, 23, 31, 0.68) 62%, rgba(4, 23, 31, 0) 100%);
+  transition: opacity 0.4s ease;
+}
+:is(.hero--photo-bg, .hero.on-dark, .ep-hero.on-dark) > nav.top.nav-scrolled::before { opacity: 0; }
 nav.top.nav-scrolled .logo { color: var(--color-cream); }
 nav.top.nav-scrolled .logo em { color: var(--accent); }
 nav.top.nav-scrolled .nav-toggle { color: var(--color-cream); }
@@ -128,7 +145,6 @@ nav.top.nav-scrolled .nav-toggle { color: var(--color-cream); }
 nav.top.nav-scrolled .nav-meta,
 nav.top.nav-scrolled .nav-meta a { color: rgba(255, 248, 230, 0.85); }
 nav.top.nav-scrolled .nav-meta a:hover { color: var(--color-cream); }
-nav.top.nav-scrolled .nav-meta .sep { color: rgba(255, 248, 230, 0.45); }
 nav.top.nav-scrolled .nav-meta .nav-cta { border-color: rgba(255, 248, 230, 0.55); color: var(--color-cream); }
 nav.top.nav-scrolled .nav-meta .nav-cta:hover { background: var(--color-cream); color: var(--color-deep-blue); border-color: var(--color-cream); }
 /* When menu is open, instantly remove backdrop-filter (0.4s transition would delay full-screen overlay) */
@@ -156,7 +172,15 @@ nav.top.nav--open {
 }
 .nav-meta a { transition: color 0.3s; }
 .nav-meta a:hover { color: var(--text); }
-.nav-meta .sep { margin: 0 0.6rem; opacity: 0.5; }
+.nav-meta .sep { margin: 0 0.6rem; color: var(--text-muted); }
+:is(.hero--photo-bg, .hero.on-dark, .ep-hero.on-dark) .nav-meta .sep,
+nav.top.nav-scrolled .nav-meta .sep { color: rgba(255, 248, 230, 0.75); }
+/* Die aktuelle Seite war bisher mit einer Inline-Farbe im Markup ausgezeichnet,
+   auf jeder Seite anders. Jetzt eine Klasse, die der Flaeche folgt: dunkles Gold
+   auf heller Leiste, Sun Touch auf dem Schleier und im gescrollten Zustand. */
+.nav-meta a.is-current { color: var(--color-eyebrow); }
+:is(.hero--photo-bg, .hero.on-dark, .ep-hero.on-dark) .nav-meta a.is-current,
+nav.top.nav-scrolled .nav-meta a.is-current { color: var(--accent); }
 .nav-meta .nav-cta {
   margin-left: 1rem;
   padding: 0.55rem 1rem;
@@ -557,10 +581,13 @@ nav.top.nav--open {
     background-color: var(--color-cream);
   }
   .hero--photo-bg::before { display: none; }
+  /* Schmal rutscht das Foto unter die Leiste, die Leiste steht auf Summit Mist.
+     Dort braucht es keinen Schleier, und die Schrift bleibt dunkel. */
+  .hero--photo-bg > nav.top::before { display: none; }
   .hero--photo-bg > .container { padding-top: 2.5rem; }
   .hero--photo-bg .hero-text { max-width: 100%; margin-left: 0; }
   .hero--photo-bg .logo { color: var(--text); }
-  .hero--photo-bg .logo em { color: var(--accent); }
+  .hero--photo-bg .logo em { color: var(--color-eyebrow); }
   .hero--photo-bg .nav-toggle { color: var(--text); }
   .hero--photo-bg .nav-meta .nav-cta { border-color: var(--line-light); color: var(--text); }
   .hero-photo-mobile {
@@ -2522,3 +2549,33 @@ footer {
 @media (prefers-reduced-motion: reduce) {
   .nav-toggle span { transition: none; }
 }
+
+/* ============================================
+   GOLD NACH FLAECHE (23.09.2026)
+   Regel aus E3.2 auf die ganze Domain uebertragen: Sun Touch traegt auf hellem
+   Grund nicht, auf Summit Mist kommt es auf 1,77:1 und damit auch bei grosser
+   Schrift unter jede Schwelle. Auf hellen Flaechen steht deshalb #8D651E
+   (--color-eyebrow), auf dunklen Sun Touch (--accent). Die Farbwerte selbst
+   bleiben unveraendert, nur ihre Verwendung.
+   ============================================ */
+/* Sun Touch stand auf hellem Grund: */
+.footer-tagline em,
+.footer-brand .logo em,
+.hero--split .logo em,
+.episode-body .eyebrow,
+.next-card-num,
+.credentials .sep,
+.stat-num { color: var(--color-eyebrow); }
+
+/* Dunkles Gold stand auf dunklem Grund: */
+.ep-hero .eyebrow,
+.hero.on-dark .eyebrow,
+.quote-section .eyebrow,
+.section--teal .eyebrow,
+.section--umber .eyebrow,
+.about-grid--reverse .about-content h2 em { color: var(--accent); }
+
+/* Die Trennzeichen der Fusszeile standen auf 0,4 Deckkraft und kamen dadurch
+   auf 1,73:1. Ohne zusaetzliche Deckkraft traegt ihre Farbe (--text-muted)
+   von sich aus 4,74:1. */
+.footer-legal .sep { opacity: 1; }
