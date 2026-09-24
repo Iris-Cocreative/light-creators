@@ -14,31 +14,37 @@ veröffentlicht GitHub Pages nicht, Markdown im Stammverzeichnis dagegen schon
       Links liefern 200.
       - DE: https://tally.so/r/445NbX
       - EN: https://tally.so/r/RGpB99
-- [ ] **Plausible:** Goals für die acht Events aus A7 sowie Pageview-Goals für
-      `/mirror-edge/` und `/mirror-edge/en/` angelegt.
+- [x] **Plausible:** Goals für die acht Events aus A7 sowie Pageview-Goals für
+      `/mirror-edge/` und `/mirror-edge/en/` angelegt. Laut David, 24.09.2026
+      (von Claude Code nicht geprüft, kein Zugang zu Plausible).
 - [x] **Calendly:** Einstiegsfrage in beiden Passungsterminen angepasst (DE und
       EN), beide MIRROR-Gespräche auf geheim. Geprüft per API am 24.09.2026.
 - [x] **Datenschutzerklärung nach v4.3:** Microsoft 365, Tally und Calendly
       genannt (neue Ziffern 5 bis 7), Satz „nicht in externe Systeme“ in der
       Ziffer zu Programmen und Coachings angepasst (jetzt Ziffer 8),
       Bereitstellungshinweis unter Ziffer 1.
-- [ ] **Datenschutzerklärung nach v4.4:** Letzter Teil von „Formulare über
-      Tally“ ab „Darüber hinaus gebe ich die Angaben nicht an andere Dienste
-      weiter…“ mit den Löschfristen. Bis dahin verweist der Satz in Ziffer 8
-      („werden dort nach der genannten Frist gelöscht“) auf eine Frist, die
-      noch nirgends genannt ist.
+- [x] **Datenschutzerklärung, Löschfristen Tally und Ziffer 4:** Fristen und
+      Freitext-Hinweis in Ziffer 6 ergänzt, damit hat der Verweis in Ziffer 8
+      („nach der genannten Frist“) sein Ziel. Ziffer 4 an Ziffer 5 angeglichen
+      (Microsoft 365 als Auftragsverarbeiter, Löschung spätestens nach drei
+      Jahren).
+- [ ] **Datenschutzerklärung nach v4.4:** Satz „Darüber hinaus gebe ich die
+      Angaben nicht an andere Dienste weiter, weder an ein KI-System noch an ein
+      Analysewerkzeug.“ in Ziffer 6.
 - [ ] **Datenschutzerklärung, Stand:** Datum auf den Tag des Merges setzen (v4.3,
       A6). Heute steht dort „September 2026“.
 - [ ] **KI-Seite** (`ki-einsatz/index.html`) um den Hinweis zu Tally ergänzt.
       Folgt mit v4.4.
-- [x] **Impressum nach v4.3:** Haftungsteil ohne DDG-Zitate. Versicherungsblock
+- [x] **Impressum nach v4.3:** Haftungsteil ohne DDG-Zitate, gekürzt auf den
+      Satz zu eigenen Inhalten; „Haftung für Links“ bleibt und enthält keine
+      Normverweise. Versicherungsblock
       bleibt vollständig, Überschrift „Berufshaftpflichtversicherung (Angaben
       nach § 2 Abs. 1 Nr. 11 DL-InfoV)“ (Davids Entscheidung, abweichend von
       v4.3 C2). Die Zeile „David Liebnau, Anschrift wie oben“ bleibt: Sie
       gehört zur Pflichtangabe nach § 18 Abs. 2 MStV, nicht zum
       Versicherungsblock.
-- [ ] **Impressum, Versicherung:** Bestätigung der Baloise liegt vor, dass es
-      sich um eine Berufshaftpflicht handelt.
+- [x] **Impressum, Versicherung:** Berufshaftpflicht besteht. Laut David,
+      24.09.2026.
 - [x] **AGB nach v4.3:** Abschnitt „Bedingungen für Unternehmen“ mit Anker
       `#unternehmen`, Satz in § 1 ergänzt.
 - [ ] **Werte-Prüfung:** `python3 tools/angebotswerte.py --pruefen` endet mit 0.
