@@ -2644,7 +2644,7 @@ footer {
 }
 
 /* ============================================
-   ANGEBOTSSEITE MIRROR UND EDGE (/edge/)
+   ANGEBOTSSEITE MIRROR UND EDGE (/mirror-edge/)
    Drei Bausteine, die es vorher nicht gab: Preiszeile, Zaesur innerhalb
    eines Abschnitts und eine schlichte nummerierte Ablaufliste. Die
    Ablaufliste ist bewusst keine Methodengrafik (nicht .factors-list),
@@ -2703,4 +2703,12 @@ footer {
   font-style: italic;
   font-size: 1.25rem;
   color: var(--color-gold-em);
+}
+
+/* Preiszeile unter dem Hero-Button der Angebotsseite */
+.hero-preis {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  color: var(--text-on-dark-muted);
 }

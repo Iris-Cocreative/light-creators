@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Schreibt Preise und Formularlinks aus assets/angebot-werte.json ins HTML.
 
-Die Angebotsseite /edge/ nennt Nettopreise und verlinkt Tally-Formulare an
+Die Angebotsseite /mirror-edge/ nennt Nettopreise und verlinkt Tally-Formulare an
 mehreren Stellen. Gepflegt werden die Werte nur in der JSON-Datei. Im HTML
 tragen die betroffenen Elemente ein Attribut:
 

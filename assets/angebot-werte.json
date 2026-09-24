@@ -1,5 +1,5 @@
 {
-  "_hinweis": "Einzige Quelle fuer Nettopreise und Formularlinks der Angebotsseite /edge/. Nach jeder Aenderung: python3 tools/angebotswerte.py. Adressen unter platzhalter.invalid sind Platzhalter und duerfen nie live gehen.",
+  "_hinweis": "Einzige Quelle fuer Nettopreise und Formularlinks der Angebotsseite /mirror-edge/. Nach jeder Aenderung: python3 tools/angebotswerte.py. Adressen unter platzhalter.invalid sind Platzhalter und duerfen nie live gehen.",
   "werte": {
     "preis-mirror": 450,
     "preis-edge": 2900,
