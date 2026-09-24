@@ -1,15 +1,24 @@
 {
-  "_hinweis": "Einzige Quelle fuer Nettopreise und Links der Angebotsseite /mirror-edge/: MIRROR-Anfrage (Tally) und Passungsgespraech (Calendly, externer Link, kein Embed). Weitere Formulare (Intake, Feedback, Feedforward) gehoeren nicht hierher. \"parameter\" haengt das Werkzeug nur an Links mit passendem data-link-parameter an (heute: Team-Lab-Link, Vorbelegung der Calendly-Frage). Nach jeder Aenderung: python3 tools/angebotswerte.py. Adressen unter platzhalter.invalid sind Platzhalter und duerfen nie live gehen.",
+  "_hinweis": "Einzige Quelle fuer Nettopreise und Links der Angebotsseiten /mirror-edge/ (de) und /mirror-edge/en/ (en): MIRROR-Anfrage (Tally) und Passungsgespraech (Calendly, externer Link, kein Embed). Preise sind ein Wert pro Angebot, die Schreibweise richtet sich nach der Seitensprache (de 2.900 EUR-Zeichen dahinter, en EUR-Zeichen davor, 2,900). Links und Parameter haben je einen Wert pro Sprache. \"parameter\" haengt das Werkzeug nur an Links mit passendem data-link-parameter an (heute: Team-Lab-Link, Vorbelegung der ersten Calendly-Frage). Weitere Formulare (Intake, Feedback, Feedforward) gehoeren nicht hierher. Nach jeder Aenderung: python3 tools/angebotswerte.py. Adressen unter platzhalter.invalid sind Platzhalter und duerfen nie live gehen.",
   "werte": {
     "preis-mirror": 450,
     "preis-edge": 2900,
     "preis-edge-pilot": 1900
   },
   "links": {
-    "tally_mirror_anfrage": "https://platzhalter.invalid/tally-mirror-anfrage",
-    "calendly_passung": "https://platzhalter.invalid/calendly-passung"
+    "tally_mirror_anfrage": {
+      "de": "https://tally.so/r/445NbX",
+      "en": "https://tally.so/r/RGpB99"
+    },
+    "calendly_passung": {
+      "de": "https://calendly.com/light-creators/20-minuten-passungsgesprach-edge-1-1-oder-team-lab",
+      "en": "https://calendly.com/light-creators/20-minute-fit-call-edge-1-1-or-team-lab"
+    }
   },
   "parameter": {
-    "calendly_team_parameter": "platzhalter_a1=Team%20Lab"
+    "calendly_team_parameter": {
+      "de": "a1=Team%20Lab",
+      "en": "a1=Team%20Lab"
+    }
   }
 }
