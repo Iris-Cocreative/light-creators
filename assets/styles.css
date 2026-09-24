@@ -2666,6 +2666,8 @@ footer {
   font-size: 0.95rem;
   color: var(--text-muted);
 }
+/* Pilot- und USt-Zeile gehoeren zum Preis, kein Absatzabstand dazwischen */
+.angebot-text > .angebot-preis-zusatz { margin-bottom: 0.2rem; }
 .section--teal .angebot-preis,
 .section--umber .angebot-preis,
 .section--midnight .angebot-preis { color: var(--text-on-dark); }

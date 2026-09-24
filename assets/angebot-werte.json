@@ -1,5 +1,5 @@
 {
-  "_hinweis": "Einzige Quelle fuer Nettopreise und Links der Angebotsseite /mirror-edge/: MIRROR-Anfrage (Tally) und Passungsgespraech (Calendly, externer Link, kein Embed). Weitere Formulare (Intake, Feedback, Feedforward) gehoeren nicht hierher. Nach jeder Aenderung: python3 tools/angebotswerte.py. Adressen unter platzhalter.invalid sind Platzhalter und duerfen nie live gehen.",
+  "_hinweis": "Einzige Quelle fuer Nettopreise und Links der Angebotsseite /mirror-edge/: MIRROR-Anfrage (Tally) und Passungsgespraech (Calendly, externer Link, kein Embed). Weitere Formulare (Intake, Feedback, Feedforward) gehoeren nicht hierher. \"parameter\" haengt das Werkzeug nur an Links mit passendem data-link-parameter an (heute: Team-Lab-Link, Vorbelegung der Calendly-Frage). Nach jeder Aenderung: python3 tools/angebotswerte.py. Adressen unter platzhalter.invalid sind Platzhalter und duerfen nie live gehen.",
   "werte": {
     "preis-mirror": 450,
     "preis-edge": 2900,
@@ -8,5 +8,8 @@
   "links": {
     "tally_mirror_anfrage": "https://platzhalter.invalid/tally-mirror-anfrage",
     "calendly_passung": "https://platzhalter.invalid/calendly-passung"
+  },
+  "parameter": {
+    "calendly_team_parameter": "platzhalter_a1=Team%20Lab"
   }
 }

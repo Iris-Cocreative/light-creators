@@ -8,10 +8,13 @@ Elemente ein Attribut:
 
     <span data-wert="preis-mirror">450&#160;€</span>
     <a data-link="calendly_passung" href="...">
+    <a data-link="calendly_passung" data-link-parameter="calendly_team_parameter" href="...">
 
 Das Skript setzt den Inhalt jedes data-wert-Elements und das href jedes
-data-link-Elements neu. Die Werte stehen damit fertig im HTML, auch ohne
-JavaScript und fuer Suchmaschinen.
+data-link-Elements neu. Traegt ein Link zusaetzlich data-link-parameter, haengt
+es den gleichnamigen Eintrag aus "parameter" als Query an (heute nur der
+Team-Lab-Link, Vorbelegung der Calendly-Frage). Die Werte stehen damit
+fertig im HTML, auch ohne JavaScript und fuer Suchmaschinen.
 
 Aufruf:
     python3 tools/angebotswerte.py            schreibt die Werte ins HTML
@@ -19,8 +22,8 @@ Aufruf:
                                               Abweichungen und Platzhalter
 
 --pruefen endet mit Status 1, wenn eine Datei nicht zur JSON-Datei passt,
-ein Schluessel im HTML fehlt oder noch eine Platzhalter-Adresse
-(platzhalter.invalid) verlinkt ist. Vor jedem Merge auf main laufen lassen.
+ein Schluessel im HTML fehlt oder noch ein Platzhalter verlinkt ist
+(Adresse unter platzhalter.invalid oder Parameter mit "platzhalter"). Vor jedem Merge auf main laufen lassen.
 """
 import json
 import re
@@ -30,11 +33,12 @@ from pathlib import Path
 WURZEL = Path(__file__).resolve().parent.parent
 QUELLE = WURZEL / "assets" / "angebot-werte.json"
 AUSGENOMMEN = {"_archiv", "_briefings", ".git", ".claude", "node_modules"}
-PLATZHALTER = "platzhalter.invalid"
+PLATZHALTER = "platzhalter"
 
 WERT_RE = re.compile(r'(<(\w+)\b[^>]*\bdata-wert="([^"]+)"[^>]*>)(.*?)(</\2>)', re.S)
 LINK_TAG_RE = re.compile(r'<a\b[^>]*\bdata-link="([^"]+)"[^>]*>')
-HREF_RE = re.compile(r'\bhref="[^"]*"')
+HREF_RE = re.compile(r'\bhref="([^"]*)"')
+PARAM_RE = re.compile(r'\bdata-link-parameter="([^"]+)"')
 
 
 def euro(betrag):
@@ -48,7 +52,7 @@ def html_dateien():
             yield pfad
 
 
-def bearbeiten(text, werte, links, fehler, name):
+def bearbeiten(text, werte, links, parameter, fehler, name):
     def wert_ersetzen(m):
         schluessel = m.group(3)
         if schluessel not in werte:
@@ -61,7 +65,15 @@ def bearbeiten(text, werte, links, fehler, name):
         if schluessel not in links:
             fehler.append(f"{name}: data-link=\"{schluessel}\" fehlt in {QUELLE.name}")
             return m.group(0)
-        return HREF_RE.sub(f'href="{links[schluessel]}"', m.group(0), count=1)
+        ziel = links[schluessel]
+        p = PARAM_RE.search(m.group(0))
+        if p:
+            if p.group(1) not in parameter:
+                fehler.append(f"{name}: data-link-parameter=\"{p.group(1)}\" fehlt in {QUELLE.name}")
+                return m.group(0)
+            if parameter[p.group(1)]:
+                ziel += ("&" if "?" in ziel else "?") + parameter[p.group(1)]
+        return HREF_RE.sub(f'href="{ziel}"', m.group(0), count=1)
 
     text = WERT_RE.sub(wert_ersetzen, text)
     return LINK_TAG_RE.sub(link_ersetzen, text)
@@ -71,6 +83,7 @@ def main():
     pruefen = "--pruefen" in sys.argv[1:]
     daten = json.loads(QUELLE.read_text(encoding="utf-8"))
     werte, links = daten["werte"], daten["links"]
+    parameter = daten.get("parameter", {})
 
     fehler, geaendert, platzhalter = [], [], []
     for pfad in html_dateien():
@@ -78,14 +91,20 @@ def main():
         if "data-wert=" not in alt and "data-link=" not in alt:
             continue
         name = str(pfad.relative_to(WURZEL))
-        neu = bearbeiten(alt, werte, links, fehler, name)
+        neu = bearbeiten(alt, werte, links, parameter, fehler, name)
         if neu != alt:
             geaendert.append(name)
             if not pruefen:
                 pfad.write_text(neu, encoding="utf-8")
         for m in LINK_TAG_RE.finditer(neu):
-            if PLATZHALTER in m.group(0):
-                platzhalter.append(f"{name}: data-link=\"{m.group(1)}\"")
+            href = HREF_RE.search(m.group(0)).group(1).lower()
+            if PLATZHALTER in href:
+                p = PARAM_RE.search(m.group(0))
+                teile = [f'data-link="{m.group(1)}"'] if PLATZHALTER in href.split("?")[0] else []
+                if p and PLATZHALTER in href.partition("?")[2]:
+                    teile.append(f'data-link-parameter="{p.group(1)}"')
+                for t in teile:
+                    platzhalter.append(f"{name}: {t}")
 
     for f in fehler:
         print("FEHLER   ", f)
