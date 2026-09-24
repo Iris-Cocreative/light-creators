@@ -455,7 +455,9 @@ Offen bleibt eine kleinere Frage:
   Geprüft am 03.09.2026: `https://davidliebnau.com/briefing/LCT-Farbpalette.md`,
   `.../briefing/OFFENE-AUFGABEN-Relaunch.md` und die Vorschaubilder unter
   `briefing/og-vorschau/` antworten alle mit `200`. Auch `BACKLOG.md` selbst
-  ist abrufbar. Das sind interne Planungsunterlagen auf einer öffentlichen
+  war abrufbar. (24.09.2026: `BACKLOG.md` und die übrigen internen
+  Markdown-Dateien aus dem Stammverzeichnis liegen jetzt unter `_briefings/`.
+  `briefing/` und die Markdown-Dateien in Unterordnern sind noch offen.) Das sind interne Planungsunterlagen auf einer öffentlichen
   Domain — nicht verlinkt und nicht indexiert, aber lesbar, wer den Pfad
   kennt. Der Ordner `_briefings/` ist nicht betroffen: GitHub Pages baut mit
   Jekyll, und Jekyll überspringt Verzeichnisse mit führendem Unterstrich.

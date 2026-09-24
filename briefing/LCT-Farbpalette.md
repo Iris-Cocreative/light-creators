@@ -52,7 +52,7 @@ Zwei Punkte, die daraus folgen:
   03.09.2026 die einzige Datei im Repo mit benannten Farbfeldern und wurde
   deshalb ersatzweise herangezogen; das ist mit dieser Datei erledigt.
 - **Der Gold Gradient ist im CSS nicht als Variable definiert.** Er lebt nur im
-  SVG. Steht seit längerem als Punkt in `BACKLOG.md`.
+  SVG. Steht seit längerem als Punkt in `_briefings/BACKLOG.md`.
 
 ---
 

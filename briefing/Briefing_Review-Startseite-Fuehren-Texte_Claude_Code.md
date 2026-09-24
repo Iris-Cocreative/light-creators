@@ -87,5 +87,5 @@ Fensterbreite.
 
 ## Nicht umgesetzt, wartet auf Entscheidung
 
-- Punkt 7, Bowie-Zitat: als offener Punkt im Backlog, siehe `BACKLOG.md`.
+- Punkt 7, Bowie-Zitat: als offener Punkt im Backlog, siehe `_briefings/BACKLOG.md`.
 - Die Linkfarbe auf der Startseite: siehe Rückfrage im Ergebnisbericht.
