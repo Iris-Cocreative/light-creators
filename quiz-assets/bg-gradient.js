@@ -12,7 +12,7 @@
  *     - Set overflow: hidden
  *
  *   Page Settings → Before </body>:
- *   <script src="https://lab.iriscocreative.com/light-creators/quiz-assets/bg-gradient.js"></script>
+ *   <script src="https://davidliebnau.com/quiz-assets/bg-gradient.js"></script>
  *
  * OPTIONS (via data attributes on #background):
  *   data-bg-image="url"         Custom image URL
@@ -40,7 +40,7 @@
 
     // Read options
     var imgUrl = container.getAttribute('data-bg-image') ||
-        'https://lab.iriscocreative.com/light-creators/Background-gradient%20large.jpg';
+        'https://davidliebnau.com/quiz-assets/background-gradient.jpg';
     var opacity = container.getAttribute('data-bg-opacity') || '0.25';
     var speed = container.getAttribute('data-bg-speed') || '180';
     var sizePct = container.getAttribute('data-bg-size') || '160';

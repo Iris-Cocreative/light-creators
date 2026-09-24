@@ -6,7 +6,7 @@
  *
  * USAGE:
  *   <div data-iris="background" style="width:400px;height:400px;"><canvas></canvas></div>
- *   <script src="https://lab.iriscocreative.com/light-creators/quiz-assets/iris-bg.js"></script>
+ *   <script src="https://davidliebnau.com/quiz-assets/iris-bg.js"></script>
  *
  * OPTIONS (via data attributes on the container):
  *   data-iris="background"        Required — identifies the container
