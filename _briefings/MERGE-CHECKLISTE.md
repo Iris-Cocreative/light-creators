@@ -10,8 +10,8 @@ veröffentlicht GitHub Pages nicht, Markdown im Stammverzeichnis dagegen schon
 
 ## Bedingungen
 
-- [ ] **Tally:** MIRROR-Anfrage DE (445NbX) und EN (RGpB99) veröffentlicht,
-      Links liefern 200.
+- [x] **Tally:** MIRROR-Anfrage DE (445NbX) und EN (RGpB99) veröffentlicht,
+      Links liefern 200. Geprüft am 24.09.2026, beide 200.
       - DE: https://tally.so/r/445NbX
       - EN: https://tally.so/r/RGpB99
 - [x] **Plausible:** Goals für die acht Events aus A7 sowie Pageview-Goals für
@@ -37,17 +37,19 @@ veröffentlicht GitHub Pages nicht, Markdown im Stammverzeichnis dagegen schon
       mit `/datenschutz/`, „Privacy Policy“ im Footer aller englischen Seiten
       zeigt dorthin, Eintrag in der Sitemap.
 - [ ] **Englische Datenschutzerklärung: übersetzte Abschnitte von Claude
-      gegengelesen** (Abschnitte 1, 3, 4, 5, 10, 11, 12).
-- [ ] **Englische Datenschutzerklärung, Stand:** Datum „Last updated“ wie bei
-      der deutschen Fassung auf den Tag des Merges setzen.
+      gegengelesen** (Abschnitte 1, 3, 4, 5, 6, 11, 12, 13, 14, 15).
 - [x] **Training in Claude und ChatGPT abgeschaltet.** Laut David, 24.09.2026.
-- [ ] **Datenschutzerklärung, Stand:** Datum auf den Tag des Merges setzen (v4.3,
-      A6). Heute steht dort „September 2026“.
+- [ ] **Stand-Daten unmittelbar vor dem Merge auf das Merge-Datum setzen:**
+      „Stand“ der deutschen Datenschutzerklärung (heute „September 2026“),
+      „Last updated“ der englischen (heute „September 2026“) und „Stand“ der
+      KI-Seite (heute „August 2026“).
 - [x] **KI-Seite nach v4.5:** Leitsatz „Nichts Vertrauliches geht ohne deine
       ausdrückliche Zustimmung in ein KI-System“, Absatz zu Tally und KI nach
       „sage ich es vorher“.
-- [ ] **KI-Seite, widersprechende Sätze:** Davids Entscheidung zu den Sätzen,
-      die der Einwilligungsregel entgegenstehen (siehe Übergabe v4.4/v4.5).
+- [x] **KI-Seite, widersprechende Sätze:** Satz zu Coachinginhalten nach
+      Davids Vorgabe ersetzt (Ausnahme Intake mit Einwilligung). Die Sätze zu
+      Bewertung/Profilen und „keine Auswertung von Gesagtem“ bleiben, Davids
+      Entscheidung vom 24.09.2026.
 - [x] **Impressum nach v4.3:** Haftungsteil ohne DDG-Zitate, gekürzt auf den
       Satz zu eigenen Inhalten; „Haftung für Links“ bleibt und enthält keine
       Normverweise. Versicherungsblock
