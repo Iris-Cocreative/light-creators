@@ -174,4 +174,8 @@
     <loc>https://davidliebnau.com/datenschutz/</loc>
     <priority>0.3</priority>
   </url>
+  <url>
+    <loc>https://davidliebnau.com/datenschutz/en/</loc>
+    <priority>0.3</priority>
+  </url>
 </urlset>

@@ -28,13 +28,26 @@ veröffentlicht GitHub Pages nicht, Markdown im Stammverzeichnis dagegen schon
       („nach der genannten Frist“) sein Ziel. Ziffer 4 an Ziffer 5 angeglichen
       (Microsoft 365 als Auftragsverarbeiter, Löschung spätestens nach drei
       Jahren).
-- [ ] **Datenschutzerklärung nach v4.4:** Satz „Darüber hinaus gebe ich die
-      Angaben nicht an andere Dienste weiter, weder an ein KI-System noch an ein
-      Analysewerkzeug.“ in Ziffer 6.
+- [x] **Datenschutzerklärung nach v4.4 und v4.5:** Satz zur Weitergabe in
+      Ziffer 6 in der Fassung von v4.5, Aufzeichnung in Ziffer 5, neue Ziffer 8
+      „KI-Unterstützung mit deiner Einwilligung“ (Anker `#ki`), folgende
+      Ziffern und Querverweise um eins verschoben, drei Ausnahmen in Ziffer 9,
+      Hinweis und Sprachumschalter auf die englische Fassung.
+- [x] **Englische Datenschutzerklärung** `/datenschutz/en/` angelegt, hreflang
+      mit `/datenschutz/`, „Privacy Policy“ im Footer aller englischen Seiten
+      zeigt dorthin, Eintrag in der Sitemap.
+- [ ] **Englische Datenschutzerklärung: übersetzte Abschnitte von Claude
+      gegengelesen** (Abschnitte 1, 3, 4, 5, 10, 11, 12).
+- [ ] **Englische Datenschutzerklärung, Stand:** Datum „Last updated“ wie bei
+      der deutschen Fassung auf den Tag des Merges setzen.
+- [x] **Training in Claude und ChatGPT abgeschaltet.** Laut David, 24.09.2026.
 - [ ] **Datenschutzerklärung, Stand:** Datum auf den Tag des Merges setzen (v4.3,
       A6). Heute steht dort „September 2026“.
-- [ ] **KI-Seite** (`ki-einsatz/index.html`) um den Hinweis zu Tally ergänzt.
-      Folgt mit v4.4.
+- [x] **KI-Seite nach v4.5:** Leitsatz „Nichts Vertrauliches geht ohne deine
+      ausdrückliche Zustimmung in ein KI-System“, Absatz zu Tally und KI nach
+      „sage ich es vorher“.
+- [ ] **KI-Seite, widersprechende Sätze:** Davids Entscheidung zu den Sätzen,
+      die der Einwilligungsregel entgegenstehen (siehe Übergabe v4.4/v4.5).
 - [x] **Impressum nach v4.3:** Haftungsteil ohne DDG-Zitate, gekürzt auf den
       Satz zu eigenen Inhalten; „Haftung für Links“ bleibt und enthält keine
       Normverweise. Versicherungsblock
