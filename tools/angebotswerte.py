@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """Schreibt Preise und Formularlinks aus assets/angebot-werte.json ins HTML.
 
-Die Angebotsseite /mirror-edge/ nennt Nettopreise und verlinkt Tally-Formulare an
-mehreren Stellen. Gepflegt werden die Werte nur in der JSON-Datei. Im HTML
-tragen die betroffenen Elemente ein Attribut:
+Die Angebotsseite /mirror-edge/ nennt Nettopreise und verlinkt die MIRROR-Anfrage
+(Tally) und das Passungsgespraech (Calendly) an mehreren Stellen. Gepflegt
+werden die Werte nur in der JSON-Datei. Im HTML tragen die betroffenen
+Elemente ein Attribut:
 
     <span data-wert="preis-mirror">450&#160;€</span>
-    <a data-link="edge-passung" href="...">
+    <a data-link="calendly_passung" href="...">
 
 Das Skript setzt den Inhalt jedes data-wert-Elements und das href jedes
 data-link-Elements neu. Die Werte stehen damit fertig im HTML, auch ohne
