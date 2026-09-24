@@ -1,0 +1,14 @@
+{
+  "_hinweis": "Einzige Quelle fuer Nettopreise und Formularlinks der Angebotsseite /edge/. Nach jeder Aenderung: python3 tools/angebotswerte.py. Adressen unter platzhalter.invalid sind Platzhalter und duerfen nie live gehen.",
+  "werte": {
+    "preis-mirror": 450,
+    "preis-edge": 2900,
+    "preis-edge-pilot": 1900
+  },
+  "links": {
+    "mirror-anfrage": "https://platzhalter.invalid/tally-mirror-anfrage",
+    "mirror-intake": "https://platzhalter.invalid/tally-mirror-intake",
+    "edge-passung": "https://platzhalter.invalid/tally-edge-passung",
+    "terminbuchung": "https://platzhalter.invalid/terminbuchung-passungsgespraech"
+  }
+}
