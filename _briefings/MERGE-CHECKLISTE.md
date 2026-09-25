@@ -36,13 +36,15 @@ veröffentlicht GitHub Pages nicht, Markdown im Stammverzeichnis dagegen schon
 - [x] **Englische Datenschutzerklärung** `/datenschutz/en/` angelegt, hreflang
       mit `/datenschutz/`, „Privacy Policy“ im Footer aller englischen Seiten
       zeigt dorthin, Eintrag in der Sitemap.
-- [ ] **Englische Datenschutzerklärung: übersetzte Abschnitte von Claude
-      gegengelesen** (Abschnitte 1, 3, 4, 5, 6, 11, 12, 13, 14, 15).
+- [x] **Englische Datenschutzerklärung: übersetzte Abschnitte von Claude
+      gegengelesen** (Abschnitte 1, 3, 4, 5, 6, 11, 12, 13, 14, 15). Von David
+      am 25.09.2026, mit zwei Änderungen in Abschnitt 13 und 15.
 - [x] **Training in Claude und ChatGPT abgeschaltet.** Laut David, 24.09.2026.
-- [ ] **Stand-Daten unmittelbar vor dem Merge auf das Merge-Datum setzen:**
+- [x] **Stand-Daten unmittelbar vor dem Merge auf das Merge-Datum setzen:**
       „Stand“ der deutschen Datenschutzerklärung (heute „September 2026“),
       „Last updated“ der englischen (heute „September 2026“) und „Stand“ der
-      KI-Seite (heute „August 2026“).
+      KI-Seite (heute „August 2026“). Erledigt am 25.09.2026: alle drei
+      „September 2026“.
 - [x] **KI-Seite nach v4.5:** Leitsatz „Nichts Vertrauliches geht ohne deine
       ausdrückliche Zustimmung in ein KI-System“, Absatz zu Tally und KI nach
       „sage ich es vorher“.
@@ -62,8 +64,8 @@ veröffentlicht GitHub Pages nicht, Markdown im Stammverzeichnis dagegen schon
       24.09.2026.
 - [x] **AGB nach v4.3:** Abschnitt „Bedingungen für Unternehmen“ mit Anker
       `#unternehmen`, Satz in § 1 ergänzt.
-- [ ] **Werte-Prüfung:** `python3 tools/angebotswerte.py --pruefen` endet mit 0.
-      Stand 24.09.2026: 0. Unmittelbar vor dem Merge erneut laufen lassen.
+- [x] **Werte-Prüfung:** `python3 tools/angebotswerte.py --pruefen` endet mit 0.
+      Unmittelbar vor dem Merge am 25.09.2026: 0.
 
 ## Prüfbefehle
 
