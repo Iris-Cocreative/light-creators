@@ -2422,6 +2422,7 @@ footer {
 .section--midnight .text-link:hover { color: var(--accent); border-bottom-color: var(--accent); }
 
 /* Abgrenzungskasten */
+.section--teal .who-exclusion,
 .section--umber .who-exclusion {
   color: var(--text-on-dark-muted);
   background: rgba(224, 183, 111, 0.08);
@@ -2641,3 +2642,92 @@ footer {
       rgba(4, 23, 31, 0) 100%);
   }
 }
+
+/* ============================================
+   ANGEBOTSSEITE MIRROR UND EDGE (/mirror-edge/)
+   Drei Bausteine, die es vorher nicht gab: Preiszeile, Zaesur innerhalb
+   eines Abschnitts und eine schlichte nummerierte Ablaufliste. Die
+   Ablaufliste ist bewusst keine Methodengrafik (nicht .factors-list),
+   weil die vier Schoepferischen Dialoge der einzige Methodenrahmen der
+   Seite bleiben.
+   ============================================ */
+.angebot-text { max-width: 60ch; margin: 0 auto; }
+.angebot-text > p { margin-bottom: 1.25rem; }
+.angebot-text .arrow-list { margin: 2rem 0; }
+
+.angebot-preis {
+  margin: 2.5rem 0 0.25rem;
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  line-height: 1.2;
+  color: var(--text);
+}
+.angebot-preis-zusatz {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+/* Pilot- und USt-Zeile gehoeren zum Preis, kein Absatzabstand dazwischen */
+.angebot-text > .angebot-preis-zusatz { margin-bottom: 0.2rem; }
+.section--teal .angebot-preis,
+.section--umber .angebot-preis,
+.section--midnight .angebot-preis { color: var(--text-on-dark); }
+
+.angebot-cta { margin: 1.75rem 0 1rem; }
+
+/* Eyebrow mitten im Abschnitt: trennt den Uebergang vom Angebot */
+.angebot-zaesur {
+  display: block;
+  margin: 3rem 0 1.25rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--line-light);
+}
+
+.ablauf-list {
+  list-style: none;
+  counter-reset: ablauf;
+  margin: 2rem 0;
+  padding: 0;
+}
+.ablauf-list li {
+  counter-increment: ablauf;
+  position: relative;
+  padding: 0.9rem 0 0.9rem 2.5rem;
+  border-bottom: 1px solid var(--line-light);
+  line-height: 1.55;
+}
+.ablauf-list li:last-child { border-bottom: none; }
+.ablauf-list li::before {
+  content: counter(ablauf);
+  position: absolute;
+  left: 0;
+  top: 0.8rem;
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--color-gold-em);
+}
+
+/* Preiszeile unter dem Hero-Button der Angebotsseite */
+.hero-preis {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  color: var(--text-on-dark-muted);
+}
+
+/* Inline-Link im Fliesstext der Angebotsseiten (Verweis auf die Bedingungen
+   fuer Unternehmen). Links erben sonst Farbe ohne Unterstreichung und
+   waeren nicht als Link zu erkennen. Gold unterstrichen wie im Hero. */
+.angebot-text p a:not(.btn):not(.text-link) {
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 0.2em;
+}
+.section--teal .angebot-text p a:not(.btn):not(.text-link),
+.section--umber .angebot-text p a:not(.btn):not(.text-link),
+.section--midnight .angebot-text p a:not(.btn):not(.text-link) { color: var(--text-on-dark); }
+
+/* Sprungziele auf den Rechtsseiten (#unternehmen, #spotify, #tally ...):
+   Die Navigation ist fixiert und rund 90px hoch. Ohne Abstand landete die
+   angesprungene Ueberschrift darunter und war verdeckt. */
+.rs [id] { scroll-margin-top: 6.5rem; }

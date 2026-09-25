@@ -58,7 +58,9 @@ for rel, url, voll in seiten():
     for m in re.finditer(r'<script[^>]*type=["\']application/ld\+json["\'][^>]*>(.*?)</script>', h, re.S | re.I):
         try:
             j = json.loads(m.group(1))
-            d['jsonld'] += [x.get('@type') for x in (j if isinstance(j, list) else [j])]
+            knoten = j if isinstance(j, list) else [j]
+            knoten = [g for x in knoten for g in (x.get('@graph') or [x])]
+            d['jsonld'] += [str(x.get('@type')) for x in knoten]
         except Exception as e:
             d['jsonld'].append('UNGUELTIG: ' + str(e)[:40])
     # Links
