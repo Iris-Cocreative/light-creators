@@ -506,6 +506,20 @@
   .fx-bogen li { padding: 0 0 1.6rem 2.4rem; }
 }
 
+/* ---------- 09 Beleg ---------- */
+.fx-belege {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(2rem, 6vw, 5rem);
+  margin-bottom: clamp(5rem, 10vw, 8rem);
+  padding-bottom: clamp(3rem, 6vw, 4rem);
+  border-bottom: 1px solid var(--line-light);
+  align-items: start;
+}
+.fx-belege .proof-quote { margin-top: 0; }
+.fx-belege .eyebrow { display: block; margin-bottom: 1rem; }
+@media (max-width: 880px) { .fx-belege { grid-template-columns: 1fr; } }
+
 /* ---------- 09 David, Passung ---------- */
 .fx-david {
   display: grid;

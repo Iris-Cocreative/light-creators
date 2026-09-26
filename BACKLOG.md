@@ -13,13 +13,12 @@ Umgeschaltet: neue Seite unter /fuehren/ und /fuehren/en/, /mirror-edge/ auf
 EDGE fokussiert, Calendly-Termine edge-erstgespraech, edge-intro-call,
 team-briefing(-en), journey-briefing(-en).
 
-- [ ] Plausible: die 14 Ziele fuehren_* anlegen (hero_cta, hero_textlink,
-  router_ich, router_wir, router_system, mirror_cta, edge_cta,
-  edge_detailseite, team_cta, journey_cta, abschluss_ich, abschluss_wir,
-  abschluss_system) sowie edge_cta_hero und mirror_cta_textlink auf
-  /mirror-edge/. Die alten fuehren_cta1/2/3_click und fuehren_cta_angebot
-  laufen aus.
-- [ ] Belegblock: bis zu drei Zitate mit schriftlicher Freigabe, je eines pro Pfad.
+- [x] Plausible: 15 Ziele angelegt am 26.09.2026 (fuehren_* sowie edge_cta_hero
+  und mirror_cta_textlink). Die alten fuehren_cta1/2/3_click und
+  fuehren_cta_angebot bleiben stehen und laufen aus.
+- [x] Belegblock: Jacob Harz (Bei dir) und Viktor Szücs (Im System) live.
+- [ ] Belegblock "Zwischen euch": noch kein Zitat zur Arbeit mit einem
+  Führungsteam. Kandidat zur Prüfung: Matthias Mücke (mobilcom-debitel).
 
 ---
 
