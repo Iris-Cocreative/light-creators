@@ -1,0 +1,592 @@
+/* ============================================
+   /fuehren/ und /fuehren/en/ — Neukonzeption 26.09.2026
+   Bau-Briefing Fuehren-Seite, Fassung 1.1
+
+   Laedt nach assets/styles.css und uebernimmt von dort Navigation, Footer,
+   Buttons, Textlinks und Typografie. Hier steht nur, was diese Seite anders
+   macht: durchgehende Atmosphaere, Farbdramaturgie, Router, Mobil-Dramaturgie.
+   Alle Klassen tragen das Praefix fx-, damit nichts auf andere Seiten wirkt.
+
+   ATMOSPHAERE
+   Wie auf Threshold (E3.2): ein fixiertes Element hinter der Seite traegt
+   Markengrafik, Schleier 0,62 und Koernung. Dunkle Flaechen liegen
+   durchsichtig oder getoent darueber, helle Flaechen (Summit Mist) sind
+   deckend. So endet das Licht nie an einer Sektionskante.
+   Fixiertes Element statt background-attachment: fixed, das auf iOS nicht
+   greift. 40px Ueberstand, damit nie eine Bildkante sichtbar wird.
+   ============================================ */
+
+.fx {
+  --fx-midnight: #04171F;
+  --fx-earth: #393231;
+  --fx-horizon: #05404C;
+  --fx-dew: #83A18E;
+  --fx-mist: #FFF8E6;
+  --fx-sun: #E0B76F;
+  --fx-muted-dark: #B8B1A6;
+  --fx-seam: clamp(56px, 8vw, 96px);
+  --fx-atmo-bild: url(/assets/threshold-atmo-quer.avif);
+  --fx-schleier: 0.62;
+  /* Toene der dunklen Flaechen ueber der Atmosphaere */
+  --fx-tone-night: rgba(4, 23, 31, 0);
+  --fx-tone-horizon: rgba(5, 64, 76, 0.86);
+  --fx-tone-earth: rgba(57, 50, 49, 0.84);
+  background: var(--fx-midnight);
+}
+@media (max-aspect-ratio: 3/4) { .fx { --fx-atmo-bild: url(/assets/threshold-atmo-hoch.avif); } }
+
+.fx-atmo {
+  position: fixed;
+  top: -40px; left: -40px;
+  width: calc(100% + 80px);
+  height: calc(100vh + 80px);
+  height: calc(100lvh + 80px);
+  z-index: -1;
+  pointer-events: none;
+  background-color: var(--fx-midnight);
+  background-image:
+    url(/assets/threshold-grain.png),
+    linear-gradient(rgba(4, 23, 31, var(--fx-schleier)), rgba(4, 23, 31, var(--fx-schleier))),
+    var(--fx-atmo-bild);
+  background-size: 80px 80px, auto, cover;
+  background-position: 0 0, 0 0, 50% 50%;
+  background-repeat: repeat, no-repeat, no-repeat;
+}
+
+/* ---------- Flaechen ---------- */
+.fx section { padding: clamp(6rem, 14vw, 11rem) 0; }
+
+.fx-dark, .fx-horizon, .fx-earth { color: var(--text-on-dark); }
+.fx-dark :is(h1, h2, h3, h4), .fx-horizon :is(h1, h2, h3, h4), .fx-earth :is(h1, h2, h3, h4) { color: var(--text-on-dark); }
+.fx-dark :is(h1, h2, h3) em, .fx-horizon :is(h1, h2, h3) em, .fx-earth :is(h1, h2, h3) em { color: var(--fx-sun); }
+.fx-dark .eyebrow, .fx-horizon .eyebrow, .fx-earth .eyebrow { color: var(--fx-sun); }
+
+.fx-dark    { --tone: var(--fx-tone-night); }
+.fx-horizon { --tone: var(--fx-tone-horizon); }
+.fx-earth   { --tone: var(--fx-tone-earth); }
+.fx-from-night   { --prev: var(--fx-tone-night); }
+.fx-from-horizon { --prev: var(--fx-tone-horizon); }
+.fx-from-earth   { --prev: var(--fx-tone-earth); }
+.fx-to-night     { --next: var(--fx-tone-night); }
+.fx-to-horizon   { --next: var(--fx-tone-horizon); }
+.fx-to-earth     { --next: var(--fx-tone-earth); }
+/* Naht zwischen zwei dunklen Flaechen: beide laufen im Padding ineinander aus,
+   der Verlauf liegt nie hinter Text. Uebergaenge dunkel/hell bleiben hart. */
+:is(.fx-dark, .fx-horizon, .fx-earth) {
+  background: linear-gradient(to bottom,
+    var(--prev, var(--tone)) 0,
+    var(--tone) var(--fx-seam),
+    var(--tone) calc(100% - var(--fx-seam)),
+    var(--next, var(--tone)) 100%);
+}
+
+.fx-light {
+  background: var(--fx-mist);
+  color: var(--text);
+}
+.fx-light h2 em, .fx-light h3 em { color: var(--color-gold-em); }
+
+.fx-lead {
+  font-family: var(--font-heading);
+  font-size: clamp(1.35rem, 2.4vw, 1.8rem);
+  line-height: 1.45;
+  font-weight: 300;
+}
+.fx-muted-dark { color: var(--fx-muted-dark); }
+.fx-body { max-width: 60ch; }
+.fx-body p + p { margin-top: 1.1rem; }
+.fx-micro {
+  font-size: 0.84rem;
+  letter-spacing: 0.04em;
+  margin-top: 0.9rem;
+}
+:is(.fx-dark, .fx-horizon, .fx-earth) .fx-micro { color: var(--fx-muted-dark); }
+.fx-light .fx-micro { color: var(--text-muted); }
+.fx-cta { margin-top: 2.5rem; }
+
+/* Textlink neben einem Button: klar untergeordnet, keine Flaeche, kein Rahmen,
+   kleinere Schrift. Er darf nie dasselbe Ziel haben wie der Button. */
+.fx-textlink {
+  display: inline-block;
+  margin-top: 1.25rem;
+  font-size: 0.88rem;
+  color: var(--fx-muted-dark);
+}
+.fx-textlink a {
+  color: var(--text-on-dark);
+  border-bottom: 1px solid rgba(224, 183, 111, 0.55);
+  padding-bottom: 2px;
+  transition: color 0.3s, border-color 0.3s;
+}
+.fx-textlink a:hover { color: var(--fx-sun); border-color: var(--fx-sun); }
+
+/* Auf dunklen Flaechen kehrt der Gold-Button beim Hover hell um statt dunkel */
+:is(.fx-dark, .fx-horizon, .fx-earth, .fx-hero) .btn--gold:hover {
+  background: transparent; color: var(--color-cream); border-color: var(--color-cream);
+}
+
+/* ---------- 01 Hero ---------- */
+.fx-hero {
+  position: relative;
+  min-height: 92vh;
+  min-height: 92svh;
+  display: flex;
+  align-items: flex-end;
+  padding: 8rem 0 clamp(4rem, 9vw, 7rem);
+  color: var(--text-on-dark);
+  background: linear-gradient(to bottom, rgba(4, 23, 31, 0.35) 0%, rgba(4, 23, 31, 0) 40%);
+}
+.fx-hero .container { width: 100%; }
+.fx-hero-inner { max-width: 1180px; }
+.fx-hero h1 {
+  color: var(--text-on-dark);
+  font-size: clamp(2.7rem, 7.2vw, 6.2rem);
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+}
+.fx-hero h1 .fx-h1-zwei {
+  display: block;
+  margin-top: 0.12em;
+  padding-left: clamp(0rem, 8vw, 9rem);
+  color: var(--fx-sun);
+  font-style: italic;
+}
+.fx-hero-rechts {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  margin-left: auto;
+  max-width: 34rem;
+}
+.fx-hero-sub {
+  font-size: clamp(1.02rem, 1.5vw, 1.18rem);
+  line-height: 1.65;
+  color: var(--fx-muted-dark);
+}
+.fx-hero-aktion { margin-top: 2.5rem; }
+.fx-hero-aktion .fx-textlink { display: block; }
+@media (max-width: 760px) {
+  .fx-hero { align-items: flex-end; padding-top: 6.5rem; }
+  .fx-hero-rechts { margin-left: 0; }
+}
+/* Die Navigation liegt ueber dem dunklen Hero: helle Schrift */
+.fx-hero > nav.top .logo { color: var(--text-on-dark); }
+.fx-hero > nav.top .nav-toggle { color: var(--text-on-dark); }
+.fx-hero > nav.top .nav-meta { color: var(--text-on-dark-muted); }
+.fx-hero > nav.top .nav-meta a:hover { color: var(--text-on-dark); }
+.fx-hero > nav.top .nav-meta .sep { color: rgba(255, 248, 230, 0.75); }
+.fx-hero > nav.top .nav-meta a.is-current { color: var(--fx-sun); }
+
+/* ---------- 02 Wiedererkennung ---------- */
+.fx-wieder h2 { font-size: clamp(2.4rem, 5.6vw, 4.4rem); }
+.fx-wieder-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: clamp(2.5rem, 7vw, 7rem);
+  margin-top: clamp(3rem, 6vw, 5rem);
+  align-items: start;
+}
+.fx-situationen { list-style: none; }
+.fx-situationen li {
+  font-family: var(--font-heading);
+  font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+  line-height: 1.35;
+  padding: 1rem 0;
+  border-top: 1px solid var(--line-light-soft);
+}
+.fx-situationen li:last-child { border-bottom: 1px solid var(--line-light-soft); }
+.fx-situationen li.fx-oder { font-style: italic; color: var(--color-eyebrow); }
+.fx-kernsatz {
+  position: sticky;
+  top: 8rem;
+  font-size: 1.08rem;
+  line-height: 1.7;
+  max-width: 34ch;
+}
+.fx-kernsatz strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+  line-height: 1.3;
+  margin-top: 1rem;
+}
+@media (max-width: 880px) {
+  .fx-wieder-grid { grid-template-columns: 1fr; }
+  .fx-kernsatz { position: static; order: 2; }
+}
+
+/* ---------- 03 These ---------- */
+.fx-these h2 { max-width: 20ch; font-size: clamp(2.2rem, 5vw, 3.9rem); }
+.fx-these-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(2rem, 6vw, 6rem);
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  align-items: end;
+}
+.fx-these-body p { color: var(--text-on-dark); max-width: 52ch; }
+.fx-prozess {
+  list-style: none;
+  display: flex;
+  gap: 0;
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+  color: var(--fx-sun);
+}
+.fx-prozess li { display: flex; align-items: center; }
+.fx-prozess li + li::before {
+  content: "";
+  display: inline-block;
+  width: clamp(1.5rem, 4vw, 3.5rem);
+  height: 1px;
+  margin: 0 0.9rem;
+  background: rgba(224, 183, 111, 0.5);
+}
+@media (max-width: 880px) {
+  .fx-these-body { grid-template-columns: 1fr; }
+  .fx-prozess { flex-direction: column; align-items: flex-start; gap: 0.3rem; }
+  .fx-prozess li + li::before { width: 1px; height: 1.4rem; margin: 0 0 0.3rem 0.35rem; display: block; }
+  .fx-prozess li { flex-direction: column; align-items: flex-start; }
+}
+
+/* ---------- Entlastungssatz ---------- */
+.fx-entlastung {
+  padding: clamp(7rem, 16vw, 13rem) 0 clamp(3rem, 6vw, 5rem);
+  text-align: center;
+}
+.fx-entlastung p {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(2rem, 5.2vw, 4.2rem);
+  line-height: 1.15;
+  color: var(--text-on-dark);
+  max-width: 18ch;
+  margin: 0 auto;
+}
+
+/* ---------- 04 Router ---------- */
+.fx-router { padding-top: clamp(3rem, 6vw, 5rem) !important; }
+.fx-router-kopf { text-align: center; margin-bottom: clamp(3rem, 7vw, 6rem); }
+.fx-router-kopf h2 { font-size: clamp(2.2rem, 5vw, 3.9rem); }
+.fx-raeume { position: relative; }
+/* Durchgehende Linie: verbindet die drei Raeume, Bewegung von ich ueber wir zu System */
+.fx-raeume::before {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0;
+  left: calc(clamp(9rem, 22vw, 17rem) / 2);
+  width: 1px;
+  background: linear-gradient(to bottom, rgba(224, 183, 111, 0), rgba(224, 183, 111, 0.35) 12%, rgba(224, 183, 111, 0.35) 88%, rgba(224, 183, 111, 0));
+}
+.fx-raum {
+  position: relative;
+  display: grid;
+  grid-template-columns: clamp(9rem, 22vw, 17rem) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+  padding: clamp(2.5rem, 5vw, 4rem) 0;
+}
+.fx-raum-motiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.fx-raum-motiv svg { width: 100%; height: auto; overflow: visible; position: relative; }
+/* Dunkler Hof hinter dem Motiv, damit die durchgehende Linie das Motiv nicht kreuzt */
+.fx-raum-motiv::before {
+  content: "";
+  position: absolute;
+  inset: -12%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(4, 23, 31, 1) 62%, rgba(4, 23, 31, 0) 100%);
+}
+.fx-raum h3 {
+  font-size: clamp(2rem, 4.2vw, 3.3rem);
+  color: var(--text-on-dark);
+}
+.fx-raum h3 em { color: var(--fx-sun); }
+.fx-raum p { margin-top: 1rem; max-width: 52ch; color: var(--text-on-dark); }
+.fx-raum--ich { padding-top: clamp(3rem, 6vw, 5rem); padding-bottom: clamp(4rem, 8vw, 7rem); }
+.fx-raum--ich h3 { font-size: clamp(2.5rem, 5.6vw, 4.4rem); }
+.fx-raum--ich p { font-size: 1.12rem; }
+.fx-raum .btn { margin-top: 2rem; }
+.fx-raum--wir .btn, .fx-raum--system .btn { background: transparent; color: var(--color-cream); border-color: rgba(255, 248, 230, 0.5); }
+.fx-raum--wir .btn:hover, .fx-raum--system .btn:hover { background: var(--color-cream); color: var(--fx-midnight); border-color: var(--color-cream); }
+
+/* Motive: zunehmende Ausdehnung, gezeichnet beim Hineinscrollen */
+.fx-motiv-linie { fill: none; stroke: rgba(224, 183, 111, 0.55); stroke-width: 1; }
+.fx-motiv-punkt { fill: var(--fx-sun); }
+.fx-motiv-ring { fill: none; stroke: rgba(224, 183, 111, 0.4); stroke-width: 1; }
+.fx-motiv-knoten { fill: #0b2a33; stroke: var(--fx-sun); stroke-width: 1; }
+@media (prefers-reduced-motion: no-preference) {
+  .fx-js .fx-raum-motiv svg .fx-motiv-linie,
+  .fx-js .fx-raum-motiv svg .fx-motiv-ring {
+    stroke-dasharray: 400; stroke-dashoffset: 400;
+    transition: stroke-dashoffset 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .fx-js .fx-raum-motiv svg :is(.fx-motiv-punkt, .fx-motiv-knoten) {
+    opacity: 0; transition: opacity 0.9s ease 0.5s;
+  }
+  .fx-js .fx-raum.is-sichtbar .fx-raum-motiv svg :is(.fx-motiv-linie, .fx-motiv-ring) { stroke-dashoffset: 0; }
+  .fx-js .fx-raum.is-sichtbar .fx-raum-motiv svg :is(.fx-motiv-punkt, .fx-motiv-knoten) { opacity: 1; }
+}
+
+/* Mobil: keine gestapelte Desktopversion. Jeder Raum bekommt eine eigene
+   Bildschirmhoehe, das Motiv steht gross darueber, die Linie laeuft mittig
+   durch. Scrollen vollzieht die Bewegung ich, wir, System. */
+@media (max-width: 760px) {
+  .fx-raeume::before { left: 50%; }
+  .fx-raum {
+    grid-template-columns: 1fr;
+    min-height: 88svh;
+    align-content: center;
+    text-align: center;
+    gap: 2rem;
+    padding: 3rem 0;
+  }
+  .fx-raum-motiv { width: 62%; margin: 0 auto; }
+  .fx-raum--ich .fx-raum-motiv { width: 42%; }
+  .fx-raum--system .fx-raum-motiv { width: 86%; }
+  .fx-raum-text { background: rgba(4, 23, 31, 0.55); padding: 1.5rem 0.25rem; position: relative; z-index: 1; }
+  .fx-raum p { margin-left: auto; margin-right: auto; }
+}
+
+/* ---------- 05 MIRROR ---------- */
+.fx-mirror-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  gap: clamp(2.5rem, 7vw, 7rem);
+  align-items: start;
+}
+.fx-mirror h2 { font-size: clamp(2.3rem, 5vw, 3.9rem); max-width: 16ch; }
+.fx-mirror .fx-body { margin-top: 2rem; }
+.fx-leistung {
+  border-top: 1px solid var(--line-light);
+  padding-top: 2rem;
+}
+.fx-leistung ul { list-style: none; margin-bottom: 2rem; }
+.fx-leistung li {
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--line-light-soft);
+  font-size: 1rem;
+}
+.fx-preis {
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  line-height: 1.1;
+}
+.fx-preis-zusatz { font-size: 0.9rem; color: var(--text-muted); margin-top: 0.4rem; }
+:is(.fx-dark, .fx-horizon, .fx-earth) .fx-preis-zusatz { color: var(--fx-muted-dark); }
+@media (max-width: 880px) { .fx-mirror-grid { grid-template-columns: 1fr; } }
+
+/* ---------- 06 EDGE ---------- */
+.fx-edge-frage {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: clamp(1.5rem, 3vw, 2.3rem);
+  color: var(--fx-sun);
+  margin-bottom: 2rem;
+}
+.fx-edge h2 { font-size: clamp(2.2rem, 4.6vw, 3.6rem); max-width: 22ch; }
+.fx-edge-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(2.5rem, 7vw, 7rem);
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+.fx-edge-intro { grid-column: 1; grid-row: 1; }
+.fx-edge-aktion { grid-column: 1; grid-row: 2; }
+.fx-edge-grid .fx-schritte { grid-column: 2; grid-row: 1 / span 2; }
+@media (max-width: 880px) {
+  .fx-edge-intro, .fx-edge-aktion, .fx-edge-grid .fx-schritte { grid-column: 1; grid-row: auto; }
+}
+.fx-schritte { list-style: none; counter-reset: fx-schritt; }
+.fx-schritte li {
+  counter-increment: fx-schritt;
+  position: relative;
+  padding: 0 0 1.6rem 3.2rem;
+}
+.fx-schritte li::before {
+  content: counter(fx-schritt);
+  position: absolute; left: 0; top: -0.15rem;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--fx-sun);
+}
+.fx-schritte li::after {
+  content: "";
+  position: absolute; left: 0.45rem; top: 2rem; bottom: 0.3rem;
+  width: 1px; background: rgba(224, 183, 111, 0.3);
+}
+.fx-schritte li:last-child::after { display: none; }
+.fx-schritte strong { display: block; font-weight: 400; font-size: 1.08rem; }
+.fx-schritte span { display: block; color: var(--fx-muted-dark); font-size: 0.95rem; margin-top: 0.2rem; }
+@media (max-width: 880px) { .fx-edge-grid { grid-template-columns: 1fr; } }
+
+/* ---------- 07 Fuehrungsteams: Wechsel von du auf ihr, auch visuell ----------
+   Breiterer Satzspiegel, zwei Spalten, Ergebnisse als Reihe nebeneinander:
+   hier ist nicht mehr eine Person gemeint, sondern mehrere. */
+.fx-team h2 { font-size: clamp(2.3rem, 5.4vw, 4.2rem); max-width: 18ch; }
+.fx-team-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(2rem, 6vw, 6rem);
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+.fx-ergebnisse {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  margin: clamp(3rem, 6vw, 5rem) 0;
+  background: rgba(255, 248, 230, 0.14);
+  border: 1px solid rgba(255, 248, 230, 0.14);
+}
+.fx-ergebnisse li {
+  background: rgba(4, 23, 31, 0.28);
+  padding: clamp(1.4rem, 3vw, 2.2rem);
+  font-family: var(--font-heading);
+  font-size: clamp(1.25rem, 2vw, 1.6rem);
+  line-height: 1.25;
+}
+@media (max-width: 880px) {
+  .fx-team-grid { grid-template-columns: 1fr; }
+  .fx-ergebnisse { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 420px) { .fx-ergebnisse { grid-template-columns: 1fr; } }
+
+/* ---------- 08 Leadership Journey ---------- */
+.fx-journey h2 { font-size: clamp(2.3rem, 5vw, 3.9rem); max-width: 20ch; }
+.fx-bogen {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  margin: clamp(3rem, 6vw, 5rem) 0;
+  position: relative;
+}
+.fx-bogen::before {
+  content: "";
+  position: absolute;
+  top: 7px; left: 7px; right: 7px;
+  height: 1px;
+  background: rgba(224, 183, 111, 0.45);
+}
+.fx-bogen li { position: relative; padding-top: 2rem; padding-right: 1rem; }
+.fx-bogen li::before {
+  content: "";
+  position: absolute; top: 0; left: 0;
+  width: 15px; height: 15px; border-radius: 50%;
+  background: var(--fx-midnight);
+  border: 1px solid var(--fx-sun);
+}
+.fx-bogen li:last-child::before { background: var(--fx-sun); }
+.fx-bogen strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+  color: var(--text-on-dark);
+}
+.fx-bogen span { display: block; font-size: 0.9rem; color: var(--fx-muted-dark); margin-top: 0.35rem; }
+.fx-journey-body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 6vw, 6rem); }
+.fx-zielgruppe {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+  line-height: 1.4;
+  color: var(--text-on-dark);
+}
+@media (max-width: 880px) {
+  .fx-journey-body { grid-template-columns: 1fr; }
+  .fx-bogen { grid-template-columns: 1fr; gap: 0; }
+  .fx-bogen::before { top: 7px; bottom: 7px; left: 7px; right: auto; width: 1px; height: auto; }
+  .fx-bogen li { padding: 0 0 1.6rem 2.4rem; }
+}
+
+/* ---------- 09 David, Passung ---------- */
+.fx-david {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 5fr);
+  gap: clamp(2rem, 6vw, 6rem);
+  align-items: start;
+}
+.fx-david img {
+  /* Ganzes Bild, kein Beschnitt: Seitenverhaeltnis kommt aus der Datei (3:4) */
+  width: 100%;
+  max-width: 340px;
+  height: auto;
+}
+.fx-david h2 { font-size: clamp(2rem, 4vw, 3rem); }
+.fx-david .fx-body { margin-top: 1.5rem; }
+.fx-passung {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(2rem, 6vw, 5rem);
+  margin-top: clamp(5rem, 10vw, 8rem);
+  padding-top: clamp(3rem, 6vw, 4rem);
+  border-top: 1px solid var(--line-light);
+}
+.fx-passung h3 { font-size: clamp(1.5rem, 2.6vw, 2rem); margin-bottom: 1.2rem; }
+.fx-passung ul { list-style: none; }
+.fx-passung li { padding: 0.8rem 0 0.8rem 1.6rem; position: relative; border-bottom: 1px solid var(--line-light-soft); }
+.fx-passung li::before { content: "+"; position: absolute; left: 0; color: var(--color-eyebrow); }
+.fx-passung .fx-passt-nicht li::before { content: "–"; color: var(--text-muted); }
+.fx-passung .fx-passt-nicht { color: var(--text-muted); }
+.fx-passung .fx-passt-nicht h3 { color: var(--text-muted); }
+@media (max-width: 760px) {
+  .fx-david, .fx-passung { grid-template-columns: 1fr; }
+  .fx-david img { max-width: 260px; }
+}
+
+/* ---------- Abschluss ---------- */
+.fx-abschluss h2 { font-size: clamp(2.3rem, 5vw, 3.9rem); text-align: center; }
+.fx-entscheidungen {
+  list-style: none;
+  max-width: 760px;
+  margin: clamp(3rem, 6vw, 4.5rem) auto 0;
+  border-top: 1px solid rgba(255, 248, 230, 0.16);
+}
+.fx-entscheidungen li { border-bottom: 1px solid rgba(255, 248, 230, 0.16); }
+.fx-entscheidungen a {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: baseline;
+  padding: 1.6rem 0.25rem;
+  transition: color 0.3s, padding 0.3s;
+}
+.fx-entscheidungen .fx-ebene {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  color: var(--text-on-dark);
+}
+.fx-entscheidungen .fx-weg {
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fx-sun);
+  white-space: nowrap;
+}
+.fx-entscheidungen a:hover { padding-left: 0.9rem; }
+.fx-entscheidungen a:hover .fx-ebene { color: var(--fx-sun); }
+@media (max-width: 560px) {
+  .fx-entscheidungen a { grid-template-columns: 1fr; gap: 0.4rem; }
+  .fx-entscheidungen .fx-weg { white-space: normal; }
+}
+
+/* Footer liegt deckend auf Summit Mist */
+.fx footer { position: relative; }
+
+/* Einblenden: dezent, ohne Sprung */
+@media (prefers-reduced-motion: no-preference) {
+  .fx-js .fx-einblenden { opacity: 0; transform: translateY(18px); transition: opacity 0.9s ease, transform 0.9s ease; }
+  .fx-js .fx-einblenden.is-sichtbar { opacity: 1; transform: none; }
+}
+
+/* Fokus sichtbar auf dunklem Grund */
+.fx a:focus-visible, .fx button:focus-visible { outline: 2px solid var(--fx-sun); outline-offset: 3px; }
+
+.fx .award-context { color: var(--text-muted); }

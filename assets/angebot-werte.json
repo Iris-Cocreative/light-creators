@@ -1,5 +1,5 @@
 {
-  "_hinweis": "Einzige Quelle fuer Nettopreise und Links der Angebotsseiten /mirror-edge/ (de) und /mirror-edge/en/ (en): MIRROR-Anfrage (Tally) und Passungsgespraech (Calendly, externer Link, kein Embed). Preise sind ein Wert pro Angebot, die Schreibweise richtet sich nach der Seitensprache (de 2.900 EUR-Zeichen dahinter, en EUR-Zeichen davor, 2,900). Links und Parameter haben je einen Wert pro Sprache. \"parameter\" haengt das Werkzeug nur an Links mit passendem data-link-parameter an (heute: Team-Lab-Link, Vorbelegung der ersten Calendly-Frage). Weitere Formulare (Intake, Feedback, Feedforward) gehoeren nicht hierher. Nach jeder Aenderung: python3 tools/angebotswerte.py. Adressen unter platzhalter.invalid sind Platzhalter und duerfen nie live gehen.",
+  "_hinweis": "Einzige Quelle fuer Nettopreise und Links auf /fuehren/, /mirror-edge/ und ihren englischen Fassungen: MIRROR-Anfrage (Tally) und die drei Calendly-Termine (EDGE Erstgespraech, Fuehrungsteam-Briefing, Leadership-Journey-Briefing; externe Links, kein Embed). Preise sind ein Wert pro Angebot, die Schreibweise richtet sich nach der Seitensprache (de 2.900 EUR-Zeichen dahinter, en EUR-Zeichen davor, 2,900). Links haben je einen Wert pro Sprache. \"parameter\" haengt das Werkzeug nur an Links mit passendem data-link-parameter an. Weitere Formulare (Intake, Feedback, Feedforward) gehoeren nicht hierher. Nach jeder Aenderung: python3 tools/angebotswerte.py. Adressen unter platzhalter.invalid sind Platzhalter und duerfen nie live gehen.",
   "werte": {
     "preis-mirror": 450,
     "preis-edge": 2900,
@@ -10,15 +10,18 @@
       "de": "https://tally.so/r/445NbX",
       "en": "https://tally.so/r/RGpB99"
     },
-    "calendly_passung": {
-      "de": "https://calendly.com/light-creators/20-minuten-passungsgesprach-edge-1-1-oder-team-lab",
-      "en": "https://calendly.com/light-creators/20-minute-fit-call-edge-1-1-or-team-lab"
+    "calendly_edge": {
+      "de": "https://calendly.com/light-creators/edge-erstgespraech",
+      "en": "https://calendly.com/light-creators/edge-intro-call"
+    },
+    "calendly_team": {
+      "de": "https://calendly.com/light-creators/team-briefing",
+      "en": "https://calendly.com/light-creators/team-briefing-en"
+    },
+    "calendly_journey": {
+      "de": "https://calendly.com/light-creators/journey-briefing",
+      "en": "https://calendly.com/light-creators/journey-briefing-en"
     }
   },
-  "parameter": {
-    "calendly_team_parameter": {
-      "de": "a1=Team%20Lab",
-      "en": "a1=Team%20Lab"
-    }
-  }
+  "parameter": {}
 }

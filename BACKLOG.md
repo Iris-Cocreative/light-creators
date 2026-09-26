@@ -7,6 +7,22 @@ Stand: 2026-09-03
 
 ---
 
+## Neue /fuehren (Bau-Briefing 1.1): live seit 26.09.2026
+
+Umgeschaltet: neue Seite unter /fuehren/ und /fuehren/en/, /mirror-edge/ auf
+EDGE fokussiert, Calendly-Termine edge-erstgespraech, edge-intro-call,
+team-briefing(-en), journey-briefing(-en).
+
+- [ ] Plausible: die 14 Ziele fuehren_* anlegen (hero_cta, hero_textlink,
+  router_ich, router_wir, router_system, mirror_cta, edge_cta,
+  edge_detailseite, team_cta, journey_cta, abschluss_ich, abschluss_wir,
+  abschluss_system) sowie edge_cta_hero und mirror_cta_textlink auf
+  /mirror-edge/. Die alten fuehren_cta1/2/3_click und fuehren_cta_angebot
+  laufen aus.
+- [ ] Belegblock: bis zu drei Zitate mit schriftlicher Freigabe, je eines pro Pfad.
+
+---
+
 ## Blockierend für den Relaunch
 
 ### E-Mail-Adressen für die drei Call-to-Action-Buttons
