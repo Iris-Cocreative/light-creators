@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Führen · David Liebnau</title>
-<meta name="description" content="Begleitung für Geschäftsführung, Führungsteams und Organisationen an Wendepunkten, an denen das bisherige Repertoire nicht mehr reicht." />
+<meta name="description" content="Für Inhaber, Geschäftsführung und Führungsteams. Erkennen, auf welcher Ebene deine Führungsfrage liegt, und den nächsten Schritt gehen, der dazu passt." />
 
 <link rel="canonical" href="https://davidliebnau.com/fuehren/" />
 <link rel="alternate" hreflang="de" href="https://davidliebnau.com/fuehren/" />
@@ -14,7 +14,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://davidliebnau.com/fuehren/" />
 <meta property="og:title" content="Führen · David Liebnau" />
-<meta property="og:description" content="Begleitung für Geschäftsführung, Führungsteams und Organisationen an Wendepunkten, an denen das bisherige Repertoire nicht mehr reicht." />
+<meta property="og:description" content="Für Inhaber, Geschäftsführung und Führungsteams. Erkennen, auf welcher Ebene deine Führungsfrage liegt, und den nächsten Schritt gehen, der dazu passt." />
 <meta property="og:image" content="https://davidliebnau.com/assets/og-fuehren-de.jpg" />
 <meta property="og:image:width" content="2400" />
 <meta property="og:image:height" content="1256" />
@@ -23,16 +23,16 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="https://davidliebnau.com/assets/og-fuehren-de.jpg" />
 <meta name="twitter:title" content="Führen · David Liebnau" />
-<meta name="twitter:description" content="Begleitung für Geschäftsführung, Führungsteams und Organisationen an Wendepunkten, an denen das bisherige Repertoire nicht mehr reicht." />
+<meta name="twitter:description" content="Für Inhaber, Geschäftsführung und Führungsteams. Erkennen, auf welcher Ebene deine Führungsfrage liegt, und den nächsten Schritt gehen, der dazu passt." />
 
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
 <link rel="icon" href="/assets/favicon-32.png" type="image/png" sizes="32x32" />
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
 
-<link rel="preload" as="image" href="/assets/hero-fuehren-split.webp" />
 <link rel="stylesheet" href="/assets/fonts.css" />
-
 <link rel="stylesheet" href="/assets/styles.css" />
+<link rel="stylesheet" href="/assets/fuehren.css" />
+<script>document.documentElement.classList.add('fx-js');</script>
 <!-- Privacy-friendly analytics by Plausible -->
 <script async src="https://plausible.io/js/pa-PE8LepbzU6ohWEdNxpoeQ.js"></script>
 <script>
@@ -48,7 +48,7 @@
         "@type": "Service",
         "@id": "https://davidliebnau.com/fuehren/#angebot",
         "name": "Führen · David Liebnau",
-        "description": "Begleitung für Geschäftsführung, Führungsteams und Organisationen an Wendepunkten, an denen das bisherige Repertoire nicht mehr reicht.",
+        "description": "Für Inhaber, Geschäftsführung und Führungsteams. Erkennen, auf welcher Ebene die Führungsfrage liegt, und den nächsten Schritt gehen, der dazu passt.",
         "url": "https://davidliebnau.com/fuehren/",
         "image": "https://davidliebnau.com/assets/og-fuehren-de.jpg",
         "provider": {
@@ -59,37 +59,29 @@
         "availableChannel": {
           "@type": "ServiceChannel",
           "serviceUrl": "https://davidliebnau.com/fuehren/",
-          "availableLanguage": [
-            "de",
-            "en"
-          ]
+          "availableLanguage": ["de", "en"]
         }
       },
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Start",
-            "item": "https://davidliebnau.com/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Führen",
-            "item": "https://davidliebnau.com/fuehren/"
-          }
+          { "@type": "ListItem", "position": 1, "name": "Start", "item": "https://davidliebnau.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Führen", "item": "https://davidliebnau.com/fuehren/" }
         ]
       }
     ]
   }
   </script>
 </head>
-<body>
+<body class="fx">
+<div class="fx-atmo" aria-hidden="true"></div>
 
-<!-- ============================================ HERO ============================================ -->
-<header class="hero hero--split">
+<!-- ============================================ 01 HERO ============================================
+     Keine Angebotswahl, kein MIRROR, kein EDGE, keine Zeit- oder Erfahrungsangabe.
+     Headline entschieden am 26.09.2026, Wortlaut nicht aendern.
+     Ein Button (Sprungmarke in den Router), ein Textlink mit festem Ziel
+     EDGE Erstgespraech (Briefing 1.1, CTA-Regel). -->
+<header class="fx-hero">
   <nav class="top">
     <a href="/" class="logo">David Liebnau<em>.</em></a>
     <div class="nav-meta" id="nav-meta">
@@ -114,258 +106,344 @@
     </button>
   </nav>
 
-  <div class="hero-split-text">
-    <div class="hero-text">
-      <div class="hero-eyebrow">
-        <span class="dot"></span>
-        <span class="eyebrow">Für Geschäftsführung, Führungsteams und Organisationen</span>
+  <div class="container">
+    <div class="fx-hero-inner">
+      <h1>Du hast viel allein geschafft. <span class="fx-h1-zwei">Manches siehst du allein nicht.</span></h1>
+
+      <div class="fx-hero-rechts">
+      <p class="fx-hero-sub">Wenn bewährte Muster ihre Wirkung verlieren, braucht es nicht mehr Tempo und nicht das nächste Führungskonzept, sondern einen klaren Blick darauf, was jetzt wirklich Entwicklung braucht.</p>
+
+      <div class="fx-hero-aktion">
+        <a href="#ebenen" class="plausible-event-name=fuehren_hero_cta btn btn--gold">Deine Frage einordnen <span class="arrow">↓</span></a>
+        <span class="fx-textlink">Du weißt schon, worum es geht? <a data-link="calendly_edge" href="https://calendly.com/light-creators/edge-erstgespraech" target="_blank" rel="noopener" class="plausible-event-name=fuehren_hero_textlink">Direkt ins Erstgespräch, 20 Minuten</a></span>
       </div>
-
-      <h1>Wenn das, was das Unternehmen groß gemacht hat, <em>es jetzt bremst.</em></h1>
-
-      <p class="hero-sub">
-        Bewusstes Leadership an erfolgskritischen Wendepunkten.
-      </p>
-
-      <div class="hero-cta-row" style="margin-top:2.5rem;">
-        <a href="mailto:mail@davidliebnau.com?subject=Briefing-Gespr%C3%A4ch" class="plausible-event-name=fuehren_cta1_click btn btn--gold">Briefing-Gespräch anfragen <span class="arrow">→</span></a>
       </div>
     </div>
-  </div>
-
-  <div class="hero-split-media">
-    <img src="/assets/hero-fuehren-split.webp" width="1400" height="1400" alt="David Liebnau" fetchpriority="high" />
   </div>
 </header>
 
-<!-- ============================================ ZWEI SÄTZE ============================================ -->
-<section class="qa-section">
+<main>
+
+<!-- ============================================ 02 WIEDERERKENNUNG ============================================
+     Kein CTA. Drei Situationen treffen den wachsenden Gruender (Flur, erste
+     Fuehrungsebene, unausgesprochene Rollen), ohne eigene Ueberschrift. -->
+<section class="fx-light fx-wieder">
   <div class="container">
-    <div class="qa-grid">
-      <aside class="qa-aside">
-        <span class="eyebrow">Erstgespräche</span>
-        <h2>Zwei Sätze, die ich in Erstgesprächen <em>ständig höre.</em></h2>
-      </aside>
+    <h2 class="fx-einblenden">Eigentlich läuft es. <em>Und trotzdem.</em></h2>
 
-      <div class="qa-body">
-        <blockquote class="pull-quote">Wir haben alles versucht, was früher funktioniert hat.</blockquote>
-        <blockquote class="pull-quote">Ich weiß nicht mehr, wo ich anfangen soll.</blockquote>
+    <div class="fx-wieder-grid">
+      <ul class="fx-situationen fx-einblenden">
+        <li>Entscheidungen werden zäher.</li>
+        <li>Gespräche wiederholen sich.</li>
+        <li>Verantwortung bleibt an den falschen Stellen hängen.</li>
+        <li>Das Team ist über die Größe hinausgewachsen, in der sich alles noch auf dem Flur regeln ließ.</li>
+        <li>Zum ersten Mal braucht es eine Führungsebene zwischen dir und dem Team.</li>
+        <li>Die Rollen zwischen dir und deinen Mitgründern wurden nie ausgesprochen. Jetzt reiben sie.</li>
+        <li>Im Führungsteam entsteht Reibung.</li>
+        <li class="fx-oder">Oder das, was lange erfolgreich gemacht hat, hilft gerade nicht weiter.</li>
+      </ul>
 
-        <p>Beides sind keine Kompetenzprobleme. Es sind Übergänge. Das Geschäftsmodell trägt noch, aber die Kurve zeigt, dass es nicht mehr lange trägt. Die Führungskraft ist erfahren, aber die Erfahrung passt nicht mehr auf die Lage. Das Team arbeitet härter und kommt langsamer voran.</p>
-
-        <p>Was in dieser Lage passiert: Es wird mehr vom Selben verordnet. Noch ein Programm, noch ein Reporting, noch eine Reorganisation. Die besten Leute verbrauchen sich zuerst. Genau die, aus deren Energie die nächste Antwort entstehen müsste.</p>
-      </div>
+      <p class="fx-kernsatz fx-einblenden">Das Problem ist selten fehlendes Wissen. <strong>Meist ist etwas entstanden, das von innen schwer zu sehen ist.</strong></p>
     </div>
   </div>
 </section>
 
-<!-- ============================================ WIE ICH ARBEITE ============================================ -->
-<section class="qa-section section--teal">
-  <div class="container container--narrow">
-    <div class="section-intro">
-      <span class="eyebrow">Ergebnisse</span>
-      <h2>Was dir die <em>Zusammenarbeit bringt.</em></h2>
-    </div>
-
-    <div class="moment-list">
-      <p>Räume, in denen ehrlich miteinander gesprochen wird. In denen unterschiedliche Perspektiven auftauchen können, weil sich jeder damit willkommen fühlt. Offenes Zuhören ist dafür die Bedingung, und genau daran arbeite ich mit dem Team.</p>
-      <p>Das Wissen, das längst im Unternehmen liegt, wird wieder verfügbar. In Führungsteams, die im Dauerreagieren stecken, ist es vorhanden, aber niemand kommt daran.</p>
-      <p>Ein ehrliches Bild der Lage. Ohne Beschönigung, ohne Schuldzuweisung, mit den Menschen im Raum, die es betrifft.</p>
-      <p>Ein Team, das schwierige Emotionen gemeinsam durcharbeiten kann und durch konstruktive Konfliktbearbeitung wieder innovationsfähig wird. Es kann sich gegenseitig korrigieren, statt auszuweichen — auch in gestapelten Krisen.</p>
-      <p>Am Ende stehen Entscheidungen, die das Führungsteam wirklich mitträgt — und die den Alltag überstehen, weil sie in die tägliche Arbeit eingebaut werden. Und ein Team, das wieder gestaltet, statt auf die nächste Störung zu reagieren.</p>
-      <p>All das gelingt durch die Methode der schöpferischen Dialoge.</p>
-    </div>
-
-    <p style="margin-top:2.5rem;"><a href="/#methode" class="text-link">Die vier Schritte im Detail <span class="arrow">→</span></a></p>
-
-    <figure class="proof-quote">
-      <blockquote>David gehört zu den stärksten Learning-&amp;-Development-Fachleuten, mit denen ich je zusammenarbeiten durfte. Sein scharfer Verstand und seine erfrischenden Empfehlungen wurden von Führungskräften der oberen Ebene sehr geschätzt und hatten echte Wirkung auf diese Führungskräfte und ihre Organisationen!</blockquote>
-      <figcaption>
-        <img class="proof-photo" src="/assets/testimonials/pa-sinyan.webp" width="320" height="320" loading="lazy" alt="" />
-        <span class="proof-ident">
-          <span class="proof-name">Pa M.K. Sinyan</span>
-          <span class="proof-role">Regional Managing Partner EMEA, Gallup <span class="sep">·</span> aus dem Englischen übersetzt</span>
-        </span>
-      </figcaption>
-    </figure>
-
-    <figure class="proof-quote">
-      <blockquote>
-        <p>Jahrelang war der Job alles. Kein Privatleben, kein Abstand, nie wirklich zufrieden — egal was das Team leistete. Ich wollte weniger im Unternehmen arbeiten — und mehr daran. Ich wollte wieder ein Leben haben.</p>
-      <p>Dank des Coachings von David läuft jetzt die interne Abstimmung reibungsloser, die Motivation ist höher und es fällt mir leichter, Wertschätzung zu kommunizieren. Dadurch wurden auch die Leistungen intensiviert.</p>
-      <p>Meine Mitarbeiter übernehmen mehr Verantwortung. Und die Beziehung zu meinen Kunden ist vertrauensvoller.</p>
-      <p>Ich habe von außen und auch im Privaten das Feedback bekommen, dass ich gelassener durch das Leben gehe und mehr Ruhe in mir habe. Meine Kommunikation hat sich verbessert, meine Beziehungen haben sich intensiviert.</p>
-      <p>Ich kann mein Leben wesentlich mehr genießen.</p>
-      </blockquote>
-      <figcaption>
-        <img class="proof-photo" src="/assets/testimonials/jacob-harz.webp" width="320" height="320" loading="lazy" alt="" />
-        <span class="proof-ident">
-          <span class="proof-name">Jacob Harz</span>
-          <span class="proof-role">CEO &amp; Co-Founder @Viivi</span>
-        </span>
-      </figcaption>
-    </figure>
-  </div>
-</section>
-
-<!-- ============================================ FORMATE ============================================ -->
-<section class="wege-section" style="background: var(--bg);">
+<!-- ============================================ 03 THESE ============================================ -->
+<section class="fx-horizon fx-to-night fx-these">
   <div class="container">
-    <div class="section-intro">
-      <span class="eyebrow">Zusammenarbeit</span>
-      <h2><em>Formate.</em></h2>
-    </div>
+    <h2 class="fx-einblenden">Entwicklung beginnt nicht mit einer Methode, <em>sondern mit einem klareren Blick.</em></h2>
 
-    <div class="roles-grid">
-      <div class="role-card role-card--textonly">
-        <h3>Einzelarbeit auf Geschäftsführungsebene.</h3>
-        <p>Für Menschen, die niemanden haben, mit dem sie offen sprechen können.</p>
-      </div>
+    <div class="fx-these-body fx-einblenden">
+      <p>Seit über 25 Jahren arbeite ich an solchen Übergängen. Ich lege kein Standardmodell über jede Situation. Zuerst wird sichtbar, was tatsächlich geschieht: in der Person, zwischen Menschen und im System. Daraus entsteht kein Entwicklungsplan, sondern ein nächster Schritt, der zur Situation passt.</p>
 
-      <div class="role-card role-card--textonly">
-        <h3>Führungsteam-Begleitung.</h3>
-        <p>Klausuren, Alignment-Prozesse, Konfliktklärung an der Spitze.</p>
-      </div>
-
-      <div class="role-card role-card--textonly">
-        <h3>Programme.</h3>
-        <p>Blended-Learning-Architekturen über mehrere Monate, für Führungsebenen oder ganze Organisationen.</p>
-      </div>
-    </div>
-
-    <!-- Die Zitate stehen spaltengleich unter dem Format, das sie belegen.
-         Fuer "Fuehrungsteam-Begleitung" gibt es keines, die mittlere Spalte
-         bleibt deshalb frei. -->
-    <div class="format-proofs">
-      <figure class="proof-quote format-col-1">
-        <blockquote>
-          David ist ein wirklich toller Coach: sehr nahbar, sehr persönlich und sehr kompetent. Er verbindet seine Lebens-, Berufs- und Führungserfahrung mit Emotionalität, einem Hauch Spiritualität und einem augenzwinkernden Blick aufs Leben. Er hat meinen (Wieder-)Einstieg in den neuen Job begleitet. Jede Session mit ihm war emotional, hat Spaß gemacht und mir neue Erkenntnisse vermittelt. Mit ihm würde ich jederzeit wieder arbeiten und mich ihm anvertrauen.
-        </blockquote>
-        <figcaption>
-          <img class="proof-photo" src="/assets/testimonials/daniel-euteneuer.webp" width="152" height="152" loading="lazy" alt="" />
-          <span class="proof-ident">
-            <span class="proof-name">Daniel Euteneuer</span>
-            <span class="proof-role">Leiter Regionalbereich Ost, DB Station &amp; Service AG</span>
-          </span>
-        </figcaption>
-      </figure>
-      <figure class="proof-quote format-col-3">
-        <blockquote>Ich habe David als fantastischen Trainer kennengelernt, mit einer besonderen Stärke und Authentizität, wenn es um das Thema Selbstführung geht. Seine Begleitung und seine Impulse waren von unschätzbarem Wert dabei, unseren neu ernannten Führungskräften zu helfen, zentrale Führungskompetenzen aufzubauen und durch diese unsicheren Zeiten zu navigieren. Ich empfehle David jedem, der sich auf einen Weg der eigenen Entwicklung machen möchte.</blockquote>
-        <figcaption>
-          <img class="proof-photo" src="/assets/testimonials/viktor-szuecs.webp" width="320" height="320" loading="lazy" alt="" />
-          <span class="proof-ident">
-            <span class="proof-name">Viktor Szücs</span>
-            <span class="proof-role">Senior Director Leadership Development and Cultural Transformation, Lufthansa Group <span class="sep">·</span> aus dem Englischen übersetzt</span>
-          </span>
-        </figcaption>
-      </figure>
-    </div>
-    <p class="section-coda">Alles wird für die konkrete Lage gebaut. Für Programme in Organisationen gibt es deshalb keine Preisliste. Nach dem Briefing-Gespräch bekommst du eine Skizze mit Format, Aufwand und Preis, und entscheidest dann.</p>
-
-    <p class="section-coda">Wenn sich das bis hierhin stimmig und hilfreich anhört, ist ein Gespräch der schnellste Weg herauszufinden, ob ich der Richtige bin.</p>
-    <p style="text-align:center; margin-top:1.5rem;"><a href="mailto:mail@davidliebnau.com?subject=Briefing-Gespr%C3%A4ch" class="plausible-event-name=fuehren_cta2_click text-link">Briefing-Gespräch anfragen <span class="arrow">→</span></a></p>
-  </div>
-</section>
-
-<!-- ============================================ IM 1:1 ============================================ -->
-<!-- Copy-Deck MIRROR und EDGE v1, Abschnitt 0. Keine Produktdarstellung und
-     keine Preise auf dieser Seite, nur der Weg zur Angebotsseite. Der
-     Anfrageweg fuer Organisationen steht als Textlink unter "Formate". -->
-<section class="qa-section section--teal">
-  <div class="container container--narrow">
-    <div class="section-intro">
-      <span class="eyebrow">Im 1:1</span>
-      <h2>Wenn du selbst <em>an diesem Punkt</em> stehst.</h2>
-    </div>
-
-    <div class="angebot-text">
-      <p>Oft beginnt eine Veränderung bei der Person, die entscheidet. Wenn du ein Unternehmen führst, arbeite ich mit dir auch im 1:1, in zwei klar umrissenen Formaten.</p>
-
-      <div class="hero-cta-row angebot-cta">
-        <a href="/mirror-edge/" class="plausible-event-name=fuehren_cta_angebot btn btn--gold">MIRROR und EDGE ansehen <span class="arrow">→</span></a>
-      </div>
+      <ol class="fx-prozess" aria-label="Vorgehen">
+        <li>sehen</li>
+        <li>verstehen</li>
+        <li>verändern</li>
+      </ol>
     </div>
   </div>
 </section>
 
-<!-- ============================================ ABGRENZUNG ============================================ -->
-<section class="who-section section--umber">
-  <div class="container container--narrow">
-    <div class="section-intro">
-      <span class="eyebrow">Abgrenzung</span>
-      <h2>Wofür ich <em>nicht der Richtige bin.</em></h2>
-    </div>
-
-    <div class="who-exclusion" style="max-width:60ch; margin-left:auto; margin-right:auto;">
-      Für Standardtrainings von der Stange. Für Programme, die eine Entscheidung ersetzen sollen, die die Geschäftsführung nicht treffen will. Für Situationen, in denen das Ergebnis vorher feststeht und nur noch Zustimmung eingesammelt wird.
-    </div>
-  </div>
-</section>
-
-<!-- ============================================ BELEGE ============================================ -->
-<section class="testimonials-section">
+<!-- ============================================ ENTLASTUNG ============================================
+     Steht frei an der Schwelle zum Router, ausdruecklich nicht im Hero. -->
+<div class="fx-dark fx-entlastung">
   <div class="container">
-    <div class="section-intro">
-      <span class="eyebrow">Belege</span>
-      <h2>Gebaut, geleitet, <em>verantwortet.</em></h2>
-      <p>In den letzten 25 Jahren Multimillionen-Programme für über 20.000 Teilnehmer konzipiert und geleitet. Zunächst als Senior Learning &amp; Development Consultant bei Gallup, später als Mitglied der Geschäftsführung und Client Director der SYNK GROUP. In dieser Zeit wurde eines der SYNK GROUP-Programme, die ich für die Deutsche Bahn konzipiert und geleitet habe, mit dem HR Excellence Award in der Kategorie „Konzernführungskräfte“ ausgezeichnet.</p>
-    </div>
-
-    <figure class="proof-quote">
-      <blockquote>Wir haben seit 2019 ein umfangreiches Leadership Programm gemeinsam mit der SYNK GROUP und David Liebnau als Client Director und Senior Expert entwickelt und umgesetzt. Mehrere hundert Führungskräfte von ZF haben daran teilgenommen und haben sehr gute Rückmeldungen gegeben. Vielen DANK dafür.</blockquote>
-      <figcaption>
-        <img class="proof-photo" src="/assets/testimonials/david-kling.webp" width="320" height="320" loading="lazy" alt="" />
-        <span class="proof-ident">
-          <span class="proof-name">David Kling</span>
-          <span class="proof-role">Organizational &amp; Leadership Development, ZF Group</span>
-        </span>
-      </figcaption>
-    </figure>
-
-    <figure class="proof-quote">
-      <blockquote>Mit David zusammen zu arbeiten ist immer wieder eine Freude. Uns verbindet die gleiche Vorstellung von Qualität und Kundennutzen und zusammen sind wir immer bereit für die Top Performance die letzten Meter zu gehen. Neben dieser hoch professionellen Einstellung kommt der Spaß nie zu kurz. Vor allem der Blick fürs Menschliche in jeder Lebenslage macht ihn wertvoll im beruflichen und im privaten Leben. Ich habe so viel gelernt über Training, Coaching, Führungskräftequalifizierung, Achtsamkeit und vieles, vieles mehr...</blockquote>
-      <figcaption>
-        <img class="proof-photo" src="/assets/testimonials/bettina-rufnak.webp" width="320" height="320" loading="lazy" alt="" />
-        <span class="proof-ident">
-          <span class="proof-name">Bettina Rufnak</span>
-          <span class="proof-role">Themenexpertin und Produkt Owner Team Karriere bei Deutsche Bahn</span>
-        </span>
-      </figcaption>
-    </figure>
-    <!-- Sechs Zitate. Die Obergrenze von fuenf aus dem Ursprungsbriefing
-         hat David am 04.09.2026 aufgehoben.
-         Kommt spaeter eines dazu: Erwaehnt der Wortlaut den HR Excellence
-         Award, traegt assets/award-context.js den Rollen-Satz zur SYNK GROUP
-         automatisch nach (Regel R2). Nichts von Hand kuerzen, was diesen
-         Bezug herstellt. -->
-
-    <div class="testimonials-link">
-      <a href="https://www.linkedin.com/in/david-liebnau/" class="text-link" target="_blank" rel="noopener">Alle Empfehlungen auf LinkedIn <span class="arrow">→</span></a>
-    </div>
+    <p class="fx-einblenden">Du musst nicht alles allein hinkriegen.</p>
   </div>
-</section>
+</div>
 
-<!-- ============================================ ABSCHLUSS ============================================ -->
-<section id="kontakt" class="next-section section--midnight">
-  <div class="container container--narrow">
-    <div class="section-intro">
-      <span class="eyebrow">Der nächste Schritt</span>
-      <h2><em>Briefing-Gespräch.</em></h2>
+<!-- ============================================ 04 ROUTER ============================================
+     Kategorisiert die Situation des Besuchers, nicht Davids Leistungen.
+     Gewicht ca. 50/25/25: der erste Raum ist groesser gesetzt. Die Motive
+     dehnen sich aus, von einem Punkt ueber Resonanz zu einem Netz. -->
+<section id="ebenen" class="fx-dark fx-router">
+  <div class="container">
+    <div class="fx-router-kopf fx-einblenden">
+      <span class="eyebrow">Drei Ebenen</span>
+      <h2 style="margin-top:1rem;">Führung hat mehr <em>als eine Ebene.</em></h2>
     </div>
 
-    <div style="max-width:60ch; margin: 0 auto;">
-      <p>60 Minuten, kostenlos, per Video. Du schilderst die Lage. Ich stelle Fragen und sage dir ehrlich, ob ich der Richtige bin. Wenn ja, bekommst du innerhalb einer Woche eine Skizze mit Format, Aufwand, Zeitrahmen und Preis. Wenn nein, sage ich dir, wen ich stattdessen empfehle.</p>
+    <div class="fx-raeume">
+      <div class="fx-raum fx-raum--ich">
+        <div class="fx-raum-motiv" aria-hidden="true">
+          <svg viewBox="0 0 200 200">
+            <circle class="fx-motiv-ring" cx="100" cy="100" r="62" />
+            <circle class="fx-motiv-ring" cx="100" cy="100" r="34" />
+            <circle class="fx-motiv-punkt" cx="100" cy="100" r="7" />
+          </svg>
+        </div>
+        <div class="fx-raum-text">
+          <h3>Bei <em>dir.</em></h3>
+          <p>Eine konkrete Führungssituation bewegt sich nicht, obwohl du sie längst im Blick hast. Du willst verstehen, was sich darin wiederholt und wo dein Hebel liegt. Hier kannst du direkt anfangen, ohne Vorgespräch.</p>
+          <a href="#mirror" class="plausible-event-name=fuehren_router_ich btn btn--gold">Einstieg finden <span class="arrow">↓</span></a>
+          <p class="fx-micro">Ab <span data-wert="preis-mirror">450&#160;€</span> netto zzgl. USt., klar umrissener Prozess</p>
+        </div>
+      </div>
 
-      <p class="paragraph-sm" style="margin-top:2rem;">Ich duze in der Regel. Wenn dir das Sie lieber ist, sag es einfach, das ist überhaupt kein Thema.</p>
+      <div class="fx-raum fx-raum--wir">
+        <div class="fx-raum-motiv" aria-hidden="true">
+          <svg viewBox="0 0 200 200">
+            <path class="fx-motiv-linie" d="M100 44 L46 142 L154 142 Z" />
+            <circle class="fx-motiv-ring" cx="100" cy="44" r="22" />
+            <circle class="fx-motiv-ring" cx="46" cy="142" r="22" />
+            <circle class="fx-motiv-ring" cx="154" cy="142" r="22" />
+            <circle class="fx-motiv-knoten" cx="100" cy="44" r="6" />
+            <circle class="fx-motiv-knoten" cx="46" cy="142" r="6" />
+            <circle class="fx-motiv-knoten" cx="154" cy="142" r="6" />
+          </svg>
+        </div>
+        <div class="fx-raum-text">
+          <h3>Zwischen <em>euch.</em></h3>
+          <p>Im Führungsteam reibt es. Erwartungen bleiben unausgesprochen, Zuständigkeiten überschneiden sich, dieselben Themen kommen immer wieder auf den Tisch. Dann liegt die Frage zwischen den Menschen, und dort wird sie auch bearbeitet.</p>
+          <a data-link="calendly_team" href="https://calendly.com/light-creators/team-briefing" target="_blank" rel="noopener" class="plausible-event-name=fuehren_router_wir btn">Über unser Führungsteam sprechen <span class="arrow">→</span></a>
+          <p class="fx-micro">30 Minuten Briefing, unverbindlich</p>
+        </div>
+      </div>
 
-      <div class="hero-cta-row" style="margin-top:2.5rem;">
-        <a href="mailto:mail@davidliebnau.com?subject=Briefing-Gespr%C3%A4ch" class="plausible-event-name=fuehren_cta3_click btn btn--gold">Gespräch anfragen <span class="arrow">→</span></a>
+      <div class="fx-raum fx-raum--system">
+        <div class="fx-raum-motiv" aria-hidden="true">
+          <svg viewBox="0 0 200 200">
+            <path class="fx-motiv-linie" d="M22 70 L70 34 L128 52 L178 26 M70 34 L84 100 L128 52 L150 112 L178 26 M22 70 L84 100 L40 150 L104 172 L150 112 L190 160 M84 100 L104 172 M150 112 L104 172" />
+            <circle class="fx-motiv-knoten" cx="22" cy="70" r="4.5" />
+            <circle class="fx-motiv-knoten" cx="70" cy="34" r="4.5" />
+            <circle class="fx-motiv-knoten" cx="128" cy="52" r="4.5" />
+            <circle class="fx-motiv-knoten" cx="178" cy="26" r="4.5" />
+            <circle class="fx-motiv-knoten" cx="84" cy="100" r="4.5" />
+            <circle class="fx-motiv-knoten" cx="150" cy="112" r="4.5" />
+            <circle class="fx-motiv-knoten" cx="40" cy="150" r="4.5" />
+            <circle class="fx-motiv-knoten" cx="104" cy="172" r="4.5" />
+            <circle class="fx-motiv-knoten" cx="190" cy="160" r="4.5" />
+          </svg>
+        </div>
+        <div class="fx-raum-text">
+          <h3>Im <em>System.</em></h3>
+          <p>Führung soll sich in deiner Organisation verankern, über einzelne Personen hinaus. Du suchst eine Entwicklung, die an echten Herausforderungen ansetzt und im Alltag weiterwirkt, statt nach dem Seminar zu verblassen.</p>
+          <a data-link="calendly_journey" href="https://calendly.com/light-creators/journey-briefing" target="_blank" rel="noopener" class="plausible-event-name=fuehren_router_system btn">Leadership Journey besprechen <span class="arrow">→</span></a>
+          <p class="fx-micro">30 Minuten Briefing, unverbindlich</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================================ FOOTER ============================================ -->
+<!-- ============================================ 05 MIRROR ============================================
+     Direkt beauftragbar, keine Zwischenseite. MIRROR wird nirgends als
+     Vorstufe, Einstieg oder erster Schritt beschrieben. -->
+<section id="mirror" class="fx-light fx-mirror">
+  <div class="container">
+    <div class="fx-mirror-grid">
+      <div class="fx-einblenden">
+        <span class="eyebrow">MIRROR</span>
+        <h2 style="margin-top:1rem;">Manchmal brauchst du noch kein Coaching. <em>Sondern Klarheit.</em></h2>
+        <div class="fx-body">
+          <p class="fx-lead">Du beschreibst eine konkrete Führungssituation. Sichtbar wird, was sich darin wiederholt, wo Spannungen liegen und welcher Hebel trägt. Du bekommst ein schriftliches Lagebild und wir besprechen es.</p>
+          <p>Dafür beantwortest du fünf offene Fragen, das dauert etwa 20 Minuten. Ich lese deine Antworten selbst und schreibe dir daraus das Lagebild. Du bekommst es zwei bis drei Tage vor unserem Gespräch. In 30 Minuten prüfen wir es gemeinsam, korrigieren, was nicht stimmt, und klären, was jetzt zu tun ist.</p>
+          <p>Am Ende hast du eine begründete Arbeitshypothese zu deiner Situation. Keine Diagnose und keinen Persönlichkeitstest.</p>
+        </div>
+      </div>
+
+      <div class="fx-leistung fx-einblenden">
+        <ul>
+          <li>Fünf offene Fragen, schriftlich</li>
+          <li>Persönliches Lagebild, von mir geschrieben</li>
+          <li>Gespräch, 30 Minuten</li>
+        </ul>
+        <p class="fx-preis"><span data-wert="preis-mirror">450&#160;€</span> netto</p>
+        <p class="fx-preis-zusatz">zzgl. USt. · nur für Unternehmen</p>
+        <div class="fx-cta">
+          <a data-link="tally_mirror_anfrage" href="https://tally.so/r/445NbX" target="_blank" rel="noopener" class="plausible-event-name=fuehren_mirror_cta btn btn--gold">Mit MIRROR beginnen <span class="arrow">→</span></a>
+        </div>
+        <p class="fx-micro">Nach deiner Anfrage bekommst du eine Rechnung, den Fragebogen nach Zahlungseingang.</p>
+        <!-- RECHTSHINWEIS-POSITION wie auf /mirror-edge/ (Bau-Briefing v4 §9):
+             Formularhinweis zu Tally mit Link auf /datenschutz/, sobald der Text vorliegt. -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ 06 EDGE ============================================
+     Ein Button (EDGE Erstgespraech), ein Textlink auf die Detailseite.
+     Kein MIRROR-Button in diesem Abschnitt. -->
+<section id="edge" class="fx-earth fx-to-horizon fx-edge">
+  <div class="container">
+    <p class="fx-edge-frage fx-einblenden">Und wenn deine eigene Perspektive nicht reicht?</p>
+    <span class="eyebrow">EDGE</span>
+    <h2 style="margin-top:1rem;" class="fx-einblenden">EDGE erweitert den Blick um die Menschen, <em>mit denen du führst.</em></h2>
+
+    <div class="fx-edge-grid">
+      <div class="fx-body fx-edge-intro fx-einblenden">
+        <p>Du holst die Sicht ausgewählter Menschen ein, die dich in der Führung erleben. Kein 360-Grad-Feedback und keine Persönlichkeitsbewertung, sondern ein fokussiertes Bild einer konkreten Führungsherausforderung. Über mehrere Wochen, mit einer Praxisphase in deinem Alltag.</p>
+      </div>
+
+      <ol class="fx-schritte fx-einblenden" aria-label="Ablauf">
+        <li><strong>Situation klären</strong><span>Wir schärfen, um welche Herausforderung es geht und worauf du schauen willst.</span></li>
+        <li><strong>Außenperspektiven einholen</strong><span>Drei Menschen, die du auswählst, beantworten offene Fragen. Vorab klären wir, wer was zu sehen bekommt.</span></li>
+        <li><strong>Muster sichtbar machen</strong><span>Was bleiben sollte, wo Reibung entsteht, was einen Unterschied machen würde.</span></li>
+        <li><strong>Gemeinsam auswerten</strong><span>Wir legen die Perspektiven neben deine eigene und wählen deinen Fokus.</span></li>
+        <li><strong>Nächsten Schritt bestimmen</strong><span>Du setzt ihn im Alltag um, danach werten wir aus, was sich verändert hat.</span></li>
+      </ol>
+
+      <div class="fx-edge-aktion fx-einblenden">
+        <div>
+          <p class="fx-preis"><span data-wert="preis-edge">2.900&#160;€</span> netto</p>
+          <p class="fx-preis-zusatz">Pilotpreis für die ersten drei Plätze: <span data-wert="preis-edge-pilot">1.900&#160;€</span> netto<br />zzgl. USt. · nur für Unternehmen</p>
+        </div>
+
+        <div class="fx-cta">
+          <a data-link="calendly_edge" href="https://calendly.com/light-creators/edge-erstgespraech" target="_blank" rel="noopener" class="plausible-event-name=fuehren_edge_cta btn btn--gold">EDGE besprechen <span class="arrow">→</span></a>
+          <p class="fx-micro">Erstgespräch, 20 Minuten, unverbindlich</p>
+          <span class="fx-textlink"><a href="/mirror-edge/" class="plausible-event-name=fuehren_edge_detailseite">Mehr über EDGE lesen</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ 07 FUEHRUNGSTEAMS ============================================
+     Einzige Sektion mit ihr-Ansprache. Visueller Wechsel: breiter, zweispaltig,
+     Ergebnisse nebeneinander. -->
+<section id="fuehrungsteams" class="fx-horizon fx-to-night fx-team">
+  <div class="container">
+    <span class="eyebrow">Führungsteams</span>
+    <h2 style="margin-top:1rem;" class="fx-einblenden">Ein Führungsteam ist mehr als <em>die Summe guter Führungskräfte.</em></h2>
+
+    <div class="fx-team-grid fx-einblenden">
+      <p class="fx-lead">Teams geraten selten an Grenzen, weil Kompetenz fehlt.</p>
+      <p>Schwieriger sind die Dinge dazwischen: unausgesprochene Erwartungen, konkurrierende Verantwortlichkeiten, Konflikte, die sachlich aussehen, Entscheidungen, die immer an denselben Stellen hängen bleiben. Das kennt ihr vermutlich alle, und jeder sieht davon einen anderen Ausschnitt.</p>
+    </div>
+
+    <ul class="fx-ergebnisse fx-einblenden" aria-label="Was sich verändert">
+      <li>Klarere Entscheidungen</li>
+      <li>Tragfähigere Konflikte</li>
+      <li>Eindeutigere Verantwortung</li>
+      <li>Vertrauen ohne Harmoniezwang</li>
+    </ul>
+
+    <div class="fx-body fx-einblenden">
+      <p>Jedes Führungsteam hat eine andere Ausgangslage. Deshalb beginnt unsere Zusammenarbeit mit einem Briefing statt mit einem Paket. Ihr schildert, wo ihr steht, und wir klären, was euer Team jetzt braucht.</p>
+      <div class="fx-cta">
+        <a data-link="calendly_team" href="https://calendly.com/light-creators/team-briefing" target="_blank" rel="noopener" class="plausible-event-name=fuehren_team_cta btn btn--gold">Briefing für unser Führungsteam buchen <span class="arrow">→</span></a>
+        <p class="fx-micro">30 Minuten, unverbindlich</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ 08 LEADERSHIP JOURNEY ============================================
+     Mittelstand, keine Ausschreibung internationaler Konzernprogramme. -->
+<section id="leadership-journey" class="fx-dark fx-journey">
+  <div class="container">
+    <span class="eyebrow">Leadership Journey</span>
+    <h2 style="margin-top:1rem;" class="fx-einblenden">Führung entwickelt sich <em>nicht im Seminarraum allein.</em></h2>
+
+    <div class="fx-journey-body fx-einblenden" style="margin-top:2.5rem;">
+      <p>Programme wirken, wenn Lernen nicht vom Führungsalltag getrennt ist. Deshalb entsteht eine Leadership Journey gemeinsam mit dir: mit klarer Zielsetzung, an echten Herausforderungen, mit Lernformaten, Reflexion, Anwendung und Transfer in den Alltag.</p>
+      <p class="fx-zielgruppe">Für inhabergeführte und mittelständische Unternehmen, die Führungsentwicklung mit einem Partner gestalten wollen, der sie selbst verantwortet hat.</p>
+    </div>
+
+    <ol class="fx-bogen fx-einblenden" aria-label="Aufbau einer Leadership Journey">
+      <li><strong>Business Challenge</strong><span>Die echte Aufgabe des Unternehmens</span></li>
+      <li><strong>Experience</strong><span>Lernen im Erleben</span></li>
+      <li><strong>Reflection</strong><span>Verstehen, was geschieht</span></li>
+      <li><strong>Application</strong><span>Anwenden im Alltag</span></li>
+      <li><strong>Transfer</strong><span>Was bleibt, wenn wir gehen</span></li>
+    </ol>
+
+    <div class="fx-cta">
+      <a data-link="calendly_journey" href="https://calendly.com/light-creators/journey-briefing" target="_blank" rel="noopener" class="plausible-event-name=fuehren_journey_cta btn btn--gold">Leadership Journey besprechen <span class="arrow">→</span></a>
+      <p class="fx-micro">30 Minuten Briefing, unverbindlich</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ 09 BELEG, DAVID, PASSUNG ============================================
+     BELEG: bewusst leer. Hoechstens drei Zitate, je eines pro Pfad, nur mit
+     vorliegender schriftlicher Freigabe (Briefing 1.1, Abschnitt 3/09). Bis
+     David Freigaben bestaetigt, steht hier nichts. Kein Fremdmaterial, keine
+     Logowand. Erwaehnt ein spaeteres Zitat den HR Excellence Award, traegt
+     assets/award-context.js den Rollen-Satz nach (R2).
+     DAVID: Award nur im Satz mit der vollstaendigen SYNK-Rolle (R2).
+     Karrierezahlen als Erfahrungssatz, nicht als Kachel. Zeitangabe ueberall
+     "ueber 25 Jahre". -->
+<section class="fx-light">
+  <div class="container">
+    <div class="fx-david fx-einblenden">
+      <img src="/assets/hero-fuehren-portrait.webp" width="1200" height="1600" loading="lazy" alt="David Liebnau" />
+      <div>
+        <span class="eyebrow">Wer hier arbeitet</span>
+        <h2 style="margin-top:1rem;">David <em>Liebnau.</em></h2>
+        <div class="fx-body">
+          <p>In über 25 Jahren Führungskräfteentwicklung habe ich mit über 20.000 Führungskräften in 25 Ländern gearbeitet, in Konzernen wie Deutsche Bahn, Lufthansa und ZF. Zuerst als Senior Learning &amp; Development Consultant bei Gallup. Als Client Director und Mitglied der Geschäftsführung der SYNK GROUP habe ich unter anderem ein Programm für die Deutsche Bahn verantwortet, das mit dem HR Excellence Award ausgezeichnet wurde.</p>
+          <p>Nach über 25 Jahren interessiert mich weniger das nächste Führungsmodell als die Frage, was Menschen tatsächlich hilft, anders zu führen, wenn es darauf ankommt.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="fx-passung fx-einblenden">
+      <div>
+        <h3>Das passt, <em>wenn</em></h3>
+        <ul>
+          <li>deine eigene Rolle mit angeschaut werden darf.</li>
+          <li>an echten Führungsfragen gearbeitet werden soll.</li>
+          <li>aus Erkenntnis eine Veränderung werden soll.</li>
+        </ul>
+      </div>
+      <div class="fx-passt-nicht">
+        <h3>Das passt nicht, <em>wenn</em></h3>
+        <ul>
+          <li>ein Standardtraining ausgerollt werden soll.</li>
+          <li>die Ursache ausschließlich bei den anderen gesucht wird.</li>
+          <li>Motivation gefragt ist, aber keine Bereitschaft zur Veränderung.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ ABSCHLUSS ============================================
+     Drei reduzierte Entscheidungen, keine Karten, kein Button-Paar.
+     Kein vierter Orientierungs-CTA. id="kontakt" bleibt, weil der Footer
+     und externe Seiten darauf verlinken. -->
+<section id="kontakt" class="fx-dark fx-abschluss">
+  <div class="container">
+    <span class="eyebrow" style="display:block; text-align:center;">Der nächste Schritt</span>
+    <h2 style="margin-top:1rem;" class="fx-einblenden">Wo willst du <em>ansetzen?</em></h2>
+
+    <ul class="fx-entscheidungen fx-einblenden">
+      <li><a data-link="tally_mirror_anfrage" href="https://tally.so/r/445NbX" target="_blank" rel="noopener" class="plausible-event-name=fuehren_abschluss_ich"><span class="fx-ebene">Bei mir selbst</span><span class="fx-weg">Mit MIRROR beginnen →</span></a></li>
+      <li><a data-link="calendly_team" href="https://calendly.com/light-creators/team-briefing" target="_blank" rel="noopener" class="plausible-event-name=fuehren_abschluss_wir"><span class="fx-ebene">In unserem Führungsteam</span><span class="fx-weg">Briefing buchen →</span></a></li>
+      <li><a data-link="calendly_journey" href="https://calendly.com/light-creators/journey-briefing" target="_blank" rel="noopener" class="plausible-event-name=fuehren_abschluss_system"><span class="fx-ebene">In unserer Organisation</span><span class="fx-weg">Journey besprechen →</span></a></li>
+    </ul>
+
+    <p class="fx-micro" style="text-align:center; margin-top:2.5rem;">Ich duze in der Regel. Wenn dir das Sie lieber ist, sag es einfach.</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================ FOOTER ============================================
+     Ohne Link auf die Founder-Strecke (Briefing 1.1, Abgrenzung). -->
 <footer>
   <div class="container">
     <div class="footer-grid">
@@ -390,11 +468,11 @@
         <h5>Arbeite mit David</h5>
         <ul>
           <li><a href="/fuehren/">Führen</a></li>
+          <li><a href="/mirror-edge/">EDGE</a></li>
           <li><a href="/threshold/">The Threshold Program</a></li>
           <li><a href="/threshold/partner/">Plätze finanzieren</a></li>
           <li><a href="#kontakt">Kontakt</a></li>
           <li><a href="mailto:mail@davidliebnau.com">E-Mail</a></li>
-          <li><a class="plausible-event-name=outbound_lc_founder_click_de" href="https://light-creators.com/founder" target="_blank" rel="noopener">Für Founder Resonance: light-creators.com</a></li>
         </ul>
       </div>
 
@@ -425,31 +503,7 @@
   </div>
 </footer>
 
-<!-- Fade-in on scroll -->
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('section, .proof-quote, .role-card').forEach(el => {
-    el.classList.add('fade-in');
-    observer.observe(el);
-  });
-
-  (function () {
-    var nav = document.querySelector('nav.top');
-    function updateNav() {
-      nav.classList.toggle('nav-scrolled', window.scrollY > 60);
-    }
-    window.addEventListener('scroll', updateNav, { passive: true });
-    updateNav();
-  })();
-</script>
-
+<script src="/assets/fuehren.js" defer></script>
 <script src="/assets/award-context.js" defer></script>
 </body>
 </html>
