@@ -7,6 +7,36 @@ Stand: 2026-09-03
 
 ---
 
+## Neue /fuehren (Bau-Briefing 1.1, 26.09.2026): Umschaltung
+
+Branch `relaunch/fuehren-neu`. Die neue Seite liegt als Vorschau unter
+`fuehren/neu/` und `fuehren/en/neu/` (noindex, nicht in der Sitemap).
+Die alte `/fuehren/` bleibt bis zur Freigabe unverändert.
+
+Bei Freigabe in dieser Reihenfolge:
+
+1. Calendly, EDGE-Termin DE (heute „20-Minuten-Passungsgespräch · EDGE 1:1
+   oder Team Lab“): umbenennen in „EDGE Erstgespräch, 20 Minuten“, Slug
+   `edge-erstgespraech`, Vorabfragen: Welche konkrete Situation beschäftigt
+   dich? / Wer außer dir ist daran beteiligt? / Was hast du bisher versucht? /
+   Was sollte danach klarer sein? Beschreibung ohne Team Lab.
+2. Dasselbe für EN („20-minute fit call · EDGE 1:1 or Team Lab“): „EDGE
+   intro call, 20 minutes“, Slug `edge-intro-call`, Fragen sinngemäß englisch.
+3. `assets/angebot-werte.json`: `calendly_edge` auf die neuen Slugs setzen,
+   dann `python3 tools/angebotswerte.py` und `--pruefen`.
+4. `fuehren/neu/index.html` nach `fuehren/index.html`,
+   `fuehren/en/neu/index.html` nach `fuehren/en/index.html` verschieben,
+   jeweils die robots-Zeile entfernen, die Ordner `neu/` löschen.
+5. Startseite: Textlink „Wie ein Auftrag abläuft“ (index.html, index-en.html)
+   neu benennen, er passt nicht mehr zum Inhalt der Seite.
+6. Plausible: die 14 Ziele `fuehren_*` anlegen (Liste im Briefing-Bericht).
+   Die alten Ziele `fuehren_cta1/2/3_click` und `fuehren_cta_angebot` laufen aus.
+
+Die Seite `/mirror-edge/` ist bereits auf EDGE fokussiert und geht mit
+demselben Merge live.
+
+---
+
 ## Blockierend für den Relaunch
 
 ### E-Mail-Adressen für die drei Call-to-Action-Buttons

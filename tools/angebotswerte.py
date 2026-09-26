@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 """Schreibt Preise und Links aus assets/angebot-werte.json ins HTML.
 
-Die Angebotsseiten /mirror-edge/ (de) und /mirror-edge/en/ (en) nennen
-Nettopreise und verlinken die MIRROR-Anfrage (Tally) und das
-Passungsgespraech (Calendly) an mehreren Stellen. Gepflegt werden die Werte
+Die Seiten /fuehren/ und /mirror-edge/ (je de und en) nennen Nettopreise
+und verlinken die MIRROR-Anfrage (Tally) und die drei Calendly-Termine
+(EDGE Erstgespraech, Fuehrungsteam-Briefing, Leadership-Journey-Briefing)
+an mehreren Stellen. Gepflegt werden die Werte
 nur in der JSON-Datei. Im HTML tragen die betroffenen Elemente ein Attribut:
 
     <span data-wert="preis-mirror">450&#160;€</span>
-    <a data-link="calendly_passung" href="...">
-    <a data-link="calendly_passung" data-link-parameter="calendly_team_parameter" href="...">
+    <a data-link="calendly_edge" href="...">
+    <a data-link="calendly_team" data-link-parameter="..." href="...">
 
 Das Skript setzt den Inhalt jedes data-wert-Elements und das href jedes
 data-link-Elements neu. Welche Sprache gilt, liest es aus dem lang-Attribut
@@ -17,8 +18,8 @@ des html-Elements der Seite:
 - Preise sind ein Wert pro Angebot. Deutsch "2.900&#160;€", englisch "€2,900".
 - Links und Parameter haben in der JSON-Datei je einen Wert pro Sprache.
 - Traegt ein Link zusaetzlich data-link-parameter, haengt das Skript den
-  gleichnamigen Eintrag aus "parameter" als Query an (heute nur der
-  Team-Lab-Link, Vorbelegung der ersten Calendly-Frage).
+  gleichnamigen Eintrag aus "parameter" als Query an (heute keiner in
+  Gebrauch).
 
 Die Werte stehen damit fertig im HTML, auch ohne JavaScript und fuer
 Suchmaschinen.
